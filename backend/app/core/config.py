@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     motif_collection: str = "MotifChunk"
     embedding_provider: str = "local"
     openai_api_key: str | None = None
+    frontend_origin: str = "http://localhost:3000"
 
     class Config:
         env_file = "../.env"
@@ -14,4 +15,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-

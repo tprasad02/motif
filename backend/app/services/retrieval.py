@@ -23,18 +23,30 @@ def _client():
     )
 
 
-def retrieve_chunks(query: str, film_slugs: list[str], limit: int) -> list[RetrievedChunk]:
+def _combine_filters(filters):
+    active = [item for item in filters if item is not None]
+    if not active:
+        return None
+    combined = active[0]
+    for item in active[1:]:
+        combined = combined & item
+    return combined
+
+
+def retrieve_chunks(query: str, film_slugs: list[str], source_types: list[str], limit: int) -> list[RetrievedChunk]:
     client = _client()
     try:
         collection = client.collections.get(settings.motif_collection)
-        filters = None
+        filters = []
         if film_slugs:
-            filters = weaviate.classes.query.Filter.by_property("film_slug").contains_any(film_slugs)
+            filters.append(weaviate.classes.query.Filter.by_property("film_slug").contains_any(film_slugs))
+        if source_types:
+            filters.append(weaviate.classes.query.Filter.by_property("source_type").contains_any(source_types))
 
         result = collection.query.near_vector(
             near_vector=local_embedding(query),
             limit=limit,
-            filters=filters,
+            filters=_combine_filters(filters),
             return_metadata=weaviate.classes.query.MetadataQuery(distance=True),
         )
         chunks = []

@@ -61,6 +61,10 @@ input {
   margin: 0;
 }
 
+.filterBlock {
+  margin-bottom: 30px;
+}
+
 .filterHeader {
   display: flex;
   align-items: center;
@@ -111,6 +115,8 @@ input {
 }
 
 .queryBar button {
+  display: grid;
+  place-items: center;
   border: 0;
   background: var(--accent);
   color: white;
@@ -132,7 +138,8 @@ input {
 }
 
 .answerGrid section,
-.emptyState {
+.emptyState,
+.errorState {
   border: 1px solid var(--line);
   background: var(--panel);
   border-radius: 8px;
@@ -158,8 +165,31 @@ input {
 
 .score {
   float: right;
-  color: var(--warm);
   font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.score.high {
+  color: var(--accent-dark);
+}
+
+.score.medium {
+  color: var(--warm);
+}
+
+.score.low {
+  color: #9d2f24;
+}
+
+.note {
+  color: var(--muted) !important;
+  font-size: 14px;
+}
+
+.warningPanel {
+  border-color: #d99b8f !important;
+  background: #fff8f6 !important;
 }
 
 .sources {
@@ -167,24 +197,65 @@ input {
   gap: 10px;
 }
 
-.sources a {
+.citationCard {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
   color: var(--ink);
   text-decoration: none;
   line-height: 1.35;
 }
 
-.sources span {
+.citationCard span {
   display: inline-block;
-  min-width: 92px;
   color: var(--accent-dark);
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
 }
 
+.citationCard strong {
+  font-size: 14px;
+}
+
+.citationCard small {
+  color: var(--muted);
+}
+
+.citationCard p {
+  color: #444;
+  font-size: 13px;
+  margin: 0;
+}
+
+.citationPanel {
+  grid-column: 1 / -1;
+}
+
 .emptyState {
   max-width: 720px;
   margin-top: 24px;
+}
+
+.errorState {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 720px;
+  margin-top: 24px;
+  color: #9d2f24;
+}
+
+.spin {
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 860px) {
@@ -207,4 +278,3 @@ input {
     width: 100%;
   }
 }
-

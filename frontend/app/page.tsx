@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Clapperboard, Search, SlidersHorizontal } from "lucide-react";
+import { AlertTriangle, BookOpen, Clapperboard, Filter, Loader2, Search } from "lucide-react";
 
 type Citation = {
   source_key: string;
@@ -11,6 +11,9 @@ type Citation = {
   source_type: string;
   url?: string;
   chunk_id: string;
+  film_slug?: string;
+  score?: number;
+  excerpt?: string;
 };
 
 type AnalysisResponse = {
@@ -21,6 +24,8 @@ type AnalysisResponse = {
   related_films: string[];
   cited_sources: Citation[];
   coverage_score: number;
+  coverage_level: "high" | "medium" | "low";
+  refused: boolean;
   retrieval_notes: string;
 };
 
@@ -30,31 +35,62 @@ const films = [
   ["black-swan", "Black Swan"],
   ["perfect-blue", "Perfect Blue"],
   ["taxi-driver", "Taxi Driver"],
+  ["fight-club", "Fight Club"],
+  ["the-lighthouse", "The Lighthouse"],
+  ["shutter-island", "Shutter Island"],
+  ["eternal-sunshine", "Eternal Sunshine"],
+  ["synecdoche-new-york", "Synecdoche, New York"],
+];
+
+const sourceTypes = [
+  ["review", "Reviews"],
+  ["interview", "Interviews"],
+  ["essay", "Essays"],
+  ["academic", "Academic"],
+  ["screenplay", "Screenplays"],
+  ["production_notes", "Production Notes"],
+  ["video_essay_transcript", "Video Essays"],
 ];
 
 export default function Home() {
-  const [query, setQuery] = useState("How do doubling and performance fracture identity?");
+  const [query, setQuery] = useState("How do doubling and performance fracture identity across the corpus?");
   const [selectedFilms, setSelectedFilms] = useState<string[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [result, setResult] = useState<AnalysisResponse | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function submit(event: FormEvent) {
     event.preventDefault();
     setLoading(true);
+    setError(null);
     setResult(null);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"}/analyze`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, film_slugs: selectedFilms, max_chunks: 12 }),
-    });
-    setResult(await response.json());
-    setLoading(false);
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"}/answer`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query,
+          film_slugs: selectedFilms,
+          source_types: selectedTypes,
+          top_k: 12,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+      setResult(await response.json());
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to reach Motif API");
+    } finally {
+      setLoading(false);
+    }
   }
 
-  function toggleFilm(slug: string) {
-    setSelectedFilms((current) =>
-      current.includes(slug) ? current.filter((item) => item !== slug) : [...current, slug],
-    );
+  function toggle(value: string, setter: (next: string[]) => void, current: string[]) {
+    setter(current.includes(value) ? current.filter((item) => item !== value) : [...current, value]);
   }
 
   return (
@@ -69,44 +105,87 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="filterHeader">
-            <SlidersHorizontal size={18} />
-            <span>Corpus Focus</span>
+          <div className="filterBlock">
+            <div className="filterHeader">
+              <Filter size={18} />
+              <span>Films</span>
+            </div>
+            <div className="filmList">
+              {films.map(([slug, title]) => (
+                <label key={slug} className="filmToggle">
+                  <input
+                    type="checkbox"
+                    checked={selectedFilms.includes(slug)}
+                    onChange={() => toggle(slug, setSelectedFilms, selectedFilms)}
+                  />
+                  <span>{title}</span>
+                </label>
+              ))}
+            </div>
           </div>
-          <div className="filmList">
-            {films.map(([slug, title]) => (
-              <label key={slug} className="filmToggle">
-                <input
-                  type="checkbox"
-                  checked={selectedFilms.includes(slug)}
-                  onChange={() => toggleFilm(slug)}
-                />
-                <span>{title}</span>
-              </label>
-            ))}
+
+          <div className="filterBlock">
+            <div className="filterHeader">
+              <BookOpen size={18} />
+              <span>Sources</span>
+            </div>
+            <div className="filmList">
+              {sourceTypes.map(([type, label]) => (
+                <label key={type} className="filmToggle">
+                  <input
+                    type="checkbox"
+                    checked={selectedTypes.includes(type)}
+                    onChange={() => toggle(type, setSelectedTypes, selectedTypes)}
+                  />
+                  <span>{label}</span>
+                </label>
+              ))}
+            </div>
           </div>
         </aside>
 
         <section className="analysisPane">
           <form onSubmit={submit} className="queryBar">
             <Search size={20} />
-            <input value={query} onChange={(event) => setQuery(event.target.value)} />
-            <button disabled={loading}>{loading ? "Searching" : "Analyze"}</button>
+            <input
+              aria-label="Ask Motif"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Ask about interpretation, influence, comparison, or theme"
+            />
+            <button disabled={loading}>{loading ? <Loader2 className="spin" size={18} /> : "Answer"}</button>
           </form>
 
-          {result ? (
+          {error && (
+            <div className="errorState">
+              <AlertTriangle size={20} />
+              <span>{error}</span>
+            </div>
+          )}
+
+          {loading && (
+            <div className="emptyState">
+              <h2>Retrieving evidence</h2>
+              <p>Motif is searching the curated corpus and checking whether source coverage is strong enough to answer.</p>
+            </div>
+          )}
+
+          {result && (
             <div className="answerGrid">
-              <section className="primaryAnswer">
-                <div className="score">Coverage {Math.round(result.coverage_score * 100)}%</div>
+              <section className={result.refused ? "primaryAnswer warningPanel" : "primaryAnswer"}>
+                <div className={`score ${result.coverage_level}`}>{result.coverage_level} coverage</div>
                 <h2>Consensus Interpretation</h2>
                 <p>{result.consensus_interpretation}</p>
+                <p className="note">{result.retrieval_notes}</p>
               </section>
 
               <section>
                 <h2>Alternative Interpretations</h2>
-                {result.alternative_interpretations.map((item) => (
-                  <p key={item}>{item}</p>
-                ))}
+                {result.alternative_interpretations.length ? (
+                  result.alternative_interpretations.map((item) => <p key={item}>{item}</p>)
+                ) : (
+                  <p>No grounded alternatives available at this coverage level.</p>
+                )}
               </section>
 
               <section>
@@ -124,19 +203,29 @@ export default function Home() {
                 <p>{result.related_films.length ? result.related_films.join(", ") : "No related films retrieved yet."}</p>
               </section>
 
-              <section>
+              <section className="citationPanel">
                 <h2>Cited Sources</h2>
                 <div className="sources">
                   {result.cited_sources.map((source) => (
-                    <a key={`${source.source_key}-${source.chunk_id}`} href={source.url ?? "#"}>
+                    <a
+                      className="citationCard"
+                      key={`${source.source_key}-${source.chunk_id}`}
+                      href={source.url ?? "#"}
+                    >
                       <span>{source.source_type}</span>
-                      {source.title}
+                      <strong>{source.title}</strong>
+                      <small>
+                        {source.film_slug} {source.score ? `score ${source.score}` : ""}
+                      </small>
+                      {source.excerpt && <p>{source.excerpt}</p>}
                     </a>
                   ))}
                 </div>
               </section>
             </div>
-          ) : (
+          )}
+
+          {!result && !loading && !error && (
             <div className="emptyState">
               <h2>Ask an interpretive question</h2>
               <p>Compare films, trace influences, test readings, or explore a recurring theme across the curated corpus.</p>
@@ -147,4 +236,3 @@ export default function Home() {
     </main>
   );
 }
-

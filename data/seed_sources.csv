@@ -38,5 +38,44 @@ taxi-driver,td-nyt-review,New York Times review of Taxi Driver,,The New York Tim
 taxi-driver,td-screenplay,Taxi Driver screenplay,Paul Schrader,,screenplay,,,true,0.92,,Primary text source
 taxi-driver,td-academic-masculinity,Taxi Driver masculinity academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
 taxi-driver,td-production-notes,Taxi Driver production notes,,Production notes,production_notes,,,true,0.82,,Production context
-taxi-driver,td-video-essay-transcript,Taxi Driver video essay transcript,,Curated video essay,video_essay_transcript,,,false,0.72,,Manual transcript
-
+taxi-driver,td-essay-alienation,Taxi Driver essay on alienation and violence,,Film essay,essay,,,false,0.78,,Theme source
+fight-club,fc-fce-interview,David Fincher interview on Fight Club,David Fincher,,interview,,,true,0.94,,Creator perspective source
+fight-club,fc-palahniuk-interview,Chuck Palahniuk interview on Fight Club,Chuck Palahniuk,,interview,,,true,0.92,,Author perspective source
+fight-club,fc-rogerebert-review,Roger Ebert Review of Fight Club,Roger Ebert,Chicago Sun-Times,review,https://www.rogerebert.com/reviews/fight-club-1999,1999-10-15,false,0.88,,Canonical reception source
+fight-club,fc-nyt-review,New York Times review of Fight Club,,The New York Times,review,,,false,0.82,,Reception source
+fight-club,fc-screenplay,Fight Club screenplay,Jim Uhls,,screenplay,,,true,0.90,,Primary text source
+fight-club,fc-academic-masculinity,Fight Club masculinity academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+fight-club,fc-essay-consumerism,Fight Club essay on consumerism and identity,,Film essay,essay,,,false,0.78,,Theme source
+fight-club,fc-production-notes,Fight Club production notes,,Studio/press kit,production_notes,,,true,0.82,,Production context
+the-lighthouse,tl-eggers-interview,Robert Eggers interview on The Lighthouse,Robert Eggers,,interview,,,true,0.94,,Creator perspective source
+the-lighthouse,tl-dafoe-pattinson-interview,Cast interview on The Lighthouse,Willem Dafoe; Robert Pattinson,,interview,,,true,0.86,,Performance perspective source
+the-lighthouse,tl-rogerebert-review,Roger Ebert Review of The Lighthouse,,RogerEbert.com,review,https://www.rogerebert.com/reviews/the-lighthouse-movie-review-2019,2019-10-18,false,0.84,,Reception source
+the-lighthouse,tl-nyt-review,New York Times review of The Lighthouse,,The New York Times,review,,,false,0.82,,Reception source
+the-lighthouse,tl-screenplay,The Lighthouse screenplay,Robert Eggers; Max Eggers,,screenplay,,,true,0.90,,Primary text source
+the-lighthouse,tl-academic-myth,The Lighthouse myth and madness academic source,,Academic journal,academic,,,false,0.84,,Academic interpretation source
+the-lighthouse,tl-essay-masculinity,The Lighthouse essay on masculinity and labor,,Film essay,essay,,,false,0.78,,Theme source
+the-lighthouse,tl-production-notes,The Lighthouse production notes,,A24 press materials,production_notes,,,true,0.84,,Production context
+shutter-island,si-scorsese-interview,Scorsese interview on Shutter Island,Martin Scorsese,,interview,,,true,0.94,,Creator perspective source
+shutter-island,si-lehane-interview,Dennis Lehane interview on Shutter Island,Dennis Lehane,,interview,,,true,0.90,,Source-novel perspective
+shutter-island,si-rogerebert-review,Roger Ebert Review of Shutter Island,Roger Ebert,Chicago Sun-Times,review,https://www.rogerebert.com/reviews/shutter-island-2010,2010-02-17,false,0.88,,Canonical reception source
+shutter-island,si-nyt-review,New York Times review of Shutter Island,,The New York Times,review,,,false,0.82,,Reception source
+shutter-island,si-screenplay,Shutter Island screenplay,Laeta Kalogridis,,screenplay,,,true,0.90,,Primary text source
+shutter-island,si-academic-trauma,Shutter Island trauma and delusion academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+shutter-island,si-essay-guilt,Shutter Island essay on guilt and institutional power,,Film essay,essay,,,false,0.78,,Theme source
+shutter-island,si-production-notes,Shutter Island production notes,,Studio/press kit,production_notes,,,true,0.82,,Production context
+eternal-sunshine,es-gondry-interview,Michel Gondry interview on Eternal Sunshine,Michel Gondry,,interview,,,true,0.94,,Creator perspective source
+eternal-sunshine,es-kaufman-interview,Charlie Kaufman interview on Eternal Sunshine,Charlie Kaufman,,interview,,,true,0.94,,Writer perspective source
+eternal-sunshine,es-rogerebert-review,Roger Ebert Review of Eternal Sunshine,Roger Ebert,Chicago Sun-Times,review,https://www.rogerebert.com/reviews/eternal-sunshine-of-the-spotless-mind-2004,2004-03-19,false,0.88,,Canonical reception source
+eternal-sunshine,es-nyt-review,New York Times review of Eternal Sunshine,,The New York Times,review,,,false,0.82,,Reception source
+eternal-sunshine,es-screenplay,Eternal Sunshine of the Spotless Mind screenplay,Charlie Kaufman,,screenplay,,,true,0.92,,Primary text source
+eternal-sunshine,es-academic-memory,Eternal Sunshine memory and identity academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+eternal-sunshine,es-essay-romance,Eternal Sunshine essay on memory and romance,,Film essay,essay,,,false,0.78,,Theme source
+eternal-sunshine,es-production-notes,Eternal Sunshine production notes,,Studio/press kit,production_notes,,,true,0.82,,Production context
+synecdoche-new-york,sny-kaufman-interview,Charlie Kaufman interview on Synecdoche New York,Charlie Kaufman,,interview,,,true,0.95,,Creator perspective source
+synecdoche-new-york,sny-hoffman-interview,Philip Seymour Hoffman interview on Synecdoche New York,Philip Seymour Hoffman,,interview,,,true,0.86,,Performance perspective source
+synecdoche-new-york,sny-rogerebert-review,Roger Ebert Review of Synecdoche New York,Roger Ebert,Chicago Sun-Times,review,https://www.rogerebert.com/reviews/synecdoche-new-york-2008,2008-11-05,false,0.88,,Canonical reception source
+synecdoche-new-york,sny-nyt-review,New York Times review of Synecdoche New York,,The New York Times,review,,,false,0.82,,Reception source
+synecdoche-new-york,sny-screenplay,Synecdoche New York screenplay,Charlie Kaufman,,screenplay,,,true,0.92,,Primary text source
+synecdoche-new-york,sny-academic-mortality,Synecdoche New York mortality and artifice academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+synecdoche-new-york,sny-essay-theater,Synecdoche New York essay on theater and identity,,Film essay,essay,,,false,0.78,,Theme source
+synecdoche-new-york,sny-production-notes,Synecdoche New York production notes,,Studio/press kit,production_notes,,,true,0.82,,Production context

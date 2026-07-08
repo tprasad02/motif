@@ -1,5 +1,6 @@
 import csv
 import hashlib
+import uuid
 from pathlib import Path
 
 import psycopg
@@ -106,6 +107,21 @@ def ensure_weaviate_schema() -> None:
         client.close()
 
 
+def reset_stores() -> None:
+    with pg_conn() as conn:
+        with conn.cursor() as cur:
+            cur.execute("TRUNCATE film_relations, chunks, documents, sources, films RESTART IDENTITY CASCADE")
+        conn.commit()
+
+    host = WEAVIATE_URL.replace("http://", "").replace("https://", "").split(":")[0]
+    client = weaviate.connect_to_local(host=host, port=8080)
+    try:
+        if client.collections.exists(MOTIF_COLLECTION):
+            client.collections.delete(MOTIF_COLLECTION)
+    finally:
+        client.close()
+
+
 def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str, chunks, embeddings) -> None:
     hash_value = content_hash(cleaned_text)
     with pg_conn() as conn:
@@ -124,6 +140,13 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
                 """
                 INSERT INTO documents (source_id, content_hash, raw_text, cleaned_text, token_count, status, ingested_at)
                 VALUES (%s, %s, %s, %s, %s, 'ingested', now())
+                ON CONFLICT (source_id, content_hash) DO UPDATE SET
+                    raw_text = EXCLUDED.raw_text,
+                    cleaned_text = EXCLUDED.cleaned_text,
+                    token_count = EXCLUDED.token_count,
+                    status = 'ingested',
+                    error_message = NULL,
+                    ingested_at = now()
                 RETURNING id
                 """,
                 (source_id, hash_value, raw_text, cleaned_text, sum(chunk.token_count for chunk in chunks)),
@@ -161,6 +184,7 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
         with collection.batch.dynamic() as batch:
             for chunk, (vector, _) in zip(chunks, embeddings):
                 batch.add_object(
+                    uuid=uuid.uuid5(uuid.NAMESPACE_URL, chunk.chunk_id),
                     properties={
                         "chunk_id": chunk.chunk_id,
                         "text": chunk.text,
@@ -173,4 +197,3 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
                 )
     finally:
         client.close()
-

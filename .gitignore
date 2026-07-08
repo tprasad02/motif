@@ -4,11 +4,14 @@ __pycache__/
 *.py[cod]
 .venv/
 node_modules/
+.pnpm-store/
 .next/
 dist/
 build/
 data/raw/*
 data/processed/*
 !data/raw/.gitkeep
+!data/raw/public/
+!data/raw/public/*.txt
 !data/processed/.gitkeep
-
+data/raw/public_cache/

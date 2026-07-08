@@ -6,10 +6,12 @@ from ingestion.chunking import chunk_text
 from ingestion.cleaning import clean_text
 from ingestion.embeddings import embed_text
 from ingestion.extractors import extract_by_path
-from ingestion.storage import content_hash, ensure_weaviate_schema, load_films, load_sources, store_document_and_chunks
+from ingestion.storage import content_hash, ensure_weaviate_schema, load_films, load_sources, reset_stores, store_document_and_chunks
 
 
-def ingest_sources(sources_path: str) -> None:
+def ingest_sources(sources_path: str, reset: bool = False) -> None:
+    if reset:
+        reset_stores()
     load_films()
     load_sources(sources_path)
     ensure_weaviate_schema()
@@ -40,12 +42,12 @@ def main() -> None:
     subparsers = parser.add_subparsers(dest="command", required=True)
     ingest = subparsers.add_parser("ingest")
     ingest.add_argument("--sources", default="data/seed_sources.csv")
+    ingest.add_argument("--reset", action="store_true")
 
     args = parser.parse_args()
     if args.command == "ingest":
-        ingest_sources(args.sources)
+        ingest_sources(args.sources, reset=args.reset)
 
 
 if __name__ == "__main__":
     main()
-

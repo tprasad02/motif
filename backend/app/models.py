@@ -9,13 +9,38 @@ class SourceCitation(BaseModel):
     source_type: str
     url: str | None = None
     chunk_id: str
+    film_slug: str | None = None
+    score: float | None = None
+    excerpt: str | None = None
 
 
-class AnalysisRequest(BaseModel):
+class RetrieveRequest(BaseModel):
     query: str = Field(min_length=3)
     film_slugs: list[str] = Field(default_factory=list)
+    source_types: list[str] = Field(default_factory=list)
     themes: list[str] = Field(default_factory=list)
-    max_chunks: int = Field(default=12, ge=3, le=30)
+    top_k: int = Field(default=12, ge=3, le=40)
+
+
+class RetrievedChunkResponse(BaseModel):
+    chunk_id: str
+    text: str
+    film_slug: str
+    source_key: str
+    source_type: str
+    score: float
+
+
+class RetrieveResponse(BaseModel):
+    query: str
+    chunks: list[RetrievedChunkResponse]
+    coverage_score: float
+    coverage_level: str
+    retrieval_notes: str
+
+
+class AnswerRequest(RetrieveRequest):
+    pass
 
 
 class AnalysisResponse(BaseModel):
@@ -26,4 +51,6 @@ class AnalysisResponse(BaseModel):
     related_films: list[str]
     cited_sources: list[SourceCitation]
     coverage_score: float
+    coverage_level: str
+    refused: bool
     retrieval_notes: str

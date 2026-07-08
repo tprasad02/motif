@@ -91,6 +91,6 @@ CREATE TABLE IF NOT EXISTS film_relations (
 CREATE INDEX IF NOT EXISTS idx_sources_film_id ON sources(film_id);
 CREATE INDEX IF NOT EXISTS idx_sources_type ON sources(source_type);
 CREATE INDEX IF NOT EXISTS idx_documents_source_id ON documents(source_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_documents_source_hash ON documents(source_id, content_hash);
 CREATE INDEX IF NOT EXISTS idx_chunks_film_id ON chunks(film_id);
 CREATE INDEX IF NOT EXISTS idx_chunks_source_id ON chunks(source_id);
-

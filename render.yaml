@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: motif-backend
+    runtime: docker
+    plan: starter
+    rootDir: backend
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: WEAVIATE_URL
+        sync: false
+      - key: MOTIF_COLLECTION
+        value: MotifChunk
+      - key: EMBEDDING_PROVIDER
+        value: local
+      - key: FRONTEND_ORIGIN
+        sync: false
+
