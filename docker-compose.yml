@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: motif-postgres
+    environment:
+      POSTGRES_DB: motif
+      POSTGRES_USER: motif
+      POSTGRES_PASSWORD: motif
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/postgres:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U motif -d motif"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  weaviate:
+    image: semitechnologies/weaviate:1.25.5
+    container_name: motif-weaviate
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    environment:
+      QUERY_DEFAULTS_LIMIT: 20
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"
+      PERSISTENCE_DATA_PATH: /var/lib/weaviate
+      DEFAULT_VECTORIZER_MODULE: none
+      CLUSTER_HOSTNAME: node1
+    volumes:
+      - weaviate_data:/var/lib/weaviate
+
+volumes:
+  postgres_data:
+  weaviate_data:
+

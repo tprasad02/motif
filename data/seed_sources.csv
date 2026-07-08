@@ -1,0 +1,42 @@
+film_slug,source_key,title,author,publisher,source_type,url,publication_date,is_primary,credibility_score,local_path,notes
+mulholland-drive,md-lynch-interview-2001,David Lynch Interview on Mulholland Drive,,Film comment/interview,interview,,,true,0.95,,Creator perspective source to collect
+mulholland-drive,md-rogerebert-review,Roger Ebert Review of Mulholland Drive,Roger Ebert,Chicago Sun-Times,review,https://www.rogerebert.com/reviews/mulholland-drive-2001,2001-10-12,false,0.88,,Canonical reception source
+mulholland-drive,md-senses-essay,Mulholland Drive critical essay,,Senses of Cinema,essay,,,false,0.80,,Auteur and interpretation source
+mulholland-drive,md-bfi-essay,BFI essay on Mulholland Drive,,BFI,essay,,,false,0.82,,Institutional criticism source
+mulholland-drive,md-screenplay,Mulholland Drive screenplay,David Lynch,,screenplay,,,true,0.90,,Primary text source
+mulholland-drive,md-academic-dream,Mulholland Drive and dream structure,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+mulholland-drive,md-video-essay-transcript,Mulholland Drive video essay transcript,,Curated video essay,video_essay_transcript,,,false,0.72,,Manual transcript
+mulholland-drive,md-production-notes,Mulholland Drive production notes,,Studio/press kit,production_notes,,,true,0.84,,Production context
+persona,persona-bergman-interview,Bergman interview on Persona,Ingmar Bergman,,interview,,,true,0.95,,Creator perspective source
+persona,persona-sontag-essay,Persona critical essay,Susan Sontag,,essay,,,false,0.90,,Major criticism source
+persona,persona-criterion-essay,Criterion essay on Persona,,Criterion,essay,,,false,0.84,,Curated critical essay
+persona,persona-rogerebert-review,Roger Ebert Great Movies: Persona,Roger Ebert,Chicago Sun-Times,review,,,false,0.88,,Canonical reception source
+persona,persona-screenplay,Persona screenplay,Ingmar Bergman,,screenplay,,,true,0.90,,Primary text source
+persona,persona-academic-identity,Persona and identity dissolution,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+persona,persona-production-notes,Persona production notes,,Production notes,production_notes,,,true,0.80,,Production context
+persona,persona-video-essay-transcript,Persona video essay transcript,,Curated video essay,video_essay_transcript,,,false,0.72,,Manual transcript
+black-swan,bs-aronofsky-interview,Aronofsky interview on Black Swan,Darren Aronofsky,,interview,,,true,0.94,,Creator perspective source
+black-swan,bs-rogerebert-review,Roger Ebert Review of Black Swan,Roger Ebert,Chicago Sun-Times,review,https://www.rogerebert.com/reviews/black-swan-2010,2010-12-01,false,0.88,,Canonical reception source
+black-swan,bs-nyt-review,New York Times review of Black Swan,,The New York Times,review,,,false,0.82,,Reception source
+black-swan,bs-essay-doubling,Black Swan and the double,,Film essay,essay,,,false,0.78,,Theme source
+black-swan,bs-academic-body,Black Swan body horror academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+black-swan,bs-screenplay,Black Swan screenplay,Mark Heyman; Andres Heinz; John McLaughlin,,screenplay,,,true,0.90,,Primary text source
+black-swan,bs-production-notes,Black Swan production notes,,Studio/press kit,production_notes,,,true,0.82,,Production context
+black-swan,bs-video-essay-transcript,Black Swan video essay transcript,,Curated video essay,video_essay_transcript,,,false,0.72,,Manual transcript
+perfect-blue,pb-kon-interview,Satoshi Kon interview on Perfect Blue,Satoshi Kon,,interview,,,true,0.94,,Creator perspective source
+perfect-blue,pb-anime-news-review,Perfect Blue contemporary review,,Anime News Network,review,,,false,0.76,,Reception source
+perfect-blue,pb-criterion-essay,Criterion essay on Perfect Blue,,Criterion,essay,,,false,0.84,,Curated critical essay
+perfect-blue,pb-academic-media,Perfect Blue media identity academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+perfect-blue,pb-screenplay,Perfect Blue screenplay,,Madhouse,screenplay,,,true,0.86,,Primary text source if available
+perfect-blue,pb-production-notes,Perfect Blue production notes,,Production notes,production_notes,,,true,0.80,,Production context
+perfect-blue,pb-video-essay-transcript,Perfect Blue video essay transcript,,Curated video essay,video_essay_transcript,,,false,0.72,,Manual transcript
+perfect-blue,pb-essay-fandom,Perfect Blue essay on fandom and celebrity,,Film essay,essay,,,false,0.78,,Theme source
+taxi-driver,td-scorsese-interview,Scorsese interview on Taxi Driver,Martin Scorsese,,interview,,,true,0.95,,Creator perspective source
+taxi-driver,td-schrader-interview,Paul Schrader interview on Taxi Driver,Paul Schrader,,interview,,,true,0.95,,Writer perspective source
+taxi-driver,td-rogerebert-review,Roger Ebert Great Movies: Taxi Driver,Roger Ebert,Chicago Sun-Times,review,,,false,0.88,,Canonical reception source
+taxi-driver,td-nyt-review,New York Times review of Taxi Driver,,The New York Times,review,,,false,0.82,,Reception source
+taxi-driver,td-screenplay,Taxi Driver screenplay,Paul Schrader,,screenplay,,,true,0.92,,Primary text source
+taxi-driver,td-academic-masculinity,Taxi Driver masculinity academic source,,Academic journal,academic,,,false,0.86,,Academic interpretation source
+taxi-driver,td-production-notes,Taxi Driver production notes,,Production notes,production_notes,,,true,0.82,,Production context
+taxi-driver,td-video-essay-transcript,Taxi Driver video essay transcript,,Curated video essay,video_essay_transcript,,,false,0.72,,Manual transcript
+

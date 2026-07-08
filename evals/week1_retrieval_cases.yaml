@@ -1,0 +1,19 @@
+cases:
+  - id: doubling_identity
+    query: "How do Persona, Perfect Blue, and Black Swan use doubling to fracture identity?"
+    required_source_types:
+      - essay
+      - academic
+      - interview
+    expected_films:
+      - persona
+      - perfect-blue
+      - black-swan
+  - id: creator_perspective
+    query: "What do creators say about ambiguity in Mulholland Drive?"
+    required_source_types:
+      - interview
+      - production_notes
+    expected_films:
+      - mulholland-drive
+
