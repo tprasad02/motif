@@ -142,6 +142,8 @@ The current public corpus uses public pages and public review pages. Script text
 
 ## Deployment
 
+See [docs/deployment.md](docs/deployment.md) for the current deployment runbook.
+
 Frontend:
 
 - Import `frontend/` into Vercel.
