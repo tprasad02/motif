@@ -3,8 +3,23 @@
 ## Current Blockers
 
 - GitHub push from this Codex session was rejected by the approval prompt.
-- Vercel CLI is available through `pnpm dlx vercel`, but this machine is not logged in.
+- Vercel production deployment is live.
 - No Render API token or deploy hook URL is present in the environment.
+- GitHub HTTPS push lacks credentials, and SSH push is not configured.
+
+## Live Frontend
+
+Production:
+
+```text
+https://frontend-fawn-beta-13.vercel.app
+```
+
+Deployment URL:
+
+```text
+https://motif-avc3hqdda-tanisha112.vercel.app
+```
 
 ## Vercel Frontend
 
@@ -54,4 +69,3 @@ If you create a Render deploy hook, trigger it with:
 ```bash
 curl "$RENDER_DEPLOY_HOOK_URL"
 ```
-
