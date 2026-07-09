@@ -68,6 +68,13 @@ const coverageLabels: Record<AnalysisResponse["coverage_level"], string> = {
   low: "Thin trail",
 };
 
+const promptIdeas = [
+  "Why does Taxi Driver feel so lonely?",
+  "Is Black Swan more about art or madness?",
+  "How does Perfect Blue influence later identity thrillers?",
+  "What makes Mulholland Drive resist one explanation?",
+];
+
 function titleForSlug(slug?: string) {
   return films.find(([filmSlug]) => filmSlug === slug)?.[1] ?? slug?.replaceAll("-", " ");
 }
@@ -103,7 +110,8 @@ export default function Home() {
       }
       setResult(await response.json());
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to reach Motif API");
+      const detail = err instanceof Error ? err.message : "Unable to reach Motif";
+      setError(`Motif could not open that reel. ${detail}`);
     } finally {
       setLoading(false);
     }
@@ -165,6 +173,14 @@ export default function Home() {
         </aside>
 
         <section className="analysisPane">
+          <div className="marquee">
+            <div>
+              <span className="eyebrow">Now analyzing</span>
+              <h2>Psychological cinema, without the plot-summary fog.</h2>
+            </div>
+            <p>Ask Motif for a reading, a rivalry between interpretations, a director angle, or a path through related films.</p>
+          </div>
+
           <form onSubmit={submit} className="queryBar">
             <Search size={20} />
             <input
@@ -179,7 +195,10 @@ export default function Home() {
           {error && (
             <div className="errorState">
               <AlertTriangle size={20} />
-              <span>{error}</span>
+              <div>
+                <strong>The projector jammed.</strong>
+                <span>{error}</span>
+              </div>
             </div>
           )}
 
@@ -259,6 +278,13 @@ export default function Home() {
             <div className="emptyState">
               <h2>What scene are we opening?</h2>
               <p>Try a question about obsession, doubles, unreliable memory, performance, influence, or why a film refuses to explain itself.</p>
+              <div className="promptDeck">
+                {promptIdeas.map((idea) => (
+                  <button key={idea} type="button" onClick={() => setQuery(idea)}>
+                    {idea}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </section>

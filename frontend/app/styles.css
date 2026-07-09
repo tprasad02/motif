@@ -114,6 +114,45 @@ input {
   padding: 28px;
 }
 
+.marquee {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 22px;
+  align-items: end;
+  max-width: 1160px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(23, 21, 20, 0.12);
+  border-radius: 8px;
+  padding: 28px;
+  background:
+    linear-gradient(115deg, rgba(23, 27, 32, 0.94), rgba(35, 40, 49, 0.88)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 38px);
+  box-shadow: var(--shadow);
+  color: #fff6e9;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.marquee h2 {
+  margin: 0;
+  max-width: 720px;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.marquee p {
+  margin: 0;
+  color: #d8cbbb;
+  line-height: 1.55;
+}
+
 .queryBar {
   display: grid;
   grid-template-columns: 24px minmax(0, 1fr) 104px;
@@ -351,6 +390,30 @@ input {
   margin-top: 24px;
 }
 
+.promptDeck {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.promptDeck button {
+  border: 1px solid rgba(166, 66, 53, 0.26);
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #58322d;
+  cursor: pointer;
+  min-height: 54px;
+  padding: 12px;
+  text-align: left;
+  font-weight: 780;
+}
+
+.promptDeck button:hover {
+  border-color: rgba(166, 66, 53, 0.54);
+  background: #fff0df;
+}
+
 .errorState {
   display: flex;
   align-items: center;
@@ -379,7 +442,9 @@ input {
 @media (max-width: 860px) {
   .workspace,
   .answerGrid,
-  .sources {
+  .sources,
+  .marquee,
+  .promptDeck {
     grid-template-columns: 1fr;
   }
 
@@ -402,6 +467,10 @@ input {
 
   .primaryAnswer h2 {
     font-size: 26px;
+  }
+
+  .marquee h2 {
+    font-size: 30px;
   }
 
   .primaryAnswer p {

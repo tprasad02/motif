@@ -39,6 +39,31 @@ THEME_CONNECTIONS = {
     "performance": "Performance matters because these characters do not simply pretend. They use acting, ritual, costume, fantasy, or professional roles to survive, and the performance eventually starts giving orders back.",
     "memory": "Memory functions like an editor: it cuts, loops, protects, and distorts. What looks like confusion is often the film showing how the mind reshapes a wound into a story it can bear.",
     "influence": "The strongest influence pattern here runs through psychological modernism, noir, melodrama, and surrealism: films borrowing the shape of a thriller to stage an interior crisis.",
+    "loneliness": "Loneliness is not just a mood in this corpus. It becomes an atmosphere, a rhythm, and finally a distorted way of reading the world.",
+    "obsession": "Obsession works like a private editing machine. It narrows the frame until every person, place, and image seems to point back to the character's wound.",
+    "violence": "Violence usually arrives after fantasy has failed. These films make brutality feel less like power than like a desperate attempt to turn inner chaos into an outward shape.",
+    "ending": "The endings in these films rarely close the case. They change the terms of the case, asking whether resolution matters less than the emotional pattern we have been watching.",
+    "ambiguity": "Ambiguity is not a lack of meaning here. It is the method: the films keep competing explanations alive so the viewer feels the instability the characters live inside.",
+    "love": "Love in this corpus is rarely clean comfort. It is memory, projection, dependence, fantasy, and recognition tangled together.",
+    "masculinity": "Masculinity often appears as a costume under strain: discipline, toughness, genius, and control become roles that hide fear until they start to crack.",
+    "madness": "Madness is staged less as a diagnosis than as a cinematic point of view: sound, repetition, unreliable memory, and performance make the viewer share the pressure.",
+}
+
+
+THEME_KEYWORDS = {
+    "identity": {"identity", "self", "persona", "who", "subjectivity"},
+    "doubling": {"double", "doubling", "doppelganger", "mirror", "split", "twin"},
+    "performance": {"performance", "perform", "role", "acting", "actor", "actress", "mask"},
+    "memory": {"memory", "remember", "forget", "erased", "flashback", "past"},
+    "influence": {"influence", "inspired", "inspiration", "borrow", "echo", "reference"},
+    "loneliness": {"loneliness", "lonely", "alone", "isolation", "alienation", "isolated"},
+    "obsession": {"obsession", "obsessed", "fixation", "desire", "compulsion"},
+    "violence": {"violence", "violent", "brutality", "murder", "blood", "rage"},
+    "ending": {"ending", "end", "finale", "conclusion", "twist", "last scene"},
+    "ambiguity": {"ambiguous", "ambiguity", "unclear", "confusing", "dream", "real", "explain"},
+    "love": {"love", "romance", "relationship", "intimacy", "heartbreak"},
+    "masculinity": {"masculinity", "manhood", "male", "men", "masculine"},
+    "madness": {"madness", "insanity", "sanity", "psychosis", "delusion", "mental"},
 }
 
 
@@ -81,18 +106,16 @@ def _display_title(slug: str) -> str:
 
 def _query_lenses(query: str) -> list[str]:
     lowered = query.lower()
-    lenses = [key for key in THEME_CONNECTIONS if key in lowered]
-    if "double" in lowered or "doppel" in lowered or "mirror" in lowered:
-        lenses.append("doubling")
-    if "perform" in lowered or "role" in lowered or "act" in lowered:
-        lenses.append("performance")
-    if "self" in lowered or "identity" in lowered or "persona" in lowered:
-        lenses.append("identity")
+    lenses = []
+    words = set(lowered.replace("?", " ").replace(",", " ").replace(".", " ").split())
+    for lens, keywords in THEME_KEYWORDS.items():
+        if any(keyword in lowered for keyword in keywords) or words.intersection(keywords):
+            lenses.append(lens)
     unique = []
     for lens in lenses:
         if lens not in unique:
             unique.append(lens)
-    return unique[:3] or ["identity"]
+    return unique[:3] or ["ambiguity"]
 
 
 def _source_label(source_type: str) -> str:
@@ -126,24 +149,36 @@ def _build_consensus(query: str, chunks: list[RetrievedChunk], level: str) -> st
     for film in films[:4]:
         reading = FILM_READINGS.get(film)
         if reading:
-            film_sentence_parts.append(f"{_display_title(film)} {reading}")
+            film_sentence_parts.append(f"{_display_title(film)} {reading}.")
 
     if not film_sentence_parts:
         return "Motif does not have enough relevant material to shape a confident interpretation yet."
 
     if len(films) == 1:
         body = film_sentence_parts[0]
+        lens = lenses[0]
+        if lens == "loneliness":
+            turn = "The film's loneliness is active rather than passive: it turns solitude into suspicion, fantasy, and finally a dangerous performance of purpose."
+        elif lens == "ending":
+            turn = "The ending matters because it does not simply reveal what happened; it reveals what kind of story the character needed to believe."
+        elif lens == "violence":
+            turn = "The violence reads as a failed language: a way to force the world to answer when ordinary connection has collapsed."
+        elif lens == "obsession":
+            turn = "The obsession is the engine of the film: it gives the character structure while quietly shrinking their world."
+        elif lens == "influence":
+            turn = "The influence is less a copied plot than a shared grammar of looking: noir suspicion, psychological subjectivity, and images that behave like symptoms."
+        else:
+            turn = "The fracture is not just psychological; it is cinematic. Behavior, framing, repetition, and role-play show a person becoming trapped inside an image of themselves."
         return (
-            f"{lead} In {body}. The answer to your question is that the fracture is not just psychological; "
-            "it is cinematic. The film lets behavior, framing, repetition, and role-play show a person becoming trapped inside an image of themselves."
+            f"{lead} {body} {turn}"
         )
 
     connection = " ".join(THEME_CONNECTIONS[lens] for lens in lenses[1:])
     comparison = "; ".join(film_sentence_parts)
     return (
         f"{lead} {connection} Motif's read is that these films make the self feel cinematic: something edited, performed, doubled, "
-        f"and watched. {comparison}. Together, they suggest that identity cracks when a character starts needing the role, fantasy, or double "
-        "to explain feelings the ordinary self can no longer contain."
+        f"watched, or obsessively replayed. {comparison} Together, they suggest that the question is not solved by picking one literal explanation. "
+        "The pattern is emotional: the image, role, memory, or fixation becomes the place where the character tries to survive."
     )
 
 
@@ -155,6 +190,14 @@ def _build_alternatives(query: str, chunks: list[RetrievedChunk]) -> list[str]:
         alternatives.append("A psychoanalytic reading sees the double as a return of the disowned self: desire, shame, aggression, or grief made visible.")
     if "performance" in lenses:
         alternatives.append("A performance reading treats the fracture as social rather than purely internal: the character is damaged by the roles their world rewards.")
+    if "loneliness" in lenses:
+        alternatives.append("A social reading treats loneliness as environmental: city streets, rehearsal rooms, stages, apartments, and institutions become machines that keep people apart.")
+    if "ending" in lenses or "ambiguity" in lenses:
+        alternatives.append("A puzzle-box reading asks what literally happened; a stronger emotional reading asks why the film needs reality to feel unstable in the first place.")
+    if "violence" in lenses:
+        alternatives.append("A political reading sees violence as a symptom of systems that give characters spectacle and control instead of intimacy or care.")
+    if "obsession" in lenses:
+        alternatives.append("A formal reading follows repetition: the same image, gesture, or fantasy returns until obsession starts directing the film.")
     if len(films) > 1:
         alternatives.append("A formal reading focuses less on plot and more on structure: repetition, unreliable perspective, and abrupt tonal shifts make the viewer experience the split.")
     if not alternatives:
