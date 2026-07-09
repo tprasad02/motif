@@ -1,7 +1,9 @@
 from dataclasses import dataclass
+import math
 from urllib.parse import urlparse
 
 import httpx
+import psycopg
 
 from app.core.config import settings
 from app.services.embeddings import local_embedding
@@ -49,6 +51,53 @@ def _where_filter(film_slugs: list[str], source_types: list[str]) -> str:
     return f", where:{{operator:And, operands:[{', '.join(operands)}]}}"
 
 
+def _cosine_similarity(left: list[float], right: list[float]) -> float:
+    dot = sum(a * b for a, b in zip(left, right))
+    left_norm = math.sqrt(sum(value * value for value in left)) or 1.0
+    right_norm = math.sqrt(sum(value * value for value in right)) or 1.0
+    return dot / (left_norm * right_norm)
+
+
+def _postgres_fallback(query: str, film_slugs: list[str], source_types: list[str], limit: int) -> list[RetrievedChunk]:
+    clauses = []
+    params: list[object] = []
+    if film_slugs:
+        clauses.append("f.slug = ANY(%s)")
+        params.append(film_slugs)
+    if source_types:
+        clauses.append("s.source_type::text = ANY(%s)")
+        params.append(source_types)
+
+    where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+    sql = f"""
+        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text
+        FROM chunks c
+        JOIN films f ON f.id = c.film_id
+        JOIN sources s ON s.id = c.source_id
+        {where}
+    """
+    query_vector = local_embedding(query)
+    chunks: list[RetrievedChunk] = []
+    with psycopg.connect(settings.database_url) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            for chunk_id, text, film_slug, source_key, source_type in cur.fetchall():
+                score = _cosine_similarity(query_vector, local_embedding(text))
+                chunks.append(
+                    RetrievedChunk(
+                        chunk_id=str(chunk_id),
+                        text=str(text),
+                        film_slug=str(film_slug),
+                        source_key=str(source_key),
+                        source_type=str(source_type),
+                        score=max(0.0, score),
+                    )
+                )
+
+    chunks.sort(key=lambda chunk: chunk.score, reverse=True)
+    return chunks[:limit]
+
+
 def retrieve_chunks(query: str, film_slugs: list[str], source_types: list[str], limit: int) -> list[RetrievedChunk]:
     vector = ", ".join(str(value) for value in local_embedding(query))
     where = _where_filter(film_slugs, source_types)
@@ -72,13 +121,19 @@ def retrieve_chunks(query: str, film_slugs: list[str], source_types: list[str], 
         }}
         """
     }
-    response = httpx.post(f"{_base_url()}/v1/graphql", json=graphql, timeout=30)
-    response.raise_for_status()
-    payload = response.json()
-    if payload.get("errors"):
-        raise RuntimeError(payload["errors"])
+    try:
+        response = httpx.post(f"{_base_url()}/v1/graphql", json=graphql, timeout=30)
+        response.raise_for_status()
+        payload = response.json()
+        if payload.get("errors"):
+            raise RuntimeError(payload["errors"])
+    except (httpx.HTTPError, RuntimeError):
+        return _postgres_fallback(query, film_slugs, source_types, limit)
 
     objects = payload.get("data", {}).get("Get", {}).get(settings.motif_collection, [])
+    if not objects:
+        return _postgres_fallback(query, film_slugs, source_types, limit)
+
     chunks = []
     for props in objects:
         distance = props.get("_additional", {}).get("distance", 1.0)
