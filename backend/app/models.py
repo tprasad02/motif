@@ -12,6 +12,7 @@ class SourceCitation(BaseModel):
     film_slug: str | None = None
     score: float | None = None
     excerpt: str | None = None
+    trail_note: str | None = None
 
 
 class RetrieveRequest(BaseModel):

@@ -131,6 +131,26 @@ def _source_label(source_type: str) -> str:
     return labels.get(source_type, source_type.replace("_", " "))
 
 
+def _source_trail_note(source_type: str, title: str, film_slug: str, query: str) -> str:
+    film = _display_title(film_slug)
+    lowered = query.lower()
+    if source_type == "review":
+        return f"Opens up how critics framed {film}'s emotional effect and what viewers are meant to feel unsettled by."
+    if source_type == "interview":
+        return f"Looks for creator-side clues about intention, process, and the artistic choices behind {film}."
+    if source_type == "essay":
+        return f"Pushes past plot into motifs, symbols, and the bigger interpretive questions around {film}."
+    if source_type == "academic":
+        return f"Tests the deeper theoretical frame: identity, genre, psychology, and why {film} keeps inviting competing readings."
+    if source_type == "screenplay":
+        return f"Returns to story structure: what the scenes, reversals, and character beats make possible."
+    if source_type == "production_notes":
+        return f"Checks the behind-the-scenes choices that shape the film's mood, performances, and visual logic."
+    if "influence" in lowered:
+        return f"Helps trace what {film} seems to borrow, transform, or pass on to later films."
+    return f"Adds another angle on the question this reading is circling in {film}."
+
+
 def _coverage_note(level: str, chunks: list[RetrievedChunk]) -> str:
     film_count = len({chunk.film_slug for chunk in chunks})
     source_count = len({chunk.source_key for chunk in chunks})
@@ -255,17 +275,27 @@ def synthesize(request_query: str, chunks: list[RetrievedChunk]) -> AnalysisResp
     source_keys = sorted({chunk.source_key for chunk in chunks})
     source_metadata = fetch_source_metadata(source_keys)
     citations = []
+    seen_sources = set()
     for chunk in chunks:
+        if chunk.source_key in seen_sources:
+            continue
         meta = source_metadata.get(chunk.source_key)
         if not meta:
             continue
+        seen_sources.add(chunk.source_key)
         citations.append(
             SourceCitation(
                 **meta,
                 chunk_id=chunk.chunk_id,
                 film_slug=chunk.film_slug,
                 score=round(chunk.score, 3),
-                excerpt=chunk.text[:360],
+                excerpt=None,
+                trail_note=_source_trail_note(
+                    source_type=str(meta.get("source_type", "")),
+                    title=str(meta.get("title", "")),
+                    film_slug=chunk.film_slug,
+                    query=request_query,
+                ),
             )
         )
 

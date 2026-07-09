@@ -14,6 +14,7 @@ type Citation = {
   film_slug?: string;
   score?: number;
   excerpt?: string;
+  trail_note?: string;
 };
 
 type AnalysisResponse = {
@@ -43,12 +44,12 @@ const films = [
 ];
 
 const sourceTypes = [
-  ["review", "Reviews"],
-  ["interview", "Interviews"],
-  ["essay", "Essays"],
-  ["academic", "Academic"],
-  ["screenplay", "Screenplays"],
-  ["production_notes", "Production Notes"],
+  ["review", "Critic Reactions"],
+  ["interview", "Creator Clues"],
+  ["essay", "Deep Reads"],
+  ["academic", "Theory"],
+  ["screenplay", "Story Beats"],
+  ["production_notes", "Behind the Scenes"],
   ["video_essay_transcript", "Video Essays"],
 ];
 
@@ -155,7 +156,7 @@ export default function Home() {
           <div className="filterBlock">
             <div className="filterHeader">
               <BookOpen size={18} />
-              <span>The Shelf</span>
+              <span>Material Mix</span>
             </div>
             <div className="filmList">
               {sourceTypes.map(([type, label]) => (
@@ -265,8 +266,9 @@ export default function Home() {
                       <strong>{source.title}</strong>
                       <small>
                         {titleForSlug(source.film_slug)}
+                        {source.publisher ? ` / ${source.publisher}` : ""}
                       </small>
-                      {source.excerpt && <p>{source.excerpt}</p>}
+                      <p>{source.trail_note ?? "Opens another path into the film's interpretation."}</p>
                     </a>
                   ))}
                 </div>

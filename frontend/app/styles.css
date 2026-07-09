@@ -4,15 +4,18 @@
   --soft-ink: #322c29;
   --muted: #706862;
   --line: #ded6cb;
-  --paper: #f7f2ea;
+  --paper: #f8efe8;
   --panel: #fffdf9;
-  --night: #171b20;
-  --night-2: #222831;
-  --gold: #c59a45;
-  --red: #a64235;
-  --teal: #1f6f68;
+  --night: #23163f;
+  --night-2: #0f5f6a;
+  --gold: #f1b84b;
+  --red: #d84b53;
+  --teal: #009d9a;
+  --violet: #7448d4;
+  --rose: #f06f7f;
+  --cyan: #33c4d2;
   --green: #276653;
-  --shadow: 0 18px 50px rgba(31, 27, 22, 0.11);
+  --shadow: 0 18px 50px rgba(70, 37, 71, 0.14);
 }
 
 * {
@@ -22,8 +25,9 @@
 body {
   margin: 0;
   background:
-    linear-gradient(90deg, rgba(23, 27, 32, 0.04) 0, rgba(23, 27, 32, 0) 16%),
-    radial-gradient(circle at top right, rgba(197, 154, 69, 0.16), transparent 34rem),
+    radial-gradient(circle at top left, rgba(216, 75, 83, 0.2), transparent 28rem),
+    radial-gradient(circle at top right, rgba(0, 157, 154, 0.22), transparent 31rem),
+    linear-gradient(135deg, rgba(116, 72, 212, 0.08), rgba(241, 184, 75, 0.08)),
     var(--paper);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -45,10 +49,11 @@ input {
 }
 
 .sidebar {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
   background:
-    linear-gradient(180deg, rgba(197, 154, 69, 0.13), transparent 28rem),
-    var(--night);
+    radial-gradient(circle at 20% 0%, rgba(240, 111, 127, 0.38), transparent 18rem),
+    radial-gradient(circle at 100% 24%, rgba(51, 196, 210, 0.32), transparent 20rem),
+    linear-gradient(180deg, #361658 0%, #154c69 52%, #5b2442 100%);
   color: #f7efe3;
   padding: 30px 24px;
 }
@@ -104,6 +109,10 @@ input {
   min-height: 36px;
   color: #f1e9de;
   line-height: 1.25;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.055);
 }
 
 .filmToggle input {
@@ -125,10 +134,25 @@ input {
   border-radius: 8px;
   padding: 28px;
   background:
-    linear-gradient(115deg, rgba(23, 27, 32, 0.94), rgba(35, 40, 49, 0.88)),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 38px);
+    radial-gradient(circle at 8% 15%, rgba(241, 184, 75, 0.34), transparent 14rem),
+    radial-gradient(circle at 88% 20%, rgba(51, 196, 210, 0.3), transparent 18rem),
+    linear-gradient(115deg, #321852, #0d6972 58%, #b13e5a),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.09) 0 2px, transparent 2px 38px);
   box-shadow: var(--shadow);
   color: #fff6e9;
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee::after {
+  content: "";
+  position: absolute;
+  inset: auto 28px 22px auto;
+  width: 120px;
+  height: 24px;
+  border-top: 7px dotted rgba(255, 255, 255, 0.42);
+  border-bottom: 7px dotted rgba(255, 255, 255, 0.28);
+  transform: rotate(-8deg);
 }
 
 .eyebrow {
@@ -159,7 +183,7 @@ input {
   align-items: center;
   gap: 14px;
   border: 1px solid rgba(23, 21, 20, 0.1);
-  background: rgba(255, 253, 249, 0.92);
+  background: rgba(255, 253, 249, 0.95);
   box-shadow: var(--shadow);
   padding: 12px 14px;
   max-width: 1160px;
@@ -183,7 +207,7 @@ input {
   display: grid;
   place-items: center;
   border: 0;
-  background: var(--red);
+  background: linear-gradient(135deg, var(--red), var(--violet));
   color: white;
   height: 44px;
   border-radius: 7px;
@@ -192,7 +216,7 @@ input {
 }
 
 .queryBar button:hover {
-  background: #843429;
+  background: linear-gradient(135deg, #b83742, #5737b3);
 }
 
 .queryBar button:disabled {
@@ -224,8 +248,9 @@ input {
   overflow: hidden;
   padding: 28px;
   background:
-    linear-gradient(135deg, rgba(166, 66, 53, 0.09), transparent 34%),
-    linear-gradient(180deg, #fffdf9, #fbf5ec) !important;
+    radial-gradient(circle at top right, rgba(51, 196, 210, 0.18), transparent 20rem),
+    linear-gradient(135deg, rgba(240, 111, 127, 0.12), transparent 34%),
+    linear-gradient(180deg, #fffdf9, #fff6ed) !important;
 }
 
 .primaryAnswer::before {
@@ -233,7 +258,7 @@ input {
   position: absolute;
   inset: 0 auto 0 0;
   width: 7px;
-  background: linear-gradient(180deg, var(--red), var(--gold));
+  background: linear-gradient(180deg, var(--rose), var(--gold), var(--cyan));
 }
 
 .sectionKicker {
@@ -312,11 +337,11 @@ input {
 }
 
 .filmChips span {
-  border: 1px solid rgba(166, 66, 53, 0.28);
+  border: 1px solid rgba(0, 157, 154, 0.28);
   border-radius: 999px;
   padding: 8px 11px;
-  background: #fff7ed;
-  color: #68352e;
+  background: linear-gradient(135deg, #e8fffb, #fff3df);
+  color: #23515a;
   font-weight: 760;
 }
 
@@ -331,12 +356,13 @@ input {
   align-content: start;
   gap: 7px;
   min-height: 190px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(112, 72, 212, 0.18);
   border-radius: 8px;
   padding: 14px;
   color: var(--ink);
   background:
-    linear-gradient(180deg, rgba(31, 111, 104, 0.08), transparent 45%),
+    radial-gradient(circle at top right, rgba(51, 196, 210, 0.2), transparent 8rem),
+    linear-gradient(180deg, rgba(241, 184, 75, 0.16), transparent 48%),
     #fffdf9;
   text-decoration: none;
   line-height: 1.35;
@@ -347,7 +373,7 @@ input {
 }
 
 .citationCard:hover {
-  border-color: rgba(166, 66, 53, 0.38);
+  border-color: rgba(216, 75, 83, 0.46);
   box-shadow: 0 12px 28px rgba(31, 27, 22, 0.09);
   transform: translateY(-1px);
 }
@@ -355,7 +381,10 @@ input {
 .citationCard span {
   display: inline-block;
   width: fit-content;
-  color: #815724;
+  border-radius: 999px;
+  padding: 5px 8px;
+  background: #2d1f52;
+  color: #ffe29d;
   font-size: 11px;
   font-weight: 850;
   text-transform: uppercase;
@@ -373,11 +402,8 @@ input {
 
 .citationCard p {
   color: #514941;
-  display: -webkit-box;
+  display: block;
   margin: 0;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
   font-size: 13px;
 }
 
@@ -398,10 +424,12 @@ input {
 }
 
 .promptDeck button {
-  border: 1px solid rgba(166, 66, 53, 0.26);
+  border: 1px solid rgba(116, 72, 212, 0.22);
   border-radius: 8px;
-  background: #fff7ed;
-  color: #58322d;
+  background:
+    radial-gradient(circle at top right, rgba(51, 196, 210, 0.18), transparent 7rem),
+    #fff7ed;
+  color: #38224d;
   cursor: pointer;
   min-height: 54px;
   padding: 12px;
@@ -410,7 +438,7 @@ input {
 }
 
 .promptDeck button:hover {
-  border-color: rgba(166, 66, 53, 0.54);
+  border-color: rgba(216, 75, 83, 0.54);
   background: #fff0df;
 }
 
