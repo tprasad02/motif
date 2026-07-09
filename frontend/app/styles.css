@@ -1,13 +1,18 @@
 :root {
   color-scheme: light;
-  --ink: #171717;
-  --muted: #616161;
-  --line: #d8d5cf;
-  --paper: #faf9f6;
-  --panel: #ffffff;
-  --accent: #1f6f68;
-  --accent-dark: #164f4a;
-  --warm: #b64f32;
+  --ink: #171514;
+  --soft-ink: #322c29;
+  --muted: #706862;
+  --line: #ded6cb;
+  --paper: #f7f2ea;
+  --panel: #fffdf9;
+  --night: #171b20;
+  --night-2: #222831;
+  --gold: #c59a45;
+  --red: #a64235;
+  --teal: #1f6f68;
+  --green: #276653;
+  --shadow: 0 18px 50px rgba(31, 27, 22, 0.11);
 }
 
 * {
@@ -16,7 +21,10 @@
 
 body {
   margin: 0;
-  background: var(--paper);
+  background:
+    linear-gradient(90deg, rgba(23, 27, 32, 0.04) 0, rgba(23, 27, 32, 0) 16%),
+    radial-gradient(circle at top right, rgba(197, 154, 69, 0.16), transparent 34rem),
+    var(--paper);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -32,64 +40,74 @@ input {
 
 .workspace {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: 330px minmax(0, 1fr);
   min-height: 100vh;
 }
 
 .sidebar {
-  border-right: 1px solid var(--line);
-  background: #f0eee8;
-  padding: 28px 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(197, 154, 69, 0.13), transparent 28rem),
+    var(--night);
+  color: #f7efe3;
+  padding: 30px 24px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
   margin-bottom: 38px;
 }
 
-.brand h1 {
-  font-size: 28px;
-  line-height: 1;
-  margin: 0 0 4px;
+.brand svg {
+  color: var(--gold);
 }
 
-.brand p,
-.filterHeader {
-  color: var(--muted);
+.brand h1 {
+  font-size: 34px;
+  line-height: 1;
+  margin: 0 0 6px;
+  letter-spacing: 0;
+}
+
+.brand p {
+  color: #c8beb1;
+  line-height: 1.35;
   margin: 0;
 }
 
 .filterBlock {
-  margin-bottom: 30px;
+  margin-bottom: 31px;
 }
 
 .filterHeader {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 700;
+  gap: 9px;
+  color: #b8afa4;
+  font-size: 13px;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
 .filmList {
   display: grid;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 7px;
+  margin-top: 15px;
 }
 
 .filmToggle {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-height: 38px;
-  color: #242424;
+  min-height: 36px;
+  color: #f1e9de;
+  line-height: 1.25;
 }
 
 .filmToggle input {
-  accent-color: var(--accent);
+  accent-color: var(--gold);
 }
 
 .analysisPane {
@@ -98,42 +116,56 @@ input {
 
 .queryBar {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr) 118px;
+  grid-template-columns: 24px minmax(0, 1fr) 104px;
   align-items: center;
-  gap: 12px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  padding: 10px 12px;
-  max-width: 1120px;
+  gap: 14px;
+  border: 1px solid rgba(23, 21, 20, 0.1);
+  background: rgba(255, 253, 249, 0.92);
+  box-shadow: var(--shadow);
+  padding: 12px 14px;
+  max-width: 1160px;
+  border-radius: 8px;
+}
+
+.queryBar svg {
+  color: var(--red);
 }
 
 .queryBar input {
   border: 0;
   outline: 0;
   min-width: 0;
-  font-size: 17px;
+  color: var(--ink);
+  background: transparent;
+  font-size: 18px;
 }
 
 .queryBar button {
   display: grid;
   place-items: center;
   border: 0;
-  background: var(--accent);
+  background: var(--red);
   color: white;
-  height: 42px;
-  border-radius: 6px;
+  height: 44px;
+  border-radius: 7px;
   cursor: pointer;
+  font-weight: 800;
 }
 
 .queryBar button:hover {
-  background: var(--accent-dark);
+  background: #843429;
+}
+
+.queryBar button:disabled {
+  cursor: wait;
+  opacity: 0.76;
 }
 
 .answerGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
-  max-width: 1120px;
+  max-width: 1160px;
   margin-top: 24px;
 }
 
@@ -141,41 +173,82 @@ input {
 .emptyState,
 .errorState {
   border: 1px solid var(--line);
-  background: var(--panel);
+  background: rgba(255, 253, 249, 0.94);
   border-radius: 8px;
-  padding: 20px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(31, 27, 22, 0.05);
 }
 
 .primaryAnswer {
   grid-column: 1 / -1;
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  background:
+    linear-gradient(135deg, rgba(166, 66, 53, 0.09), transparent 34%),
+    linear-gradient(180deg, #fffdf9, #fbf5ec) !important;
+}
+
+.primaryAnswer::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 7px;
+  background: linear-gradient(180deg, var(--red), var(--gold));
+}
+
+.sectionKicker {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 850;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .answerGrid h2,
 .emptyState h2 {
   margin: 0 0 12px;
-  font-size: 18px;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.primaryAnswer h2 {
+  font-size: 32px;
 }
 
 .answerGrid p,
 .emptyState p {
-  color: #343434;
-  line-height: 1.55;
+  color: var(--soft-ink);
+  line-height: 1.65;
   margin: 0 0 10px;
+}
+
+.primaryAnswer p {
+  max-width: 980px;
+  font-size: 18px;
 }
 
 .score {
   float: right;
-  font-weight: 800;
-  text-transform: uppercase;
+  border: 1px solid rgba(23, 21, 20, 0.1);
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: rgba(255, 255, 255, 0.72);
   font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
 }
 
 .score.high {
-  color: var(--accent-dark);
+  color: var(--green);
 }
 
 .score.medium {
-  color: var(--warm);
+  color: #8b6225;
 }
 
 .score.low {
@@ -184,7 +257,8 @@ input {
 
 .note {
   color: var(--muted) !important;
-  font-size: 14px;
+  font-size: 14px !important;
+  margin-top: 16px !important;
 }
 
 .warningPanel {
@@ -192,42 +266,80 @@ input {
   background: #fff8f6 !important;
 }
 
+.filmChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmChips span {
+  border: 1px solid rgba(166, 66, 53, 0.28);
+  border-radius: 999px;
+  padding: 8px 11px;
+  background: #fff7ed;
+  color: #68352e;
+  font-weight: 760;
+}
+
 .sources {
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .citationCard {
   display: grid;
-  gap: 6px;
+  align-content: start;
+  gap: 7px;
+  min-height: 190px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 12px;
+  padding: 14px;
   color: var(--ink);
+  background:
+    linear-gradient(180deg, rgba(31, 111, 104, 0.08), transparent 45%),
+    #fffdf9;
   text-decoration: none;
   line-height: 1.35;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.citationCard:hover {
+  border-color: rgba(166, 66, 53, 0.38);
+  box-shadow: 0 12px 28px rgba(31, 27, 22, 0.09);
+  transform: translateY(-1px);
 }
 
 .citationCard span {
   display: inline-block;
-  color: var(--accent-dark);
-  font-size: 12px;
-  font-weight: 800;
+  width: fit-content;
+  color: #815724;
+  font-size: 11px;
+  font-weight: 850;
   text-transform: uppercase;
 }
 
 .citationCard strong {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .citationCard small {
   color: var(--muted);
+  font-weight: 700;
+  text-transform: capitalize;
 }
 
 .citationCard p {
-  color: #444;
-  font-size: 13px;
+  color: #514941;
+  display: -webkit-box;
   margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  font-size: 13px;
 }
 
 .citationPanel {
@@ -235,7 +347,7 @@ input {
 }
 
 .emptyState {
-  max-width: 720px;
+  max-width: 760px;
   margin-top: 24px;
 }
 
@@ -243,7 +355,7 @@ input {
   display: flex;
   align-items: center;
   gap: 10px;
-  max-width: 720px;
+  max-width: 760px;
   margin-top: 24px;
   color: #9d2f24;
 }
@@ -258,15 +370,25 @@ input {
   }
 }
 
+@media (max-width: 1100px) {
+  .sources {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 860px) {
   .workspace,
-  .answerGrid {
+  .answerGrid,
+  .sources {
     grid-template-columns: 1fr;
   }
 
   .sidebar {
     border-right: 0;
-    border-bottom: 1px solid var(--line);
+  }
+
+  .analysisPane {
+    padding: 18px;
   }
 
   .queryBar {
@@ -276,5 +398,13 @@ input {
   .queryBar button {
     grid-column: 1 / -1;
     width: 100%;
+  }
+
+  .primaryAnswer h2 {
+    font-size: 26px;
+  }
+
+  .primaryAnswer p {
+    font-size: 16px;
   }
 }

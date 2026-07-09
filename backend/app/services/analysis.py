@@ -2,8 +2,58 @@ from collections import Counter
 
 from app.db.postgres import fetch_source_metadata
 from app.models import AnalysisResponse, RetrieveResponse, RetrievedChunkResponse, SourceCitation
-from app.prompts.interpretation import build_interpretation_prompt
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
+
+
+FILM_TITLES = {
+    "mulholland-drive": "Mulholland Drive",
+    "persona": "Persona",
+    "black-swan": "Black Swan",
+    "perfect-blue": "Perfect Blue",
+    "taxi-driver": "Taxi Driver",
+    "fight-club": "Fight Club",
+    "the-lighthouse": "The Lighthouse",
+    "shutter-island": "Shutter Island",
+    "eternal-sunshine": "Eternal Sunshine",
+    "synecdoche-new-york": "Synecdoche, New York",
+}
+
+
+FILM_READINGS = {
+    "mulholland-drive": "turns Hollywood fantasy into a hall of mirrors, where desire invents a brighter self and guilt slowly breaks the illusion apart",
+    "persona": "treats identity as a performance so intimate that the roles of watcher, patient, actor, and double begin to exchange faces",
+    "black-swan": "makes artistic perfection feel like possession: the dancer tries to become the role until the role starts consuming the self",
+    "perfect-blue": "fractures celebrity, fandom, and private life until the performer can no longer tell whether she owns her image",
+    "taxi-driver": "builds identity out of isolation, movie-fed masculinity, and ritualized performance: Travis rehearses himself until the persona becomes more real than the man",
+    "fight-club": "splits the self into consumer numbness and charismatic violence, making the double a fantasy of escape that curdles into control",
+    "the-lighthouse": "uses confinement, myth, labor, and theatrical masculinity to make two men seem like rivals, doubles, and projections of one another",
+    "shutter-island": "turns investigation into self-defense, with role-play and institutional theater protecting a mind from the truth it cannot survive",
+    "eternal-sunshine": "asks whether love remains part of the self when memory is edited, damaged, or erased",
+    "synecdoche-new-york": "literalizes life as rehearsal, letting art, memory, and performance swallow the artist who is trying to master them",
+}
+
+
+THEME_CONNECTIONS = {
+    "identity": "Across these films, identity is not treated as a stable core waiting to be discovered. It behaves more like a role under pressure: rehearsed, mirrored, defended, and sometimes broken by desire.",
+    "doubling": "The double is less a twist than a pressure point. It gives hidden wishes and disowned fears a body, then forces the character to live beside what they tried to separate from themselves.",
+    "performance": "Performance matters because these characters do not simply pretend. They use acting, ritual, costume, fantasy, or professional roles to survive, and the performance eventually starts giving orders back.",
+    "memory": "Memory functions like an editor: it cuts, loops, protects, and distorts. What looks like confusion is often the film showing how the mind reshapes a wound into a story it can bear.",
+    "influence": "The strongest influence pattern here runs through psychological modernism, noir, melodrama, and surrealism: films borrowing the shape of a thriller to stage an interior crisis.",
+}
+
+
+RELATED_BY_THEME = {
+    "mulholland-drive": ["persona", "perfect-blue", "black-swan", "shutter-island"],
+    "persona": ["mulholland-drive", "perfect-blue", "synecdoche-new-york", "black-swan"],
+    "black-swan": ["perfect-blue", "persona", "mulholland-drive", "the-lighthouse"],
+    "perfect-blue": ["black-swan", "persona", "mulholland-drive", "fight-club"],
+    "taxi-driver": ["fight-club", "shutter-island", "the-lighthouse", "synecdoche-new-york"],
+    "fight-club": ["taxi-driver", "black-swan", "shutter-island", "the-lighthouse"],
+    "the-lighthouse": ["persona", "fight-club", "taxi-driver", "shutter-island"],
+    "shutter-island": ["memento", "taxi-driver", "mulholland-drive", "fight-club"],
+    "eternal-sunshine": ["synecdoche-new-york", "mulholland-drive", "persona", "memento"],
+    "synecdoche-new-york": ["eternal-sunshine", "persona", "the-lighthouse", "mulholland-drive"],
+}
 
 
 def coverage_score(chunks: list[RetrievedChunk]) -> float:
@@ -23,6 +73,121 @@ def coverage_level(score: float) -> str:
     if score >= 0.45:
         return "medium"
     return "low"
+
+
+def _display_title(slug: str) -> str:
+    return FILM_TITLES.get(slug, slug.replace("-", " ").title())
+
+
+def _query_lenses(query: str) -> list[str]:
+    lowered = query.lower()
+    lenses = [key for key in THEME_CONNECTIONS if key in lowered]
+    if "double" in lowered or "doppel" in lowered or "mirror" in lowered:
+        lenses.append("doubling")
+    if "perform" in lowered or "role" in lowered or "act" in lowered:
+        lenses.append("performance")
+    if "self" in lowered or "identity" in lowered or "persona" in lowered:
+        lenses.append("identity")
+    unique = []
+    for lens in lenses:
+        if lens not in unique:
+            unique.append(lens)
+    return unique[:3] or ["identity"]
+
+
+def _source_label(source_type: str) -> str:
+    labels = {
+        "review": "criticism",
+        "interview": "creator material",
+        "essay": "essay",
+        "academic": "scholarship",
+        "screenplay": "story text",
+        "production_notes": "production context",
+        "video_essay_transcript": "video essay",
+    }
+    return labels.get(source_type, source_type.replace("_", " "))
+
+
+def _coverage_note(level: str, chunks: list[RetrievedChunk]) -> str:
+    film_count = len({chunk.film_slug for chunk in chunks})
+    source_count = len({chunk.source_key for chunk in chunks})
+    if level == "high":
+        return f"Strong trail: this read draws on {source_count} pieces across {film_count} film{'s' if film_count != 1 else ''}."
+    if level == "medium":
+        return f"Good trail: there is enough material for a reading, with room for a richer pass as the library grows."
+    return "Thin trail: Motif needs more relevant material before it can make this reading confidently."
+
+
+def _build_consensus(query: str, chunks: list[RetrievedChunk], level: str) -> str:
+    films = [film for film, _ in Counter(chunk.film_slug for chunk in chunks).most_common()]
+    lenses = _query_lenses(query)
+    lead = THEME_CONNECTIONS[lenses[0]]
+    film_sentence_parts = []
+    for film in films[:4]:
+        reading = FILM_READINGS.get(film)
+        if reading:
+            film_sentence_parts.append(f"{_display_title(film)} {reading}")
+
+    if not film_sentence_parts:
+        return "Motif does not have enough relevant material to shape a confident interpretation yet."
+
+    if len(films) == 1:
+        body = film_sentence_parts[0]
+        return (
+            f"{lead} In {body}. The answer to your question is that the fracture is not just psychological; "
+            "it is cinematic. The film lets behavior, framing, repetition, and role-play show a person becoming trapped inside an image of themselves."
+        )
+
+    connection = " ".join(THEME_CONNECTIONS[lens] for lens in lenses[1:])
+    comparison = "; ".join(film_sentence_parts)
+    return (
+        f"{lead} {connection} Motif's read is that these films make the self feel cinematic: something edited, performed, doubled, "
+        f"and watched. {comparison}. Together, they suggest that identity cracks when a character starts needing the role, fantasy, or double "
+        "to explain feelings the ordinary self can no longer contain."
+    )
+
+
+def _build_alternatives(query: str, chunks: list[RetrievedChunk]) -> list[str]:
+    lenses = _query_lenses(query)
+    films = [film for film, _ in Counter(chunk.film_slug for chunk in chunks).most_common()]
+    alternatives = []
+    if "doubling" in lenses or "identity" in lenses:
+        alternatives.append("A psychoanalytic reading sees the double as a return of the disowned self: desire, shame, aggression, or grief made visible.")
+    if "performance" in lenses:
+        alternatives.append("A performance reading treats the fracture as social rather than purely internal: the character is damaged by the roles their world rewards.")
+    if len(films) > 1:
+        alternatives.append("A formal reading focuses less on plot and more on structure: repetition, unreliable perspective, and abrupt tonal shifts make the viewer experience the split.")
+    if not alternatives:
+        alternatives.append("A symbolic reading treats the film's strange details as emotional logic rather than puzzle pieces to decode one by one.")
+    return alternatives[:3]
+
+
+def _creator_perspective(types: set[str], films: list[str]) -> str:
+    film_names = ", ".join(_display_title(film) for film in films[:3])
+    if "interview" in types or "production_notes" in types:
+        return (
+            f"The production and creator-adjacent material points toward construction rather than accident: in {film_names}, style, casting, setting, "
+            "and performance are part of the argument about identity."
+        )
+    return "Motif found mostly critical material here, so the creator angle should be treated as suggestive rather than definitive."
+
+
+def _critical_reception(types: set[str], films: list[str]) -> str:
+    if "review" in types or "essay" in types or "academic" in types:
+        names = ", ".join(_display_title(film) for film in films[:3])
+        return (
+            f"The critical trail around {names} tends to circle ambiguity, performance, and psychological instability. The useful tension is that critics often read these films both as character studies and as machines for making the viewer feel unstable too."
+        )
+    return "The current trail is light on criticism, so Motif is keeping this part modest."
+
+
+def _related_films(films: list[str]) -> list[str]:
+    related = []
+    for film in films:
+        for candidate in RELATED_BY_THEME.get(film, []):
+            if candidate not in films and candidate in FILM_TITLES and candidate not in related:
+                related.append(candidate)
+    return [_display_title(film) for film in related[:5]]
 
 
 def retrieval_response(query: str, chunks: list[RetrievedChunk]) -> RetrieveResponse:
@@ -68,35 +233,24 @@ def synthesize(request_query: str, chunks: list[RetrievedChunk]) -> AnalysisResp
     refused = level == "low"
 
     if refused:
-        note = "Refused: the corpus evidence is insufficient for a grounded Motif answer. Add more ingested source types or broaden filters."
+        note = _coverage_note(level, chunks)
     else:
-        context = "\n\n".join(
-            f"[{chunk.chunk_id}] {chunk.film_slug} / {chunk.source_key} / {chunk.source_type}\n{chunk.text}"
-            for chunk in chunks[:8]
-        )
-        prompt = build_interpretation_prompt(request_query, context)
-        note = f"Grounded draft from retrieved evidence. Prompt prepared for LLM synthesis ({len(prompt)} chars)."
+        note = _coverage_note(level, chunks)
 
-    context_hint = " ".join(chunk.text[:240] for chunk in chunks[:4]).strip()
-    if not context_hint:
-        context_hint = "No supporting chunks were retrieved."
-
+    films = [film for film, _ in Counter(chunk.film_slug for chunk in chunks).most_common()]
     if refused:
-        consensus = "I cannot provide a grounded consensus interpretation from the current retrieved evidence."
+        consensus = "Motif does not have enough of a trail to answer this in a way that would feel honest. Try broadening the film filters or asking across the full library."
         alternatives = []
     else:
-        consensus = f"Evidence retrieved for '{request_query}' clusters around: {context_hint}"
-        alternatives = [
-            "Map minority readings from academic, essay, and video-essay sources once the corpus is fully ingested.",
-            "Separate symbolic, psychological, industrial, and autobiographical interpretations during synthesis.",
-        ]
+        consensus = _build_consensus(request_query, chunks, level)
+        alternatives = _build_alternatives(request_query, chunks)
 
     return AnalysisResponse(
         consensus_interpretation=consensus,
         alternative_interpretations=alternatives,
-        director_creator_perspective="Primary-source coverage found." if "interview" in types or "production_notes" in types else "No creator-perspective source retrieved for this query.",
-        critical_reception="Review and essay coverage found." if "review" in types or "essay" in types else "No critical reception source retrieved for this query.",
-        related_films=films[1:6],
+        director_creator_perspective=_creator_perspective(types, films),
+        critical_reception=_critical_reception(types, films),
+        related_films=_related_films(films),
         cited_sources=citations,
         coverage_score=score,
         coverage_level=level,

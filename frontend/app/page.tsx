@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { AlertTriangle, BookOpen, Clapperboard, Filter, Loader2, Search } from "lucide-react";
+import { AlertTriangle, BookOpen, Clapperboard, Filter, Loader2, Search, Sparkles } from "lucide-react";
 
 type Citation = {
   source_key: string;
@@ -52,6 +52,26 @@ const sourceTypes = [
   ["video_essay_transcript", "Video Essays"],
 ];
 
+const sourceLabels: Record<string, string> = {
+  review: "Review",
+  interview: "Interview",
+  essay: "Essay",
+  academic: "Criticism",
+  screenplay: "Story",
+  production_notes: "Behind the Scenes",
+  video_essay_transcript: "Video Essay",
+};
+
+const coverageLabels: Record<AnalysisResponse["coverage_level"], string> = {
+  high: "Rich trail",
+  medium: "Good trail",
+  low: "Thin trail",
+};
+
+function titleForSlug(slug?: string) {
+  return films.find(([filmSlug]) => filmSlug === slug)?.[1] ?? slug?.replaceAll("-", " ");
+}
+
 export default function Home() {
   const [query, setQuery] = useState("How do doubling and performance fracture identity across the corpus?");
   const [selectedFilms, setSelectedFilms] = useState<string[]>([]);
@@ -101,7 +121,7 @@ export default function Home() {
             <Clapperboard size={28} />
             <div>
               <h1>Motif</h1>
-              <p>Cinema analysis corpus</p>
+              <p>Dream logic. Doubles. Dangerous close-ups.</p>
             </div>
           </div>
 
@@ -127,7 +147,7 @@ export default function Home() {
           <div className="filterBlock">
             <div className="filterHeader">
               <BookOpen size={18} />
-              <span>Sources</span>
+              <span>The Shelf</span>
             </div>
             <div className="filmList">
               {sourceTypes.map(([type, label]) => (
@@ -153,7 +173,7 @@ export default function Home() {
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Ask about interpretation, influence, comparison, or theme"
             />
-            <button disabled={loading}>{loading ? <Loader2 className="spin" size={18} /> : "Answer"}</button>
+            <button disabled={loading}>{loading ? <Loader2 className="spin" size={18} /> : "Roll"}</button>
           </form>
 
           {error && (
@@ -165,46 +185,56 @@ export default function Home() {
 
           {loading && (
             <div className="emptyState">
-              <h2>Retrieving evidence</h2>
-              <p>Motif is searching the curated corpus and checking whether source coverage is strong enough to answer.</p>
+              <h2>Threading the scene</h2>
+              <p>Motif is looking for the cleanest path through the films, criticism, and behind-the-scenes material.</p>
             </div>
           )}
 
           {result && (
             <div className="answerGrid">
               <section className={result.refused ? "primaryAnswer warningPanel" : "primaryAnswer"}>
-                <div className={`score ${result.coverage_level}`}>{result.coverage_level} coverage</div>
-                <h2>Consensus Interpretation</h2>
+                <div className={`score ${result.coverage_level}`}>{coverageLabels[result.coverage_level]}</div>
+                <div className="sectionKicker">
+                  <Sparkles size={16} />
+                  <span>Motif's take</span>
+                </div>
+                <h2>The Read</h2>
                 <p>{result.consensus_interpretation}</p>
                 <p className="note">{result.retrieval_notes}</p>
               </section>
 
               <section>
-                <h2>Alternative Interpretations</h2>
+                <h2>Other Cuts</h2>
                 {result.alternative_interpretations.length ? (
                   result.alternative_interpretations.map((item) => <p key={item}>{item}</p>)
                 ) : (
-                  <p>No grounded alternatives available at this coverage level.</p>
+                  <p>This pass points in one main direction. Broader filters may surface stranger side doors.</p>
                 )}
               </section>
 
               <section>
-                <h2>Creator Perspective</h2>
+                <h2>Director's Chair</h2>
                 <p>{result.director_creator_perspective}</p>
               </section>
 
               <section>
-                <h2>Critical Reception</h2>
+                <h2>Critical Pulse</h2>
                 <p>{result.critical_reception}</p>
               </section>
 
               <section>
-                <h2>Related Films</h2>
-                <p>{result.related_films.length ? result.related_films.join(", ") : "No related films retrieved yet."}</p>
+                <h2>Double Features</h2>
+                <div className="filmChips">
+                  {result.related_films.length ? (
+                    result.related_films.map((film) => <span key={film}>{film}</span>)
+                  ) : (
+                    <p>No close echoes found in this pass.</p>
+                  )}
+                </div>
               </section>
 
               <section className="citationPanel">
-                <h2>Cited Sources</h2>
+                <h2>Follow the Trail</h2>
                 <div className="sources">
                   {result.cited_sources.map((source) => (
                     <a
@@ -212,10 +242,10 @@ export default function Home() {
                       key={`${source.source_key}-${source.chunk_id}`}
                       href={source.url ?? "#"}
                     >
-                      <span>{source.source_type}</span>
+                      <span>{sourceLabels[source.source_type] ?? source.source_type.replaceAll("_", " ")}</span>
                       <strong>{source.title}</strong>
                       <small>
-                        {source.film_slug} {source.score ? `score ${source.score}` : ""}
+                        {titleForSlug(source.film_slug)}
                       </small>
                       {source.excerpt && <p>{source.excerpt}</p>}
                     </a>
@@ -227,8 +257,8 @@ export default function Home() {
 
           {!result && !loading && !error && (
             <div className="emptyState">
-              <h2>Ask an interpretive question</h2>
-              <p>Compare films, trace influences, test readings, or explore a recurring theme across the curated corpus.</p>
+              <h2>What scene are we opening?</h2>
+              <p>Try a question about obsession, doubles, unreliable memory, performance, influence, or why a film refuses to explain itself.</p>
             </div>
           )}
         </section>
