@@ -4,10 +4,9 @@ import uuid
 from pathlib import Path
 
 import psycopg
-import weaviate
-from weaviate.classes.config import Configure, DataType, Property
 
 from ingestion.config import DATABASE_URL, MOTIF_COLLECTION, WEAVIATE_URL
+from ingestion.weaviate_rest import batch_objects, delete_schema, ensure_schema
 
 
 def pg_conn():
@@ -86,25 +85,7 @@ def content_hash(text: str) -> str:
 
 
 def ensure_weaviate_schema() -> None:
-    host = WEAVIATE_URL.replace("http://", "").replace("https://", "").split(":")[0]
-    client = weaviate.connect_to_local(host=host, port=8080)
-    try:
-        if client.collections.exists(MOTIF_COLLECTION):
-            return
-        client.collections.create(
-            MOTIF_COLLECTION,
-            vectorizer_config=Configure.Vectorizer.none(),
-            properties=[
-                Property(name="chunk_id", data_type=DataType.TEXT),
-                Property(name="text", data_type=DataType.TEXT),
-                Property(name="film_slug", data_type=DataType.TEXT),
-                Property(name="source_key", data_type=DataType.TEXT),
-                Property(name="source_type", data_type=DataType.TEXT),
-                Property(name="title", data_type=DataType.TEXT),
-            ],
-        )
-    finally:
-        client.close()
+    ensure_schema()
 
 
 def reset_stores() -> None:
@@ -113,13 +94,7 @@ def reset_stores() -> None:
             cur.execute("TRUNCATE film_relations, chunks, documents, sources, films RESTART IDENTITY CASCADE")
         conn.commit()
 
-    host = WEAVIATE_URL.replace("http://", "").replace("https://", "").split(":")[0]
-    client = weaviate.connect_to_local(host=host, port=8080)
-    try:
-        if client.collections.exists(MOTIF_COLLECTION):
-            client.collections.delete(MOTIF_COLLECTION)
-    finally:
-        client.close()
+    delete_schema()
 
 
 def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str, chunks, embeddings) -> None:
@@ -177,23 +152,21 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
                 )
             conn.commit()
 
-    host = WEAVIATE_URL.replace("http://", "").replace("https://", "").split(":")[0]
-    client = weaviate.connect_to_local(host=host, port=8080)
-    try:
-        collection = client.collections.get(MOTIF_COLLECTION)
-        with collection.batch.dynamic() as batch:
-            for chunk, (vector, _) in zip(chunks, embeddings):
-                batch.add_object(
-                    uuid=uuid.uuid5(uuid.NAMESPACE_URL, chunk.chunk_id),
-                    properties={
-                        "chunk_id": chunk.chunk_id,
-                        "text": chunk.text,
-                        "film_slug": film_slug,
-                        "source_key": source_key,
-                        "source_type": source_type,
-                        "title": title,
-                    },
-                    vector=vector,
-                )
-    finally:
-        client.close()
+    batch_objects(
+        [
+            {
+                "class": MOTIF_COLLECTION,
+                "id": str(uuid.uuid5(uuid.NAMESPACE_URL, chunk.chunk_id)),
+                "properties": {
+                    "chunk_id": chunk.chunk_id,
+                    "text": chunk.text,
+                    "film_slug": film_slug,
+                    "source_key": source_key,
+                    "source_type": source_type,
+                    "title": title,
+                },
+                "vector": vector,
+            }
+            for chunk, (vector, _) in zip(chunks, embeddings)
+        ]
+    )
