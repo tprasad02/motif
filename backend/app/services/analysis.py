@@ -1,7 +1,15 @@
 from collections import Counter
 
 from app.db.postgres import fetch_source_metadata
-from app.models import AnalysisResponse, RetrieveResponse, RetrievedChunkResponse, SourceCitation
+from app.models import (
+    AnalysisResponse,
+    FilmComparisonResponse,
+    InterpretationMapResponse,
+    RetrieveResponse,
+    RetrievedChunkResponse,
+    SourceCitation,
+    ThemeExplorerResponse,
+)
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
@@ -16,6 +24,11 @@ FILM_TITLES = {
     "shutter-island": "Shutter Island",
     "eternal-sunshine": "Eternal Sunshine",
     "synecdoche-new-york": "Synecdoche, New York",
+    "her": "Her",
+    "memento": "Memento",
+    "the-machinist": "The Machinist",
+    "vertigo": "Vertigo",
+    "donnie-darko": "Donnie Darko",
 }
 
 
@@ -30,6 +43,11 @@ FILM_READINGS = {
     "shutter-island": "turns investigation into self-defense, with role-play and institutional theater protecting a mind from the truth it cannot survive",
     "eternal-sunshine": "asks whether love remains part of the self when memory is edited, damaged, or erased",
     "synecdoche-new-york": "literalizes life as rehearsal, letting art, memory, and performance swallow the artist who is trying to master them",
+    "her": "turns romance into a question of projection, loneliness, and whether intimacy can survive when the beloved is also an interface",
+    "memento": "makes memory a broken editing system, so identity has to be rebuilt from clues that may already be corrupted",
+    "the-machinist": "externalizes guilt through the body, making insomnia and emaciation feel like evidence from a hidden trial",
+    "vertigo": "treats desire as remaking: the loved person becomes a role, an image, and finally a trap built by obsession",
+    "donnie-darko": "folds adolescence, doom, and alternate timelines into a mood where madness may be prophecy or metaphor",
 }
 
 
@@ -78,6 +96,11 @@ RELATED_BY_THEME = {
     "shutter-island": ["memento", "taxi-driver", "mulholland-drive", "fight-club"],
     "eternal-sunshine": ["synecdoche-new-york", "mulholland-drive", "persona", "memento"],
     "synecdoche-new-york": ["eternal-sunshine", "persona", "the-lighthouse", "mulholland-drive"],
+    "her": ["eternal-sunshine", "synecdoche-new-york", "memento", "mulholland-drive"],
+    "memento": ["shutter-island", "eternal-sunshine", "donnie-darko", "mulholland-drive"],
+    "the-machinist": ["fight-club", "shutter-island", "taxi-driver", "black-swan"],
+    "vertigo": ["mulholland-drive", "persona", "black-swan", "perfect-blue"],
+    "donnie-darko": ["memento", "shutter-island", "the-machinist", "eternal-sunshine"],
 }
 
 
@@ -332,11 +355,100 @@ def synthesize(request_query: str, chunks: list[RetrievedChunk]) -> AnalysisResp
     )
 
 
-def retrieve_query(query: str, film_slugs: list[str], source_types: list[str], top_k: int) -> RetrieveResponse:
-    chunks = retrieve_chunks(query=query, film_slugs=film_slugs, source_types=source_types, limit=top_k)
+def retrieve_query(
+    query: str,
+    film_slugs: list[str],
+    source_types: list[str],
+    top_k: int,
+    directors: list[str] | None = None,
+    year_start: int | None = None,
+    year_end: int | None = None,
+    critics: list[str] | None = None,
+    themes: list[str] | None = None,
+) -> RetrieveResponse:
+    chunks = retrieve_chunks(
+        query=query,
+        film_slugs=film_slugs,
+        source_types=source_types,
+        limit=top_k,
+        directors=directors,
+        year_start=year_start,
+        year_end=year_end,
+        critics=critics,
+        themes=themes,
+    )
     return retrieval_response(query, chunks)
 
 
-def answer_query(query: str, film_slugs: list[str], source_types: list[str], top_k: int) -> AnalysisResponse:
-    chunks = retrieve_chunks(query=query, film_slugs=film_slugs, source_types=source_types, limit=top_k)
+def answer_query(
+    query: str,
+    film_slugs: list[str],
+    source_types: list[str],
+    top_k: int,
+    directors: list[str] | None = None,
+    year_start: int | None = None,
+    year_end: int | None = None,
+    critics: list[str] | None = None,
+    themes: list[str] | None = None,
+) -> AnalysisResponse:
+    chunks = retrieve_chunks(
+        query=query,
+        film_slugs=film_slugs,
+        source_types=source_types,
+        limit=top_k,
+        directors=directors,
+        year_start=year_start,
+        year_end=year_end,
+        critics=critics,
+        themes=themes,
+    )
     return synthesize(query, chunks)
+
+
+def interpretation_map_query(query: str, film_slugs: list[str], source_types: list[str], top_k: int) -> InterpretationMapResponse:
+    analysis = answer_query(query, film_slugs, source_types, top_k)
+    return InterpretationMapResponse(
+        query=query,
+        central_reading=analysis.consensus_interpretation,
+        interpretive_branches=analysis.alternative_interpretations,
+        tensions=[
+            "literal plot explanation vs emotional logic",
+            "creator intention vs viewer interpretation",
+            "psychological realism vs cinematic dream structure",
+        ],
+        related_films=analysis.related_films,
+        trail=analysis.cited_sources,
+        coverage_score=analysis.coverage_score,
+        coverage_level=analysis.coverage_level,
+    )
+
+
+def film_comparison_query(query: str, film_slugs: list[str], source_types: list[str], top_k: int) -> FilmComparisonResponse:
+    analysis = answer_query(query, film_slugs, source_types, top_k)
+    films = [_display_title(film) for film in film_slugs]
+    return FilmComparisonResponse(
+        query=query,
+        films=films,
+        shared_terrain=analysis.consensus_interpretation,
+        key_differences=analysis.alternative_interpretations
+        or ["One film may externalize the crisis through genre while the other internalizes it through performance and point of view."],
+        bridge_films=analysis.related_films,
+        trail=analysis.cited_sources,
+        coverage_score=analysis.coverage_score,
+        coverage_level=analysis.coverage_level,
+    )
+
+
+def theme_explorer_query(query: str, theme: str, film_slugs: list[str], source_types: list[str], top_k: int) -> ThemeExplorerResponse:
+    themed_query = f"{theme}: {query}" if theme else query
+    analysis = answer_query(themed_query, film_slugs, source_types, top_k, themes=[theme] if theme else None)
+    return ThemeExplorerResponse(
+        query=query,
+        theme=theme or _query_lenses(query)[0],
+        overview=analysis.consensus_interpretation,
+        motif_patterns=analysis.alternative_interpretations,
+        films_to_follow=analysis.related_films,
+        trail=analysis.cited_sources,
+        coverage_score=analysis.coverage_score,
+        coverage_level=analysis.coverage_level,
+    )

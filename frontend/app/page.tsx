@@ -41,6 +41,11 @@ const films = [
   ["shutter-island", "Shutter Island"],
   ["eternal-sunshine", "Eternal Sunshine"],
   ["synecdoche-new-york", "Synecdoche, New York"],
+  ["her", "Her"],
+  ["memento", "Memento"],
+  ["the-machinist", "The Machinist"],
+  ["vertigo", "Vertigo"],
+  ["donnie-darko", "Donnie Darko"],
 ];
 
 const sourceTypes = [
