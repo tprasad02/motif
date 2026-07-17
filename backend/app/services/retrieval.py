@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+import json
 import math
+from pathlib import Path
 from urllib.parse import urlparse
 
 import httpx
@@ -8,6 +10,8 @@ import psycopg
 from app.core.config import settings
 from app.db.postgres import ensure_runtime_schema
 from app.services.embeddings import local_embedding
+
+_file_chunks_cache: list["RetrievedChunk"] | None = None
 
 
 @dataclass
@@ -354,6 +358,64 @@ def _balanced_top(chunks: list[RetrievedChunk], limit: int, required_films: list
     return selected[:limit]
 
 
+def _load_file_chunks() -> list[RetrievedChunk]:
+    global _file_chunks_cache
+    if _file_chunks_cache is not None:
+        return _file_chunks_cache
+    corpus_path = Path(__file__).resolve().parents[1] / "corpus" / "chunks.jsonl"
+    chunks: list[RetrievedChunk] = []
+    if corpus_path.exists():
+        with corpus_path.open(encoding="utf-8") as handle:
+            for line in handle:
+                row = json.loads(line)
+                chunks.append(
+                    RetrievedChunk(
+                        chunk_id=str(row["chunk_id"]),
+                        text=str(row["text"]),
+                        film_slug=str(row["film_slug"]),
+                        source_key=str(row["source_key"]),
+                        source_type=str(row["source_type"]),
+                        score=0,
+                        quality_score=str(row.get("quality_score", "medium")),
+                        source_role=str(row.get("source_role", "criticism")),
+                        lens_tags=list(row.get("lens_tags") or []),
+                    )
+                )
+    _file_chunks_cache = chunks
+    return chunks
+
+
+def _file_fallback_search(
+    query: str,
+    film_slugs: list[str],
+    source_types: list[str],
+    limit: int,
+    lens_tags: list[str] | None = None,
+    include_low_quality: bool = False,
+) -> list[RetrievedChunk]:
+    query_vector = local_embedding(query)
+    candidates = []
+    for chunk in _load_file_chunks():
+        if film_slugs and chunk.film_slug not in film_slugs:
+            continue
+        if source_types and chunk.source_type not in source_types:
+            continue
+        if not include_low_quality and chunk.quality_score == "low":
+            continue
+        score = max(0.0, _cosine_similarity(query_vector, local_embedding(chunk.text)))
+        candidates.append(
+            RetrievedChunk(
+                **{
+                    **chunk.__dict__,
+                    "score": score,
+                    "vector_score": score,
+                }
+            )
+        )
+    reranked = _rerank(query, candidates, lens_tags)
+    return _balanced_top(reranked, min(max(limit, 8), 12), film_slugs if len(film_slugs) >= 2 else [])
+
+
 def retrieve_chunks(
     query: str,
     film_slugs: list[str],
@@ -367,11 +429,26 @@ def retrieve_chunks(
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
-    ensure_runtime_schema()
-    use_postgres_vector = bool(directors or year_start is not None or year_end is not None or critics or themes or include_low_quality)
-    vector_chunks = [] if use_postgres_vector else _vector_search_weaviate(query, film_slugs, source_types, 25)
-    if use_postgres_vector or len(vector_chunks) < 25:
-        postgres_vector_chunks = _postgres_vector_search(
+    try:
+        ensure_runtime_schema()
+        use_postgres_vector = bool(directors or year_start is not None or year_end is not None or critics or themes or include_low_quality)
+        vector_chunks = [] if use_postgres_vector else _vector_search_weaviate(query, film_slugs, source_types, 25)
+        if use_postgres_vector or len(vector_chunks) < 25:
+            postgres_vector_chunks = _postgres_vector_search(
+                query,
+                film_slugs,
+                source_types,
+                25,
+                directors,
+                year_start,
+                year_end,
+                critics,
+                themes,
+                None,
+                include_low_quality,
+            )
+            vector_chunks = _merge_dedupe(vector_chunks, postgres_vector_chunks)
+        bm25_chunks = _bm25_search(
             query,
             film_slugs,
             source_types,
@@ -384,22 +461,12 @@ def retrieve_chunks(
             None,
             include_low_quality,
         )
-        vector_chunks = _merge_dedupe(vector_chunks, postgres_vector_chunks)
-    bm25_chunks = _bm25_search(
-        query,
-        film_slugs,
-        source_types,
-        25,
-        directors,
-        year_start,
-        year_end,
-        critics,
-        themes,
-        None,
-        include_low_quality,
-    )
-    merged = _merge_dedupe(vector_chunks, bm25_chunks)
-    merged = _supplement_source_diversity(query, merged, film_slugs)
-    reranked = _rerank(query, merged, lens_tags)
-    output_limit = min(max(limit, 8), 12)
-    return _balanced_top(reranked, output_limit, film_slugs if len(film_slugs) >= 2 else [])
+        merged = _merge_dedupe(vector_chunks, bm25_chunks)
+        if not merged:
+            return _file_fallback_search(query, film_slugs, source_types, limit, lens_tags, include_low_quality)
+        merged = _supplement_source_diversity(query, merged, film_slugs)
+        reranked = _rerank(query, merged, lens_tags)
+        output_limit = min(max(limit, 8), 12)
+        return _balanced_top(reranked, output_limit, film_slugs if len(film_slugs) >= 2 else [])
+    except Exception:
+        return _file_fallback_search(query, film_slugs, source_types, limit, lens_tags, include_low_quality)

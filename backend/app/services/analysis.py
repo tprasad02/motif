@@ -130,9 +130,14 @@ def _citations(chunks: list[RetrievedChunk]) -> list[SourceCitation]:
         if not meta:
             continue
         seen_sources.add(chunk.source_key)
+        citation_meta = {
+            key: value
+            for key, value in meta.items()
+            if key in SourceCitation.model_fields and key not in {"chunk_id", "film_slug", "score", "excerpt", "trail_note"}
+        }
         citations.append(
             SourceCitation(
-                **{key: value for key, value in meta.items() if key in SourceCitation.model_fields},
+                **citation_meta,
                 chunk_id=chunk.chunk_id,
                 film_slug=chunk.film_slug,
                 score=round(chunk.score, 3),

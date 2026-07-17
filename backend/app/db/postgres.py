@@ -1,8 +1,12 @@
+import json
+from pathlib import Path
+
 import psycopg
 
 from app.core.config import settings
 
 _schema_checked = False
+_file_sources_cache: dict[str, dict] | None = None
 
 
 def get_connection():
@@ -30,7 +34,11 @@ def ensure_runtime_schema() -> None:
 def fetch_source_metadata(source_keys: list[str]) -> dict[str, dict]:
     if not source_keys:
         return {}
-    ensure_runtime_schema()
+    file_sources = _load_file_sources()
+    try:
+        ensure_runtime_schema()
+    except Exception:
+        return {key: file_sources[key] for key in source_keys if key in file_sources}
 
     query = """
         SELECT s.source_key, s.title, s.author, s.publisher, s.source_type::text, s.url,
@@ -43,7 +51,7 @@ def fetch_source_metadata(source_keys: list[str]) -> dict[str, dict]:
             cur.execute(query, (source_keys,))
             rows = cur.fetchall()
 
-    return {
+    metadata = {
         row[0]: {
             "source_key": row[0],
             "title": row[1],
@@ -57,3 +65,22 @@ def fetch_source_metadata(source_keys: list[str]) -> dict[str, dict]:
         }
         for row in rows
     }
+    for key in source_keys:
+        if key not in metadata and key in file_sources:
+            metadata[key] = file_sources[key]
+    return metadata
+
+
+def _load_file_sources() -> dict[str, dict]:
+    global _file_sources_cache
+    if _file_sources_cache is not None:
+        return _file_sources_cache
+    corpus_path = Path(__file__).resolve().parents[1] / "corpus" / "sources.jsonl"
+    sources: dict[str, dict] = {}
+    if corpus_path.exists():
+        with corpus_path.open(encoding="utf-8") as handle:
+            for line in handle:
+                row = json.loads(line)
+                sources[str(row["source_key"])] = row
+    _file_sources_cache = sources
+    return sources
