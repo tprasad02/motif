@@ -1,71 +1,71 @@
 # Motif Deployment
 
-## Current Blockers
+## Frontend: Vercel
 
-- GitHub push from this Codex session was rejected by the approval prompt.
-- Vercel production deployment is live.
-- No Render API token or deploy hook URL is present in the environment.
-- GitHub HTTPS push lacks credentials, and SSH push is not configured.
+The frontend lives in `frontend/`.
 
-## Live Frontend
-
-Production:
+Required Vercel settings:
 
 ```text
-https://frontend-fawn-beta-13.vercel.app
+Root Directory: frontend
+Install Command: pnpm install
+Build Command: pnpm run build
+Output: Next.js default
 ```
 
-Deployment URL:
+Required environment variable:
 
 ```text
-https://motif-avc3hqdda-tanisha112.vercel.app
+NEXT_PUBLIC_API_URL=<deployed backend URL>
 ```
 
-## Vercel Frontend
+The Vercel project config is `frontend/vercel.json`.
 
-Run from the frontend directory:
+## Backend: Render
 
-```bash
-cd frontend
-PATH=/Users/tanishaprasad/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/tanishaprasad/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin:$PATH pnpm dlx vercel login
-PATH=/Users/tanishaprasad/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/tanishaprasad/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin:$PATH pnpm dlx vercel deploy --prod --yes
-```
+The backend deploys from `render.yaml` using `backend/Dockerfile`.
 
-Set this Vercel environment variable:
+Required Render environment variables:
 
 ```text
-NEXT_PUBLIC_API_URL=<Render backend URL>
-```
-
-## Render Backend
-
-This repo includes `render.yaml` and `backend/Dockerfile`.
-
-In Render:
-
-1. Create a PostgreSQL database.
-2. Create or connect a hosted Weaviate instance.
-3. Create a Blueprint from `https://github.com/tprasad02/motif`.
-4. Set these backend environment variables:
-
-```text
-DATABASE_URL=<Render Postgres internal/external connection string>
-WEAVIATE_URL=<Hosted Weaviate URL>
+DATABASE_URL=<Render/Postgres connection string>
+WEAVIATE_URL=<Weaviate URL>
 MOTIF_COLLECTION=MotifChunk
 EMBEDDING_PROVIDER=local
 FRONTEND_ORIGIN=<Vercel frontend URL>
 ```
 
-After backend deployment, ingest the public corpus against production:
+Health check:
 
-```bash
-DATABASE_URL="<Render DATABASE_URL>" \
-WEAVIATE_URL="<Hosted WEAVIATE_URL>" \
-.venv/bin/python -m ingestion.cli ingest --sources data/public_sources.csv --reset
+```text
+/health
 ```
 
-If you create a Render deploy hook, trigger it with:
+## Production Ingestion
+
+After deploying backend infrastructure, ingest the manual corpus into the production Postgres and Weaviate services:
 
 ```bash
-curl "$RENDER_DEPLOY_HOOK_URL"
+DATABASE_URL="<production database url>" \
+WEAVIATE_URL="<production weaviate url>" \
+.venv/bin/python -m ingestion.cli ingest --sources data/manual_sources.csv --reset
+```
+
+## Current Local Verification
+
+Local corpus state after ingestion:
+
+```text
+films: 18
+sources/documents: 142
+chunks/vectors: 1,574
+```
+
+Local verification commands:
+
+```bash
+docker compose up -d postgres weaviate
+.venv/bin/python -m ingestion.cli ingest --sources data/manual_sources.csv --reset
+.venv/bin/python -m compileall backend/app ingestion evals
+cd frontend && pnpm run build
 ```

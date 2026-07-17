@@ -1,0 +1,744 @@
+hageman.pdf
+https://www.nottingham.ac.uk/scope/documents/2008/june-2008/hageman.pdf
+
+The Uncanny Ecology of Mulholland Drive
+Andrew Hageman, University of California, Davis, US
+This needful, never spent
+And nursing element;
+My more than meat and drink,
+My meal at every wink; (Gerard Manley Hopkins) [1]
+I. A Lynchian Ecology that Sticks in the Throat
+Imagine a film opening with a steady shot of a craggy mountain landscape white with winter
+snow. The camera then pans slowly to the left, and the background becomes indistinct as the
+deep focus adjusts to bring the tip of an icicle dangling from a tree branch into sharp relief.
+Meanwhile, the sounds of individual water drops colliding with a puddle arise and are
+gradually superseded by the pleasant babbling of a snow-melt brook. Cinematic passages like
+this are explicitly about the environment, and such representations of nature on film are
+becoming an increasingly common method for communicating ecological concerns and
+agendas. But the ecological aesthetics of cinema are not limited to depictions of gorgeous
+landscapes or frolicking woodland creatures. Nor does expanding the definition of nature on
+film to include urban sprawl, factory assembly lines, or toxic waste dumps approach the
+limits of how cinema can be ecological. While such a development represents a significant
+advance in thinking about cinema and the environment, it is insufficient simply to expand the
+list of contents that qualify a film as ecological.
+As the field of cinema studies has long demonstrated, analysis of form is fundamental to the
+construction of theories on cinematic aesthetics and ideologies, and this holds true for the still
+nascent field of cinema and ecology. Just as formal elements like shot composition, editing,
+and soundtrack-mixing underwrite ideological constructions of gender and race in film, so
+too do these and other formal elements coordinate the ideological representations of nature or
+ecology that film can render. In the sequence described above, for example, the shot
+composition and camera movements not only display a wild and beautiful scene, but these
+formal elements work together to juxtapose sensations of both objectivity and subjectivity.
+The steady shot opens the sequence with an objective view of the environment itself, but once
+the camera begins to move through this environment we get the impression that a subject is
+now inhabiting and surveying this wild place. As such, the spectator is formally manipulated
+between objective positions of remove that observe the environment on screen as a distant
+place and subjective positions that sensually encounter this place from a point of view within
+it.
+What arises is a productive tension between aesthetic enjoyment of the environment as an
+object separate from us and enjoyment of the ecological systems we inextricably inhabit. Put
+another way, cinema form functions at a fundamental level through alternating sensations of
+being outside and inside the world projected on the screen, and the tension this evokes is
+similar to the tension that limits our capacities to conceptualize ecology and our positions
+within it. To think about ecology is to perceive vast systems, but to perceive the outlines of
+these systems would require a view from outside of precisely the ecological systems one
+inhabits. The aesthetic and ideological matters at work in these formal objective-subjective
+tensions and their relationships to content delineate the confluence of cinema and ecology.
+But because we are often blind to its formal elements (though they are hidden in plain sight),
+cinema seems to offer spectators the experience of seeing without being seen. This is,
+however, only an illusion, and one that represses the realities of our positions within
+ecologies of production, consumption, and ideology. As such, the confluence of cinema and
+ecology is grounded in the structures of repression and its evocative aesthetic product -- the
+Uncanny.
+There is something deeply ecological about the Uncanny, and something uncanny about
+ecology. In his essay, "The Uncanny," Freud points out that the German word for the
+Uncanny (unheimlich) articulates the concept in relation to "'heimlich' (homely), 'heimisch'
+(native)" (Freud, 1964: 220). Since the Uncanny in German is rooted linguistically in notions
+of home and native place, it can be coupled with ecology convincingly, just as Ernst Haeckel
+coined the word "oekologie" by synthesizing the Greek terms "oikos" (house or household)
+and "logos" (knowledge). Where the idea of an uncanny ecology becomes sophisticated and
+critically productive, however, is in Freud's claim that the meaning of heimlich "develops in
+the direction of ambivalence, until it finally coincides with its opposite, unheimlich" (Freud,
+1964: 226). This dialectic of not-being-at-home within the place one inhabits expresses the
+ideological intricacies of how we have thought about humans in nature, or ecology, for
+hundreds of years. More specifically, humans have historically questioned whether we are, in
+fact, part of nature or excluded from it. To ask this ecological question is to evoke an
+uncanny feeling that even if there is a place for us in the natural world, we cannot quite find
+our way back to it. And accompanying this feeling of displacement is a longing to be
+reinserted into the matrix of Mother Nature, which deeply resembles the uncanny fantasy of
+intra-uterine existence and the neurotic's perception of female genitalia as "the former Heim
+(home) of all human beings," (Freud, 1964: 245).
+What these shared characteristics of ecology and the Uncanny ultimately constitute is the
+perception that one inhabits systems that are mysteriously hidden from plain sight. Along
+with this perception is a strong impulse to solve these mysteries by comprehending the
+structures and connections of these systems. The Uncanny is chiefly a matter of repression
+and the return of the repressed as a newly visible sign of something formerly concealed. The
+struggle for ecological consciousness, or to become environmentally aware, is the same
+project -- to understand the structures and consequences of being interconnected with others
+in ecosystems.
+To explain how and why the uncanniness of Mulholland Drive (2001) renders an important
+ecological aesthetic, it is necessary first to show how more conventional and explicitly
+environmentalist cinema seems to repress the Uncanny aspect of ecology. The recent success
+of Al Gore's An Inconvenient Truth (2006) demonstrates the medium's powerful potential for
+investigating the mysteries of ecology. But Gore's approach, and indeed that of most
+explicitly environmentalist cinema, represents ecology as an essentially resolvable mystery.
+For example, the blend of syrupy-sweet shots of Gore's hometown river with the computer-
+projected presentation suggests that his film closes the case on the mystery of global warming
+through science, beauty, and morality. Alternatively, we might think of the cinematic attempt
+at rendering ecological consciousness in Godfrey Reggio's Koyaanisqatsi (1982). In this and
+other films that strive for a formal objectivism apparently meant to let the world speak for
+itself, there is the assertion, often deceptively implicit, that one can convey a comprehensive
+picture of the world as biosphere out of balance through clever montage and juxtaposition.
+This essay argues, however, that an aesthetic of objectivity misses its own mark. A helicopter
+shot of the Amazon basin is really no less bathed in subjective ideology than the shot-reverse
+shot convention of a dialogue scene.
+What these representative explicitly environmental films reveal is a symptomatic and
+essentially ineffective appeal to both the pleasures of natural beauty and the total resolution
+of their ecological mysteries. The failure of these films to render a sense of ecology
+aesthetically is not a matter of their assembling insufficient images or information. Rather,
+their approach to ecology as a resolvable mystery is destined to fail, as it elides the dark and
+uncanny aspects of the systems we inhabit. As a more effective way to imagine cinematic
+representations of ecology, this essay proposes the David Lynchian aesthetic of rabbit-suited
+humans as irreducible mystery figures over the heart-warming affect of fuzzy-bunnies
+scampering in the woods. [2]
+Lynch creates his idiosyncratic blend of fascination and frustration by making the cinematic
+mystery irresolvable. Considered from this angle, Mulholland Drive appears to be an uncanny
+ecology of interconnected and irreducible mysteries within mysteries. For example, the
+boundaries separating dream and fantasy from reality are perplexingly porous. As scenes
+within the unconscious bleed over into consciousness, desires and repression become
+interlaced. Further complicating the matter is the production system that opaquely involves
+the Castigiliane brothers, Mr. Roque, and the comically inept hitman, as well as the media
+consumption systems at work in Club Silencio. The spectator joins the characters in trying to
+detect which psychological sphere each scene belongs to, but Lynch repeatedly thwarts the
+prospect of solving these mysteries through the same formal moments that arouse the desire
+to do so.
+The ecology of Mulholland Drive is at its uncanniest in the Breakfast at Winkie's scene.
+Formally, the cinematography, or camera work, of this scene renders a very disturbing sense
+of place and presence. In contrast to the objectivity of overtly environmental cinema,
+Mulholland Drive brings the aesthetic dialectic of subjectivity and objectivity into the
+foreground, but as a struggle that cannot be completed. As the camera floats irregularly
+during the shot-reverse shot dialogue during the Breakfast at Winkie's scene, the spectator
+becomes aware that a set of normally objective shots have become disturbingly subjective.
+This transformation is uncanny because we cannot identify the subject position the film is
+asking us to inhabit, and it is ecological because it reveals the presence of a place for us
+within the structure of the film. Significantly, this takes place in the Breakfast at Winkie's
+scene, which is itself one of the most startling and irreducible tears in the narrative fabric of
+Mulholland Drive . Moreover, the scene at Winkie's is where the ecological matters in the
+film's content, such as poverty, fast food, and questions of animal and waste management
+converge. This is the scene that is, to use Lacan's depiction of the objet petit a , "the object
+that cannot be swallowed, as it were, which remains stuck in the gullet of the signifier," and
+this essay focuses on Breakfast at Winkie's to illustrate the prospects of reading Mulholland
+Drive ecologically as well as the prospects for uncanny cinema to reveal the ideological
+limits of our ability to think about and represent ecology (Lacan, 1981: 270).
+II. "I hope I never see that face ever outside of a dream"
+One of the cinematic signatures that makes a David Lynch film recognizable is the obsessive
+enjoyment of food and beverages. From the unforgettable scene of the "man-made" chickens
+blowing blood bubbles from their giblet-holes in Eraserhead (1977) to the abundance of
+cherry pie, donuts, and coffee in Twin Peaks (1990-91), there is a significant pattern of mass-
+produced food culture throughout Lynch's oeuvre. In Mulholland Drive , Winkie's is the
+signature Lynchian food scene with its restaurant habitat suffused with glistening mass-
+produced food, and it is also an extremely uncanny scene in which the boundaries separating
+physical reality from the imaginary realities of the unconscious disintegrate. Furthermore,
+Breakfast at Winkie's refuses to be swallowed and digested or expelled by the rest of the
+film's narrative, not unlike a scene at the heart of Lynch's first memory of the cinema ( Wait
+Till the Sun Shines, Nellie , 1953):
+There was a scene that struck me very much of a button going down a little
+girl's throat. I'm sure that it was very short and that you couldn't see much, but
+I still remember the impression I had of this button stuck in the girl's
+oesophagus. (Ciment, 1990: 20) [3]
+As such, close analysis of this scene and its place within the structure of the film brings into
+sharper relief what this essay is calling the uncanny ecology of Mulholland Drive .
+When Dan, the plainly terrified dark-haired diner, utters the line "I hope I never see that face
+ever outside of a dream" to his acquaintance, Herb, he expresses a desperate desire to
+preserve the membrane separating the world of dream and fantasy from the world of his
+conscious reality. There is an instructive contradiction in this desire. Rather than desiring a
+breach in the membrane that would enable him to face this external fear-object and thus begin
+working through his terrible anxiety, Dan's desire never to see that face outside of a dream, if
+fulfilled, will actually sustain and intensify his fear. Counter-intuitively, though, Dan has
+come to Winkie's, where the membrane is most likely to be breached, to discuss his dream
+and the desire to hold its content at bay. What we see in this contradictory desire, therefore, is
+the paradox of Lacan's assertion that, "it is in relation to the real that the level of phantasy
+functions. The real supports the fantasy, the phantasy protects the real" (Lacan, 1981: 41).
+Within this recto-verso structure linked by a membrane, the place of dreams, according to
+Lacan, cannot be cordoned off from the real. This mutual imbrication of fantasy and the real
+is a critical element of Breakfast at Winkie's, and its intricate construction begins with the
+narrative frame that opens into the Winkie's vignette.
+The transition into Breakfast at Winkie's occurs when we see Rita falling asleep after
+successfully slipping into Aunt Ruth's apartment to find refuge from her amnesic post-
+accident wandering. Initially, this restaurant vignette seems coded by its juxtaposition with
+Rita falling asleep as a dream sequence. As she falls asleep, however, Rita lies completely
+motionless. The conventional cue for a dream sequence often incorporates the bodily shifting,
+fluttering eyelids, or accelerated breathing, which signal the unrest within rest that
+accompanies dreams, but none of these appear here. What's more, the cut between her
+sleeping and the next visual image -- the white, yellow, and blue "Winkie's Sunset Blvd" sign
+-- is a straight cut with no visual effect to suggest a shift in modes of consciousness. There
+are only two subtle connections potentially bridging Winkie's to Rita's psychic world. One is
+the wail of a police siren while the camera lingers on the restaurant sign -- police sirens were
+a potent ambient component of Rita's post-accident wandering into the city. The second is the
+Winkie's Sunset Blvd sign -- a Sunset Blvd street sign was among the few objects focalized
+(though it remains uncertain whether or not by Rita) as she passed through Los Angeles
+toward Aunt Ruth's apartment. Both of these scenic elements, however, are so vaguely coded
+that it is more useful to regard them as ambiguous coincidences rather than evidence that
+Breakfast at Winkie's is located either inside or outside of Rita's unconscious activity.
+From this indeterminate entrée, the film proceeds to the focalization of two men, Dan and
+Herb, seated in a Winkie's booth just beginning a conversation:
+Dan: "I just wanted to come here."
+Herb: "To Winkie's?"
+Dan: "This Winkie's."
+Herb: "Okay, why this Winkie's?"
+This conversation further suggests that multiple layers of simulation are unfolding on the
+screen before us. Along with the shot of the restaurant sign, this dialogic repetition
+establishes the setting as Winkie's, but the absurdity of the name along with details of the
+mise-en-scène , such as the Denny's-replica name tags, inform us that Winkie's is in fact a
+pastiche-doppelgänger of fast-food kitsch. [4]In addition to the intratextual play initiated
+through the sign and name tags, Lynch has, in an interview with Chris Rodley, explicitly
+connected Winkie's with a Los Angeles Denny's at Gower and Sunset, which he claims had
+"a satanic booth in the parking lot" (Rodley, 2002: 277). Moreover, a description on the
+Pittsburgh radio-station WQED website adds the prospect of a Lynchian nod to the fast food
+of his Pennsylvania years as one more surface of the Winkie's pastiche:
+Long before "golden arches" graced every community in the country, one
+Pittsburgh fast food chain was well-known and heartily patronized. In fact, the
+chain's slogan – "Winky's makes you happy to be hungry" - captured the spirit
+of the restaurant whose spotlight sandwich was called "The Big Wink."
+(WQED.org, 2000)
+Thus, Winkie's is a pastiche place whose name literally winks at us, the spectators, including
+us as co-conspirators in this masquerade. Indeed, fiction film settings are always already
+simulations: a place posing as another place. Yet, in a film fraught with doppelgängers, the
+restaurant's overtly referential posing is significant. By exposing rather than concealing its
+status as a constructed place, Winkie's seems uncannily to leap off the screen and breach the
+membrane between the spectator and the projected fantasy world(s) of the fiction film. In this
+way, Lynch's scenery ceases to perform the passive role of mere backdrop; as a result, the
+screen does not facilitate an escape from the world outside the cinema into an enjoyably
+aesthetic elsewhere. On the contrary, the usually passive background against which people
+live has become not only visible, but palpably and disturbingly present. This inversion is a
+powerful component of the uncanny ecology Lynch creates.
+Following the opening lines quoted above, the diners' conversation continue with Dan saying
+that he has dreamt twice about "this Winkie's." Herb’s face remains inscrutable as Dan
+continues:
+It's not day or night; it's kinda half-night, you know, but it looks just like this,
+except for the light…There's a man, in back of this place; he's the one who's
+doing it. I can see him through the wall. I can see his face. I hope that I never
+see that face ever outside of a dream.
+To this, Herb replies, "So, you came here to see if he's out there," which prompts one last line
+from Dan, "To get rid of this god-awful feeling." Forehead-vein bulging in horror, Dan
+underscores the depth of his desire to keep his real and dream/fantasy worlds separate.
+Despite this verbally-espoused desire, however, here he is, seated at Winkie's, talking with
+this man whom he must know will decode the reason for their meeting at this Winkie's and
+compel him to look -- "So you came here to see if he's out there." This begs the question, in
+reference to the Lacanian paradox of fantasy and the real as interconnected: is Dan's "god-
+awful feeling" a genuine fear of the collapse of the membrane that has so far kept the dream-
+world at bay, or is he actually afraid of its preservation? To answer this, we must consider the
+men's foray behind the restaurant.
+Now, because the bum is the material catalyst who triggers the collapse of the dream world
+into the real and the parallel collapse of Dan's body, the answer to whether Dan may have
+come to Winkie's to break through the dream-real membrane and see him resides within the
+bum inhabiting the alley behind Winkie's. Dan's statement, "He's the one who's doing it,"
+suggests that the bum possesses agency with potentially supernatural potency. Yet, both the
+film credits and Lynch interviews refer to this figure only as a "bum," thus rendering him a
+figure of the diegetic real and not a metaphysical monster. To understand the bum as a human
+being is crucial to a psychoanalytical reading of the vignette. As a real diegetic figure, the
+bum can be linked materially to a key focalized image in Winkie's. When Dan rises from the
+table to join Herb and venture into the alley, the camera lingers at the booth to pan down over
+the table, showing an empty plate and glass on Herb's side, while Dan has apparently not
+even touched his bacon, eggs, hash browns, orange juice or coffee. Up to this point, the scene
+has consisted of a strict economy of shots, though mediated through the uncanny floating
+camera described above, showing only the men's faces in tight close-up and the cash-register
+area when it is mentioned during Dan's dream narration. Within this context, the focalized
+food represents a strange and important irruption into this economy. It signals the imminent
+approach of an acute materialization of the amorphous subjective-objective confusion that
+has hovered like a specter around the scene via the floating camera, thereby notifying the
+spectator that she is about to be pulled into this cinematic environment in a strange and likely
+revealing way.
+An untouched breakfast would conventionally suggest fear manifesting in a loss of appetite.
+But, just as the enigmatic lingering focalization protrudes -- like a phallic "Winkie" -- from
+the fabric of the shot economy, so too does it refuse to be contained by this symbolic reading.
+What happened in Dan's dreams is now happening in reality, and since the scene is becoming
+a terrifying self-fulfilling prophesy, this protrusion cannot be dismissed as a sign exclusively
+within reality. The presence of the bum is a self-fulfilling prophesy connected to a place like
+Winkie's, where food is kitsch -- mass-produced junk to fit the fantasy aesthetic of an all-
+American breakfast -- and the leftovers of which, whether the dross of food-factory
+production or that which diners leave unconsumed, is discharged as waste into dumpsters
+behind the restaurant. In this un-Disneylike "circle of life," the bum feeds on the waste of this
+institution -- on the waste people don't feel like eating, and because we are what we eat, the
+bum eating waste is also the waste, or shit, of the society supporting the fast-food institution.
+That "god-awful feeling" about the man behind Winkie's as the one who's doing it translates
+into a collision between Dan's dream/fantasy outside and the reality of the bum. [5]
+As a patron of Winkie's, Dan's participation in fast-food production and consumption self-
+perpetuates the presence of the bum. The one who's doing it turns out to be Dan. He is a
+complicit contributor to a distancing of others from the self not through the fantasy of the
+dream-world but through the act of mistaking fantasy for the real. Meeting the bum face to
+face is an instance of the strangeness in Lacan's statement, "The world is all-seeing, but it is
+not exhibitionistic -- it does not provoke our gaze. When it begins to provoke it, the feeling of
+strangeness begins too" (Lacan, 1981: 75). In seeing the bum, Dan begins to perceive the all-
+seeing world; his position as subject-who-sees is exchanged for a position of object-that-is-
+seen. He can now see himself as an object positioned within a structure where every greasy
+meal of comfort food at Winkie's is already the stuff of American food aesthetics leftover
+from the Great Depression. Furthermore, he can also see through the fantasy that sustains
+such fast-food institutions by avoiding the ecological repercussions within the all-seeing
+world -- the waste of packaging and the social impacts of low-wage labor all condense here in
+the figure of the bum.
+Thus, the provocation of the bum's presence is a return of the repressed that in this case
+proves fatal. To see oneself as seen by the world which bears the brunt of processes that
+converge in a Winkie's breakfast is to exfoliate too many layers of the fantasy that has
+enabled a lifetime of eating this way. This vision confronts us with the uncanny realization
+that we have always been within the environment from which we have believed ourselves
+separate. Such a shock is simply unsustainable for Dan, as perhaps it must also be for the
+spectator.
+III. "I mean it like it is, like it sounds" [6]
+The soundtrack complements this uncanny encounter with the bum as a return of the
+repressed. As Dan and Herb pass the side of the restaurant, an ambient buzzing arises at the
+edge of an engineered silence bereft of any diegetic sounds. The auditory near-emptiness
+signifies Dan's repression that has heretofore been so thoroughly convincing for him, while
+also conjuring an unsettling sensation for the spectator who is being fed visual cues
+suggesting that there definitely is "a man in the back of this place." As the pair approaches
+the dumpster area, a dampened sound of motion intrudes on the otherwise blank audio
+vacuum. Although this sound is too fuzzy for us to identify, it does resemble the auditory
+sensation of moving through water -- an environment once familiar to a human body but left
+behind at birth, and therefore a sound connected to the repression of one environment when
+another displaces it. In light of Freud's relation of the uncanny with birth and "the
+phantasy…of intra-uterine existence" as a significant instance of repressed atmospheric
+transition, it becomes striking that the most difficult scene to account for in a film about
+female protagonists focuses exclusively on two men fearfully obsessed with their Winkie's
+(Freud, 1964: 244-5). Further complicating this uncanny sex trajectory is the fact that the
+"man" in back of this place is in fact played by a woman (Bonnie Aarons)—a discovery
+which, through its radical destabilization of film and gender binaries, bolsters the myriad
+anxieties that saturate the film. [7]
+It is amidst this ambience of atmospheric and psychological transition that the anticipated
+moment arrives when the bum, in a fluid motion, as if a camera fixed on a dolly, appears
+from behind the graffiti-inscribed wall. Coinciding with the visual appearance of the bum is
+an abrupt yet muted sound followed by a visual cut to the image of Dan now collapsing
+backwards into Herb's arms. The buzz that precedes this abrupt audio-intrusion is
+synonymous with the myriad scenes in Lynch (think of the ambient drone throughout
+Eraserhead or the hyper-emphasized hum and sputter of fluorescent lights in the Twin Peaks
+hospital and morgue scenes) which use continuous auditory signals to paint the diegetic
+world as one in which things relentlessly are not right. It is the sound of a chronic
+uncanniness always on the verge of demanding recognition -- the sound of the repressed
+inevitability of death that one cannot face and survive. Then, within this audio-signifying
+structure, the startlingly abrupt sound represents an acute moment when the real bursts into
+the world of fantasy and dream. An aporia is opened by such acute moments in which
+characters are able to see themselves as contained by their milieu -- ecologically aware of the
+systems they inhabit.
+Correspondent to the appearance of the bum, the soundtrack underscores this moment in
+which layers of fantasy are exfoliated to reveal how thoroughly one always is embedded
+within ecology despite the ease with which we can usually ignore the chronic and subtle
+drone of its structural presence. As spectators, we receive the benefit of observing this
+impossible yet imperative revelation through Dan, and the ecocritical import of this is that we
+do not need to (perhaps cannot) repeat Dan's moment of multi-mediated awareness-to-death
+in order to perceive the multitude of our own layers of fantasizing that we live in safe
+separation from the environment. Through this insight, we might better be able to diagnose
+our previous blind-spots and begin a gradual process of gentle exfoliation in order to get a
+closer, if more terrifying, view of our position within the ecological structures we inhabit.
+Between the introduction of the abrupt sound that terminates the buzz and the visual cut, the
+interrupting sound hovers briefly as a dis-embodied or dis-originated sound from off-screen
+that creates a dissonance and suspense that draws in the spectator as detective to place the
+sound and reestablish order. While Lynch's visual cut to Dan collapsing seems at first glance
+to match the sound to a material body of origin, it is indefinite whether this audible response
+to a moment of terror was a verbal scream of surprise, the inarticulate sound of a terrified
+gasp, or perhaps the internal sound of the fear-induced physiological shutdown -- the literal
+and over-amplified sound of Dan's heart stopping. To maintain the reading of Lynch's use of
+ambient sound as a perpetual audio signification of the repression of a world where things are
+not right, however, is to dismiss the conventional bodily re-containments of this intruding
+sound. Instead, the abrupt audio intrusion is the sound of Dan's sudden perception of the real
+poking through the membrane that has kept it apart from his dream/fantasy world.
+To explain this in more detail, this position modifies Slavoj Žižek's analysis of Lynch's The
+Elephant Man (1980). In Looking Awry ,Žižek describes a similar sound engineering moment
+of what he deems "psychic reality" as "a pulse that does not imitate or symbolize anything,
+but that 'seizes' us immediately, 'renders' immediately the thing -- what thing? ... the beat of
+that grey and formless mist, pulsing slowly as if with inchoate life" ( Žižek, 1992: 41). To
+applyŽižek's argument to Mulholland Drive , however, this essay identifies the perpetual and
+uncanny ambient sound as the location of "the inchoate mist," with the abrupt sound that
+intrudes as the aural termination of the pulse sustaining Dan's psychic reality. As the sound
+coincides precisely with the bum's appearance, it is logical to associate it with the psychic
+termination precipitated by the irruption of the real -- the termination which ultimately
+precipitates a physiological termination too. From this analytical perspective, the audio
+interruption is the sound of the acute moment, not of the breach itself, but when the
+cognizance of the breach has finally arisen, and it operates as the "black humor" of Deleuze
+and Guattari that "does not attempt to resolve contradictions, but to make it so that there are
+none, and never were any" (Deleuze and Guattari, 1983: 11). This is the audio equivalent of
+the moment Dan can no longer perceive himself as a subject who can hear the chronic buzz
+but ignore it as coming from elsewhere. Since he can no longer keep the repercussions of his
+being in the world at bay, Dan now acutely perceives himself as an object that helps create
+and sustain this chronic buzz.
+Therefore, the soundtrack spanning Breakfast at Winkie's reiterates the visual narrative
+suggestions that Los Angeles can shift suddenly, through the fracturing of one's psychic
+reality, from the heaven of Betty's Hollywood "dream-place" to a hellish cesspool filled in
+part with one's own shit. And when the sound and image converge behind Winkie's, the
+phallus of the dream that erects, sustains, and finds sustenance (though of a saccharine sort)
+in fast-food dysfunctions, deflates. Dan, once a throbbing, veiny phallus, self-destructs, like
+an American too full of saturated fat and sodium, into a flaccid waste-state when he
+encounters the proverbial perineum not as an impermeable border but as a connective tissue
+that leaves the phallus and the anus -- the place of shit -- in a proximity all too close for his
+taste.
+When the film transitions from Winkie's back to the Betty-and-Rita narrative, it does so
+through an uncanny repetition as the camera's gaze returns twice to the edge of the graffiti-
+covered wall but without a reappearance of the bum. The film then cuts to Rita sleeping in the
+same position before the Winkie's interlude. As a reflection of the frame opening onto
+Winkie's, the exit also implies that this vignette is the stuff of (Rita's) dreams. But the camera
+shows Rita only very briefly, and, as in the entrée, her motionlessness resists the cinematic
+dream coding. The film cuts from Rita's still body to an extreme close-up of Mr. Roque's
+mustachioed mouth as he places a phone call: "The girl is still missing," which, in turn,
+initiates a series of subsequent calls to disseminate his message. To swallow the red herring
+of Rita's appearances framing the vignette falsely as her dream is potentially to miss or
+dismiss the connection of Dan's phrase, "he's the one who's doing it," with Mr. Roque as one
+man who is indeed doing something. Martha Nochimson's analysis of this connection is to a
+certain extent sound when she suggests, "mortality issues from Mr. Roque's office… With
+Mr. Roque in control, the hopes with which Betty and Adam enter the film are already
+dashed, even though they do not yet know it" (Nochimson, 2005: 170). Yet, emphasis should
+be redirected away from the idea of an assumed external agency and toward the link
+connecting the bum with Mr. Roque as an index of how to read Breakfast at Winkie's as an
+explanatory yet irreducible kernel of Mulholland Drive and its uncanny ecology.
+Roque's executive decisions foreclose Betty's prospects before Adam Kesher and his film are
+even known to her, but it is important to note that his decision is not calculated malevolence.
+Because Roque is part of the Hollywood system Betty has eagerly yet naively entered, her
+demise cannot fully be blamed on him. Like Dan at Winkie's, Betty is a complicit actor who
+embraces the very structure that destroys her. In the cases of both Betty and Dan, the
+narrative gestures at turns towards systemic evils and the mythological American ideal of
+personal responsibility when one lives in poverty. Lynch refrains, however, from condemning
+either the systems at work or the individuals as the sources of human eviscerations. Rather,
+Mulholland Drive offers an incomplete structure of fragmentary and often contradictory
+gestures which posit only partial ideological statements. In its allusion to, yet elision of, a
+Manichean dichotomy of good and evil, the film refuses the idea of an impenetrable
+membrane capable of distancing good from evil, or in this case, of separating awareness of
+the fragility of the ecological structure one inhabits from participation in destroying this
+system and thus oneself. As such, Mulholland Drive reveals not only the deep connection
+between fantasies, desires, and resultant miseries, but also the radical impossibility of
+confronting these connections.
+IV. Black (Coffee) and Blue (Hair)
+What prevents the ecological suggestiveness of Breakfast at Winkie's from coagulating into a
+mere anti-fast food diatribe is the way this scene permeates the structure of the entire film.
+The integral role the scene plays within Mulholland Drive is made apparent by the repeated
+appearances of coffee and symbolic transfers involving the bum, Rita, and the blue-haired
+woman seated in the box at Club Silencio. Each of these symbolic threads systematically
+illuminates the film from within; yet these illuminations are uncanny in that they
+simultaneously demonstrate the fundamental futility of their abilities to construct consistent
+positions on the ecological matters raised within the film. While the self-contained ecology of
+Breakfast at Winkie's does evince an ecological message, when examined within the total
+fabric of the film, even this brilliantly rendered ecological message falls victim to the human
+proclivity to conceptualize the environment as elsewhere. We are left at the end of
+Mulholland Drive firmly re-embedded within the inside/outside structure the film had seemed
+so effectively to destabilize. That said, however, by embracing the distinct inability to follow
+through with a consistent ecological-ideological position, Lynch is neither failing nor
+endorsing an ecological laziness. Rather, Mulholland Drive offers a radical cinematic form of
+representing ecology that recognizes the real of ecology as meaninglessness -- as a structure
+beyond comprehension and not to be confused with the supposed meanings of its individual
+constituent elements. The best way to explain this paradoxical assertion is by analytically
+tracing the coffee repetition and the bum-Rita-blue-haired lady interchanges.
+Coffee was historically a luxury good that became an American staple. This symbolic
+beverage spans all the scenes set at Winkie's, and it brims over into other crucial spaces in the
+film. Considering the potency of coffee throughout the Twin Peaks series and film as object
+of obsessive consumption and as dream code for Agent Cooper in the Red Room, positive
+cinematic precedent distinguishes it as an important "thing" in Lynchian cinema. In fact,
+Lynch has now launched his own David Lynch Signature Cup coffee beans, with the Inland
+Empire (2006) tie-in motto: "It's all about the beans, and I'm just full of beans." [8]The
+presence of coffee throughout Mulholland Drive repeats this trend, and, as in Twin Peaks , it
+hints at the existence of a code but also prevents the spectator from cracking it.
+The first significant appearance of coffee in Mulholland Drive occurs just before the
+Castigiliane brothers arrive at the meeting. We are informed that the producers have arranged
+to serve one of the finest espressos in the world. In an act both sumptuous and disgusting,
+Luigi Castigiliane takes an elegant sip from the demitasse and proceeds to spit the deep black
+liquid into a white linen napkin. Doubtless, this espresso was made from excellent beans and
+pulled by a professional barista, yet Castigiliane rejects it, and he does so as an act. Due to
+the espresso's superiority, this rejection is surely a didactic performance rather than a genuine
+sensual response. Martha Nochimson reads the rejection as symbolizing the Castigiliane
+brothers' association with the dark side of a Hollywood film business run by thugs concerned
+only with power, to the detriment of creativity. [9]To the extent that creativity intersects with
+aesthetics as taste -- the knowledge of what to spit out, Nochimson is correct. Yet, this essay
+interprets the act as a perversion of taste. Like the bum behind Winkie's, the appearance of
+this spitting evokes an ecology of power/class structure and wanton waste. Contrary to the
+notion of class possessing taste, Luigi's dramatic spit reconfigures class as possessing no need
+for taste. And since Winkie's is located on Sunset Boulevard within a film rife with allusions
+to Billy Wilder's Sunset Boulevard (1950) --a perennial Lynch favorite and a classic
+narrative of fatal trauma stemming from failure and class immobility in Hollywood -- the idea
+of the coffee thread perpetuating a class-concerned ecology is distinctly plausible. [10]
+Coffee next appears immediately after Betty/Diane's ex-girlfriend, having recently moved
+out, collects the last of her things. [11] Betty/Diane uses a cheap, plastic coffee-machine to
+brew a pot of the inexpensive ground coffee sold in large tins. Compared with the
+Castigiliane brother, she is marked as lower-class by her coffee, but she, too, practices a
+perversion of taste in consuming a mass-produced good that tastes anything but good. Like
+the caffeine powder sold by General Foods International as a supernatural doorway to
+Vienna, this cup of mass-produced coffee whisks Betty/Diane away from her depressing
+reality and into a fantasy sex scene; yet, just as the coffee turns into whiskey when she steps
+over the sofa, so, too, does the sex scene fail to reach climax. Thereby, coffee assists in
+making this scene repeat the Winkie's eating-defecating message that society in LA is
+structured so it cannot produce dreams without also producing disturbing refuse in the poorer
+echelons.
+The penultimate cup of coffee in the film solidifies the alignment of Betty/Diane with Dan at
+Winkie's. She drinks this cup during the agonizing moment of the party before Adam Kesher
+and Rita/Camilla's attempt, though uncompleted, to announce their engagement. The visual
+sequencing of this scene transitions from a distraught expression on Betty/Diane's face when
+Adam, off-screen, finishes his story with the phrase, "Sometimes good things happen," to a
+tight close-up of the demitasse cup with steam rising from the espresso, and then to the
+Castigiliane brother of perverted taste. Thus a visual collection of signifiers from multiple
+scenes converge within this penultimate moment of coffee consumption. This tempest-in-a-
+demitasse appears to be the catalyst for Betty/Diane's realization that she can no longer
+sustain the fantasy that either her love relationship or acting career remains intact. Her
+fantasy dissipates in the face of the Hollywood real, where money, class, and power
+contemptuously supplant taste, and Betty's paradoxical expression of repugnant distaste when
+she is tasting this exquisite espresso embodies the dark bitterness of awakening to the reality
+of her "dream-place" in collapse: a bitterness so dark, in fact, that once away from the party,
+Betty/Diane proceeds, over coffee at Winkie's, to contract a hit-man to kill Rita/Camilla
+before committing suicide at home.
+Had the narrative curtain dropped immediately after Betty/Diane committed suicide,
+Breakfast at Winkie's -- as a symptomatic coffee thread -- would contribute to a tidy
+conclusion that posits a consistent, coherent ecological reading of the film as an allegory of
+unsustainable food and entertainment production and consumption in conjunction with a
+philosophy of being with others. The film would have closed the circle of ambiguity initiated
+by the film-opening shots of an unidentified person collapsing onto a bed by strongly
+suggesting it was Betty/Diane. Such a conclusion would fit tidily with Lynch's dedicating the
+film to Jennifer Syme. She was Lynch's assistant through Lost Highway (1997), and she died
+in a car accident that, although not officially ruled a suicide, certainly could appear to be. [12]
+But the fact is, the film continues after the gunshot for a ninety-second coda that refuses to be
+subsumed as the impressions being screened by Betty/Diane's dying consciousness.
+While dialectically maintaining the pattern of symptoms divulged by the coffee thread, we
+must transcend the comfort of the would-be ecological message to read the coda, and this
+means to examine the interconnectedness of the bum, Rita, and the blue-haired woman.
+Recall, as mentioned above, that when the bum behind Winkie's becomes visible to Dan, he
+does so in a fluid lateral motion, as if fixed on a dolly. Within a film concerned with film-
+making, the bum is performing the role of a camera. Like a rolling camera (in the double
+sense of rolling), the bum's gaze reminds Dan as well as the spectator who is also startled by
+the bum's appearance, that we do not merely gaze at the world around us, but we are also
+always posing for documentation. Like Lacan's discarded sardine tin, the bum is a discarded
+thing that looks back, both at the diegetic characters who have hitherto been blind to his/her
+existence and, especially through the tightly framed close-up of the bum's face, at the
+spectator. [13] As a camera looking back, the bum reiterates his uncanny presence as
+something which occurs naturally in the world of cinema as well as that of fast food.
+But the fluidity of the bum's appearance also transports him through cinematic space beyond
+the confines of the dumpster behind Winkie's. After Betty and Rita have discovered Diane
+Selwyn's rotting corpse, they return to Aunt Ruth's apartment to disguise Rita since the
+corpse, an uncanny double as harbinger of death, implies that she is in grave danger. After a
+lingering focalization of cosmetics and hair-styling goods -- a kitsch doppelgänger of the
+food at Winkie's -- the camera slides laterally behind Betty to look into the mirror as Betty
+slides Rita on a rolling chair into position to see herself in the mirror. The fluid motion of
+Rita's appearance enacts a subtle yet extremely uncanny repetition of the bum's entrance.
+Sitting mannequin-still and donning a hyper-blonde wig, Rita seems to be taking on a
+symbolism passed along from the bum.
+The symbolism exchanged is the role of a figure at the juncture of fantasy and reality. Faced
+with an imminent death bred within whatever underworld aspect of the Hollywood ecology
+Rita has formerly inhabited, she is attempting an escape by becoming someone else. Yet,
+Rita's rolling is an imperfect and complicated repetition of the bum's. While the bum was
+animated, though equally fake in terms of hyperbolical filth, Rita's artificiality is
+communicated through the inanimate mannequin posture she affects as she is rolled by
+an/other -- by Betty. Moreover, the imperfect repetition manifests as a reflection. Rita and
+Betty are entwined within a system of looking at each other, themselves, and themselves as
+the other. Instead of the direct gazing back of the bum, this repetition conjures an inescapable
+series of gazing handoffs and returns among people multiplied over and again by the mirror-
+camera composite. What began behind Winkie's as the return of the repressed by-product of
+food kitsch and a culture waste has metamorphosed into an incomprehensible ecology of
+unstable subject-object and self-other constructions.
+Bolstering this idea that the bum's appearance functions within a film-wide network of
+symbolic exchanges, is the way he initiates the self-other relationship as one with an other
+who is shit. To perceive the bum as refuse is especially appropriate in light of Lacan's
+excrement-based definition of human civilization: "The characteristic of a human being is
+that -- and this is very much in contrast with other animals -- he doesn't know what to do with
+his shit. He is encumbered by his shit… Civilization mean shit, cloaca maxima " (Turkle,
+1978: 238). Within this Lacanian notion is an ecological critique of inhabiting a world with
+others, including one's own feces. And the significance of this idea is illuminated by the way
+Mulholland Drive , unlike most Lynch films, shows a world devoid of animal inhabitants with
+the few oblique exceptions of the cow skull adorning the cowboy's corral gate and the
+supremely phallic fast-food appearance of animals as meat at Pink's Hotdog stand. [14]
+Although visually repressed in this film, animals do inhabit Lynch's rendition of Los Angeles,
+as evinced by the presence of their feces.
+When Coco leads Betty to Aunt Ruth's apartment for the first time, their progress is
+interrupted by the presence of dog droppings on the courtyard pavement. Visibly agitated,
+Coco warns the unseen, yet presumably at home, owner of the culprit: "Wilkins, if that damn
+dog craps in the courtyard one more time, I'm just gonna bake his little butt for breakfast,"
+after which she tells Betty that pets are allowed but not allowed to defecate here in the shared
+public space "for obvious reasons." Coco's dialogue reinforces the idea that LA is a place
+where a fantasy pretense must be maintained when it comes to the realities of being with
+others. If people are allowed to keep pets, feces will necessarily be produced, but just as the
+animals are kept from sight throughout the film, so, too, must their feces remain repressed
+from view. Note also how Coco frames this policy in terms of "obvious reasons,"
+underscoring a natural at-homeness of the need to repress all physical traces of waste.
+Significantly, Coco tells one more tale of on-site animal messes in this scene: "You know,
+there was a man that lived here once that had a prize-fighting kangaroo; well, you just
+wouldn't believe what that kangaroo did to this courtyard." Whereas the spectator was
+initially apt to follow Coco's "obvious reasons," even as it points to social repression, the
+concept of the domestic prize-fighting kangaroo sends this conversation on being with
+animals into a realm of absurdity. Surely there would be even more compellingly "obvious
+reasons" not to domesticate kangaroos, not to train them to fight, and not to keep them in an
+LA apartment complex, yet that kangaroo was there, and its messes were, unsurprisingly, the
+stuff of legend.
+To connect the analysis of Coco's dialogue with Breakfast at Winkie's, the filthy, shit-like
+appearance of the bum, including the turd-like dreadlocks, as the refuse of a society that
+institutionalizes fast-food, parallels the curls of dog-doo staining the courtyard. Furthermore,
+in warning Wilkins to repress his dog's shit, Coco refers explicitly to breakfast. Within a film
+so meticulously wrought to induce intuitive associations among scenes, this verbal allusion to
+breakfast is a suggestive link between the bum behind Winkie's and the brown trace of the
+repressed deposited by Wilkins's "damn dog."
+This complex network of symbolic transfer concludes with the woman in the blue wig, first
+seen sitting in the balcony box-seat at Club Silencio. Although she remains fixed in her seat,
+the artificiality evoked through her mannequin-stiff posture and noticeably fake wig
+replicates Rita's artificiality, and thus Rita's repetition of the bum. The blue-haired woman's
+initial appearance at Club Silencio coincides suggestively with Betty and Rita's convulsions
+during the show that physically forecast the dissolution of the fantasy they've created with
+Rita's wig. Likewise, the blue-haired woman's initial appearance also coincides with the
+initial appearance of the enigmatic blue box which we see later in the bum's possession, as he
+revolves it in his hands with disinterest before dropping it, as if a piece of shit, into a brown
+paper bag rather than fetishize it as a source of supernatural power. And it is the blue-haired
+woman and the bum who reappear within the film's coda; in fact, the blue-haired woman gets
+the very last word of Mulholland Drive .
+Because she does get the last word and comprises the last image before the screen goes black,
+analysis of what the blue-haired woman signifies as she concludes the exchange is
+imperative. To begin with, her position within the environment of the theatre is suggestive.
+Balcony box seats traditionally signify the place of high class and good taste. Yet, the coffee
+thread has already demonstrated how the film's structure recurrently controverts the parity of
+class and taste. Couple this structural trend with the absurdly synthetic appearance cultivated
+by the blue-haired woman (an appearance that carries the trace of transvestitism and thus the
+bum's gender confusion), and her concluding appearance seems to fortify the film's
+perversion of taste. Still, the blue-haired woman differs from Luigi Castigiliane in that she is
+not the figure of a ruthless power-monger. Rather, she represents a paradox by inhabiting the
+place (the physical location) of taste, yet donning within this place an appearance that
+undercuts the taste implied by her precise location in this theatrical ecology. And this paradox
+suggests that the blue-haired woman attends and enjoys the performance at Club Silencio
+without conventional reasons of aesthetics, class, power, or taste. The figure with the
+synthetic blue hair becomes the sublation (in the Hegelian aufhebung sense) of the
+Manichean dichotomy of good and evil embodied in the obsessively-noted but feebly-
+interpreted blonde-brunette dialectic of Lynch's cinema.
+As a figure of paradoxical self-representation expressing neither outright veneration nor
+contempt for class and taste, the blue-haired woman is the single character in the film capable
+of perceiving simulated fantasy and the real as well as high art and shit -- of consuming them
+with the same aesthetic enjoyment. She is the figure of an aesthetic consciousness that is
+comfortable inhabiting a world of waste and beauty because it perceives the underlying
+sameness that defies discrimination. Because the blue-haired woman also acts as a
+spectatorial doppelgänger (only she and the spectator remain), her last word, "Silencio,"
+names this aesthetic, both for her and for the spectator. "Silencio" prescribes a silencing of
+the self that can enable a redirection of attention to what has heretofore been silenced --
+repressed. Only by tempering the subjectivity of the self, can one begin to diagnose the
+fantasies of the present moment in all of their nauseating detail. This aesthetic practice of
+silence is a hesitation that allows the uncanny ecologies of Winkie's and the world to stick in
+the throat, since their irreducible mysteries cannot be rejected outright or safely subsumed by
+any coherent system of ideological digestion.
+V. The Ecological Dessert of the Real
+The ninety-second coda that follows Betty/Diane's suicide is a cinematic space that persists
+after the curtain has dropped on her living consciousness, and this persistent space is the very
+theatre where the illusion of illusion is continually unmasked -- where the Club Silencio
+audience as well as the Mulholland Drive spectators are repeatedly reminded of the
+magician's dialogue, that "This is all an illusion… This is all a recording." All that remains in
+this space, after Betty/Diane is dead and the stage show is over, is not a behind-the-curtain
+interpretation of the film's meaning, but, rather, the hesitant inhabitation of the blue-haired
+woman's uncanny position of enjoyment without reason -- jouissance . And it is only from this
+position of enjoyment without reason within the structure of the film that one can see that
+behind the curtain of ecological gestures posited within and emanating outward from
+Breakfast at Winkie's there is nothing. Only in this blue-haired position of jouissance can we
+recognize the meaninglessness of ecology -- an ecology that remains inaccessible to us not
+due to human distance from it but from the fantasy that a distance exists which effectively
+screens the schismless real of non-distance.
+This uncanny message begins in Breakfast at Winkie's, with Dan illustrating the immanent
+fatality of refusing to recognize the undesirable elements of the world as inextricably
+imbricated with the self, and this is the same refusal that strikes down Betty/Diane just before
+the coda. As such, Mulholland Drive gestures repeatedly at critical questions of ecology
+through fast-food kitsch, waste, class structure, and the presences of the bum as well as
+animals and their droppings, but without arranging these gestures into a complete ecological
+ideology. While each segment of this essay analyzes a different aspect of the uncanny
+ecology of Mulholland Drive , together they demonstrate a potent connection linking cinema,
+psychoanalytic theory, and the question of our contemporary ecological crises. These matters
+have appeared several times in close proximity in the work of Slavoj Žižek.[15] Yet, these
+texts do not note this pattern of proximity nor do they organize Lynch's cinema,
+psychoanalysis, and ecology in conversation. The purpose of this essay is to analyze
+rigorously this theoretical network that Žižek symptomatically repeats yet leaves seemingly
+unnoticed and undeveloped.
+Such analysis leads to the conclusion that the perforation Lynch creates through cinematic
+technique, form, and content, and the resistance to self-totalize into coherence does, however,
+render a truly radical ecological aesthetic. Rather than presenting ecological ideology in a
+manner that affords the spectator a sense of momentary reprieve from the environment
+outside the theatre, as in Al Gore's An Inconvenient Truth , Lynch's Mulholland Drive offers a
+cinematic representation of what it means to realize that I, too, as I sit and watch this screen
+that also watches me, am the one who's doing it. Even in the theatre, the spectator must
+confront not an inconvenient truth, but an inconvenient fantasy. The uncanny ecology of
+Mulholland Drive is the Un-Heimlich and extremely uncomfortable embrace of a disarmingly
+present ecology that forecloses the ideas of an inside/outside binary and the derivative
+potential for escape; it is the Lynchian controversion of time (the very process that produces
+"camp") that prompted Andrew Ross in 1994 to write, "If Twin Peaks was one of our first
+examples of ecological camp…, as I think it was, it surely will not be the last" (Ross, 1994:
+189); it is the painful but crucial process of destabilizing the fantasy-reality and subject-
+object membranes that all of us erect to be able to go on.
+Notes
+[1]From Hopkins' "The Blessed Virgin Compared to the Air We Breathe," these lines
+provide a felicitous juxtaposition of environment, food consumption, the wink, and an
+uncanny consciousness of amniotic ambience.
+[2]This disturbing rabbit-suited human aesthetic appears in the nine-episode series Rabbits
+from 2002, available in the subscribers' and pay-per-view areas of
+http://www.davidlynch.com , and the same "rabbits" play a significant if enigmatic role in
+Inland Empire .
+[3]Translated from the French by Michel Chion, in his David Lynch , p. 7.
+[4]TheMulholland Drive website at <http://www.mulholland-
+drive.net/studies/locations.htm> is an outstanding resource on the actual filming locations in
+and around L.A., including Caesar's Restaurant in Gardena -- the place that poses as
+Winkie's.
+[5]This formula of fantasy and reality colliding in the alley behind a site of commerce
+reappears in Lynch's Inland Empire . Early in the film, the visitor anticipates the protagonist,
+Nikki Grace's, later confrontation with an inscrutable kernel of the real in an alleyway behind
+a grocery when she tells Nikki the following story: "A little girl went out to play. Lost in the
+marketplace, as if half-born. Then, not through the marketplace, you see that don't you, but
+through the alley behind the marketplace. This is the way to the palace. But it isn't something
+you remember."
+[6]Quotation from Mike's (The One-Armed Man's) dialogue as he tells Agent Cooper during
+a dream that he and Killer Bob used to live above a convenience store in Episode Two of
+Twin Peaks -- another instance in Lynch connecting an uncanny and potentially fatal menace
+with a modern American institution of convenient consumption.
+[7]Craig Miller and John Thorne also note, though not within ecocritical concerns, the
+sex/gender discrepancy in the bum behind Winkie's in their highly insightful essay
+"Mulholland Drives Us Wild."
+[8]See the coffee link on David Lynch's website:
+<http://ecomm.davidlynch.com/catalog/coffee.php>
+[9]See Nochimson, 2005, especially pp. 168-171.
+[10] Though beyond the scope of this essay, Billy Wilder's Sunset Boulevard, with the dark
+scene of Norma Desmond mistaking Joe Gillis for the undertaker summoned to arrange the
+funeral for her dead chimpanzee, warrants a separate discussion of the presence of animals in
+Los Angeles and questions of ecology.
+[11] Due to the ambiguous doubling of characters, I attempt to minimize confusion by
+incorporating the / (e.g. Betty/Diane) to refer to those with doppelgängers.
+[12] See the "Biography for Jennifer Syme" on the Internet Movie Database:
+<http://imdb.com/name/nm0843320/bio>.
+[13] SeeThe Seminar of Jacques Lacan Book XI: The Four Fundamental Concepts of
+Psycho-Analysis , pp. 95-6.
+[14] Pink's is a deeply relevant Hollywood restaurant as a place where aspiring, failing, and
+successful actors as well as fans consume nostalgic American kitsch food. Since Lynch's
+film, Pink's offers a Mulholland Drive Dog for $5.20: a 10" stretch dog with grilled onions,
+grilled mushrooms, nacho cheese, and bacon: http://www.pinkshollywood.com/ .
+[15] SeeLooking Awry , pp. 27 and 34-43 and Enjoy Your Symptom! pp. 161-193.
+Interestingly, Žižek takes a jab at Transcendental Meditation immediately following his
+Lynch analysis in Enjoy . One wonders if Žižek was aware of Lynch's Yogic flier status in the
+TM school and what this jab reveals about Žižek's oeuvre of Lynch analyses.
+References
+Chion, Michel (1995) David Lynch . Trans. Robert Julian. London: BFI.
+Ciment, Michel and Hubert Niogret (1990) Interview with David Lynch, Positif 356
+(October), pp. 12-20.
+Deleuze, Gilles and Félix Guattari (1983) Anti-Oedipus: Capitalism and Schizophrenia .
+Minneapolis: University of Minnesota Press.
+Freud, Sigmund (1964) The Uncanny. The Standard Edition of the Complete Psychological
+Works of Sigmund Freud , Vol. XVII. Ed. and Trans. James Strachey. London: Hogarth Press
+and the Institute of Psycho-Analysis, pp. 217-252.
+Lacan, Jacques (1981/1998) The Four Fundamental Concepts of Psycho-Analysis . Ed.
+Jacques-Alain Miller. Trans. Alan Sheridan. New York: Norton.
+Miller, Craig and John Thorne (2001) Mulholland Drives Us Wild, Wrapped in Plastic 1 (56
+/ December), pp. 8-22.
+Nochimson, Martha P (2005) All I Need is the Girl: The Life and Death of Creativity.
+Mulholland Drive , inThe Cinema of David Lynch: American Dreams, Nightmare Visions .
+Eds. Erica Sheen & Annette Davison. New York: Wallflower Press, pp. 165-181.
+Rodley, Chris (2002) Lynch on Lynch . Revised Ed. London: Faber and Faber.
+Ross, Andrew (1994) The Chicago Gangster Theory of Life: Nature's Debt to Society . New
+York: Verso.
+Turkle, Sherry (1978) Psychoanalytic Politics: Freud's French Revolution . New York: Basic
+Books.
+Žižek, Slavoj (1992) Looking Awry: An Introduction to Jacques Lacan through Popular
+Culture . Cambridge, MA: MIT Press.
+Žižek, Slavoj (2001) Enjoy Your Symptom!: Jacques Lacan in Hollywood and Out . 2ndEd.
+New York: Routledge.
+Websites
+Anon. (2000) Pittsburgh history series teacher's guide: WQED Pittsburgh. Available at:
+http://www.wqed.org/education/pghist/units/fun/fun2.shtml [Accessed 4 June 2006].
+Filmography
+The Elephant Man . 1980. Dir. David Lynch. Brooksfilms.
+Eraserhead . 1977. Dir. David Lynch. American Film Institute.
+An Inconvenient Truth . 2006. Dir. Davis Guggenheim. Lawrence Bender Productions.
+Inland Empire . 2006. Dir. David Lynch. Studio Canal.
+Koyaanisqatsi . 1982. Dir. Godfrey Reggio. Santa Fe Institute for Regional Education.
+Lost Highway . 1997. Dir. David Lynch. October Films.
+Mulholland Drive . 2001. Asymmetrical Productions, Le Studio Canal+, Les Films Alain
+Sarde.
+Rabbits . 2002. Dir. David Lynch. David Lynch.com.
+Sunset Boulevard . 1950. Dir. Billy Wilder. Paramount Pictures.
+Twin Peaks . 1990-91. Dir. David Lynch. Lynch/Frost Productions.
+Wait Till the Sun Shines, Nellie . 1953. Dir. Henry King. Twentieth-Century Fox Film
+Corporation.

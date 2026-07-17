@@ -15,3 +15,5 @@ data/processed/*
 !data/raw/public/*.txt
 !data/processed/.gitkeep
 data/raw/public_cache/
+data/manual/
+.vercel

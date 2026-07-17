@@ -1,14 +1,14 @@
 cases:
   - id: top_k_comparison
     endpoint: /retrieve
-    query: "Compare doubling in Persona, Perfect Blue, Black Swan, and Fight Club."
+    query: "Compare doubling in Black Swan, Fight Club, and Mulholland Drive."
     top_k: 12
     expected_coverage: medium
   - id: refusal_low_coverage
     endpoint: /answer
-    query: "What do production notes say about Vertigo in this corpus?"
+    query: "What do production notes say about A Beautiful Mind in this corpus?"
     film_slugs:
-      - vertigo
+      - a-beautiful-mind
     expected_refused: true
   - id: source_filter_primary
     endpoint: /answer
@@ -19,4 +19,3 @@ cases:
     expected_source_types:
       - interview
       - production_notes
-

@@ -1,0 +1,612 @@
+Shawshank_Academic_2
+In repo
+
+Journal of Religion & Film Journal of Religion & Film
+Volume 30
+Issue 1 April 2026 Article 44
+April 2026
+Get Busy Living: Leaping Out of Confinement with Kierk egaar d in Get Busy Living: Leaping Out of Confinement with Kierk egaar d in
+The Shawshank Redemption The Shawshank Redemption
+Christian Wilk en
+Heinrich-Heine-Univ ersitat Dusseldor f, chwil104@hhu.de
+Follow this and additional works at: https:/ /digitalcommons.unomaha.edu/jr f
+Part of the Continental Philosophy Commons , Film and Media Studies Commons , Modern Liter ature
+Commons , and the Religious Thought, Theology and Philosophy of Religion Commons
+Please tak e our f eedback sur vey at: https:/ /unomaha.az1.qualtrics.com/jf e/form/
+SV_8cchtFmpDyGfBLE
+Recommended Citation Recommended Citation
+Wilk en, Christian (2026) "Get Busy Living: Leaping Out of Confinement with Kierk egaar d in The
+Shawshank Redemption, " Journal of Religion & Film : Vol. 30: Iss. 1, Ar ticle 44.
+DOI: 10.32873/uno.dc.jr f.30.01.44
+Available at: https:/ /digitalcommons.unomaha.edu/jr f/vol30/iss1/44
+This Ar ticle is br ought t o you for fr ee and open access b y
+DigitalCommons@UNO . It has been accepted for
+inclusion in Journal of Religion & Film b y an authoriz ed
+editor of DigitalCommons@UNO . For mor e information,
+please contact unodigitalcommons@unomaha.edu .
+Get Busy Living: Leaping Out of Confinement with Kierk egaar d in The Shawshank Get Busy Living: Leaping Out of Confinement with Kierk egaar d in The Shawshank
+Redemption Redemption
+Abstr act Abstr act
+This ar ticle off ers a Kierk egaar dian r eading of The Shawshank Redemption (1994), ar guing that the film
+functions not as a mir acle narr ative but as a cinematic enactment of existential theology . While existing
+scholarship fr equently interpr ets Shawshank thr ough biblical typology or F oucauldian notions of
+incar ceration, f ew consider how the film dr amatiz es Kierk egaar d’s categories of anxiety , despair , and the
+leap of faith. Shawshank pr esents prison as mor e than a space of punishment—it becomes a r efuge fr om
+the “ dizziness of fr eedom, ” a structur ed escape fr om the terrifying bur den of possibility . Brooks’ s suicide
+tragically embodies what Kierk egaar d calls the “ despair of weakness, ” the inability t o exist as a self
+outside institutional cer tainty . Andy Dufr esne, b y contr ast, cultiv ates an inwar d life that sur vives
+confinement, ultimately per forming a postsecular form of faith gr ounded in human action r ather than
+divine inter vention. His escape tr ansforms ut opia fr om non-place int o lived space, enacting hope against
+hopelessness. By r eading the film thr ough Kierk egaar d, supplemented b y Soja ’s Thir dspace and
+Habermas’ postsecular theor y, this ar ticle r eframes Shawshank as a st ory of salv ation without mir acle,
+redemption without metaphysics, and hope made r eal thr ough inwar d commitment and outwar d action.
+Keywor ds Keywor ds
+The Shawshank Redemption, Sør en Kierk egaar d, anxiety , despair , leap of faith, postsecular , redemption,
+Thirdspace, heter otopia, Deleuz e and Guattari, striated space, smooth space, prison films, existential
+theology , Charles T aylor, Jür gen Habermas.
+Creativ e Commons License Creativ e Commons License
+This work is licensed under a Creativ e Commons A ttribution 4.0 License .
+Author Notes Author Notes
+Christian Wilk en is a Resear ch Associate and Lectur er in English and American Liter ature at Heinrich-
+Heine-Univ ersität Düsseldor f. His r esear ch focuses on Gothic and weir d fiction, posthumanism,
+speculativ e realism, haunt ology , and the intersections of film, theology , and existential philosophy . He is a
+member of the DFG-funded r esear ch network T raveling Bodies and the Haunt ology and Spectr ality
+Resear ch Network at Y ork St. John Univ ersity . His first monogr aph, Reading Lo vecraft in the
+Anthr opocene: A New Dark Age, was published b y Routledge in 2025. His curr ent work examines
+postsecular narr atives in popular cultur e and speculativ e media.
+This ar ticle is a vailable in Journal of Religion & Film: https:/ /digitalcommons.unomaha.edu/jr f/vol30/iss1/44
+“It’s not the end that I fear with each breath,
+It’s life that scares me to death.”1
+The Shawshank Redemption (1994) is widely regarded as one of the most spiritually resonant
+cinematic texts of the late twentieth century .2 Its emphasis on spiritual resistance to injustice has very
+likely contributed to its enduring position at the top of IMDb’s global rankings . Adapted from Stephen
+King’s novella “Rita Hayworth and Shawshank Redemption” (1982), the film belongs to a period i n
+King’s writing defined less by supernatural horror than by examinations of injustice, masculinity, and
+institutional power. Set in mid -century America, Shawshank occupies the cultural landscape between
+postwar optimism and the civil -rights era, a moment when the authority of institutions , law
+enforcement, prisons, and the state , was both idealized and increasingly suspect in the aftermath of the
+Kennedy assassination, the rumblings of the Vietnam war and political turmoil preceding Watergate .
+The film’s w orld is therefore historically grounded in a time when the promise of American justice
+was rhetorically celebrated but structurally fragile. Viewers and scholars alike often interpret the story
+of Andy Dufresne as a contemporary Christ narrative , which is largely justified : he suffers unjustly,
+maintains hope in the face of despair, liberates others, and ultimately rises beyond the walls that
+contain him.3 Other readings turn to Foucauldian frameworks, interpreting the prison as a disciplinary
+heterotopia, a spatial inverse of society.4 While critics often read Shawshank through biblical typology
+or Foucauldian punishment,5 few have examined the film through an explicitly Kierkegaardian lens.
+Existing scholarship in religion and film tends to foreground the story’s Christ symbolism, but rarely
+its existential theology, its treatment of inwardness, or its pronouncedly postsec ular understanding of
+redemption. These existing accounts are compelling and substantial , but they remain largely tethered
+to a binary of confinement and freedom that the film quietly subverts in many ways . In Shawshank ,
+prison is much more than simply the site of oppression. It is also a refuge from something more
+fundamental and perhaps more frightening than punishment: existential anxiety. Danish philosopher
+Søren Kierkegaard defines anxiety as “the dizziness of freedom,” the vertigo that arises when a h uman
+1Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+being confronts possibility .6 By juxtaposing confinement with inner freedom and profundity,
+Shawshank visualizes this paradox with striking clarity.
+Viewers fear for Andy , as he encounters violence, corruption, solitary confinement , even rape.
+Yet the prisoners themselves fear something else more than anything : life beyond the walls. As the
+film’s narrator Red reflects, “first you hate these walls… then you depend on them.” The prison
+eliminates choice, eliminates uncertainty, and conseque ntly eliminates anxiety. It is a refuge from the
+burden of being a self (within a society) . An inmate, released after fifty years of incarceration,
+encounters the terror of freedom and chooses death rather than possibility. His tragedy confirms
+Kierkegaard ’s claim that despair is not dramatic suffering, but a failure to become oneself.7 In stark
+contrast to this case, who epitomizes resignation in his suicide, Andy Dufresne becomes a figure of
+what Kierkegaard calls the “knight of faith ,”8 albeit in thoro ughly secular fashion. He does not possess
+certainty but acts without it. This is underscored by h is patient building of the prison library, his
+teaching of Tommy, and his decades -long escape plan that all enact a hope that has no rational
+guarantee —partic ularly in light of the fate that has befallen him . Andy ’s humaneness is portrayed in
+the many ways he bruises and bleeds like any man, yet transforms the world around him. In Charles
+Taylor’s terms, Andy lives entirely within the secular “immanent frame,”9 yet generates a form of
+redemption that Radical Theology describes as Christianity without metaphysical intervention:
+salvation as human action.10 Crucial to the elevated humanist depiction of Andy, Red becomes his
+evangelist : particularly the film’s fi nal voiceover is nothing less than the gospel according to Red , as
+I will attempt to show .
+This article argues that The Shawshank Redemption is perhaps best understood not as a miracle
+narrative, but as a cinematic enactment of Kierkegaard’s existentia l theology. Prison suppresses
+anxiety by suppressing possibility. True liberation demands the leap of faith. The beach in Mexico ,
+the film’s utopia , begins as a non -place and becomes real only through human belief and action. The
+movie insists that anxiety is imprinted on the human condition, but so is hope, and neither should be
+2Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+suppressed –as Kierkegaard first explained almost two centuries ago . To “get busy living” is thus to
+embrace both. Existing theological readings that foreground Shawshank ’s Christ -figure dynamics are
+persuasive, and nothing in the present argument requires their dismissal. Indeed, the film repeatedly
+borrows Christian grammar (suffering, witness, conversion, exodus, and rebirth ) while staging
+institutional religion (above all, the wa rden’s) as compromised and coercive. The claim advanced here
+is narrower: whatever biblical typology the film invites, its redemptive causality remains strikingly
+immanent. Shawshank ’s “salvation” is not delivered as miracle or metaphysical interruption, b ut
+enacted as inward discipline, patient labor, and the risky decision to live toward an unguaranteed future.
+Human Oscillations: Hope, Despair, Anxiety
+Kierkegaard draws a crucial distinction between fear and anxiety. Fear always has an object: it is
+directed toward something recognizable in the world. A person fears violence, punishment,
+humiliation, or death. Anxiety, by contrast, has no object. It arises not from what is, but from all that
+might be. “Anxiety is the dizziness of freedom,” Kierkegaard writes, “the individual’s openness to
+possibility.”11 Anxiety appears when the self confronts the realization that it alone must choose its life,
+and that there is no external guarantee that these choices are secure, meaningful, or right —suggesting
+an exi stential conundrum that verges on the pathological in modern societies. Rightly so, viewers
+of The Shawshank Redemption experience fear for Andy : toward the Sisters, the guards, the warden,
+the threat of solitary confinement. They themselves may also fear the idea of getting caught in the
+confines of punitive caprice. But the prisoners themselves live in anxiety: the vertigo of possibility
+that returns the moment they imagine freedom. Of importance to the film’s universalist message,
+Kierkegaa rd himself describes anxiety not as a pathological disturbance but a structural feature of
+human existence. Where Foucauldian readings rely on the recognition that a prison narrative points
+the audience towards their own confined state in the wider rule -work of society, a Kierkegaardian
+perspective on the film shows us anxiety in its most condensed form. In The Concept of Anxiety , he
+3Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+inverts the traditional doctrine of original sin. Anxiety does not follow the Fall , but rather it precedes
+and causes it: Adam experiences freedom first, and that freedom generates the dizziness that makes
+transgression possible.12 “Anxiety is the presupposition of hereditary sin,” Kierkegaard writes :
+humankind inherits not only Adam’s guilt, but Adam’s condition.13 Accordingly , anxiety is not a
+punishment but the deepest expression of what it means to be human: the burden of possibility. Anxiety
+and despair are therefore inseparable. In The Sickness Unto Death , Kierkegaard goes on to define
+despair not as punctuated dramatic suf fering, but as a failure of the self to relate properly to itself.14 A
+person despairs when they refuse the burden of becoming who they are, when they collapse in the face
+of possibility and shun the call towards authentic individuation . To exist as a human being is always
+to stand between actuality and potentiality, never fully complete, always responsible for choosing
+oneself. Despair is the refusal of this responsibility. It is easier, even comforting, to surrender identity
+to external structures. Prison, as Shawshank demonstrates, offers precisely this comfort: a life without
+choice, without risk, without inwardness. Interestingly, this predicament finds expression not only in
+the pris on’s inmates, further emphasizing the universality of Kierkegaard’s concept.
+To describe the ways in which individuals relate to this burden, Kierkegaard distinguishes
+between three modes of existence: the aesthetic, the ethical, and the religious.15 The aesthetic life
+avoids responsibility through distraction, pleasure, or routine , any way of escaping the need to choose
+oneself. The ethical life accepts duty and social identity, but still grounds meaning in external norms
+and recognition. Only the re ligious life embraces true inward freedom: the acceptance that no objective
+assurance exists, that truth requires choice, and that one must commit without proof. Faith is therefore
+not certainty, but risk. “Without risk,” Kierkegaard writes indeed , “no fai th.”16 This inward movement
+culminates in what Kierkegaard calls the leap of faith. The leap is not irrational, but it is rather trans -
+rational. It is the moment when the self chooses a path without the security of guarantees, acting “on
+the strength of th e absurd” —the strength of something that cannot be justified by logic or evidence,
+but must be affirmed inwardly.17 In Shawshank , this philosophical structure quickly becomes the
+4Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+emotional and narrative architecture of the film. Brooks will later exemplify despair in the face of
+possibility; Red will live the ethical life until he abandons a life of performed remorse; and Andy will
+enact the religious life, committing to hope without proof and transforming the world around him
+through that commitment. Kierk egaard therefore provides not only a theory of human psychology, but
+a grammar for reading the film: fear belongs to the body, anxiety to the spirit; despair is not the loss
+of freedom, but the inability to bear it; and redemption is not the elimination of anxiety, but the courage
+to live with it.
+Incarceration as Existential Refuge
+If anxiety is the dizziness of freedom, then the simplest way to silence anxiety would seemingly be to
+eliminate freedom. The Shawshank Redemption reveals the paradox of incarceration: punishment can
+become sanctuary. As Red explains, “first you hate these walls… then you get used to them… then
+you depend on them.” In Kierkegaardian terms, the prison offers relief from the burden of possibility.
+Before Andy, there are no choices to make, no futures to construct, no selves to become. The
+architecture of the institution replaces inward existence with outward routine: where to walk, when to
+eat, how to speak, when to sleep. Deleuze and Guattari describe such institutional ordering as an
+example of striated space: regimented, partitioned, and governed by rules that determine movement
+and inhabitance .18 Shawshank is emblematic of this striation, as every corridor, schedule, and gesture
+is tightly structure d by authority. The chessboard motif makes this visual : Andy is introduced as
+someone who “likes chess,” a clue that he understands how striated systems work and how they can
+be navigated. Yet his quiet acts of resistance —building the library, teaching lit eracy, playing Mozart,
+and chiseling the wall —create small incursions of what Deleuze and Guattari call smooth space: zones
+of improvisation, creativity, and self -determined movement that are juxtaposed with, but also related
+to striated space . The tunnel is the film’s ultimate line of flight, detouring through the prison’s material
+grid. The final sho t then completes this spatial logic. Andy and Red stand at the Pacific , what the two
+5Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+French philosophers would indeed describe as the archetype of smooth space: open, unbounded,
+without any walls or coordinates. Notice that Red follows Andy more on the pro position of escaping
+the narrow heterotopia than cartographic description. Shawshank begins in total striation and ends in
+pure possibility. The escape is not only physical but assumes an ontological level as well : the self
+moves from structure to freedom, from confinement to the open.
+Beforehand, Shawshank epitomizes how s tructure swallows freedom, and with freedom, the
+terror of possibility. Kierkegaard calls this form of surrender the despair of weakness : the refusal of
+the self to stand before its ow n potentiality.19 To despair in this way is not necessarily to suffer
+spectacularly, but more tragically to evade the responsibility of existence. The men do not merely
+suffer physical incarceration and lose their liberty , but they lose the very requirement to choose it. The
+prison makes life easier by eliminating the self. It is not the withdrawal of punishment that terrifies the
+inmates, but the return of agency. Red describes how the architecture of Shawshank exerts a
+psychological transformati on: initial resistance gradually gives way to acceptance, until the prisoners
+depend on the very structures that confine them. Routine has thus become protection. The film makes
+this idea spatially explicit. The prison functions as what Michel Foucault cal ls a heterotopia , a counter -
+site that mirrors the structure of society while inverting its values.20 The world outside is chaotic, fast,
+indifferent; the world inside is ordered, predictable, legible. The prison is therefore a refuge from
+uncertainty more than a locale of spatial confinement .
+The fact that Shawshank can feel psychologically safer than the outside world is the clearest
+indication of despair. For Kierkegaard, this would not be the loss of the self, but the refusal of the self.
+To Red in h is secular environment, it is being “institutionalized.” Jürgen Habermas describes late
+modernity as “postsecular”: a cultural moment in which belief and unbelief coexist, and where
+religious vocabulary resurfaces not as doctrine, but as a language for exp eriences that secular
+rationality cannot dissolve.21 The nomenclature and disciplinary demarcation changes, but not the
+human experience it tries to analyze. In line with this postsecular environment that film and audience
+6Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+share, it is a world confined to what Charles Taylor calls the immanent frame,22 in which anxiety
+becomes a pervasive condition —possibility without transcendence, freedom without eschatology.
+Clinical psychology generally notes that sustained anxiety, when unmanageable, collapses into
+depression as a shutting down of agency, hope, and inward movement. Shawshank visualizes this
+postsecular condition with stark clarity. Brooks does not fear death as much as he fears freedom. His
+despair is psychological more than theological , taking the shape of a paralysis of the self unable to
+endure possibility and the temporal oscillations it causes in a progressively turbocapitalist world . Andy,
+by contrast, enacts a se cularized form of faith : hope without metaphysics, and redemption without
+miracle , brought about by confidence in one’s values and resourcefulness . Habermas’ postsecular
+describes precisely this landscape: a world stripped of transcendence in which spiritu al needs persist,
+and where redemption is performed and not bestowed upon the individual . The film also very
+effectively exposes the emotional logic that makes this refuge so seductive. Freedom requires selfhood,
+and selfhood requires anxiety. The moment B rooks steps outside the gates, the world becomes
+unbearable: too bright, too fast, too open. The prison has not rehabilitated him (whatever that means,
+as Red will later point out) ; it has protected him from the dizziness of freedom. The same walls that
+once oppressed him now give him shape, structure, and meaning. Their removal leaves him weightless,
+without internal form, without a self to return to. Shawshank therefore complicates conventional
+narratives of liberation. In most prison films, escape marks triumph. Here, escape marks crisis. What
+the men fear is not confinement, but possibility. If the prison is a cage, it is one that many of its
+occupants cling to because it kills anxiety. And in killing anxiety, it also kills hope.
+While the prison init ially appears as a purely material space with the camera focusing on high
+walls, barred cells, and regimented movement , it quickly reveals itself as something more complex.
+As Anish Mundra argues , Shawshank cannot be understood simply as a real prison (Soja’s Firstspace)
+nor merely as the symbolic or imagined space that exists in the minds of prisoners and authorities
+(Secondspace).23 Instead, it functions as a Thirdspace, a lived site where materi al structures and
+7Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+psychological interpretations collide, contradict, and reshape one another. Shawshank is orderly yet
+corrupt, punitive yet communal, oppressive yet capable of producing solidarity, learning, and even joy.
+Importantly, i t is both a real in stitution and a metaphorical world. This is why the same yard is, to Red,
+a marketplace; to Andy, a quarry for the crumbled wall; and to the authorities, a site of surveillance.
+The result is what Soja calls a “transcending composite of all spaces ,”24 wher e power, imagination,
+and embodiment interact. This concept helps illuminate why prison comforts the men as much as it
+cages them. The Thirdspace produces a “structured refuge” that provides predictable routine, stable
+identity, and a vanishing of existent ial uncertainty. Freedom would collapse this space and force the
+self back into anxiety. Brooks’s tragedy, therefore, is not simply institutionalization but the destruction
+of the Thirdspace that once gave his life structure. Andy, however, challenges this spatial order. He
+creates an inner Thirdspace , an interior world built on books, music, imagination, and hope. His inner
+life safeguards him against both the physical walls (Firstspace) and the oppressive mental logic of
+imprisonment (Secondspace). When h e plays Mozart over the loudspeakers, he does exactly what Soja
+describes: he “compromises the space of order,” creating a simultaneous zone of resistance, possibility,
+and memory . “It was in here,” he explains , pointing to his head , and suggesting unfatho med
+profundities of inner life.
+The Despair of Weakness
+Brooks Hatlen is the film’s most devastating illustration of what Kierkegaard calls the despair of
+weakness : the inability to become oneself when confronted with the possibility pointed out above .
+In The Sickness Unto Death , Kierkegaard writes that despair is not dramatic or spectacular , but quiet
+and ordinary, the “refusal to be a self.”25 It occurs when the individual cannot bear the weight of
+freedom and collapses into nonbeing. Brooks’s release from prison is not a victory —it is a death
+sentence , as he himself senses when pondering the desperate me asure of harming an inmate . The world
+outside the walls offers him what prison had removed: the dizzying openness of possibility , amplified
+8Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+by the disruptive introduction of cars and consumer -oriented infrastructure . Freedom is not relief but
+terror at its most frightening, as both Kierkegaard and the Shawshank agree . The film’s visual grammar
+makes this clear.
+Inside Shawshank, Brooks is a librarian, a mentor, and a gentle authority. Notably, this role
+extends across the various spaces discussed in pre vious sections, as Brooks has a role to serve in the
+official order of inmates, as well as the small acts of deviation that continue to occur, as he smuggles
+outside goods along with his books. He belongs to a social and spatial order. The prison gives him
+identity, routine, community, even affection. After his release, the world becomes intolerably bright
+and fast. “I saw an automobile once when I was a boy, but now they’re everywhere,” he writes. The
+letters tremble , and he cannot cross a street without f ear. He cannot sleep without the walls that once
+confined him. His life has become possibility without structure, freedom without anchoring, anxiety
+with no refuge. Without a place to be, he does not know how to be —as also for the audience, by
+extension. In Kierkegaard ian terms, Brooks’s inward self has been replaced by the outward routines
+of prison life. The institution carried his identity for him. He never had to choose himself, hope for
+himself, or become himself. He inhabited Soja ’s Thirdspace : not merely the physical prison
+(Firstspace) nor merely the imagined one (Secondspace), but a lived environment in which the walls
+provided orientation, stability, and meaning. Shawshank may have physically confin ed Brooks , but it
+also furnished him with a worl d. His new freedom destroys that world. This is why Brooks’s suicide
+note is not bitter, but tragically apologetic. “I’ve decided not to stay. I doubt they’ll kick up any fuss,
+not for an old crook like me.” He is not angry, resentful, or vengeful ––he also hasn’t relapsed into
+crime. He is empty. A clinical description of the causative trajectory into depression can be the collapse
+that follows unmanageably sustained anxiety when the nervous system can no longer bear possibility :
+it shuts down all agency an d desire.26 Brooks’s death appears as an act of despairing passion as well
+as a quiet surrender. He dies because he cannot inhabit the world as a self.
+9Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+Crucially for our reading , the film makes clear that Brooks’s tragedy is not failure but human
+vulnera bility. As the audience may identify, i n a fully secular world, there is no metaphysical rescue:
+no miracle, no providence, no transcendent meaning that steps in to catch him. This is
+Habermas’s postsecular condition in its starkest form. The prison eliminated anxiety for an entire five
+decades, and the world immediately reactivated it. Without inward resources (imagination, hope,
+spiritual or secular identity ) freedom becomes uninhabitable. Brooks , as this section has pointed out,
+is not crushed by p unishment, but by possibility . His final words (“Maybe I should kill myself. I’m
+tired of being afraid all the time” ) collapse Kierkegaard’s distinction between fear and anxiety. Fear
+has objects. Anxiety does not. His last act, carving “Brooks was here,” attempts to give the world a
+trace of his existence, a permanent mark that his self could not sustain. It is the aesthetic life’s final
+gesture: the memorialization of a self that just could not continue. The Shawshank Redemption places
+no judgment on him. Instead, it uses his death to illuminate what Andy will later survive: the need to
+create an inward life strong enough to withstand freedom. Brooks dies because he cannot hold himself
+together when the world demands that he be a self. His death is the fil m’s most heartbreaking
+conclusion: punishment did not destroy him , but freedom did.
+Andy Dufresne: Knight of Faith in the Immanent Frame
+Where Brooks collapses under the weight of possibility, Andy Dufresne later survives by cultivating
+an inward life strong enough to bear freedom. In Kierkegaardian terms, Andy embodies the religious
+mode of existence : the individual who acts without certainty, sustains hope without proof, and commits
+to a future that has absolutely no guarantee. Andy’s faith is no t grounded in the metaphysical assurance
+that the warden carries with him as performative act but derives from an inexhaustible inward
+discipline . His refusal to surrender imagination, memory, and possibility transforms his imprisonment
+into a space of mea ning, as the confinement in the hole after the music scene underlines powerfully .
+He teaches Tommy to read, builds the library letter by letter, and plays Mozart over the loudspeakers ,
+10Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+not to escape the world, but to re -enchant it (successfully so, as the homogenized bafflement of all
+who listen informs the viewer) . “That’s the beauty of music,” he tells Red. “They can’t take that away
+from you.” The Thirdspace he constructs inside his mind is of such stability that it breaks open the
+prison’s spatial order .
+Returning to Charles Taylor’s vocabulary, Andy is a fully secular saint: he lives entirely within
+the immanent frame , a world without divine intervention, miracles, or providence , yet generates a form
+of redemption that is recognizably spiritual.27 Radical Theology describes this as Christianity emptied
+of metaphysical claims but alive as human action.28 Andy is never depicted praying for rescue , but he
+creates it himself . He does not preach hope; he enacts it. His faith is always lived, not spoken. A subtle
+but revealing detail reinforces this logic of inward redemption. Andy hides his rock hammer inside a
+hollowed -out Bible , an object the warden clutches as a symbol of religious authority but never reads.
+The warden’s faith is theatrical and punitive: he uses Scripture to justify violence, corruption, and
+exploitation. Andy, by contrast, practices a postsecular Christianity grounded not in metaphysical
+belief but in action. The Bible does not save him because it is holy : it literally saves him because it
+conceals the tool of his freedom. Salvation lies within, both literally and figuratively. When, after
+Andy’s escape, the warden opens the Bible and discovers the hammer inside, he finds a bookmark at
+the beginning of Exodus , a book defined by liberation from captivity. More than anything, t he scene
+exposes the difference between possessing a text and being transformed by it. The warden knows
+Scripture by memory but not by meaning . Andy , conversely, enacts meaning without ever preaching
+it. His freedom is the product of inward life, imagination, patience, and hope , ironically the very
+qualities the prison was designed to extinguish. The warden thus believes in Scripture as text , but Andy
+believes in Scripture as act. One impriso ns in God’s name , the other escapes by living what the text
+means.
+Andy’s breakthrough moment arrives when he begins carving his name into the cell wall —a
+gesture meant to mark resignation, “Andy was here,” like Brooks or Red. But the wall crumbles. The
+11Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+prison’s materiality contains its own fault line, and Andy alone discovers it. The revelation is
+Kierkegaardian: confinement is never total because possibility is structural. The wall is only solid for
+those who believe it to be. Like Abraham acting “on th e strength of the absurd,” the most powerful
+leap of faith Kierkegaard focuses on, Andy commits decades of patient labor without knowing the
+outcome.29 His tunnel, like faith itself, is an act of risk without certainty. The storm that accompanies
+his escap e is a visual inversion of the Romantic sublime. In Frankenstein , meteorological events herald
+the moment of Victor’s transgressive creation and subsequent destruction .30 In Shawshank , in contrast,
+lightning marks Andy’s liberation. The storm provides the cover he needs to enter the sewage pipe, to
+“swim through a river of shit,” as Red vividly puts it, and emerge clean. The scene indeed evokes
+baptism, but stripped of metaphysics —as water does not cleanse his soul , but removes the filth of
+institutional corruption. This is a rare moment of the sacramental stripped of the metaphysical in
+cinematic history . When Andy bursts from the pipe and stands in the rain with his arms outstretched,
+the image resembles a cruciform po sture, but the film refuses miracle. His rebirth is the result of work,
+patience, and imagination , faith translated into action. His redemption is self-made, not given. Andy’s
+escape therefore reveals the true meaning of hope in Shawshank as beyond optimis m and fantasy, but
+as the courage to act without assurance. In a world where despair is easy and the burden of selfhood is
+heavy, Andy survives by creating an inner life that no walls can contain. He becomes, in Kierkegaard’s
+sense, a knight of faith in a secular world.
+At the same time, the film codes Andy’s hope as more than self -belief or mere optimism.
+Shawshank gives him a recognizably religious literacy (his ease with Scripture in the warden’s cell;
+the Bible as a recurring object of interpretive s truggle) and frames hope as something with a kind of
+objective durability —“good things… never die” —rather than a private preference. One can therefore
+concede a subtle metaphysical horizon in Andy: a sense that reality is not finally chaotic, that there is
+an order worth aligning oneself with, and that the human person is answerable to more than expediency.
+The crucial point, however, is that the film refuses to stabilize this horizon as doctrine , precisely in
+12Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+line with its postsecular temper. Shawshank neither evacuates religion nor endorses it in confessional
+form . Instead, it retains religious grammar as a live register of meaning while relocating soteriology
+into the immanent. The result is a “porous” transcendence: the language of ultimacy persists, but it is
+no longer anchored to ecclesial authority or metaphysical guarantee and must be tested and enacted as
+practice. Andy’s “higher power,” if we may call it that, remains narratively non -specified and
+pragmatically translated into practices: learning, music, solidarity, and the long work of preparing a
+future that has no guarantee. Transcendence is not removed, but rendered porous and ambient, while
+redemption remains something that must be enacted within the world rather than bestowed upon it .
+The Gospel According to Red
+Andy is Shawshank’s knight of faith, and Red is its evangelist. His arc poetically embodies
+Kierkegaard’s transformation from the ethical life as one defined by social expectations and external
+validation to the religious life, which requires inward commitment without certainty. For most of the
+film, Red is the rationalist, the skeptic, the man who knows how the world works. “Hope is a dangerous
+thing, ” he warns Andy. “Hope can drive a man insane.” Hope, to Red, is a fantasy, a delusion, an
+invitation to despair. Better to be realistic, keep one’s head down, and play by the rules. This is the
+ethical self: the self as defined by roles and institutions , which Red identifies with more than any other
+inmates we meet . His parole hearings make this visible to the audience . In each early hearing, Red
+performs rehabilitation. He uses the vocabulary the system wants: alluding to remorse, repentance,
+reformation. The audience also learns that this is a performative act, a guessing -game that rightly
+recognizes the arbitrary interpretation of rehabilitation. Red here does not speak truth but strategy. And
+every time, the board stamps DENIED. Kierkegaard calls this “the despair of defiance”: the self that
+maintains control by refusing inwardness, living according to external expectations rather than inward
+truth.31 Red lives ethically, which is a start, but not authentically.
+13Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+Brooks ’s death becomes Red’s turning point. He recognizes that Brooks did everything the
+institution asked —served his time, obeyed the rules, waited patiently —and yet freedom destroyed him.
+Where Brooks proves that obedience and routine are not enough, Andy prov es that imagination and
+inward life can survive even Shawshank’s brutalities. When Red discovers the tin box in the stone wall
+containing Andy’s letter and the money needed to reach Mexico, he confronts a choice that has no
+guarantee: violate parole and ri sk imprisonment, or act on faith in a future he cannot see. Even before
+that, Red anticipates the leap of faith as h is final parole hearing marks the moment of inward truth.
+Red no longer performs repentance and refuses the ritual :
+I look back on the way I was. A young, stupid kid who committed a terrible crime. I
+want to talk to him. I want to try to talk some sense to him, tell him how things are. But
+I can’t. That kid’s long gone, and this old man is all that’s left. I look back on him and
+I want to shak e my head in pity.
+This is Kierkegaard’s movement from external to internal, from identity as role to identity as self. In
+a Kierkegaardian sense, Red finally collapses performance and speaks from inwardness. The board
+grants him freedom the moment he sto ps trying to earn it. This is not providence; it is irony. The
+system recognizes authenticity only when Red abandons the system’s language. His freedom, like
+Andy’s, arrives through an inward leap, not outward obedience. Red’s narration over the film’s fin al
+moments turns the story into testimony. Andy never preaches, but Red preaches Andy. “I hope… I
+hope I can make it across the border. I hope the Pacific is as blue as it has been in my dreams. I hope
+to see my friend and shake his hand. I hope.” The fina l word of the film is not freedom, nor justice,
+nor redemption. It is hope , spoken as prayer, creed, and confession. This is why I argue the film’s
+voiceover functions like scripture. Red’s words record the transformation that viewers witness: despair
+turned to possibility, blank realism to faith, and overwhelming fear to tender hope. Shawshank may
+offer no divine intervention, but it offers what Habermas calls the postsecular restoration of religious
+function: consolation, meaning, community, and redemption enacted in a secular world.32 Red
+becomes the film’s evangelist not because he believes in God, which is never once mentioned, but
+because he believes in Andy . And therefore, for the first time, in himself. When Red breaks parole and
+14Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+boards the bus to Fort Hancock, he performs his leap. He has no assurance that Andy will be there, no
+promise of safety, no certainty the dream will survive. All was foretold by a seemingly delirious and
+desperate Andy. But he chooses it anyway. His last line , “I hop e,” is the textual marker of his profound
+transformation. As every gospel ends with the promise of something more, Shawshank ends with hope
+as the act that makes the future real.
+Conclusion: Leaping Out of Heterotopi a’s Confinement
+For most of the film, Shawshank functions as Foucault’s heterotopia , as a space set apart from society,
+governed by its own logic, its own rituals, and its own forms of temporal experience. It is a refuge
+from possibility as much as a site of punishment. Within its walls, the men are protected from the
+dizzying openness of freedom; the heterotopia gives them structure where the world offers none.
+Brooks dies because he cannot survive outside it. Red fears the same fate. For both, the prison is
+paradoxically livable precise ly because it dissolves the need to choose oneself. Andy alone pushes
+beyond this heterotopic frame. For him, Shawshank becomes not only Firstspace (material) nor
+merely Secondspace (imagined), but a Thirdspace : a lived environment where inward possibility
+reshapes material reality. His inner life , assuming external representation through music, memory,
+learning, and the secret tunnel , compromises what the institution claims is solid and total. In
+Kierkegaard’s vocabulary, Andy refuses despair. He refuses t o let the world define the limits of the
+self. Where Brooks sees only walls, Andy sees another kind of deviation : an opening hidden within
+the structure. The leap of faith begins long before the escape ; the prison breaks for Andy the moment
+the wall does. This is why Zihuatanejo matters , even before it materializes . It begins as utopia in the
+literal sense: no place , an imagined future with no basis in the present. Red justifiably dismisses it as
+fantasy. But for Kierkegaard, possibility becomes real the moment the individual commits inwardly to
+it. Acting “on the strength of the absurd,” Andy behaves as if Zihuatanejo already exists —saving
+money, hiding documents, and building rout es. For once, u topia ceases to be dream and becomes task.
+15Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+Shawshank enacts what Ernst Bloch calls concrete utopia : not escape from the world, but
+transformation of it.33 Andy wills the future into being.
+When Andy stands on the beach and Red walks towar d him, the film reveals the full resonance
+of that leap , as the heterotopia finally dissolves. The imagined space has become a lived space for him .
+Zihuatanejo is no longer mere metaphor but geography. Notice that h ope did not rescue Andy; Andy
+rescued hop e. As Kierkegaard insists, faith is not necessarily believing without proof , it is acting
+without guarantee . This is what theologian Jürgen Moltmann , drawing on Paul’s idea of hoping
+“against hope” (Romans 4:18) , calls a transformative hope as not a passiv e wish, but a force that
+remakes reality. In more religious terms than the movie makes explicit, hope does not wait for the
+world to change but acts in the world to change it. Andy’s labor, patience, and imagination enact this
+theology in material form .34 Zihuatanejo exists because he opens the confines of his world. Andy also
+escapes not because the world opened for him, but because he opened the world. The journey from
+Shawshank to the Pacific is therefore a movement from protected despair to dangerous f reedom, and
+from the denial of possibility to its embrace. Brooks tragically could not inhabit that freedom. Red
+learns to. Andy shows that utopia, like faith, is not given , it is made. This is the epitome of
+Kierkegaard’s relation to one’s faith.
+Shaws hank therefore becomes a postsecular Thirdspace: materially restrictive, psychologically
+suffocating, yet shot through with invisible apertures of possibility . Andy survives by cultivating an
+inner world and only when he discovers that deviation is structu rally possible, that the wall crumbles,
+does the imagined space become a literal escape route. His freedom is made. In a place built to
+eliminate possibility, he reveals that possibility was always there , a discovery the film discourages for
+the majority o f its runtime . Andy’s survival is mental, imaginative, and inward. Every human being,
+whether free or imprisoned, must spend a lifetime inside their own head. Shawshank suggests that the
+true prison is not the Firstspace of stone walls, nor the Secondspace of routine and institutional identity,
+but the collapse of the inner world , as Andy endures because his imagination remains unconfined. His
+16Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+Thirdspace of hope, memory, and possibility precedes and makes possible his escape. This is why
+Brooks cannot survive and Andy can. Brooks’s world ends the moment the heterotopia dissolves ––or
+is replaced by even more opaque counterparts on the other side of the wall . Without structure, his
+inward life collapses into anxiety and then depression. He is destroyed no t by punishment, but by
+freedom. Red stands between them and begins as a realist, living ethically, performing the role the
+system expects, suppressing hope because it threatens the fragile equilibrium that keeps him alive.
+Only when he abandons performanc e, speaks inward truth, and makes his own leap does the world
+become inhabitable. His final “I hope” becomes confession, creed, and prayer —all without requiring
+metaphysics. Kierkegaard reminds us that anxiety belongs to the human condition. It is not a pa thology
+but a structural feature of freedom. Despair is the refusal of that condition; faith is the courage to live
+within it. The Shawshank Redemption visualizes this philosophy with unusual clarity. Prison removes
+anxiety by removing possibility, but it also removes selfhood. Freedom demands risk, and the risk is
+real harm, real failure, real loss. Hope is therefore not naïve , the movie shows us ; it is the only response
+that makes freedom livable. In a world without obvious miracles, salvation must be ena cted, not
+received.
+For Habermas, the postsecular is the recognition that secular societies have not outgrown
+spiritual needs. Shawshank affirms this , too. It is not a Christian film, yet it performs redemption. Andy
+enacts Exodus , whereas Red receives a kind of gospel. The film offers consolation and transcendence
+while never transcending the world. Its miracles are human: patience, imagination, loyalty, conviction ,
+education . In the end, Shawshank crucially proposes that hope is not mere optimism but work , an
+inward posture that becomes outward transformation. Escapist utopia will always crumble and
+emphasize its etymological conundrum , as it is “nowhere” —but a world remade through human action
+is as close as can come . Andy shows that despair is not in evitable, that possibility remains even where
+structures appear total, and that the self can be chosen again and again. Remember t hat the last image
+17Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+underscores this postsecular notion, as it consists of two men on a beach —no angels, no revelations,
+no div ine verdict —only freedom, friendship, and hope. As Red says: “I hope.”
+Notes
+1 Rise Against, “Rumors of My Demise Have Been Greatly Exaggerated” (2004).
+2 The Shawshank Redemption , directed by Frank Darabont (Castle Rock Entertainment, 1994), film.
+3 See Robert Jewett, St. Paul Returns to the Movies: Triumph over Shame (Grand Rapids, MI: Wm. B. Eerdmans
+Publishing Company, 1999). See also Christopher Deacy, “Redemption Revisited: Doing Theology at Shawshank,”
+Journal of Contemporary Religion 21 , no. 2 (2006): 149 –162.
+4 Michel Foucault, “Of Other Spaces,” Diacritics 16, no. 1 (1986): 22 –27. See also Eamonn Carrabine, “Imagining
+Prison: Culture, History, Space,” Prison Service Journal , no. 187 (January 2010): 21 –25; and Michael Fiddler,
+“Projecting the Prison: The Depiction of the Uncanny in The Shawshank Redemption,” Crime Media Culture 3, no. 2
+(2007): 192 –206.
+5 See Tony Magistrale, Hollywood’s Stephen King (New York: Palgrave Macmillan, 2003).
+6 Søren Kierkegaard, The Concept of Anxiety , ed. and trans. Reidar Thomte and Albert B. Anderson (Princeton: Princeton
+University Press, 1980), 61.
+7 Søren Kierkegaard, The Sickness Unto Death , trans. Alastair Hannay (London: Penguin Classics, 2004).
+8 Søren Kierkegaard, Fear and Trembling , trans. Alastair Hannay (London: Penguin Classics, 1985).
+9 Charles Taylor, A Secular Age (Cambridg e: Belknap Press of Harvard University Press, 2007).
+10 Thomas J. J. Altizer, The Gospel of Christian Atheism (Philadelphia: Westminster Press, 1966); and Don Cupitt, The
+Sea of Faith (London: BBC Books, 1984).
+11 Kierkegaard, Concept of Anxiety , 61.
+12 Kierkegaard, Concept of Anxiety , 44–49.
+13 Ibid., 48.
+14 Kierkegaard, Sickness Unto Death , x–xi.
+15 Søren Kierkegaard, Either/Or: A Fragment of Life , trans. Alastair Hannay (London: Penguin Classics, 1992).
+16 Kierkegaard, Fear and Trembling , 49–50.
+17 Ibid., 66.
+18 Gilles Deleuze and Félix Guattari, A Thousand Plateaus: Capitalism and Schizophrenia , trans. Brian Massumi
+(Minneapolis: University of Minnesota Press, 1987), 474 –500.
+19 Kierkegaard, Sickness Unto Death , 44.
+20 Foucault, “Of Other Spaces.”
+21 Jürgen Habermas, The Power of Religion in the Public Sphere , ed. Eduardo Mendieta and Jonathan VanAntwerpen
+(New York: Columbia University Press, 2011).
+18Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44
+22 Taylor, A Secular Age , 543 –44.
+23 Anish Mundra, “Imagining Prison Spaces: A Spatial Reading of The Shawshank Redemption ,” Journal for
+Undergraduate Ethnography 12, no. 1 (2022): 49 –59.
+24 Edward Soja, Thirdspace: Journeys to Los Angeles and Other Real -and-Imagined Places (Cambridge: Blackwell,
+1996), 62.
+25 Kierkegaard, Sickness U nto Death , 43–44.
+26 Aaron T. Beck, Depression: Causes and Treatment (Philadelphia: University of Pennsylvania Press, 2009).
+27 Taylor, A Secular Age , 539 –43.
+28 Altizer, Gospel of Christian Atheism ; Cupitt, Sea of Faith.
+29 Kierkegaard, Fear and Trembling , 66.
+30 Mary Shelley, Frankenstein , ed. Marilyn Butler (Oxford: Oxford University Press, 1998).
+31 Kierkegaard, Sickness Unto Death , 67–74.
+32 Habermas, Power of Religion in the Public Sphere , 19–22.
+33 Ernst Bloch, The Principle of Hope , trans. Neville Plaice, Stephen Plaice, and Paul Knight (Cambridge: MIT Press,
+1986).
+34 Jürgen Moltmann, Theology of Hope: On the Ground and the Implications of a Christian Eschatology , trans. James W.
+Leitch (London: SCM Press, 1967).
+References
+Altizer, Thomas J. J. The Gospel of Christian Atheism . Philadelphia: Westminster Press, 1966.
+Beck, Aaron T. Depression: Causes and Treatment . Philadelphia: University of Pennsylvania Press, 2009.
+Bloch, Ernst. The Principle of Hope . Translated by Neville Plaice, Stephen Plaice, and Paul Knight. Cambridge: MIT
+Press, 1986.
+Cupitt, Don. The Sea of Faith . London: BBC Books, 1984.
+Carrabi ne, Eamonn. “Imagining Prison: Culture, History, Space.” Prison Service Journal , no. 187 (January 2010): 21 –
+25.
+Deacy, Christopher. “Redemption Revisited: Doing Theology at Shawshank.” Journal of Contemporary Religion 21, no.
+2 (2006): 149 –162. https://doi.org/10.1080/13537900600655365.
+Deleuze, Gilles, and Félix Guattari. A Thousand Plateaus: Capitalism and Schizop hrenia . Translated by Brian Massumi.
+Minneapolis: University of Minnesota Press, 1987.
+Fiddler, Michael. “Projecting the Prison: The Depiction of the Uncanny in The Shawshank Redemption.” Crime Media
+Culture 3, no. 2 (2007): 192 –206. https://doi.org/10.117 7/1741659007078546.
+Foucault, Michel. “Of Other Spaces.” Diacritics 16, no. 1 (1986): 22 –27.
+19Wilken: Leaping Out of Confinement with Kierkegaard in The Shawshank Redemption
+Published by DigitalCommons@UNO, 2026
+Habermas, Jürgen. The Power of Religion in the Public Sphere . Edited by Eduardo Mendieta and Jonathan
+VanAntwerpen. New York: Columbia University Press, 2011.
+Jewett, Robert. St. Paul Returns to the Movies: Triumph over Shame . Grand Rapids, MI: Wm. B. Eerdmans Publishing
+Company, 1999.
+Kierkegaard, Søren. Either/Or: A Fragment of Life . Translated by Alastair Hannay. London: Penguin Classics, 1992.
+——— . Fear and Trembling . Translated by Alastair Hannay. London: Penguin Classics, 1985.
+——— . The Concept of Anxiety . Edited and translated by Reidar Thomte and Albert B. Anderson. Princeton: Princeton
+University Press, 1980.
+——— . The Sickness Unto Death . Translated by Alastair Hannay. London: Penguin Classics, 2004.
+King, Stephen. “Rita Hayworth and Shawshank Redemption,” in Different Seasons . New York: Viking Press, 1982.
+Magistrale, Tony. Hollywood’s Stephen King . New York: Palgrave Macmillan, 2003.
+Moltmann, Jürgen. Theology of Hope: On the Ground and the Implications of a Christian Eschatology . Translated by
+James W. Leitch. London: SCM Press, 1967.
+Mundra, Anish. “Imagining Prison Spaces: A Spatial Reading of The Shawshank Redemption .” Journal for
+Undergraduate Ethnography 12, no. 1 (2022): 49 –59.
+Rise Against. “Rumors of My Demise Have Been Greatly Exaggerated.” Siren Song of the Counter Culture . Geffen
+Records, 2004. Audio recording.
+Shelley, Mary. Frankenstein; or, The Modern Prometheus . Edited by Marilyn Butler. Oxford: Oxford University Press,
+1998.
+The Shawshank Redemption . Directed by Frank Darabont. Castle Rock Entertainment, 1994. Film.
+Soja, Edward. Thirdspace: Journeys to Los Angeles and Other Real -and-Imagined Places . Cambridge: Blackwell, 1996.
+Taylor, Charles. A Secular Age . Cambridge: Belknap Press of Harvard University Press, 2007.
+20Journal of Religion & Film, Vol. 30 [2026], Iss. 1, Art. 44
+https://digitalcommons.unomaha.edu/jrf/vol30/iss1/44
+DOI: 10.32873/uno.dc.jrf.30.01.44

@@ -28,7 +28,7 @@ def ingest_sources(sources_path: str, reset: bool = False) -> None:
                 print(f"Skipping {row['source_key']}: missing {local_path}")
                 continue
 
-            raw_text = extract_by_path(source_location)
+            raw_text = extract_by_path(source_location).replace("\x00", "")
             cleaned = clean_text(raw_text)
             hash_value = content_hash(cleaned)
             chunks = chunk_text(row["source_key"], hash_value, cleaned)

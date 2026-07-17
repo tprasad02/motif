@@ -1,0 +1,61 @@
+The Prestige Structure Breakdown - by Bruce Hutchinson
+https://www.thehutchfiles.com/p/the-prestige-structure-breakdown
+
+The Prestige Structure Breakdown
+Bruce Hutchinson
+Oct 06, 2023
+Share
+Last year, I partnered with Podcast 241 on an analysis of
+The Prestige
+, but I got a little behind in posting the accompanying breakdown. So checkout the podcast and read my breakdown below. Note: My written breakdown here might be a little different than what I discussed in the podcast. As I wrote it up, I discovered a few interesting things I missed during the podcast!
+As always, these breakdowns contain SPOILERS, and are only recommended if you've already seen the movie. You can check my
+introduction to these breakdowns
+, to get an overview of my process and philosophy.
+Feel free to let me know what you think in the comments below!
+The Basics
+Director
+: Christopher Nolan
+Writers
+: Jonathan Nolan, Christopher Nolan, Christopher Priest
+Release Date
+: 2006
+Runtime
+: 130 minutes
+IMDB
+https://www.imdb.com/title/tt0482571/
+Movie Level Goals
+Protagonist
+: Robert Angier
+External:
+Be a better magician than Borden (by creating a superior Transported Man illusion)
+SUCCESS
+| FAILURE | MIXED
+Angier creates the ultimate Transported Man
+Secondary Goal:
+To get revenge on Borden for the death of Julia
+SUCCESS | FAILURE |
+MIXED
+Angier causes the death of Borden and takes Jess, but Fallon kills him, survives, and is reunited with Jess
+Three Observations
+Observation #1: The Non-Linear Illusion
+When movies are non-chronological, it often seems to throw the structure into doubt. If everything’s out of order and jumbled up, where can we find the climaxes? It turns out, though, that most non-chronological films still have a relatively clear-cut structure. Goals are still defined, whether in the present or past storylines, and therefore climaxes must also be present. In the case of
+The Prestige
+, even though there seem to be three main timelines (the present with Borden in prison, the mid-past with Angier in Colorado, and the further-past with Angier and Borden in competition), the actual structure takes place chronologically. The only minor exception to this is the Act 1 Climax, which combines Angier shooting Borden in the further-past and Angier in the mid-past discovering no answers to Julia’s death in the fake journal he reads while in Colorado.
+Observation #2: Weak Act 1 Goal
+Act 1’s often have no goal. In general, we are introduced to a status quo for the protagonist and other characters, which is disturbed or interrupted by the inciting incident. The goal before the inciting incident usually centers around the normal lives of the characters at that moment. In
+The Prestige
+, Angier and Borden are trying to succeed together as magicians. This is disrupted, of course, by the death of Julia due to Borden’s use of the more dangerous knot. After Borden lies about the knot at Julia’s funeral, the narrative interestingly focuses on Borden’s life as we meet Fannon and discover that Sarah is pregnant. Given the quick pace of the movie, it makes some amount of sense that it doesn't focus too much on Angier’s grief. Having said that, Angier does have a goal after the inciting incident, which is to discover the truth of the knot, and in a related act, get revenge for Julia’s death. The act climaxes when Angier shoots Borden in revenge, then as the movie jumps forward to Colorado, Angier discovers that even in the journal, Borden is unsure of which knot he tied (of course, this is false as the journal is a fake). Despite there not being a strong Act 1 goal after the inciting incident, Angier’s desire to know about the knot does provide some forward momentum and results in a climax. Additionally, Borden’s storyline takes up additional scenes in the final 7-8 minutes of the act after that inciting incident.
+Observation #3: Three Acts–The Pledge, The Turn, The Prestige
+Movies sometimes impose an “external” structure on a movie in the form of title cards, changes of season, changes of day etc. Sometimes these breaks parallel the actual structure of the narrative (
+Moonlight
+for example). Other times, while the imposed structure might be revealing, it doesn’t always parallel the actual goal structure of the film (
+Grand Budapest Hotel
+for example, which has five title cards, three of which come in the first 35 minutes). In
+The Prestige
+, we have an interesting structure that is more subtly imposed on the film: the three-part structure of a magic trick. Right at the start of the movie Cutter narrates to us in voice over that a magic trick has three parts–The Pledge, The Turn, and The Prestige. Given the cleverness of the Nolan brothers it would be almost impossible for them not to parallel the three acts of a magic trick with the traditional three acts of a movie. And indeed, while the movie has four goal-based acts, they still parallel the three act structure of a magic trick, though the Nolans are quite subtle about this.
+Act 1 ends with a scene dedicated to Angier and then one dedicated to Borden. First, we see Angier in Colorado, reading the diary and finding no answers in regard to the knot. Then we return to Borden in the past, who insists to Sarah he can still do his yet to be revealed trick. This is also the end of The Pledge. Act 2 starts with Angier before Colorado, still at a loss after the death of Julia. Drinking at a bar, he discovers a small playing card on the bottom of his glass, and finds Cutter there, ready to help Angier start his own act. This launches us into Act 2, and starts The Turn. I don’t subscribe to a typical three-act structure with a 30 minute/60 minute/30 minute timing structure. And indeed, Act 2 has a clear climax at the 60-minute mark when Angier performs The Transported Man with Gerald. He has succeeded at his own solo act, though he is dissatisfied at being stuck under the stage and missing the applause. So structurally, we are now moving into Act 3 with Angier’s goal of creating the “true” Transported Man. But in traditional three act structure, we are only in the middle of the second of three acts–that is we are still in The Turn.
+Using our four act structure, the climax of Act 3 of 4 comes just past the 91-minute mark when Angier tests Tesla’s box. Though we don’t see the result, it’s clear that the box works and Angier’s Act 3 goal has succeeded. The act ends with Sarah’s suicide by hanging. This is also the end of Act 2 in the more traditional Three Act structure, and marks the end of The Turn. We know the goal-structure and the “imposed” structure are parallel, because of how the final act starts (Act 4 in my breakdown, Act 3 in the more traditional approach). The scene after Sarah’s hanging returns us to a bar, this time with Angier leaving a card for Cutter, signaling that he has returned from Colorado and is ready to embark on his last great show with the “true” Transported Man. The parallel between the earlier bar scene and this scene, helps mark them as the start of The Turn (Act 2 in a traditional structure) and The Prestige (Act 3 in a traditional structure). And they map perfectly on our four act structure, with the first and final acts being the same, and our two middle acts of approximately 30-minutes each paralleling the middle 60-minute act of The Turn.
+Thanks for reading The Hutch Files! Subscribe for free to receive new posts and support my work.
+Share
+Previous
+Next

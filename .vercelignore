@@ -1,0 +1,12 @@
+.venv/
+.pnpm-store/
+data/manual/
+data/manual_extracted/
+data/raw/
+notebooks/
+infra/
+backend/
+ingestion/
+evals/
+*.pyc
+__pycache__/

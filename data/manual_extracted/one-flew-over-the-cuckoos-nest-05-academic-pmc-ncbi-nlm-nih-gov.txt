@@ -1,0 +1,910 @@
+Fifty Years of One Flew Over the Cuckoo's Nest: A Qualitative Exploration of Mental Health Staff's Perspectives - PMC
+https://pmc.ncbi.nlm.nih.gov/articles/PMC12645358/
+
+Int J Ment Health Nurs
+. 2025 Nov 25;34(6):e70181. doi:
+10.1111/inm.70181
+Fifty Years of
+One Flew Over the Cuckoo's Nest
+: A Qualitative Exploration of Mental Health Staff's Perspectives
+John Goodwin
+John Goodwin
+Catherine McAuley School of Nursing and Midwifery, University College Cork, Cork, Ireland
+Find articles by
+John Goodwin
+Katerina Drakos
+Katerina Drakos
+Catherine McAuley School of Nursing and Midwifery, University College Cork, Cork, Ireland
+Child and Adolescent Mental Health Center, University Hospital–Mental Health Services CPH, Copenhagen, Denmark
+Copenhagen Center for Social Data Science (SODAS), University of Copenhagen, Copenhagen, Denmark
+Find articles by
+Katerina Drakos
+Author information
+Article notes
+Copyright and License information
+Catherine McAuley School of Nursing and Midwifery, University College Cork, Cork, Ireland
+Child and Adolescent Mental Health Center, University Hospital–Mental Health Services CPH, Copenhagen, Denmark
+Copenhagen Center for Social Data Science (SODAS), University of Copenhagen, Copenhagen, Denmark
+Correspondence:
+John Goodwin (
+john.goodwin@ucc.ie
+Corresponding author.
+Revised 2025 Nov 10; Received 2025 Jun 20; Accepted 2025 Nov 11; Issue date 2025 Dec.
+© 2025 The Author(s).
+International Journal of Mental Health Nursing
+published by John Wiley & Sons Australia, Ltd.
+This is an open access article under the terms of the
+http://creativecommons.org/licenses/by/4.0/
+License, which permits use, distribution and reproduction in any medium, provided the original work is properly cited.
+PMC Copyright notice
+PMCID: PMC12645358 PMID:
+41287983
+ABSTRACT
+In 2025, the film
+One Flew Over the Cuckoo's Nest
+turned 50 years old. Although the film has been subject to analysis over the years, its role in shaping the perceptions of professionals working in mental health has not yet been fully explored. The aim of this paper is to explore mental health staff's perspectives on
+One Flew Over the Cuckoo's Nest
+on its 50th anniversary. Semi‐structured interviews were conducted with 15 participants. The study was guided by a qualitative descriptive approach. Reflexive thematic analysis was used to analyse data. Five Themes were identified: Personal Reflections on First Viewing
+One Flew Over the Cuckoo's Nest
+, Consolidating Stereotypes and Reinforcing Stigma, The Shadow of Nurse Ratched, We Have Come a Long Way but We Still Have a Long Way to Go and The Legacy of
+One Flew Over the Cuckoo's Nest
+Today. Although the film's direct influence is waning, it still has some hold over the public's negative views of mental health care. Media campaigns, similar to those used to dispel myths about mental health challenges, should be used to promote better images of mental health staff and care environments, reducing stigma. While mental health care has come a long way since the release of
+One Flew Over the Cuckoo's Nest
+, further improvements are warranted, with an emphasis on reducing power dynamics and more focused mental health education.
+Keywords:
+film, media, mental health, psychiatry, stigma
+1. Introduction
+The year 2025 marked the 50‐year anniversary of the film
+One Flew Over the Cuckoo's Nest
+(Forman
+1975
+), based on the book by Ken Kesey, published in 1962. The book itself is regarded as a foundational work of American literature and when released left a long‐lasting impression on its readers (Stip et al.
+2023
+). There have been several scholarly works dedicated to analysing the film and its influence on the public, with many noting how it has fostered stigma towards mental illness and mental health care (Cabrera et al.
+2021
+; Hamilton
+2024
+). However, there is a limited understanding as to how
+One Flew Over the Cuckoo's Nest
+has shaped mental health staff's perceptions. Using a qualitative descriptive approach with international participants from different professional backgrounds, this paper explores health staff's perspectives on
+One Flew Over the Cuckoo's Nest
+on its 50th anniversary.
+2. Background
+One Flew Over the Cuckoo's Nest
+tells the story of Randle P. ‘Mac’ McMurphy (played by Jack Nicholson), who is a patient at a mental institution and his dramatic rebellion against the ‘Big Nurse’/Nurse Ratched (played by Louise Fletcher) (Domino
+1983
+; Voyce
+2025
+). It has been critically acclaimed and is widely regarded as one of the greatest films of all time, exploring complex topics of mental illness, institutional power relations and autonomy (Abdulkadhim Neamah Alrubaye
+2024
+). In the 1970s, the theme of freedom against authority was timely as the first steps towards deinstitutionalisation were taking place across the world which meant that the defiant stance against the psychiatric system created a sense of heroism in McMurphy's character (Anderson
+2003
+; Rondinone
+2020
+)—this is important given the influence that media can have on the general public (Goodwin et al.
+2023
+; Liu
+2023
+Media representations can shape public views of complex topics, with the filmmaker/artist invoking symbols, metaphors, dialogue and aesthetic moments to explore a difficult topic. Popular cinema as a medium also allows for reflection on opinions, attitudes and beliefs on these topics (Aventin et al.
+2019
+; Liu
+2023
+). According to Bateson's (
+1972
+) Framing Theory, the way information is framed within the media, including film, influences public opinion. Moreover, Cultivation Theory (Gerbner and Gross
+1976
+) proposes that exposure to multimedia shapes how the public perceive reality, or that people's world views align with what is presented through mediums such as film. On the other hand, Cavell (
+1979
+) viewed audiences as taking a more active stance when engaging with film, whereby reflection is encouraged, prompting questions and scepticism about the reality presented within filma. Bordwell and Thompson (
+2021
+) concur with regard to the reflective nature of film, emphasising that cinema is not merely a passive recording of reality and acknowledging the intentionality of the filmmakers when producing films. These theoretical approaches underscore the various ways in which film as a medium represents reality and how audiences are influenced by the medium's message and are encouraged to reflect on the messages within.
+In relation to the empirical literature, recent evidence indicates that films can influence people's perceptions of a range of issues, including career pathways (Geena Davis Institute on Gender in Media
+2018
+; Kool et al.
+2022
+), smoking behaviours (Li et al.
+2024
+) and climate change (Schneider‐Mayerson et al.
+2025
+). Film can also have an influence on how the public perceive mental health, with perceptions of this area often negative (Anderson
+2003
+; Hecht et al.
+2022
+; Parrott
+2023
+). Many authors have commented that
+One Flew Over the Cuckoo's
+Nest
+, in particular, has propagated myths and stereotypes about mental health, leading to spreading of misinformation about mental health care environments, staff and treatments (Anderson
+2003
+; Bock et al.
+2022
+; Cabrera et al.
+2021
+One such detail of the film that has been widely explored is the public's negative perceptions of electroconvulsive therapy (ECT). In the film, McMurphy is subjected to ECT—without anaesthesia or muscle relaxants—as a consequence of not following the rules of the ward, as laid down by Nurse Ratched. Fifty years since its release,
+One Flew Over the Cuckoo's Nest
+remains the most frequently cited film depicting ECT (Cabrera et al.
+2021
+; McFarquhar and Thompson
+2008
+). Mental health professionals have been critical of the film's depiction of ECT, which was said to increase stigma towards the treatment and created attitudes that persist, despite evidence regarding the safety and efficacy of ECT (Cabrera et al.
+2021
+; Hamilton
+2024
+). In a qualitative study, when asked directly about ECT, members of the public and those with a history of depression cited the film as an explicit influence on their perceptions, and described the procedure as scary, traumatic or intense (Cabrera et al.
+2021
+). Moreover, support declines among medical students after viewing clips of ECT from the film (McFarquhar and Thompson
+2008
+). McDonald and Walter (
+2009
+) note that there are valid criticisms of ECT, but the film has convinced many members of the public that this is a one‐sided argument, and that any use of ECT is only ever coercive.
+Although the impact of
+One Flew Over the Cuckoo's Nest
+on the public has been considered to have had a mostly negative effect towards mental illness and mental health care, some studies have shown the potential to educate young health professionals. The film can be used as a catalyst for deeper discussions on mental health practices and developments of facilities and care in the present day (Bock et al.
+2022
+). Given the depiction of Nurse Ratched—a cold, strict, authoritarian figure—
+One Flew Over the Cuckoo's Nest
+has been used to explore mental health issues in nurse education (McCann and Huntley‐Moore
+2016
+). The ‘Madness in the Movies’ module was implemented in a higher education institution in Ireland. Throughout the module, students compared and contrasted historical portrayals of mental health issues with the contemporary mental health landscape, attitudes and person‐centred practices within mental healthcare settings. Films, including
+One Flew Over the Cuckoo's Nest
+were used as a basis to discuss developments in mental health. Students felt that their understanding of mental health issues was enriched through their participation in the module, and they were made more aware of current policy initiatives in mental health care, especially considering the shift towards user‐led services, the recovery ethos and the importance of family involvement (McCann and Huntley‐Moore
+2016
+Although both the book and the film have been analysed in depth by scholars, there is a gap in the research, in that its role in shaping the perceptions of professionals working in mental health has not yet been fully explored. Understanding these perceptions is important, given how media portrayals of mental health can influence stigma, treatment expectations (Goodwin et al.
+2023
+2024
+), and staff's professional identities (Wu et al.
+2024
+). The aim of this paper is to explore mental health staff's perspectives on the film
+One Flew Over the Cuckoo's Nest
+on its 50th anniversary.
+3. Methods
+3.1. Design
+This study was guided by a qualitative descriptive approach. In such studies, the researcher is encouraged to adhere closely to participant data (Bradshaw et al.
+2017
+). Taking such an approach facilitates the reporting of participants' perceptions of phenomena in their own words (Searby et al.
+2022
+). This design was chosen as it allows for a nuanced overview of how people from diverse international contexts make sense of cultural material (such as film) (Kim et al.
+2017
+; Neergaard et al.
+2009
+; Sandelowski
+2000
+). This was important to the current study, as
+One Flew Over the Cuckoo's Nest
+is a US production directed by a Czech‐American, the researchers are from Ireland and Portugal, and a diverse range of international participants was sought.
+3.2. Data Collection
+A purposeful sampling approach was adopted. Following ethical approval from the Social Research Ethics Committee, University College Cork, emails advertising the study were sent through the researchers' contact networks and advertised over social media. Interested parties contacted the researcher directly to arrange interviews.
+Interviews were conducted online by an experienced mental health nurse academic (JG), via Microsoft Teams in January/February 2025; field notes were also recorded. Automatically generated transcripts were checked against the original audio for accuracy and then deleted. Interviews lasted 20–47 min. The interview guide is included as supplemental material.
+3.3. Data Analysis
+Braun and Clarke's (
+2021
+) reflexive thematic analysis was used to analyse data, facilitated by NVivo 14 (QSR International Pty Ltd. 2023). Transcripts were read numerous times, aiding immersion. Data were then coded by JG Next, themes were independently identified from codes by JG and KD These were then discussed, debated and refined before write‐up.
+Lincoln and Guba's (
+1985
+) principles were followed to maintain rigour. The researchers had extensive research experience, with the lead researcher holding qualifications in mental health nursing and film studies, thus strengthening credibility (Jahn et al.
+2025
+). Dependability and confirmability were enhanced by describing all steps of the research process in detail. In line with transferability, quotations from every participant interviewed are provided (Lincoln and Guba
+1985
+; Vellakkal et al.
+2017
+4. Results
+Interviews were conducted with 15 participants; pseudonyms are used to protect anonymity. Most (
+= 8) participants were female, resided in Ireland (
+= 10), and came from nursing backgrounds (
+= 14). A diverse range of areas practice were included: acute care, community care, education, forensics and the child and adolescent mental health services. Demographics are presented in full in Table
+TABLE 1.
+Demographics.
+Characteristics
+Gender
+Male
+Female
+Prefer to self‐describe (agender)
+Age range
+18–25
+31–35
+36–40
+41–45
+46–50
+51–55
+Country of residence
+Ireland
+New Zealand
+Australia
+Turkey
+Profession
+Nursing
+Clinical psychology
+Area of practice
+Acute
+Acute (children)
+Community
+Education
+Forensics
+Open in a new tab
+Five themes were identified: Personal reflections on first viewing
+One Flew Over the Cuckoo's Nest
+, Consolidating Stereotypes and Reinforcing Stigma, The Shadow of Nurse Ratched, We Have Come a Long Way but We Still Have a Long Way to Go and The Legacy of
+One Flew Over the Cuckoo's Nest
+Today.
+4.1. Theme 1. Personal Reflections on First Viewing
+One Flew Over the Cuckoo's Nest
+Under this theme, participants spoke about when they first saw
+One Flew Over the Cuckoo's Nest
+and what struck them about it initially. Although some participants saw the film before the start of their healthcare studies, many were exposed to it during their college experience. This film was either screened during class‐time, or they sought it out after a reference was made to it in class:
+I probably first saw it, I'd say three or four years ago, kind of in the middle of college studying to be a nurse
+(Gina)
+Unanimously, participants considered it to be an excellent film, despite some of negative ways which in which mental illness and mental health care is framed. The film was considered to be very impactful, with certain images etched into participants' minds:
+I think you don't need to watch it more than once or twice ‘cause it sticks in your mind’
+(Fred)
+Most participants had not been on clinical placement when they first saw the film. As such, the ‘reality’ the film represented about mental health care was accepted as authentic at the time. For some, this created a sense of fear about the clinical placements they would undertake when they were students:
+I went to do my mental health placement: that's all I could think about. And I thought, ‘Oh my God, they're all going to be crazy. They're all going to be shouting and yelling at each other. They're all going to be trying to kill themselves and each other’, and I was terrified going into a mental health acute ward
+(Ivy)
+4.2. Theme 2. Consolidating Stereotypes and Reinforcing Stigma
+This theme reports on how the film has played a substantial role in contributing to mental health stigma in society. Participants commented that many members of the general public hold stigmatising beliefs about mental illness and mental health care, viewing service users through a stereotypical lens.
+One Flew Over the Cuckoo's Nest
+amplified and confirmed perceptions already held, intensifying stigma:
+I think it probably reinforced stereotypes that people had and probably reinforced stigma
+(Anthony)
+Images of service users projected by the film were of social outcasts, people who were potentially dangerous. Such individuals would be best segregated from regular society:
+I think it probably again reaffirmed all the kind of prejudices that they're odd, weird kind of characters, that they're probably a little bit dodgy and best off avoided. And to some extent they need controlling
+(Dylan)
+The sense of ‘danger’ linked with service users also extended to the hospital environment. Participants considered that the hospital in the film was portrayed more like a prison than a therapeutic environment. Rather than adopting a recovery‐orientated approach to care, a more punitive approach was depicted:
+And the movie is very much put across like he's in, you know, it's a prison. And if you step out of line, you're punished and, like, punished very, very hard
+(Oliver)
+Such punishments included the forced use of ECT and medication. Participants commented that the stark images of such treatment in the film have had an impact on society, with many of the public believing to this day that the approach is representative of the current mental health ethos:
+People think that every time every type of mental illness will result in you ending up in a facility like
+One Flew Over the Cuckoo's Nest
+and being given ECT without your consent with no muscle relaxants and, you know, forced with medication
+(Hector)
+I really think that people still think this is what mental health is still, like, that there's these big men ready to come in and flatten people and inject them when they misbehave
+(Janice)
+Consequently, several participants commented that, over the years, the film has influenced people experiencing mental health challenges to avoid help‐seeking:
+I don't want to go there because I'm not that. That's not me. I don't want to be with people like that. I don't want to be treated like that
+(Esme)
+Because if you see that and you think that's what I'm going into, you're not going to go to place like that
+(Chris)
+Despite consolidating stereotypes and reinforcing stigma, one participant highlighted one of the potential benefits of the film.
+One Flew Over the Cuckoo's Nest
+put mental health into the public consciousness, instigating conversations which has ultimately led to a more progressive approach today:
+I think whilst it was shocking and whilst it was maybe not a true depiction of mental health, it did get mental health on the map a long time ago
+(Ivy)
+4.3. Theme 3. The Shadow of Nurse Ratched
+Under this theme the character of Nurse Ratched and her impact on the public's perception of the nursing profession is addressed. For all participants, Nurse Ratched—and her antagonistic relationship with service users—was the part of the film that stood out the most. Participants described her as a nursing archetype:
+When I envision a nurse, that's what a nurse wears: the hat and the long white dresses and the white shoes and the tights
+(Janice)
+Indeed, it was suggested that the term ‘Nurse Ratched’ has embedded itself in the public consciousness. In cases where people encounter nurses with whom they have disagreements, they would often to refer to them, pejoratively, as ‘Nurse Ratcheds’:
+If there was a nurse there [my friends who don't work in mental health] didn't like, they were like, ‘Gee, she was a right Nurse Ratched’
+(Nadia)
+Like the name ‘Nurse Ratched’ again is a colloquial term to describe a domineering person or a person who's not a very nice person
+(Hector)
+Participants spoke about their discomfort with the Ratched character and how she engaged with service users. Her cold, unempathetic demeanour, misuse of power and inability to build therapeutic relationships with service users was considered to be the antithesis of what participants had learned as part of their healthcare education:
+I think that the nurse's communication skill was not appropriate at all. There was a non‐therapeutic relationship with patients. Now I can say that. She was very strict. Not flexible. Not understanding. She has… kind of lack of empathy throughout the movie
+(Melike)
+Like completely the antithesis, almost of like what we are told we need to be as mental health nurses. So, kind of very unfeeling, very cold, manipulative. Not very person‐centred in any way, shape or form
+(Chris)
+Although one participant argued that Nurse Ratched could not exist today due to safeguards in place, many others believed she still exists in some mental health services. Despite there being better governance within contemporary mental health services, there are still those who view themselves as an authority figure and will misuse their perceived position of power:
+I have come across a few Nurse Ratcheds my time
+(Ivy)
+There's kind of, like, I suppose this authoritarian kind of figure, you know, just abuse of power. Definitely a case as well of, ‘take the medication. There's a routine: stick to it’
+(Oliver)
+Indeed, it was suggested that all mental health staff have the potential to misuse their perceived power. As such, participants commented on the importance of self‐awareness and ensuring that they do not promote toxic hierarchies:
+There's a little Nurse Ratched and all of us trying to get out, and we have to keep that little Nurse Ratched in check
+(Dylan)
+I don't want to treat service users the way they were treated in the movie or in the old mental health unit. So I've got to catch myself before I get too stuck in my ways about this
+(Gina)
+It was felt that this is being achieved due to the better standards of education that healthcare staff are exposed to today. In contemporary education systems, participants felt that there is a greater focus on person‐centred approaches to care:
+I think it's far better education out there and far better education on how to treat patients and how to nurse
+(Nadia)
+Some participants with nursing backgrounds expressed the substantial difference they had observed where staff have discipline‐specific mental health education compared to those with generic nurse education. It was observed that those who had undertaken discipline‐specific nursing programmes had a much better understanding of mental health and adopted a ‘less strict’ approach when engaging with service users:
+Nurses [in Australia] are all registered nurses, general nurses, and then they do a 12‐month postgrad in mental health whilst working full time as a nurse. So really the quality of mental health training is terrible
+(Ivy)
+And some even very strict, very strict to towards patients. They [those with generic nurse education] are not very expertise in the field, maybe even they didn't get any higher education in mental health. They are, they are just graduated in from nursing
+(Melike)
+4.4. Theme 4. We Have Come a Long Way but We Still Have a Long Way to Go
+Under this theme, the progress we have made in mental healh care is addressed, as are the improvements still required. Participants commented that current mental health care environments are more aesthetically pleasing, less clinical, more colourful and more modern than the hospital depicted in
+One Flew Over the Cuckoo's Nest
+. Moreover, they believed that most care has moved outside of the hospital environment and into the community:
+A good few of those patients would be treated in the community as opposed to being treated in an inpatient unit. Possibly all of those patients would be in the community today
+(Anthony)
+Relationships between staff and service users were regarded to be much more positive in a modern context, with staff expressing genuine interest in those under their care:
+I feel nowadays there is more rapport between the nursing staff and the patients in a positive way
+(Hector)
+Despite assertions that mental health care has changed for the better, there were some concerns expressed about how
+One Flew Over the Cuckoo's Nest
+mirrors some current practices. In this regard, participants felt that mental health care could sometimes be categorised as regressive rather than progressive:
+There are still some disturbing parallels
+(Esme)
+There was a suggestion that, despite efforts by mental health staff to help others, harm sometimes can come to service users. This was as a result of a sometimes unwaivering reverenace to the orthodoxy, an ingrained inflexibility and a tendency to default to social control:
+I think the themes and some of the practices are actually an accurate representation of even some of the some of the ideas today. And if you look at that kind of psychiatry as a means of social control, the dominance of an orthodoxy, iatrogenic harm, the fact that maybe psychiatry, arguably is more harmful than good
+(Anthony)
+Although it was acknowleged that an effort to maintain human rights is upheld, and there is relevant mental healh legislation in place, people's dignity can often be compromised in the context of power imbalances and the perpetuation of coercive and restrictive practices. Such care was considered almost ‘Victorian’ by participants:
+I think very much the power lies with the clinicians. And it still does, even though we talk about it, I think that the the coercive practices are still there. I think restrictive practices are still there. […] We can still incarcerate people against the will. We can restrict visitors, phones, we can lock doors
+(Lydia)
+I think in certain situations that it can be a little bit more, I suppose, Victorian, like we're a little bit more like the nurse kind of giving instructions as opposed to being more equal. I know that's not how it's meant to be
+(Nadia)
+4.5. Theme 5. The Legacy of
+One Flew Over the Cuckoo's Nest
+Today
+The final theme addresses the legacy and relevance of the film today. Some participants commented that the film is dated and not as accessible and relatable to a modern audience. As such, it was felt that the effect of the film is waning over time:
+I told a few people that I was doing this today and they were either, like, ‘Oh yeah, I've heard of it. But I've never watched it’ or, ‘Oh, I've never even heard of that’
+(Gina)
+Moreover, owing to more positive media messages and promotional campaigns, several participants expressed that a contemporary audience is much more mental health‐informed than the audiences first exposed to
+One Flew Over the Cuckoo's Nest
+in 1975. Consequently, the film would be viewed more in the context of a historical document than a reflection of mental health care today:
+I certainly think that yeah, the kind more positive messaging about accessing mental healthcare and support is certainly more to the fore now
+(Esme)
+On the other hand, other participants commented that the film is still used as a reference point by the general public. They felt that, when the public have no experiences with mental health services, they tend to still draw on the imagery depicted in
+One Flew Over the Cuckoo's Nest
+I think it's probably the most defining piece of material that people who don't have any understanding or knowledge mental health services use as a point of reference as to what happens in contemporary mental services
+(Hector)
+Some participants suggested that modern audiences may not consume the film in its original intended form. However, they highlighted that shorter clips of the film are shared on platforms such as
+YouTube
+and
+TikTok
+, and certain still images have been adopted through ‘meme culture’. In this regard, the messages of the film continue to reach younger audiences, albeit in a different format:
+There are some memes now and people have like a screenshot of a movie and share it and don't actually know what the movie is but they understand the context of the image
+(Brian)
+Participants gave examples of cases where service users expressed dissatisfaction with the care they were receiving or frustration with their involuntary status. In such instances, service users often drew comparisons to
+One Flew Over the Cuckoo's Nest
+, indicating that the film continues to cast a shadow on how mental health care is perceived:
+A patient would be under a status where they wouldn't be allowed to leave the facility. And they'd be like, ‘Jesus, this is like One Flew Over the Cuckoo's Nest’
+(Oliver)
+He's like, ‘You're part of One Flew Over the Cuckoo's Nest. You guys are just like the movie. There's Nurse Ratched over there’
+(Brian)
+Even when people have not seen the film, there was a sense that it has insidiously influenced current media narratives, including the recent Netflix prequel show,
+Ratched
+. Indeed, several participants commented on how
+Ratched
+has exaggerated elements of
+One Flew Over the Cuckoo's Nest
+, amplifying stigma for today's audience:
+This [Ratched show] really isn't doing a lot for stigma. […] And certainly, it had kind of horror kind of elements to it. And it was very dramatic and very sensational and all that sort of stuff. So, I think that one very much kind of probably portrayed psych units in a very bad light
+(Dylan)
+Rather than conduct field research on the state of current mental health services, participants believed that people working in entertainment media instead rely on often inaccurate, outdated images they have gleaned from older texts, including
+One Flew Over the Cuckoo's Nest
+. As such, modern entertainment media perpetuates a myth that mental health care environments are old‐fashioned and give a sense of a custodian service:
+Some of the games we play like, you know, the asylums are very much built on the kind of look of the asylum from One Flew Over the Cuckoo's Nest, you know, these long corridors, you know…. Kind of jail, almost jail looking things you know, so I definitely think it spills over… for sure… It has to have an influence. It's such an influential movie
+(Oliver)
+One participant spoke about service users who distinguished between their initial perceptions of mental health services and the reality they experienced upon engagement. Their initial reluctance to engage with mental health services owed to stigmatising perceptions, fueled by what had been seen in movies. This participant felt that film such as
+One Flew Over the Cuckoo's Nest
+or other media narratives influenced by the film continue to dominate the public discourse surrounding mental health:
+‘It's not at all how I thought it was going to be’, and when I asked, ‘follow that up with what made you think it was going to be in a particular way’, ‘Oh, what you'd see in movies’
+(Kirsty)
+Despite some of the reservations about the film and how it has impacted current perceptions of mental health services, participants commented that it should still be screened for audiences today. However, it should be clearly communicated that this is a work of fiction and does not represent contemporary services, with an emphasis on ‘look how far we have come’:
+I think it can be like as a movie to retrospectively look back on and again see how far we've kind of come and how far we need to still continue to go: It's important. Sometimes it's important to look back to go forward
+(Nadia)
+5. Discussion
+The aim of this paper was to explore mental health staff's perspective of
+One Flew Over the Cuckoo's Nest
+on its 50th anniversary. According to participants in this study, the film continues to influence how the public view mental health care, either directly, but also more subtly, in that it has negatively influenced the media narratives which are consumed by contemporary audiences, including recent films and TV shows, but also social media. Such negative media exposure can influence the public's views of mental health and exacerbate stigma (Parrott
+2023
+; Perciful and Meyer
+2017
+; World Health Organization
+2025
+). Participants in the current study acknowledged that more positive media messaging and promotional campaigns have led to better perceptions of mental health. While this may be true for how the public view mental illnesses/mental health challenges such as depression and anxiety (Tam et al.
+2024
+), mental health staff and mental health care environments continue to be viewed through a sensationalised, stigmatised lens (Bone and Marchant
+2016
+; Goodwin et al.
+2023
+2024
+; Hajizadeh et al.
+2024
+). Indeed, owing to negative or frightening depictions of staff and mental health care environments within media, a reluctance to seek help for mental health challenges has been reported (Goodwin et al.
+2023
+; Srivastava et al.
+2018
+; Wong et al.
+2020
+). Reducing mental health stigma is important (Hajizadeh et al.
+2024
+; Whitley and Campbell
+2014
+). Given the success of mental health promotional campaigns on how the public view mental health challenges, similar strategies should be employed to reduce the stigma surrounding mental health staff and care environments.
+Stigma in mental health is a form of social oppression stemming from the power imbalance between those who stigmatise and those who are stigmatised (Arboleda‐Flórez and Stuart
+2012
+). Although the current landscape for human rights in mental health has improved, this dual relationship between power and stigma in mental health care exacerbates the self‐stigma felt by service users (Mertens et al.
+2025
+). Service users with lived experiences consider mental health professionals to be key contributors to stigma, and although international agreements explicitly call for the reduction or elimination of restrictive and coercive practice in mental health care, these are considered regular healthcare acts (Savage et al.
+2024
+Foucault's analysis and criticism of institutions is particularly relevant here. His concept of biopower, introduced as a response to his reflection on how ‘prisons resemble factories, schools, barracks and hospitals, which all resemble prisons’ (Foucault
+1975
+, 228) refers to the regulation and control of individuals through surveillance and disciplinary mechanisms. This framework helps explain how modern psychiatric systems can continue to reproduce control and conformity. Although times have changed since Foucault examined these power hierarchies, current mental health systems may continue to perpetuate surveillance and dependency through coercive interventions. This internalisation of such surveillance can lead service users to monitor and correct their behaviour to align with institutional expectations, reinforcing self‐stigma (Corrigan et al.
+2015
+; Corrigan and Rao
+2012
+; Foucault
+1975
+Power imbalances in mental health care may persist due to the resistance to change from existing institutional structures and hierarchies. These can limit service users' ability to participate meaningfully in decisions about their own care (Mertens et al.
+2025
+). To empower service users, policy changes and cultural shifts within services in the direction of valuing lived experience may improve engagement with services (Corentin et al.
+2023
+; Laugharne and Priebe
+2006
+). This empowerment can be enacted at an individual level or a societal level, where the responsibility can be assumed by media productions. As discussed in this paper, media institutions play a significant role in reinforcing or challenging hierarchies. Promoting a more collaborative approach can increase awareness of the significance of language in these forms of media and practice by transferring power to people with lived experience of mental health challenges so that they can influence narratives, language and decision‐making in such representations (Hine et al.
+2024
+; Hui and Stickley
+2007
+Misuse of power also extended to the Nurse Ratched character who spoke down to service users, lacked empathy and demonstrated inadequate communication skills. Having worked with graduates who undertook both discipline‐specific mental health and more generic education, participants felt that discipline‐specific mental health education mitigated against Ratched‐like staff in practice, while more generic training resulted in less capable staff. There is evidence that a lack of mental health training for healthcare staff results in anxiousness and fear when interacting with those who experience mental health challenges, leading to social/clinical distance. It can also lead to service users receiving less effective treatment (Knaak et al.
+2017
+). Despite this evidence, nursing programmes in several countries that previously offered discipline‐specific mental health education have reverted to a more generic approach (Lakeman et al.
+2023
+2024
+; Warrender
+2025
+). This has led to a model of education that ‘is not fit‐for‐purpose’ (Lakeman et al.
+2024
+, 94) and graduates with ‘inadequate training to treat patients with mental health conditions’ (Lakeman et al.
+2023
+, 516). Maintaining discipline‐specific mental health education is important in ensuring service users receive adequate care without prejudice and mitigating the risk of seeing ‘Nurse Ratcheds’ in practice.
+This study has limitations. Although participants worked in a variety of areas, inclusion education, community and acute, most came from nursing backgrounds. We also acknowledge the potential for self‐selection bias, as participants may have had personal reasons for partaking in interviews.
+6. Conclusion
+Despite being over 50 years old, not everything from
+One Flew Over the Cuckoo's Nest
+has been confined to the history books. While its direct impact appears to be waning, it still has some hold over how the public view mental health care, due to its influence on contemporary media naratives. Media campaigns, similar to those used to dispel myths about mental health challenges, should be used to promote better images of mental health staff and care environments. More focussed mental health education is required for those entering a career in mental health.
+7. Relevance for Clinical Practice
+Mental health nurses need to be aware of the influence that
+One Flew Over the Cuckoo's Nest
+continues to have on how the public and service users view mental health care. It is vital that we take a progressive approach to care, with an emphasis on reducing power dynamics between staff and service users.
+Author Contributions
+John Goodwin conceptualised the study, collected data, contributed to data analysis, contributed to drafting the article and approved the final version of the article. Katerina Drakos contributed to data analysis, contributed to drafting the article and approved the final version of the article.
+Funding
+The authors have nothing to report.
+Conflicts of Interest
+The authors declare no conflicts of interest.
+Supporting information
+Data S1:
+inm70181‐sup‐0001‐DataS1.docx.
+INM-34-0-s001.docx
+(15.2KB, docx)
+Acknowledgements
+The authors have nothing to report.
+Goodwin, J.
+, and Drakos K.. 2025. “Fifty Years of
+One Flew Over the Cuckoo's Nest
+: A Qualitative Exploration of Mental Health Staff's Perspectives.” International Journal of Mental Health Nursing
+34, no. 6: e70181. 10.1111/inm.70181.
+Data Availability Statement
+The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available due to privacy or ethical restrictions.
+References
+Abdulkadhim Neamah Alrubaye, D.
+2024. “Through Chief Bromden's Murky Lens: Deconstructing Sanity in One Flew Over the Cuckoo's Nest.” International Journal of Science and Research
+13, no. 1: 445–447. 10.21275/ES24105092807.
+DOI
+] [
+Google Scholar
+Anderson, M.
+2003. “‘One Flew Over the Psychiatric Unit’: Mental Illness and the Media.” Journal of Psychiatric and Mental Health Nursing
+10, no. 3: 297–306. 10.1046/j.1365-2850.2003.00592.x.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Arboleda‐Flórez, J.
+, and Stuart H.. 2012. “From Sin to Science: Fighting the Stigmatization of Mental Illnesses.” Canadian Journal of Psychiatry
+57, no. 8: 457–463. 10.1177/070674371205700803.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Aventin, Á.
+, French R., Young H., et al. 2019. “Acceptability of an Interactive Film‐Based Intervention Targeting Adolescent Boys to Prevent Sexual Risk‐Taking: Findings From the JACK Cluster Randomised Controlled Trial Process Evaluation.” Lancet
+394: S5. 10.1016/S0140-6736(19)32802-8.
+DOI
+] [
+Google Scholar
+Bateson, G.
+1972. Steps to an Ecology of Mind. Ballantine Books.
+Google Scholar
+Bock, P. E.
+, Pham V., and Puzantian T.. 2022. “Pharmacy Students' Perceptions of the Effectiveness of a Film‐Based Mental Health Elective Course.” Currents in Pharmacy Teaching & Learning
+14, no. 1: 38–45. 10.1016/j.cptl.2021.11.001.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Bone, C.
+, and Marchant N.. 2016. “A Critical Discursive Perspective on Psychiatric Hospitals.” In The Palgrave Handbook of Adult Mental Health: Discourse and Conversation Studies, edited by O'Reilly M. and Lester J. N.. Palgrave Macmillan.
+Google Scholar
+Bordwell, D.
+, and Thompson K.. 2021. Film Art: An Introduction. 12th ed. McGraw‐Hill Education.
+Google Scholar
+Bradshaw, C.
+, Atkinson S., and Doody O.. 2017. “Employing a Qualitative Description Approach in Health Care Research.” Global Qualitative Nursing Research
+4: 1–8. 10.1177/2333393617742282.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Braun, V.
+, and Clarke V.. 2021. “Can I Use TA? Should I Use TA? Should I Not Use TA? Comparing Reflexive Thematic Analysis and Other Pattern‐Based Qualitative Analytic Approaches.” Counselling and Psychotherapy Research
+21, no. 1: 37–47. 10.1002/capr.12360.
+DOI
+] [
+Google Scholar
+Cabrera, L. Y.
+, Gilbert M. M. C., McCright A. M., Achtyes E. D., and Bluhm R.. 2021. “Beyond the Cuckoo's Nest: Patient and Public Attitudes About Psychiatric Electroceutical Interventions.” Psychiatric Quarterly
+92, no. 4: 1425–1438. 10.1007/s11126-021-09916-9.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Cavell, S.
+1979. The World Viewed: Reflections on the Ontology of Film. Harvard University Press.
+Google Scholar
+Corentin, C.
+, Fitzgerald C., and Goodwin J.. 2023. “Benefits of Hearing Voices Groups & Other Self‐Help Groups for Voice Hearers: A Systematic Review.” Issues in Mental Health Nursing
+44, no. 4: 228–244. 10.1080/01612840.2023.2189953.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Corrigan, P. W.
+, Bink A. B., Schmidt A., Jones N., and Rüsch N.. 2015. “What Is the Impact of Self‐Stigma? Loss of Self‐Respect and the “Why Try” Effect.” Journal of Mental Health
+25, no. 1: 10–15. 10.3109/09638237.2015.1021902.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Corrigan, P. W.
+, and Rao D.. 2012. “On the Self‐Stigma of Mental Illness: Stages, Disclosure, and Strategies for Change.” Canadian Journal of Psychiatry
+57, no. 8: 464–469. 10.1177/070674371205700804.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Domino, G.
+1983. “Impact of the Film, “One Flew Over the Cuckoo's Nest,” on Attitudes Towards Mental Illness.” Psychological Reports
+53, no. 1: 179–182. 10.2466/pr0.1983.53.1.179.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Forman, M.
+(Director) 1975. “One Flew Over the Cuckoo's Nest.” [Film]. United Artists.
+Foucault, M.
+1975. Discipline and Punish: The Birth of the Prison (A. Sheridan, Trans.). Pantheon Books.
+Google Scholar
+Geena Davis Institute on Gender in Media
+. 2018. Portray Her: Representations of Women STEM Characters in Media. Geena Davis Institute on Gender in Media.
+Google Scholar
+Gerbner, G.
+, and Gross L.. 1976. “Living With Television: The Violence Profile.” Journal of Communication
+26, no. 2: 173–199. 10.1111/j.1460-2466.1976.tb01397.x.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Goodwin, J.
+, Cummins J., and O'Malley M.. 2023. “‘I Thought It Would Just Be, Like, Older Men in White Coats’: A Qualitative Exploration of First Encounters With Mental Health Services.” International Journal of Mental Health Nursing
+32, no. 4: 1160–1170. 10.1111/inm.13157.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Goodwin, J.
+, Savage E., and O'Donovan A.. 2024. ““I Personally Wouldn't Know Where to Go”: Adolescents' Perceptions of Mental Health Services.” Journal of Adolescent Research
+39, no. 5: 1384–1412. 10.1177/07435584221076056.
+DOI
+] [
+Google Scholar
+Hajizadeh, A.
+, Amini H., Heydari M., and Rajabi F.. 2024. “How to Combat Stigma Surrounding Mental Health Disorders: A Scoping Review of the Experiences of Different Stakeholders.” BMC Psychiatry
+2, no. 1: 782. 10.1186/s12888-024-06220-1.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Hamilton, J.
+2024. “One Flew East, One Flew West: 65 Years of the Cuckoo's Nest.” American Journal of Psychiatry Residents' Journal
+19, no. 4: 20–21. 10.1176/appi.ajp-rj.2024.190408.
+DOI
+] [
+Google Scholar
+Hecht, M.
+, Kloß A., and Bartsch A.. 2022. “Stopping the Stigma: How Empathy and Reflectiveness Can Help Reduce Mental Health Stigma.” Media Psychology
+25, no. 3: 367–386. 10.1080/15213269.2021.1963991.
+DOI
+] [
+Google Scholar
+Hine, R.
+, Gladstone B., Reupert A., et al. 2024. “Stigmabeat: Collaborating With Rural Young People to Co‐Design Films Aimed at Reducing Mental Health Stigma.” Qualitative Health Research
+34, no. 6: 491–506. 10.1177/10497323231211454.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Hui, A.
+, and Stickley T.. 2007. “Mental Health Policy and Mental Health Service User Perspectives on Involvement: A Discourse Analysis.” Journal of Advanced Nursing
+59, no. 4: 416–426. 10.1111/j.1365-2648.2007.04341.x.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Jahn, R.
+, Perplies C., Rast E., Biddle L., Gold A. W., and Bozorgmehr K.. 2025. “Health System Resilience in the Context of Forced Migration: A Qualitative Framework Analysis of Germany's Crisis Responses in 2015 and 2020.” Social Science & Medicine
+381: 118174. 10.1016/j.socscimed.2025.118174.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Kim, H.
+, Sefcik J. S., and Bradway C.. 2017. “Characteristics of Qualitative Descriptive Studies: A Systematic Review.” Research in Nursing & Health
+40, no. 1: 23–42. 10.1002/nur.21768.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Knaak, S.
+, Mantler E., and Szeto A.. 2017. “Mental Illness‐Related Stigma in Healthcare: Barriers to Access and Care and Evidence‐Based Solutions.” Healthcare Management Forum
+30, no. 2: 111–116. 10.1177/0840470416679413.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Kool, K.
+, Azevedo N. H., and Avraamidou L.. 2022. “The Lonely Heroine: Portrayal of Women Scientists in Films.” Educational Media International
+59, no. 2: 150–171. 10.1080/09523987.2022.2101205.
+DOI
+] [
+Google Scholar
+Lakeman, R.
+, Foster K., Happell B., Hazelton M., Moxham L., and Hurley J.. 2024. “Informing the Development of a Fit‐For‐Purpose Mental Health Nursing Curriculum: A Survey of Mental Health Nurse Academics in Australia.” International Journal of Mental Health Nursing
+33, no. 1: 93–103. 10.1111/inm.13226.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Lakeman, R.
+, Foster K., Hazelton M., Roper C., and Hurley J.. 2023. “Helpful Encounters With Mental Health Nurses in Australia: A Survey of Service Users and Their Supporters.” Journal of Psychiatric and Mental Health Nursing
+30, no. 3: 515–525. 10.1111/jpm.12887.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Laugharne, R.
+, and Priebe S.. 2006. “Trust, Choice and Power in Mental Health: A Literature Review.” Social Psychiatry and Psychiatric Epidemiology
+41, no. 11: 843–852. 10.1007/s00127-006-0123-6.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Li, X.
+, Niu L., Kuang Y., et al. 2024. “Tobacco Imagery in Popular Films in China From 2001 to 2020: A Declining Trend.” Tobacco Control
+33, no. 3: 360–364. 10.1136/tobaccocontrol-2022-057565.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Lincoln, Y.
+, and Guba E.. 1985. “Naturalistic Inquiry.” International Journal of Intercultural Relations
+9: 438–439.
+Google Scholar
+Liu, Y.
+2023. “Shaping Society: Videolised Society From a Sociological Perspective.” In Videolised Society, edited by Meng J. and Zhao M.. Springer Nature.
+Google Scholar
+McCann, E.
+, and Huntley‐Moore S.. 2016. “Madness in the Movies: An Evaluation of the Use of Cinema to Explore Mental Health Issues in Nurse Education.” Nurse Education in Practice
+21: 37–43. 10.1016/j.nepr.2016.09.009.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+McDonald, A.
+, and Walter G.. 2009. “Hollywood and ECT.” International Review of Psychiatry
+21, no. 3: 200–206. 10.1080/09540260902747888.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+McFarquhar, T. F.
+, and Thompson J.. 2008. “Knowledge and Attitudes Regarding Electroconvulsive Therapy Among Medical Students and the General Public.” Journal of ECT
+24, no. 4: 244–253. 10.1097/YCT.0b013e318168be4a.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Mertens, L.
+, Vandenberghe J., Bekkering G., et al. 2025. “Navigating Power Imbalances and Stigma in Mental Healthcare. Patient‐Reported Barriers and Facilitators to Participation in Shared Decision‐Making in Mental Health Care, a Qualitative Meta‐Summary.” Health Expectations: An International Journal of Public Participation in Health Care and Health Policy
+28, no. 2: e70239. 10.1111/hex.70239.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Neergaard, M. A.
+, Olesen F., Andersen R. S., and Søndergaard J.. 2009. “Qualitative Description—The Poor Cousin of Health Research?” BMC Medical Research Methodology
+9, no. 1: 52. 10.1186/1471-2288-9-52.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Parrott, S.
+2023. Media and Mental Health: Using Mass Media to Reduce the Stigma of Mental Illness. Peter Lang.
+Google Scholar
+Perciful, M. S.
+, and Meyer C.. 2017. “The Impact of Films on Viewer Attitudes Towards People With Schizophrenia.” Current Psychology
+36: 483–493. 10.1007/s12144-016-9436-0.
+DOI
+] [
+Google Scholar
+Rondinone, T.
+2020. “The Folklore of Deinstitutionalization: Popular Film and the Death of the Asylum, 1973–1979.” Journal of American Studies
+54, no. 5: 900–925. 10.1017/S0021875819000094.
+DOI
+] [
+Google Scholar
+Sandelowski, M.
+2000. “Whatever Happened to Qualitative Description?” Research in Nursing & Health
+23, no. 4: 334–340. 10.1002/1098-240X(200008)23:4<334::AID-NUR9>3.0.CO;2-G.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Savage, M. K.
+, Lepping P., Newton‐Howes G., et al. 2024. “Comparison of Coercive Practices in Worldwide Mental Healthcare: Overcoming Difficulties Resulting From Variations in Monitoring Strategies.” BJPsych Open
+10, no. 1: e26. 10.1192/bjo.2023.613.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Schneider‐Mayerson, M.
+, Lim J., Stringer M., Wilson A., Zhou Z., and Bellido D.. 2025. “The Presence and Portrayal of Climate Change and Other Environmental Problems in Popular Films: A Quantitative Content Analysis.” Environmental Communication: 1–21. 10.1080/17524032.2025.2467427.
+DOI
+] [
+Google Scholar
+Searby, A.
+, Burr D., James R., and Maude P.. 2022. “Service Integration: The Perspective of Australian Alcohol and Other Drug (AOD) Nurses.” International Journal of Mental Health Nursing
+31: 908–919. 10.1111/inm.12998.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Srivastava, K.
+, Chaudhury S., Bhat P. S., and Mujawar S.. 2018. “Media and Mental Health.” Industrial Psychiatry Journal
+27, no. 1: 1–5. 10.4103/ipj.ipj_73_18.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Stip, E.
+, Javaid S. F., Abdel Aziz K., and Arnone D.. 2023. “Happy Birthday “One Flew Over the Cuckoo's Nest”: A Momentous Tale in the Quest for an Effective and Ethical Approach to Psychosurgery.” Canadian Journal of Psychiatry
+68, no. 12: 887–893. 10.1177/07067437231182658.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Tam, M. T.
+, Wu J. M., Zhang C. C., Pawliuk C., and Robillard J. M.. 2024. “A Systematic Review of the Impacts of Media Mental Health Awareness Campaigns on Young People.” Health Promotion Practice
+25, no. 5: 907–920. 10.1177/15248399241232646.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Vellakkal, S.
+, Reddy H., Gupta A., Chandran A., Fledderjohann J., and Stuckler D.. 2017. “A Qualitative Study of Factors Impacting Accessing of Institutional Delivery Care in the Context of India's Cash Incentive Program.” Social Science & Medicine
+178: 55–65. 10.1016/j.socscimed.2017.01.059.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Voyce, A.
+2025. “One Flew Over the Cuckoo's Nest: An Autoethnographic Perspective.” Mental Health and Social Inclusion
+29, no. 5: 586–593. 10.1108/MHSI-01-2025-0007.
+DOI
+] [
+Google Scholar
+Warrender, D.
+2025. “Generic Nursing in Through the Back Door? Concerns Around Nursing and Midwifery Council Processes for International Nurse Recruitment and Potential Impact on Mental Health Nursing in the UK.” Journal of Psychiatric and Mental Health Nursing
+32, no. 4: 864–866. 10.1111/jpm.13164.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Whitley, R.
+, and Campbell R. D.. 2014. “Stigma, Agency and Recovery Amongst People With Severe Mental Illness.” Social Science & Medicine
+107: 1–8. 10.1016/j.socscimed.2014.02.010.
+DOI
+] [
+PubMed
+] [
+Google Scholar
+Wong, D. T. L.
+, Tong S. F., Daud T. I. M., Aziz S. A., and Midin M.. 2020. “Factors Influencing Professional Help‐Seeking Behavior During First Episode Psychosis in Schizophrenia: An Exploratory Study on Caregivers' Perspective.” Frontiers in Psychiatry
+10: 962. 10.3389/fpsyt.2019.00962.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+World Health Organization
+. 2025. “How the Media Can Combat Mental Health Stigma and Discrimination.” World Health Organization.
+https://www.who.int/europe/news‐room/feature‐stories/item/how‐the‐media‐can‐combat‐mental‐health‐stigma‐and‐discrimination
+Wu, M.
+, Yan J., Qiao C., and Yan C.. 2024. “Impact of Concurrent Media Exposure on Professional Identity: Cross‐Sectional Study of 1087 Medical Students During Long COVID.” Journal of Medical Internet Research
+26: e50057. 10.2196/50057.
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+Associated Data
+This section collects any data citations, data availability statements, or supplementary materials included in this article.
+Supplementary Materials
+Data S1:
+inm70181‐sup‐0001‐DataS1.docx.
+INM-34-0-s001.docx
+(15.2KB, docx)
+Data Availability Statement
+The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available due to privacy or ethical restrictions.

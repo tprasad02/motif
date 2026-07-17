@@ -9,7 +9,7 @@ QUERIES = [
     ("taxi-driver", "What does Taxi Driver say about loneliness?"),
     ("mulholland-drive", "Why does Mulholland Drive resist one explanation?"),
     ("black-swan", "Is Black Swan more about art or madness?"),
-    ("persona", "How do doubling and performance fracture identity?"),
+    ("fight-club", "How does Fight Club use doubling and performance to fracture identity?"),
 ]
 
 

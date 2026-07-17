@@ -190,6 +190,53 @@ input {
   border-radius: 8px;
 }
 
+.modeSwitcher {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 1160px;
+  margin: 0 0 14px;
+}
+
+.modeSwitcher button {
+  display: grid;
+  gap: 4px;
+  min-height: 66px;
+  border: 1px solid rgba(23, 21, 20, 0.12);
+  border-radius: 8px;
+  padding: 11px 13px;
+  background:
+    radial-gradient(circle at top right, rgba(241, 184, 75, 0.18), transparent 7rem),
+    rgba(255, 253, 249, 0.9);
+  color: var(--soft-ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.modeSwitcher button:hover {
+  border-color: rgba(216, 75, 83, 0.38);
+}
+
+.modeSwitcher button.active {
+  border-color: rgba(116, 72, 212, 0.5);
+  background:
+    radial-gradient(circle at top right, rgba(51, 196, 210, 0.28), transparent 8rem),
+    linear-gradient(135deg, rgba(116, 72, 212, 0.16), rgba(241, 184, 75, 0.18)),
+    #fffdf9;
+  box-shadow: 0 10px 28px rgba(31, 27, 22, 0.08);
+}
+
+.modeSwitcher strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.modeSwitcher span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
 .queryBar svg {
   color: var(--red);
 }
@@ -472,7 +519,8 @@ input {
   .answerGrid,
   .sources,
   .marquee,
-  .promptDeck {
+  .promptDeck,
+  .modeSwitcher {
     grid-template-columns: 1fr;
   }
 

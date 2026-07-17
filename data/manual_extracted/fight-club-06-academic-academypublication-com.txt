@@ -1,0 +1,766 @@
+09.pdf
+https://www.academypublication.com/issues2/tpls/vol05/04/09.pdf
+
+A Network Text Analysis of Fight Club
+Starling Hunter
+Tepper School of Business, Carnegie Mellon University Qatar, Doha, Qatar
+Saba Singh
+Tepper School of Business, Carnegie Mellon University Qatar, Doha , Qatar
+Abstract—Network Text Analysis (NTA) invol ves the creation of networks of words and/or concepts from
+linguistic data. Its key insight is that the position of words and concepts in a text network provides vital clues
+to the central and underlying themes of the text as a whole. Recen t research has u sed an inductive or bottom -
+up approach to the question of theme extraction . In this paper we take a top-down or deductive approach in
+that we first establish prior expectations as to the key themes to be found in the text. We then compare and
+contrast the results of our network analysis with the results of literary and cultural analyses of the film Fight
+Club as reported in over four dozen other peer -reviewed publications. While our results are remarkably
+consistent with and complementary to results in thos e studies, our analysis permits something the other s do
+not—an analytical framework for relating those underlying and central themes to one another.
+Index Terms —network text analysis, social network analysis, Fight Club, Chuck Palahniuk, fil m criticism,
+semantic network
+I. INTRODUCTION
+Network t ext analysis (NTA) involves the identification of important lexical relationships among words and concepts
+in a text and their subsequent representation in the form of a network or map (Popping, 2 000). Like other methods of
+content ana lysis, NTA operates on the assumption that the structure of a text encodes its meaning ( Fischer -Starcke,
+2009). Its major point of differentiation —perhaps its defining difference —is how it defines that structure. The most
+widely employed methods of content analysis —ones employed in corpus linguistics, corpus stylistics, and
+computational linguistics —establish structure from the frequency with which certain key words appear in the text
+and/or the frequency with which th ose words co -occur (Stubbs, 2005; Popping & Roberts, 1997). Several approaches
+to NTA have been developed in the l ast five decades. These include mental models (Collins & Loftus, 1975), knowledge
+graphs (Bakker, 1987), concept maps (Novak ,1990), map comp arison/ analysis (Carley & Palmquist, 1992), word
+network analysis (Danowksi, 1993), semantic networks (Sowa, 1992), functional depiction (Popping & Roberts, 1997 ),
+sociocognitive networks (Carley, 1997; Diesner, 2013), semantic grammars (Roberts, 1997), centering resonance
+analysis (Corman , Kuhn, McPhee, & Dooley, 2002), semantic webs (van Atteveldt, Kleinnijenhuis, & Ruigrok , 2008 ),
+and morpho -etymological networks (Hunter, 2014a , 2014b ). While each of these methods defines textual structure in a
+differe nt manner, they all share two explicit assumptions. The first is that otherwise invisible properties of texts can be
+identified when words and concepts are represented and understood as networks (Diesner & Carley, 2005) . The second
+is that a text ’s key th emes are associated with the words and concepts that occupy the most influential positions in the
+network. Despite sharing these foundational assumptions, appro aches to NTA va ry along at least two key dimensio ns.
+The f irst concerns the specific lexical o r conceptual item to be studied, as well as the nature of the relationship that joins
+them. Variation in the choice of item and relationship is what produces variation in the definition of the text structure. A
+second concerns the level of automation or compu ter-support (Diesner & Carley, 2005). Despite these differences, the
+four fundamental steps in all network text analyses are the same (Diesner, 2012). They are the selection of certain words
+or concepts in a text for subsequent analysis, the abstraction of these words or concepts to higher-level conceptual
+categories , the identification of a relationship that can be used to connect the conceptu al categories to one another,
+thereby forming a network , and the extraction of meaning a nd key themes from the most influential nodes (concepts) in
+that network.
+Several recent studies have focused on the latter of these four stages , i.e. the extraction of key themes . These include
+network text analyses of screenplays (Hunter, 2014a), mission statements (Grbic, Haffert y, & Hafferty, 2013),
+newspaper articles (Tambayong & Carley, 2013), presidential inaugural addresses (Light, 2014 ; Chung & Park, 2010 ),
+and extremist propaganda (Morris, 2014 ). Despite the wide variety of texts and research questions, all of the se studie s
+derived the themes inductively, i.e. from the bottom -up. That is to say, the analysts approached the texts without strong
+prior assumptions or expectations as to what the themes would or should be. Typical of the bottom -up approach is
+Hunter (2014a) who created text networks for seven recent, Academy -Award winning, best original screenplays —Little
+Miss Sunshine, Juno, Milk, The Hurt Locker, The King’s Speech, Midnight in Paris , and Django Unchained . In five of
+the seven networks he reported that key themes of the story were clearly associated with the most influential nodes in
+the network. For example, in the text network of the Iraq -war-themed The Hurt Locker he found the following words
+ISSN 1799-2591
+Theory and Practice in Language Studies, Vol. 5, No. 4, pp. 737-749, April 2015
+DOI: http://dx.doi.org/10.17507/tpls.0504.09
+© 2015 ACADEMY PUBLICATION
+and concepts associated with the most influential nodes in the networ k—army -issue, body armor, fireball, gunfire,
+gunshot, HUMVEE, IED (improvised explosive device), machine gun, shell -shocked, suicide bomber, and USA. In the
+screenplay for Milk, biopic about the openly -gay mayor of San Francisco who was infamously assassin ated by a fellow
+politician, words and concepts associated with the most influential nodes in the network included AIDS, elected official,
+public office, city council, city hall, city -wide, civil rights, town hall, manslaughter, congressman, human rights, right
+wing, nationwide, and statewide . Similarly, while Grbic, Hafferty, & Hafferty (2013) hypothesized that the mission
+statements of public and private medical schools, as well as those of social -mission vs. research -focused medical
+schools, would have different text networks, they did not specify a priori the content of those differences or the network
+positions of key differentiating concepts. The current study is the first of which we are aware that takes a deductive or
+top-down approach. That is to say, unlike the aforementioned studies, we first develop strong priors about the key
+themes that should be found in our text, the screenplay of Fight Club (Uhls & Palahniuk , 2000 ). Those expectations are
+developed by a review of over four dozen published, peer-reviewed journal articles that analyzed the movie Fight Club
+and/or the novel from which the screenplay was adapted (Palahniuk, 1996) . We then perform a network text analysis on
+the screenplay and see whether the results match our expectations.
+II. TALKING ABOUT FIGHT CLUB
+Fight Club was the first published novel by American Chuck Palahniuk and it appeared in 1996. In 1999 a film by
+the same name was released starring Brad Pitt as the antagonist, Tyler Durden, and Edward Norton Jr. a s the unnamed
+Narrator and protagonist. According to director David Fincher, Norton’s unnamed character is an “everyman ” who we
+discover is very discont ented, even “emasculated” by his white collar job and consumerist lifestyle (Smith, 1999). To
+escape the se doldrums, he eventually forms a club with a soap -maker partner (Tyler Durden) where men fight
+recreationally. The novel earned moderate critical acclaim garnering its author both the Pacific Northwest Booksellers
+Association Award and the Oregon Book Aw ard for Best Novel in 1997. The film adaptation initially disappointed at
+the box office, earning only $37 million during its U.S. and Canadian theatrical run versus a production budget of $63
+million. The film did eventually turn a profit because foreign box office receipts pushed the total to just over $100
+million (Box Office Mojo , 2014). But despite the initially poor box office showing, imagery and dialog from the film
+leapt immediately into the mainstream of popular culture. Perhaps the most famous —or infamous —line from the film
+concerns the clubs rules —“The first rule of fight club is you do not talk about fight club.”
+And if the measure of performance of the film and novel was the degree to which people have ignored that rule, then
+both the novel and film—but especially the latter —have been an enormous success. D ebates began in earnest shortly
+after the film’s world premiere at the Venice Film Festival and continued unabated through its US theatrical release.
+The film also became somewhat notorious fo r its influence in the popular culture with many fight cl ubs being formed
+around the US (Crowdus, 2000) . Academics and culture critics have done their fair share of talking about Fight Club
+too. Perhaps as a result of its cultural impacts of the f ilm, crit ics of popular culture and the arts were among the first in
+academia to analyze both Fight Club . Our research identified over 100 articles about the film and/or novel that were
+published in peer -reviewed academic journals between 1999 and 2014. Of those wr itten in the humanities, subject
+matter of the journals includes literatu re, film studies, gender , religion, popular culture, social theory, psychology, post -
+modern studies, Gothic studies, the sociolo gy of sport, and race , med ia and culture, communication , and trauma.
+III. METHODS & DATA
+A. Identifying the Key Themes
+The first task in the analysis was to determine the major themes of the novel and film, as articulated by academic
+analysts and critics. The authors met four times to make t hese determinations. The first meeting concerned reconciling
+our selection of the peer -reviewed journal artic les that would form the basis of our subsequent analysis . Prior to this
+meeting each author separately used the Google Scholar search engine to gen erate a list of citations using search terms
+that include the phrase “Fight Club” plus the name of either the film’s director (David Fincher), the screenplay’s author
+(Jim Uhls), or the author of the novel (Chuck Palahnuik). The first author separately sav ed all citations to journal
+articles to his own Google Scholar library. The second author saved all relevant citations directly to her hard drive.
+When we met we discovered that t he major differences in our selection concerned three issues: whether or not to
+include book or movie reviews that appeared in peer -reviewed journals (we decided not to) ; whether and how to treat
+articles that did not have abstracts ; and whether and how to accommodate articles that analyzed the film or book from
+the standpoint of f ilm or narrative theory . Concerning the second issue, we decided to use only the text that appeared in
+the first paragraph of article. In those cases where it was not possible to obtain a copy of the paper, the article was
+excluded from consideration. Conc erning the latter, we opted to eliminate all articles that were not expressly cultural or
+social analyses or critiques of the film. At the conclusion of this meeting we ended up with the 52 peer -reviewed articles
+listed in the Appendix. As shown in Table 1 , several major and inter -related themes are evident in the academic
+literature over the fifteen years since the theatrical release of Fight Club and the nearly twenty years since the novel’s
+publication .
+738
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+© 2015 ACADEMY PUBLICATION
+At the second meeting the authors reconciled the fi rst version of the categories of themes that were to be later used to
+code statements contained in the abstracts or lead paragraphs. Prior to the meeting each author separately reviewed
+different halves of the aforementioned 52 abstracts or lead paragraphs and created their own lists of major themes that
+were present therein. Specifically, each author highlighted key phrases and words used to describe the protagonist, the
+antagonist, the film, the novel, and/or the major themes of those works. Examples incl ude phrases like “the films Fight
+Club … and Memento revolve around similar themes…the individual’s struggle with late capitalism in order to establish
+identity in a de -centered world” (Kravitz, 2004) and “…the Fight Club ethic…is rooted in guerilla -type re sistance to
+commodity culture” (Del Gizzo, 2008). Each author separately abstracted all relevant terms in these statements and
+converted them into nouns, e.g. capitalism, identity, guerilla, resistance, commodification. When we met, we discussed
+the overla p and the differences in the two lists which conta ined a total of 41 such nouns. After agreeing on common
+names for highly similar terms the list was reduced to 26 nouns .
+At the third and fourth meetings we jointly reviewed every statem ent that either auth or had previously identified and
+re-assigned each one to one or more relevant noun -themes. When and where it see med appropriate, we reduced the
+number of noun -themes to create conceptually broader categories. Of course, this often necessitated re -naming of
+existing noun -themes. After several iterations we ended up with the following 12 noun -themes which, order
+alphabetically, are AGENCY, ANARCHISM, BODY, CAPITALISM, GENDER, IDENTITY, PATHOS, POWER,
+PSYCHOPATHOLOGY, RACE/CULTURE, SEX , and VIOLENCE . These appear in the first column of Table 1. The
+second colum n contains the noun forms of typical terms abstracted from the relevant phrases that we found in the
+abstracts and first paragraphs. The third column contains examples of the actual phrases contained in t hose abstracts and
+paragraphs.
+The third and final step of the thematic analysis was to identify the most dominant themes in the literature. Rather
+than rely on the frequency with which the themes ap pear, we created a concept map of authors and themes . The result is
+shown in Fig. 1 where square s represent themes and circles represent authors. When a circle (author) appear s between
+two squares (themes) it indicate s that the author mentioned both of these themes in the abstract or first paragraph. For
+example , in the upper left corner we see that Slade (2011 ) is repr esented by a circle that is located between the themes
+GENDER and VIOLENCE whereas Burgess (2012) appears between the squares representing BODY and VIOLENCE.
+A view of the map as a whole reveals th at the themes can be ordered from greatest number of links to the lowest as
+follows: GENDER, IDENTITY, CAPITAL, POWER and PSYCHOPATHOLOGY (tied), ANARCHISM, SEX and
+VIOLENCE (tied), PATHOS, RACE/CULTURE , BODY , and AGENCY . It is this ranking that we subsequ ently use to
+test whether the position of concepts within the text network can accurately as certain key themes of the story as found
+in the adapted screenplay of Fight Club (Uhls & Palahniuk , 2000 ).
+TABLE I.
+KEY THEMES IN FIGHT CLUB
+Theme Terms Example Ph rases
+AGENCY self-help  “it is…rebelling against a consumerist culture that dissolves the bonds of male sociality and puts
+into place an enervating notion of male identity and agency” (Giroux, 2001)
+BODY body, bodies  “two identities inhabiting the sam e body” (Ta, 2006)
+ “the splitting of both the psyche and the body” (Ruddell, 2007)
+ “the film’s retrograde version of a violent masculinity rooted in the male body” (Robinson,
+2011).
+CAPITAL capitalism,
+consumerism,
+globalization  “Fight Club appe ars to offer a critique of late capitalist society” (Giroux, 2001)
+ “to reevaluate Fight Club’s representation of capitalism, to develop a value -theoretic account of
+trash” (Henderson, 2011)
+ “…its logic implies that action is required against the effects of globalized capitalism…”
+(Jordan, 2002)
+ANARCHISM anarchism,
+dystopia , nihilism,
+post-modernism  “most people in the world…are attracted to dystopic stories about the end of capitalism”
+(McCullough, 2005)
+ “The characters in Fight Club avoid ni hilism by acquiescing to love without fixed definition”
+(Aparicio, 2013)
+ “Fight Club tells the story of an unnamed narrator and the nihilistic Tyler Durden (Rehling,
+2001).
+GENDER gender,
+masculinity,
+feminity,
+paternalism,
+virility  “Fight Club t ends to emphasize its relevance for the study of contemporary representations of
+gender and masculinity (Lizardo, 2007)
+ “Fight Club has provoked a great deal of theorizing about gender…” (Robinson, 2011)
+ “Fight Club was one of many contemporary films depicting masculinity in crisis…” (Rehling,
+2001)
+ “Race and the Construction of White Masculinity in David Fincher's Fight Club” (Locke, 2014)
+ “Fight Club as a foil against which we try to pin larger issues of masculinity and urban life”
+(Craine & A itken, 2004)
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+739
+© 2015 ACADEMY PUBLICATION
+IDENTITY -
+INDIVIDUAL identity,
+identification
+doppleganger
+double
+self-consciousness
+self-help  “Fight Club 's narrative logic and its complex, imaginative imbrication of identity and historical
+self-consciousness (Friday, 2003)
+ “Chuck P alahniuk's Fight Club (1997) addresses the identity crisis of white, heterosexual,
+American men…” (Boon, 2003)
+ “Fight Club reflects the protagonist's inability to establish an identity for himself” (Gunn &
+Frentz, 2010)
+ “…an extraordinary film that e xplores an often -violent intersection between the conditions of
+late-capitalist consumer society and contemporary masculine identities” (Iocco, 2003)
+ “…(he) is revealed as an individual who suffers from the actual medical disability, Dissociative
+Identi ty Disorder. (Ta, 2006)
+IDENTITY -
+SOCIAL male bonding
+homosocial relations
+class  “the homoerotic attraction that lies just beneath the film's celebration of homosocial bonding”
+(Westerfelhaus & Brookey, 2004)
+ “identifying himself as a product of cons umer society” (Pettus, 2000)
+ “(the) protagonist will attempt to use his body to escape the control of society and re -establish
+his identity and will” (Kravitz, 2004)
+ “Through examining examples of “fighting” in Fight Club, the article will discuss ma le bonding
+through homosocial (and somewhat homophobic) relations” (Iocco, 2003)
+ “Fight Club provided a point of identification for its embattled white, middle -class, target
+audience” (Bedford, 2011)
+PATHOS anxiety,
+crisis,
+pain,
+suffering,
+distrus t,
+malaise,
+disaffection,
+Gothic  “Palahniuk dramatizes a situation in which contemporary culture is made responsible for a crisis
+in masculine identity” (Jordan, 2002)
+ “These people experience the real physical and psychological pain of approaching death where
+the protagonist does not…” (Schultz, 2011)
+ “Fight Club reworks the Gothic topos of the Doppelgä nger in a twentieth -century American
+urban context (Stirling, 2004)
+ “In his attempt to heal himself of his malaise, (the narrator) encounters Tyler Durden…who
+seduces (him) into co -founding Fight Club” (Ta, 2006).
+POWER power, hegemony,
+domination,
+exploitation,
+victimization,
+resistance,
+persecution, fascism  “…in Palahniuk’s Fight Club , the narrator is in a certain crisis of manhood as a result of his
+contradictory experiences of power under the impositions of hegemonic masculinity” (Vafa &
+Talif, 2011)
+ “…the film recommends violence as a solution to a perceived crisis in the lives of a generation
+of American men who lack the power to find meaning in the wastes of consumer culture”
+(Robinson, 2011)
+ “…(the club) rebels against a seemingly impersonal and feminized dominant culture by blowing
+up that very world…(Ta, 2006)
+ “All three movies exhibit a sense of victimisation, persecutio n and distrust…” (Yeo, 2014)
+PSYCHO -
+PATHOLOGY mental health,
+psychosis,
+schizophrenia,
+paranoia, narcissism,
+psychopathology,
+perversity,
+sado-masochism  “…we argue that the film Fight Club can be understood as a mediation of a larger, cultural
+psychosis.” (Gunn & Frentz, 2010)
+ “Fight Club well represents the violent effects of capitalism on psychic structure … (and)… the
+damaging effects of capitalism on the male psyche.” (Layton, 2011)
+ “…the narrative fits perfectly with the psychopathology model of cult recruitment” (Lockwood,
+2008)
+ “…the Art/Politics of White Male Victimization and Reflexive Sadomasochism” (Kusz, 2002)
+ “…the Gothic movie renders its protagonist, the viewer, schizophrenic and paranoid as well”
+(Yeo, 2014)
+ “It was a rgued that Fincher's version suffers from the same sense of schizophrenia as its
+protagonist. ” (Bishop, 2006)
+RACE -
+CULTURE white, western,
+Asian, race, racism,  “Offering a critical interrogation of white masculinity within David Fincher's Fight Club” (King,
+2009)
+ “This white, male, white -collar, and well -paid protagonist…” (Schultz, 2011)
+ “Palahniuk's Fight Club (1997) addresses the identity crisis of white, heterosexual, American
+men… ” (Boon, 2003)
+ “…issues raised in Fight Club about fighting are…powerfully relevant in white western
+industrialised context” (Iocco, 2003)
+SEX sexuality,
+homosexuality,
+homophobia,
+homoeroticism,
+heterosexuality,
+love  “…the film's narrative is structured around a quasi -religious ritual that reaffirms heterosex uality
+at the expense of homosexuality…” (Westerfelhaus & Brookey, 2004)
+ “Fight Club is clearly one of the films that are most often addressed by researchers and cultural critics wanting
+to probe the relationship between sexuality, politics and popular culture” (Lindgren, 2011)
+ “Fight Club's DVD “extra text” dissuades the viewer from acknowledging the film's homoerotic
+elements as representing homosexual experience” (Brookey &Westefelhaus, 2002)
+VIOLENCE violence,
+aggression,
+militarization,
+terro r, terrorism  “As a response, the narrator sets out a nostalgic backlash to grapple with the outlets of the
+crisis —buried feelings, homophobia and aggression” (Vafa & Talif, 2011)
+ “…a divided subject that seeks release in brute, regressive masculinity” (Ta, 2006)
+ “…it is about a man with multiple personality disorder who tries to fight his disillusionment by
+turning to violence and anarchy” ( Bishop, 2006)
+ “…academics debated whether the film recommends violence as a solution to a perceived crisis
+in the lives of a generation of American men…” (Robinson, 2011)
+ “Initially panned by many critics for its violent content, David Fincher’s Fight Club may seem
+like the most unlikely film to incorporate the tenants of Zen Buddhism” (Reed, 2007).
+740
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+© 2015 ACADEMY PUBLICATION
+Figure 1. A concept map of a uthors vs. themes mentioned in fifty -two academic journal a rticles about Fight Club
+B. The Selection of Words for Subsequent Analysis
+Diesner (2012 ) identified nearly 20 distinct approaches for constructing text networks and co mpared and contrasted
+them along several dimensions. In this study we apply a novel method not included in Diesner’s review —the morpho -
+etymological approach recently developed by Hunter & Smith (Hunter & Smith , 2013; Hunter , 2014 a; Hunter , 2014b ).
+In that approach, a network is constructed from morphological and etymological relationships among words in the text.
+A hallmark of that approach concerns its selection rule—the first stage of a network text analysis. In short, only multi -
+morphemic compounds ( MMCs ) are ret ained for analysis . MMCs include abbr eviations, acronyms , blend -words or
+portmanteau, selected clipped words, several varieties of compound words, examples of which are shown in Table 2.
+TABLE II.
+SELECTED EXAMPLES OF TEN TYPES OF MULTI -MORPHEMI C COMPOUNDS FOUND IN FIGHT CLUB
+Type Selected Multi -Morphemic Compounds in Fight Club
+Abbreviations, Acronyms TFM (task force man), SE (south -east), AR (automatic rifle), yuppie (young urban
+professional), IBM (international business machine)
+Blend Words laundromat (laundry + automatic)
+Clipped Words Microsoft (microcomputer + software) , email, cybernetting
+Closed Compounds Jackhammer, headquarters, handgun, uppercut, airport, breadcrumbs
+Conversion Star-sixty -nined
+Copulative Walkie -talkie
+Hyphenate d Compounds self-destruction, born-again, Psycho -boy,
+Multi -word Compounds Out-of-court, cry -for-help, death -warmed -over, merry -go-round
+Open Compounds Office park, orange juice, phone number, rock star, army surplus
+Prefixed Overhanging, overlap, over turned, underground, understand
+We identified the MMCs in this study with the use of the “Concept List” routine in the CASOS Institute’s Automap
+software program (Carley, Columbus, & Landwehr, 2013). That routine output lists each unique word appearing i n the
+text, along with each word’s frequency of occurrence. After eliminating stop -words known not to be MMCs, and
+including differences attributable to inflection, pluralization, and capitalization, there were approximately 1920 unique
+words in the list a ppearing almost 24,000 times in text of the screenplay. Each author read the entire list individually
+and identified the MMCs contained therein. After reconciling their coding we ended up with a list of 316 MMCs, about
+1/6th of the number of unique words. Excluded from consideration were numbers that were spelled out, e.g. eighteen .
+However, we retained numbers that were part of compounds, e.g. three -story , as well as the adjectival forms of numbers
+when they appeared as part of an MMC, e.g. second -hand . We did not retain neoclassical compounds, e.g. photograph
+or telephone but did treat MMCs when the prefix was classical and its used implied a full word, e.g. photocopy as photo
+(graphic) copy . We also retained certain pseudo -compounds when the prefix was al so a word that descended from the
+same root as the prefix, e.g. understand and over-whelmed .
+A second routine in Automap called “Suggest N -Grams” was next employed to identify open compounds words in
+the text. The output of this routine contains a list of selected multi -word combinations which in our case consisted of
+1511 n -grams. As above, both of the authors reviewed the list separately and later reconciled their selections. The result
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+741
+© 2015 ACADEMY PUBLICATION
+was a list of 79 open compounds such as bulletin board, dining room, parking lot and third world . With the addition of
+these n -grams the total number of unique MMCs rose to 395. Table 2 contains examples of each type of 11 relevant
+categories of MMCs appearing in the screenplay of Fight Club .
+C. Abstraction of Selected Wor ds into Higher Order Conceptual Categories
+Abstraction is Diesner’s (2012) second stage of a network text analysis. One of the most widely -employed method s
+of abstraction is stemming, i.e. the reducing of words to their stem, base, or root forms (S temming, 2014). In this study,
+we used etymological stemming. Specifically, each morpheme in a mu lti-morphemic compound is assigned to a
+category defined as its etymological root. Where possible, that root is Indo -European, as defined in the American
+Heritage Dict ionary of Indo -European Roots (Watkins, 201 1). Because no software exists for etymological stemming,
+the mapping had to be done manually. As previously, both authors mapped all morphemes separately and then later
+reconciled our coding. At the co nclusion of this process the 395 MMCs were traced back to 384 unique etymological
+roots, 80 % of which were I ndo-European.
+D. Connecting the Concepts
+The third stage of a network text analysis involves establishing linking relationships between nodes. In the morpho -
+etymological approach, a pair of nodes is deemed connected when they co -occur in the same MMC. As shown in Figure
+2, in our network the etymological roots wer-2 (to raise, lift, hold suspended) and pele-2 (flat; to spread) are connected
+because they co -occur in the compound airplane. Because the words plastic and floor also descend from the root pele-
+2, then it is also connected to the Indo-European roots kae-id- ( ) and de- (to), and the Old English bagge , shown below
+as BAG. As shown in Figure 2, those nodes are connected by the multi -word expression floor -to-ceiling and the open
+compound plastic bag. Similarly, the words mid-air, airline , airway , and airport , link the root wer-2 to four other Indo -
+European roots —medhyo - ( ), lino- (line), wegh -2 (way, w eight), and per-2 ( ). Among the 384 nodes in the network ,
+there were 441 such connected pairs. Although that may seem like a lot, the n umber of possible pair s is 97020 and 441
+represents only 0. 45% of that number —a mere fraction. That number is so small b ecause MMCs comprise only about
+2% of the number of words in the document and because only MMCs can create such connections across nodes in the
+network when those nodes are etymological roots. One implication of the choice to focus in etymological relation ships
+is that many words that convey important information about the content of the story are necessarily excluded from the
+analysis.
+Figure 2. Sub -graph of the morpho -etymological text network for Fight Club
+In social network analysis, the term “main component” is given to the largest portion of the network wherein all
+nodes are mutually reachable (Reachability, 2014). Of the 384 nodes in the text network for Fight Club , 296 were
+mutually -reachable. That is to say, there were one or more paths of vary ing lengths connecting every node
+(etymological root) to every other node. This network is presented in Fig. 3.
+742
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+© 2015 ACADEMY PUBLICATION
+Figure 3 . Main c omponen t of the morpho -etymological text n etwork for Fight Club
+E. The Extraction of Meaning
+The last stage of a network text analysis involves the extraction of key theme s from the text . As noted previously,
+this is typically accomplished through an analysis of the network’s most influential nodes. In small network s this can
+often be done with visual inspection. But with 296 nodes and 387 ties, this netw ork is quite clearly too large and
+complex to analyze visually. To further reduce the complexity we identified a subset of the most influential nodes
+among those in the main component. This was accom plished by calculating two measures of network influence —
+degree centrality and constraint . The first is simply a measure of the number of lin ks that a node has in a network
+(Wasserman, 1994) . The second is the degree to which a node links otherwise disconn ected segments of a network. The
+measure of this propensity is calle d constraint, and the lower a node’s constraint, t he greater is its degree to serve as a
+connector between disparate sub-branches of a network (Burt, 2000). Fig. 3 below contains a reduced networ k of the
+one displayed in Fig. 2. It is comprised only of those 2 3 nodes that were in the top 10 in the whole network with regard
+to degr ee centrality and /or the bottom 10 with regard to constraint. The names and definitions of thos e nodes are
+displ ayed i n Table III , along with examples of MMCs assoc iated with those roots. The roots in the first column are
+order from the lowest to the highest value of constraint.
+TABLE III.
+SELECTED MULTI -MORPHEMIC COMPOUNDS ASSOCIATED WITH THE MOST CENTRAL
+AND THE LEAST CONSTRAINED NO DES IN THE MAIN COMP ONENT OF THE TEXT NE TWORK
+Node (Definition) Selected Multi -Morphemic Compounds
+s(w)e - (self) self-destruction, self -improvement , security guard
+apo- (of, off) show off, out -of-court set tlement,
+ud- (out) whacked -out, burnt -out, outrage
+werg - (to do; work) Home Shopping Net work, paperwork, sex organs, cyber -netting
+wegh - (way) freeway, superhighway, runway
+uper - (over) death -warmed -over, overnight, overturned
+se-2 (side) sidelong, sidewalk, broadsides , passenge r side
+sed-1 (seat) out-of-court settlement, seat back, seatbelt
+oi-no- (one, unity) everyone, anyone, someone
+upo- (up, over) uppercut, upright, mix ed-up, sit -ups
+reudh -1 (red) lipstick red, red blood cell, red -and-blue, red -faced, red flags, redhead
+kaput - (head) redhead, dickhead, headache, headlock, headquarters
+bysig - (busy) businessman, business card, business trip, IBM, BusinessWeek
+an-1 (on) onboard, one-on-one, onlookers
+sem-1 (some) single -serving, something
+reue -1 (room) stockroom, ballr oom, hotel room, bedroom
+gwhen - (to strike, kill) chain-link fence, gunshot, gunpoint, handgun
+dhwer - (door) doorb ell, doorframe, doorman , side door
+medhyo - (middle) mid-air, middle -aged, mid -town
+wi- (with) wide-eyed, goodbye (God be with you)
+hand (hand) second hand, handkerchief
+wer-2 (to raise, lift) airbag, air line, airplane, airport
+per1 (prime, first, for) cry-for-help, first person, doorframe
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+743
+© 2015 ACADEMY PUBLICATION
+Figure 3. Morpho -Etymological Text Network Formed Only by the Most Central and the Least Constrai ned Nodes in the Main Component
+F. Comparing Findings
+Notably, the node with the both the lowest constraint score (0.107) and highest degree centrality (15) is the Indo-
+European root s(w)e - which Watkins (2011, p. 90) defines as a “ pronoun of the third person and reflexive (referring
+back to the subject of the sentence); further appearing in various forms referring to the social group as an entity. ” Words
+in the screenplay associated with this root include the reflexive pronouns myself, ourselves, itself , etc. as well as the
+words security guard, self -contained, self -destruction, self -employed, self -improvement , and self-portrait . Several other
+words d escending from that root appear in the screenplay but are not part of MMCs. They a re severed, secret , sure,
+unsure, solitaire, desolate, customer, and sullen . Other words descending from s(w)e - but not found in the screenplay
+are secure , sedition , separate , sever , sure, ethnic , idiot, solo, desolate , custom , sullen , and solitude . The me aning of this
+root, t he words in the story directly tied to it, and the others that descend from it are clearly indicative IDENTITY —the
+second most influential theme identified in our prior analysis.
+The Indo -European root werg - means “to do” (ibid, p. 10 3). It is one of two nodes with the third highest number of
+links (13). It and the root bysig —shown in the graph as “BUSY” —both have the fourth lowest constraint value (0.153).
+Words descending from werg - and appearing in the screenplay include Home Shoppi ng Network , homework, network,
+organic matter, paper work, sex organs, case worker, clockwork, cyber -netting, handiwork, and hard -working . Two
+other w ords descending from this root appear in the text but not in the network —surgery , and boulevard . One other
+descendant of werg - that does not appear in the screenplay is ergonomics , a word that the MacMillan Dictionary defines
+as “the study of the way that furniture, equipment, etc. can be designed so that it is easy and comfortable to use and
+produces the most benefits and the best working or living conditions.” This definition is noteworthy given the
+protagonist’s admission that he had “become a slave to the Ikea nesting instinct,” that he is de picted assembling Ikea
+furniture, and that his alter -ego Tyler mockingly refers to him as “Ikea -boy.” Words associated with bysig - include IBM
+(International Business Machines), business card, business trip, BusinessWeek, Business -like, businessman , and
+businesswoman. Clearly the bulk of these words relate to the third m ost influential theme identified earlier —CAPITAL.
+Interestingly, none of the most central or least constrained nodes are strongly associated with the theme of GENDER.
+That is to say, none of their definitions are explicitly or implicitly gendered. Nor are any of the words that descend from
+them. In fact, we have to go to the 14th least constrained and 12 most central node to find the IE root man-1 which
+means “man” (ibid, p. 52). Descending from that root are the words businessman, madman , doorman, salesman , and
+TFM (Task Force Man ). Of these, only doorman and businessman appear in the reduced network formed by the top
+nodes. And there is also the word businesswoman which is associated with the root bysig -, as noted above. These three
+are hardly sufficient t o say that the theme of GENDER —the most influential one identified above —is strongly
+emphasized in the text network. Notably, this conclusion has more support than there would appear at first glance.
+Although it is not easy to ascertain this fro m a visual examination of Fig. 1, fully 25 of the 52 journal articles —just
+short of half —made no mention whatsoever of gender related issues. Among those 25, the themes of I DENTITY and
+CAPITAL are the influential, followed very closely by ANARCHISM .
+IV. CONCLUSION
+The obj ective of the preceding study was to determine whether networ k text analysis could be used from the top -
+down , i.e. to confirm or disconfirm independently -obtained information concerning the key themes in a text. That
+744
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+© 2015 ACADEMY PUBLICATION
+objective has be en squarely met. We used 52 peer -reviewed journal articles about Fight Club to establish very clear,
+prior expectations about the themes that should be present in that text. The top three themes that we identified were
+GENDER, IDENTITY, and CAPITAL. Our ne twork text analysis applied a novel approach —Hunter’s (2014 a)
+morpho -etymolo gical method. The contribution of the present study stems from the fact that this method —like many
+similar ones —has previous ly only been applied using a bottom -up approach, i.e. to identify and extract themes from in
+a text rather than to verify them. The results of the analysis conducted herein found the expected relationship between
+themes and influential nodes. In particular, we found that the most influential node —as measured by degree centrality
+and constraint —was s(w)e - which essentially means “self” and which is associated with the reflexive pronouns, e.g.
+myself , as well as several hyphenated compounds like self-improvement and self-destruction . These multi -morphemic
+compound s (MMCs) clearly spoke to the second most important theme that we identified —IDENTITY. We also found
+that two other highly influential nodes —werg - (to do) and bysig (busy) —were associated with a number of MMCs that
+were consonant with the third most promin ent theme —CAPITAL. Notably, we found that none of the most influential
+nodes and related MMCs emphasized the most prominent theme —GENDER. But that is not as disconfirming of the
+method as it appears. Even though GENDER was the dominant theme, it was not id entified in all of the studies —just a
+little over half (27 of 52). The remaining 25 that did not identify GENDER had IDENTITY and CAPITAL tied for the
+most prominent theme while ANARCHISM was the most influential . This indicates something very important. I t shows
+that the method has revealed a major fault line in the academic literature, one that sees the story through the lenses of
+gender roles, masculinity, paternalism, virility and feminization, and another which emphasizes anarchism, nihilism,
+post-mode rnism, and a dystopian ethos. In short, one sees a crisis of masculinity while another sees men in crisis . But
+cultural criticism is inherently subjective, and so network text analysis can ’t determine whether either of these
+perspectives is the correct one. What it can do —although we had not planned to do so —is show that differences exist
+even in the face of substa ntial agreement. What it allows is for an analyst to ascertain —in a quantitative and objective
+sense —what are the underlying dimensions of the fi eld of study.
+ACKNOWLEDGEMENT
+The authors would like to thank Sham Kekre for providing funding to present an earlier version of this paper at the
+34th Sunbelt Conference of the International Network for Social Network Analysis in St. Petersburg Florida in February
+2014. We’d also like to thank Patrick McGinnis, Patrick Sileo, Peter Stuettgen, John Gasper, George White, Tom
+Emerson, Steve Calabrese, Muhammad Farooqi, Steve Vargo, Ben Collier and two anonymous reviewers for helpful
+feedback o n earlier drafts of this paper.
+APPENDIX . JOURNALS OF THE CORPUS
+1. Aparicio, J. (2013). Your Heart Is My Piñ ata: Chuck Palahniuk's Unconventional Love Stories. ANQ: A Quarterly
+Journal of Short Articles, Notes and Reviews, 26 (3), 210 -5.
+2. Baker, R. (2014). Chuck Palah niuk’s Fight Club Apropos of Sartre’s Bad Faith and Camus’s Calculated
+Culpability. Global Journal of Human -Social Science Research, 14(1), 1 -9.
+3. Barker, J. (2008). A Hero Will Rise: The Myth of the Fascist Man in Fight Club and Gladiator. Literature/Fi lm
+Quarterly, 36(3), 171 -80.
+4. Bedford, M. (2011). Smells like 1990s Spirit: The dazzling deception of Fight Club's grunge -aesthetic. New
+Cinemas: Journal of Contemporary Film, 9(1), 49 -63.
+5. Bishop, K. (2006). Artistic Schizophrenia: How Fight Club's Me ssage Is Subverted by Its Own Nature. Studies in
+Popular Culture, 29(1), 41 -56.
+6. Boon, K. (2003). Men and Nostalgia for Violence: Culture and Culpability in Chuck Palahniuk's Fight Club. The
+Journal of Men's Studies, 11(3), 267 -276.
+7. Brookey, R. & West erfelhaus, R. (2002). Hiding homoeroticism in plain view: The Fight Club DVD as digital
+closet. Critical Studies in Media Communication, 19(1), 21 -43.
+8. Brown, W., & Fleming, D. (2011). Deterritorialisation and Schizoanalysis in David Fincher's Fight Club . Deleuze
+Studies, 5(2), 275 -299.
+9. Burgess, O. (2012). Revolutionary Bodies in Chuck Palahniuk's Fight Club. Utopian Studies, 23(1), 263 -280.
+10. Clark, J. (2002). Faludi, Fight Club, and phallic masculinity: Exploring the emasculating economics of
+patriarchy. The Journal of Men's Studies, 11(1), 65 -76.
+11. Craine, J., & Aitken, S. (2004). Street fighting: Placing the crisis of masculinity in David Fincher's Fight Club.
+GeoJournal, 59(4), 289 -296.
+12. Deacy, C. (2002). Integration and rebirth through conf rontation: Fight Club and American Beauty as
+contemporary religious parables. Journal of Contemporary Religion, 7(1), 61 -73.
+13. Del Gizzo, S. (2008). The American Dream Unhinged: Romance and Reality in The Great Gatsby and Fight Club.
+The F. Scott Fitzger ald Review, 6(1), 69 -94.
+14. Diken, B., & Laustsen, C. (2002). Enjoy Your Fight! -Fight Club as a Symptom of the Network Society. Cultural
+Values, 6(4), 349 -367.
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+745
+© 2015 ACADEMY PUBLICATION
+15. Friday, K. (2003). A Generation of Men Without History: Fight Club, Masculinity, and the Hi storical Symptom.
+Postmodern Culture, 13(3), 1 -12.
+16. Giroux, H. (2001). Private Satisfactions and Public Disorders: Fight Club, Patriarchy, and the Politics of
+Masculine Violence. JAC Online, 24(1), 1 -31.
+17. Gold, S. N. (2004). Fight Club: A depiction o f contemporary society as dissociogenic. Journal of Trauma &
+Dissociation, 5(2), 13 -34.
+18. Gravett, S. (2002). Marla, Freud, Religion, and Manhood: An Interpretation of David Fincher’s Fight Club.
+Journal of Religion and Popular Culture, 2(1), 14 -24.
+19. Gunn, J., & Frentz, T. (2010). Fighting for father: Fight Club as cinematic psychosis. Western Journal of
+Communication, 74(3), 269 -291.
+20. Henderson, G. (2011). What was Fight Club? Theses on the value worlds of trash capitalism. Cultural
+Geographies, 18 (2), 143 -170.
+21. Iocco, M. (2003). Whom do you fight? The limits and excesses of masculinity in Fight Club. M/C: A Journal of
+Media and Culture, 6(1), 1 -7.
+22. Iocco, M. (2007). Addicted to Affliction: Masculinity and Perversity in Crash and Fight Club. G othic Studies,
+9(1), 46 -56.
+23. Jordan, M. (2002). Marxism, Not Manhood Accommodation and Impasse in Seamus Heaney's Beowulf and
+Chuck Palahniuk's Fight Club. Men and Masculinities, 4(4), 368 -379.
+24. Kavadlo, J. (2005). The Fiction of Self -destruction: Ch uck Palahniuk, Closet Moralist. Stirrings Still: The
+International Journal of Existential Literature, 2(2), 3 -24.
+25. Kennett, P. (2005). Fight Club and the Dangers of Oedipal Obsession. Stirrings Still: The International Journal of
+Existential Literature, 2(2), 48 -64.
+26. King, C. (2009). It cuts both ways: Fight Club, masculinity, and abject hegemony. Communication and
+Critical/Cultural Studies, 6(4), 366 -385.
+27. Kravitz, B. (2004). The Culture of Disease and The Dis -ease of Culture: Re -membering the Bod y in Fight Club
+and Memento. Studies in Popular Culture, 26(2), 29 -48.
+28. Kusz, K. (2002). Fight Club and the Art/Politics of White Male Victimization and Reflexive Sadomasochism.
+International Review for the Sociology of Sport, 37(3 -4), 465 -470.
+29. Layton, L. (2011). Something to do with a girl named Marla Singer: Capitalism, narcissism, and therapeutic
+discourse in David Fincher’s Fight Club. Free Associations, (62), 111 -134.
+30. Lindgren, S. (2011). A copy, of a copy, of a copy?: Exploring masculinity under transformation in Fight Club.
+Scope. An Online Journal of Film Studies, 19(1), 1 -27.
+31. Lizardo, O. (2007). Fight Club, or the cultural contradictions of late capitalism. Journal for Cultural Research,
+11(3), 221 -243.
+32. Locke, B. (2014). The White Man's Bruce Lee: Race and the Construction of White Masculinity in David
+Fincher's Fight Club (1999). Journal of Asian American Studies, 17(1), 61 -89.
+33. Lockwood, R. (2008). Cults, Consumerism, and the Construction of Self: Exploring the Religious withi n Fight
+Club. Journal of Contemporary Religion, 23(3), 321 -335.
+34. McCullough, J. (2005). Tedium and torture: Fight Club, globalization and professionals in crisis. CineAction, 65,
+44-54.
+35. Mitchell, K. (2013). A Copy of a Copy of a Copy: Productive Rep etition in Fight Club. Jeunesse: Young People,
+Texts, Cultures, 5(1), 108 -131.
+36. Morris, T. (2014). Networking vehement frames: neo -Nazi and violent jihadi demagoguery. Behavioral Sciences
+of Terrorism and Political Aggression, 6(3), 163 -82.
+37. Ng, A. ( 2005). Muscular Existentialism in Chuck Palahniuk’s Fight Club. Stirrings Still: The International
+Journal of Existential Literature, 2(2), 116 -38.
+38. Palladino, P., & Young, T. (2003). Fight Club and the World Trade Center: On Metaphor, Scale, and the Sp atio-
+temporal (Dis) location of Violence. Journal for Cultural Research, 7(2), 195 -218.
+39. Pettus, M. (2000). Terminal simulation: Revolution in Chuck Palahniuk's Fight Club. Hungarian Journal of
+English and American Studies, 6(2), 111 -127.
+40. Reed, C. ( 2007). Fight Club: An Exploration of Buddhism. Journal of Religion & Film, 11(2), 2 -11.
+41. Rehling, N. (2001). Fight Club Takes a Beating: Masculinity, Masochism and the Politics of Disavowal. Gramma:
+Journal of Theory and Criticism, 9, 187 -205.
+42. Robin son, S. (2011). Feminized Men and Inauthentic Women: Fight Club and the Limits of Anti -Consumerist
+Critique. Genders, 53, 1 -33.
+43. Ruddell, C. (2007). Virility and Vulnerability, Splitting and Masculinity in Fight Club: A Tale of Contemporary
+Male Identit y Issues. Extrapolation, 48(3), 493 -503.
+44. Schultz, R. (2011). White Guys Who Prefer Not To: From Passive Resistance (Bartleby) To Terrorist Acts (Fight
+Club). The Journal of Popular Culture, 44(3), 583 -605.
+746
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+© 2015 ACADEMY PUBLICATION
+45. Slade, A. (2011). To Live Like Fighting Co cks: Fight Club and the Ethics of Masculinity. Quarterly Review of
+Film and Video, 28(3), 230 -238.
+46. Spicer, A. (2001). Out of the cynical bind? A reflection on resistance in Fight Club. Ephemera, 1(1), 92 -102.
+47. Stirling, K. (2004). Dr. Jekyll and Mr. Jackass: Fight Club as a Refraction of Hogg's Justified Sinner and
+Stevenson's Dr. Jekyll and Mr. Hyde. Postmodern Studies, 35(1), 83 -94.
+48. Ta, L. (2006). Hurt so good: Fight Club, masculine violence, and the crisis of capitalism. The Journal of
+America n Culture, 29(3), 265 -277.
+49. Tuss, A. (2004). Masculine identity and success: a critical analysis of Patricia Highsmith’s The Talented Mr.
+Ripley and Chuck Palahniuk’s Fight Club. The Journal of Men’s Studies, 12(2), 93 -102.
+50. Vafa, A., & Talif, R. (20 11). Manhood in Crisis: Powerlessness, Homophobia and Violence in Fight Club.
+Pertanika Journal of Social Science and Humanities, 19(2), 449 -457.
+51. Westerfelhaus, R., & Brookey, R. (2004). At the unlikely confluence of conservative religion and popular c ulture:
+Fight Club as heteronormative ritual. Text and Performance Quarterly, 24(3 -4), 302 -326.
+52. Yeo, D. (2014). Gothic Paranoia in David Fincher's Seven, The Game and Fight Club. Aeternum: The Journal of
+Contemporary Gothic Studies, 1, 16 -25.
+REFERENCE S
+[1] Aparicio, J. (2013). Your Heart Is My Piñ ata: Chuck Palahniuk's Unconventional Love Stories. ANQ: A Quarterly Journal of
+Short Articles, Notes and Reviews, 26 (3), 210 -5.
+[2] Baker, R. (2014). Chuck Palahniuk’s Fight Club Apropos of Sartre’s Bad Faith and Ca mus’s Calculated Culpability. Global
+Journal of Human -Social Science Research , 14(1), 1 -9.
+[3] Bakker, R. (1987). Knowledge Graphs: representation and structuring of scientific knowledge. Ph.D. Thesis. Dept. of Applied
+Mathematics, University of Twente, Nethe rlands.
+[4] Barker, J. (2008). A Hero Will Rise: The Myth of the Fascist Man in Fight Club and Gladiator. Literature/Film Quarterly ,
+36(3), 171 -80.
+[5] Bedford, M. (2011). Smells like 1990s Spirit: The dazzling deception of Fight Club's grunge -aesthetic. New Cinem as: Journal
+of Contemporary Film , 9(1), 49 -63.
+[6] Bishop, K. (2006). Artistic Schizophrenia: How Fight Club's Message Is Subverted by Its Own Nature. Studies in Popular
+Culture, 29(1), 41 -56.
+[7] Boon, K. (2003). Men and Nostalgia for Violence: Culture and Culpab ility in Chuck Palahniuk's Fight Club. The Journal of
+Men's Studies , 11(3), 267 -276.
+[8] Box Office Mojo. Fight Club. http://www.boxofficemojo.com/movies/?id=fightclub.htm (accessed 27 September 2014).
+[9] Brookey, R. & Westerfelhaus, R. (2002). Hiding homoerotic ism in plain view: The Fight Club DVD as digital closet. Critical
+Studies in Media Communication , 19(1), 21 -43.
+[10] Brown, W., & Fleming, D. (2011). Deterritorialisation and Schizoanalysis in David Fincher's Fight Club. Deleuze Studies , 5(2),
+275-299.
+[11] Burgess, O. (2012). Revolutionary Bodies in Chuck Palahniuk's Fight Club. Utopian Studies , 23(1), 263 -280.
+[12] Burt, R. (2000). The network structure of social capital. Research in Organizational Behavior , 22, 345 -423.
+[13] Carley, K. (1997). Extracting team mental models through textual analysis. Journal of Organizational Behavior , 18.1, 533 -558.
+[14] Carley, K., & Palmquist, M. (1992). Extracting, representing, and analyzing mental models. Social Forces , 70(3), 601 -636.
+[15] Carley, K., Columbus, D. & Landwehr, P. (2013). AutoMap User's Guide 2013. Carnegie Mellon University, School of
+Computer Science, Institute for Software Research, Technical Report, CMU -ISR-13-105
+[16] Chung, C., & Park, H. (2010). Textual analysis of a political message: the inaugural addresses of two Korean presid ents. Social
+Science Information ,49(2), 215 -239.
+[17] Clark, J. (2002). Faludi, Fight Club, and phallic masculinity: Exploring the emasculating economics of patriarchy. The Journal
+of Men's Studies , 11(1), 65 -76.
+[18] Collins, A., & Loftus, E. (1975). A spreading -activation theory of semantic processing. Psychological Review, 82(6), 407 -28.
+[19] Corman, S., Kuhn, T., McPhee, R., & Dooley, K. (2002). Studying Complex Discursive Systems. Human Communication
+Research , 28(2), 157 -206.
+[20] Craine, J., & Aitken, S. (2004). Street F ighting: Placing the crisis of masculinity in David Fincher's Fight Club. GeoJournal,
+59(4), 289 -296.
+[21] Crowdus, G. (2000). Getting Exercised over Fight Club. Cineaste , 25(4), 46 -8.
+[22] Danowski, J. (1993). Network analysis of message content. Progress in Commun ication Sciences , 12, 198 -221.
+[23] Deacy, C. (2002). Integration and rebirth through confrontation: Fight Club and American Beauty as contemporary religious
+parables. Journal of Contemporary Religion , 7(1), 61 -73.
+[24] Del Gizzo, S. (2008). The American Dream Unhin ged: Romance and Reality in The Great Gatsby and Fight Club. The F. Scott
+Fitzgerald Review , 6(1), 69 -94.
+[25] Diesner, J. (2012). Uncovering and managing the impact of methodological choices for the computational construction of
+socio -technical networks from t exts. Carnegie -Mellon University, Software Research Institute.
+[26] Diesner, J. (2013). From Texts to Networks: Detecting and Managing the Impact of Methodological Choices for Extracting
+Network Data from Text Data. KI-Kü nstliche Intelligenz , 27(1), 75 -78.
+[27] Diesner, J., & Carley, K. (2005). Revealing social structure from texts: meta -matrix text analysis as a novel method for network
+text analysis. In V.K. Narayanan and Deborah J. Armstrong (eds.), Causal mapping for information systems and technology
+research: A pproaches, advances, and illustrations . Hershey, PA: IGI Global, 81 -108.
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+747
+© 2015 ACADEMY PUBLICATION
+[28] Diken, B., & Laustsen, C. (2002). Enjoy Your Fight! -Fight Club as a Symptom of the Network Society. Cultural Values , 6(4),
+349-367.
+[29] Fischer -Starcke, B. (2009). Keywords and frequent p hrases of Jane Austen's Pride and Prejudice A corpus -stylistic analysis.
+International Journal of Corpus Linguistics , 14(4), 492 -523.
+[30] Friday, K. (2003). A Generation of Men Without History: Fight Club, Masculinity, and the Historical Symptom. Postmodern
+Culture, 13(3), 1 -12.
+[31] Giroux, H. (2001). Private Satisfactions and Public Disorders: Fight Club, Patriarchy, and the Politics of Masculine Violence .
+JAC Online , 24(1), 1 -31.
+[32] Gold, S. (2004). Fight Club: A depiction of contemporary society as dissociogenic. Journal of Trauma & Dissociation , 5(2),
+13-34.
+[33] Gravett, S. (2002). Marla, Freud, Religion, and Manhood: An Interpretation of David Fincher’s Fight Club. Journal of Religion
+and Popular Culture , 2(1), 14 -24.
+[34] Grbic, D., Hafferty, F., & Hafferty, P. (2013). Me dical school mission statements as reflections of institutional identity and
+educational purpose: A network text analysis. Academic Medicine, 88(6), 852 -860.
+[35] Gunn, J., & Frentz, T. (2010). Fighting for father: Fight Club as cinematic psychosis. Western Jou rnal of Communication,
+74(3), 269 -291.
+[36] Henderson, G. (2011). What was Fight Club? Theses on the value worlds of trash capitalism. Cultural Geographies , 18(2),
+143-170.
+[37] Hunter, S. (2014a). A Novel Method of Network Text Analysis. Open Journal of Modern Ling uistics, 4(02), 350 -66.
+[38] Hunter, S. (2014b). A Semi -Automated Method of Network Text Analysis Applied to 150 Original Screenplays. Proceedings
+of the Joint Workshop on Social Dynamics and Personal Attributes in Social Media. 1(1), 68 -76.
+[39] Hunter, S., & Smith , S. (2013). Thematic and Lexical Repetition in a Contemporary Screenplay. Open Journal of Modern
+Linguistics , 3(1), 9 -19.
+[40] Iocco, M. (2003). Whom do you fight? The limits and excesses of masculinity in Fight Club. M/C: A Journal of Media and
+Culture , 6(1), 1-7.
+[41] Iocco, M. (2007). Addicted to Affliction: Masculinity and Perversity in Crash and Fight Club. Gothic Studies, 9(1), 46 -56.
+[42] Jordan, M. (2002). Marxism, Not Manhood Accommodation and Impasse in Seamus Heaney's Beowulf and Chuck Palahniuk's
+Fight Club. Men and Masculinities , 4(4), 368 -379.
+[43] Kavadlo, J. (2005). The Fiction of Self -destruction: Chuck Palahniuk, Closet Moralist. Stirrings Still: The International Journal
+of Existential Literature, 2(2), 3 -24.
+[44] Kennett, P. (2005). Fight Club and the Dangers o f Oedipal Obsession. Stirrings Still: The International Journal of Existential
+Literature, 2(2), 48 -64.
+[45] King, C. (2009). It Cuts Both Ways: Fight Club, Masculinity, and Abject Hegemony. Communication and Critical/Cultural
+Studies , 6(4), 366 -385.
+[46] Kravitz, B . (2004). The Culture of Disease and The Dis -ease of Culture: Re -membering the Body in Fight Club and Memento.
+Studies in Popular Culture , 26(2), 29 -48.
+[47] Kusz, K. (2002). Fight Club and the Art/Politics of White Male Victimization and Reflexive Sadomasochis m. International
+Review for the Sociology of Sport , 37(3 -4), 465 -470.
+[48] Layton, L. (2011). Something to do with a girl named Marla Singer: Capitalism, narcissism, and therapeutic discourse in David
+Fincher’s Fight Club. Free Associations , (62), 111 -134.
+[49] Light, R. (2014). From Words to Networks and Back: Digital Text, Computational Social Science, and the Case of Presidential
+Inaugural Addresses. Social Currents, 1(2), 111 -29.
+[50] Lindgren, S. (2011). A copy, of a copy, of a copy?: exploring masculinity under tra nsformation in Fight Club. Scope. An online
+Journal of Film Studies, 19(1), 1 -27.
+[51] Lizardo, O. (2007). Fight Club, or the cultural contradictions of late capitalism. Journal for Cultural Research , 11(3), 221 -243.
+[52] Locke, B. (2014). The White Man's Bruce Lee: Race and the Construction of White Masculinity in David Fincher's Fight Club
+(1999). Journal of Asian American Studies , 17(1), 61 -89.
+[53] Lockwood, R. (2008). Cults, Consumerism, and the Construction of Self: Exploring the Religious within Fight Club. Journal of
+Contemporary Religion , 23(3), 321 -335.
+[54] McCullough, J. (2005). Tedium and torture: Fight Club, globalization and professionals in crisis. CineAction , 65, 44 -54.
+[55] Mitchell, K. (2013). A Copy of a Copy of a Copy: Productive Repetition in Fight Club. Jeunes se: Young People, Texts,
+Cultures , 5(1), 108 -131.
+[56] Morris, T. (2014). Networking vehement frames: neo -Nazi and violent jihadi demagoguery. Behavioral Sciences of Terrorism
+and Political Aggression , 6(3), 163 -82.
+[57] Ng, A. (2005). Muscular Existentialism in Ch uck Palahniuk’s Fight Club. Stirrings Still: The International Journal of
+Existential Literature, 2(2), 116 -38.
+[58] Novak, J. (1990). Concept mapping: A useful tool for science education. Journal of Research in Science Teaching , 27(10), 937 -
+949.
+[59] Palahniuk, C. (1996). Fight Club: A novel. WW Norton & Company, New York.
+[60] Palladino, P., & Young, T. (2003). Fight Club and the World Trade Center: On Metaphor, Scale, and the Spatio -temporal (Dis)
+location of Violence. Journal for Cultural Research , 7(2), 195 -218.
+[61] Pettus, M. (2000). Terminal simulation: Revolution in Chuck Palahniuk's Fight Club. Hungarian Journal of English and
+American Studies , 6(2), 111 -127.
+[62] Popping, R. (2000). Computer -assisted text analysis. Sage, Thousand Oaks, CA.
+[63] Popping, R., & Roberts, C. W. (1 997). Network approaches in text analysis. Springer Berlin, Heidelberg.
+[64] Reachability. (2014). http://en.wikipedia.org/wiki/Reachability (accessed 22/09/2014)
+[65] Reed, C. (2007). Fight Club: An Exploration of Buddhism. Journal of Religion & Film , 11(2), 2 -11.
+748
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+© 2015 ACADEMY PUBLICATION
+[66] Rehling, N. (2001). Fight Club Takes a Beating: Masculinity, Masochism and the Politics of Disavowal. Gramma: Journal of
+Theory and Criticism , 9, 187 -205.
+[67] Roberts, C. (1997). Text analysis for the social sciences: Methods for drawing statistical inferences from texts and transcripts.
+Hillsdale, NJ: Lawrence Erlbaum Associates.
+[68] Robinson, S. (2011). Feminized Men and Inauthentic Women: Fight Club and the Limits of Anti -Consumerist Critique.
+Genders , 53, 1 -33.
+[69] Ruddell, C. (2007). Virility and Vulnerability, Sp litting and Masculinity in Fight Club: A Tale of Contemporary Male Identity
+Issues . Extrapolation , 48(3), 493 -503.
+[70] Schultz, R. (2011). White Guys Who Prefer Not To: From Passive Resistance (Bartleby) To Terrorist Acts (Fight Club). The
+Journal of Popular C ulture , 44(3), 583 -605.
+[71] Slade, A. (2011). To Live Like Fighting Cocks: Fight Club and the Ethics of Masculinity. Quarterly Review of Film and Video,
+28(3), 230 -238.
+[72] Smith, G. (1999). Inside Out: Gavin Smith Goes One -on-One with David Fincher. Film Comment , 35(5), 58 -68.
+[73] Sowa, J. (1992). Conceptual graphs as a universal knowledge representation. Computers & Mathematics with Applications,
+23(2), 75 -93.
+[74] Spicer, A. (2001). Out of the cynical bind? A reflection on resistance in Fight Club. Ephemera, 1(1), 92 -102.
+[75] Stemming. (2014). http://en.wikipedia.org/wiki/Stemming (accessed 26/09/2014) .
+[76] Stirling, K. (2004). Dr. Jekyll and Mr. Jackass: Fight Club as a Refraction of Hogg's Justified Sinner and Stevenson's Dr. Je kyll
+and Mr. Hyde. Postmodern Studies , 35(1), 83 -94.
+[77] Stubbs, M. (2005). Conrad in the computer: examples of quantitative stylistic methods. Language and Literature , 14(1), 5 -24.
+[78] Ta, L. (2006). Hurt so good: Fight Club, masculine violence, and the crisis of capitalism. The Journal of American Culture,
+29(3), 265 -277.
+[79] Tambayong, L., & Carley, K. (2012). Network Text Analysis in Computer -Intensive Rapid Ethnography Retrieval: An
+Example from Political Networks of Sudan. Journal of Social Structure , 13 (2), 1 -24.
+[80] Tuss, A. (2004). Masculine identity and success : a critical analysis of Patricia Highsmith’s The talented Mr. Ripley and Chuck
+Palahniuk’s Fight Club. The Journal of Men’s Studies , 12(2), 93 -102.
+[81] Uhls, J., & Palahniuk, C. (2000). Fight Club: The Original Screenplay. Los Angeles: ScreenPress.
+[82] Vafa, A., & Talif, R. (2011). Manhood in Crisis: Powerlessness, Homophobia and Violence in Fight Club. Pertanika Journal of
+Social Science and Humanities , 19(2), 449 -457.
+[83] van Atteveldt, W., Kleinnijenhuis, J., & Ruigrok, N. (2008). Parsing, semantic networks, and po litical authority using syntactic
+analysis to extract semantic relations from Dutch newspaper articles. Political Analysis , 16(4), 428 -446.
+[84] Wasserman, S. (1994). Social Network Analysis: Methods and Applications (vol. 8). Cambridge, UK: Cambridge Universit y
+Press.
+[85] Watkins, C. (ed.) (2011). The American Heritage Dictionary of Indo -European Roots (3rd Ed). Boston: Houghton Mifflin
+Harcourt.
+[86] Westerfelhaus, R., & Brookey, R. (2004). At the unlikely confluence of conservative religion and popular culture: Fight Club
+as heteronormative ritual. Text and Performance Quarterly, 24(3-4), 302 -326.
+[87] Yeo, D. (2014). Gothic Paranoia in David Fincher's Seven, The Game and Fight Club. Aeternum: The Journal of
+Contemporary Gothic Studies , 1, 16 -25.
+Starling Hunter was born in California, USA, in 1963. He received his PhD in Organization Theory from Duke University in
+1999. He is current an Associate Teaching Professor at Carnegie Mellon University’s Tepper School of Business in Doha, Qatar. His
+research interests include or ganizational and text network analysis.
+Saba Singh was born in New Dehli, India in 1991. In 2014 she received her Bachelors of Science in Business Administration with
+a major in marketing from the Tepper School of Business at Carnegie Mellon University i n Doha, Qatar. She is cu rrently employed
+as a business coordinator at the 60Degrees Creative Advertising Agency in Doha, Qatar.
+THEORY AND PRACTICE IN LANGUAGE STUDIES
+749
+© 2015 ACADEMY PUBLICATION

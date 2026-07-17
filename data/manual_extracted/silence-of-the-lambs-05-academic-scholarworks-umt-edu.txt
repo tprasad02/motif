@@ -1,0 +1,2271 @@
+Silence_of_Lambs_Academic
+In repo
+
+Univ ersity of Montana Univ ersity of Montana
+ScholarW orks at Univ ersity of Montana ScholarW orks at Univ ersity of Montana
+Graduate Student Theses, Disser tations, &
+Professional P apers Graduate School
+1996
+Cultur al analysis of Jonathan Demme 's "The Silence of the Cultur al analysis of Jonathan Demme 's "The Silence of the
+Lambs" Lambs"
+Arthur S. Almquist
+The Univ ersity of Montana
+Follow this and additional works at: https:/ /scholar works.umt.edu/etd
+Let us know how access t o this document benefits y ou.
+Recommended Citation Recommended Citation
+Almquist, Ar thur S., "Cultur al analysis of Jonathan Demme 's "The Silence of the Lambs" " (1996). Graduate
+Student Theses, Disser tations, & Pr ofessional P apers . 1952.
+https:/ /scholar works.umt.edu/etd/1952
+This Thesis is br ought t o you for fr ee and open access b y the Gr aduate School at ScholarW orks at Univ ersity of
+Montana. It has been accepted for inclusion in Gr aduate Student Theses, Disser tations, & Pr ofessional P apers b y an
+authoriz ed administr ator of ScholarW orks at Univ ersity of Montana. F or mor e information, please contact
+scholar works@mso.umt.edu .
+Maureen and Mike " -
+MANSFIELD LIBRARY ' -
+The University of MONTANA
+Pennission is granted by the author to reproduce tliis material in its entirety,
+provided that this material is used for scholarly purposes and is properly cited in
+published works and reports.
+** Please check "Yes" or "No" and provide signature
+Yes, I grant permission
+No, I do not grant permission **
+Author's Signature
+Date ^
+Any copying for commercial purposes or financial gain may be undertaken only with
+tlie author's explicit consent.
+A CULTURAL ANALYSIS OF
+JONATHAN DEMME'S
+THE SILENCE OF THE LAMBS
+Arthur S. Almquist
+presented in partial fulfillment of the requirements
+for the degree of
+Master of Arts
+The University of Montana
+1996
+Approved by:
+Chairperson
+Dean, Graduate School
+Date
+UMI Number; EP35166
+INFORMATION TO ALL USERS
+The quality of this reproduction is dependent upon the quality of the copy submitted.
+In the unlikely event that the author did not send a complete manuscript
+and there are missing pages, these will be noted. Also, if material had to be removed,
+a note will indicate the deletion.
+UMT OisMTtation PlMiaMng
+UMI EP35166
+Published by ProQuest LLC (2012). Copyright in the Dissertation held by the Author.
+Microform Edition © ProQuest LLC.
+unauthorized copying under Title 17, United States Code
+uesf
+ProQuest LLC.
+789 East Eisenhower Parkway
+P.O. Box 1346
+Ann Arbor, Ml 48106- 1346
+To Amy
+with thanks to
+Randy Bolton
+Dora Lanier
+Michael Murphy
+James Kriley
+introduction
+Mary told me that she tends to have a hard time
+with films that contain violence against women; I nodded,
+looked to Scott for support, and thought fast.
+The three of us were teaching at a private boarding
+school in Connecticut during the spring of 1991, and had
+decided that a Friday evening at the movies would offer an
+escape from our daily adolescent-controlled chores. It
+was the nationwide opening night of Jonathan Demme's The
+Silence of the Lambs, and, as a long-time admirer of
+Demme's work, I was desperate to see it. While Scott was
+basically indifferent, Mary said that she was hesitant
+about viewing Silence because she did not know what to
+expect from the picture; if it were extremely graphic
+and/or disturbing, she knew that she would have a
+difficult time sitting through it.
+Knowing precious little about the film's narrative
+but aware that it did deal with a serial murderer of
+women, I pointed out and stressed the fact that the film
+was receiving excellent reviews and boasted two superb
+actors (Jodie Foster and Anthony Hopkins) in the leads. I
+told her that Jonathan Demme, of Stop Making Sense,
+Married to the Mob, and Melvin and Howard -- all of them
+films based in strong characters and personalities, each
+possessing a bittersweet take on our culture — had
+directed the film. I explained that while Demme's career
+in film did begin under the wing of Roger Gorman
+(notorious in Hollywood for producing and directing films
+cheaply and quickly, with wildly variant results), Demme's
+films have consistently risen above the more profit-minded
+projects which seem to regularly emerge at our theatres.
+Always intelligent and character-driven, his work
+emphasizes story over more "obvious" audience-friendly
+techniques. Silence could not then, I promised, be
+without a high level of integrity. Mary finally agreed to
+give the picture a chance, and I said a silent prayer that
+I was not about to lead her into a nightmare at the
+Torrington Cineplex.
+Three-quarters of the way into the story, the
+serial killer nicknamed "Buffalo Bill" is taunting a young
+woman he has imprisoned in his basement well; she screams
+in terror, reacting to human blood and fingernails she
+has discovered embedded in the surrounding walls. He
+begins to scream himself, mocking her cries, pulling at
+his T-shirt to mimic breasts. Mary calmly got up,
+shuffled through the crowded aisle, and walked to the
+popcorn stand to catch her breath. "What movie are you
+seeing?" asked the young African-American hostess.
+"The Silence of the Lambs," Mary replied.
+The young woman nodded. "What scene they on?"
+"She's screaming in the well," Mary said, "and he's
+imitating her."
+The girl shook her head grimly. "Oh, honey," she
+said, "it just gets worse. "
+* * *
+It does get worse. The Silence of the Lambs is
+arguably one of the most effective and terrifying American
+films ever made, gradually tightening its grip on its
+audience as it builds to its heroine's final descent into
+a living hell. By the film's conclusion, we may forget
+that we have seen very little actual violence on-screen;
+rather, the ideas and results of violence are emphasized,
+forcing the film's harrowing and somewhat repellent
+subject matter deep into our souls. It is not a film to
+be easily dismissed or forgotten.
+"Worse" in terms of its unnerving and chilling
+material, yes. Yet, this is also one of the most literate
+and intelligent films of the decade -- and, surprisingly,
+one of the most auspicious. Peter Travers wrote in
+Rolling Stone that "for all the unbridled savagery on
+display, what is shrewd, significant, and finally hopeful
+about Silence of the Lambs is the way it proves a movie
+can be mercilessly scary and mercifully humane at the same
+time."^ A careful analysis finds that the film
+challenges our assumptions about human beings and their
+labels, wbile considering and understanding our own human
+search for meaning. As the narrative unfolds. The Silence
+of the Lambs goes far beyond any ambitions of a simple
+"scare film." It is prolific with cultural perception and
+cognizance, tendering, for those willing to take the
+journey, profound insights into our very culture', insights
+which literally can help us to make sense and meaning out
+of our own lives within it.
+In the six years since its release, I have often
+defended Silence as more than a horror film, and, in
+1993, wrote an in-depth commentary for a Performance
+Theory course on the ways in which the film transcends its
+"genre." I discussed the film as literature, focusing on
+the film's strong characterizations and subtle handling of
+violence; Demme's Hitchcockian understanding of suspense;
+and, finally, the way that Ms. Foster's Clarice Starling
+develops in the course of the picture. I had, it happens,
+only scratched the surface.
+The film does have many enemies. Upon its release,
+it ignited a fire of protest from many who challenged the
+script's treatment of women, and, especially, Demme's
+depiction of homosexuals. In 1991, Lisa Kennedy of The
+Village Voice invited a number of writers, many of them
+film critics both gay and straight, to comment on the
+furor surrounding Silence. Among their reactions:
+The Silence of the Lambs is a dumb, stupid,
+manipulative, gripping, well-made, and ultimately
+unbelievable movie. It is not scary, it is just
+unpleasant.
+Larry Kramer
+The director chose to make the symptoms [of Buffalo
+Bill's homosexuality] obvious through what the
+general audience accepts as typical gay male
+affect: nipple rings, swishing scarves, crude
+makeup, etc...it's clear that gay men are not a
+community Demme considers worth handling with
+care.
+Jewelle Gomez
+Jame Gumb [is] more a projection of homophobia
+than a credible character.
+Martha Gever
+. . .when we actually see Gximb in his natural
+habitat, he's endowed with all the fag cliches
+homophobes have doted on for decades: bleached
+locks, whiny voice, frilly glad rags, and, choicest
+of all, the love of a teensy white poodle named
+Precious.^
+Stephen Harvey
+The above critics have allowed the depiction of a
+character -- a character stressed in the script as not a
+homosexual, but rather in search of some sort of identity
+— to blind them to the sagaciousness of Demme's film. I
+believe that the film does transcend its genre. But it
+also is extraordinarily erudite. My cultural analysis of
+the film, responding to the concepts of cultural
+interpretation developed by Victor Turner, Jerome Bruner,
+Clifford Geertz, Arnold van Gennep, and Mircea Eliade,
+finds that The Silence of the Lambs is a magnificent work,
+bridging rites of passage, transformation, and the
+ascension of the spirit into a modern work of art. This
+cultural analysis will eventually help make meaning of the
+film, as well as elucidate its insights into our own
+culture.
+We in America live and function within a culture of
+contradiction and paradox: our children, for example, can
+become anything they want to become, so long as the
+judging majority does not view their choice as deviant or
+in bad taste; we pay lip service to denouncing censorship
+and maintaining that America is the "Land of the Free" ...
+provided that, as evidenced by the recent Tele­
+communications Act, we do not behave "offensively" or say
+things which are "annoying" on the Internet; and many
+state leaders still demonstrate their abhorrence of murder
+and murderers by choosing simply to murder the accused.
+Mind you, I am not suggesting in these observations that
+there could ever exist a culture devoid of entanglements
+and impasses; the very presence of human beings ensures
+cultural predicaments. It seems, however, that many
+paradoxical dilemmas within our culture are uniquely
+American- The Silence of the Lambs, then, with all of its
+serial murderers, skinnings, beheadings, transsexualism,
+and torture both mental and physical, indicts our culture
+as being cornered by societal incongruity and dilemmas of
+its own making.
+And finally, a cultural analysis of The Silence of
+the Lambs — like all consequential works of art -- can
+help us to find and create greater meaning within our own
+lives. Kenneth Burke indicated in 1941 that works of art.
+like proverbs, do actually offer strategies for dealing
+with the events of our lives:
+[They should be seen] as strategies for selecting
+enemies and allies, for socializing losses, for
+warding off [the] evil eye, for purification,
+propitiation, and desanctification, consolation and
+vengeance, admonition and exhortation, implicit
+commands or instructions of one sort or another.^
+As a work of art. The Silence of the Lambs is more
+than a relentlessly frightening film.
+Burke's words, "equipment for living^'
+reckoned with as such. It is truly, in
+— and must be
+Chapter One:
+On Culture and Rites of Passage
+"...to understand man you must understand how his experiences
+and his acts are shaped by his intentional states...the form
+of these intentional states is realized only through participation
+in the symbolic systems of the culture."
+Jerome Bruner, Acts of Meaning
+Everything about The Silence of the Lambs — its
+heart, characters, themes, and dialogue -- could take
+place in no other country than America, and at no other
+time than this "family values"-conscious decade. Seeing
+ourselves as "The Land of the Free," along with the
+heightened perceptions of the rest of the world, has set
+us up to be in highly ironic place: while we believe that
+America is organized around a clear set of ideologies and
+symbols -- with freedom, the family, and opportunity at
+its center -- the realities faced by many Americans are
+not so consistent. Each detail in The Silence of the
+Lambs, from the pathology of Buffalo Bill to the
+intricacies of standard FBI procedure, derives from,
+reacts to, or is fed by the American culture of which it
+is a part. The film also deals explicitly with the notion
+of cultural and spiritual transition, particularly with
+what van Gennep refers to as Rites of Passage.
+But what do we really mean when we discuss culture?
+The very word seems today to be taking on an elitist air:
+the word can conjure images for many of tuxedos and
+martinis, surrounded by discussion of the latest cultural
+event. Obviously, this is not the way of our thinking.
+To explore this notion of culture, I shall begin by
+pointing to anthropologist Clifford Geertz's analogy of
+man as a being constantly suspended in self-spun "webs" of
+significance. "I take culture," he writes, "to be those
+webs, and the analysis of it to be therefore not an
+experimental science in search of law but an interpretive
+one in search of meaning."^ If, indeed, we "spin" these
+webs ourselves, then one might initially perceive Geertz's
+version of culture as being highly individualized; that
+is, a reaction to whatever outside forces come up against
+our own webs. Geertz, in fact, is diametrically opposed
+to this notion:
+Culture is most effectively treated..-purely as a
+symbolic system (the catch phrase is, "in its own
+terms"), by isolating its elements, specifying the
+internal relationships among those elements, and
+then characterizing the whole system in some
+general way -- according to the core symbols
+around which it is organized, the underlying
+structures of which it is a surface expression, or
+the ideological principles upon which it is based
+(italics mine)
+Culture is finally public, Geertz says, because meaning is
+public.
+Like Geertz, Jerome Bruner also does not accept the
+conception of culture as monastic. In Acts of Meaning,
+the psychologist and professor coins the term "folk
+psychology," arguing that culture literally shapes our
+lives and minds, giving meaning to action "by underlying
+its intentional states in an interpretive system."^ Folk
+Psychology, for Bruner, is a system by which human beings
+organize their experience with the social world. People
+hold beliefs and desires: we believe in the organization
+of the world, we desire certain things within that world
+— and, moreover, we believe that all of our beliefs
+should somehow coalsscB and that others should not want
+things which seem to be irreconcilable. The very nature
+of Folk Psychology for Bruner is canonical: it "summarizes
+not simply how things are but (often implicitly) how they
+should be."^ Naturally, the events of our lives rarely
+go gently down that path; as a means of coping, then,
+Bruner states that Folk Psychology has at its heart the
+notion of narrative.
+Folk Psychology, invested in canonicality, empowers
+the "normal" with authority and legitimacy- But, Bruner
+states, the capability of a culture to survive lies not in
+simple harmony; instead, it "inheres in its capacity for
+resolving conflicts, for explicating differences and
+renegotiating communal meanings."® Here we begin to see
+how a "horror" film as "disturbing" as The Silence of the
+Lambs can be as rich in meaning and cultural relevance (if
+not more so) as a more obvious audience-pleaser like Terms
+of Endearment. Without chaos, Bruner says, there is no
+order; so, when the norms are shattered or left behind, we
+must possess a method of interpreting these departures and
+making meaning of them within our culture, or interpreting
+and making new meaning of them...to make proverbial sense
+out of chaos. It is narrative -- the story -- and the
+narrative structure which, he asserts, helps us to achieve
+this level of meaning.
+We learn in early courses on creative writing that
+at the heart of every story is conflict: Man versus Man,
+Man versus Self, Man versus Society, and so forth.
+Conflict arises when there is a sense of disharmony, or an
+exception to the ordinary or the expected. Narrative,
+then, specializes in bridging the gaps between the
+ordinary and the extraordinary. Bruner sets forth two
+important properties of the narrative in this form:
+1.) The narrative is inherently sequential. The
+events within a narrative do not generally have
+life or meaning on their own; it is only when they
+are ordered — three follows two follows one and so
+on -- that the overall sequence forms a collective
+meaning.
+2.) Narrative can be "real" or "imaginary" without
+loss of its strength as a story. The sequence of
+its ideas -- not the ideas themselves -- determine
+the plot.^
+When "juicy gossip" travels through our social circles,
+for example, details will usually change, grow more
+"interesting," or even disappear. But the story remains a
+story, and one which bears repeating again and again,
+regardless of the "truth" of the individual details.
+Just as every story has its own narrative voice
+(making it "somebody's" story), human beings also have
+their own individual prisms through which they see and
+filter the events of their lives. As a prism processes
+light, it follows that there must be a way for people to
+process their "life information." Consider as a solution,
+then, how many times daily we tell stories: be they as
+simple as recounting a miserable shift at work or as
+complex as dealing with the last moments before a spouse's
+permanent departure, we sequence the events w ith varying
+specificity of detail into a literal, comprehensible
+narrative. The telling of the story helps to create
+meaning for ourselves, and others, within our culture.
+Victor Turner and Arnold van Gennep, in their
+respective works From Ritual to Theatre and Rites of
+Passage, offer crucial theories for our analysis regarding
+culture, and focus on this notion of rites of passage. In
+order that we will be able to make meaning of the film's
+story and events in relation to our own lives, I should
+like to briefly outline these ideas now so that we are
+fully armed as we move into a discussion of the film.
+In Rites of Passage, van Gennep states early on
+that his objective in the text is to assemble all of the
+"ceremonial patterns which accompany a passage from one
+situation to another or from one cosmic or social world to
+another.The term "ceremonial" should not, however,
+limit our application of his work to ideas to which we in
+1996 America cannot relate, such as the small-scale
+societies on which he began his studies. In fact. Turner
+states as one of his objectives in From Ritual to Theatre
+to "revert to van Gennep's earlier usage in regarding
+almost all types of rites as having the processual form of
+' passageBut what is meant by the term "passage?"
+Van Gennep divides the concept into three distinct
+phases: rites of separation, transition rites, and rites
+of incorporation. In separation, sacred time and space
+are distinguished from profane or temporal space and time.
+The quality of time. Turner asserts, must be changed —
+that is, "beyond or outside the time which measures
+secular processes and routines.An absolutely
+separate and unique world is created for the candidates,
+while the ritual subjects are detached from their previous
+social statuses to be placed into that world, with no
+contact from anyone or anything on the "outside." During
+the intervening transition, or "limen" ("threshold" in
+Latin) phase, the subjects find themselves moving through
+a time and space of limbo and ambiguity. "Whoever passes
+from one time to the other," van Gennep writes, "finds
+himself physically and magico-religiously...[waveringJ
+between two worlds.This phase can be looked at as a
+"preparation for union, a literal crossing of the
+spiritual threshold. Finally, after undergoing the
+mystifying betwixt and between quality of transition,
+symbolic actions and phenomena representing the return of
+the "initiands" to their "new, relatively stable, well-
+defined position in the total society"are experienced;
+this is the phase known as incorporation. And there at
+the center of the entire transformative process lies a
+critical distinction of space, time, and action: the
+sacred as opposed to the profane.
+Mircea Eliade, in 1957, examined the very nature of
+religion, passage, and myth in The Sacred and the Profane.
+I hesitate to use the word "examined" here, because it may
+make the process sound purely academic — when in fact it
+was and is anything but. In the introduction to his text,
+Eliade cites Rudolf Otto's 1917 Das Heilige (The Sacred)
+as ground-breaking in the way that it avoided studying the
+ideas of God, focusing instead on "the modalities of the
+religious experienceOtto set himself, Eliade
+writes, to characterize the component parts of this
+experience:
+He finds the feeling of terror before the sacred,
+before the awe-inspiring mystery, the majesty that
+emanates an overwhelming superiority of power; he
+finds religious fear before the fascinating mystery
+in which per fect fullness of being flowers...[these
+experiences] are induced by the revelation of an
+aspect of divine power.
+The sacred is the opposite of the profane, Eliade writes,
+proposing the term hierophany to characterize "the
+manifestation of something of a wholly different order, a
+reality that does not belong to our world, in objects that
+are an integral part of our natural 'profane' world.
+As the entire story of The Silence of the Lambs
+hinges upon one character's desperate and murderous
+attempt to transform himself, it is important to here note
+the duality which must accompany hierophany. When an
+object or event manifests itself as sacred, it indeed does
+become something else, but it also remains itself. "A
+sacred stone remains a stone," Eliade writes; "apparently
+(or, more precisely, from the profane point of view),
+nothing distinguishes it from all other stones.But
+if that stone did emerge as sacred for one person, its
+earthly, profane reality is metamorphosed into a divine
+reality, while at the same time remaining in its original
+form. All of nature is capable of revealing itself as
+sacrality, then: "The cosmos in its entirety can become a
+hierophany-"20
+Eliade does not limit his exposition to any one
+culture, faith, or even religion; rather, he states as his
+goal the presentation of the precise dimensions of the
+religious experience, differentiating the religious from
+the profane experience of the world. The sacred and the
+profane are two modes of being, and to a degree are
+dependent on each other: for the religious man, Eliade
+writes, space is not homogeneous. Some parts of space for
+him are qualitatively separate from others, and there
+continually will surface breaks and interruptions in his
+space. These breaks, then, reveal the opposition between
+space which is sacred and that which is profane. Eliade
+calls this break primordial:
+For it is the break effected in space that allows
+the world to be constituted, because it reveals the
+fixed point, the central axis for all future
+orientation. When the sacred manifests itself in
+any hierophany, there is not only a break in the
+homogeneity of space; there is also revelation of
+an absolute reality, opposed to the nonreality of
+the vast surrounding expanse.
+Experience within the profane space is static and neutral;
+there is no break to differentiate the qualities of its
+mass, and hence no point of reference. The discovery of
+the sacred for the religious man, then, offers a center
+and a literal way for him to open communication between
+the cosmic planes and somehow begin to make connections
+within it all: "the experience of sacred space makes
+possible the 'founding of the world': where the sacred
+manifests itself in space, the rest unveils itself, the
+world comes into existence22
+In his exploration of space, Eliade points to the
+symbolic "opening above" which all forms of cosmos (house,
+temple, universe, body) possess. As we apply these
+concepts to the film, we should note the significance of
+this symbolism in relation to the work of van Gennep and
+Turner. This "opening," for Eliade, connects to the
+action of passage from one mode of being to another. From
+his beginnings, Man is predestined to passage on a large
+scale: he passes from pre-life to life to death to, for
+the religious man, new existence after death. With this,
+Eliade helps us to deduce a particular conceptualization
+of human existence:
+when brought to birth, man is not yet completed;
+he must be born a second time, spiritually; he
+becomes complete man by passing from an imperfect,
+embryonic state to a perfect, adult state. In a
+word, it may be said that human existence attains
+completion through a series of "passage rites," in
+short, by successive initiations.^3
+This higher opening represents a desire to reach for the
+ascending direction of heaven, for transcendence. Passage
+is, Eliade stresses, treacherous: he cites cultural images
+of crossing a perilous bridge or opening a narrow gate
+(which, he says, occur frequently in initiatory and
+funerary rituals and mythologies), suggesting a precarious
+journey founded on the ascension of the spirit.
+With these notions of the sacred and profane,
+transition, and transcendence in mind, let us now turn our
+attention to the perilous passages of our narrative:
+journeys enveloped by the crossing of bridges; a rite of
+passage within a well; being led down an aphotic path by a
+menacing and decidedly anti-heroic conductor; and,
+ultimately, a harrowing confrontation in a modern version
+of the abyss.
+Chapter Two:
+The Portrayal and Pursuit of Buffalo Bill
+"Our Billy wasn't born a criminal; he was made one
+through years of systematic abuse."
+Hannibal Lecter
+"Everywhere around the world.
+They're coming to America today."
+Neil Diamond
+We meet him first as an enigma: "Buffalo Bill," a
+serial killer who has been successfully eluding police and
+the FBI in the kidnapping, murder, and partial skinning of
+five women, all under thirty, all relatively large. As
+the film progresses, we do learn more about him: he stalks
+during late hours, using night-vision glasses for sight
+and power; he relies on the kindness of his victims to
+lure them into his van by pretending to need help; his
+real name is Jame Gumb. By the film's conclusion,
+however, our information on this man still remains less
+than complete: we know that he was abused as a child, and
+thinks that he is now a transsexual; having been rejected
+for transsexual surgery, he has decided to create a female
+suit for himself using the skin and hair of real women.
+We are not given concrete details about his history, nor
+do we really know what his sexual orientation is.
+This character has created a number of problems for
+many viewers of the film. Significant numbers of
+homosexuals (most of them male) decried the entire
+project, calling it a vicious attack on the gay community.
+Jame Gumb, as played by Ted Levine, was seen as a
+stereotype of paranoid homophobia: swishy, limp-wristed,
+and fey. draped in scarves and dancing effeminately before
+a video camera. It is ironic that Jonathan Demme (who
+went on to direct Philadelphia, the first major studio-
+produced American film to deal with a homosexual couple
+and with AIDS), stated in an interview Just prior to the
+film's release that "it was tremendously important to not
+have Gumb misinterpreted by the audience as homosexual.
+That would be a complete betrayal of the themes of the
+movie, and a disservice to gay people."24 Unfortunately,
+Demme's best intentions could not calm the rising storm
+which followed the film in its national release, leaving
+one to wonder what it would have taken to appease the
+offended viewer.
+Demme's attempt to clarify Gumb's dilemma within
+the film begins with Ted Tally's screenplay. In one of
+Hannibal Lecter's (played by Anthony Hopkins) early
+interviews with Clarice Starling (played by Jodie Foster),
+he states that Gumb "hates his own identity, you see, and
+thinks that that makes him a transsexual... but his
+pathology is a thousand times more savage, and more
+terrifying."25 This seems a satisfactory explanation,
+but the issue is confused by Starling's discovery of
+Benjamin Raspail's head, sealed in a jar, in Lecter's
+storage unit. Raspail, Lecter states, was "a garden
+25 The Silence of the Lamhs, dir. Jonathan Denune, with Jodie Foster,
+Anthony Hopkins, and Scott Glenn. Orion, 1990. All remaining
+quotations from the film are from this source.
+variety manic depressive" who, as Gumb's lover, confessed
+fear to Lecter days before becoming Gumb's victim. As
+Gumb's relationship with Raspail is the only homosexual
+"encounter" we hear about in the film, the film seems to
+ask if having homosexual experiences makes one a
+homosexual. As if to answer its own question, the film
+then presents Gumb as being more a man who, loathing
+himself, searches for any kind of identity to grasp on to,
+resorting to the extreme as a solution. "At the very
+least," writes Julie Tharp, "[Giamb's] character exploits
+contemporary anxiety over gender and sexuality. His
+confusion and dissatisfaction with his own nature are
+expressed, as most dilemmas seem to be in America, in
+violent terms."^6
+Hostility about the film's supposed anti-gay
+undercurrent also indicates that these critics have missed
+a crucial point in the narrative. Lecter states that Gumb
+was not born a criminal; "he was made one through years of
+systemic abuse." (Although we do not learn in the film
+what sort of abuse this was, the word "abuse" alone is
+enough for us in 1996 America to draw substantial
+conclusions.) Gumb was beaten down, then, before he even
+had a chance. But remember what culture he lives in, and
+ask yourself: what do we tell our children as they grow
+up, and our citizens in struggle? Be what you can he.
+Make something of yourself. We pride ourselves on telling
+our citizens -- and the rest of the world -- that in
+America, if you work hard enough, you can become anything
+you want to become. This is the land of opportunity and
+the land of achievable dreams. Of course, we all go
+through flashes of cynicism about this rhetoric, but who
+among us does not feel a misty sense of pride occasionally
+when hearing "The Star-Spangled Banner"? The huge success
+of Lee Greenwood's anthem "Proud to be an American" during
+the Gulf War makes very clear that we are a nation
+fiercely proud of our freedom and all that it represents.
+Gumb hates his identity and wants change. We learn
+that, in an attempt to go through the proper channels, he
+applied for transsexual surgery at Johns/Hopkins, the
+University of Minnesota, and Columbus Medical Center.
+Lecter explains to Starling that "severe psychological
+trauma" in Gumb led to the subsequent rejection from each
+institution, which makes perfect and logical sense to us
+-- but to the already disturbed Giamb, his dream has been
+shattered by the very country which promised him a chance
+for change. We can then conclude that it is this denial,
+not a hatred of women and not homosexuality, which was the
+dominating factor in Gumb's murderous psychosis. In
+attempting to work within some of the key symbol systems
+of America (medicine, health care, assistance for all who
+need it), Gumb, in his mind, operated by the rules -- and
+was pushed away. Turner notes in From Ritual to Theatre
+that when implicit rules begin to surface within a culture
+which hinder the "possible combination of factors to
+certain conventional patterns, designs, or configurations"
+(in this case, many Americans still believe that anything
+which strays from straight heterosexuality is literally a
+sickness), then
+...we are seeing the intrusion of normative social
+structure into what is potentially and in principle
+a free and experimental region of culture, a region
+where not only new elements but also new
+combinatory rules may be introduced -- far more
+readily than in the case of language.^7
+Whatever reasons existed for Gumb's denial are irrelevant
+to him and to our discussion; the very fact that he was
+shunned while trying to work within the rules and symbol
+systems of America itself is what matters.
+Bruner tells of a fascinating connection made in
+1986 through scientific journals. He begins by quoting an
+article written by Hazel Markas and Paula Nurius for
+American Psychologist, in which they write on the notion
+of American self: "Possible selves represent individuals'
+ideas of what they might become, what they would like to
+become, and what they are afraid of becoming." The ideal
+of the American self, Bruner notes, highlights the degree
+to which we place value on not closing any proverbial
+doors. "Contemporaneously." he continues, "there began a
+trickle of clinical papers on the alarming rise of
+Multiple Personality Disorders as a primarily American
+pathology."28 Demme, known and respected for his keen
+eye for detail, places images of America and Americana
+consistently throughout the film: a flag adorns a coffin
+in Lecter's storage space, and, near the film's
+conclusion, a cake decorated with the FBI symbol and logo
+is cut into right at the word "Justice." Giimb' s lair
+contains an American flag serving as a wallhanging; a
+World War II helmet on a windowsill, which catches the
+sunlight through shattered glass as Gumb is fatally shot;
+and, as Starling is stalked through Gumb's basement, the
+camera finds a small sign depicting the face of a
+blindfolded man above the insignia "AMERICA: OPEN YOUR
+EYES." "Be what you want to be" is not only deceptive;
+Demme reminds us that it clearly has the potential to be
+destructive.
+In response to all that has occurred in his life,
+Jame Gumb has created his own symbol system: it has its
+own logic, its own set of meanings, and, Demme says, its
+own "motivation."29 to recognize a figure such as Gumb,
+then, one must attempt to embrace the individual system.
+The comprehension of any symbol system, Geertz asserts,
+does not rest on gathering factoids in a foreign land and
+bringing them home for study; rather, it depends upon
+the degree to which [the anthropologist] is able t o
+clarify what goes on (my italics) in such places,
+to reduce the puzzlement -- what manner of men are
+these? -- to which unfamiliar acts emerging out of
+unknown backgrounds naturally give rise.^^
+Here we see that Thomas Harris, the novelist on whose work
+both The Silence of the Lambs and Michael Mann's 1986 film
+Manhunter are based, treats his thrillers, if you will,
+anthropologically. In both stories, the serial killers
+have their own unique symbol systems; likewise, all
+attempts to catch them are foiled until one character
+tries to look beyond the outside facts and deep into the
+"unfamiliar acts emerging out of unknovm backgrounds."
+In Silence, all but one of the FBI's agents —
+males, all of them -- see Gumb as a force of pure evil who
+kills and mutilates women; never do they attempt to
+analyze why Gumb does what he does. Starling, through her
+interviews with Lecter, is the only agent who does; and
+she, the script reminds us, is an FBI trainee. Consider
+this dialogue near the end of the film, when Starling
+recognizes the motive behind Gumb's actions and attempts
+to alert Crawford by phone:
+starling.
+He's making himself a woman's suit, Mr. Crawford,
+out of real women. And he can sew, this guy, he's
+very skilled. He's a tailor, or a dressmaker --
+Crawford..
+Starling --
+starling.
+That's why they're all so big, he has to keep them
+alive so he can starve them awhile, so he can --
+Crawford.
+Starling --
+starling.
+-- loosen their skin --
+Crawford.
+Starling, Starling, Starling! We know who he is,
+and where he is. We're on our way there right now.
+Crawford does not seem interested: after all, he knows the
+killer's identity and is certain that he knows where Gumb
+is. What else could matter? What is crucial to take
+note of here is that although Starling and the FBI have
+deduced Gumb's identity at the same time, it is Starling
+-- the "anthropologist" -- who pieces together the reasons
+behind his actions. But, as we soon learn, identity alone
+is not nearly enough. When Starling offers to drive to
+Illinois to meet them, Crawford asks her to stay in Ohio
+and research more information on one of the murdered girls
+and her connection to Gumb. "We want him for murder," he
+tells her, "not kidnapping." While this research seems a
+sort of busywork presented by Crawford while he gets to
+the real business at hand, it is through this dialogue
+with citizens of Belvedere that Starling ends up in Gumb's
+asylum. And although this exploration of Belvedere is
+obviously not nearly as extensive as the weeks, months, or
+years an anthropologist would spend in a village, the
+intention and process is the same. "Anthropologists don't
+study villages," says Geertz; "they study in villages.
+Demme juxtaposes the discovery of Gumb's sanctum
+masterfully, luring us, like Crawford, into a false sense
+of unearned confidence. We see the FBI agents ring the
+doorbell of the the supposed house. The camera then cuts
+to an interior shot of an elaborate bell structure
+jangling within Gumb's basement, and Gumb's reaction to
+it. The doorbell again is rung, and again we see the bell
+within sounding the alarm. These back-and-forth shots
+continue until Gumb finally opens the door, and the
+camera, in a shot over Gumb's shoulder, discovers not the
+expected FBI agents -- but Starling. Demme then quickly
+cuts back to Illinois to find an agent telling Crawford
+that the house is empty. Most of us are taken in by this
+narrative surprise: having given up on the anthropological
+details and trusted the exterior facts, we believed, like
+Crawford, that knowing the killer's identity would
+suffice. We then understand his horror as the camera
+finds his eyes widening as he says one word: "Starling."
+Let us look again at the interviews between
+Starling and Lecter, for it is here that Starling begins
+her anthropological pursuit. In their last conference, he
+reminds her that she needs to think more simply: "Of each
+particular thing, ask 'what is it in itself? What is its
+nature? What does he do, this man you seek?" He kills
+women, she says, to which Lecter vehemently responds: "No.
+That is incidental. What is the first and principle thing
+he does? What needs does he serve by killing?" Again,
+Geertz writes that the entire point of a semiotic approach
+to culture is "to aid us in gaining access to the
+conceptual world in which our subjects live so that we
+can, in some extended sense of the term, converse with
+them."32 By consistently allowing Lecter to help her
+understand Gumb's system, she is then and only then able
+to finally confront him, at the same moment that Jack
+Crawford and the all-male FBI task force are breaking into
+the wrong house in the wrong state.
+There is no question that Jame Gxoinb is a horrifying
+figure, and my intention here is not to portray him as the
+victim in this story- Rather, I find the character -- and
+Levine's extremely rich interpretation of him — to be
+much more layered than many critics of the film bothered
+to notice. Study his eyes as he hears Precious crying in
+pain; watch as a flash of doubt moves quickly across his
+face before he orders Catherine Martin to replace his
+lotion. Demme reminds us that to call Gumb simply "mad"
+is too easy; a cultural analysis finds that Gumb and all
+of his unique symbol systems need to be processed and
+understood before he can be contended with. Unlike the
+villains and psychopaths which stalk the majority of so-
+called "horror" pictures inhabiting our video stores,
+Demme and Levine have taken the time to create a person
+with a history and grounds for his descent. Clarice
+Starling, the only character in the story willing to
+literally spend time as an anthropologist, is finally the
+only one able to truly confront him and save the life of
+Catherine Martin...and put her own demons, at least
+temporarily, to rest.
+Chapter Three:
+And from Thence into Beauty
+"...in sure and certain hope of the Resurrection
+to eternal life, through our Lord Jesus Christ;
+who shall change our vile body,
+that it may be like unto his glorious body."
+Prayer Book, 1662
+In Film Comment, Gavin Smith writes that Jonathan
+Demme seems in his work to be consistently interested in
+people who want to change, "who transform or experiment
+with their identities, who want to become something
+better."33 Indeed, Married to the Mob's Angela (played
+by Michelle Pfieffer) tries desperately throughout the
+story to create a new life outside of the mafia, and
+begins her journey towards self-actualization in a hair
+salon named "A Whole New You"; Something Wild's Lulu
+(Melanie Griffith) takes a superficially conventional
+businessman named Charlie (Jeff Daniels) on a life-
+changing journey of sexuality, confrontation, and danger;
+and, while Gray developed and performed the piece on stage
+long before meeting Demme, Demme's filming of Spalding
+Gray's Swimming to Cambodia, which focuses on one man's
+experience while acting a small role in The Killing
+Fields, becomes a literal Odyssey - The Silence of the
+Lambs, however, is unigue. Transformation and
+metamorphosis do not merely figure into the film; they are
+its axis. Jeanne Silverthorne writes in Artforum that
+Demme here describes "a society crying out for a
+transformation of its basic structures as they are ordered
+by gender, but harrowed by the process of change."^4
+Jcune Gumb's desire for transformation initiates the story
+of the film, to be followed by the forced, terrifying, and
+resistant transformation of Catherine Martin; lastly, we
+find the evolution which provides the film's centerpiece:
+that of Clarice Starling.
+We should look back to van Gennep and Turner as a
+beginning for this discussion; specifically, to the notion
+of transition, or limen. The passage from one social
+status to another. Turner writes, is often accompanied by
+a literal transition in space; that is, a geographical
+movement from one space to another, such as the opening of
+doors or "the literal crossing of a threshold which
+separates two distinct areas, one associated with the
+subject's pre-ritual or preliminal status, and the other
+with his past-ritual or post-liminal status.The
+liminal period, then, is indeed the threshold:
+...it is the analysis of culture into factors and
+their free or "ludic" recombination in any and
+every possible pattern, however weird, that is of
+the essence of liminality, liminality par
+excellence.
+Limen, no longer the positive past and not yet the hopeful
+future, may appear to be negative in connotation. Turner
+clarifies, however, that it contains both positive and
+active qualities. "Especially," he says, "where that
+'threshold' is protracted and becomes a 'tunnel'...this is
+particularly the case in initiation rituals, with their
+long periods of seclusion and training of novices rich in
+the deployment of symbolic forms and esoteric
+teachings. "3"^
+In describing Jame Gixtnb' s murder of Benjamin
+Raspail, Lecter calls the act "a fledgling killer's first
+effort at tranformation." We have already established the
+reasoning behind Giimb' s desire for change, but we have not
+yet looked at his use of symbol in this process, nor have
+we discussed his ritual and liminal period. Starling
+discovers in the course of the story that Gumb imports and
+raises Asian moths and butterflies, caring for them as if
+they were family: "Somebody grew this guy. Fed him honey,
+and nightshade, kept him warm... somebody loved him." He
+then places the cocoon of one specific line -- the
+Acherontia Styx moth, named for two rivers in hell --
+into the throats of each of the women he has used. "The
+significance of the moth is change," Lecter tells
+Starling. "Caterpillar into chrysalis, or pupa, and from
+thence into beauty-" Murder is incidental for Gumb; he
+does not kill for the pleasure of killing, or for the
+feeling of power, or for an immediate sexual charge. It
+is the desire for transformation which drives him, and the
+moth -- which, he describes, while gently stroking a
+particularly large one, as "so powerful, so beautiful" --
+is his symJbol of this metamorphosis.
+Ritual, for Turner, is not in itself a grand
+dualistic struggle in which order, cosmos and form
+consistently triumph over chaos and the indeterminate.
+Rather, it is "a transformative self-immolation of order
+as presently constituted...or self-dismemberment of order,
+in the subjective depths of liminality." Gumb, in the
+meticulous fashioning of his precise and elaborate
+"woman's suit," is literally trying to reconstruct his own
+dismembered identity, for it is only through devastation
+and reconstruction -- transformation -- that a genuine
+"reordering" may come about.
+In a film containing very little onscreen violence,
+one of the most surprisingly uncomfortable scenes for the
+audience to watch in the film -- particularly men -- is a
+sequence in which Gumb prepares himself for an unclothed
+ritualistic dance, to be captured by a video camera set
+upon a tripod. Before we look closely at this scene,
+however, a few additional words from Turner are vital in
+order that we may understand the liminality which Gumb
+believes he is creating for himself.
+Ritual symbols [of the liminal phase], though some
+represent inversion of normal reality,
+characteristically fall into two types: those of
+effacement and those of ambiguity or paradox.
+Hence, in many societies...[the liminal initiands]
+are... stripped of names and clothing, smeared with
+the common earth rendered indistinguishable from
+animals. They are associated with such general
+oppositions as life and death, male and female...
+since they are at once dying from or dead to their
+former status and life, and being born and growing
+into new ones.^^
+We quickly realize as the scene opens that Gumb is
+literally applying a sort of tribal "mask." He wears the
+scalp and long, blonde hair of a woman; his eyes are
+shaded black; he uses a dark, "earthly" shade of tan to
+pencil his eyebrows; his left nipple is pierced with a
+large gold ring; each finger on his left hand and three on
+his right carries a weighty silver ring; his chest and
+right hand are adorned with tattoos, the designs of which
+can be found below.
+on the hand
+L— O
+on the abdomen
+m—TT
+Masking, painting, art, and dance are significant
+components in the novice's liminal phase, and it is here
+that Turner's analysis of tribal ritual in the truly
+liminal becomes critical:
+...the factors or elements of culture may be
+recombined in numerous, often grotesque ways,
+grotesque because they are arrayed in terms of
+possible or fantasized (italics mine) rather
+than experienced combinations -- thus a monster
+disguise may combine human, animal, and vegetable
+features in an "unnatural" way.^*^
+As Gumb rises and begins his dance -- a slow and
+deliberate movement, involving mainly the upper body -- he
+veils his brightly-colored scarf over his shoulders,
+looking into the camera and singing aloud one sentence of
+lyrics with the music he has chosen to accompany his
+ritual: "I'm flying, crying, dying, over you." Unclothed
+and in general solitude, Gumb has set up his ritual very
+adroitly: "transformation occurs," Turner writes, "most
+radically in the ritual 'pupation ' of liminal seclusion"
+(italics mine).^^ The notion of association with general
+oppositions in ritual is here -- life and death, male and
+female -- and, as Gumb tucks his penis between his legs
+and steps back for the camera, raising aloft his scarf-
+draped arms, we see his illusion of rebirth: "so powerful,
+so beautiful." And with wings ready for flight.
+Unlike tribal ritual, however, which is generally
+seen as beneficial for the culture of which it is a part,
+Gumb's animosity towards his culture turns his actions
+inward, focusing the ritual purely on himself and his own
+transformation. He believes that he what he is doing is
+right for him. On staging this scene, Demme comments:
+It was critical to understand that he shouldn 't be
+doing this. He's dead wrong. This is someone who
+is so completely, completely horrified by who he is
+that his desperation to become someone completely
+other is manifested in his ill-guided attempts at
+transvestism.
+These "attempts" propel the story of Silence, as well as
+actuate two genuine transformations in the course of the
+narrative: those of Catherine Martin and Clarice Starling,
+two characters deliberately named for birds -- because
+they will each need, in the course of the story, to learn
+to fly if they are to survive.
+Chapter Four:
+Raised on Promises
+"I have come to the borders of sleep.
+The unfathomable deep
+Forest where all must lose
+Their way, however straight.
+Or winding, soon or late;
+They cannot choose."
+Edward Thomas
+"Well, she was an American girl
+Raised on promises
+She couldn't help thinking that
+there was a little more to life
+somewhere else..."
+Tom Petty
+She drives alone. It is night in Memphis, and
+with the exception of one pair of headlights behind her,
+there seem to be few other cars on the road. Her body
+moving in time with a song on her radio, she vigorously
+taps the beat on her steering wheel, singing and rocking
+along. The song is Tom Petty's "American Girl," and she
+is exactly that. She seems what we would like to be the
+quintessential young American woman: strong; stocky
+without being overweight; clearly enjoying this moment in
+the same way, we can guess, that she enjoys the rest of
+her life. As the story progresses, we will learn much
+about her, not the least of which that her mother is a
+United States senator. More important, however, is what
+will happen to Catherine Martin as the result of her
+imprisonment by Buffalo Bill.
+Stepping out of the car at her apartment, she calls
+to her anxiously waiting cat, which gazes at her through
+the window. Hearing a noise, she turns to find a man with
+his arm in a cast trying to load a heavy recliner into a
+van; she watches for a few moments, and we can see in her
+eyes the decision being made: should I or shouldn't I?
+She does, finally, and is quickly loaded into the van to
+be knocked unconscious. After having her shirt checked to
+be certain that she is the correct size, she is taken away
+to be imprisoned in a well in the home of Jame Gumb.
+Here begins one of the most important transitions
+in the course of the film. We have seen that Gumb wants
+for himself nothing more than change and a crossing of
+thresholds; he cannot ultimately achieve them, and instead
+inadvertently forces these transitions into the lives of
+Martin and Clarice Starling. I use the word "forces" here
+because neither, particularly Martin, wants this
+transition to occur. She is taken against her will from
+just outside of her own home, and, until the story's
+conclusion, literally does not know from minute to minute
+whether she will survive to see the next.
+Here I would like to briefly outline another
+structural model for finding meaning within Turner's
+theories of culture and transition, which will lead us
+further into an understanding of the characters'
+transitions: that of the social drama. "A spontaneous
+component of social process," the social drama is deeply
+connected to the concept of rites of passage. Referred to
+by Kenneth Burke as "dramas of living," social dramas
+occur within groups connected by common values and
+concerns, sharing a real or alleged mutual history.
+Turner breaks the process down into four distinct phases:
+"breach, crisis, redress, and either reintegration or
+recognition of schism,or separation. As Catherine
+Martin's abduction fits Turner's model accurately, let us
+look briefly at each.
+The social drama begins with the violation, or
+breach, of a norm within a public arena. The emotional
+climate of the group is suddenly made choppy and full of
+thunder: out of something as simple as an especially
+heated argument, as intricate as a deliberate and
+calculated demonstration of desired power, or even an act
+of violence, a public breach within the normal workings
+of society has occurred. A moral rule, law or custom has
+been publicly defiled, and a building sense of crisis
+follows. Turner refers to this as a turning point in
+which the event is processed by all members of the group,
+sides are taken, and factions are formed. "Critics of
+crisis" then seek to restore peace. These critics are
+usually those "with a strong interest in maintaining the
+status quo ante, the elders, lawmakers, administrators,
+judges, priests, and law enforcers of the relevant
+community.Unless the conflict can be quickly sealed
+away within a smaller group, then
+there is a tendency for the breach to widen and
+spread until it coincides with some dominant
+cleavage in the widest set of relevant social
+relations to which the parties in the conflict
+belong.
+All or some of the "peacekeepers," if you will, then
+attempt to create and apply redressive machinery to remedy
+the situation, through the juridicial means of law and the
+juridicial process, or "the ritual means provided by
+religious institutions."^^
+Redress is, for Turner as well as the purposes of
+our discussion, the most crucial piece of the social
+drama, for it is where true reflection — and van Gennep's
+notion of liminality -- can occur. This ritual tends to
+involve some kind of literal or moral "sacrifice," a
+casualty "as scapegoat for the group's 'sin' or redressive
+violence. The final phase depends intimately upon the
+redress period; that is, there occurs either a
+reintegration of the disturbed social member or group
+(although personal and group dynamics will certainly have
+been altered to some degree), or an agreement to differ,
+which will sometimes lead to a spatial separation.
+A social drama in Silence is, of course, set into
+motion by Gumb's actions: as the film opens, people seem
+aware that the serial murderer "Buffalo Bill" exists and
+is a threat; and, with all of the mystery which surrounds
+his actions, an oddly intriguing threat as well. The
+social drama does not reach a grand scale, however, until
+Gumb kidnaps and begins to starve Catherine Martin. The
+daughter of a United States senator (a female senator, no
+less), Martin's abduction suddenly creates a true crisis
+for the country, transforming the case into a social race
+against time, whose players go well beyond Martin and
+Gumb to involve no less than the media, the police, the
+FBI, the senator herself, and even the President. The
+drama which I would like to focus upon on here, however,
+is that which occurs between Catherine Martin and Jame
+Gumb.
+Turner reminds us that an extended liminal phase in
+passage is often marked by physical separation from the
+rest of society, as well as a parallel passage in space.
+The crossing from the world above and into the pit
+certainly represents a literal passage, but this
+transition actually begins when Martin, just prior to her
+capture, is asked by Giimb to step into his van so that she
+can help pull the chair into the back. After a brief
+moment of hesitation -- which Gumb reads, telling her how
+much he appreciates her assistance -- she steps up and
+into the van, literally crossing a threshold into her own
+rite of passage; which, like so many of the images being
+addressed, can be specially framed and highlighted within
+the medium of film.
+After Martin's abduction (the breach), the next
+time that we see her is huddled at the bottom of a deep
+and lightless pit made of concrete and brick. Barefoot
+and stripped down to thin, flimsy cotton clothing, covered
+with soot and dirt, and soaked from sweat and water
+sprayed at her through a powerful hose, she is literally
+in the depths. In the following dialogue -- the first
+that we see between Martin and Gumb — the camera moves
+between shots from her point of view and shots from behind
+his head; in these shots, we see from the small light Gumb
+hangs into the chasm how deep in the well and small she
+is, dwarfed by the rock and blackness surrounding her.
+Gumb.
+It rubs the lotion on its skin, it does this
+whenever it's told.
+Martin.
+Mister, my family will pay cash, whatever ransom
+you're asking for, they'll pay it...
+Gumb.
+It rubs the lotion on its skin, or else it gets the
+hose again. (Precious, in Gumb's arms, barks.)
+Yes it will. Precious, it will get the hose.
+Martin.
+Okay...okay, okay...okay...okay...Mister, if you
+let me go, I won't press charges, I promise. See,
+my mom is a very important woman, I guess you
+already know that...
+Gumb.
+Now it places the lotion in the basket.
+Martin (beginning to sob).
+Please...please... I want to go home, I want to go
+home...please..
+Gumb.
+It places the lotion in the basket.
+Martin.
+I want to see my mommy, please...1 want to see my
+mommy...
+Gumb.
+Put the fucking lotion in the basket!
+Martin does so, letting her eyes move up the stone wall
+before her. It is one of the first times she has been
+able to see her enclosings at all; she discovers scratch
+marks, blood, and a fingernail within its crevices. Terror
+overcomes her as crisis sets in: she realizes that she is
+not the first to be trapped here, and any who preceded her
+are most likely dead. She screams loudly and repeatedly;
+Gumb, studying her, then begins to imitate her shrieks,
+manipulating his shirt to mimic breasts.
+In his analysis of the phenomenology of initiation
+(or "a spiritual maturing"), Eliade points out that the
+initiation ceremony begins not only with the separation of
+the candidate from his family; it involves a substantial
+period of time in the bush. "Here already," he writes,
+"there is a symbol of death; the forest, the jungle,
+darkness symbolize the beyond, the 'infernal regions.'"^®
+The bush represents for many the swallowing of the
+initiate by a monster, in the belly of whom there is
+"cosmic night; it is the embryonic mode of existence, both
+on the cosmic plane and the plane of human life." Here
+the liminal and the redressive phases can be seen as one.
+As in the liminal phase of initiation, Martin is "at once
+dying from or dead to [her] former status and life, and
+being born and growing into [a new one]."^^ Covered with
+earth, she is stripped of herself in her symbolic grave.
+Her clothing and shoes are taken away, as are her name and
+gender: "It rubs the lotion on its skin," Gumb says, "or
+else it gets the hose again." It as at this point that
+Martin breaks dovm in despair and horror at what is
+happening to her. In the cosmic night of her pit, she
+must symbolically die in order that she experience a
+"regression to the embryonic state.
+The next time we see Martin is in a series of
+scenes intercut with Gumb's previously discussed
+transformation dance and ritual. Martin has realized that
+"Precious," Gumb's tiny toy poodle, is his Achille's heel.
+"Thanks for the scraps, asshole," she says. "I've got a
+better idea." We can hear that her voice has deepened,
+turning her desperation into something more powerful.
+Left behind is the terrified "American Girl"; while still
+motivated by fear, her terror and dread have now sparked a
+determination to survive at any cost; the beginnings, for
+Eliade, of rebirth. As she speaks, we see that she is
+more wet, and dirtier even than before; she is more
+primeval. She breathes heavily, tying a long string to
+the bone of a chicken and a bucket to create a primitive
+trap: one which, she hopes, will be able to capture
+Precious and become her chance to escape.
+Before she calls to Precious, the camera finds her
+looking upward, her face determined, her eyes hopeful.
+Eliade stresses that all forms of cosmos -- universe,
+house, human body, temple -- have an "opening" above.
+"The opening makes possible passage from one mode of being
+to another, from one existential situation to another,
+and she knows that this opening, at once a symbolic hell
+and regenerative womlD, is her only chance: not only for
+survival, but for a rebirth in which everything can begin
+anew.
+Her words ring out as she calls to the tiny dog,
+writes Peter Travers, "like a call to arms,"^^ as she
+whistles and tries to not be heard by Gumb:
+Precious? Come on, girl...come on. Precious! I
+got a yummy yummy snack for you... Precious? Are
+you up there, you little shit? Come and get it,
+pretty girl... please, come on...
+Seeing no reaction to her endeavor, it is here that her
+faith begins to wane. She closes her eyes and begins to
+sob, her attempts at whistling nothing more than tiny
+exhalations of air. And just as she seems to have given
+up to the fear surrounding her. Precious pokes her head
+into the opening of the pit and barks. Demme here gives
+us a beautiful close-up of Martin's face: her mouth opens
+in a smile while her eyes — and, we know, her soul —
+open with hope.
+While her first attempt fails -- ending with the
+bucket falling into the pit and onto her head, entangling
+her with string and forcing her to weakly collapse into a
+fetal position -- she eventually is able to succeed in
+seizing Precious-. Gumb hears the dog crying, and calls to
+her, to which Martin responds: "Down here, you sack of
+shit!" We can see and hear genuine concern in Gumb's
+reaction here, and when he looks into the pit and sees
+that Precious is indeed hurt and trapped in Martin's arms,
+it is instantly clear that she has a chance. Precious is
+his weakness: he gasps, begins to pace, and softens his
+voice. Catherine Martin and Jame Gumb each are desperate
+for transition here: either she will escape to be
+reintegrated, or he will regain control and be one step
+closer to completing his woman's suit and "metamorphosis."
+What follows, then, is not only a clash between two forces
+for survival; what we also see is a battle for
+transformation...and one in which Martin, though
+terrified, releases and reckons with her primal and
+animalistic instinct to survive.
+Giimb.
+Put her in that bucket.
+Martin.
+No 1 You get me a telephone and lower it down here
+now!
+Gumb. (beginning to sob).
+Little poodly-poo? Precious, darling, are you all
+right?
+Martin.
+She's in a lot of pain, mister. She needs a vet.
+She broke her leg on the way down, I know it.
+Gumb.
+DON'T YOU HURT MY DOG!
+Martin.
+DON'T YOU MAKE ME HURT YOUR DOG I
+Gumb.
+You don't know what pain is!
+Starling distracts Gumb here by ringing the
+doorbell and beginning to pursue him through the house.
+When she enters the room which contains the pit, gun
+drawn, she calls out to Martin, moving carefully about to
+be sure that Gumb is nowhere to be found. We realize from
+what Martin says in response, as well as the way she says
+it, that this liminal period has been worse than anything
+she could have dreamed -- and that her misery has awakened
+in her a reaction very different from the "Thank God
+you're here" we might expect. Note also that we never see
+her speaking these words; we only her voice wailing out of
+the depths of her pit.
+starling.
+Catherine Martin?
+Martin.
+YES!
+Starling.
+FBI...you're safe...
+Martin.
+"Safe," shit, get me out of here!
+starling (locks door, continues to move about the room).
+You're all right now, Catherine, now where is he?
+Martin.
+How the fuck should I know, just get me out of
+here!
+starling (looks into well, sees Catherine).
+Oh my God. Catherine, I'm going to get you out of
+there, but right now you listen to me. I've got to
+leave this room. I'll be right back.
+Martin.
+NO! Don't you leave me here, you fucking bitch 1
+NOOOO! Don't you leave me here! This guy's
+crazy, PLEASE, I gotta get out of here I PLEASE 1
+Starling is finally able to help Martin escape,
+and, in the film's denouement, we finally get to see the
+senator's daughter in daylight: eyes focused on the ground
+(from where, symbolically, she has come), she is slowly
+led to the outside world. She has not been cleaned up: a
+blanket around her shoulders; she is still wet; still
+covered in dirt and filth; exhausted. As Eliade
+elaborates:
+In initiatory contexts death signifies passing
+beyond the profane, unsanctified condition, the
+condition of the "natural man," who is without
+religious experience, who is blind to spirit. The
+mystery of initiation gradually reveals to the
+novice the true dimensions of existence; by
+introducing him to the sacred, it obliges him to
+assume the responsibility that goes with being a
+man .... (F)or all archaic societies, access to
+spirituality finds expression in a symbolism of
+death and a new birth.^3
+She holds Precious -- the only thing which we know Giimb
+loved -- tight to her chest, and we sense somehow that she
+will care for the tiny dog, coping with her own wounds
+through serving as guardian ... while not allowing herself
+to forget her time in the depths. Catherine Martin's
+wounds and their memory will always remain with her.
+Through her time in the abyss, however, she has reached
+deep into the depths of her soul to discover a fierce
+determination, a new s ense of being, a new sense of
+strength. Through the liminal, she has been reborn.
+C3iapter Five:
+Fly Away, Starling
+"Therefore we, before him bending.
+This great Sacrament revere;
+Types and shadows have their ending.
+For newer rite is here."
+St. Thomas Aquinas
+While our first vision of Catherine Martin is that
+of the "American Girl," singing proudly with her radio on
+a late-night drive, our initial impression of Clarice
+Starling is that of a woman in struggle. As the film's
+opening shot fades up within a wooded area underneath a
+gray sky, Howard Shore's musical score combines a sense of
+impending danger with one of wonder. We are looking down
+a steep bluff, and it is here that we meet Starling: hair
+pulled back, sweatshirt drenched, and clinging to a rope,
+she pulls herself forward and up without hesitation or
+looking back. She digs her feet into the earth, using it
+for support and balance. What exactly is happening at
+this point is unclear: is she the first victim in the
+story, running from an unseen force? She stands and
+catches her breath, turning to face her next step. A bird
+loudly flaps its wings, catching her attention; she
+acknowledges it, inhales and moves on. We then follow her
+through the obstacle course into which she places all of
+her energy, and we realize that she is not in any
+immediate danger; she has placed herself here for
+training. "[She is J not fleeing from the killer, but
+maybe fleeing from her past, or her average self. It's
+Aspiration that drives her obsessively -- to change
+herself, to become something better.Covered in
+sweat, fiercely determined and unwilling to quit, we see
+that Starling's journey will, from the outset, be an
+uphill struggle.
+Starling's physical regimen in these scenes
+connects iiranediately with Turner's notion of spatial
+movement in a rite of passage. While she does not
+necessarily cross a threshold here, the dirt around the
+hill she climbs resembles a sort of pit, similar to the
+one which will soon house Catherine Martin. Our first
+glimpse of Starling comes only when her hands emerge from
+below and slowly pull herself up the rope -- and out of
+the "pit" — to stand before us. Again, we know that this
+is only the beginning for Starling. Turner writes that
+the spatial passage "may involve a long, exacting
+pilgrimage and the crossing of many national frontiers
+before the subject reaches his goal, the sacred shrine.
+Starling will eventually cross state lines by air and
+automobile; she will pursue and be pursued; she will be
+left in literal and figurative darkness; her mind will be
+toyed with; semen will be thrown into her face. This
+journey will, without question, be exacting.
+Starling is aware of the level of danger inherent
+in her work, and the opening shows her determination to be
+as prepared as possible for her expedition. In training
+for the FBI, we see her in various stages of initiation:
+running, boxing, gunfire, and staged arrests, during one
+of which she is "shot" from behind. As she runs through
+the film's opening obstacle course, she passes a tree
+which offers a credo which will eventually save her life:
+with one word each painted on five small boards and nailed
+down the side of a tree, we read:
+HURT
+AGONY
+PAIN
+LOVE IT
+And the last board, weathered and barely legible:
+OR DIE
+By making the final sign difficult to read, Demme reminds
+us that we must be highly aware of our surroundings and
+constantly remain alert to avoid destruction and death;
+Starling's level of rigor demonstrates that she is doing
+just that.
+We learn during the course of the film that
+Starling suffered trauma in childhood: after losing her
+mother at a very young age, her father, a town marshal,
+died a month after sustaining injuries while trying to
+stop a robbery. We get the sense early in the film that
+she is devoting herself to her work because it is
+something that she must do. Our feelings are confirmed
+near the film's conclusion, as she relates the story of
+her attempt to rescue a family of lambs from slaughter;
+their screaming — which Starling tried but was ultimately
+powerless to stop — haunts and drives her. Starling
+works because she has to.
+Turner points out a connection between this notion
+of work and the divine: in tribal, "simpler," and "small-
+scale societies," ritual is considered work; specifically,
+"what the Tikopia call 'the work of the Gods.' ... In the
+third chapter of Bhagavad Gita (v. 14-15), we find a
+connection made between sacrifice and wo rk: 'From food do
+all contingent beings derive, and food derives from rain;
+rain derives from sacrifice and sacrifice from work.^"^^
+In the course of her journey. Starling will need to
+sacrifice a great deal. These sacrifices, however, will
+become an intricate part of her rite of passage. In spite
+of (and possibly because of) tremendous opposition.
+Starling continues to move, to sacrifice, and grow closer
+to the sacred transition which only her work will bring
+her.
+Starling, again, has her work cut out for her from
+the beginning. Demme reminds us consistently throughout
+the picture that Starling is a woman in a man's world.
+Starling -- herself no more than 5'4" tall -- is regularly
+being challenged or dwarfed by men. She enters an
+elevator to stand amidst six males, all taller than she
+and clad in red shirts, emphasizing the fact that she is
+absolutely different. Men turn to leer as she and her
+roommate, Ardelia (played by Kasi Lemmons), jog by; and,
+although he clearly admires her, she is often subtly
+treated as inferior by Jack Crawford. As they drive (he
+in the front passenger seat, she in the rear) towards a
+West Virginia funeral home to examine the body of one of
+Buffalo Bill's victims. Starling attempts to maintain her
+professionalism while expressing her feelings of
+manipulation and dismissal:
+starling.
+You haven't mentioned anything about the
+information contained in my report, or Dr. Lecter's
+offer, sir.
+Crawford.
+I'm considering it.
+starling.
+That's why you sent me in there, isn't it? To get
+his help on Buffalo Bill, sir?
+(Crawford looks at her.)
+Well, if that was the case, then I just...I Just
+wish I was in on it, that's all.
+Crawford.
+If I'd sent you in there with an actual agenda,
+Lecter would have known it instantly- He would
+have toyed with you, then turned to stone.
+Before Starling can respond, Crawford turns away -- as the
+car drives through a tunnel, surrounding Starling in
+literal as well as figurative darkness.
+It is Dr. Frederick Chilton, however, who
+provides Starling with one of her greatest obstacles and
+the film with one of its strongest insights into dilemmas
+within our culture. Her stance during their first meeting
+in his office reveals that his very presence makes her
+physically uncomfortable, and not without reason. He has
+not said two sentences to her before making an advance:
+"You know, we get a lot of detectives in here, but I must
+say I can't ever remember one as attractive," he says,
+grinning into the camera. "Will you be in Baltimore
+overnight? Because this can be quite a fun town if you
+have the right guide." More embarrassed than humiliated
+-- her sawy choice of words indicates that she has been
+in similar situations before -- she politely wards him
+off.
+As played by Anthony Heald, Dr. Chilton is clearly
+a "good man" in his own eyes: he is a Doctor, and in
+charge of the asylum in which Hannibal Lecter is a
+prisoner; he gains all necessary approval and credit for
+his work. But when Starling, enclosed in the varying
+shades of brown which dominate Chilton's office, makes
+clear that she is there to do a job, his entire mood and
+persona changes. His smile vanishes, the small talk and
+"conversation" turns to "Let's get this over with," and he
+quickly rises, grasping a photograph from his desk. As
+they near Lecter's cell, Chilton stops in a shadowed
+hallway to display the picture to Starling.
+The photograph is that of a nurse, maimed nine
+years earlier when attending to Lecter. The doctors did
+manage to reset her jaw, Chilton explains, but were only
+able to save one of her eyes. Starling's reaction to this
+picture, captured in close-up and bathed in red light, is
+one of revulsion shielded by a characteristic attempt at
+composure. Chilton's presenting this photograph to
+Starling could easily be justified as a necessity in
+preparing a subject to visit Lecter. The mann&r in which
+Chilton does so, however, is indicative of a highly
+intentionalized act- Lifting it from his desk immediately
+upon his rejection makes one wonder if, had Starling
+agreed to a date with him, he might not have simply
+described the nurse's injuries to her. As the faintest
+hint of a smile develops on his face, he tells her that
+Lecter's "pulse never got above 185...even when he ate her
+tongue." And so proceeds the relationship between
+Starling and Chilton; while he does not attempt another
+sexual advance, she consistently has to get past him --
+the proverbial lion at the gate -- to reach Lecter.
+While well-played by Brian Cox in Manhunter, it is
+Anthony Hopkins' interpretation which has burned the name
+Hannibal Lecter into our vernacular. Lecter is brilliant,
+manipulative, strong, courteous, terrifying, violent, and
+fascinating. As I watched the film for the first time
+that night in 1991, I recall growing sympathetic to and
+actually fond of him; perhaps, I thought, all of the
+murders and cannibalistic acts which led to his
+imprisonment were exaggerations, even mistakes. Serving
+as Starling's guide, he was so clearly doing good for her;
+he couldn't be a monster capable of such heinous, evil
+actions. Then he attacked and killed two Memphis security
+guards, clubbing one to death and removing the facial skin
+of the other in order to make his escape, and my fondness
+drained away; this character was suddenly very much a
+figure of evil, and I was lost in frustration.
+Demme wants us to feel this way. The Silence of
+the Lambs is a visceral experience. He wants us to react
+physically, so that we perceive the story's events with
+Starling, living the captivation and repulsion of Hannibal
+Lecter. The opposition between Lecter and Chilton
+represents one of the great paradoxes of our culture: the
+culturally honored and "respected" Doctor Chilton is
+actually selfish, self-centered, and out for little more
+than his own glory; Doctor Lecter, the cultural
+abhorration, is the most positive model for the growth and
+transformation of Clarice Starling, and never pretends to
+be anything other than what he is. It is what he is, of
+course, which is nearly inexplicable for us. Lecter tests
+Starling, becomes familiar with her spirit, and ultimately
+recognizes that she must go through a rite of passage in
+order that she may fly. This rite will be absolutely
+fraught with peril, but he knows that she must experience
+and be wounded by it if she is to transform. How
+beautifully ironic within our culture that her guide
+through darkness is darkness himself.
+In many Native American cultures, there is an
+understanding of the "devil" as being not only a
+malevolent force, but an educator. Stories of passage
+often find the initiand being guided through the liminal
+not by a friendly teacher or wise old seer, but by a
+figure of blackness, of the wicked; without this, they
+feel, there is no way to ultimately comprehend evil, of
+understanding the darkness of the world, which is within
+all of us. Frederick Buechner, American novelist, poet,
+and minister makes the following observation:
+I suppose that the whole obsession of our time with
+the monstrous in general -- with the occult and the
+demonic, with exorcism and black magic and the
+great white shark -- is at its heart only the
+shadow side of our longing for the beatific, and
+we are like the knight in Ingmar Bergman's film
+The Seventh Seal, who tells the young witch about
+to be burned at the stake that he wants to meet the
+devil her master, and when she asks him why, he
+says, "I want to ask him about God. He, if anyone,
+must know."57
+We learn during their first scene together what
+Lecter wants for Starling. To reach his cell, she must
+first walk down a long, darkened corridor, surrounded on
+all sides by men who have been labeled insane. One stares
+blankly at her; another leans against the bars of his cell
+to lasciviously say "Hi"; and finally, one bounces
+throughout his quarters, gaping at her and hissing that "I
+can smell your cunt."
+When she reaches Lecter and begins her initial
+dialogue with him, he reveals that he was able to discern
+whispers in the corridor. After being shown her FBI
+credentials, the first question he asks Starling is what
+"Multiple Miggs" actually said to her. She responds
+truthfully -- "He said 'I smell your cunt'" -- and Lecter
+does not flinch. "I see," he says. "I myself cannot."
+He then slowly raises his head towards the air holes in
+the glass of his cell partition, breathing in deeply: "You
+use Evian skin cream, and sometimes you wear L'Air du
+Temps...but not today-" While in one sense as carnal as
+what Miggs said, Lecter goes immediately beyond the crass
+and into a different sort of carnal observation
+altogether: that of what she puts upon her body, her skin.
+Simple vulgarities are easy to dismiss; Lecter's
+intelligent, precise, and accurate observations are not.
+Here is an indication that this entire scene will serve as
+a testing of Starling: to have a man identify a skin
+cream worn possibly a day or more in the past, smelled
+through small holes in his plexiglass barrier six feet
+above the ground, could easily make anyone weak with
+intimidation,
+Starling perseveres. She politely continues in an
+attempt at an informal questioning of Lecter, to which he
+responds with a soul-piercing gaze, reasonably neutral
+answers, and a smile. He warms up considerably when she
+clumsily attempts to make casual a request that he
+complete a questionnaire. He expresses disappointment in
+her lack of absolute honesty:
+Oh, no, no, no, no. You were doing fine. You had
+been courteous and receptive to courtesy; you had
+established trust with the embarrassing truth about
+Miggs...and now this ham-handed segue into your
+questionnaire. It won't do.
+Starling repeats the request, a stronger edge in her
+voice. Their dialogue continues, and just as Starling's
+guard drops, Lecter snaps into a brutal scrutinization of
+her character.
+You're so simbitious, aren't you? You know what you
+look like to me, with your good bag and your cheap
+shoes? You look like a rube. A well-scrubbed,
+hustling rube...with a little taste. Good
+nutrition's given you some length of bone, but
+you're not more than one generation from poor white
+trash, are you. Agent Starling? And that accent
+you've tried so desperately to shed, pure West
+Virginia. What is your father, is he a "coal
+minah," does he stink of the land? You know how
+quickly the boys find you, all those tedious,
+sticky fumblings in the back seats of cars, while
+you could only dream of getting out, getting
+anywhere, all the way to the F-B-I.
+It is here that Starling proves herself a formidable match
+for Lecter. She takes a breath, acknowledges that he sees
+"a lot," and quickly reverses his offensive: is he strong
+enough, she asks, to turn his razor-sharp insight onto
+himself? Initially, he seems to reject Starling and this
+challenge, turning away and walking to the other side of
+his cell. But as he moves, his words prove that he does
+see her as ready for initiation, if she so chooses: "You
+fly back to school now, little Starling. Fly, fly, fly."
+Starling having proven her mettle, Lecter recognizes that
+it is indeed time for her transformation; but, as with
+most of what he says, he makes this point cryptically-
+Regardless, like the bird after which she is named, it is
+time for her to learn to fly.
+As Starling begins to move away from Lecter's cell,
+a naked and masturbating Miggs screeches "Look at the
+blonde!" and throws semen into her face. This in itself
+is telling: Starling is clearly not blonde; Miggs, like
+most men in the film, is literally unable to see Starling
+for what she is or of what she is capable. Lecter,
+hearing the attack, throws himself with spectacular force
+and speed against the plexiglass wall of his cell. His
+calling out in her defense is the only time in the entire
+film that he raises his voice:
+Lecter.
+Agent Starling! Come back! I would never have had
+that happen to you. Discourtesy is extremely ugly
+to me.
+starling.
+Then do this test for me!
+Lecter.
+No, but I will make you happy. I'll give you a
+chance for what you love most.
+starling.
+And what is that. Doctor?
+Lecter.
+Advancement, of course. Listen carefully, look
+deep within yourself, Clarice Starling. Go seek
+out Miss Mofet, an old patient of mine. M-O-F-E-T.
+Go now, I don't think Miggs could manage again
+quite so soon, even though he is crazy. Go now!
+later learn that this final advice was also essentially
+cryptic: "Hester Mofet," an anagram for "The rest of me,"
+never existed, and "Look deep within yourself" leads
+Starling to Baltimore's "Your Self Storage," where Lecter
+has rented a large space under Mof et' s neime. By making
+this connection and literally looking into "your self,"
+Starling proves to Lecter that she is meritorious and
+ready for edification.
+Some critics of the film have dismissed Lecter's
+intentions as purely sexual. Elayne Rapping, in The
+Progressive, writes that Starling is Lecter's "prey, as
+much as the other monster is hers, and his sexual interest
+in her -- played out as a flirtation of the most
+stereotypically sexist kind -- is apparent."5® Ms.
+Rapping's reading of the sexual into the relationship
+between Starling and Lecter entirely misinterprets the
+film's themes. Immediately following the incident with
+Miggs and the processing of Lecter's aggressively driven
+"clues," Starling walks slowly to her car and experiences
+an early memory of her father, spinning her in the air
+upon his return from work; within the flashback, the
+camera then pans up to a shot of the sky, once again
+bringing us an image of flight. Lecter is manipulative,
+and he does play elaborate mental games with Starling.
+But he does this not for his own sexual gratification.
+Recognizing that she needs to experience the journey, his
+questioning and ingenious "games" force her to find her
+own wings. As he says, he will give her a chance for what
+she loves most: "Advancement." He refers not, however, to
+advancement in the workplace; advancement of her spirit is
+what he desires.
+Rapping's next statement, asserting that Starling
+is left at the film's conclusion "in a state of permanent
+anxiety because [Lecter] may at any moment decide to come
+after her" is not only thematically questionable it is
+proven inaccurate by the script itself. "The only reason
+he does not do so, he makes clear," Rapping concludes, "is
+because he finds her cute-"^^ Lecter, in point of fact,
+tells Starling that he has no intention of coming after
+her because "the world is much more interesting with you
+in it." Nowhere is the word "cute" mentioned in the
+scene, and a careful observer of the film will see that
+the intellectual dynamics between Lecter and Starling
+prevent the concept of "cute" even from implication. It
+is one thing for Ms. Rapping to interpret their
+relationship as being sexually charged; the sheer
+intensity of their dialogues makes this understandable.
+But to literally adjust the script to serve one's own
+needs is another thing entirely. Rapping, it seems, had
+an agenda which could not be bothered by a meticulous look
+at the film itself.
+As the film progresses, it becomes clear that
+Lecter is the only man who refuses to socially categorize
+Starling; this refusal brings to mind what Turner refers
+to as social "segmentalization."
+In people's social structural relationships they
+are by various abstract processes generalized and
+segmentalized into roles, statuses, classes,
+cultural sexes, conventional age-divisions, ethnic
+affiliations, etc. In different types of social
+situations they have been conditioned to play
+specific social roles. It does not matter how well
+or badly as long as they "make like" they are
+obedient to the norm-sets that control different
+compartments of the complex model known as the
+"social structure
+Chilton sees her as an object unworthy of real respect,
+and she is treated as a permanent student by Crawford,
+incapable of working in the harshest elements of the case
+until the film's conclusion. Only Lecter sees her as she
+is, understands that she must cope with her past before
+she can take flight, and then forces her to look into her
+"self" and become something stronger, through his quid pro
+quo line of questioning.
+The notion of exchange and duality within Lecter
+and the film brings to mind Turner's encounter with the
+Entity known in Rio de Janeiro as Exu. "Lecter," writes
+Kathleen Murphy in Film Comment, "is consulted by cops as
+an oracle, and acts as high priest to those acolytes who
+strive, as he has, to transform themselves, triggering
+their evolution in rites of human sacrifice."Exu^
+Turner says, is sometimes represented with two heads (one
+that of Christ; the other, Satan); he is
+the Lord of the Limen and of Chaos, the full
+ambiguity of the subjunctive mood of culture,
+representing the indeterminancy that lurks in the
+cracks and crevices of all socio-cultural
+constructions of reality ... he is the abyss of
+possibility.
+While other forces in the film attempt to hold Starling
+back -- in one scene, Crawford literally tells a West
+Virginia sheriff that they should discuss a brutal murder
+in a separate room so as not to include her -- Lecter
+himself represents possibility. Turner continues: for
+Brazilians, Exu is "the one who must be kept at bay if the
+framed order of the ritual proceedings is to go forward
+according to protocol (italics mine) ... hence he has two
+heads, for he is both potential savior and tempter."^2
+Late in the film, after Starling has completely
+opened her soul to Lecter, he whispers, tears in his eyes,
+"Thank you, Clarice... thank you." Are these tears the
+result of a sexual charge? No; rather, Lecter knows that
+this is what she needed to do in order to move towards
+transformation. His tears are seen most clearly a moment
+later, as Lecter hears Chilton and Memphis security enter
+the room to remove Starling. This leaves one to consider
+whether his tears are furthered because he knows that he
+cannot now, with anyone else present, give her the
+information that she needs to complete her work. And just
+as we wonder if he is simply a misunderstood human being
+who truly is "good," he murders his two security guards,
+creating a mask from the face of one and mounting the
+butterflied body of the other onto his cage walls.
+Silverthorne continues:
+He acknowledges a plurality of selves ... On
+one side in the movie [are] the many visual
+suggestions of outspread wings, and Hannibal's
+pressure, whispered to Clarice, 'Spread your wings,
+little Starling, and fly-' On the other side is a
+universe of Jame Gumbs, who carves two diamond
+patterns (dressmaker's darts, a 'taking in' device)
+on a dead woman's back, fatally clipping her
+wings.
+Like Exu, Lecter is both liberator and destroyer. He
+seems to possess a certain deity-like omniscience: as the
+first step in his master plan of escape, he manages to
+steal Dr. Chilton's pen while enclosed in a straitjacket
+and bodycage; he observes that Starling's leg wound
+achieved when exploring her "Self" has stopped bleeding
+without being able to see her leg or ever being told that
+she was even injured.
+We have a tendency in America to label that we
+which cannot understand, and Silence, with all of its
+horrifying subject matter, points us to a questioning of
+our own symbol system. Hannibal Lecter is, actually, not
+the real "monster" in the story: while usually enigmatic,
+he is consistently truthful with Starling, treating her as
+an equal; and, most importantly, he acts according to his
+nature. Right down to his agnomen, there is never any
+question about who or what Hannibal "The Cannibal" is.
+The real "monsters" of the story are those whose
+actions may not appear ominous or threatening outright,
+but whose inner workings within our culture make them
+dangerous to us and our psyches. From Dr. Chilton's first
+attempt at flirting with Starling and his angry reaction
+to rejection, we know that this is not a man who can be
+trusted: as was discussed, he moves from an attempt at
+charm to outright bitterness in a heartbeat. Even his
+initial reflections on Lecter -- from a research
+perspective, Lecter is their "most prized asset" -- give
+us a man out for little more than his own gain. As
+Clarice is a sexual object for Chilton, Lecter is an
+object to enhance his notoriety. Recognizing Chilton's
+monstrosity, Lecter has refused to cooperate with him,
+leaving Chilton's dreams of endless accolades to crumble
+within a plexiglass cell. And now, when Lecter strays
+even remotely from Chilton's ideals, Chilton asserts his
+cultural position of power -- head of a psychiatric
+institute -- and systematically tortures Lecter: he
+attempts to lock away the creative spirit by removing
+Lecter's drawings; he broadcasts religious television
+programming at stentorian levels into Lecter's cell.
+Chilton's labeling of Lecter as a "monster" indicates that
+their battle is personal, and, having lost his desired
+fame, he is not about to waste his time trying to
+understand his prisoner in the way which Clarice Starling
+attempts.
+Mid-story, we discover that Chilton has been using
+a microphone to listen to the interviews between Lecter
+and Starling, not for anthropological or research
+purposes, but to capture the upper hand. As Chilton later
+tries to pry further information on Buffalo Bill from
+Lecter, he lies back comfortably on a medical cot to taunt
+his strait-jacketed and wire-masked "patient":
+You still think you're gonna walk on the beach and
+see the birdies? (He laughs.) No, I don't think
+so. I called Senator Ruth Martin; she never heard
+of any deal with you. (He smiles at Lecter.) They
+scammed you, Hannibal. (He gestures to his aide.)
+Stand outside. And shut the door. (The aide
+exits, leaving them alone. Chilton stands, and,
+close to Lecter, looks right into his eyes.) There
+never was a deal with Senator Martin, but there is
+now. I designed it. Of course, I worked in a few
+conditions for my own benefit as well.
+The psychological and emotional torment which Chilton's
+self-serving tunnel-vision inflicts on those around him
+make this character, "played to smarmy perfection by
+Anthony Heald,a more frightening presence within our
+culture than the other "psychopaths" of the story...and
+one whose type most of us will have a greater chance of
+encountering in our lifetimes than a Hannibal Lecter.
+It is no surprise, then, that Lecter pursues
+Chilton all the way to Haiti upon his escape. "I
+thought," Demme states, "you really had to get a sense in
+a very brief time that Lecter had tracked Chilton to the
+ends of the earth, a place that redefines 'off the beaten
+track.' It also should come as no surprise that
+Lecter's final line in the film -- "I'm having an old
+friend for dinner -- actually carries with it an odd sense
+of justice and comeuppance, garnering audience applause
+and an understanding of the dynamics between these two
+very different men. Who, we must ask, is the real
+monster? And are we, in cheering this sort of poetic
+justice, briefly identifying with the dark side of
+ourselves? Certainly -- and this is good for us and our
+culture.
+Lecter's straitjacket and masking are worthy of
+discussion here. According to Turner, "Liminality is both
+more creative and more destructive than the structural
+norm. In either case it raises basic problems for social
+structural man, invites him to speculation and
+criticism.As we reflect on our culture's method of
+dealing with that which is outside of its comprehension,
+it becomes clear that we can be impatient in America with
+anything which moves outside of the canonical; not knowing
+how to deal with these "challenges," we lock them away or
+cover their faces with protective masks. In his scenes
+with Starling, Lecter's voice is crisp, soft-spoken, and
+polite; it is clear that he feels trusted and respected by
+her for who and what he is, and treats her accordingly,
+he is also in some sense of control. Later in the film,
+he is transferred to Tennessee to meet with Senator Ruth
+Martin (played by Tracey Walter). Confined in a
+straitjacket, tied down, with a grotesque plastic and
+metal mask covering his mouth and jaw, Lecter's entire
+manner is literally altered by his masking. His voice
+deepens; his head, when he is being moved, tilts back as
+his eyes roll up towards his forehead; his hair appears
+darker, unkempt, wilder. Then, as he addresses the
+senator, he sounds and acts like a different person.
+Lecter.
+Tell me, senator: did you nurse Catherine yourself?
+Senator Martin.
+What?
+Lecter.
+Did you breast-feed her?
+Senator Martin.
+Yes. I did.
+Lecter.
+Toughened your nipples, didn't it? ... Amputate a
+man's leg and he can still feel it tickling. Tell
+me, mom: when your little girl is on the slab,
+where will it tickle you?
+Senator Martin.
+Take this thing back to Baltimore.
+Lecter.
+Oh, and senator, just one more thing: love your
+suit.
+Lecter, perceived by his culture as a psychopath who needs
+to be concealed and robbed of identity, Lecter acts
+accordingly; the mask alters him. In a year in which we
+finally have seen the face of a "mad bomber," this way of
+coping with the incomprehensible seems in need of cultural
+scrutiny. Does labeling one "insane," like the placing of
+a mask, further "insanity?"
+To return to Starling's journey, it may seem
+initially that Lecter's anagrsunatic clues are a way of
+selfishly toying with her. Rather, this is Lecter's way
+of intricately assisting with Starling's transformation.
+Turner and van Gennep remind us that the rite of passage
+is, in its own way, a life crisis. Throughout mythology,
+we see that the transformation and passage are also
+treated as crisis, as is the power of the wound. In the
+story of the Fisher King, for example, the young king
+finds hot salmon at a campsite; he tries to hold it, but
+it burns his skin and is dropped. The scar from his wound
+will remain with him: his first contact with what will
+later become his redemption -- as well as his primary
+experience of real consciousness — comes immediately in
+the form of a wound. If we are not cast out of the Garden
+of Eden, there can be no experience of Holy Jerusalem.
+We learn, through Lecter's quid pro quo with
+Starling, that she suffered trauma as a young girl through
+the deaths of her mother, and, more critically, her
+father. She is a wounded woman; Lecter, "psychopath" or
+not, remains a brilliant psychiatrist who clearly
+recognizes the need in us all to cope with our wounds.
+Myth teaches us that these wounds will never fully heal;
+rather, they and their scars offer us a graduation from a
+naive consciousness into a more meaningful consciousness
+of self.
+Before Lecter even begins to probe Starling's past
+-- and hence, before her true journey has begun -- he
+sends her to his storage facility. She reaches "Your Self
+Storage" late at night, and attempts to enter the building
+with the business's owner; without a key or time to wait
+for morning. Starling realizes that she must fight her way
+into the space -- again, crossing a literal threshold.
+Using a car jack to raise the door a short distance above
+the ground, she dirties herself by lying in the dirt and
+attempting to crawl underneath the tremendous metal door
+which, she acknowledges, could fall and crush her in an
+instant. Forcing herself into the darkness proves
+difficult indeed, as she hears the ripping of fabric and
+feels a flash of pain; glancing down, she sees that a nail
+has torn into the flesh of her leg, leaving a substantial
+spot of her own blood. She touches the wound with her
+fingers, crawling through the dirt — the "ashes" of myth
+— to reach into the blackness of her "Self." In this
+exploration of self. Starling has been wounded, and hence
+has moved to a new level of consciousness. And it is
+Lecter -- the dark teacher of Native American stories --
+that brought her here. It is no coincidence that the
+first object she sees within the storage unit is a stuffed
+owl with its wings spread wide as if to attack: a symbol
+of death in many Native American cultures, the owl reminds
+us that this journey into the self will be fraught with
+menace..-but like the owl, we must attempt to fly. For
+Starling, there is little hesitation; again, wounded, she
+does what she must do: she proceeds into the storage
+shed, separated from the outside by a huge wall of steel,
+thus beginning her own transformation.
+The next and, arguably, most important threshold
+Starling crosses comes near the film's conclusion.
+Throughout the story, she has gradually revealed details
+to Lecter about the death of her father. These
+revelations do not, incidentally, need to be pried out of
+her; "I tell you things, you tell me things," Lecter says
+to her. "Not about this case, though. About yourself.
+Quid pro quo. Yes or no. Yes or no? Little Catherine is
+waiting." Starling's response is played by Ms. Foster as
+a refusal to show hesitation, even if it exists in the
+soul. She knows that Catherine Martin will surely die if
+she does not follow him, and so she has no choice. Her
+eyes do not move from his as she responds simply: "Go,
+Doctor." He does so, enabling Starling to begin to cope
+with her own emotional and psychological wounds.
+The final pieces of her story are told after Lecter
+has been transferred to Tennessee. He knows at this point
+that she and Crawford lied to him about a potential
+transfer to an island facility; unlike Chilton, however,
+he does not seem to take this personally. He acknowledges
+her use of the name "Anthrax Island" as being "a nice
+touch," and, when Starling begs him to continue telling
+the truth about Buffalo Bill to her in order that she may
+rescue Catherine Martin, he again picks up his line of
+inquiry- Through this questioning, we learn about
+Starling's failed attempt to save a family of screaming
+lambs from slaughter. In telling her story to Lecter, she
+makes meaning of her past and this event. "Meaning,"
+Turner writes, "always involves retrospection and
+reflexivity, a past, a history. Meaning is the only
+category which grasps the part to the whole in life."^^
+Starling here uses Bruner's concept of the narrative to
+literally create an act of meaning:
+For one of the most powerful forms of social
+stability ... is the human propensity to share
+stories of human diversity and to make their
+interpretations congruent with the divergent moral
+commitments and institutional obligations that
+prevail in every culture.^®
+Demme understands what is actively happening to
+Starling. Lecter sits behind the steel bars of a cell as
+they begin their final "telling of stories." The camera
+switches between individual shots of Starling and Lecter,
+and we see that it is steadily moving closer to each of
+them, filling the screen with her story and his questions.
+Starling tells him that she attempted to run away from a
+cousin's ranch after the death of her father. "What set
+you off, Clarice?" Lecter asks, and it is here that
+Starling, immersed in the liminal, must actively face --
+through story-telling -- the sound which has haunted her
+for years and propelled her into the FBI: the sound of
+lambs screaming while being butchered. Starling continues
+the telling: unable to save all of the lambs, she
+attempted to save one by running away, beginning her first
+attempt at the journey. Lecter asks where she was going,
+and she responds:
+Starling.
+I don't know...I didn't have any food, any
+water...and it was very cold. Very cold...I
+thought, I thought if I could save just one, but he
+was so heavy...so heavy...I didn't get more than a
+few miles when the sheriff's car picked me up. The
+rancher was so angry he sent me to live at the
+Lutheran orphanage at Bozeman. I never saw the
+ranch again.
+Lecter.
+What became of your lamb, Clarice?
+starling.
+They killed it.
+Lecter.
+You still wake up sometimes, don't you? Wake up in
+the dark and hear the screaming of the lambs.
+starling.
+Yes.
+Lecter.
+And you think if you save poor Catherine, you could
+make them stop, don't you? You think if Catherine
+lives, you won't wake up in the dark ever again to
+hear that awful screaming of the lambs...
+starling.
+I don't know... I don't know.
+Lecter, the hint of tears in his eyes, thanks her for her
+work. His task is complete: he has used "the Socratic
+method to instruct Clarice Starling in criminal behavior,
+and manage[d] his protege's psychological exorcism with
+the ease of a practiced demon hunter.During the
+preceding dialogue, the camera has moved in to such tight
+shots that there no longer seem to be bars surrounding
+story-teller or listener. Through the telling, Starling
+has been able to make meaning of this event, freeing
+herself from her own prison.
+Now, and only now, will Starling be able to
+confront Jame Gumb. As she travels towards Belvedere, she
+literally drives across a bridge -- Eliade's dangerous
+threshold — to reach Gumb's lair. She is then literally
+thrust into the blackness of Eliade's cosmic night, or the
+belly of the monster. After confronting him in his
+moderately-lit den, he flees downstairs; she follows, each
+step taking her lower and into greater darkness. The
+fluttering of moth wings and distorted music filling her
+ears, and the immediate discovery of a decomposed woman
+lying in a bathtub imprinted on her mind. Starling
+suddenly finds herself completely blind as Gumb eliminates
+all interior light and begins to stalk her. Wearing his
+night-vision glasses, Gumb is thrust into power. For the
+first time in the scene, we leave Starling's point of view
+and take on Gumb's: Starling, her eyes wide and rigid with
+terror, stumbles throughout his tomb-like basement; Giomb,
+moving slowly, closes in on her reaches out to touch her
+hair, pulling away before making contact. Living in the
+darkest and most immediate version of Eliade's concept of
+the "bush," Starling knows that she could easily be killed
+at any moment, and yet she does not beg, plead, or try to
+run: she relies on herself and the senses she has left.
+When the click of Gumb preparing his weapon to fire fills
+the room, her ears -- close to never again hearing the
+screaming of the lambs -- discern the sound, activating
+her to move to face it, fire, and survive. She has
+crossed the bridge and descended into the pit to save
+Catherine Martin and herself. "The process of filling her
+terrible emptiness," writes Kathleen Murphy, "of silencing
+the lambs for good, is [truly] completed only when.
+through Starling's heroic descent into an actual hell, the
+real child in Jame Gumb' s dark pit is released
+Starling, having lived through each stage in the rite of
+passage, is transformed; and, while we see her graduating
+from the FBI academy in the film's conclusion (thus
+completing the reintegration phase), her life passage
+finds that she has earned something far more significant
+than an FBI badge: the silence, and not the screaming, of
+the lambs.
+Conclusions
+"I'm having an old friend for dinner."
+Hannibal Lecter
+An analysis of a film as rich as The Silence of the
+Lambs could go on for an interminable length of time; in
+fact, Roger Ebert has written about his experiences during
+a weekend seminar on the film: frame by frame, the film is
+studied, discussed, and made meaningful. It does seem
+surprising initially, though, to have a thriller win such
+accolades. One expects certain films to have more meaning
+than others: Ordinary People, for example, is more easily
+called life-changing. But perhaps therein lies the genius
+in Demme's film: "mercilessly scary and mercifully
+humane," it has taken exceptionally unpleasant subject
+matter and a generally disreputable genre, using an
+intricate understanding of rites of passage, storytelling,
+meaning, and culture, to create a film of terror but not
+gratuitous violence; a film in which the canonical is
+challenged, forcing us to look twice before judging
+another human being (artist, "criminal," or "psychopath")
+as "mad"; a film in which the human drama supersedes and
+propels the plot instead of falling victim to it.
+But did anyone really get it?
+The Silence of the Lambs won five academy awards in
+1991, including Best Picture, Best Director, and Best
+Adapted Screenplay. But did those who cast their ballots
+for the film see it as just a marvelously constructed and
+performed story? Or did they go beyond the story, into
+the depths of questioning which we have just accomplished?
+Obviously, we will never know, but a part of me believes
+that, as Bruner insists that we use stories and narratives
+to make meaning within our lives, part of the depth of
+this intricate and precise story perhaps did make it into
+the thought-processes of more in its audience than might
+be expected. A brilliant work of art is a brilliant work
+of art, and the film's critical and financial success
+leads me to hope that Demme's fleshing out (if you will)
+of a genre known for producing mere "entertainment" did
+reach more people in a meaningful way than, say, an
+excellent but neglected exhibit at a small-town museum.
+I want to clarify here that I am not suggesting
+that Demme and the film are asking us to release all
+serial killers from confinement and gather the family
+around the television to watch the life-affirming Silence
+of the Lambs. Rather, I maintain that Demme works with
+the images and realities of and within America to tell his
+story -- while dealing with rites of passage and
+addressing a number of subtle dilemmas within our culture.
+We in America are so intent upon denying darkness that we
+can create individuals who eventually must act out in
+horrifying ways. Perhaps, the film argues, if we had in
+place these Native American rituals which embrace the
+darkness in order to understand it, we might not
+experience as much violent crime...and possibly not need a
+Hannibal Lecter to guide us on our ovm journeys.
+In "Literature as Equipment for Living," Kenneth
+Burke writes that proverbs fall into many different
+categories which suggest the "active nature" inherent
+within them. Proverbs console; chart; foretell; show us
+how to live wisely; instruct. Somehow, we feel that
+they understand. And, as Burke extends this analysis from
+proverbs to encompass the whole field of literature,
+perhaps we should look more often for this "active nature"
+in places previously unexplored: where we might not expect
+to find anything more than a good laugh, a simple
+distraction, or a scare. For when a carefully constructed
+work of art -- our "equipment for living" -- comes along,
+we must look at it more closely than we might be
+immediately inclined. A close look could produce insights
+about us and our culture; perhaps, then, there is a
+greater potential to change our culture and our lives
+through theatre, film, poetry, fiction, and art than we
+ever imagined. If we accept that the work of art can
+intimately possess an understanding of the ways in which
+we live our lives, perhaps then we can truly begin to seek
+out and perceive clues within it as to how to make meaning
+out of and survive our own dramas...and set into motion
+true cultural change.
+And isn't that what art within a culture should
+accomplish?
+endnotes
+1. Peter Travers, "Snapshots from Hell," Rolling Stone (March 7th, 1991): 88.
+2. Lisa Kennedy, "Writers on the Lamb," The Village Voice (March 5, 1991);
+49-59.
+3. Kenneth Burke, The Philosophy of Literary Form: Studies in Symbolic Action
+(Louisiana: Louisiana State University Press, 1941), 304.
+4. Clifford Geertz, The Interpretation of Cultures (New York: BasicBooks,
+1973), 5.
+5. Geertz, 17.
+6. Jerome Bruner, Acts of Meaning (Cambridge: Harvard University Press,
+1990), 34.
+7. Bruner, 39.
+8. Bruner, 47.
+9. Bruner, 43-44.
+10. Arnold van Gennep, Rites of Passage, trans. Monika B. Vizedom and
+Gabrielle L. Caffee (Chicago: University of Chicago Press, 1960), 10.
+11. Victor Turner, From Ritual to Theatre (New York: PAJ Publications,
+1982), 24.
+12. Turner, 24.
+13. van Gennep, 18.
+14. van Gennep, 21.
+15. Turner, 24.
+16. Mircea Eliade, The Sacred and the Profane: The Nature of Religion, trans.
+Willard R. Trask (New York: Harper & Row, 1961), 8.
+17. Eliade, 9.
+18. Eliade, 11.
+19. Eliade, 12.
+20. Eliade, 12.
+21. Eliade, 21.
+22. Eliade, 63.
+43.
+44.
+45.
+46. Eliade, 181.
+Jonathan Demme, "Identity Check; Interview with Jonathan Demme,"
+interview by Gavin Smith, Film Comment (Jan-Feb 1991): 37.
+The Silence of the Lambs, dir. Jonathan Demme, with Jodie Foster,
+Anthony Hopkins, and Scott Glenn. Orion, 1990. All remaining quotes
+from the film are from this source.
+Julie Tharp, "The Transvestite as Monster; Gender Horror in The Silence of
+the Lambs and Psycho," Journal of Popular Film and Television
+(February 1991), 109.
+Turner, 28.
+Bruner, 42.
+Demme interview. Film Comment, 37.
+Geertz, 24.
+Geertz, 22.
+Geertz, 24.
+Gavin Smith, "Identity Check," Film Comment (Jan-Feb '91): 37.
+Jeanne Silverthorne, "The Cave," Artforum (March 1991); 18.
+Turner, 25.
+Turner, 28.
+Turner, 41.
+Turner, 83-84.
+Turner, 26.
+Turner, 27
+Turner, 80-81.
+Demme interview, 37.
+Turner, 69.
+Turner, 10.
+Turner, 70.
+Turner, 10.
+67.
+68.
+69.
+70.
+71. Turner, 10.
+Eliade, 189.
+Turner, 26.
+Eliade, 189.
+Eliade, 180.
+Travers, 88.
+Eliade, 191-192.
+Smith, 29.
+Turner, 25.
+Turner, 30.
+Frederick Buechner, Listening to Your Life (San Francisco: Harper Collins,
+1992), 113.
+Elayne Rapping, "The Uses of Violence," The Progressive (August 1991):
+Rapping, 37.
+Turner, 46.
+Kathleen Murphy, "Communion," Film Comment (Jan-Feb 1991); 31.
+Turner, 77.
+Silverthorne, 19.
+Travers, 89.
+Demme interview, 37.
+Turner, 47.
+Turner, 77.
+Bruner, 68.
+Murphy, 32.
+Murphy, 32.
+Burke, 294-295.

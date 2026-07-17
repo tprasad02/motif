@@ -12,6 +12,7 @@ NAV_PATTERNS = [
 
 
 def clean_text(text: str) -> str:
+    text = text.replace("\x00", "")
     lines = []
     for raw_line in text.splitlines():
         line = re.sub(r"\s+", " ", raw_line).strip()
@@ -27,4 +28,3 @@ def clean_text(text: str) -> str:
     cleaned = "\n".join(lines)
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned.strip()
-

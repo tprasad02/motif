@@ -7,7 +7,13 @@ CREATE TYPE source_type AS ENUM (
   'academic',
   'screenplay',
   'production_notes',
+  'festival_qa',
+  'educational_essay',
   'video_essay_transcript',
+  'director_commentary',
+  'cast_interview',
+  'craft_article',
+  'film_history',
   'book_excerpt',
   'other'
 );

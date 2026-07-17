@@ -1,114 +1,142 @@
 # Motif
 
-Motif is a retrieval-augmented cinema analysis platform for psychologically rich films. It is built to synthesize film criticism, director interviews, screenplays, essays, academic analysis, production notes, and video essay transcripts into cited interpretive answers.
+Motif is a retrieval-augmented cinema analysis platform for psychologically rich films. It synthesizes criticism, creator interviews, screenplays, essays, academic analysis, production notes, craft writing, reviews, and transcripts into cited interpretive answers.
 
-The MVP is not a generic movie chatbot. It is a curated research system for questions about interpretation, comparison, influence, recurring themes, and critical disagreement across a focused film corpus.
+Motif is not a generic movie chatbot. It is a curated research system for interpretation, comparison, influence, recurring themes, and critical disagreement across a focused corpus.
 
-## Week 1 Scope
+## Current Corpus
 
-- Local Docker services for PostgreSQL and Weaviate
-- Metadata schema for films, sources, documents, and chunks
-- Seed source metadata for the first 5 films
-- HTML, PDF, and manual text ingestion
-- Text cleaning and token-aware chunking
-- Stable chunk IDs
-- Embedding generation interface with deterministic local fallback
-- Metadata persistence in PostgreSQL
-- Chunk persistence in Weaviate
-- Manual retrieval notebook
-- FastAPI backend skeleton
-- Next.js frontend skeleton
+- Active films: 18
+- Active source manifest: `data/manual_sources.csv`
+- Ingested locally: 142 documents
+- Ingested chunks/vectors: 1,574
+- Storage: PostgreSQL metadata plus Weaviate vectors
 
-## Week 2 Scope
-
-- Public corpus expanded to 10 films
-- 150 public local documents, 15 per film
-- `POST /retrieve` for top-k vector retrieval
-- `POST /answer` for grounded answer synthesis
-- Film and source-type filters
-- Prompt templates for interpretation synthesis
-- Citation grounding to retrieved chunks
-- High, medium, and low coverage scoring
-- Refusal behavior when evidence is insufficient
-- Next.js search UI with answer panel, citation cards, filters, loading state, and error state
-- Vercel and Render deployment configuration
-
-## First 5 Films
-
-- Mulholland Drive
-- Persona
-- Black Swan
-- Perfect Blue
-- Taxi Driver
-
-## Week 2 Films
-
-- Fight Club
-- The Lighthouse
-- Shutter Island
-- Eternal Sunshine of the Spotless Mind
-- Synecdoche, New York
+The active film list is in `data/seed_films.csv`. `Perfect Blue` and `A Beautiful Mind` were removed from the active corpus.
 
 ## Repository Layout
 
 ```text
-backend/    FastAPI API and retrieval orchestration
-frontend/   Next.js interface for cinematic analysis queries
-ingestion/  Corpus extraction, cleaning, chunking, embeddings, and loading
-evals/      Evaluation prompts and expected answer criteria
-infra/      Docker and database schema
+backend/    FastAPI API, Pydantic models, retrieval, synthesis, workflow endpoints
+frontend/   Next.js analysis UI with mode toggles, search, filters, answers, and source trail
+ingestion/  Manual corpus extraction, cleaning, chunking, embeddings, and DB/vector loading
+evals/      Corpus verification and retrieval-quality checks
+infra/      Docker and PostgreSQL schema
 notebooks/  Manual retrieval experiments
-data/       Seed metadata, raw inputs, and processed artifacts
+data/       Film metadata, manual source spreadsheet/PDFs, extracted text, source manifests
+docs/       Deployment runbook
 ```
+
+## Week 1: Corpus + Ingestion Foundation
+
+Implemented:
+
+- Repository structure for `frontend`, `backend`, `ingestion`, `evals`, `infra`, `notebooks`, and `data`
+- Docker Compose with PostgreSQL and Weaviate
+- PostgreSQL schema for films, sources, documents, chunks, relations, and indexes
+- Source metadata manifest
+- HTML ingestion
+- PDF ingestion
+- Manual text ingestion
+- Text extraction and cleaning
+- Navigation/header/footer/ad artifact cleanup
+- 700-token chunking with 100-token overlap
+- Stable chunk IDs
+- Deterministic local embeddings
+- PostgreSQL metadata storage
+- Weaviate vector storage
+- Manual retrieval notebook
+- README and architecture diagram
+
+## Week 2: Basic RAG App
+
+Implemented:
+
+- Corpus expanded beyond Week 2 target: 18 films, 142 usable documents
+- FastAPI backend
+- `POST /retrieve`
+- `POST /answer`
+- Top-k vector retrieval
+- Film interpretation prompt templates
+- Citation grounding
+- Coverage scoring: `high`, `medium`, `low`
+- Refusal behavior when evidence is insufficient
+- Next.js frontend
+- Homepage search
+- Answer panel
+- Citation/source cards as “Follow the Trail”
+- Film and source filters
+- Loading and error states
+- Vercel frontend configuration
+- Render backend configuration
+
+## Week 3: Better Retrieval + Cinema Workflows
+
+Implemented:
+
+- Corpus exceeds Week 3 target: 142 documents across 18 films
+- PostgreSQL full-text BM25-style retrieval
+- Weaviate/local vector retrieval
+- Hybrid retrieval: vector top 25 plus BM25 top 25
+- Merge and deduplicate retrieved chunks
+- Local reranking over merged results
+- Return best 8-12 chunks to synthesis
+- Metadata filters for film, director, year, source type, critic/author, and theme
+- Source balancing
+- Required-film balancing for multi-film comparison retrieval
+- Interpretation Map workflow
+- Film Comparison workflow
+- Theme Explorer workflow
+- Structured outputs with Pydantic
+- Retrieval quality test before/after reranking
+- Frontend mode toggle for:
+  - The Read
+  - Interpretation Map
+  - Film Comparison
+  - Theme Explorer
 
 ## Quick Start
 
-1. Copy environment variables:
-
-```bash
-cp .env.example .env
-```
-
-2. Start infrastructure:
+Start infrastructure:
 
 ```bash
 docker compose up -d postgres weaviate
 ```
 
-3. Install backend dependencies:
+Install backend/ingestion dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r ingestion/requirements.txt
+pip install -r backend/requirements.txt
+```
+
+Build the manual source manifest from the uploaded spreadsheet/PDFs:
+
+```bash
+.venv/bin/python -m ingestion.build_manual_corpus
+```
+
+Ingest the active corpus:
+
+```bash
+.venv/bin/python -m ingestion.cli ingest --sources data/manual_sources.csv --reset
+```
+
+Run the backend:
 
 ```bash
 cd backend
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+PYTHONPATH=. ../.venv/bin/uvicorn app.main:app --reload
 ```
 
-4. Load the schema:
+Run the frontend:
 
 ```bash
-psql "$DATABASE_URL" -f ../infra/postgres/001_schema.sql
-```
-
-5. Build and ingest the public corpus:
-
-```bash
-python -m ingestion.build_public_corpus
-python -m ingestion.cli ingest --sources data/public_sources.csv
-```
-
-6. Run the backend:
-
-```bash
-uvicorn app.main:app --reload
-```
-
-7. Run the frontend:
-
-```bash
-cd ../frontend
-npm install
-npm run dev
+cd frontend
+pnpm install
+pnpm run dev
 ```
 
 ## API
@@ -121,76 +149,86 @@ curl -X POST http://localhost:8000/retrieve \
   -d '{"query":"doubling and fractured identity","top_k":12}'
 ```
 
-Answer with grounding and refusal behavior:
+Answer:
 
 ```bash
 curl -X POST http://localhost:8000/answer \
   -H "Content-Type: application/json" \
-  -d '{"query":"How do Persona and Perfect Blue use performance to fracture identity?","film_slugs":["persona","perfect-blue"],"source_types":["essay","academic","interview"],"top_k":12}'
+  -d '{"query":"How does memory shape identity in Memento?","film_slugs":["memento"],"top_k":12}'
+```
+
+Interpretation Map:
+
+```bash
+curl -X POST http://localhost:8000/workflows/interpretation-map \
+  -H "Content-Type: application/json" \
+  -d '{"query":"What competing readings does Black Swan invite?","film_slugs":["black-swan"],"top_k":12}'
+```
+
+Film Comparison:
+
+```bash
+curl -X POST http://localhost:8000/workflows/film-comparison \
+  -H "Content-Type: application/json" \
+  -d '{"query":"Compare obsession and performance.","film_slugs":["the-prestige","black-swan"],"comparison_films":["the-prestige","black-swan"],"top_k":12}'
+```
+
+Theme Explorer:
+
+```bash
+curl -X POST http://localhost:8000/workflows/theme-explorer \
+  -H "Content-Type: application/json" \
+  -d '{"query":"How does surveillance shape identity?","theme":"surveillance","top_k":12}'
 ```
 
 ## Verification
 
 ```bash
-python -B -m compileall backend ingestion evals
-python evals/verify_corpus.py
+.venv/bin/python -m compileall backend/app ingestion evals
+.venv/bin/python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 7
+.venv/bin/python evals/test_retrieval_quality.py
 ```
 
-The Week 2 public corpus lives in `data/public_sources.csv` and `data/raw/public/*.txt`. It currently contains 150 local documents, 15 per film, and is intentionally rebuildable from public web sources via `python -m ingestion.build_public_corpus`.
-
-The current public corpus uses public pages and public review pages. Script text is represented by public plot/source summaries as a temporary screenplay proxy; replace those rows with licensed screenplay files when available.
-
-## Deployment
-
-See [docs/deployment.md](docs/deployment.md) for the current deployment runbook.
-
-Frontend:
-
-- Import `frontend/` into Vercel.
-- Set `NEXT_PUBLIC_API_URL` to the deployed backend URL.
-- The Vercel config lives at `frontend/vercel.json`.
-- Local build verified with the bundled Codex Node runtime:
+Frontend build:
 
 ```bash
 cd frontend
-PATH=/Users/tanishaprasad/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/Users/tanishaprasad/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin:$PATH pnpm run build
+pnpm run build
 ```
-
-Backend:
-
-- Import the repo into Render using `render.yaml`.
-- Set `DATABASE_URL`, `WEAVIATE_URL`, and `FRONTEND_ORIGIN`.
-- The backend Dockerfile lives at `backend/Dockerfile`.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-    Sources["Curated sources: reviews, interviews, essays, papers, screenplays, notes"]
-    Ingestion["Ingestion: extract, clean, chunk, embed"]
-    Postgres[("PostgreSQL metadata")]
-    Weaviate[("Weaviate chunk vectors")]
-    API["FastAPI retrieval and synthesis API"]
-    UI["Next.js analysis workspace"]
+    Sources["Manual corpus: PDFs, scripts, interviews, essays, reviews, notes"]
+    Extract["Extract HTML / PDF / TXT"]
+    Clean["Clean and normalize text"]
+    Chunk["Chunk 700 tokens / 100 overlap"]
+    Embed["Generate deterministic embeddings"]
+    Postgres[("PostgreSQL metadata + BM25")]
+    Weaviate[("Weaviate vectors")]
+    Retrieve["Hybrid retrieval + rerank"]
+    API["FastAPI structured workflows"]
+    UI["Next.js mode-based cinema workspace"]
 
-    Sources --> Ingestion
-    Ingestion --> Postgres
-    Ingestion --> Weaviate
-    Postgres --> API
-    Weaviate --> API
-    API --> UI
+    Sources --> Extract --> Clean --> Chunk --> Embed
+    Chunk --> Postgres
+    Embed --> Weaviate
+    Postgres --> Retrieve
+    Weaviate --> Retrieve
+    Retrieve --> API --> UI
 ```
 
 ## Answer Contract
 
-Motif answers should return:
+Motif answers return:
 
 - Consensus interpretation
 - Alternative interpretations
 - Director/creator perspective
 - Critical reception
 - Related films in the corpus
-- Cited sources
-- Coverage score
+- Cited trail sources
+- Coverage score and coverage level
 
-If the corpus does not support an answer, Motif should say so and explain which source coverage is missing.
+When the corpus does not support an answer, Motif refuses and explains the coverage limitation.

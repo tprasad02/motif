@@ -14,40 +14,46 @@ from app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
 FILM_TITLES = {
-    "mulholland-drive": "Mulholland Drive",
-    "persona": "Persona",
-    "black-swan": "Black Swan",
-    "perfect-blue": "Perfect Blue",
-    "taxi-driver": "Taxi Driver",
+    "shawshank-redemption": "The Shawshank Redemption",
     "fight-club": "Fight Club",
-    "the-lighthouse": "The Lighthouse",
-    "shutter-island": "Shutter Island",
-    "eternal-sunshine": "Eternal Sunshine",
-    "synecdoche-new-york": "Synecdoche, New York",
-    "her": "Her",
+    "one-flew-over-the-cuckoos-nest": "One Flew Over the Cuckoo's Nest",
+    "se7en": "Se7en",
+    "silence-of-the-lambs": "The Silence of the Lambs",
+    "the-prestige": "The Prestige",
     "memento": "Memento",
-    "the-machinist": "The Machinist",
-    "vertigo": "Vertigo",
+    "taxi-driver": "Taxi Driver",
+    "shutter-island": "Shutter Island",
+    "black-swan": "Black Swan",
+    "sixth-sense": "The Sixth Sense",
+    "prisoners": "Prisoners",
+    "gone-girl": "Gone Girl",
+    "requiem-for-a-dream": "Requiem for a Dream",
     "donnie-darko": "Donnie Darko",
+    "the-machinist": "The Machinist",
+    "mulholland-drive": "Mulholland Drive",
+    "truman-show": "The Truman Show",
 }
 
 
 FILM_READINGS = {
-    "mulholland-drive": "turns Hollywood fantasy into a hall of mirrors, where desire invents a brighter self and guilt slowly breaks the illusion apart",
-    "persona": "treats identity as a performance so intimate that the roles of watcher, patient, actor, and double begin to exchange faces",
-    "black-swan": "makes artistic perfection feel like possession: the dancer tries to become the role until the role starts consuming the self",
-    "perfect-blue": "fractures celebrity, fandom, and private life until the performer can no longer tell whether she owns her image",
-    "taxi-driver": "builds identity out of isolation, movie-fed masculinity, and ritualized performance: Travis rehearses himself until the persona becomes more real than the man",
+    "shawshank-redemption": "turns prison time into a test of inner authorship: the institution controls bodies, but hope becomes the private act that keeps a self alive",
     "fight-club": "splits the self into consumer numbness and charismatic violence, making the double a fantasy of escape that curdles into control",
-    "the-lighthouse": "uses confinement, myth, labor, and theatrical masculinity to make two men seem like rivals, doubles, and projections of one another",
-    "shutter-island": "turns investigation into self-defense, with role-play and institutional theater protecting a mind from the truth it cannot survive",
-    "eternal-sunshine": "asks whether love remains part of the self when memory is edited, damaged, or erased",
-    "synecdoche-new-york": "literalizes life as rehearsal, letting art, memory, and performance swallow the artist who is trying to master them",
-    "her": "turns romance into a question of projection, loneliness, and whether intimacy can survive when the beloved is also an interface",
+    "one-flew-over-the-cuckoos-nest": "frames sanity and rebellion as a struggle over who gets to define normal behavior inside an institution built to flatten difference",
+    "se7en": "makes detective procedure feel like moral contamination, where meaning arrives through cruelty and the city itself seems to author despair",
+    "silence-of-the-lambs": "turns investigation into a charged exchange of looking and being looked at, with Clarice fighting to keep authority over her own story",
+    "the-prestige": "treats art as sacrifice and obsession as craft, making the magic trick a machine for splitting identity into performance and cost",
     "memento": "makes memory a broken editing system, so identity has to be rebuilt from clues that may already be corrupted",
-    "the-machinist": "externalizes guilt through the body, making insomnia and emaciation feel like evidence from a hidden trial",
-    "vertigo": "treats desire as remaking: the loved person becomes a role, an image, and finally a trap built by obsession",
+    "taxi-driver": "builds identity out of isolation, movie-fed masculinity, and ritualized performance: Travis rehearses himself until the persona becomes more real than the man",
+    "shutter-island": "turns investigation into self-defense, with role-play and institutional theater protecting a mind from the truth it cannot survive",
+    "black-swan": "makes artistic perfection feel like possession: the dancer tries to become the role until the role starts consuming the self",
+    "sixth-sense": "uses the ghost story as grief grammar, letting the twist reframe isolation as unfinished recognition",
+    "prisoners": "pushes parental love into moral captivity, where certainty becomes as dangerous as doubt",
+    "gone-girl": "turns marriage and media into mutually reinforcing performances, with identity weaponized as public narrative",
+    "requiem-for-a-dream": "cuts desire into addiction, spectacle, and bodily collapse, making fantasy feel chemically and culturally manufactured",
     "donnie-darko": "folds adolescence, doom, and alternate timelines into a mood where madness may be prophecy or metaphor",
+    "the-machinist": "externalizes guilt through the body, making insomnia and emaciation feel like evidence from a hidden trial",
+    "mulholland-drive": "turns Hollywood fantasy into a hall of mirrors, where desire invents a brighter self and guilt slowly breaks the illusion apart",
+    "truman-show": "turns everyday life into a set, asking what freedom means when identity has been authored for an audience",
 }
 
 
@@ -86,21 +92,24 @@ THEME_KEYWORDS = {
 
 
 RELATED_BY_THEME = {
-    "mulholland-drive": ["persona", "perfect-blue", "black-swan", "shutter-island"],
-    "persona": ["mulholland-drive", "perfect-blue", "synecdoche-new-york", "black-swan"],
-    "black-swan": ["perfect-blue", "persona", "mulholland-drive", "the-lighthouse"],
-    "perfect-blue": ["black-swan", "persona", "mulholland-drive", "fight-club"],
-    "taxi-driver": ["fight-club", "shutter-island", "the-lighthouse", "synecdoche-new-york"],
-    "fight-club": ["taxi-driver", "black-swan", "shutter-island", "the-lighthouse"],
-    "the-lighthouse": ["persona", "fight-club", "taxi-driver", "shutter-island"],
-    "shutter-island": ["memento", "taxi-driver", "mulholland-drive", "fight-club"],
-    "eternal-sunshine": ["synecdoche-new-york", "mulholland-drive", "persona", "memento"],
-    "synecdoche-new-york": ["eternal-sunshine", "persona", "the-lighthouse", "mulholland-drive"],
-    "her": ["eternal-sunshine", "synecdoche-new-york", "memento", "mulholland-drive"],
-    "memento": ["shutter-island", "eternal-sunshine", "donnie-darko", "mulholland-drive"],
-    "the-machinist": ["fight-club", "shutter-island", "taxi-driver", "black-swan"],
-    "vertigo": ["mulholland-drive", "persona", "black-swan", "perfect-blue"],
-    "donnie-darko": ["memento", "shutter-island", "the-machinist", "eternal-sunshine"],
+    "shawshank-redemption": ["one-flew-over-the-cuckoos-nest", "prisoners", "truman-show", "taxi-driver"],
+    "fight-club": ["taxi-driver", "black-swan", "gone-girl", "memento"],
+    "one-flew-over-the-cuckoos-nest": ["shawshank-redemption", "shutter-island", "prisoners", "taxi-driver"],
+    "se7en": ["silence-of-the-lambs", "prisoners", "taxi-driver", "gone-girl"],
+    "silence-of-the-lambs": ["se7en", "gone-girl", "prisoners", "black-swan"],
+    "the-prestige": ["memento", "black-swan", "gone-girl", "mulholland-drive"],
+    "memento": ["shutter-island", "donnie-darko", "the-machinist", "the-prestige"],
+    "taxi-driver": ["fight-club", "se7en", "prisoners", "the-machinist"],
+    "shutter-island": ["memento", "the-machinist", "donnie-darko", "sixth-sense"],
+    "black-swan": ["fight-club", "mulholland-drive", "requiem-for-a-dream", "gone-girl"],
+    "sixth-sense": ["shutter-island", "donnie-darko", "mulholland-drive", "memento"],
+    "prisoners": ["se7en", "taxi-driver", "silence-of-the-lambs", "shawshank-redemption"],
+    "gone-girl": ["fight-club", "silence-of-the-lambs", "se7en", "the-prestige"],
+    "requiem-for-a-dream": ["black-swan", "the-machinist", "taxi-driver", "fight-club"],
+    "donnie-darko": ["memento", "shutter-island", "the-machinist", "sixth-sense"],
+    "the-machinist": ["memento", "shutter-island", "requiem-for-a-dream", "fight-club"],
+    "mulholland-drive": ["black-swan", "sixth-sense", "the-prestige", "donnie-darko"],
+    "truman-show": ["shawshank-redemption", "gone-girl", "mulholland-drive", "fight-club"],
 }
 
 
@@ -149,7 +158,14 @@ def _source_label(source_type: str) -> str:
         "academic": "scholarship",
         "screenplay": "story text",
         "production_notes": "production context",
+        "festival_qa": "festival Q&A",
+        "educational_essay": "institutional essay",
         "video_essay_transcript": "video essay",
+        "director_commentary": "commentary",
+        "cast_interview": "cast interview",
+        "craft_article": "craft analysis",
+        "film_history": "film history",
+        "book_excerpt": "book excerpt",
     }
     return labels.get(source_type, source_type.replace("_", " "))
 
@@ -169,6 +185,18 @@ def _source_trail_note(source_type: str, title: str, film_slug: str, query: str)
         return f"Returns to story structure: what the scenes, reversals, and character beats make possible."
     if source_type == "production_notes":
         return f"Checks the behind-the-scenes choices that shape the film's mood, performances, and visual logic."
+    if source_type == "festival_qa":
+        return f"Looks for the live explanation layer: what the filmmaker emphasized when answering audience questions about {film}."
+    if source_type == "educational_essay":
+        return f"Offers a curated critical pathway into {film}'s motifs, genre history, and interpretive pressure points."
+    if source_type == "video_essay_transcript":
+        return f"Follows a modern scene-by-scene reading, useful for visual motifs and the question of how {film} teaches us to watch it."
+    if source_type == "cast_interview":
+        return f"Tracks how performance choices shape character psychology and the emotional temperature of {film}."
+    if source_type == "craft_article":
+        return f"Looks at the visual and sonic machinery behind the mood: framing, light, production design, and texture."
+    if source_type == "film_history":
+        return f"Places {film} in its release moment and genre lineage, opening questions about context and influence."
     if "influence" in lowered:
         return f"Helps trace what {film} seems to borrow, transform, or pass on to later films."
     return f"Adds another angle on the question this reading is circling in {film}."
@@ -441,7 +469,7 @@ def film_comparison_query(query: str, film_slugs: list[str], source_types: list[
 
 def theme_explorer_query(query: str, theme: str, film_slugs: list[str], source_types: list[str], top_k: int) -> ThemeExplorerResponse:
     themed_query = f"{theme}: {query}" if theme else query
-    analysis = answer_query(themed_query, film_slugs, source_types, top_k, themes=[theme] if theme else None)
+    analysis = answer_query(themed_query, film_slugs, source_types, top_k)
     return ThemeExplorerResponse(
         query=query,
         theme=theme or _query_lenses(query)[0],
