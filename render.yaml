@@ -14,6 +14,9 @@ services:
         value: MotifChunk
       - key: EMBEDDING_PROVIDER
         value: local
+      - key: PUTER_AUTH_TOKEN
+        sync: false
+      - key: PUTER_MODEL
+        value: gpt-5.4-nano
       - key: FRONTEND_ORIGIN
         sync: false
-
