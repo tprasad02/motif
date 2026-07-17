@@ -28,6 +28,8 @@ class RetrievedChunk:
     quality_score: str = "medium"
     source_role: str = "criticism"
     lens_tags: list[str] | None = None
+    section_title: str | None = None
+    chunk_role: str = "interpretive_claim"
 
 
 def _base_url() -> str:
@@ -103,7 +105,7 @@ def _metadata_filter_sql(
 
 
 def _row_to_chunk(row, score: float, *, vector_score: float | None = None, bm25_score: float | None = None) -> RetrievedChunk:
-    chunk_id, text, film_slug, source_key, source_type, quality_score, source_role, lens_tags = row
+    chunk_id, text, film_slug, source_key, source_type, quality_score, source_role, lens_tags, section_title, chunk_role = row
     return RetrievedChunk(
         chunk_id=str(chunk_id),
         text=str(text),
@@ -116,6 +118,8 @@ def _row_to_chunk(row, score: float, *, vector_score: float | None = None, bm25_
         quality_score=str(quality_score or "medium"),
         source_role=str(source_role or "criticism"),
         lens_tags=list(lens_tags or []),
+        section_title=str(section_title) if section_title else None,
+        chunk_role=str(chunk_role or "interpretive_claim"),
     )
 
 
@@ -136,7 +140,8 @@ def _postgres_vector_search(
         film_slugs, source_types, directors, year_start, year_end, critics, themes, lens_tags, include_low_quality
     )
     sql = f"""
-        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags
+        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags,
+               c.section_title, c.chunk_role
         FROM chunks c
         JOIN films f ON f.id = c.film_id
         JOIN sources s ON s.id = c.source_id
@@ -174,6 +179,7 @@ def _bm25_search(
     sql = f"""
         WITH q AS (SELECT websearch_to_tsquery('english', %s) AS query)
         SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags,
+               c.section_title, c.chunk_role,
                ts_rank_cd(to_tsvector('english', c.text), q.query) AS rank
         FROM chunks c
         JOIN films f ON f.id = c.film_id
@@ -188,11 +194,11 @@ def _bm25_search(
             cur.execute(sql, [query, *params, limit])
             rows = cur.fetchall()
 
-    max_rank = max((float(row[8] or 0.0) for row in rows), default=1.0) or 1.0
+    max_rank = max((float(row[10] or 0.0) for row in rows), default=1.0) or 1.0
     chunks = []
     for row in rows:
-        score = float(row[8] or 0.0) / max_rank
-        chunks.append(_row_to_chunk(row[:8], score, bm25_score=score))
+        score = float(row[10] or 0.0) / max_rank
+        chunks.append(_row_to_chunk(row[:10], score, bm25_score=score))
     return chunks
 
 
@@ -216,6 +222,8 @@ def _vector_search_weaviate(query: str, film_slugs: list[str], source_types: lis
               quality_score
               source_role
               lens_tags
+              section_title
+              chunk_role
               _additional {{ distance }}
             }}
           }}
@@ -249,6 +257,8 @@ def _vector_search_weaviate(query: str, film_slugs: list[str], source_types: lis
                 quality_score=str(props.get("quality_score", "medium")),
                 source_role=str(props.get("source_role", "criticism")),
                 lens_tags=list(props.get("lens_tags") or []),
+                section_title=str(props.get("section_title")) if props.get("section_title") else None,
+                chunk_role=str(props.get("chunk_role", "interpretive_claim")),
             )
         )
     return chunks
@@ -283,12 +293,45 @@ def _rerank(query: str, chunks: list[RetrievedChunk], lens_tags: list[str] | Non
         vector = chunk.vector_score or 0.0
         bm25 = chunk.bm25_score or 0.0
         quality_boost = {"high": 0.12, "medium": 0.04, "low": -0.35}.get(chunk.quality_score, 0.0)
+        evidence_boost = {
+            "scene_evidence": 0.09,
+            "formal_observation": 0.08,
+            "creator_commentary": 0.06,
+            "interpretive_claim": 0.03,
+            "plot_summary": -0.08,
+        }.get(chunk.chunk_role, 0.0)
         role_boost = {"creator_voice": 0.05, "scholarship": 0.05, "screenplay": 0.04, "production_context": 0.03}.get(
             chunk.source_role, 0.0
         )
         chunk_lenses = {lens.lower() for lens in (chunk.lens_tags or [])}
         lens_boost = 0.12 if lens_terms and chunk_lenses.intersection(lens_terms) else 0.0
-        chunk.rerank_score = (0.42 * overlap) + (0.28 * bm25) + (0.18 * vector) + quality_boost + role_boost + lens_boost
+        lowered = chunk.text[:900].lower()
+        front_matter_penalty = 0.0
+        if any(
+            marker in lowered
+            for marker in [
+                "about us:",
+                "afi catalog of feature films",
+                "copyright ©",
+                "doi no:",
+                "editorial board:",
+                "find articles by",
+                "review article - this article was checked",
+                "site menu",
+                "submit date:",
+            ]
+        ):
+            front_matter_penalty = 0.18
+        chunk.rerank_score = (
+            (0.42 * overlap)
+            + (0.28 * bm25)
+            + (0.18 * vector)
+            + quality_boost
+            + role_boost
+            + evidence_boost
+            + lens_boost
+            - front_matter_penalty
+        )
         chunk.score = chunk.rerank_score
     return sorted(chunks, key=lambda item: item.rerank_score or 0.0, reverse=True)
 
@@ -300,7 +343,8 @@ def _supplement_source_diversity(query: str, chunks: list[RetrievedChunk], film_
     selected_sources = {chunk.source_key for chunk in chunks}
     sql = """
         SELECT DISTINCT ON (s.source_key)
-            c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags
+            c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags,
+            c.section_title, c.chunk_role
         FROM chunks c
         JOIN films f ON f.id = c.film_id
         JOIN sources s ON s.id = c.source_id
@@ -379,6 +423,8 @@ def _load_file_chunks() -> list[RetrievedChunk]:
                         quality_score=str(row.get("quality_score", "medium")),
                         source_role=str(row.get("source_role", "criticism")),
                         lens_tags=list(row.get("lens_tags") or []),
+                        section_title=row.get("section_title"),
+                        chunk_role=str(row.get("chunk_role", "interpretive_claim")),
                     )
                 )
     _file_chunks_cache = chunks

@@ -31,7 +31,7 @@ def ingest_sources(sources_path: str, reset: bool = False) -> None:
             raw_text = extract_by_path(source_location).replace("\x00", "")
             cleaned = clean_text(raw_text)
             hash_value = content_hash(cleaned)
-            chunks = chunk_text(row["source_key"], hash_value, cleaned)
+            chunks = chunk_text(row["source_key"], hash_value, cleaned, source_type=row["source_type"])
             embeddings = [embed_text(chunk.text) for chunk in chunks]
             store_document_and_chunks(row["source_key"], raw_text, cleaned, chunks, embeddings)
             print(f"Ingested {row['source_key']}: {len(chunks)} chunks")

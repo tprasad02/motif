@@ -42,6 +42,8 @@ class RetrievedChunkResponse(BaseModel):
     quality_score: str = "medium"
     source_role: str = "criticism"
     lens_tags: list[str] = Field(default_factory=list)
+    section_title: str | None = None
+    chunk_role: str = "interpretive_claim"
 
 
 class RetrieveResponse(BaseModel):
@@ -78,6 +80,7 @@ class AnalysisResponse(BaseModel):
     answer: str = ""
     thesis: str | None = None
     sections: list[dict[str, str]] = Field(default_factory=list)
+    evidence_cards: list[dict[str, str]] = Field(default_factory=list)
     consensus_interpretation: str
     alternative_interpretations: list[str]
     director_creator_perspective: str

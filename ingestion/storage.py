@@ -66,10 +66,13 @@ def _ensure_metadata_columns(cur) -> None:
     cur.execute("ALTER TABLE sources ADD COLUMN IF NOT EXISTS source_role TEXT NOT NULL DEFAULT 'criticism'")
     cur.execute("ALTER TABLE sources ADD COLUMN IF NOT EXISTS lens_tags TEXT[] NOT NULL DEFAULT '{}'")
     cur.execute("ALTER TABLE chunks ADD COLUMN IF NOT EXISTS lens_tags TEXT[] NOT NULL DEFAULT '{}'")
+    cur.execute("ALTER TABLE chunks ADD COLUMN IF NOT EXISTS section_title TEXT")
+    cur.execute("ALTER TABLE chunks ADD COLUMN IF NOT EXISTS chunk_role TEXT NOT NULL DEFAULT 'interpretive_claim'")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sources_quality ON sources(quality_score)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sources_role ON sources(source_role)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sources_lens_tags ON sources USING GIN (lens_tags)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_chunks_lens_tags ON chunks USING GIN (lens_tags)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_chunks_role ON chunks(chunk_role)")
 
 
 def _infer_source_role(source_type: str) -> str:
@@ -242,9 +245,9 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
                     """
                     INSERT INTO chunks (
                         id, document_id, source_id, film_id, chunk_index, text,
-                        token_count, start_char, end_char, embedding_model, lens_tags
+                        token_count, start_char, end_char, section_title, chunk_role, embedding_model, lens_tags
                     )
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT (id) DO NOTHING
                     """,
                     (
@@ -257,6 +260,8 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
                         chunk.token_count,
                         chunk.start_char,
                         chunk.end_char,
+                        chunk.section_title,
+                        chunk.chunk_role,
                         model,
                         lens_tags,
                     ),
@@ -278,6 +283,8 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
                     "quality_score": quality_score,
                     "source_role": source_role,
                     "lens_tags": _lens_tags_for_text(film_slug, chunk.text),
+                    "section_title": chunk.section_title,
+                    "chunk_role": chunk.chunk_role,
                 },
                 "vector": vector,
             }

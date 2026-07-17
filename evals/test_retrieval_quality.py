@@ -6,10 +6,11 @@ sys.path.append(str(Path(__file__).resolve().parents[1] / "backend"))
 from app.services.retrieval import _bm25_search, _merge_dedupe, _postgres_vector_search, _rerank
 
 QUERIES = [
-    ("taxi-driver", "What does Taxi Driver say about loneliness?"),
-    ("mulholland-drive", "Why does Mulholland Drive resist one explanation?"),
-    ("black-swan", "Is Black Swan more about art or madness?"),
-    ("fight-club", "How does Fight Club use doubling and performance to fracture identity?"),
+    ("memento", "Memory", "Analyze Memento through Memory."),
+    ("donnie-darko", "Reality vs Illusion", "Analyze Donnie Darko through Reality vs Illusion."),
+    ("black-swan", "Performance", "Analyze Black Swan through Performance."),
+    ("the-machinist", "Guilt", "Analyze The Machinist through Guilt."),
+    ("taxi-driver", "Alienation", "Analyze Taxi Driver through Alienation."),
 ]
 
 
@@ -23,10 +24,10 @@ def reciprocal_rank(chunks, expected_film: str) -> float:
 def main() -> None:
     before = []
     after = []
-    for expected_film, query in QUERIES:
-        vector = _postgres_vector_search(query, [], [], 25)
-        bm25 = _bm25_search(query, [], [], 25)
-        hybrid = _rerank(query, _merge_dedupe(vector, bm25))[:12]
+    for expected_film, lens, query in QUERIES:
+        vector = _postgres_vector_search(query, [expected_film], [], 25, lens_tags=[lens])
+        bm25 = _bm25_search(query, [expected_film], [], 25, lens_tags=[lens])
+        hybrid = _rerank(query, _merge_dedupe(vector, bm25), [lens])[:12]
         before_score = reciprocal_rank(vector[:12], expected_film)
         after_score = reciprocal_rank(hybrid, expected_film)
         before.append(before_score)
