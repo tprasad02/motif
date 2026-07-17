@@ -6,6 +6,7 @@ import httpx
 import psycopg
 
 from app.core.config import settings
+from app.db.postgres import ensure_runtime_schema
 from app.services.embeddings import local_embedding
 
 
@@ -366,6 +367,7 @@ def retrieve_chunks(
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
+    ensure_runtime_schema()
     use_postgres_vector = bool(directors or year_start is not None or year_end is not None or critics or themes or include_low_quality)
     vector_chunks = [] if use_postgres_vector else _vector_search_weaviate(query, film_slugs, source_types, 25)
     if use_postgres_vector or len(vector_chunks) < 25:

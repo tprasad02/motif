@@ -1,10 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowRight, Clapperboard, Eye, Film, Loader2, ScanLine, Sparkles, SplitSquareHorizontal } from "lucide-react";
-import { allLenses, demos, films } from "./filmConfig";
+import { ArrowLeft, Check, Clapperboard, Eye, Film, Loader2, RotateCcw, ScanLine, SplitSquareHorizontal } from "lucide-react";
+import { films, globalLenses } from "./filmConfig";
 
 type Mode = "analyze_film" | "compare_films" | "explore_theme";
+type Step = "mode" | "film" | "lens" | "answer";
 
 type DebugChunk = {
   chunk_id: string;
@@ -13,8 +14,6 @@ type DebugChunk = {
   source_key: string;
   source_type: string;
   score: number;
-  vector_score?: number;
-  bm25_score?: number;
   rerank_score?: number;
   quality_score: string;
   source_role: string;
@@ -33,88 +32,136 @@ type AnswerResponse = {
   debug_chunks: DebugChunk[];
 };
 
-const modes: Array<{ id: Mode; label: string; copy: string; icon: typeof Film }> = [
-  { id: "analyze_film", label: "Analyze a Film", copy: "Pick one film and one lens.", icon: ScanLine },
-  { id: "compare_films", label: "Compare Films", copy: "Choose exactly two films.", icon: SplitSquareHorizontal },
-  { id: "explore_theme", label: "Explore a Theme", copy: "Follow one idea across the collection.", icon: Eye },
+const workflows: Array<{ id: Mode; title: string; body: string; icon: typeof Film }> = [
+  { id: "analyze_film", title: "Analyze a Film", body: "Choose one film and a strong lens for a close reading.", icon: ScanLine },
+  { id: "compare_films", title: "Compare Films", body: "Choose two films and one shared lens.", icon: SplitSquareHorizontal },
+  { id: "explore_theme", title: "Explore a Theme", body: "Choose one theme and trace it across the collection.", icon: Eye },
 ];
 
-const filmTitle = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
+const titleFor = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
 
 export default function Home() {
-  const [mode, setMode] = useState<Mode>("analyze_film");
-  const [filmA, setFilmA] = useState("memento");
-  const [filmB, setFilmB] = useState("black-swan");
-  const [lens, setLens] = useState("Memory");
-  const [angle, setAngle] = useState("");
+  const [mode, setMode] = useState<Mode | null>(null);
+  const [step, setStep] = useState<Step>("mode");
+  const [filmA, setFilmA] = useState("");
+  const [filmB, setFilmB] = useState("");
+  const [lens, setLens] = useState("");
   const [answer, setAnswer] = useState<AnswerResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const debug = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("debug") === "1";
-  const activeFilm = films.find((film) => film.slug === filmA);
-  const availableLenses = useMemo(() => {
-    if (mode === "explore_theme") return allLenses;
-    if (mode === "compare_films") {
-      const first = films.find((film) => film.slug === filmA)?.lenses ?? [];
-      const second = films.find((film) => film.slug === filmB)?.lenses ?? [];
-      return Array.from(new Set([...first, ...second, ...allLenses.slice(0, 6)]));
-    }
-    return activeFilm?.lenses ?? allLenses;
-  }, [activeFilm?.lenses, filmA, filmB, mode]);
+  const selectedFilmA = films.find((film) => film.slug === filmA);
+  const selectedFilmB = films.find((film) => film.slug === filmB);
 
-  function chooseMode(nextMode: Mode) {
+  const recommendedLenses = useMemo(() => {
+    if (!mode || mode === "explore_theme") return [...globalLenses];
+    if (mode === "compare_films") {
+      const first: string[] = selectedFilmA ? [...selectedFilmA.lenses] : [];
+      const second: string[] = selectedFilmB ? [...selectedFilmB.lenses] : [];
+      const shared = first.filter((item) => second.includes(item));
+      return shared.length ? shared : globalLenses.filter((item) => first.includes(item) || second.includes(item));
+    }
+    return selectedFilmA ? [...selectedFilmA.lenses] : [];
+  }, [mode, selectedFilmA, selectedFilmB]);
+
+  const specificAngles = useMemo(() => {
+    if (mode === "analyze_film") return selectedFilmA ? [...selectedFilmA.specificAngles] : [];
+    if (mode === "compare_films") {
+      return Array.from(new Set([...(selectedFilmA?.specificAngles ?? []), ...(selectedFilmB?.specificAngles ?? [])]));
+    }
+    return [];
+  }, [mode, selectedFilmA, selectedFilmB]);
+
+  const canGenerate =
+    Boolean(mode && lens) &&
+    ((mode === "analyze_film" && Boolean(filmA)) ||
+      (mode === "compare_films" && Boolean(filmA) && Boolean(filmB) && filmA !== filmB) ||
+      mode === "explore_theme");
+
+  const disabledReason = !mode
+    ? "Choose a workflow first."
+    : !lens
+      ? mode === "explore_theme"
+        ? "Choose a theme."
+        : "Choose a lens."
+      : mode === "analyze_film" && !filmA
+        ? "Choose a film."
+        : mode === "compare_films" && (!filmA || !filmB || filmA === filmB)
+          ? "Choose two different films."
+          : "";
+
+  function startWorkflow(nextMode: Mode) {
     setMode(nextMode);
+    setFilmA("");
+    setFilmB("");
+    setLens("");
     setAnswer(null);
     setError(null);
-    if (nextMode === "explore_theme" && !allLenses.includes(lens)) setLens("Identity");
-    if (nextMode === "analyze_film") setFilmB("");
-    if (nextMode === "compare_films" && (!filmB || filmB === filmA)) setFilmB(films.find((film) => film.slug !== filmA)?.slug ?? "");
+    setStep(nextMode === "explore_theme" ? "lens" : "film");
   }
 
-  function chooseFilm(slug: string) {
+  function startOver() {
+    setMode(null);
+    setFilmA("");
+    setFilmB("");
+    setLens("");
+    setAnswer(null);
+    setError(null);
+    setStep("mode");
+  }
+
+  function goBack() {
+    setError(null);
+    if (step === "answer") {
+      setAnswer(null);
+      setStep("lens");
+      return;
+    }
+    if (step === "lens") {
+      setLens("");
+      setStep(mode === "explore_theme" ? "mode" : "film");
+      return;
+    }
+    if (step === "film") {
+      setFilmA("");
+      setFilmB("");
+      setStep("mode");
+      return;
+    }
+    startOver();
+  }
+
+  function selectFilm(slug: string) {
+    setAnswer(null);
+    setError(null);
+    setLens("");
     if (mode === "compare_films") {
-      if (slug === filmA) {
-        setFilmA(filmB || slug);
-        setFilmB("");
+      if (!filmA || slug === filmA) {
+        setFilmA(slug);
         return;
       }
-      if (slug === filmB) {
-        setFilmB("");
-        return;
-      }
-      if (!filmA) setFilmA(slug);
-      else setFilmB(slug);
+      setFilmB(slug);
       return;
     }
     setFilmA(slug);
-    const next = films.find((film) => film.slug === slug)?.lenses[0];
-    if (next) setLens(next);
   }
 
-  async function run(payloadOverride?: Partial<{ mode: Mode; filmA: string; filmB: string; lens: string }>) {
-    const nextMode = payloadOverride?.mode ?? mode;
-    const nextFilmA = payloadOverride?.filmA ?? filmA;
-    const nextFilmB = payloadOverride?.filmB ?? filmB;
-    const nextLens = payloadOverride?.lens ?? lens;
+  function continueFromFilm() {
+    if (mode === "analyze_film" && !filmA) {
+      setError("Choose a film to continue.");
+      return;
+    }
+    if (mode === "compare_films" && (!filmA || !filmB || filmA === filmB)) {
+      setError("Choose two different films to continue.");
+      return;
+    }
+    setError(null);
+    setStep("lens");
+  }
 
-    if (nextMode === "analyze_film" && !nextFilmA) {
-      setError("Choose a film first.");
-      return;
-    }
-    if (nextMode === "compare_films" && (!nextFilmA || !nextFilmB || nextFilmA === nextFilmB)) {
-      setError("Choose two different films.");
-      return;
-    }
-    if (!nextLens) {
-      setError("Choose a lens.");
-      return;
-    }
-
-    setMode(nextMode);
-    setFilmA(nextFilmA);
-    if (nextMode === "compare_films") setFilmB(nextFilmB);
-    setLens(nextLens);
+  async function generateReading() {
+    if (!mode || !canGenerate) return;
     setLoading(true);
     setError(null);
     setAnswer(null);
@@ -124,75 +171,65 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          mode: nextMode,
-          film_a: nextMode === "explore_theme" ? null : nextFilmA,
-          film_b: nextMode === "compare_films" ? nextFilmB : null,
-          lens: nextLens,
-          optional_question: angle.trim() || null,
+          mode,
+          film_a: mode === "explore_theme" ? null : filmA,
+          film_b: mode === "compare_films" ? filmB : null,
+          lens,
+          optional_question: null,
           top_k: 12,
           include_debug: debug,
         }),
       });
-      if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
-      setAnswer(await response.json());
+      if (!response.ok) throw new Error(`The backend returned ${response.status}.`);
+      const body = (await response.json()) as AnswerResponse;
+      setAnswer(body);
+      setStep("answer");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setError(err instanceof Error ? `Load failed. ${err.message}` : "Load failed.");
     } finally {
       setLoading(false);
     }
   }
 
+  const loadingText =
+    mode === "compare_films" ? "Comparing the films..." : mode === "explore_theme" ? "Exploring the theme..." : "Building the reading...";
+
   return (
     <main className="appShell">
       <section className="hero">
-        <div className="brandMark">
-          <Clapperboard size={34} />
+        <div className="logoLockup">
+          <Clapperboard size={38} />
           <span>Motif</span>
         </div>
-        <div>
-          <p className="eyebrow">Close readings for films that keep arguing back</p>
-          <h1>What do you want to explore?</h1>
-          <p className="heroCopy">
-            Choose a path, pick the film or theme, and Motif will write a focused reading without turning the page into a research dashboard.
-          </p>
-        </div>
+        <p>Motif: Explore themes and ideas across psychological films.</p>
       </section>
 
-      <section className="modeGrid" aria-label="Choose workflow">
-        {modes.map((item) => {
-          const Icon = item.icon;
-          return (
-            <button className={mode === item.id ? "modeCard active" : "modeCard"} key={item.id} onClick={() => chooseMode(item.id)}>
-              <Icon size={22} />
-              <strong>{item.label}</strong>
-              <span>{item.copy}</span>
-            </button>
-          );
-        })}
-      </section>
-
-      <section className="demoStrip">
-        {demos.map((demo) => (
-          <button key={`${demo.filmA}-${demo.lens}`} onClick={() => run({ mode: demo.mode as Mode, filmA: demo.filmA, lens: demo.lens })}>
-            <span>{demo.label}</span>
-            <strong>{demo.helper}</strong>
+      <nav className="topActions" aria-label="Navigation actions">
+        {step !== "mode" && (
+          <button onClick={goBack}>
+            <ArrowLeft size={17} />
+            Back
           </button>
-        ))}
-      </section>
+        )}
+        {step !== "mode" && (
+          <button onClick={startOver}>
+            <RotateCcw size={17} />
+            Start over
+          </button>
+        )}
+      </nav>
 
-      {mode !== "explore_theme" && (
-        <section className="pickerBlock">
-          <div className="blockHeader">
-            <h2>{mode === "compare_films" ? "Choose two films" : "Choose a film"}</h2>
-            {mode === "compare_films" && <p>{filmTitle(filmA) || "First film"} / {filmTitle(filmB) || "second film"}</p>}
-          </div>
-          <div className="filmGrid">
-            {films.map((film) => {
-              const selected = film.slug === filmA || film.slug === filmB;
+      {step === "mode" && (
+        <section className="workflowIntro">
+          <h1>What do you want to explore?</h1>
+          <div className="workflowGrid">
+            {workflows.map((workflow) => {
+              const Icon = workflow.icon;
               return (
-                <button className={selected ? "filmCard selected" : "filmCard"} key={film.slug} onClick={() => chooseFilm(film.slug)}>
-                  <strong>{film.title}</strong>
-                  <span>{film.lenses.slice(0, 4).join(" / ")}</span>
+                <button key={workflow.id} className="workflowCard" onClick={() => startWorkflow(workflow.id)}>
+                  <Icon size={28} />
+                  <strong>{workflow.title}</strong>
+                  <span>{workflow.body}</span>
                 </button>
               );
             })}
@@ -200,51 +237,112 @@ export default function Home() {
         </section>
       )}
 
-      <section className="pickerBlock">
-        <div className="blockHeader">
-          <h2>{mode === "explore_theme" ? "Choose a theme" : "Choose a lens"}</h2>
-          <p>{lens}</p>
-        </div>
-        <div className="lensGrid">
-          {availableLenses.map((item) => (
-            <button className={lens === item ? "lensPill active" : "lensPill"} key={item} onClick={() => setLens(item)}>
-              {item}
+      {step === "film" && mode && mode !== "explore_theme" && (
+        <section className="stepPanel">
+          <div className="stepHeader">
+            <span>Step 1</span>
+            <h1>{mode === "compare_films" ? "Choose two films" : "Choose a film"}</h1>
+            <p>{mode === "compare_films" ? "First click sets Film A. Second click sets Film B." : "Pick the film Motif should read closely."}</p>
+          </div>
+          <div className="filmGrid">
+            {films.map((film) => {
+              const isA = film.slug === filmA;
+              const isB = film.slug === filmB;
+              return (
+                <button key={film.slug} className={isA || isB ? "filmCard selected" : "filmCard"} onClick={() => selectFilm(film.slug)}>
+                  {(isA || isB) && (
+                    <span className="selectedBadge">
+                      <Check size={14} />
+                      {mode === "compare_films" ? (isA ? "Film A" : "Film B") : "Selected"}
+                    </span>
+                  )}
+                  <strong>{film.title}</strong>
+                  <small>
+                    {film.year} / {film.director}
+                  </small>
+                  {(isA || isB) && (
+                    <div className="selectedLenses">
+                      {film.lenses.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+          <div className="footerAction">
+            <button className="primaryButton" onClick={continueFromFilm} disabled={mode === "analyze_film" ? !filmA : !filmA || !filmB || filmA === filmB}>
+              Choose lens
             </button>
-          ))}
-        </div>
-      </section>
+            {error && <span className="inlineError">{error}</span>}
+          </div>
+        </section>
+      )}
 
-      <section className="angleBar">
-        <label>
-          <span>Add a specific angle</span>
-          <input value={angle} onChange={(event) => setAngle(event.target.value)} placeholder="Optional, e.g. focus on structure" />
-        </label>
-        <button onClick={() => run()} disabled={loading}>
-          {loading ? <Loader2 className="spin" size={18} /> : <Sparkles size={18} />}
-          Read it
-        </button>
-      </section>
+      {step === "lens" && mode && (
+        <section className="stepPanel">
+          <div className="stepHeader">
+            <span>{mode === "explore_theme" ? "Step 1" : "Step 2"}</span>
+            <h1>{mode === "explore_theme" ? "Choose a theme" : "Choose a lens"}</h1>
+            <p>
+              {mode === "analyze_film" && `${titleFor(filmA)} will be read through one recommended lens.`}
+              {mode === "compare_films" && `${titleFor(filmA)} and ${titleFor(filmB)} will be compared through one shared lens.`}
+              {mode === "explore_theme" && "Pick one primary theme to follow across the film collection."}
+            </p>
+          </div>
+          <div className="lensGrid">
+            {recommendedLenses.map((item) => (
+              <button key={item} className={lens === item ? "lensPill active" : "lensPill"} onClick={() => setLens(item)}>
+                {item}
+              </button>
+            ))}
+          </div>
+          {specificAngles.length > 0 && (
+            <div className="specificAngles">
+              <h2>More specific angles</h2>
+              <div>
+                {specificAngles.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="footerAction">
+            <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
+              {loading ? <Loader2 className="spin" size={18} /> : null}
+              Generate Reading
+            </button>
+            <span className={canGenerate ? "readyText" : "inlineError"}>{loading ? loadingText : canGenerate ? `Selected lens: ${lens}` : disabledReason}</span>
+          </div>
+        </section>
+      )}
 
-      {error && <section className="errorState">{error}</section>}
+      {error && step !== "film" && <section className="errorState">{error}</section>}
 
-      {answer && (
+      {step === "answer" && answer && (
         <section className={answer.refused ? "answerPanel refused" : "answerPanel"}>
           <div className="answerMeta">
+            <span>{mode === "compare_films" ? "Film comparison" : mode === "explore_theme" ? "Theme exploration" : "Film analysis"}</span>
             <span>{answer.coverage_level} confidence</span>
-            <span>{answer.retrieval_notes}</span>
           </div>
-          {answer.thesis && <h2>{answer.thesis}</h2>}
+          {answer.thesis && <h1>{answer.thesis}</h1>}
           <p className="answerText">{answer.answer}</p>
           {answer.sections?.length > 0 && (
             <div className="readingBeats">
               {answer.sections.map((section, index) => (
-                <article key={`${section.title ?? "beat"}-${index}`}>
+                <article key={`${section.title ?? "point"}-${index}`}>
                   <strong>{section.title || `Point ${index + 1}`}</strong>
                   <p>{section.body || ""}</p>
                 </article>
               ))}
             </div>
           )}
+          <div className="answerActions">
+            {mode !== "explore_theme" && <button onClick={() => setStep("film")}>Change film</button>}
+            <button onClick={() => setStep("lens")}>{mode === "explore_theme" ? "Change theme" : "Change lens"}</button>
+            <button onClick={startOver}>Start over</button>
+          </div>
         </section>
       )}
 
@@ -254,7 +352,7 @@ export default function Home() {
           {answer.debug_chunks.map((chunk, index) => (
             <details key={chunk.chunk_id}>
               <summary>
-                {index + 1}. {filmTitle(chunk.film_slug)} / {chunk.source_key} / {chunk.quality_score} / {chunk.rerank_score?.toFixed(3)}
+                {index + 1}. {titleFor(chunk.film_slug)} / {chunk.source_key} / {chunk.quality_score} / {chunk.rerank_score?.toFixed(3)}
               </summary>
               <p>{chunk.source_role} / {chunk.lens_tags.join(", ")}</p>
               <pre>{chunk.text}</pre>
@@ -262,10 +360,6 @@ export default function Home() {
           ))}
         </section>
       ) : null}
-
-      <button className="floatingRun" onClick={() => run()} disabled={loading} aria-label="Run selected reading">
-        <ArrowRight size={22} />
-      </button>
     </main>
   );
 }
