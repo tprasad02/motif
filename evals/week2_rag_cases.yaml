@@ -6,9 +6,9 @@ cases:
     expected_coverage: medium
   - id: refusal_low_coverage
     endpoint: /answer
-    query: "What do production notes say about A Beautiful Mind in this corpus?"
+    query: "What do production notes say about unsupported films in this collection?"
     film_slugs:
-      - a-beautiful-mind
+      - unsupported-film
     expected_refused: true
   - id: source_filter_primary
     endpoint: /answer

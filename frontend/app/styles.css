@@ -220,7 +220,7 @@ button {
 .workflowCard span,
 .stepHeader p,
 .filmCard small,
-.readingBeats p,
+.evidenceGrid p,
 .debugPanel p {
   color: var(--muted);
   line-height: 1.5;
@@ -425,36 +425,58 @@ button {
   text-transform: uppercase;
 }
 
-.answerPanel h1 {
+.answerPanel h1,
+.thesisBoard h1 {
   max-width: 900px;
   font-size: clamp(30px, 4.5vw, 54px);
 }
 
-.answerText {
-  max-width: 980px;
-  color: #302830;
-  font-size: 19px;
-  line-height: 1.75;
-  white-space: pre-line;
+.thesisBoard {
+  border-left: 8px solid var(--red);
+  border-radius: 8px;
+  padding: 18px 20px;
+  background:
+    linear-gradient(135deg, rgba(248, 190, 63, 0.22), rgba(39, 193, 201, 0.12)),
+    rgba(255, 255, 255, 0.66);
 }
 
-.readingBeats {
+.thesisBoard span,
+.evidenceGrid article > span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 1000;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.evidenceGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 18px;
 }
 
-.readingBeats article {
+.evidenceGrid article {
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.58);
+  min-height: 220px;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 243, 223, 0.72)),
+    rgba(255, 255, 255, 0.58);
 }
 
-.readingBeats strong {
+.evidenceGrid strong {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.evidenceGrid p {
+  margin: 0;
 }
 
 .answerActions {
@@ -499,7 +521,7 @@ button {
 @media (max-width: 920px) {
   .workflowGrid,
   .filmGrid,
-  .readingBeats {
+  .evidenceGrid {
     grid-template-columns: 1fr;
   }
 

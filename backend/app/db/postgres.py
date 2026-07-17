@@ -23,10 +23,13 @@ def ensure_runtime_schema() -> None:
             cur.execute("ALTER TABLE sources ADD COLUMN IF NOT EXISTS source_role TEXT NOT NULL DEFAULT 'criticism'")
             cur.execute("ALTER TABLE sources ADD COLUMN IF NOT EXISTS lens_tags TEXT[] NOT NULL DEFAULT '{}'")
             cur.execute("ALTER TABLE chunks ADD COLUMN IF NOT EXISTS lens_tags TEXT[] NOT NULL DEFAULT '{}'")
+            cur.execute("ALTER TABLE chunks ADD COLUMN IF NOT EXISTS section_title TEXT")
+            cur.execute("ALTER TABLE chunks ADD COLUMN IF NOT EXISTS chunk_role TEXT NOT NULL DEFAULT 'interpretive_claim'")
             cur.execute("CREATE INDEX IF NOT EXISTS idx_sources_quality ON sources(quality_score)")
             cur.execute("CREATE INDEX IF NOT EXISTS idx_sources_role ON sources(source_role)")
             cur.execute("CREATE INDEX IF NOT EXISTS idx_sources_lens_tags ON sources USING GIN (lens_tags)")
             cur.execute("CREATE INDEX IF NOT EXISTS idx_chunks_lens_tags ON chunks USING GIN (lens_tags)")
+            cur.execute("CREATE INDEX IF NOT EXISTS idx_chunks_role ON chunks(chunk_role)")
         conn.commit()
     _schema_checked = True
 

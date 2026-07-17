@@ -22,21 +22,15 @@ from app.models import (
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
-SOURCE_TYPE_ROLES = {
-    "review": "criticism",
-    "interview": "creator_voice",
-    "festival_qa": "creator_voice",
-    "educational_essay": "criticism",
-    "academic": "scholarship",
-    "screenplay": "screenplay",
-    "production_notes": "production_context",
-    "video_essay_transcript": "criticism",
-    "director_commentary": "creator_voice",
-    "cast_interview": "creator_voice",
-    "craft_article": "criticism",
-    "film_history": "criticism",
-    "book_excerpt": "scholarship",
-}
+EVIDENCE_JOBS = ["Scene or Motif", "Formal Technique", "Character or Performance", "Ambiguity or Counterreading"]
+BANNED_PHRASES = [
+    "at its core",
+    "profound exploration",
+    "complex interplay",
+    "the human condition",
+    "serves as a metaphor",
+    "invites the viewer",
+]
 
 
 def coverage_score(chunks: list[RetrievedChunk], required_films: list[str] | None = None) -> float:
@@ -164,7 +158,9 @@ def _context(chunks: list[RetrievedChunk]) -> str:
                 [
                     f"[{index}] Film: {_display_title(chunk.film_slug)}",
                     f"Title: {meta.get('title', chunk.source_key)}",
-                    f"Role: {chunk.source_role}; Quality: {chunk.quality_score}; Lenses: {', '.join(chunk.lens_tags or [])}",
+                    f"Chunk ID: {chunk.chunk_id}",
+                    f"Section: {chunk.section_title or 'Untitled'}",
+                    f"Role: {chunk.chunk_role}; Source role: {chunk.source_role}; Quality: {chunk.quality_score}",
                     f"Text: {chunk.text}",
                 ]
             )
@@ -173,24 +169,18 @@ def _context(chunks: list[RetrievedChunk]) -> str:
 
 
 def _system_prompt(mode: str) -> str:
-    base = (
-        "You are Motif, a film close-reading assistant. Write like thoughtful film criticism, not a search result. "
-        "Assume the reader has seen the film. Avoid plot summary except when a detail is necessary for interpretation. "
-        "Use only the retrieved context. Do not mention retrieval, chunks, corpus, source labels, or the LLM. "
-        "If the context is thin, say what can be argued cautiously rather than inventing details. "
-        "Return strict JSON with keys: answer, thesis, sections, ambiguity_note, conclusion."
+    return (
+        "You are Motif, a film close-reading assistant. Produce an evidence board, not an essay. "
+        "Write plainly. Avoid grand philosophical language, plot summary, and claims about people or humanity in general. "
+        "Do not use these phrases: at its core, profound exploration, complex interplay, the human condition, serves as a metaphor, invites the viewer. "
+        "Explain what the film does, how it does it, and why that matters. "
+        "Use only retrieved context and attach chunk IDs to each evidence item. "
+        "Return strict JSON with keys: thesis, evidence_1, evidence_2, evidence_3, evidence_4. "
+        "The thesis must be 30-60 words, one or two sentences, mention the selected film and lens directly, and make a film-bound arguable claim. "
+        "Each evidence item must be an object with keys: label, title, body, chunk_ids. "
+        "The four labels must be exactly: Scene or Motif, Formal Technique, Character or Performance, Ambiguity or Counterreading. "
+        "Each body must be 80-140 words and must mention a visible or audible film element: a scene, image, line, camera movement, cut, sound cue, color, performance detail, prop, setting, structure, or repeated motif."
     )
-    if mode == "compare_films":
-        return (
-            base
-            + " Compare only the two selected films. Structure sections around shared concerns, key differences, formal or stylistic differences, and synthesis."
-        )
-    if mode == "explore_theme":
-        return (
-            base
-            + " Explore the selected theme across three to five indexed films. Rank the films by usefulness for the theme and give a short close reading for each."
-        )
-    return base + " For one film, structure the answer as a thesis, two to four interpretive points, ambiguity or competing readings, and a concise conclusion."
 
 
 def _user_prompt(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> str:
@@ -207,27 +197,25 @@ Retrieved context:
 
 
 def _fallback_answer(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> dict:
-    films = [film for film, _ in Counter(chunk.film_slug for chunk in chunks).most_common(5)]
-    named = ", ".join(_display_title(film) for film in films[:3]) or "the selected film"
-    thesis = f"{request.lens} is strongest here when treated as a pressure on how characters organize reality, not as a topic pasted onto the story."
-    if request.mode == "compare_films":
-        thesis = f"{_display_title(request.film_a)} and {_display_title(request.film_b)} both turn {request.lens} into a test of perception, but they stage that pressure through different formal habits."
-    elif request.mode == "explore_theme":
-        thesis = f"Across {named}, {request.lens} works less like a single message than a recurring dramatic pressure."
-    return {
-        "answer": (
-            f"{thesis}\n\n"
-            f"The strongest evidence points to style and structure: repetition, withheld information, performance, and point of view make {request.lens.lower()} something the viewer has to experience. "
-            "A cautious reading is better than an over-neat one here, because the available context supports interpretation more than final explanation."
-        ),
-        "thesis": thesis,
-        "sections": [
-            {"title": "Close Reading", "body": "The retrieved material supports a reading focused on form, repetition, and character psychology rather than plot recap."},
-            {"title": "Ambiguity", "body": "The strongest version of the answer leaves room for competing readings instead of closing the film down."},
-        ],
-        "ambiguity_note": "The evidence is useful, but not exhaustive.",
-        "conclusion": "The film becomes richer when the lens is treated as a formal problem, not just a theme.",
-    }
+    film = _display_title(request.film_a) if request.mode != "explore_theme" else "the selected films"
+    thesis = f"{film} treats {request.lens} as something the film builds through repeated scenes and formal choices, not as a theme stated in dialogue."
+    cards = []
+    for label, chunk in zip(EVIDENCE_JOBS, chunks[:4]):
+        cards.append(
+            {
+                "label": label,
+                "title": chunk.section_title or label,
+                "body": (
+                    f"This point comes from {chunk.chunk_role.replace('_', ' ')} in {chunk.source_type.replace('_', ' ')}. "
+                    f"The relevant film detail is: {chunk.text[:520].strip()}"
+                )[:760],
+                "chunk_ids": [chunk.chunk_id],
+            }
+        )
+    while len(cards) < 4:
+        label = EVIDENCE_JOBS[len(cards)]
+        cards.append({"label": label, "title": label, "body": "The current retrieval pass did not find enough concrete film evidence for this slot.", "chunk_ids": []})
+    return {"thesis": thesis, "evidence_1": cards[0], "evidence_2": cards[1], "evidence_3": cards[2], "evidence_4": cards[3]}
 
 
 def _puter_token_from_deployment_doc() -> str | None:
@@ -246,7 +234,7 @@ def _puter_token_from_deployment_doc() -> str | None:
     return None
 
 
-def _call_llm(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> dict:
+def _plan_evidence(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> dict:
     puter_token = settings.puter_auth_token or _puter_token_from_deployment_doc()
     api_key = settings.openai_api_key or puter_token
     if not api_key:
@@ -266,18 +254,45 @@ def _call_llm(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> dic
         ],
         "temperature": 0.55,
     }
-    response = httpx.post(
-        f"{base_url}/chat/completions",
-        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-        json=payload,
-        timeout=60,
-    )
-    response.raise_for_status()
-    content = response.json()["choices"][0]["message"]["content"]
+    try:
+        response = httpx.post(
+            f"{base_url}/chat/completions",
+            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            json=payload,
+            timeout=60,
+        )
+        response.raise_for_status()
+        content = response.json()["choices"][0]["message"]["content"]
+    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError):
+        return _fallback_answer(request, chunks)
     try:
         return json.loads(content)
     except json.JSONDecodeError:
-        return {"answer": content, "thesis": None, "sections": [], "ambiguity_note": "", "conclusion": ""}
+        return _fallback_answer(request, chunks)
+
+
+def _normalize_card(raw_card, label: str) -> dict[str, str]:
+    if not isinstance(raw_card, dict):
+        raw_card = {}
+    chunk_ids = raw_card.get("chunk_ids") or []
+    if isinstance(chunk_ids, str):
+        chunk_ids = [chunk_ids]
+    return {
+        "label": label,
+        "title": str(raw_card.get("title") or label),
+        "body": str(raw_card.get("body") or "").strip(),
+        "chunk_ids": json.dumps([str(chunk_id) for chunk_id in chunk_ids]),
+    }
+
+
+def _sanitize_thesis(thesis: str, request: GuidedAnswerRequest) -> str:
+    thesis = re.sub(r"\s+", " ", thesis).strip()
+    film = _display_title(request.film_a) if request.mode != "explore_theme" else "Motif"
+    if film and film not in thesis and request.mode != "explore_theme":
+        thesis = f"{film} uses {request.lens} to frame a specific problem: {thesis[:180]}"
+    for phrase in BANNED_PHRASES:
+        thesis = re.sub(re.escape(phrase), "", thesis, flags=re.I)
+    return thesis[:360].strip()
 
 
 def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> AnalysisResponse:
@@ -289,33 +304,29 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
     debug_chunks = _debug_chunks(chunks, request.include_debug)
 
     if refused:
-        answer = "There is not enough strong material to make that reading honestly yet. Try a different lens or remove one filter."
-        payload = {"answer": answer, "thesis": None, "sections": [], "ambiguity_note": "", "conclusion": ""}
+        thesis = "There is not enough concrete film evidence to build this reading yet."
+        evidence_cards = []
     else:
-        payload = _call_llm(request, chunks)
-        answer = str(payload.get("answer") or "").strip()
-
-    raw_sections = payload.get("sections") or []
-    if not isinstance(raw_sections, list):
-        raw_sections = []
-    sections = []
-    for index, section in enumerate(raw_sections[:4], start=1):
-        if isinstance(section, dict):
-            sections.append({"title": str(section.get("title") or f"Point {index}"), "body": str(section.get("body") or "")})
-        else:
-            sections.append({"title": f"Point {index}", "body": str(section)})
-    alternative_interpretations = [section["body"] for section in sections]
-    conclusion = str(payload.get("conclusion") or "")
+        payload = _plan_evidence(request, chunks)
+        thesis = _sanitize_thesis(str(payload.get("thesis") or ""), request)
+        evidence_cards = [
+            _normalize_card(payload.get(f"evidence_{index}"), label)
+            for index, label in enumerate(EVIDENCE_JOBS, start=1)
+        ]
+    answer = thesis
+    sections = evidence_cards
+    alternative_interpretations = [card["body"] for card in evidence_cards]
 
     return AnalysisResponse(
         mode=request.mode,
         answer=answer,
-        thesis=payload.get("thesis"),
+        thesis=thesis,
         sections=sections,
+        evidence_cards=evidence_cards,
         consensus_interpretation=answer,
         alternative_interpretations=alternative_interpretations,
-        director_creator_perspective=str(payload.get("ambiguity_note") or ""),
-        critical_reception=conclusion,
+        director_creator_perspective="",
+        critical_reception="",
         related_films=[],
         cited_sources=citations,
         coverage_score=score,

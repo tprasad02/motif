@@ -24,7 +24,8 @@ type AnswerResponse = {
   mode: Mode;
   answer: string;
   thesis?: string;
-  sections: Array<{ title?: string; body?: string }>;
+  sections: Array<{ label?: string; title?: string; body?: string }>;
+  evidence_cards?: Array<{ label?: string; title?: string; body?: string }>;
   coverage_score: number;
   coverage_level: "high" | "medium" | "low";
   refused: boolean;
@@ -193,6 +194,7 @@ export default function Home() {
 
   const loadingText =
     mode === "compare_films" ? "Comparing the films..." : mode === "explore_theme" ? "Exploring the theme..." : "Building the reading...";
+  const evidenceCards = answer?.evidence_cards?.length ? answer.evidence_cards : answer?.sections ?? [];
 
   return (
     <main className="appShell">
@@ -326,13 +328,18 @@ export default function Home() {
             <span>{mode === "compare_films" ? "Film comparison" : mode === "explore_theme" ? "Theme exploration" : "Film analysis"}</span>
             <span>{answer.coverage_level} confidence</span>
           </div>
-          {answer.thesis && <h1>{answer.thesis}</h1>}
-          <p className="answerText">{answer.answer}</p>
-          {answer.sections?.length > 0 && (
-            <div className="readingBeats">
-              {answer.sections.map((section, index) => (
-                <article key={`${section.title ?? "point"}-${index}`}>
-                  <strong>{section.title || `Point ${index + 1}`}</strong>
+          {answer.thesis && (
+            <div className="thesisBoard">
+              <span>Thesis</span>
+              <h1>{answer.thesis}</h1>
+            </div>
+          )}
+          {evidenceCards.length > 0 && (
+            <div className="evidenceGrid">
+              {evidenceCards.slice(0, 4).map((section, index) => (
+                <article key={`${section.label ?? section.title ?? "evidence"}-${index}`}>
+                  <span>{section.label || "Evidence"}</span>
+                  <strong>{section.title || section.label || "Evidence"}</strong>
                   <p>{section.body || ""}</p>
                 </article>
               ))}

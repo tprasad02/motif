@@ -33,6 +33,8 @@ def ensure_schema() -> None:
             {"name": "quality_score", "dataType": ["text"]},
             {"name": "source_role", "dataType": ["text"]},
             {"name": "lens_tags", "dataType": ["text[]"]},
+            {"name": "section_title", "dataType": ["text"]},
+            {"name": "chunk_role", "dataType": ["text"]},
         ],
     }
     response = httpx.post(f"{url}/v1/schema", json=payload, timeout=30)

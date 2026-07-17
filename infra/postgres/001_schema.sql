@@ -81,6 +81,8 @@ CREATE TABLE IF NOT EXISTS chunks (
   token_count INTEGER NOT NULL,
   start_char INTEGER,
   end_char INTEGER,
+  section_title TEXT,
+  chunk_role TEXT NOT NULL DEFAULT 'interpretive_claim',
   embedding_model TEXT,
   lens_tags TEXT[] NOT NULL DEFAULT '{}',
   weaviate_uuid UUID,
@@ -113,3 +115,4 @@ CREATE INDEX IF NOT EXISTS idx_sources_quality ON sources(quality_score);
 CREATE INDEX IF NOT EXISTS idx_sources_role ON sources(source_role);
 CREATE INDEX IF NOT EXISTS idx_sources_lens_tags ON sources USING GIN (lens_tags);
 CREATE INDEX IF NOT EXISTS idx_chunks_lens_tags ON chunks USING GIN (lens_tags);
+CREATE INDEX IF NOT EXISTS idx_chunks_role ON chunks(chunk_role);
