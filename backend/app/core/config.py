@@ -7,10 +7,13 @@ class Settings(BaseSettings):
     motif_collection: str = "MotifChunk"
     embedding_provider: str = "local"
     openai_api_key: str | None = None
+    openai_model: str = "gpt-4o-mini"
+    puter_auth_token: str | None = None
+    puter_model: str = "gpt-5.4-nano"
     frontend_origin: str = "http://localhost:3000"
 
     class Config:
-        env_file = "../.env"
+        env_file = (".env", "backend/.env", "../.env")
         env_file_encoding = "utf-8"
 
 

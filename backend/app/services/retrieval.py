@@ -20,6 +20,9 @@ class RetrievedChunk:
     vector_score: float | None = None
     bm25_score: float | None = None
     rerank_score: float | None = None
+    quality_score: str = "medium"
+    source_role: str = "criticism"
+    lens_tags: list[str] | None = None
 
 
 def _base_url() -> str:
@@ -59,6 +62,8 @@ def _metadata_filter_sql(
     year_end: int | None = None,
     critics: list[str] | None = None,
     themes: list[str] | None = None,
+    lens_tags: list[str] | None = None,
+    include_low_quality: bool = False,
 ) -> tuple[str, list[object]]:
     clauses = []
     params: list[object] = []
@@ -83,8 +88,30 @@ def _metadata_filter_sql(
     if themes:
         clauses.append("f.themes && %s")
         params.append(themes)
+    if lens_tags:
+        clauses.append("(c.lens_tags && %s OR s.lens_tags && %s)")
+        params.extend([lens_tags, lens_tags])
+    if not include_low_quality:
+        clauses.append("s.quality_score <> 'low'")
     where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
     return where, params
+
+
+def _row_to_chunk(row, score: float, *, vector_score: float | None = None, bm25_score: float | None = None) -> RetrievedChunk:
+    chunk_id, text, film_slug, source_key, source_type, quality_score, source_role, lens_tags = row
+    return RetrievedChunk(
+        chunk_id=str(chunk_id),
+        text=str(text),
+        film_slug=str(film_slug),
+        source_key=str(source_key),
+        source_type=str(source_type),
+        score=score,
+        vector_score=vector_score,
+        bm25_score=bm25_score,
+        quality_score=str(quality_score or "medium"),
+        source_role=str(source_role or "criticism"),
+        lens_tags=list(lens_tags or []),
+    )
 
 
 def _postgres_vector_search(
@@ -97,12 +124,14 @@ def _postgres_vector_search(
     year_end: int | None = None,
     critics: list[str] | None = None,
     themes: list[str] | None = None,
+    lens_tags: list[str] | None = None,
+    include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
     where, params = _metadata_filter_sql(
-        film_slugs, source_types, directors, year_start, year_end, critics, themes
+        film_slugs, source_types, directors, year_start, year_end, critics, themes, lens_tags, include_low_quality
     )
     sql = f"""
-        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text
+        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags
         FROM chunks c
         JOIN films f ON f.id = c.film_id
         JOIN sources s ON s.id = c.source_id
@@ -113,19 +142,9 @@ def _postgres_vector_search(
     with psycopg.connect(settings.database_url) as conn:
         with conn.cursor() as cur:
             cur.execute(sql, params)
-            for chunk_id, text, film_slug, source_key, source_type in cur.fetchall():
-                score = max(0.0, _cosine_similarity(query_vector, local_embedding(text)))
-                chunks.append(
-                    RetrievedChunk(
-                        chunk_id=str(chunk_id),
-                        text=str(text),
-                        film_slug=str(film_slug),
-                        source_key=str(source_key),
-                        source_type=str(source_type),
-                        score=score,
-                        vector_score=score,
-                    )
-                )
+            for row in cur.fetchall():
+                score = max(0.0, _cosine_similarity(query_vector, local_embedding(row[1])))
+                chunks.append(_row_to_chunk(row, score, vector_score=score))
     chunks.sort(key=lambda chunk: chunk.vector_score or 0.0, reverse=True)
     return chunks[:limit]
 
@@ -140,14 +159,16 @@ def _bm25_search(
     year_end: int | None = None,
     critics: list[str] | None = None,
     themes: list[str] | None = None,
+    lens_tags: list[str] | None = None,
+    include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
     where, params = _metadata_filter_sql(
-        film_slugs, source_types, directors, year_start, year_end, critics, themes
+        film_slugs, source_types, directors, year_start, year_end, critics, themes, lens_tags, include_low_quality
     )
     filter_sql = f"{where} AND" if where else "WHERE"
     sql = f"""
         WITH q AS (SELECT websearch_to_tsquery('english', %s) AS query)
-        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text,
+        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags,
                ts_rank_cd(to_tsvector('english', c.text), q.query) AS rank
         FROM chunks c
         JOIN films f ON f.id = c.film_id
@@ -157,27 +178,16 @@ def _bm25_search(
         ORDER BY rank DESC
         LIMIT %s
     """
-    rows = []
     with psycopg.connect(settings.database_url) as conn:
         with conn.cursor() as cur:
             cur.execute(sql, [query, *params, limit])
             rows = cur.fetchall()
 
-    max_rank = max((float(row[5] or 0.0) for row in rows), default=1.0) or 1.0
+    max_rank = max((float(row[8] or 0.0) for row in rows), default=1.0) or 1.0
     chunks = []
-    for chunk_id, text, film_slug, source_key, source_type, rank in rows:
-        score = float(rank or 0.0) / max_rank
-        chunks.append(
-            RetrievedChunk(
-                chunk_id=str(chunk_id),
-                text=str(text),
-                film_slug=str(film_slug),
-                source_key=str(source_key),
-                source_type=str(source_type),
-                score=score,
-                bm25_score=score,
-            )
-        )
+    for row in rows:
+        score = float(row[8] or 0.0) / max_rank
+        chunks.append(_row_to_chunk(row[:8], score, bm25_score=score))
     return chunks
 
 
@@ -198,6 +208,9 @@ def _vector_search_weaviate(query: str, film_slugs: list[str], source_types: lis
               film_slug
               source_key
               source_type
+              quality_score
+              source_role
+              lens_tags
               _additional {{ distance }}
             }}
           }}
@@ -217,6 +230,8 @@ def _vector_search_weaviate(query: str, film_slugs: list[str], source_types: lis
     for props in payload.get("data", {}).get("Get", {}).get(settings.motif_collection, []):
         distance = props.get("_additional", {}).get("distance", 1.0)
         score = max(0.0, 1.0 - float(distance or 1.0))
+        if props.get("quality_score") == "low":
+            continue
         chunks.append(
             RetrievedChunk(
                 chunk_id=str(props.get("chunk_id")),
@@ -226,6 +241,9 @@ def _vector_search_weaviate(query: str, film_slugs: list[str], source_types: lis
                 source_type=str(props.get("source_type", "")),
                 score=score,
                 vector_score=score,
+                quality_score=str(props.get("quality_score", "medium")),
+                source_role=str(props.get("source_role", "criticism")),
+                lens_tags=list(props.get("lens_tags") or []),
             )
         )
     return chunks
@@ -248,18 +266,63 @@ def _merge_dedupe(vector_chunks: list[RetrievedChunk], bm25_chunks: list[Retriev
             continue
         existing.vector_score = max(existing.vector_score or 0.0, chunk.vector_score or 0.0) or None
         existing.bm25_score = max(existing.bm25_score or 0.0, chunk.bm25_score or 0.0) or None
+        existing.lens_tags = sorted(set((existing.lens_tags or []) + (chunk.lens_tags or [])))
         existing.score = max(existing.score, chunk.score)
     return list(merged.values())
 
 
-def _rerank(query: str, chunks: list[RetrievedChunk]) -> list[RetrievedChunk]:
+def _rerank(query: str, chunks: list[RetrievedChunk], lens_tags: list[str] | None = None) -> list[RetrievedChunk]:
+    lens_terms = {lens.lower() for lens in (lens_tags or [])}
     for chunk in chunks:
         overlap = _overlap_score(query, chunk.text)
         vector = chunk.vector_score or 0.0
         bm25 = chunk.bm25_score or 0.0
-        chunk.rerank_score = (0.45 * overlap) + (0.35 * bm25) + (0.20 * vector)
+        quality_boost = {"high": 0.12, "medium": 0.04, "low": -0.35}.get(chunk.quality_score, 0.0)
+        role_boost = {"creator_voice": 0.05, "scholarship": 0.05, "screenplay": 0.04, "production_context": 0.03}.get(
+            chunk.source_role, 0.0
+        )
+        chunk_lenses = {lens.lower() for lens in (chunk.lens_tags or [])}
+        lens_boost = 0.12 if lens_terms and chunk_lenses.intersection(lens_terms) else 0.0
+        chunk.rerank_score = (0.42 * overlap) + (0.28 * bm25) + (0.18 * vector) + quality_boost + role_boost + lens_boost
         chunk.score = chunk.rerank_score
     return sorted(chunks, key=lambda item: item.rerank_score or 0.0, reverse=True)
+
+
+def _supplement_source_diversity(query: str, chunks: list[RetrievedChunk], film_slugs: list[str]) -> list[RetrievedChunk]:
+    if len(film_slugs) != 1 or len({chunk.source_key for chunk in chunks}) >= 5:
+        return chunks
+
+    selected_sources = {chunk.source_key for chunk in chunks}
+    sql = """
+        SELECT DISTINCT ON (s.source_key)
+            c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags
+        FROM chunks c
+        JOIN films f ON f.id = c.film_id
+        JOIN sources s ON s.id = c.source_id
+        WHERE f.slug = %s
+          AND s.quality_score <> 'low'
+          AND NOT (s.source_key = ANY(%s))
+        ORDER BY s.source_key, c.token_count DESC
+    """
+    query_vector = local_embedding(query)
+    supplements: list[RetrievedChunk] = []
+    with psycopg.connect(settings.database_url) as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, (film_slugs[0], list(selected_sources)))
+            for row in cur.fetchall():
+                score = max(0.0, _cosine_similarity(query_vector, local_embedding(row[1])))
+                supplements.append(_row_to_chunk(row, score, vector_score=score))
+
+    supplements.sort(
+        key=lambda chunk: (
+            {"creator_voice": 4, "scholarship": 3, "production_context": 2, "screenplay": 1, "criticism": 0}.get(
+                chunk.source_role, 0
+            ),
+            chunk.vector_score or 0.0,
+        ),
+        reverse=True,
+    )
+    return _merge_dedupe(chunks, supplements[: max(0, 6 - len(selected_sources))])
 
 
 def _balanced_top(chunks: list[RetrievedChunk], limit: int, required_films: list[str]) -> list[RetrievedChunk]:
@@ -281,6 +344,12 @@ def _balanced_top(chunks: list[RetrievedChunk], limit: int, required_films: list
         selected.append(chunk)
         source_counts[chunk.source_key] = source_counts.get(chunk.source_key, 0) + 1
 
+    for chunk in chunks:
+        if len(selected) >= limit:
+            break
+        if chunk not in selected:
+            selected.append(chunk)
+
     return selected[:limit]
 
 
@@ -294,16 +363,41 @@ def retrieve_chunks(
     year_end: int | None = None,
     critics: list[str] | None = None,
     themes: list[str] | None = None,
+    lens_tags: list[str] | None = None,
+    include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
-    vector_chunks = _vector_search_weaviate(query, film_slugs, source_types, 25)
-    if directors or year_start is not None or year_end is not None or critics or themes or not vector_chunks:
-        vector_chunks = _postgres_vector_search(
-            query, film_slugs, source_types, 25, directors, year_start, year_end, critics, themes
+    use_postgres_vector = bool(directors or year_start is not None or year_end is not None or critics or themes or include_low_quality)
+    vector_chunks = [] if use_postgres_vector else _vector_search_weaviate(query, film_slugs, source_types, 25)
+    if use_postgres_vector or len(vector_chunks) < 25:
+        postgres_vector_chunks = _postgres_vector_search(
+            query,
+            film_slugs,
+            source_types,
+            25,
+            directors,
+            year_start,
+            year_end,
+            critics,
+            themes,
+            None,
+            include_low_quality,
         )
+        vector_chunks = _merge_dedupe(vector_chunks, postgres_vector_chunks)
     bm25_chunks = _bm25_search(
-        query, film_slugs, source_types, 25, directors, year_start, year_end, critics, themes
+        query,
+        film_slugs,
+        source_types,
+        25,
+        directors,
+        year_start,
+        year_end,
+        critics,
+        themes,
+        None,
+        include_low_quality,
     )
     merged = _merge_dedupe(vector_chunks, bm25_chunks)
-    reranked = _rerank(query, merged)
+    merged = _supplement_source_diversity(query, merged, film_slugs)
+    reranked = _rerank(query, merged, lens_tags)
     output_limit = min(max(limit, 8), 12)
     return _balanced_top(reranked, output_limit, film_slugs if len(film_slugs) >= 2 else [])

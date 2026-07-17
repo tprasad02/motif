@@ -12,7 +12,8 @@ def fetch_source_metadata(source_keys: list[str]) -> dict[str, dict]:
         return {}
 
     query = """
-        SELECT s.source_key, s.title, s.author, s.publisher, s.source_type::text, s.url
+        SELECT s.source_key, s.title, s.author, s.publisher, s.source_type::text, s.url,
+               s.quality_score, s.source_role, s.lens_tags
         FROM sources s
         WHERE s.source_key = ANY(%s)
     """
@@ -29,7 +30,9 @@ def fetch_source_metadata(source_keys: list[str]) -> dict[str, dict]:
             "publisher": row[3],
             "source_type": row[4],
             "url": row[5],
+            "quality_score": row[6],
+            "source_role": row[7],
+            "lens_tags": row[8] or [],
         }
         for row in rows
     }
-

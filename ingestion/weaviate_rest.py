@@ -30,6 +30,9 @@ def ensure_schema() -> None:
             {"name": "source_key", "dataType": ["text"]},
             {"name": "source_type", "dataType": ["text"]},
             {"name": "title", "dataType": ["text"]},
+            {"name": "quality_score", "dataType": ["text"]},
+            {"name": "source_role", "dataType": ["text"]},
+            {"name": "lens_tags", "dataType": ["text[]"]},
         ],
     }
     response = httpx.post(f"{url}/v1/schema", json=payload, timeout=30)
@@ -48,4 +51,3 @@ def batch_objects(objects: list[dict]) -> None:
         return
     response = httpx.post(f"{base_url()}/v1/batch/objects", json={"objects": objects}, timeout=60)
     response.raise_for_status()
-

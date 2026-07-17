@@ -30,7 +30,7 @@ def stable_chunk_id(source_key: str, content_hash: str, chunk_index: int) -> str
     return hashlib.sha256(seed).hexdigest()[:32]
 
 
-def chunk_text(source_key: str, content_hash: str, text: str, max_tokens: int = 700, overlap_tokens: int = 100) -> list[TextChunk]:
+def chunk_text(source_key: str, content_hash: str, text: str, max_tokens: int = 850, overlap_tokens: int = 130) -> list[TextChunk]:
     words = re.findall(r"\S+\s*", text)
     chunks: list[TextChunk] = []
     start_word = 0
@@ -65,4 +65,3 @@ def chunk_text(source_key: str, content_hash: str, text: str, max_tokens: int = 
         start_word = max(end_word - overlap_tokens, start_word + 1)
 
     return chunks
-

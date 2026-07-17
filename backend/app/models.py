@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -37,6 +39,9 @@ class RetrievedChunkResponse(BaseModel):
     vector_score: float | None = None
     bm25_score: float | None = None
     rerank_score: float | None = None
+    quality_score: str = "medium"
+    source_role: str = "criticism"
+    lens_tags: list[str] = Field(default_factory=list)
 
 
 class RetrieveResponse(BaseModel):
@@ -48,10 +53,31 @@ class RetrieveResponse(BaseModel):
 
 
 class AnswerRequest(RetrieveRequest):
-    pass
+    mode: Literal["analyze_film", "compare_films", "explore_theme"] | None = None
+    film_a: str | None = None
+    film_b: str | None = None
+    lens: str | None = None
+    optional_question: str | None = None
+    include_debug: bool = False
+    include_low_quality: bool = False
+
+
+class GuidedAnswerRequest(BaseModel):
+    mode: Literal["analyze_film", "compare_films", "explore_theme"]
+    film_a: str | None = None
+    film_b: str | None = None
+    lens: str
+    optional_question: str | None = None
+    top_k: int = Field(default=12, ge=8, le=12)
+    include_debug: bool = False
+    include_low_quality: bool = False
 
 
 class AnalysisResponse(BaseModel):
+    mode: str = "analyze_film"
+    answer: str = ""
+    thesis: str | None = None
+    sections: list[dict[str, str]] = Field(default_factory=list)
     consensus_interpretation: str
     alternative_interpretations: list[str]
     director_creator_perspective: str
@@ -62,6 +88,7 @@ class AnalysisResponse(BaseModel):
     coverage_level: str
     refused: bool
     retrieval_notes: str
+    debug_chunks: list[RetrievedChunkResponse] = Field(default_factory=list)
 
 
 class WorkflowRequest(AnswerRequest):

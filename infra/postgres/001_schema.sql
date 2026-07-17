@@ -49,6 +49,9 @@ CREATE TABLE IF NOT EXISTS sources (
   license_note TEXT,
   publication_date DATE,
   credibility_score NUMERIC(3,2) NOT NULL DEFAULT 0.70,
+  quality_score TEXT NOT NULL DEFAULT 'medium',
+  source_role TEXT NOT NULL DEFAULT 'criticism',
+  lens_tags TEXT[] NOT NULL DEFAULT '{}',
   is_primary BOOLEAN NOT NULL DEFAULT false,
   notes TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -79,6 +82,7 @@ CREATE TABLE IF NOT EXISTS chunks (
   start_char INTEGER,
   end_char INTEGER,
   embedding_model TEXT,
+  lens_tags TEXT[] NOT NULL DEFAULT '{}',
   weaviate_uuid UUID,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   UNIQUE (document_id, chunk_index)
@@ -105,3 +109,7 @@ CREATE INDEX IF NOT EXISTS idx_films_director ON films(director);
 CREATE INDEX IF NOT EXISTS idx_films_release_year ON films(release_year);
 CREATE INDEX IF NOT EXISTS idx_films_themes ON films USING GIN (themes);
 CREATE INDEX IF NOT EXISTS idx_sources_author ON sources(author);
+CREATE INDEX IF NOT EXISTS idx_sources_quality ON sources(quality_score);
+CREATE INDEX IF NOT EXISTS idx_sources_role ON sources(source_role);
+CREATE INDEX IF NOT EXISTS idx_sources_lens_tags ON sources USING GIN (lens_tags);
+CREATE INDEX IF NOT EXISTS idx_chunks_lens_tags ON chunks USING GIN (lens_tags);

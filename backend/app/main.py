@@ -6,6 +6,7 @@ from app.models import (
     AnalysisResponse,
     AnswerRequest,
     FilmComparisonResponse,
+    GuidedAnswerRequest,
     InterpretationMapResponse,
     RetrieveRequest,
     RetrieveResponse,
@@ -13,6 +14,7 @@ from app.models import (
     WorkflowRequest,
 )
 from app.services.analysis import (
+    answer_from_request,
     answer_query,
     film_comparison_query,
     interpretation_map_query,
@@ -53,33 +55,13 @@ def retrieve(request: RetrieveRequest):
 
 
 @app.post("/answer", response_model=AnalysisResponse)
-def answer(request: AnswerRequest):
-    return answer_query(
-        query=request.query,
-        film_slugs=request.film_slugs,
-        source_types=request.source_types,
-        top_k=request.top_k,
-        directors=request.directors,
-        year_start=request.year_start,
-        year_end=request.year_end,
-        critics=request.critics,
-        themes=request.themes,
-    )
+def answer(request: GuidedAnswerRequest | AnswerRequest):
+    return answer_from_request(request)
 
 
 @app.post("/analyze", response_model=AnalysisResponse)
 def analyze(request: AnswerRequest):
-    return answer_query(
-        query=request.query,
-        film_slugs=request.film_slugs,
-        source_types=request.source_types,
-        top_k=request.top_k,
-        directors=request.directors,
-        year_start=request.year_start,
-        year_end=request.year_end,
-        critics=request.critics,
-        themes=request.themes,
-    )
+    return answer_from_request(request)
 
 
 @app.post("/workflows/interpretation-map", response_model=InterpretationMapResponse)
