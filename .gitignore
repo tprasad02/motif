@@ -17,3 +17,4 @@ data/processed/*
 data/raw/public_cache/
 data/manual/
 .vercel
+docs/deployment.md
