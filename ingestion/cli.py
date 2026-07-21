@@ -41,7 +41,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Motif corpus ingestion")
     subparsers = parser.add_subparsers(dest="command", required=True)
     ingest = subparsers.add_parser("ingest")
-    ingest.add_argument("--sources", default="data/seed_sources.csv")
+    ingest.add_argument("--sources", default="data/manual_sources.csv")
     ingest.add_argument("--reset", action="store_true")
 
     args = parser.parse_args()

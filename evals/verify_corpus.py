@@ -67,7 +67,7 @@ def main() -> None:
     if len(sources) > expected_max:
         failures.append(f"manual corpus should have at most {expected_max} sources for {len(films)} films; found {len(sources)}")
     if len(local_docs) != len(sources):
-        failures.append(f"all public corpus rows should have local documents; found {len(local_docs)} of {len(sources)}")
+        failures.append(f"all manual corpus rows should have local documents; found {len(local_docs)} of {len(sources)}")
 
     if failures:
         raise SystemExit("\n".join(failures))

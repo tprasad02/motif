@@ -81,6 +81,7 @@ class AnalysisResponse(BaseModel):
     thesis: str | None = None
     sections: list[dict[str, str]] = Field(default_factory=list)
     evidence_cards: list[dict[str, str]] = Field(default_factory=list)
+    theme_films: list[dict[str, object]] = Field(default_factory=list)
     consensus_interpretation: str
     alternative_interpretations: list[str]
     director_creator_perspective: str
