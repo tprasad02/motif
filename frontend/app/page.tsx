@@ -26,6 +26,7 @@ type AnswerResponse = {
   thesis?: string;
   sections: Array<{ label?: string; title?: string; body?: string }>;
   evidence_cards?: Array<{ label?: string; title?: string; body?: string }>;
+  theme_films?: Array<{ rank?: number; slug: string; title: string; year?: number; director?: string; summary?: string }>;
   coverage_score: number;
   coverage_level: "high" | "medium" | "low";
   refused: boolean;
@@ -195,6 +196,7 @@ export default function Home() {
   const loadingText =
     mode === "compare_films" ? "Comparing the films..." : mode === "explore_theme" ? "Exploring the theme..." : "Building the reading...";
   const evidenceCards = answer?.evidence_cards?.length ? answer.evidence_cards : answer?.sections ?? [];
+  const themeFilms = answer?.theme_films ?? [];
 
   return (
     <main className="appShell">
@@ -328,13 +330,27 @@ export default function Home() {
             <span>{mode === "compare_films" ? "Film comparison" : mode === "explore_theme" ? "Theme exploration" : "Film analysis"}</span>
             <span>{answer.coverage_level} confidence</span>
           </div>
-          {answer.thesis && (
+          {mode === "explore_theme" && themeFilms.length > 0 && (
+            <div className="themeFilmGrid">
+              {themeFilms.map((film) => (
+                <article key={film.slug} className="themeFilmCard">
+                  <span>#{film.rank}</span>
+                  <strong>{film.title}</strong>
+                  <small>
+                    {film.year} / {film.director}
+                  </small>
+                  <p>{film.summary}</p>
+                </article>
+              ))}
+            </div>
+          )}
+          {mode !== "explore_theme" && answer.thesis && (
             <div className="thesisBoard">
               <span>Thesis</span>
               <h1>{answer.thesis}</h1>
             </div>
           )}
-          {evidenceCards.length > 0 && (
+          {mode !== "explore_theme" && evidenceCards.length > 0 && (
             <div className="evidenceGrid">
               {evidenceCards.slice(0, 4).map((section, index) => (
                 <article key={`${section.label ?? section.title ?? "evidence"}-${index}`}>

@@ -133,11 +133,11 @@ def load_films(seed_films_path: str = "data/seed_films.csv") -> None:
             conn.commit()
 
 
-def load_sources(seed_sources_path: str) -> None:
+def load_sources(sources_path: str) -> None:
     with pg_conn() as conn:
         with conn.cursor() as cur:
             _ensure_metadata_columns(cur)
-            with open(seed_sources_path, newline="", encoding="utf-8") as handle:
+            with open(sources_path, newline="", encoding="utf-8") as handle:
                 for row in csv.DictReader(handle):
                     cur.execute("SELECT id FROM films WHERE slug = %s", (row["film_slug"],))
                     film_id = cur.fetchone()[0]

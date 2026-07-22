@@ -1,4 +1,4 @@
-.PHONY: infra-up infra-down schema backend frontend build-public-corpus ingest
+.PHONY: infra-up infra-down schema backend frontend build-backend-corpus ingest ingest-reset
 
 infra-up:
 	docker compose up -d postgres weaviate
@@ -15,11 +15,11 @@ backend:
 frontend:
 	cd frontend && npm run dev
 
-build-public-corpus:
-	python -m ingestion.build_public_corpus
+build-backend-corpus:
+	python -m ingestion.build_backend_corpus --sources data/manual_sources.csv --output-dir backend/app/corpus
 
 ingest:
-	python -m ingestion.cli ingest --sources data/public_sources.csv
+	python -m ingestion.cli ingest --sources data/manual_sources.csv
 
 ingest-reset:
-	python -m ingestion.cli ingest --sources data/public_sources.csv --reset
+	python -m ingestion.cli ingest --sources data/manual_sources.csv --reset

@@ -1,6 +1,6 @@
 import json
 import re
-from collections import Counter
+from collections import defaultdict
 from pathlib import Path
 
 import httpx
@@ -31,6 +31,64 @@ BANNED_PHRASES = [
     "serves as a metaphor",
     "invites the viewer",
 ]
+
+FILM_META = {
+    "shawshank-redemption": {"year": 1994, "director": "Frank Darabont"},
+    "fight-club": {"year": 1999, "director": "David Fincher"},
+    "one-flew-over-the-cuckoos-nest": {"year": 1975, "director": "Milos Forman"},
+    "se7en": {"year": 1995, "director": "David Fincher"},
+    "silence-of-the-lambs": {"year": 1991, "director": "Jonathan Demme"},
+    "the-prestige": {"year": 2006, "director": "Christopher Nolan"},
+    "memento": {"year": 2000, "director": "Christopher Nolan"},
+    "taxi-driver": {"year": 1976, "director": "Martin Scorsese"},
+    "shutter-island": {"year": 2010, "director": "Martin Scorsese"},
+    "black-swan": {"year": 2010, "director": "Darren Aronofsky"},
+    "sixth-sense": {"year": 1999, "director": "M. Night Shyamalan"},
+    "prisoners": {"year": 2013, "director": "Denis Villeneuve"},
+    "gone-girl": {"year": 2014, "director": "David Fincher"},
+    "requiem-for-a-dream": {"year": 2000, "director": "Darren Aronofsky"},
+    "donnie-darko": {"year": 2001, "director": "Richard Kelly"},
+    "the-machinist": {"year": 2004, "director": "Brad Anderson"},
+    "mulholland-drive": {"year": 2001, "director": "David Lynch"},
+    "truman-show": {"year": 1998, "director": "Peter Weir"},
+}
+
+ACTIVE_FILM_SLUGS = set(FILM_TITLES)
+NON_CORPUS_FILM_TITLES = [
+    "A Beautiful Mind",
+    "Eternal Sunshine",
+    "Eternal Sunshine of the Spotless Mind",
+    "Perfect Blue",
+    "Persona",
+    "Synecdoche, New York",
+    "The Lighthouse",
+    "Vertigo",
+]
+
+THEME_LENS_FILMS = {
+    "Memory": ["memento"],
+    "Identity": [
+        "fight-club",
+        "one-flew-over-the-cuckoos-nest",
+        "silence-of-the-lambs",
+        "memento",
+        "taxi-driver",
+        "black-swan",
+        "gone-girl",
+        "the-machinist",
+        "mulholland-drive",
+    ],
+    "Obsession": ["fight-club", "se7en", "the-prestige", "black-swan", "prisoners", "requiem-for-a-dream", "mulholland-drive"],
+    "Reality vs Illusion": ["memento", "shutter-island", "sixth-sense", "donnie-darko", "mulholland-drive", "truman-show"],
+    "Control": ["shawshank-redemption", "one-flew-over-the-cuckoos-nest", "silence-of-the-lambs", "black-swan", "gone-girl", "requiem-for-a-dream", "truman-show"],
+    "Freedom": ["shawshank-redemption", "one-flew-over-the-cuckoos-nest", "truman-show"],
+    "Isolation": ["taxi-driver", "sixth-sense", "donnie-darko"],
+    "Guilt": ["se7en", "memento", "shutter-island", "prisoners", "the-machinist"],
+    "Performance": ["the-prestige", "black-swan", "gone-girl", "mulholland-drive", "truman-show"],
+    "Violence": ["fight-club", "se7en", "silence-of-the-lambs", "taxi-driver", "prisoners"],
+    "Justice": ["shawshank-redemption", "se7en", "prisoners"],
+    "Trauma": ["shutter-island", "sixth-sense", "requiem-for-a-dream", "donnie-darko", "the-machinist"],
+}
 
 
 def coverage_score(chunks: list[RetrievedChunk], required_films: list[str] | None = None) -> float:
@@ -78,10 +136,10 @@ def _query_for_request(request: GuidedAnswerRequest) -> str:
         for lens in FILM_LENSES.get(slug, [])
     )
     if request.mode == "compare_films":
-        return f"Compare {_display_title(request.film_a)} and {_display_title(request.film_b)} through {request.lens}. Related lenses: {film_lenses}.{angle}"
+        return f"Compare {_display_title(request.film_a)} and {_display_title(request.film_b)}. Theme focus: {request.lens}. Related themes: {film_lenses}.{angle}"
     if request.mode == "explore_theme":
-        return f"Explore {request.lens} across the indexed film collection.{angle}"
-    return f"Analyze {_display_title(request.film_a)} through {request.lens}. Related lenses: {film_lenses}.{angle}"
+        return f"Explore theme: {request.lens}. Film collection only.{angle}"
+    return f"Analyze {_display_title(request.film_a)}. Theme focus: {request.lens}. Related themes: {film_lenses}.{angle}"
 
 
 def _normalize_answer_request(request: AnswerRequest) -> GuidedAnswerRequest:
@@ -173,10 +231,13 @@ def _system_prompt(mode: str) -> str:
         "You are Motif, a film close-reading assistant. Produce an evidence board, not an essay. "
         "Write plainly. Avoid grand philosophical language, plot summary, and claims about people or humanity in general. "
         "Do not use these phrases: at its core, profound exploration, complex interplay, the human condition, serves as a metaphor, invites the viewer. "
+        "Do not mention source titles, publishers, source types, citations, or phrases like 'according to'. "
+        "You may mention the selected theme naturally, but do not expose interface phrasing like 'lens', 'through the lens of', 'in this lens', or 'selected lens'. "
+        f"Only discuss these films: {', '.join(FILM_TITLES.values())}. "
         "Explain what the film does, how it does it, and why that matters. "
         "Use only retrieved context and attach chunk IDs to each evidence item. "
         "Return strict JSON with keys: thesis, evidence_1, evidence_2, evidence_3, evidence_4. "
-        "The thesis must be 30-60 words, one or two sentences, mention the selected film and lens directly, and make a film-bound arguable claim. "
+        "The thesis must be 30-60 words, one or two sentences, mention the selected film and selected theme directly, and make a film-bound arguable claim. "
         "Each evidence item must be an object with keys: label, title, body, chunk_ids. "
         "The four labels must be exactly: Scene or Motif, Formal Technique, Character or Performance, Ambiguity or Counterreading. "
         "Each body must be 80-140 words and must mention a visible or audible film element: a scene, image, line, camera movement, cut, sound cue, color, performance detail, prop, setting, structure, or repeated motif."
@@ -188,7 +249,7 @@ def _user_prompt(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> 
     return f"""
 Workflow: {request.mode}
 Selected film(s): {films}
-Lens: {request.lens}
+Theme focus: {request.lens}
 Optional angle: {request.optional_question or "None"}
 
 Retrieved context:
@@ -198,7 +259,7 @@ Retrieved context:
 
 def _fallback_answer(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> dict:
     film = _display_title(request.film_a) if request.mode != "explore_theme" else "the selected films"
-    thesis = f"{film} treats {request.lens} as something the film builds through repeated scenes and formal choices, not as a theme stated in dialogue."
+    thesis = f"{film} treats {request.lens} as a pattern built through repeated scenes and formal choices, not as an idea stated in dialogue."
     cards = []
     for label, chunk in zip(EVIDENCE_JOBS, chunks[:4]):
         cards.append(
@@ -206,7 +267,6 @@ def _fallback_answer(request: GuidedAnswerRequest, chunks: list[RetrievedChunk])
                 "label": label,
                 "title": chunk.section_title or label,
                 "body": (
-                    f"This point comes from {chunk.chunk_role.replace('_', ' ')} in {chunk.source_type.replace('_', ' ')}. "
                     f"The relevant film detail is: {chunk.text[:520].strip()}"
                 )[:760],
                 "chunk_ids": [chunk.chunk_id],
@@ -279,23 +339,144 @@ def _normalize_card(raw_card, label: str) -> dict[str, str]:
         chunk_ids = [chunk_ids]
     return {
         "label": label,
-        "title": str(raw_card.get("title") or label),
+        "title": str(raw_card.get("title") or label).strip(),
         "body": str(raw_card.get("body") or "").strip(),
         "chunk_ids": json.dumps([str(chunk_id) for chunk_id in chunk_ids]),
     }
 
 
+def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
+    cleaned = re.sub(r"\s+", " ", text or "").strip()
+    for phrase in BANNED_PHRASES:
+        cleaned = re.sub(re.escape(phrase), "", cleaned, flags=re.I)
+    cleaned = re.sub(r"\baccording to\b[^.?!]*(?:[.?!]|$)", "", cleaned, flags=re.I)
+    cleaned = re.sub(
+        r"\b(?:in|from)\s+(?:the\s+)?(?:Guardian|Variety|Deadline|IndieWire|Collider|BFI|Criterion|Roger Ebert|craft article|academic|review|interview|essay|source)\b[^.?!]*(?:[.?!]|$)",
+        "",
+        cleaned,
+        flags=re.I,
+    )
+    if request.lens:
+        escaped_lens = re.escape(request.lens)
+        cleaned = re.sub(rf"\bthrough\s+(?:the\s+)?{escaped_lens}\s+lens\b", f"through {request.lens}", cleaned, flags=re.I)
+        cleaned = re.sub(rf"\bthrough\s+(?:the\s+)?lens\s+of\s+{escaped_lens}\b", f"through {request.lens}", cleaned, flags=re.I)
+        cleaned = re.sub(rf"\bin\s+(?:this|the)\s+{escaped_lens}\s+lens\b", f"in its treatment of {request.lens}", cleaned, flags=re.I)
+        cleaned = re.sub(rf"\b(?:this|the|selected)\s+{escaped_lens}\s+lens\b", request.lens, cleaned, flags=re.I)
+        cleaned = re.sub(r"\b(?:this|the|selected)\s+lens\b", "this theme", cleaned, flags=re.I)
+        cleaned = re.sub(r"\blens\b", "theme", cleaned, flags=re.I)
+    for title in NON_CORPUS_FILM_TITLES:
+        cleaned = re.sub(re.escape(title), "", cleaned, flags=re.I)
+    return re.sub(r"\s{2,}", " ", cleaned).strip(" -:;,.") or text.strip()
+
+
 def _sanitize_thesis(thesis: str, request: GuidedAnswerRequest) -> str:
-    thesis = re.sub(r"\s+", " ", thesis).strip()
+    thesis = _clean_public_text(thesis, request)
     film = _display_title(request.film_a) if request.mode != "explore_theme" else "Motif"
     if film and film not in thesis and request.mode != "explore_theme":
-        thesis = f"{film} uses {request.lens} to frame a specific problem: {thesis[:180]}"
-    for phrase in BANNED_PHRASES:
-        thesis = re.sub(re.escape(phrase), "", thesis, flags=re.I)
+        thesis = f"{film} frames {request.lens} through performance, structure, and repeated images: {thesis[:180]}"
     return thesis[:360].strip()
 
 
+def _theme_card_body(slug: str, chunks: list[RetrievedChunk]) -> str:
+    roles = {chunk.chunk_role for chunk in chunks}
+    if "scene_evidence" in roles and "formal_observation" in roles:
+        return "Strong match for close readings built from concrete scenes and repeated formal patterns."
+    if "scene_evidence" in roles:
+        return "Strong match for scene-based readings built from recurring moments, images, and actions."
+    if "creator_commentary" in roles:
+        return "Good match for readings shaped by direct creative decisions and character choices."
+    if "formal_observation" in roles:
+        return "Good match for visual style, sound, editing, performance, or structural choices."
+    return "Relevant match for a concise close reading without needing a full plot recap."
+
+
+def _lens_matches(selected_lens: str, candidate_lens: str) -> bool:
+    selected = selected_lens.lower()
+    candidate = candidate_lens.lower()
+    return selected == candidate or selected in candidate or candidate in selected
+
+
+def _theme_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> list[dict[str, object]]:
+    grouped: dict[str, list[RetrievedChunk]] = defaultdict(list)
+    for chunk in chunks:
+        if chunk.film_slug in ACTIVE_FILM_SLUGS:
+            grouped[chunk.film_slug].append(chunk)
+
+    primary_slugs = THEME_LENS_FILMS.get(request.lens, [])
+    primary_rank = {slug: index for index, slug in enumerate(primary_slugs)}
+    scored = []
+    eligible_slugs = primary_slugs or sorted(grouped)
+    for slug in eligible_slugs:
+        film_chunks = grouped.get(slug, [])
+        if slug not in ACTIVE_FILM_SLUGS:
+            continue
+        source_count = len({chunk.source_key for chunk in film_chunks})
+        role_count = len({chunk.chunk_role for chunk in film_chunks})
+        lens_match = any(_lens_matches(request.lens, lens) for lens in FILM_LENSES.get(slug, []))
+        retrieval_score = min(sum(max(chunk.score, 0) for chunk in film_chunks), 20.0)
+        curated_score = 200.0 - primary_rank.get(slug, 99)
+        score = curated_score + retrieval_score + (0.18 * source_count) + (0.12 * role_count) + (10.0 if lens_match else 0)
+        scored.append((score, slug, film_chunks))
+
+    if len(scored) < 5 and not primary_slugs:
+        existing = {slug for _, slug, _ in scored}
+        for slug, lenses in FILM_LENSES.items():
+            if slug in existing:
+                continue
+            if any(_lens_matches(request.lens, lens) for lens in lenses):
+                scored.append((100.0, slug, []))
+
+    ranked = sorted(scored, key=lambda item: item[0], reverse=True)[:6]
+    cards = []
+    for rank, (score, slug, film_chunks) in enumerate(ranked, start=1):
+        meta = FILM_META.get(slug, {})
+        cards.append(
+            {
+                "rank": rank,
+                "slug": slug,
+                "title": FILM_TITLES[slug],
+                "year": meta.get("year"),
+                "director": meta.get("director"),
+                "summary": _theme_card_body(slug, film_chunks),
+                "score": round(score, 3),
+            }
+        )
+    return cards
+
+
+def _synthesize_theme(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> AnalysisResponse:
+    active_chunks = [chunk for chunk in chunks if chunk.film_slug in ACTIVE_FILM_SLUGS]
+    score = coverage_score(active_chunks)
+    level = coverage_level(score)
+    cards = _theme_films(request, active_chunks)
+    refused = not cards
+    debug_chunks = _debug_chunks(active_chunks, request.include_debug)
+    answer = "Films ranked by relevance."
+    return AnalysisResponse(
+        mode=request.mode,
+        answer=answer,
+        thesis=None,
+        sections=[],
+        evidence_cards=[],
+        theme_films=cards,
+        consensus_interpretation=answer,
+        alternative_interpretations=[],
+        director_creator_perspective="",
+        critical_reception="",
+        related_films=[str(card["title"]) for card in cards],
+        cited_sources=[],
+        coverage_score=score,
+        coverage_level=level,
+        refused=refused,
+        retrieval_notes=f"{level.title()} coverage from {len({chunk.source_key for chunk in active_chunks})} sources.",
+        debug_chunks=debug_chunks,
+    )
+
+
 def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> AnalysisResponse:
+    if request.mode == "explore_theme":
+        return _synthesize_theme(request, chunks)
+
     required_films = _film_slugs_for_request(request)
     score = coverage_score(chunks, required_films)
     level = coverage_level(score)
@@ -313,6 +494,14 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
             _normalize_card(payload.get(f"evidence_{index}"), label)
             for index, label in enumerate(EVIDENCE_JOBS, start=1)
         ]
+        evidence_cards = [
+            {
+                **card,
+                "title": _clean_public_text(card["title"], request),
+                "body": _clean_public_text(card["body"], request),
+            }
+            for card in evidence_cards
+        ]
     answer = thesis
     sections = evidence_cards
     alternative_interpretations = [card["body"] for card in evidence_cards]
@@ -323,6 +512,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         thesis=thesis,
         sections=sections,
         evidence_cards=evidence_cards,
+        theme_films=[],
         consensus_interpretation=answer,
         alternative_interpretations=alternative_interpretations,
         director_creator_perspective="",

@@ -220,6 +220,8 @@ button {
 .workflowCard span,
 .stepHeader p,
 .filmCard small,
+.themeFilmCard small,
+.themeFilmCard p,
 .evidenceGrid p,
 .debugPanel p {
   color: var(--muted);
@@ -479,6 +481,46 @@ button {
   margin: 0;
 }
 
+.themeFilmGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.themeFilmCard {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 190px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background:
+    linear-gradient(135deg, rgba(248, 190, 63, 0.22), rgba(39, 193, 201, 0.12)),
+    rgba(255, 255, 255, 0.7);
+}
+
+.themeFilmCard > span {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 5px 8px;
+  color: #fff;
+  background: var(--red);
+  font-size: 12px;
+  font-weight: 1000;
+}
+
+.themeFilmCard strong {
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.themeFilmCard small,
+.themeFilmCard p {
+  margin: 0;
+}
+
 .answerActions {
   display: flex;
   flex-wrap: wrap;
@@ -521,6 +563,7 @@ button {
 @media (max-width: 920px) {
   .workflowGrid,
   .filmGrid,
+  .themeFilmGrid,
   .evidenceGrid {
     grid-template-columns: 1fr;
   }
