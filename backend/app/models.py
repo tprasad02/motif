@@ -1,7 +1,32 @@
-from typing import Literal
+from __future__ import annotations
+from typing import Any, Literal
+from uuid import UUID, uuid4
+from datetime import datetime, timezone
+from pydantic import BaseModel, Field, model_validator
 
-from pydantic import BaseModel, Field
 
+# ---------------------------------------------------------------------------
+# Constants
+# ---------------------------------------------------------------------------
+
+ChunkingStrategy = Literal[
+    "fixed_token",
+    "sentence",
+    "paragraph",
+    "heading",
+    "semantic",
+]
+
+EvaluationStatus = Literal[
+    "pending",
+    "running",
+    "completed",
+    "failed",
+]
+
+# helper functions
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 class SourceCitation(BaseModel):
     source_key: str
@@ -132,3 +157,165 @@ class ThemeExplorerResponse(BaseModel):
     trail: list[SourceCitation]
     coverage_score: float
     coverage_level: str
+
+# Evaluation Models
+# ---------------------------------------------------------------------------
+# Input model matching chunks.jsonl
+# ---------------------------------------------------------------------------
+
+# ============================================================
+# Input model
+# ============================================================
+
+class InputChunk(BaseModel):
+    """
+    One line from chunks.jsonl.
+
+    Expected format:
+    {
+        "chunk_id": "b934539726424a99c670791bae313308",
+        "text": "Chunk text"
+    }
+    """
+
+    chunk_id: str = Field(min_length=1)
+    text: str = Field(min_length=1)
+
+
+# ============================================================
+# OpenAI structured-output models
+# ============================================================
+
+class GeneratedQuestion(BaseModel):
+    question: str = Field(
+        description=(
+            "A substantive question answerable completely from the target chunk."
+        )
+    )
+    answer: str = Field(
+        description=(
+            "A concise answer supported completely by the target chunk."
+        )
+    )
+
+
+class ChunkLLMEvaluation(BaseModel):
+    score: int = Field(
+        ge=1,
+        le=5,
+        description="Overall chunk quality score from 1 to 5.",
+    )
+
+    reason: str = Field(
+        max_length=200,
+        description=(
+            "A short reason for the score, using one concise sentence."
+        ),
+    )
+
+    suggestion: str = Field(
+        max_length=200,
+        description=(
+            "One short, actionable suggestion for improving the chunk."
+        ),
+    )
+
+
+# ============================================================
+# Evaluation output models
+# ============================================================
+
+class DeterministicEvaluation(BaseModel):
+    character_count: int = Field(ge=0)
+    word_count: int = Field(ge=0)
+    token_count: int = Field(ge=0)
+
+    starts_with_lowercase: bool
+    starts_with_continuation_word: bool
+    starts_with_closing_punctuation: bool
+    ends_with_terminal_punctuation: bool
+    contains_incomplete_trailing_clause: bool
+
+    previous_chunk_similarity: float | None = Field(
+        default=None,
+        ge=0,
+        le=1,
+    )
+    next_chunk_similarity: float | None = Field(
+        default=None,
+        ge=0,
+        le=1,
+    )
+
+    below_min_tokens: bool
+    above_max_tokens: bool
+    near_empty: bool
+
+
+class ChunkEvaluationResult(BaseModel):
+    chunk_id: str
+    chunk_index: int = Field(ge=0)
+
+    text: str
+    content_hash: str
+
+    deterministic: DeterministicEvaluation
+    llm: ChunkLLMEvaluation | None = None
+
+    error: str | None = None
+
+class EvaluationDocument(BaseModel):
+    id: UUID = Field(default_factory=uuid4)
+
+    source_key: str = Field(min_length=1)
+    film_slug: str | None = None
+
+    title: str | None = None
+    author: str | None = None
+    publisher: str | None = None
+    source_type: str = Field(min_length=1)
+
+    file_path: str = Field(min_length=1)
+    raw_text: str = Field(min_length=1)
+
+    content_hash: str = Field(min_length=1)
+    character_count: int = Field(ge=0)
+    token_count: int = Field(ge=0)
+
+    created_at: datetime = Field(default_factory=utc_now)
+
+
+class EvaluationSummary(BaseModel):
+    model: str
+
+    chunk_count: int
+    successful_count: int
+    failed_count: int
+
+    total_characters: int
+    total_tokens: int
+
+    average_tokens: float
+    median_tokens: float
+    token_standard_deviation: float
+    minimum_tokens: int
+    maximum_tokens: int
+
+    below_min_token_rate: float
+    above_max_token_rate: float
+    invalid_start_rate: float
+    invalid_ending_rate: float
+
+    average_adjacent_similarity: float | None
+
+    average_score: float | None
+
+
+class EvaluationOutput(BaseModel):
+    input_file: str
+    evaluated_at: datetime
+    minimum_tokens: int | None
+    maximum_tokens: int | None
+
+    summary: EvaluationSummary
+    chunks: list[ChunkEvaluationResult]
