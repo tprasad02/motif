@@ -1,0 +1,26 @@
+{
+  "analyze": [
+    {"id": "analyze_memento_memory", "mode": "analyze_film", "film_a": "memento", "lens": "Memory"},
+    {"id": "analyze_black_swan_performance", "mode": "analyze_film", "film_a": "black-swan", "lens": "Performance"},
+    {"id": "analyze_taxi_driver_isolation", "mode": "analyze_film", "film_a": "taxi-driver", "lens": "Isolation"},
+    {"id": "analyze_machinist_guilt", "mode": "analyze_film", "film_a": "the-machinist", "lens": "Guilt"},
+    {"id": "analyze_donnie_darko_reality", "mode": "analyze_film", "film_a": "donnie-darko", "lens": "Reality vs Illusion"},
+    {"id": "analyze_truman_control", "mode": "analyze_film", "film_a": "truman-show", "lens": "Control"},
+    {"id": "analyze_gone_girl_performance", "mode": "analyze_film", "film_a": "gone-girl", "lens": "Performance"},
+    {"id": "analyze_prisoners_justice", "mode": "analyze_film", "film_a": "prisoners", "lens": "Justice"}
+  ],
+  "compare": [
+    {"id": "compare_memento_shutter_guilt", "mode": "compare_films", "film_a": "memento", "film_b": "shutter-island", "lens": "Guilt"},
+    {"id": "compare_black_swan_prestige_performance", "mode": "compare_films", "film_a": "black-swan", "film_b": "the-prestige", "lens": "Performance"},
+    {"id": "compare_taxi_fight_violence", "mode": "compare_films", "film_a": "taxi-driver", "film_b": "fight-club", "lens": "Violence"},
+    {"id": "compare_truman_gone_girl_control", "mode": "compare_films", "film_a": "truman-show", "film_b": "gone-girl", "lens": "Control"}
+  ],
+  "theme": [
+    {"id": "theme_memory", "mode": "explore_theme", "lens": "Memory"},
+    {"id": "theme_performance", "mode": "explore_theme", "lens": "Performance"},
+    {"id": "theme_justice", "mode": "explore_theme", "lens": "Justice"},
+    {"id": "theme_control", "mode": "explore_theme", "lens": "Control"},
+    {"id": "theme_reality", "mode": "explore_theme", "lens": "Reality vs Illusion"},
+    {"id": "theme_trauma", "mode": "explore_theme", "lens": "Trauma"}
+  ]
+}

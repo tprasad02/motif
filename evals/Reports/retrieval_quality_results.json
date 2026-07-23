@@ -1,0 +1,3301 @@
+[
+  {
+    "id": "analyze_memento_memory",
+    "mode": "analyze_film",
+    "film_a": "memento",
+    "film_b": "",
+    "lens": "Memory",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 1.0,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 7,
+    "source_role_diversity": 4,
+    "source_roles": "creator_voice|criticism|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 2, \"formal_observation\": 7, \"interpretive_claim\": 1, \"scene_evidence\": 2}",
+    "film_counts": "{\"memento\": 12}",
+    "source_system_phrase_count": 1,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f3ff94445bb7067633b905639590b489",
+        "film": "Memento",
+        "source_key": "memento-05-academic-docs-lib-purdue-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.6651
+      },
+      {
+        "rank": 2,
+        "chunk_id": "11a8deb6a1e144698425cd7a84b3b668",
+        "film": "Memento",
+        "source_key": "memento-05-academic-docs-lib-purdue-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.6542
+      },
+      {
+        "rank": 3,
+        "chunk_id": "a0395e7f0d2f476ce9b759af5d208c92",
+        "film": "Memento",
+        "source_key": "memento-02-interview-indiewire-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.6363
+      },
+      {
+        "rank": 4,
+        "chunk_id": "bbb748106e50c1a2f6f93443d39d154b",
+        "film": "Memento",
+        "source_key": "memento-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.5185
+      },
+      {
+        "rank": 5,
+        "chunk_id": "c614317c48036272d78623cb79f69cc3",
+        "film": "Memento",
+        "source_key": "memento-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.5147
+      },
+      {
+        "rank": 6,
+        "chunk_id": "6de896eaad5f4f574605314e530caaed",
+        "film": "Memento",
+        "source_key": "memento-03-festival_qa-filmmakermagazine-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Memory",
+          "Identity"
+        ],
+        "score": 0.4941
+      },
+      {
+        "rank": 7,
+        "chunk_id": "d41afa282fa131dcde7508004d4a51e4",
+        "film": "Memento",
+        "source_key": "memento-06-academic-pdfs-semanticscholar-org",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.4767
+      },
+      {
+        "rank": 8,
+        "chunk_id": "6e63f26837eec000ae0ac2ab658bc358",
+        "film": "Memento",
+        "source_key": "memento-06-academic-pdfs-semanticscholar-org",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory",
+          "Identity"
+        ],
+        "score": 0.4745
+      },
+      {
+        "rank": 9,
+        "chunk_id": "878dca3fc3ca473a69212d4934d8d19d",
+        "film": "Memento",
+        "source_key": "memento-07-video_essay_transcript-local",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.3917
+      },
+      {
+        "rank": 10,
+        "chunk_id": "d7bb5cd4c687c9247412d8d95ee0c457",
+        "film": "Memento",
+        "source_key": "memento-07-video_essay_transcript-local",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.3855
+      },
+      {
+        "rank": 11,
+        "chunk_id": "101a7f59b4270dba5dcadd8eafad63f9",
+        "film": "Memento",
+        "source_key": "memento-08-craft_article-goldderby-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.3836
+      },
+      {
+        "rank": 12,
+        "chunk_id": "50b50e1c7c2be57c78727271c355b2ac",
+        "film": "Memento",
+        "source_key": "memento-08-craft_article-goldderby-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.3363
+      }
+    ]
+  },
+  {
+    "id": "analyze_black_swan_performance",
+    "mode": "analyze_film",
+    "film_a": "black-swan",
+    "film_b": "",
+    "lens": "Performance",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 1.0,
+    "concrete_evidence_rate": 0.917,
+    "plot_summary_rate": 0.083,
+    "source_diversity": 7,
+    "source_role_diversity": 5,
+    "source_roles": "creator_voice|criticism|production_context|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 2, \"formal_observation\": 4, \"interpretive_claim\": 3, \"plot_summary\": 1, \"scene_evidence\": 2}",
+    "film_counts": "{\"black-swan\": 12}",
+    "source_system_phrase_count": 3,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "df110be2d144469d6cf42124bfe4435d",
+        "film": "Black Swan",
+        "source_key": "black-swan-06-academic-digitalcommons-wcupa-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance",
+          "Control"
+        ],
+        "score": 0.5143
+      },
+      {
+        "rank": 2,
+        "chunk_id": "405baebde0c08b3eb1ba02e917f8ee27",
+        "film": "Black Swan",
+        "source_key": "black-swan-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.514
+      },
+      {
+        "rank": 3,
+        "chunk_id": "100142422703a95f4e720d7fbd448ed0",
+        "film": "Black Swan",
+        "source_key": "black-swan-06-academic-digitalcommons-wcupa-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.5137
+      },
+      {
+        "rank": 4,
+        "chunk_id": "284662846dbaf3578b704891c472b97f",
+        "film": "Black Swan",
+        "source_key": "black-swan-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.5135
+      },
+      {
+        "rank": 5,
+        "chunk_id": "c31b37346ddcd6a79dc5c70099c5984b",
+        "film": "Black Swan",
+        "source_key": "black-swan-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.5002
+      },
+      {
+        "rank": 6,
+        "chunk_id": "8d831842a3f3c72281fb2974dd9ce12f",
+        "film": "Black Swan",
+        "source_key": "black-swan-03-festival_qa-top10films-co-uk",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Performance",
+          "Control"
+        ],
+        "score": 0.4928
+      },
+      {
+        "rank": 7,
+        "chunk_id": "50706431a59cc5ba7d7f93cac144636b",
+        "film": "Black Swan",
+        "source_key": "black-swan-08-craft_article-slantmagazine-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.3931
+      },
+      {
+        "rank": 8,
+        "chunk_id": "c6a762a76f5aea3eb3cdf6c8726ef840",
+        "film": "Black Swan",
+        "source_key": "black-swan-03-festival_qa-top10films-co-uk",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Performance",
+          "Identity",
+          "Obsession"
+        ],
+        "score": 0.3595
+      },
+      {
+        "rank": 9,
+        "chunk_id": "1c99591bddc4c2e319b1143d238eb886",
+        "film": "Black Swan",
+        "source_key": "black-swan-05-academic-the-criterion-com",
+        "chunk_role": "plot_summary",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.3533
+      },
+      {
+        "rank": 10,
+        "chunk_id": "0159f471cfc034993f84897c79aa9ca6",
+        "film": "Black Swan",
+        "source_key": "black-swan-05-academic-the-criterion-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance",
+          "Identity",
+          "Obsession"
+        ],
+        "score": 0.3221
+      },
+      {
+        "rank": 11,
+        "chunk_id": "e6952658d712aa4bb19863b1c0453e91",
+        "film": "Black Swan",
+        "source_key": "black-swan-04-production_notes-catalog-afi-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Performance",
+          "Identity",
+          "Obsession"
+        ],
+        "score": 0.3036
+      },
+      {
+        "rank": 12,
+        "chunk_id": "bb7b7860a127275604b5f82ed65f9ecd",
+        "film": "Black Swan",
+        "source_key": "black-swan-07-review-rogerebert-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Performance",
+          "Identity",
+          "Obsession"
+        ],
+        "score": 0.276
+      }
+    ]
+  },
+  {
+    "id": "analyze_taxi_driver_isolation",
+    "mode": "analyze_film",
+    "film_a": "taxi-driver",
+    "film_b": "",
+    "lens": "Isolation",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 1.0,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 6,
+    "source_role_diversity": 4,
+    "source_roles": "creator_voice|criticism|production_context|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 3, \"formal_observation\": 4, \"scene_evidence\": 5}",
+    "film_counts": "{\"taxi-driver\": 12}",
+    "source_system_phrase_count": 0,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "0c849d42b252ff30d557f981c15dc506",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-03-festival_qa-studsterkel-wfmt-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Isolation"
+        ],
+        "score": 0.4951
+      },
+      {
+        "rank": 2,
+        "chunk_id": "da48c9dce68949549dc35a6c07f553b7",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-08-craft_article-scrapsfromtheloft-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3816
+      },
+      {
+        "rank": 3,
+        "chunk_id": "a574d255bc0d2dbe1f54e95463b1ee74",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3729
+      },
+      {
+        "rank": 4,
+        "chunk_id": "fd3ca82d724bf5fc8ad1995d2a3a029a",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3717
+      },
+      {
+        "rank": 5,
+        "chunk_id": "0ada71cabda85f73db0bd1ffe541f86b",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-03-festival_qa-studsterkel-wfmt-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3628
+      },
+      {
+        "rank": 6,
+        "chunk_id": "450033ebbfd06c33effe12c74f9cafa5",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-02-interview-people-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3539
+      },
+      {
+        "rank": 7,
+        "chunk_id": "5d1b2927cdc0a9c8e74267078a593744",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3525
+      },
+      {
+        "rank": 8,
+        "chunk_id": "b3e92d989ab4aed89bfebf551a8db491",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-08-craft_article-scrapsfromtheloft-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.2437
+      },
+      {
+        "rank": 9,
+        "chunk_id": "af2cc7c8a4be5f26fd68eba62f8af0d2",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-07-video_essay_transcript-cinephiliabeyond-org",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.2413
+      },
+      {
+        "rank": 10,
+        "chunk_id": "7c50463729908d15b4a3dc561eb0315c",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3714
+      },
+      {
+        "rank": 11,
+        "chunk_id": "269bd70f128947a33f8cca0672974f53",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.37
+      },
+      {
+        "rank": 12,
+        "chunk_id": "642ce07267feb9d214b930f8fb1214bc",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.37
+      }
+    ]
+  },
+  {
+    "id": "analyze_machinist_guilt",
+    "mode": "analyze_film",
+    "film_a": "the-machinist",
+    "film_b": "",
+    "lens": "Guilt",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 1.0,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 6,
+    "source_role_diversity": 4,
+    "source_roles": "creator_voice|criticism|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 3, \"formal_observation\": 5, \"interpretive_claim\": 2, \"scene_evidence\": 2}",
+    "film_counts": "{\"the-machinist\": 12}",
+    "source_system_phrase_count": 2,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "9d90c81a4feb7d7935a23b8db7ba6781",
+        "film": "The Machinist",
+        "source_key": "the-machinist-05-academic-brightlightsfilm-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Guilt",
+          "Body"
+        ],
+        "score": 0.51
+      },
+      {
+        "rank": 2,
+        "chunk_id": "5f9dde4584b86397381fce779a7b7af7",
+        "film": "The Machinist",
+        "source_key": "the-machinist-01-screenplay-script-o-rama-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Guilt",
+          "Body"
+        ],
+        "score": 0.51
+      },
+      {
+        "rank": 3,
+        "chunk_id": "62a72d35c8edd4a112b2830d77d3739c",
+        "film": "The Machinist",
+        "source_key": "the-machinist-05-academic-brightlightsfilm-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia",
+          "Body"
+        ],
+        "score": 0.377
+      },
+      {
+        "rank": 4,
+        "chunk_id": "f0822635ed391cebdd3336b7f7280c1f",
+        "film": "The Machinist",
+        "source_key": "the-machinist-01-screenplay-script-o-rama-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia",
+          "Body"
+        ],
+        "score": 0.3717
+      },
+      {
+        "rank": 5,
+        "chunk_id": "35b5aa38fdeed8045426eb1d20c70925",
+        "film": "The Machinist",
+        "source_key": "the-machinist-02-interview-movies-radiofree-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia",
+          "Body"
+        ],
+        "score": 0.35
+      },
+      {
+        "rank": 6,
+        "chunk_id": "3533006afe5e24816608129152dbc9b1",
+        "film": "The Machinist",
+        "source_key": "the-machinist-02-interview-movies-radiofree-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia",
+          "Body"
+        ],
+        "score": 0.35
+      },
+      {
+        "rank": 7,
+        "chunk_id": "3bb2568793af33991c84ca27942fd724",
+        "film": "The Machinist",
+        "source_key": "the-machinist-08-craft_article-bbc-co-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia",
+          "Body"
+        ],
+        "score": 0.334
+      },
+      {
+        "rank": 8,
+        "chunk_id": "add237a4e53595b4ebc55836ceee847e",
+        "film": "The Machinist",
+        "source_key": "the-machinist-03-festival_qa-screenanarchy-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia"
+        ],
+        "score": 0.3182
+      },
+      {
+        "rank": 9,
+        "chunk_id": "8fca2fc8a68e9f776f36f549b265ae97",
+        "film": "The Machinist",
+        "source_key": "the-machinist-07-video_essay_transcript-ign-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Guilt"
+        ],
+        "score": 0.2444
+      },
+      {
+        "rank": 10,
+        "chunk_id": "c5a294dd50bd2c688c032b2a8a20539c",
+        "film": "The Machinist",
+        "source_key": "the-machinist-07-video_essay_transcript-ign-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia",
+          "Body"
+        ],
+        "score": 0.2417
+      },
+      {
+        "rank": 11,
+        "chunk_id": "13eea9e82fd6a4d5c30a55ddae0b6014",
+        "film": "The Machinist",
+        "source_key": "the-machinist-08-craft_article-bbc-co-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Guilt",
+          "Insomnia",
+          "Body"
+        ],
+        "score": 0.19
+      },
+      {
+        "rank": 12,
+        "chunk_id": "f54dd72c379f72e52ba6f457e87b9dbb",
+        "film": "The Machinist",
+        "source_key": "the-machinist-05-academic-brightlightsfilm-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Guilt",
+          "Body"
+        ],
+        "score": 0.3714
+      }
+    ]
+  },
+  {
+    "id": "analyze_donnie_darko_reality",
+    "mode": "analyze_film",
+    "film_a": "donnie-darko",
+    "film_b": "",
+    "lens": "Reality vs Illusion",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.667,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 6,
+    "source_role_diversity": 4,
+    "source_roles": "criticism|production_context|scholarship|screenplay",
+    "chunk_roles": "{\"formal_observation\": 4, \"interpretive_claim\": 2, \"scene_evidence\": 6}",
+    "film_counts": "{\"donnie-darko\": 12}",
+    "source_system_phrase_count": 4,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "4ba935fe46d7bded66fc6dfea29b3c7b",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-01-screenplay-assets-scriptslug-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.4082
+      },
+      {
+        "rank": 2,
+        "chunk_id": "23b9a82e764b639e833456c58667d300",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-01-screenplay-assets-scriptslug-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.4048
+      },
+      {
+        "rank": 3,
+        "chunk_id": "e39fac2758ce482798875f113bf39da1",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-06-academic-euppublishing-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Time"
+        ],
+        "score": 0.2513
+      },
+      {
+        "rank": 4,
+        "chunk_id": "d3f90efaf53a4224f0ce59f8714a6736",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-05-academic-nerd-wwnorton-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Time"
+        ],
+        "score": 0.25
+      },
+      {
+        "rank": 5,
+        "chunk_id": "2694e7fc5dd9842f0ea87ff2615490c0",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-02-educational_essay-bfidatadigipres-github-io",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.2241
+      },
+      {
+        "rank": 6,
+        "chunk_id": "a8e10e3bcc755d8815b031312590db22",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-08-craft_article-theguardian-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Time"
+        ],
+        "score": 0.2198
+      },
+      {
+        "rank": 7,
+        "chunk_id": "ba4a3bc1ef3445ccc83669fa95ca7922",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-02-educational_essay-bfidatadigipres-github-io",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.2091
+      },
+      {
+        "rank": 8,
+        "chunk_id": "611d2e0dc639a4f35f2231e0bd1e5e0c",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Time"
+        ],
+        "score": 0.05
+      },
+      {
+        "rank": 9,
+        "chunk_id": "ba69d44a6c56ad0a358d6b06d35026c9",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-01-screenplay-assets-scriptslug-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.4033
+      },
+      {
+        "rank": 10,
+        "chunk_id": "b9ef476b78d8e035bffd6fb9fd7ce867",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-01-screenplay-assets-scriptslug-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.4019
+      },
+      {
+        "rank": 11,
+        "chunk_id": "8d671538fb845a4ea466988d6ea2fffd",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-01-screenplay-assets-scriptslug-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.3989
+      },
+      {
+        "rank": 12,
+        "chunk_id": "a19ce29a9ae6e7fbdf1eaee10adff7a0",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-01-screenplay-assets-scriptslug-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.3987
+      }
+    ]
+  },
+  {
+    "id": "analyze_truman_control",
+    "mode": "analyze_film",
+    "film_a": "truman-show",
+    "film_b": "",
+    "lens": "Control",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.667,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 5,
+    "source_role_diversity": 4,
+    "source_roles": "creator_voice|criticism|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 1, \"formal_observation\": 3, \"interpretive_claim\": 1, \"scene_evidence\": 7}",
+    "film_counts": "{\"truman-show\": 12}",
+    "source_system_phrase_count": 1,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "8bcc1fdf3f2c00d1e93f5b736ec1c578",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.5232
+      },
+      {
+        "rank": 2,
+        "chunk_id": "8dd35a032faf5b3f5d545226ef0ac080",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Surveillance",
+          "Control"
+        ],
+        "score": 0.5163
+      },
+      {
+        "rank": 3,
+        "chunk_id": "914ced118a02402500ef3b22e937ef24",
+        "film": "The Truman Show",
+        "source_key": "truman-show-06-educational_essay-quod-lib-umich-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.3857
+      },
+      {
+        "rank": 4,
+        "chunk_id": "74c26ff35c5d4854f7223a0ad52988c7",
+        "film": "The Truman Show",
+        "source_key": "truman-show-05-academic-digitalcommons-unomaha-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Surveillance",
+          "Freedom",
+          "Reality vs Illusion"
+        ],
+        "score": 0.2553
+      },
+      {
+        "rank": 5,
+        "chunk_id": "b2b197d35cb17924bf560354a6fe1d19",
+        "film": "The Truman Show",
+        "source_key": "truman-show-02-interview-vanityfair-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.2344
+      },
+      {
+        "rank": 6,
+        "chunk_id": "93f1337921f1b388ea00b9a2fe2f6b2f",
+        "film": "The Truman Show",
+        "source_key": "truman-show-08-craft_article-cinephiliabeyond-org",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Surveillance",
+          "Freedom",
+          "Reality vs Illusion"
+        ],
+        "score": 0.1259
+      },
+      {
+        "rank": 7,
+        "chunk_id": "146c1c3f0ef2edf4349807a2870839b4",
+        "film": "The Truman Show",
+        "source_key": "truman-show-08-craft_article-cinephiliabeyond-org",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Surveillance",
+          "Freedom",
+          "Reality vs Illusion"
+        ],
+        "score": 0.0755
+      },
+      {
+        "rank": 8,
+        "chunk_id": "77753fd36f0ea3392ad8c085ba30c8db",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.5163
+      },
+      {
+        "rank": 9,
+        "chunk_id": "d5fff47b11104c4a0a97ae52306d1bc8",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Surveillance",
+          "Control"
+        ],
+        "score": 0.5158
+      },
+      {
+        "rank": 10,
+        "chunk_id": "c2a4b5735978866f08ee5bb717a495c9",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.5156
+      },
+      {
+        "rank": 11,
+        "chunk_id": "300c56022ae1fe292ad9f9a0899923f0",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.5149
+      },
+      {
+        "rank": 12,
+        "chunk_id": "58b222ea031bd7388a5516507cf9c289",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.5145
+      }
+    ]
+  },
+  {
+    "id": "analyze_gone_girl_performance",
+    "mode": "analyze_film",
+    "film_a": "gone-girl",
+    "film_b": "",
+    "lens": "Performance",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.833,
+    "concrete_evidence_rate": 0.917,
+    "plot_summary_rate": 0.083,
+    "source_diversity": 5,
+    "source_role_diversity": 4,
+    "source_roles": "creator_voice|criticism|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 1, \"formal_observation\": 4, \"interpretive_claim\": 1, \"plot_summary\": 1, \"scene_evidence\": 5}",
+    "film_counts": "{\"gone-girl\": 12}",
+    "source_system_phrase_count": 0,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "c559ace2d428ae8cf6a0c7a2cef0ede6",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-05-academic-download-ssrn-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media",
+          "Control"
+        ],
+        "score": 0.5125
+      },
+      {
+        "rank": 2,
+        "chunk_id": "ba6b7efb7dacc962fcc0a73392fce61b",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-05-academic-download-ssrn-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.375
+      },
+      {
+        "rank": 3,
+        "chunk_id": "f6cc5e61f980832d29b6169962dad88c",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.3744
+      },
+      {
+        "rank": 4,
+        "chunk_id": "a94aae8fcccb07c945f614b9b5a6a37a",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.3735
+      },
+      {
+        "rank": 5,
+        "chunk_id": "c8326f44faeed8f181d23c367d6896a7",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-07-video_essay_transcript-indiewire-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.2718
+      },
+      {
+        "rank": 6,
+        "chunk_id": "21700a94109deb11fa216654c92c30a7",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-03-festival_qa-theguardian-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.2316
+      },
+      {
+        "rank": 7,
+        "chunk_id": "384e28d6defa242c9b4e7ad7c8b958d2",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-06-educational_essay-ijip-in",
+        "chunk_role": "plot_summary",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media",
+          "Control"
+        ],
+        "score": 0.2237
+      },
+      {
+        "rank": 8,
+        "chunk_id": "58c2ed0d42e3758bc5d3d2f38902ae4d",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-07-video_essay_transcript-indiewire-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Marriage"
+        ],
+        "score": 0.2019
+      },
+      {
+        "rank": 9,
+        "chunk_id": "6043d6a15226b51a98d910c0e38a59c6",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-05-academic-download-ssrn-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.3732
+      },
+      {
+        "rank": 10,
+        "chunk_id": "b1fa365cb0d27c247e8f648393aba54c",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.3724
+      },
+      {
+        "rank": 11,
+        "chunk_id": "057d9031f3e68908c0fb0acb35b659db",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.37
+      },
+      {
+        "rank": 12,
+        "chunk_id": "ce04f5ed1391c392316c0cb0ef47df38",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.37
+      }
+    ]
+  },
+  {
+    "id": "analyze_prisoners_justice",
+    "mode": "analyze_film",
+    "film_a": "prisoners",
+    "film_b": "",
+    "lens": "Justice",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.917,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 6,
+    "source_role_diversity": 4,
+    "source_roles": "creator_voice|criticism|production_context|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 1, \"formal_observation\": 3, \"interpretive_claim\": 1, \"scene_evidence\": 7}",
+    "film_counts": "{\"prisoners\": 12}",
+    "source_system_phrase_count": 1,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "e56ef70ee7a8c73cb0e69e3a1d810c28",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.5285
+      },
+      {
+        "rank": 2,
+        "chunk_id": "b22312b5d76eca86b063a602605daa7a",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.5209
+      },
+      {
+        "rank": 3,
+        "chunk_id": "0eb899590a2c05e69d520b52483557be",
+        "film": "Prisoners",
+        "source_key": "prisoners-05-craft_article-theasc-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.4658
+      },
+      {
+        "rank": 4,
+        "chunk_id": "4f73d4dc990c6b14bfa91f9008733058",
+        "film": "Prisoners",
+        "source_key": "prisoners-02-interview-local",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.35
+      },
+      {
+        "rank": 5,
+        "chunk_id": "7a4bc23914e91295a7113a93e6a74e1e",
+        "film": "Prisoners",
+        "source_key": "prisoners-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.3138
+      },
+      {
+        "rank": 6,
+        "chunk_id": "15c2ec4cab2a884462dd64b276082780",
+        "film": "Prisoners",
+        "source_key": "prisoners-08-review-theguardian-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Violence"
+        ],
+        "score": 0.2969
+      },
+      {
+        "rank": 7,
+        "chunk_id": "28e771d38ca636325999f4acb1575fca",
+        "film": "Prisoners",
+        "source_key": "prisoners-06-review-variety-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.24
+      },
+      {
+        "rank": 8,
+        "chunk_id": "f054955425816b7c91d95599b2974ca8",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.52
+      },
+      {
+        "rank": 9,
+        "chunk_id": "9f27979db961955b22967d2d31efed06",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.4024
+      },
+      {
+        "rank": 10,
+        "chunk_id": "be79b2b02960ec9b05f03abdc522ae33",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.3914
+      },
+      {
+        "rank": 11,
+        "chunk_id": "ebca23a1ee7a809e9c7163678f4fae3d",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.3909
+      },
+      {
+        "rank": 12,
+        "chunk_id": "e722d5361f6730ae2dfaaaf05d2c8475",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.3906
+      }
+    ]
+  },
+  {
+    "id": "compare_memento_shutter_guilt",
+    "mode": "compare_films",
+    "film_a": "memento",
+    "film_b": "shutter-island",
+    "lens": "Guilt",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.417,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 8,
+    "source_role_diversity": 3,
+    "source_roles": "creator_voice|criticism|scholarship",
+    "chunk_roles": "{\"creator_commentary\": 3, \"formal_observation\": 4, \"interpretive_claim\": 5}",
+    "film_counts": "{\"memento\": 6, \"shutter-island\": 6}",
+    "source_system_phrase_count": 1,
+    "comparison_balance_pass": true,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "ba9db584ef3c6d12863c0a0736928ca9",
+        "film": "Memento",
+        "source_key": "memento-05-academic-docs-lib-purdue-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.4001
+      },
+      {
+        "rank": 2,
+        "chunk_id": "c7ebe20f1d7e25566d77b7a45e7a1467",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-02-interview-indielondon-co-uk",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Reality vs Illusion",
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.3864
+      },
+      {
+        "rank": 3,
+        "chunk_id": "506fb155ca2d181de49b1a16b3786514",
+        "film": "Memento",
+        "source_key": "memento-06-academic-pdfs-semanticscholar-org",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Guilt"
+        ],
+        "score": 0.3864
+      },
+      {
+        "rank": 4,
+        "chunk_id": "3899d34048038db07e1cbcf57e06489b",
+        "film": "Memento",
+        "source_key": "memento-05-academic-docs-lib-purdue-edu",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.3481
+      },
+      {
+        "rank": 5,
+        "chunk_id": "a94b35ae6ffd0c2cae5b3c7ff390bc57",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-06-educational_essay-tlhjournal-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.3307
+      },
+      {
+        "rank": 6,
+        "chunk_id": "7f13471083e5fc31f56b50f7090e4f8c",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-07-academic-academypublication-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Trauma"
+        ],
+        "score": 0.2911
+      },
+      {
+        "rank": 7,
+        "chunk_id": "5898021dc13221e7a49dac1f736a778b",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-05-academic-irejournals-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Trauma"
+        ],
+        "score": 0.2839
+      },
+      {
+        "rank": 8,
+        "chunk_id": "59cfd67d77c7aa28740a598c4bb3a5e8",
+        "film": "Memento",
+        "source_key": "memento-02-interview-indiewire-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.2799
+      },
+      {
+        "rank": 9,
+        "chunk_id": "55b3233eecf68d0ce37d27a4ef06c6fd",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-08-craft_article-denofgeek-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Reality vs Illusion",
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.2788
+      },
+      {
+        "rank": 10,
+        "chunk_id": "cc8aa9090be3c8d3630fd02ed1e0f25f",
+        "film": "Memento",
+        "source_key": "memento-02-interview-indiewire-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.2769
+      },
+      {
+        "rank": 11,
+        "chunk_id": "b2cbbc787c17e27f28961c91e2a6dc38",
+        "film": "Memento",
+        "source_key": "memento-06-academic-pdfs-semanticscholar-org",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.2366
+      },
+      {
+        "rank": 12,
+        "chunk_id": "8dfe3d00c73389da5f4d3b9a67b61625",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-08-craft_article-denofgeek-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Reality vs Illusion",
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.2248
+      }
+    ]
+  },
+  {
+    "id": "compare_black_swan_prestige_performance",
+    "mode": "compare_films",
+    "film_a": "black-swan",
+    "film_b": "the-prestige",
+    "lens": "Performance",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.917,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 8,
+    "source_role_diversity": 5,
+    "source_roles": "creator_voice|criticism|production_context|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 2, \"formal_observation\": 7, \"scene_evidence\": 3}",
+    "film_counts": "{\"black-swan\": 9, \"the-prestige\": 3}",
+    "source_system_phrase_count": 2,
+    "comparison_balance_pass": false,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "73eb400ce9337b74cec8323e7b302191",
+        "film": "Black Swan",
+        "source_key": "black-swan-06-academic-digitalcommons-wcupa-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance",
+          "Identity"
+        ],
+        "score": 0.515
+      },
+      {
+        "rank": 2,
+        "chunk_id": "6e3fc7a82786bdc6368f0a859a2c1647",
+        "film": "The Prestige",
+        "source_key": "the-prestige-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Obsession",
+          "Performance",
+          "Sacrifice"
+        ],
+        "score": 0.4109
+      },
+      {
+        "rank": 3,
+        "chunk_id": "100142422703a95f4e720d7fbd448ed0",
+        "film": "Black Swan",
+        "source_key": "black-swan-06-academic-digitalcommons-wcupa-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.5096
+      },
+      {
+        "rank": 4,
+        "chunk_id": "8d831842a3f3c72281fb2974dd9ce12f",
+        "film": "Black Swan",
+        "source_key": "black-swan-03-festival_qa-top10films-co-uk",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Performance",
+          "Control"
+        ],
+        "score": 0.4924
+      },
+      {
+        "rank": 5,
+        "chunk_id": "c31b37346ddcd6a79dc5c70099c5984b",
+        "film": "Black Swan",
+        "source_key": "black-swan-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.4897
+      },
+      {
+        "rank": 6,
+        "chunk_id": "21c308cfd3a75e166ef0db54849333f3",
+        "film": "Black Swan",
+        "source_key": "black-swan-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Identity",
+          "Obsession"
+        ],
+        "score": 0.4042
+      },
+      {
+        "rank": 7,
+        "chunk_id": "a6f2c17dcc9b8182ecef237db2e464bd",
+        "film": "Black Swan",
+        "source_key": "black-swan-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Identity",
+          "Obsession"
+        ],
+        "score": 0.4034
+      },
+      {
+        "rank": 8,
+        "chunk_id": "4c6d42c78cabb833954b9fdab29c6ac7",
+        "film": "Black Swan",
+        "source_key": "black-swan-03-festival_qa-top10films-co-uk",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Performance",
+          "Identity",
+          "Obsession"
+        ],
+        "score": 0.3937
+      },
+      {
+        "rank": 9,
+        "chunk_id": "cbd854161d88f5af977ec4923af7da0b",
+        "film": "The Prestige",
+        "source_key": "the-prestige-07-video_essay_transcript-movies-radiofree-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Performance",
+          "Truth"
+        ],
+        "score": 0.3833
+      },
+      {
+        "rank": 10,
+        "chunk_id": "1868c61f507dfcbd52ec92316a0738dc",
+        "film": "Black Swan",
+        "source_key": "black-swan-08-craft_article-slantmagazine-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Performance"
+        ],
+        "score": 0.3798
+      },
+      {
+        "rank": 11,
+        "chunk_id": "a1b1b542a9417d9b6ea382fa33690716",
+        "film": "Black Swan",
+        "source_key": "black-swan-05-academic-the-criterion-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Control"
+        ],
+        "score": 0.2875
+      },
+      {
+        "rank": 12,
+        "chunk_id": "5cacee81ac15889a92cc6ea6fbd6f12c",
+        "film": "The Prestige",
+        "source_key": "the-prestige-07-video_essay_transcript-movies-radiofree-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Obsession",
+          "Performance",
+          "Sacrifice"
+        ],
+        "score": 0.2823
+      }
+    ]
+  },
+  {
+    "id": "compare_taxi_fight_violence",
+    "mode": "compare_films",
+    "film_a": "taxi-driver",
+    "film_b": "fight-club",
+    "lens": "Violence",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.667,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 8,
+    "source_role_diversity": 5,
+    "source_roles": "creator_voice|criticism|production_context|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 1, \"formal_observation\": 8, \"interpretive_claim\": 1, \"scene_evidence\": 2}",
+    "film_counts": "{\"fight-club\": 6, \"taxi-driver\": 6}",
+    "source_system_phrase_count": 0,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "8a6ffeffdd427aa93fd92b9263580811",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-04-production_notes-catalog-afi-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Violence"
+        ],
+        "score": 0.4413
+      },
+      {
+        "rank": 2,
+        "chunk_id": "7f2bd76222452a88d8593276f0e40d4b",
+        "film": "Fight Club",
+        "source_key": "fight-club-06-academic-academypublication-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Masculinity",
+          "Consumerism",
+          "Violence"
+        ],
+        "score": 0.5149
+      },
+      {
+        "rank": 3,
+        "chunk_id": "495943f88495ea06efff93813245f328",
+        "film": "Fight Club",
+        "source_key": "fight-club-06-academic-academypublication-com",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.5138
+      },
+      {
+        "rank": 4,
+        "chunk_id": "ed890a8483eaf74bfbaa95c0340fcdee",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-03-festival_qa-studsterkel-wfmt-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3985
+      },
+      {
+        "rank": 5,
+        "chunk_id": "5d1b2927cdc0a9c8e74267078a593744",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3899
+      },
+      {
+        "rank": 6,
+        "chunk_id": "1f8a0a4b2739898876263131be5c2ff4",
+        "film": "Fight Club",
+        "source_key": "fight-club-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Identity",
+          "Masculinity",
+          "Consumerism"
+        ],
+        "score": 0.2981
+      },
+      {
+        "rank": 7,
+        "chunk_id": "eb3103c1c877e921dedcb2b257b5865b",
+        "film": "Fight Club",
+        "source_key": "fight-club-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Identity",
+          "Masculinity",
+          "Consumerism"
+        ],
+        "score": 0.2954
+      },
+      {
+        "rank": 8,
+        "chunk_id": "61ba0e87bbf5d317d47b1781cdfacebf",
+        "film": "Fight Club",
+        "source_key": "fight-club-05-academic-digitalcommons-uri-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Masculinity",
+          "Consumerism"
+        ],
+        "score": 0.2893
+      },
+      {
+        "rank": 9,
+        "chunk_id": "6fcc0054782bf007dc543dafa1279073",
+        "film": "Fight Club",
+        "source_key": "fight-club-05-academic-digitalcommons-uri-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Masculinity",
+          "Consumerism"
+        ],
+        "score": 0.2866
+      },
+      {
+        "rank": 10,
+        "chunk_id": "52b014902fc69cdeaac96a720f5d0341",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-06-educational_essay-bfidatadigipres-github-io",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.2845
+      },
+      {
+        "rank": 11,
+        "chunk_id": "92e08e8abae834b5528115f25dc5a067",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-08-craft_article-scrapsfromtheloft-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.2826
+      },
+      {
+        "rank": 12,
+        "chunk_id": "cf38e44f2d9a870dc3534f1d3cf5e769",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-07-video_essay_transcript-cinephiliabeyond-org",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.2767
+      }
+    ]
+  },
+  {
+    "id": "compare_truman_gone_girl_control",
+    "mode": "compare_films",
+    "film_a": "truman-show",
+    "film_b": "gone-girl",
+    "lens": "Control",
+    "chunk_count": 12,
+    "film_match_rate": 1.0,
+    "theme_match_rate": 0.667,
+    "concrete_evidence_rate": 0.917,
+    "plot_summary_rate": 0.083,
+    "source_diversity": 8,
+    "source_role_diversity": 4,
+    "source_roles": "creator_voice|criticism|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 1, \"formal_observation\": 2, \"interpretive_claim\": 4, \"plot_summary\": 1, \"scene_evidence\": 4}",
+    "film_counts": "{\"gone-girl\": 4, \"truman-show\": 8}",
+    "source_system_phrase_count": 2,
+    "comparison_balance_pass": true,
+    "overall": "pass",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "8bcc1fdf3f2c00d1e93f5b736ec1c578",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.5125
+      },
+      {
+        "rank": 2,
+        "chunk_id": "3bac8a6afece9f3760cea52670fdbe92",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-06-educational_essay-ijip-in",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Marriage",
+          "Media",
+          "Control",
+          "Identity"
+        ],
+        "score": 0.3913
+      },
+      {
+        "rank": 3,
+        "chunk_id": "b1a4eae13253e23e78e02dd369444dbf",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-06-educational_essay-ijip-in",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Media",
+          "Control",
+          "Identity"
+        ],
+        "score": 0.3903
+      },
+      {
+        "rank": 4,
+        "chunk_id": "6942284a9a942f6125aa494b80099020",
+        "film": "The Truman Show",
+        "source_key": "truman-show-05-academic-digitalcommons-unomaha-edu",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Surveillance",
+          "Control"
+        ],
+        "score": 0.3598
+      },
+      {
+        "rank": 5,
+        "chunk_id": "62a5232308b791fbe976a178d74f4a3e",
+        "film": "The Truman Show",
+        "source_key": "truman-show-05-academic-digitalcommons-unomaha-edu",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.3556
+      },
+      {
+        "rank": 6,
+        "chunk_id": "66d07d6fb48488d091cc7c1add047907",
+        "film": "The Truman Show",
+        "source_key": "truman-show-07-educational_essay-offscreen-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.3353
+      },
+      {
+        "rank": 7,
+        "chunk_id": "ef9a48fc55e009267f58789cc5d22e05",
+        "film": "The Truman Show",
+        "source_key": "truman-show-07-educational_essay-offscreen-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.3347
+      },
+      {
+        "rank": 8,
+        "chunk_id": "7625edf7928129a5f2135e1f0c4f1392",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.2853
+      },
+      {
+        "rank": 9,
+        "chunk_id": "a1aa5222ce9afee14929c1322f8c29ea",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Surveillance",
+          "Freedom",
+          "Reality vs Illusion"
+        ],
+        "score": 0.2851
+      },
+      {
+        "rank": 10,
+        "chunk_id": "2118f4ab80cfb243705f0d4722c092ae",
+        "film": "Gone Girl",
+        "source_key": "gone-girl-02-screenplay-npr-org",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Performance",
+          "Marriage",
+          "Media"
+        ],
+        "score": 0.284
+      },
+      {
+        "rank": 11,
+        "chunk_id": "31701eaa935d53db9b6fe3de9cc795ac",
+        "film": "The Truman Show",
+        "source_key": "truman-show-02-interview-vanityfair-com",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Surveillance",
+          "Freedom",
+          "Reality vs Illusion"
+        ],
+        "score": 0.2684
+      },
+      {
+        "rank": 12,
+        "chunk_id": "4b918effc480687af2260e554c440044",
+        "film": "The Truman Show",
+        "source_key": "truman-show-06-educational_essay-quod-lib-umich-edu",
+        "chunk_role": "plot_summary",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Surveillance",
+          "Control"
+        ],
+        "score": 0.2274
+      }
+    ]
+  },
+  {
+    "id": "theme_memory",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Memory",
+    "chunk_count": 12,
+    "film_match_rate": 0.25,
+    "theme_match_rate": 0.25,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 8,
+    "source_role_diversity": 3,
+    "source_roles": "production_context|scholarship|screenplay",
+    "chunk_roles": "{\"formal_observation\": 4, \"interpretive_claim\": 2, \"scene_evidence\": 6}",
+    "film_counts": "{\"donnie-darko\": 1, \"fight-club\": 1, \"memento\": 3, \"one-flew-over-the-cuckoos-nest\": 2, \"prisoners\": 1, \"se7en\": 2, \"sixth-sense\": 2}",
+    "source_system_phrase_count": 1,
+    "comparison_balance_pass": true,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "f3ff94445bb7067633b905639590b489",
+        "film": "Memento",
+        "source_key": "memento-05-academic-docs-lib-purdue-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.6053
+      },
+      {
+        "rank": 2,
+        "chunk_id": "7f30012a2ef03c7f25d76027ff26bad0",
+        "film": "Memento",
+        "source_key": "memento-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.5059
+      },
+      {
+        "rank": 3,
+        "chunk_id": "03ef3e3c55f75777944635d405908485",
+        "film": "Memento",
+        "source_key": "memento-05-academic-docs-lib-purdue-edu",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Memory"
+        ],
+        "score": 0.4676
+      },
+      {
+        "rank": 4,
+        "chunk_id": "c8c3b5f9e6ed65961c9940a6a2a54d10",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.4324
+      },
+      {
+        "rank": 5,
+        "chunk_id": "e3bb3a17b6874bf80e65f5037a306266",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.4029
+      },
+      {
+        "rank": 6,
+        "chunk_id": "75e5cd9e6870cd2a0e1fd557ca6c4395",
+        "film": "Donnie Darko",
+        "source_key": "donnie-darko-01-screenplay-assets-scriptslug-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Time",
+          "Fate",
+          "Reality vs Illusion"
+        ],
+        "score": 0.401
+      },
+      {
+        "rank": 7,
+        "chunk_id": "c2eda4e888f2b2e8e86229aea773cabe",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.3999
+      },
+      {
+        "rank": 8,
+        "chunk_id": "695c3cb33e9866cb60629f1d863751c7",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.399
+      },
+      {
+        "rank": 9,
+        "chunk_id": "0e95c8b59d0dafbe5de2802ae79fd198",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.3985
+      },
+      {
+        "rank": 10,
+        "chunk_id": "ff237fb7f83078fedfeef6de87d58cb4",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.398
+      },
+      {
+        "rank": 11,
+        "chunk_id": "967981e59f05c22a0df3972422fc7513",
+        "film": "Fight Club",
+        "source_key": "fight-club-05-academic-digitalcommons-uri-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Violence"
+        ],
+        "score": 0.3976
+      },
+      {
+        "rank": 12,
+        "chunk_id": "92817975583570fc2e9347a0674c7b16",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.3968
+      }
+    ]
+  },
+  {
+    "id": "theme_performance",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Performance",
+    "chunk_count": 12,
+    "film_match_rate": 0.083,
+    "theme_match_rate": 0.333,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 9,
+    "source_role_diversity": 3,
+    "source_roles": "production_context|scholarship|screenplay",
+    "chunk_roles": "{\"formal_observation\": 4, \"interpretive_claim\": 2, \"scene_evidence\": 6}",
+    "film_counts": "{\"fight-club\": 2, \"mulholland-drive\": 1, \"one-flew-over-the-cuckoos-nest\": 2, \"prisoners\": 1, \"requiem-for-a-dream\": 1, \"se7en\": 2, \"shawshank-redemption\": 1, \"sixth-sense\": 2}",
+    "source_system_phrase_count": 3,
+    "comparison_balance_pass": true,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "c2eda4e888f2b2e8e86229aea773cabe",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.4831
+      },
+      {
+        "rank": 2,
+        "chunk_id": "8001ef1b05cc1476a1c110968107ad6c",
+        "film": "Mulholland Drive",
+        "source_key": "mulholland-drive-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Hollywood"
+        ],
+        "score": 0.4705
+      },
+      {
+        "rank": 3,
+        "chunk_id": "fb5ee5eeeb050b7e23375f13f6262755",
+        "film": "Requiem for a Dream",
+        "source_key": "requiem-for-a-dream-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Addiction",
+          "Obsession",
+          "Desire"
+        ],
+        "score": 0.4699
+      },
+      {
+        "rank": 4,
+        "chunk_id": "c8c3b5f9e6ed65961c9940a6a2a54d10",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.4334
+      },
+      {
+        "rank": 5,
+        "chunk_id": "859926902704cbfd03e64c1712d52412",
+        "film": "Fight Club",
+        "source_key": "fight-club-06-academic-academypublication-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Masculinity",
+          "Consumerism"
+        ],
+        "score": 0.4327
+      },
+      {
+        "rank": 6,
+        "chunk_id": "92817975583570fc2e9347a0674c7b16",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.4033
+      },
+      {
+        "rank": 7,
+        "chunk_id": "e3bb3a17b6874bf80e65f5037a306266",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.4029
+      },
+      {
+        "rank": 8,
+        "chunk_id": "0e95c8b59d0dafbe5de2802ae79fd198",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.3994
+      },
+      {
+        "rank": 9,
+        "chunk_id": "695c3cb33e9866cb60629f1d863751c7",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.399
+      },
+      {
+        "rank": 10,
+        "chunk_id": "ff237fb7f83078fedfeef6de87d58cb4",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.398
+      },
+      {
+        "rank": 11,
+        "chunk_id": "967981e59f05c22a0df3972422fc7513",
+        "film": "Fight Club",
+        "source_key": "fight-club-05-academic-digitalcommons-uri-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Violence"
+        ],
+        "score": 0.3976
+      },
+      {
+        "rank": 12,
+        "chunk_id": "226cf1beb05d7bb9505ae7bd4a209c6a",
+        "film": "The Shawshank Redemption",
+        "source_key": "shawshank-redemption-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Hope"
+        ],
+        "score": 0.3962
+      }
+    ]
+  },
+  {
+    "id": "theme_justice",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Justice",
+    "chunk_count": 12,
+    "film_match_rate": 0.333,
+    "theme_match_rate": 0.333,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 9,
+    "source_role_diversity": 3,
+    "source_roles": "production_context|scholarship|screenplay",
+    "chunk_roles": "{\"formal_observation\": 5, \"interpretive_claim\": 1, \"scene_evidence\": 6}",
+    "film_counts": "{\"fight-club\": 1, \"memento\": 1, \"one-flew-over-the-cuckoos-nest\": 2, \"prisoners\": 1, \"requiem-for-a-dream\": 1, \"se7en\": 3, \"sixth-sense\": 2, \"taxi-driver\": 1}",
+    "source_system_phrase_count": 3,
+    "comparison_balance_pass": true,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "c8c3b5f9e6ed65961c9940a6a2a54d10",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.5524
+      },
+      {
+        "rank": 2,
+        "chunk_id": "0e95c8b59d0dafbe5de2802ae79fd198",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.5177
+      },
+      {
+        "rank": 3,
+        "chunk_id": "92817975583570fc2e9347a0674c7b16",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.5168
+      },
+      {
+        "rank": 4,
+        "chunk_id": "575400fa96e33f5e2b4f0aced2e261d5",
+        "film": "Se7en",
+        "source_key": "se7en-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.4338
+      },
+      {
+        "rank": 5,
+        "chunk_id": "e3bb3a17b6874bf80e65f5037a306266",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.4029
+      },
+      {
+        "rank": 6,
+        "chunk_id": "c2eda4e888f2b2e8e86229aea773cabe",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.3991
+      },
+      {
+        "rank": 7,
+        "chunk_id": "695c3cb33e9866cb60629f1d863751c7",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.399
+      },
+      {
+        "rank": 8,
+        "chunk_id": "ff237fb7f83078fedfeef6de87d58cb4",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.398
+      },
+      {
+        "rank": 9,
+        "chunk_id": "967981e59f05c22a0df3972422fc7513",
+        "film": "Fight Club",
+        "source_key": "fight-club-05-academic-digitalcommons-uri-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Violence"
+        ],
+        "score": 0.3966
+      },
+      {
+        "rank": 10,
+        "chunk_id": "c28702c09a003e773828b95e384c77a2",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3883
+      },
+      {
+        "rank": 11,
+        "chunk_id": "7f30012a2ef03c7f25d76027ff26bad0",
+        "film": "Memento",
+        "source_key": "memento-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.3859
+      },
+      {
+        "rank": 12,
+        "chunk_id": "fb5ee5eeeb050b7e23375f13f6262755",
+        "film": "Requiem for a Dream",
+        "source_key": "requiem-for-a-dream-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Addiction",
+          "Obsession",
+          "Desire"
+        ],
+        "score": 0.3846
+      }
+    ]
+  },
+  {
+    "id": "theme_control",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Control",
+    "chunk_count": 12,
+    "film_match_rate": 0.333,
+    "theme_match_rate": 0.25,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 9,
+    "source_role_diversity": 3,
+    "source_roles": "production_context|scholarship|screenplay",
+    "chunk_roles": "{\"formal_observation\": 4, \"interpretive_claim\": 1, \"scene_evidence\": 7}",
+    "film_counts": "{\"fight-club\": 1, \"memento\": 1, \"one-flew-over-the-cuckoos-nest\": 2, \"prisoners\": 1, \"se7en\": 2, \"shawshank-redemption\": 1, \"sixth-sense\": 2, \"taxi-driver\": 1, \"truman-show\": 1}",
+    "source_system_phrase_count": 3,
+    "comparison_balance_pass": true,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "e3bb3a17b6874bf80e65f5037a306266",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.5229
+      },
+      {
+        "rank": 2,
+        "chunk_id": "77753fd36f0ea3392ad8c085ba30c8db",
+        "film": "The Truman Show",
+        "source_key": "truman-show-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control"
+        ],
+        "score": 0.5191
+      },
+      {
+        "rank": 3,
+        "chunk_id": "ff237fb7f83078fedfeef6de87d58cb4",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.5189
+      },
+      {
+        "rank": 4,
+        "chunk_id": "c8c3b5f9e6ed65961c9940a6a2a54d10",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.4324
+      },
+      {
+        "rank": 5,
+        "chunk_id": "c2eda4e888f2b2e8e86229aea773cabe",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.3991
+      },
+      {
+        "rank": 6,
+        "chunk_id": "695c3cb33e9866cb60629f1d863751c7",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.399
+      },
+      {
+        "rank": 7,
+        "chunk_id": "0e95c8b59d0dafbe5de2802ae79fd198",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.3985
+      },
+      {
+        "rank": 8,
+        "chunk_id": "967981e59f05c22a0df3972422fc7513",
+        "film": "Fight Club",
+        "source_key": "fight-club-05-academic-digitalcommons-uri-edu",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Violence"
+        ],
+        "score": 0.3976
+      },
+      {
+        "rank": 9,
+        "chunk_id": "92817975583570fc2e9347a0674c7b16",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.3968
+      },
+      {
+        "rank": 10,
+        "chunk_id": "226cf1beb05d7bb9505ae7bd4a209c6a",
+        "film": "The Shawshank Redemption",
+        "source_key": "shawshank-redemption-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Hope"
+        ],
+        "score": 0.3962
+      },
+      {
+        "rank": 11,
+        "chunk_id": "7f30012a2ef03c7f25d76027ff26bad0",
+        "film": "Memento",
+        "source_key": "memento-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.3859
+      },
+      {
+        "rank": 12,
+        "chunk_id": "c28702c09a003e773828b95e384c77a2",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.384
+      }
+    ]
+  },
+  {
+    "id": "theme_reality",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Reality vs Illusion",
+    "chunk_count": 12,
+    "film_match_rate": 0.5,
+    "theme_match_rate": 0.5,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 9,
+    "source_role_diversity": 5,
+    "source_roles": "creator_voice|criticism|production_context|scholarship|screenplay",
+    "chunk_roles": "{\"creator_commentary\": 2, \"formal_observation\": 6, \"interpretive_claim\": 1, \"scene_evidence\": 3}",
+    "film_counts": "{\"memento\": 1, \"one-flew-over-the-cuckoos-nest\": 2, \"se7en\": 2, \"shutter-island\": 4, \"sixth-sense\": 1, \"taxi-driver\": 1, \"the-prestige\": 1}",
+    "source_system_phrase_count": 3,
+    "comparison_balance_pass": true,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "979910776ff9b1198b973fe0a6e45d39",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-05-academic-pmc-ncbi-nlm-nih-gov",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Institutional Power",
+          "Freedom",
+          "Rebellion"
+        ],
+        "score": 0.5935
+      },
+      {
+        "rank": 2,
+        "chunk_id": "4e53effb51bbe1a680072b94c8f91528",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-02-interview-indielondon-co-uk",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Reality vs Illusion",
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.4903
+      },
+      {
+        "rank": 3,
+        "chunk_id": "9ad0f7e3ddfd9f9fad198447765fea3b",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-02-interview-indielondon-co-uk",
+        "chunk_role": "creator_commentary",
+        "source_role": "creator_voice",
+        "lens_tags": [
+          "Reality vs Illusion",
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.485
+      },
+      {
+        "rank": 4,
+        "chunk_id": "cd3297b9460ac04b492b07fdad8493af",
+        "film": "The Prestige",
+        "source_key": "the-prestige-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Obsession",
+          "Performance",
+          "Sacrifice"
+        ],
+        "score": 0.4575
+      },
+      {
+        "rank": 5,
+        "chunk_id": "c8c3b5f9e6ed65961c9940a6a2a54d10",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.4017
+      },
+      {
+        "rank": 6,
+        "chunk_id": "c2eda4e888f2b2e8e86229aea773cabe",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.3809
+      },
+      {
+        "rank": 7,
+        "chunk_id": "e3bb3a17b6874bf80e65f5037a306266",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.3797
+      },
+      {
+        "rank": 8,
+        "chunk_id": "3bb1d5ae0ce1232b007eb3ed56b9952d",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.3794
+      },
+      {
+        "rank": 9,
+        "chunk_id": "b0b7f123a486c3a709274f914161167d",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-08-craft_article-denofgeek-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Reality vs Illusion",
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.3753
+      },
+      {
+        "rank": 10,
+        "chunk_id": "71b5513b861d18aba2e07a17f61d99ab",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-08-craft_article-denofgeek-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Reality vs Illusion",
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.3694
+      },
+      {
+        "rank": 11,
+        "chunk_id": "c28702c09a003e773828b95e384c77a2",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3644
+      },
+      {
+        "rank": 12,
+        "chunk_id": "7f30012a2ef03c7f25d76027ff26bad0",
+        "film": "Memento",
+        "source_key": "memento-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.3623
+      }
+    ]
+  },
+  {
+    "id": "theme_trauma",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Trauma",
+    "chunk_count": 12,
+    "film_match_rate": 0.25,
+    "theme_match_rate": 0.167,
+    "concrete_evidence_rate": 1.0,
+    "plot_summary_rate": 0.0,
+    "source_diversity": 9,
+    "source_role_diversity": 4,
+    "source_roles": "criticism|production_context|scholarship|screenplay",
+    "chunk_roles": "{\"formal_observation\": 4, \"interpretive_claim\": 2, \"scene_evidence\": 6}",
+    "film_counts": "{\"fight-club\": 1, \"memento\": 1, \"one-flew-over-the-cuckoos-nest\": 2, \"prisoners\": 1, \"se7en\": 2, \"shawshank-redemption\": 1, \"shutter-island\": 1, \"sixth-sense\": 2, \"taxi-driver\": 1}",
+    "source_system_phrase_count": 4,
+    "comparison_balance_pass": true,
+    "overall": "fail",
+    "top_chunks": [
+      {
+        "rank": 1,
+        "chunk_id": "553b8d8d0b3e4333866cb24d72b6a2bc",
+        "film": "Shutter Island",
+        "source_key": "shutter-island-06-educational_essay-tlhjournal-com",
+        "chunk_role": "formal_observation",
+        "source_role": "criticism",
+        "lens_tags": [
+          "Trauma",
+          "Guilt"
+        ],
+        "score": 0.4702
+      },
+      {
+        "rank": 2,
+        "chunk_id": "c8c3b5f9e6ed65961c9940a6a2a54d10",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.4324
+      },
+      {
+        "rank": 3,
+        "chunk_id": "859926902704cbfd03e64c1712d52412",
+        "film": "Fight Club",
+        "source_key": "fight-club-06-academic-academypublication-com",
+        "chunk_role": "interpretive_claim",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Identity",
+          "Masculinity",
+          "Consumerism"
+        ],
+        "score": 0.4315
+      },
+      {
+        "rank": 4,
+        "chunk_id": "e3bb3a17b6874bf80e65f5037a306266",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.4029
+      },
+      {
+        "rank": 5,
+        "chunk_id": "c2eda4e888f2b2e8e86229aea773cabe",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.3991
+      },
+      {
+        "rank": 6,
+        "chunk_id": "695c3cb33e9866cb60629f1d863751c7",
+        "film": "The Sixth Sense",
+        "source_key": "sixth-sense-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Grief",
+          "Perception",
+          "Denial"
+        ],
+        "score": 0.399
+      },
+      {
+        "rank": 7,
+        "chunk_id": "0e95c8b59d0dafbe5de2802ae79fd198",
+        "film": "Se7en",
+        "source_key": "se7en-06-academic-nottingham-ac-uk",
+        "chunk_role": "formal_observation",
+        "source_role": "scholarship",
+        "lens_tags": [
+          "Justice",
+          "Violence",
+          "Moral Decay"
+        ],
+        "score": 0.3985
+      },
+      {
+        "rank": 8,
+        "chunk_id": "ff237fb7f83078fedfeef6de87d58cb4",
+        "film": "One Flew Over the Cuckoo's Nest",
+        "source_key": "one-flew-over-the-cuckoos-nest-01-screenplay-imsdb-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Control",
+          "Institutional Power",
+          "Freedom"
+        ],
+        "score": 0.398
+      },
+      {
+        "rank": 9,
+        "chunk_id": "92817975583570fc2e9347a0674c7b16",
+        "film": "Prisoners",
+        "source_key": "prisoners-01-screenplay-static1-squarespace-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Justice",
+          "Faith",
+          "Violence"
+        ],
+        "score": 0.3968
+      },
+      {
+        "rank": 10,
+        "chunk_id": "226cf1beb05d7bb9505ae7bd4a209c6a",
+        "film": "The Shawshank Redemption",
+        "source_key": "shawshank-redemption-01-screenplay-dailyscript-com",
+        "chunk_role": "scene_evidence",
+        "source_role": "screenplay",
+        "lens_tags": [
+          "Hope"
+        ],
+        "score": 0.3962
+      },
+      {
+        "rank": 11,
+        "chunk_id": "c28702c09a003e773828b95e384c77a2",
+        "film": "Taxi Driver",
+        "source_key": "taxi-driver-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Isolation",
+          "Masculinity",
+          "Violence"
+        ],
+        "score": 0.3883
+      },
+      {
+        "rank": 12,
+        "chunk_id": "7f30012a2ef03c7f25d76027ff26bad0",
+        "film": "Memento",
+        "source_key": "memento-04-production_notes-catalog-afi-com",
+        "chunk_role": "formal_observation",
+        "source_role": "production_context",
+        "lens_tags": [
+          "Memory",
+          "Truth",
+          "Identity"
+        ],
+        "score": 0.3859
+      }
+    ]
+  }
+]

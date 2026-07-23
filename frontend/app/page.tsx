@@ -75,23 +75,23 @@ export default function Home() {
     return [];
   }, [mode, selectedFilmA, selectedFilmB]);
 
-  const canGenerate =
-    Boolean(mode && lens) &&
-    ((mode === "analyze_film" && Boolean(filmA)) ||
-      (mode === "compare_films" && Boolean(filmA) && Boolean(filmB) && filmA !== filmB) ||
-      mode === "explore_theme");
+  const hasRequiredFilms =
+    mode === "explore_theme" ||
+    (mode === "analyze_film" && Boolean(filmA)) ||
+    (mode === "compare_films" && Boolean(filmA) && Boolean(filmB) && filmA !== filmB);
+  const canGenerate = step === "lens" && Boolean(mode && hasRequiredFilms && lens);
 
   const disabledReason = !mode
     ? "Choose a workflow first."
-    : !lens
-      ? mode === "explore_theme"
-        ? "Choose a theme."
-        : "Choose a lens."
-      : mode === "analyze_film" && !filmA
+    : mode === "analyze_film" && !filmA
         ? "Choose a film."
         : mode === "compare_films" && (!filmA || !filmB || filmA === filmB)
           ? "Choose two different films."
-          : "";
+          : !lens
+            ? mode === "explore_theme"
+              ? "Choose a theme."
+              : "Choose a lens."
+            : "";
 
   function startWorkflow(nextMode: Mode) {
     setMode(nextMode);
@@ -100,6 +100,7 @@ export default function Home() {
     setLens("");
     setAnswer(null);
     setError(null);
+    setLoading(false);
     setStep(nextMode === "explore_theme" ? "lens" : "film");
   }
 
@@ -110,11 +111,13 @@ export default function Home() {
     setLens("");
     setAnswer(null);
     setError(null);
+    setLoading(false);
     setStep("mode");
   }
 
   function goBack() {
     setError(null);
+    setLoading(false);
     if (step === "answer") {
       setAnswer(null);
       setStep("lens");
@@ -137,6 +140,7 @@ export default function Home() {
   function selectFilm(slug: string) {
     setAnswer(null);
     setError(null);
+    setLoading(false);
     setLens("");
     if (mode === "compare_films") {
       if (!filmA || slug === filmA) {
@@ -314,10 +318,12 @@ export default function Home() {
           )}
           <div className="footerAction">
             <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
-              {loading ? <Loader2 className="spin" size={18} /> : null}
+              {loading && canGenerate ? <Loader2 className="spin" size={18} /> : null}
               Generate Reading
             </button>
-            <span className={canGenerate ? "readyText" : "inlineError"}>{loading ? loadingText : canGenerate ? `Selected lens: ${lens}` : disabledReason}</span>
+            <span className={canGenerate ? "readyText" : "inlineError"}>
+              {loading && canGenerate ? loadingText : canGenerate ? `${mode === "explore_theme" ? "Selected theme" : "Selected lens"}: ${lens}` : disabledReason}
+            </span>
           </div>
         </section>
       )}

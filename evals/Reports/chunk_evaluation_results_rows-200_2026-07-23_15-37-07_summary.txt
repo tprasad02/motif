@@ -1,0 +1,26 @@
+
+Chunk evaluation complete
+==============================================================
+Model:                            gpt-4.1-mini
+Chunks:                           200
+Successful LLM evaluations:       200
+Failed LLM evaluations:           0
+--------------------------------------------------------------
+Total tokens:                     98664
+Average tokens:                   493.32
+Median tokens:                    566.00
+Token standard deviation:         303.93
+Minimum tokens:                   54
+Maximum tokens:                   1073
+--------------------------------------------------------------
+Below minimum token rate:         0.0%
+Above maximum token rate:         0.0%
+Likely invalid start rate:        18.5%
+Likely invalid ending rate:       29.0%
+Average adjacent similarity:      0.589
+Boilerplate/reference junk rate:  3.0%
+Likely plot summary rate:         2.5%
+--------------------------------------------------------------
+Average chunk score:              4.48/5
+Bad chunk rate (1-2):             2.5%
+Strong chunk rate (4-5):          93.5%

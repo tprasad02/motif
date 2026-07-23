@@ -90,6 +90,27 @@ THEME_LENS_FILMS = {
     "Trauma": ["shutter-island", "sixth-sense", "requiem-for-a-dream", "donnie-darko", "the-machinist"],
 }
 
+FILM_SUMMARIES = {
+    "shawshank-redemption": "A banker sentenced to life in prison forms an unlikely friendship with a fellow inmate while holding onto hope for freedom.",
+    "fight-club": "An insomniac office worker's life changes when he meets a mysterious man who introduces him to an underground fight club.",
+    "one-flew-over-the-cuckoos-nest": "A rebellious criminal fakes insanity to avoid prison but finds himself battling the oppressive authority of a psychiatric hospital.",
+    "se7en": "Two detectives hunt a serial killer who uses the seven deadly sins as inspiration for a series of gruesome murders.",
+    "silence-of-the-lambs": "A young FBI trainee seeks the help of an imprisoned cannibal to catch a serial killer who skins his victims.",
+    "the-prestige": "Two rival magicians become consumed by their competition, sacrificing everything in their pursuit of the ultimate illusion.",
+    "memento": "A man with short-term memory loss tries to find his wife's killer by relying on photographs, notes, and tattoos to piece together the truth.",
+    "taxi-driver": "A lonely and disturbed New York taxi driver becomes increasingly obsessed with cleaning up the city's corruption and violence.",
+    "shutter-island": "A U.S. marshal investigates the disappearance of a patient from an isolated mental institution and begins to question his own reality.",
+    "black-swan": "A perfectionist ballerina spirals into paranoia and obsession as she struggles to embody both sides of the lead role in Swan Lake.",
+    "sixth-sense": "A troubled boy who claims to see dead people seeks help from a child psychologist who is struggling with his own personal failures.",
+    "prisoners": "When his young daughter and her friend disappear, a desperate father takes matters into his own hands while a detective investigates the case.",
+    "gone-girl": "When a woman mysteriously disappears on her wedding anniversary, suspicion falls on her husband as the media turns their marriage into a spectacle.",
+    "requiem-for-a-dream": "Four people become consumed by their addictions as their dreams of a better life give way to increasingly devastating consequences.",
+    "donnie-darko": "A troubled teenager begins experiencing visions of a mysterious figure in a rabbit costume who tells him the world will soon end.",
+    "the-machinist": "A machinist who has not slept in a year becomes increasingly paranoid as his deteriorating mental state draws him into a disturbing mystery.",
+    "mulholland-drive": "An aspiring actress and an amnesiac woman become entangled in a strange mystery that blurs the line between Hollywood dreams and reality.",
+    "truman-show": "A man living an idyllic suburban life gradually discovers that his entire existence is a reality television show filmed without his knowledge.",
+}
+
 
 def coverage_score(chunks: list[RetrievedChunk], required_films: list[str] | None = None) -> float:
     if not chunks:
@@ -377,17 +398,10 @@ def _sanitize_thesis(thesis: str, request: GuidedAnswerRequest) -> str:
     return thesis[:360].strip()
 
 
-def _theme_card_body(slug: str, chunks: list[RetrievedChunk]) -> str:
-    roles = {chunk.chunk_role for chunk in chunks}
-    if "scene_evidence" in roles and "formal_observation" in roles:
-        return "Strong match for close readings built from concrete scenes and repeated formal patterns."
-    if "scene_evidence" in roles:
-        return "Strong match for scene-based readings built from recurring moments, images, and actions."
-    if "creator_commentary" in roles:
-        return "Good match for readings shaped by direct creative decisions and character choices."
-    if "formal_observation" in roles:
-        return "Good match for visual style, sound, editing, performance, or structural choices."
-    return "Relevant match for a concise close reading without needing a full plot recap."
+def _theme_card_body(slug: str, lens: str) -> str:
+    if slug in FILM_SUMMARIES:
+        return FILM_SUMMARIES[slug]
+    return f"A collection film where {lens.lower()} can be followed through character choices, setting, and repeated visual details."
 
 
 def _lens_matches(selected_lens: str, candidate_lens: str) -> bool:
@@ -437,7 +451,7 @@ def _theme_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> 
                 "title": FILM_TITLES[slug],
                 "year": meta.get("year"),
                 "director": meta.get("director"),
-                "summary": _theme_card_body(slug, film_chunks),
+                "summary": _theme_card_body(slug, request.lens),
                 "score": round(score, 3),
             }
         )

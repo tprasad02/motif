@@ -180,6 +180,12 @@ class InputChunk(BaseModel):
 
     chunk_id: str = Field(min_length=1)
     text: str = Field(min_length=1)
+    film_slug: str | None = None
+    source_key: str | None = None
+    source_type: str | None = None
+    source_role: str | None = None
+    chunk_role: str | None = None
+    lens_tags: list[str] = Field(default_factory=list)
 
 
 # ============================================================
@@ -250,6 +256,8 @@ class DeterministicEvaluation(BaseModel):
     below_min_tokens: bool
     above_max_tokens: bool
     near_empty: bool
+    boilerplate_or_reference_junk: bool = False
+    likely_plot_summary: bool = False
 
 
 class ChunkEvaluationResult(BaseModel):
@@ -309,6 +317,10 @@ class EvaluationSummary(BaseModel):
     average_adjacent_similarity: float | None
 
     average_score: float | None
+    bad_chunk_rate: float = 0.0
+    strong_chunk_rate: float = 0.0
+    boilerplate_or_reference_junk_rate: float = 0.0
+    likely_plot_summary_rate: float = 0.0
 
 
 class EvaluationOutput(BaseModel):

@@ -1,0 +1,1170 @@
+[
+  {
+    "id": "analyze_memento_memory",
+    "mode": "analyze_film",
+    "film_a": "memento",
+    "film_b": "",
+    "lens": "Memory",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [
+      "not_every_card_has_visible_or_audible_detail"
+    ],
+    "deterministic_metrics": {
+      "concrete_card_count": 3,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": false,
+    "judge_error": "",
+    "response": {
+      "thesis": "Memento intricately examines the theme of memory through its disorienting narrative structure and the protagonist’s struggle with anterograde amnesia, revealing how memories can be manipulated and distorted",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Leonard's Conversation with Burt",
+          "body": "In a pivotal scene, Leonard explains his memory condition to Burt, emphasizing his inability to form new memories. The dialogue reveals Leonard's reliance on Polaroids and notes to navigate his world. His nervousness is palpable as he tries to reassure Burt of his intent, highlighting the fragility of his grasp on reality. The moment captures the essence of Leonard's struggle, as he is aware of his limitations yet still seeks connection. The setting of the motel office, with its mundane surroundings, contrasts sharply with the gravity of Leonard's predicament, underscoring his isolation despite his attempts at normalcy",
+          "chunk_ids": "[\"22\", \"11\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Nonlinear Narrative Structure",
+          "body": "Memento employs a nonlinear narrative that unfolds in reverse chronological order, disorienting the audience and mirroring Leonard's experience of memory loss. This structure forces viewers to piece together the plot alongside Leonard, creating a sense of confusion and urgency. The editing style emphasizes repetition, as scenes are revisited with new context, challenging the reliability of memory. For instance, the first time Leonard meets Teddy, the audience sees the interaction unfold without knowing its significance until later. This technique not only engages viewers but also reflects the fragmented nature of Leonard's memory, making them question their own perceptions",
+          "chunk_ids": "[\"10\", \"9\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Guy Pearce's Portrayal of Leonard",
+          "body": "Guy Pearce's performance as Leonard is marked by a palpable sense of confusion and desperation. His physical demeanor—tense posture, darting eyes—conveys a man constantly on edge, struggling to grasp fleeting moments of clarity. In scenes where Leonard interacts with others, his facial expressions shift rapidly as he processes information, revealing his internal turmoil. Pearce's ability to embody a character trapped in a cycle of forgetting is crucial, as it allows the audience to empathize with Leonard's plight. His portrayal makes the character's emotional journey compelling, highlighting the tragic aspects of living without a reliable memory",
+          "chunk_ids": "[\"7\", \"6\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Memory and Truth",
+          "body": "A significant moment occurs when Teddy confronts Leonard about the unreliability of memory, suggesting that it is interpretive rather than factual. This dialogue raises questions about the nature of truth within the film. As Leonard clings to his notes and Polaroids, the audience is led to consider how memory can be manipulated, not just by others but also by oneself. Teddy's assertion that memory can distort reality challenges Leonard's quest for vengeance, suggesting that his memories may not be a trustworthy guide. This ambiguity forces viewers to grapple with the distinction between memory and reality, complicating their understanding of Leonard's motivations",
+          "chunk_ids": "[\"12\", \"8\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer clearly identifies 'Memento' and presents a specific, arguable thesis about memory and narrative structure. Each evidence card addresses a distinct facet of the thesis—from character interaction to formal narrative technique, performance, and thematic ambiguity—without repeating the same points. The references include concrete film details such as Leonard's interaction with Burt, use of Polaroids, nonlinear editing, and Guy Pearce's physical portrayal. The explanation interprets and w",
+      "weakest_dimension": "none"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "analyze_black_swan_performance",
+    "mode": "analyze_film",
+    "film_a": "black-swan",
+    "film_b": "",
+    "lens": "Performance",
+    "coverage_level": "high",
+    "coverage_score": 0.93,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "concrete_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": true,
+    "judge_error": "",
+    "response": {
+      "thesis": "In Black Swan, the theme of performance drives Nina's transformation, revealing the dangers of artistic obsession and the blurred lines between reality and illusion. The film illustrates how the pursuit of perfection in performance can lead to self-destruction",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Final Performance",
+          "body": "During Nina's final performance as the Black Swan, the camera captures her transformation in a long, fluid shot. As she dances, her movements become increasingly erratic, reflecting her psychological unraveling. The sound design layers rustling feathers over the score, enhancing the surreal quality of her metamorphosis. This moment encapsulates her complete embodiment of the role, yet it also signifies her loss of self, as she sacrifices her sanity for artistic achievement. The applause that follows her leap is both triumphant and tragic, highlighting the duality of her success and destruction",
+          "chunk_ids": "[\"2\", \"7\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Use of Mirrors",
+          "body": "Mirrors serve as a recurring motif throughout Black Swan, symbolizing Nina's fractured identity and her struggle with self-perception. In one scene, Nina stares at her reflection in multiple shards, each showing a different version of herself. This visual fragmentation emphasizes her internal conflict between the White Swan's purity and the Black Swan's darkness. The mirrors not only reflect her physical appearance but also her psychological state, creating a sense of disorientation that aligns with her deteriorating mental health. This technique reinforces the theme of performance by illustrating how Nina's identity is shaped by external expectations",
+          "chunk_ids": "[\"1\", \"4\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Nina's Transformation",
+          "body": "Natalie Portman's portrayal of Nina is marked by a gradual shift from innocence to obsession. Initially, Nina is depicted as a fragile, perfectionist ballerina, but as she strives to embody the Black Swan, her performance becomes more intense and reckless. Portman's physicality, including her strained expressions and meticulous movements, conveys Nina's mounting pressure to succeed. This transformation culminates in her violent confrontation with her rival, Lily, where her emotional turmoil manifests in a dramatic and chaotic performance. The stark contrast in her demeanor illustrates the psychological toll of her artistic ambition",
+          "chunk_ids": "[\"2\", \"10\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Reality vs. Illusion",
+          "body": "The film blurs the lines between reality and fantasy, particularly in scenes involving Nina's interactions with Lily. As Nina becomes increasingly paranoid, her perception of Lily morphs, leading to moments where we question what is real. For instance, the scene where Nina violently confronts Lily can be interpreted as either a real event or a manifestation of Nina's fractured psyche. This ambiguity invites viewers to consider the impact of Nina's obsession on her grasp of reality, suggesting that her pursuit of perfection distorts her perception and ultimately leads to her downfall",
+          "chunk_ids": "[\"4\", \"12\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer specifically analyzes 'Black Swan' with a clear, arguable thesis about performance driving Nina's transformation and the dangers of artistic obsession. Each of the four evidence cards addresses distinct aspects—final performance, mirrors motif, Nina's transformation as portrayed by Portman, and ambiguity of reality vs. illusion—providing concrete film details such as camera work, sound design, and acting. The answer explains these details insightfully rather than dumping text, avoids ",
+      "weakest_dimension": "none"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "analyze_taxi_driver_isolation",
+    "mode": "analyze_film",
+    "film_a": "taxi-driver",
+    "film_b": "",
+    "lens": "Isolation",
+    "coverage_level": "high",
+    "coverage_score": 0.93,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "concrete_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": true,
+    "judge_error": "",
+    "response": {
+      "thesis": "In Taxi Driver, isolation pervades Travis Bickle's existence, illustrated through his disconnection from society and the urban environment he navigates. The film employs visual and auditory elements to emphasize his loneliness and the psychological turmoil that ensues",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Travis Watching from His Taxi",
+          "body": "In a pivotal scene, Travis sits in his taxi outside the Palantine campaign headquarters, his cold, piercing gaze fixated on the bustling world around him. This moment captures his isolation as he observes life from a distance, likening him to a 'lone wolf' watching the 'warm campfires of civilization.' The stark contrast between his solitude and the vibrant activity of the city underscores his alienation. The thin red glow of his cigarette adds a visual cue of his internal struggle, highlighting the darkness that envelops him as he remains disconnected from the very society he longs to engage with",
+          "chunk_ids": "[\"1ba8f7ca53aa4ee200074bcfa6647e52\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Desolate Urban Landscape",
+          "body": "The cinematography in Taxi Driver employs a gritty, claustrophobic aesthetic that mirrors Travis's mental state. The shots of New York's streets are often framed tightly, emphasizing the overwhelming presence of the city while simultaneously isolating Travis within it. The use of low lighting and shadows creates an oppressive atmosphere, reinforcing the sense of despair and isolation he experiences. The sound design complements this visual style, with the cacophony of the city juxtaposed against Travis’s silence, accentuating his feeling of being trapped in a world he cannot connect with",
+          "chunk_ids": "[\"9\", \"12\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Travis's Interactions",
+          "body": "Robert De Niro's performance as Travis Bickle is marked by a palpable sense of isolation. His awkward conversations, particularly with Betsy and Iris, reveal his inability to connect with others. When he attempts to engage Betsy, his nervousness and lack of social skills create an uncomfortable dynamic, showcasing his loneliness. His interactions with Iris further emphasize this theme; he wants to save her but ultimately fails to bridge the emotional gap between them. De Niro’s subtle facial expressions and body language convey a deep yearning for connection, highlighting the tragic nature of his alienation",
+          "chunk_ids": "[\"6\", \"11\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Travis's Unreliable Narration",
+          "body": "Travis serves as an unreliable narrator, which adds layers of ambiguity to his isolation. His internal monologues reveal a distorted perception of reality, where he believes he is a misunderstood savior. This self-image clashes with the chaotic world around him, suggesting that his isolation is partly self-imposed. The film's ending, where he is hailed as a hero, raises questions about the validity of his perspective. Is he truly a liberator, or is this a delusion born from his profound loneliness? This ambiguity invites viewers to reconsider the nature of his isolation and the societal factors contributing to it",
+          "chunk_ids": "[\"7\", \"10\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer provides a clear, film-specific thesis focused on Taxi Driver's theme of isolation through Travis Bickle. Each of the four evidence cards covers a distinct aspect: visual motif (Travis watching from taxi), formal technique and cinematography, character performance highlighting social awkwardness, and unreliable narration adding complexity. All evidence contains concrete film details (visual cues, cinematography, acting subtleties, narration) with no simple dumping of chunk text; the v",
+      "weakest_dimension": "None; all dimensions are strong"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "analyze_machinist_guilt",
+    "mode": "analyze_film",
+    "film_a": "the-machinist",
+    "film_b": "",
+    "lens": "Guilt",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "concrete_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": true,
+    "judge_error": "",
+    "response": {
+      "thesis": "In The Machinist, guilt manifests physically and psychologically through Trevor's self-inflicted torment and deteriorating mental state, illustrating how unresolved guilt can consume an individual entirely",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Trevor's Physical State",
+          "body": "Trevor's emaciated appearance is a constant visual motif throughout The Machinist. His sunken cheeks and protruding bones emphasize his physical suffering, which mirrors his internal guilt. This grotesque representation of his body serves as a visual cue for the audience, reflecting the toll that guilt takes on him. The absence of nourishment and sleep highlights his self-punishment for the accident he cannot face, making his physical deterioration a powerful symbol of his mental anguish. The camera often lingers on his frail form, reinforcing the connection between his guilt and his corporeal state",
+          "chunk_ids": "[\"1\", \"4\", \"8\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Silence in the Tunnel",
+          "body": "A critical moment occurs when Trevor holds Nicholas in the tunnel, and the scene is marked by a sudden, deafening silence. This absence of sound amplifies the weight of Trevor's guilt as he recalls his failure to protect the boy, paralleling his physical vulnerability. The visual imagery of Trevor running through the crowd, contrasted with the overwhelming silence, intensifies the emotional impact of his guilt. This technique effectively immerses the audience in Trevor's psychological turmoil, showcasing how guilt disrupts his ability to connect with the world around him",
+          "chunk_ids": "[\"2\", \"4\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Christian Bale's Transformation",
+          "body": "Christian Bale's performance as Trevor is marked by a profound physical and emotional transformation. His commitment to losing weight for the role visibly manifests the character's torment. In scenes where Trevor interacts with Stevie, his expressions convey pain rather than pleasure, revealing the depths of his internal struggle. Bale's portrayal captures the fragility and desperation of a man haunted by guilt, making his character's breakdown palpable. The juxtaposition of his physical frailty with moments of emotional intensity emphasizes the destructive nature of guilt on Trevor's psyche",
+          "chunk_ids": "[\"1\", \"6\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "The Role of Ivan",
+          "body": "Ivan, as a character, introduces ambiguity into the narrative. Initially perceived as a threat, he symbolizes Trevor's guilt manifesting as paranoia. The uncertainty surrounding Ivan's existence raises questions about Trevor's mental state. Is Ivan a figment of Trevor's imagination, or does he represent the embodiment of Trevor's guilt? This ambiguity complicates the audience's understanding of guilt, as it blurs the lines between reality and delusion. The film encourages viewers to consider how guilt can distort perception, leading to a fragmented sense of self and reality",
+          "chunk_ids": "[\"1\", \"2\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer provides a precise and arguable thesis linking guilt to both physical and psychological torment in 'The Machinist.' Each evidence card explores a distinct facet: Trevor's physical appearance, formal cinematic silence, Bale's transformative performance, and the ambiguous character Ivan, all grounded clearly in the retrieved chunks. The response conveys specific film details without merely summarizing plot or dumping source text; it maintains focus on the guilt theme with thoughtful and",
+      "weakest_dimension": "None"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "analyze_donnie_darko_reality",
+    "mode": "analyze_film",
+    "film_a": "donnie-darko",
+    "film_b": "",
+    "lens": "Reality vs Illusion",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [
+      "not_every_card_has_visible_or_audible_detail"
+    ],
+    "deterministic_metrics": {
+      "concrete_card_count": 3,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 4.9,
+    "passed": false,
+    "judge_error": "",
+    "response": {
+      "thesis": "In Donnie Darko, the theme of reality versus illusion is intricately woven through the protagonist's interactions with Frank and his fractured perception of time, challenging viewers to question the nature of their own realities",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "English Class Scene",
+          "body": "In the English class scene, Donnie stands before his classmates and delivers a haunting monologue about a storm that will 'swallow the children.' The chalkboard reads 'Poetry Day,' creating a stark contrast between the mundane classroom setting and the ominous content of Donnie's speech. The laughter from his peers highlights their inability to grasp the weight of his words, emphasizing the divide between Donnie’s perception of reality and the collective illusion held by those around him. This moment encapsulates the tension between his insights and the dismissive attitudes of his classmates, showcasing how those in the 'real' world often overlook deeper truths. (chunk_id: 8d671538fb845a4ea466988d6ea2fffd)",
+          "chunk_ids": "[\"8d671538fb845a4ea466988d6ea2fffd\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Use of Patterns in Dialogue",
+          "body": "The film employs a repetitive AB shot/reverse-shot pattern during a conversation between Donnie and his father while driving. This technique initially creates a sense of normalcy, drawing viewers into their discussion about the mysterious fallen jet engine. However, the sudden introduction of an unexpected shot of an old woman in the road disrupts this pattern, shocking both the characters and the audience. This jarring cut not only heightens tension but also reflects the film's themes of disrupted reality and the unpredictability of life, forcing viewers to question what they perceive as real. (chunk_id: d3f90efaf53a4224f0ce59f8714a6736)",
+          "chunk_ids": "[\"d3f90efaf53a4224f0ce59f8714a6736\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Donnie's Relationship with Frank",
+          "body": "Donnie's interactions with Frank, the eerie rabbit figure, reveal his struggle with reality. Frank's grotesque appearance and cryptic messages create an unsettling duality—he is both a friend and a harbinger of doom. Jake Gyllenhaal's performance captures Donnie's confusion and curiosity as he navigates this bizarre relationship. The way Donnie speaks to Frank, with a mix of reverence and fear, illustrates his desire for connection amidst his chaotic mental state. This dynamic underscores the film's exploration of illusion, as Frank embodies both guidance and madness, blurring the lines between reality and hallucination. (chunk_id: 5f4b3e1d1e4b7b2f8a8e7e3e3f4a8fca)",
+          "chunk_ids": "[\"5f4b3e1d1e4b7b2f8a8e7e3e3f4a8fca\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "The Ending's Open Interpretation",
+          "body": "The film concludes with a sense of ambiguity, leaving viewers questioning the nature of Donnie's journey and the reality of his experiences. The final sequence, where Donnie embraces his fate, can be interpreted as either a sacrifice to save others or a descent into madness. This lack of resolution invites multiple readings of Donnie's character—hero, martyr, or simply a troubled teen. The open-ended nature of the conclusion reinforces the theme of reality versus illusion, as viewers are left to grapple with their own interpretations of truth and meaning within the narrative. (chunk_id: 4ba935fe46d7bded66fc6dfea29b3c7b)",
+          "chunk_ids": "[\"4ba935fe46d7bded66fc6dfea29b3c7b\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 4,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer clearly names Donnie Darko and provides a focused thesis on reality versus illusion as expressed through Donnie's interactions and perception of time. Each evidence card addresses a distinct aspect: a specific scene (English class), a formal technique (shot/reverse shot disruption), character relationship (Donnie and Frank), and the film's ambiguous ending. The evidence is concrete with detailed filmic references like the chalkboard, shot patterns, and performance details. The answer,",
+      "weakest_dimension": "concrete_film_detail"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "analyze_truman_control",
+    "mode": "analyze_film",
+    "film_a": "truman-show",
+    "film_b": "",
+    "lens": "Control",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [
+      "not_every_card_has_visible_or_audible_detail"
+    ],
+    "deterministic_metrics": {
+      "concrete_card_count": 3,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": false,
+    "judge_error": "",
+    "response": {
+      "thesis": "In The Truman Show, control manifests through the surveillance and manipulation of Truman's life, ultimately questioning the nature of freedom and reality as he seeks to escape his fabricated world",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Truman's Escape",
+          "body": "In a pivotal scene, Truman commandeers a studio tram at gunpoint, demanding the tour guide to drive. This moment highlights his desperation for freedom, as he confronts the artificiality of his existence. The tram, a symbol of the controlled environment, contrasts sharply with Truman's chaotic emotions. The passengers' shocked reactions and the guide's forced commentary reveal the absurdity of the situation, underscoring the extent of Christof's control over Truman's life. The surveillance cameras capturing this moment emphasize the omnipresence of the show's creators, further illustrating the theme of control. (chunk_ids: [1])",
+          "chunk_ids": "[\"300c56022ae1fe292ad9f9a0899923f0\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Cinematic Surveillance",
+          "body": "The film employs a variety of camera angles and cuts to create a sense of surveillance. For instance, when Truman interacts with joggers, the hidden cameras capture his growing suspicions. This use of the viewer's perspective aligns the audience with Truman's paranoia, as he begins to realize the extent of his observation. The juxtaposition of Truman's spontaneous actions against the meticulously orchestrated responses of those around him highlights the theme of control. The camera's omniscience mirrors Christof’s manipulative oversight, reinforcing the artificiality of Truman's reality. (chunk_ids: [2])",
+          "chunk_ids": "[\"d79545136ffac173a5fdf0ca369b960f\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Truman's Awakening",
+          "body": "Jim Carrey's performance captures Truman's gradual realization of his controlled existence. In a scene where he confronts Meryl about her true identity, his frustration and determination become palpable. Carrey's delivery of lines filled with sarcasm and desperation illustrates Truman's internal struggle against the constraints imposed on him. His physicality, especially when he forcefully grabs Meryl to demand answers, emphasizes his yearning for authenticity in a life dictated by others. This moment is pivotal in showcasing his rebellion against the control of his environment. (chunk_ids: [10])",
+          "chunk_ids": "[\"d176f85d0c41d7b861bf519fc73eb20b\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Christof's Control",
+          "body": "The character of Christof embodies the manipulative force behind Truman's life. His calm demeanor juxtaposed with his omnipotent control raises questions about the morality of his actions. When he directs the show, telling viewers to 'cue the sun,' it becomes evident that he sees Truman as a mere pawn in his grand design. This raises an ambiguity: is Christof a benevolent creator or a tyrant? The film complicates this dynamic, forcing the audience to consider the ethics of control versus the desire for a safe, albeit artificial, existence. (chunk_ids: [9])",
+          "chunk_ids": "[\"32f0a4a4c73592a7300206fa7b37a1cd\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer clearly identifies The Truman Show and makes a specific, nuanced claim about control manifesting through surveillance and manipulation. Each evidence card focuses on a distinct aspect: a key escape scene, cinematic techniques emphasizing surveillance, Jim Carrey's performance revealing Truman's awakening, and the ambiguous morality embodied by Christof. The cards reference concrete film details including specific scenes, camera angles, and actor performance choices. The explanation is",
+      "weakest_dimension": "None"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "analyze_gone_girl_performance",
+    "mode": "analyze_film",
+    "film_a": "gone-girl",
+    "film_b": "",
+    "lens": "Performance",
+    "coverage_level": "high",
+    "coverage_score": 0.93,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "concrete_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": true,
+    "judge_error": "",
+    "response": {
+      "thesis": "In Gone Girl, performance is central to the manipulation of identity and perception. The characters' carefully crafted s reveal the dark complexities of their relationship and the societal expectations they navigate",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Amy's Homecoming",
+          "body": "In a pivotal scene, Amy, dressed in a blood-stained white dress, dramatically staggers into Nick's arms while the media captures the moment. This juxtaposition of her melodramatic return and Nick's whispered insult, 'You fucking bitch,' highlights the dissonance between public perception and their toxic relationship. The crane shot that pulls away emphasizes this contrast, revealing the media's idealized version of their marriage against the grim reality of their dysfunction. This scene encapsulates the theme of performance, as Amy's act is both a manipulation of public sentiment and a reflection of her control over the narrative (c559ace2d428ae8cf6a0c7a2cef0ede6)",
+          "chunk_ids": "[]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Cinematography and Editing",
+          "body": "Fincher employs a meticulous approach to cinematography and editing to enhance the theme of performance. The use of tight close-ups during emotionally charged scenes allows viewers to scrutinize the characters' expressions, revealing the layers of deception beneath their facades. Quick cuts juxtapose Amy's calculated actions with Nick's reactions, creating a sense of tension and highlighting the manipulation at play. This visual technique underscores the film's exploration of identity and the lengths to which characters go to maintain their constructed images (5abe56cb4e7e5591d9284a693e6d348a)",
+          "chunk_ids": "[]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Rosamund Pike as Amy",
+          "body": "Rosamund Pike's performance as Amy is a masterclass in duality. Her ability to shift from the charming, vulnerable wife to the cold, calculating manipulator showcases the theme of performance in relationships. In scenes where she interacts with Desi, her demeanor oscillates between seduction and aggression, revealing her strategic manipulation of those around her. Pike's nuanced portrayal emphasizes how Amy's identity is a performance crafted to control and dominate, making her character both compelling and unsettling (a34bf21d0ac991bba5946f87bc9b44fd)",
+          "chunk_ids": "[]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Nick's Ambivalence",
+          "body": "Nick's character presents an ambiguity that complicates the theme of performance. His initial affability contrasts sharply with his later desperation and frustration. The way he navigates media scrutiny and his own guilt creates a layered performance of innocence and culpability. For instance, his reactions during interviews reveal a man torn between self-preservation and remorse. This complexity invites viewers to question the authenticity of his , suggesting that both he and Amy are trapped in roles they never intended to play (699ca2c9ad8c00cde1c901a0d904885a)",
+          "chunk_ids": "[]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer provides a precise thesis focused on 'Gone Girl' under the lens of performance, exploring manipulation of identity and perception in specific relationships. Each evidence card targets a distinct aspect: a pivotal scene, formal cinematic techniques, the lead actress's nuanced performance, and character ambiguity—supporting the thesis robustly. The cards incorporate detailed film elements such as cinematography, dialogue, and actor portrayal without simply quoting or summarizing plot. V",
+      "weakest_dimension": ""
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "analyze_prisoners_justice",
+    "mode": "analyze_film",
+    "film_a": "prisoners",
+    "film_b": "",
+    "lens": "Justice",
+    "coverage_level": "high",
+    "coverage_score": 0.76,
+    "critical_failures": [
+      "not_every_card_has_visible_or_audible_detail"
+    ],
+    "deterministic_metrics": {
+      "concrete_card_count": 3,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": false,
+    "judge_error": "",
+    "response": {
+      "thesis": "In 'Prisoners', the theme of justice is explored through the moral complexities faced by characters as they navigate the blurred lines between lawful action and vigilante retribution in the wake of a kidnapping",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Opening Shot",
+          "body": "The film opens with a snowy forest where a deer is shot by a father and son. This initial scene establishes a predatory motif, foreshadowing the darker events to come. The contrast of the serene nature and sudden violence sets a tone of impending dread, framing the father's intense survivalist philosophy as a precursor to the chaos that will engulf their lives. The deer symbolizes innocence, and its death marks the loss of safety and normalcy in the characters' lives",
+          "chunk_ids": "[\"3\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Lighting Choices",
+          "body": "Roger Deakins' use of dim lighting throughout 'Prisoners' enhances the film's tension and moral ambiguity. In a crucial scene where Keller interrogates Alex, the lighting dims as hope fades for the kidnapped girls. The gradual extinguishing of lights metaphorically parallels the diminishing chances of survival for the victims, creating a palpable sense of despair. This technique visually represents the struggle between justice and vengeance, emphasizing the film's exploration of moral boundaries",
+          "chunk_ids": "[\"4\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Keller Dover's Descent",
+          "body": "Hugh Jackman's portrayal of Keller Dover illustrates the psychological toll of desperation. His transformation from a concerned father to a man consumed by vengeance is marked by physicality and emotional intensity. In scenes where he confronts Alex, Jackman’s performance reveals a man grappling with his moral compass. The raw emotion in his eyes and the clenched jaw communicate the internal conflict of a father pushed to the brink, highlighting the theme of justice through l sacrifice and moral decay",
+          "chunk_ids": "[\"6\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Moral Ambiguity of Vigilantism",
+          "body": "The film presents a complex view of justice through the actions of Keller and Detective Loki. While Keller's kidnapping of Alex seems driven by a desperate need for justice, it raises questions about the morality of his choices. The film does not offer clear answers, leaving viewers to grapple with the implications of vigilante justice. Loki's investigation, juxtaposed with Keller's actions, suggests that the pursuit of justice can lead to moral compromise, illustrating the unsettling nature of retribution",
+          "chunk_ids": "[\"7\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer provides a clear and specific thesis about 'Prisoners' and its theme of justice, focusing on moral complexities and vigilante retribution. Each evidence card distinctly addresses different aspects—motifs, lighting, performance, and ambiguity—anchored by visible film details and interpretive explanation rather than plot summary or dump of text. The answer avoids vague language and stays tightly connected to the film and theme, with all claims grounded in retrieved material. The overall",
+      "weakest_dimension": "none"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "compare_memento_shutter_guilt",
+    "mode": "compare_films",
+    "film_a": "memento",
+    "film_b": "shutter-island",
+    "lens": "Guilt",
+    "coverage_level": "high",
+    "coverage_score": 0.92,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "comparison_film_counts": {
+        "memento": 6,
+        "shutter-island": 6
+      },
+      "concrete_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 4.7,
+    "passed": true,
+    "judge_error": "",
+    "response": {
+      "thesis": "In Memento and Shutter Island, guilt manifests as a driving force behind the protagonists' actions, revealing how memory and reality intertwine with l accountability. Both films employ distinctive narrative structures to explore the psychological burden of guilt",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Memento",
+          "body": "In a pivotal scene, Leonard sticks a photo of Teddy between his teeth while preparing to confront him, symbolizing the burden of his memories and the guilt he carries. The Polaroid serves as a tangible reminder of his quest for vengeance and accountability. This action emphasizes Leonard's struggle to navigate his fragmented reality, showcasing how guilt distorts his perception of others and his own actions",
+          "chunk_ids": "[\"22fdbf7c2190066d60ccd89911db7767\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Shutter Island",
+          "body": "The use of rain and dark lighting throughout Shutter Island creates a foreboding atmosphere that reflects Teddy's internal turmoil. As he grapples with the truth about his past, the oppressive environment enhances the sense of guilt that envelops him. The cinematography, with its shadowy corners and claustrophobic framing, mirrors Teddy's mental state, making the audience acutely aware of his psychological burden",
+          "chunk_ids": "[\"4e53effb51bbe1a680072b94c8f91528\", \"9ad0f7e3ddfd9f9fad198447765fea3b\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Memento",
+          "body": "Leonard's performance is marked by a palpable sense of desperation and confusion, particularly in scenes where he recounts his wife's murder. His emotional turmoil is accentuated by his fragmented memories and the physical reminders, such as tattoos and notes, that he uses to cope. This portrayal reveals how guilt can consume one's identity, as Leonard's quest for truth is overshadowed by his inability to escape his past",
+          "chunk_ids": "[\"930c24ef21a2b58099a1250f24dc134a\", \"878dca3fc3ca473a69212d4934d8d19d\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Shutter Island",
+          "body": "The line, 'Which would be worse, to live as a monster or to die as a good man?' poses a profound question about Teddy's guilt and his perception of morality. This moment introduces ambiguity regarding his character's true nature and the extent of his guilt. It challenges the audience to consider the implications of guilt on identity and morality, suggesting that the line between victim and perpetrator is often blurred",
+          "chunk_ids": "[\"c803126d356e4c083cd242878d6a2c89\", \"ad375460f26065be79fcd4ba91f0267\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 4,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 4,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 4,
+      "overall_reading_depth": 5,
+      "reason": "The answer clearly compares 'Memento' and 'Shutter Island' through the lens of guilt with a precise thesis about how guilt drives the protagonists and is linked to memory and reality, meeting thesis specificity well. Each evidence card focuses on distinct points: specific scenes, formal techniques, performances, and thematic ambiguity, covering both films separately. The evidence includes concrete film details like the Polaroid photo, rain and lighting, performance nuances, and a significant key",
+      "weakest_dimension": "groundedness_to_chunks"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "compare_black_swan_prestige_performance",
+    "mode": "compare_films",
+    "film_a": "black-swan",
+    "film_b": "the-prestige",
+    "lens": "Performance",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "comparison_film_counts": {
+        "black-swan": 7,
+        "the-prestige": 5
+      },
+      "concrete_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": true,
+    "judge_error": "",
+    "response": {
+      "thesis": "Black Swan and The Prestige both explore the theme of performance, showcasing how obsession and rivalry drive characters to extreme measures in their artistic pursuits, ultimately leading to their downfall",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Black Swan",
+          "body": "In Black Swan, the use of mirrors is a recurring motif that symbolizes Nina's fractured identity. In a pivotal scene, Nina practices her dance in front of a mirror, where she sees not only her reflection but also the darker aspects of her psyche. The camera captures her increasingly frantic movements, emphasizing her struggle to embody both the White and Black Swan. The mirror serves as a visual representation of her internal conflict, blurring the lines between her true self and her performance, which ultimately leads to her tragic transformation. This motif underscores how performance can distort one's identity and reality",
+          "chunk_ids": "[\"1\", \"3\", \"4\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "The Prestige",
+          "body": "The Prestige employs a three-act structure that mirrors the stages of a magic trick: the pledge, the turn, and the prestige. This structure is evident when Borden performs his astonishing trick, which captivates the audience but leaves them bewildered. The film's editing, with rapid cuts between Angier's obsession and Borden's performance, creates a sense of urgency and tension. This technique emphasizes the lengths to which Angier will go to uncover Borden's secrets, highlighting the destructive nature of their rivalry and the sacrifices made for the sake of performance",
+          "chunk_ids": "[\"2\", \"6\", \"12\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Black Swan",
+          "body": "Natalie Portman's portrayal of Nina is a physical embodiment of the pressures faced by performers. Her performance is characterized by intense emotional and physical commitment, as seen in scenes where she pushes her body to its limits during rehearsals. The transformation into the Black Swan is marked by her strained expressions and the physical toll of ballet, which are palpable. This dedication illustrates the darker side of artistic ambition, where the pursuit of perfection leads to self-destruction, reinforcing the film's exploration of performance and its consequences",
+          "chunk_ids": "[\"5\", \"8\", \"9\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "The Prestige",
+          "body": "In The Prestige, the ambiguity surrounding Borden's true method raises questions about the nature of performance and authenticity. The film suggests that Borden's success stems from his ability to fully embody his character, yet it also hints at the moral ambiguity of his choices. The revelation of his twin brother complicates the narrative, forcing viewers to reconsider what they understand about identity in performance. This complexity challenges the audience's perception of what it means to be a true artist, blurring the lines between illusion and reality in the world of magic",
+          "chunk_ids": "[\"7\", \"11\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer specifically names 'Black Swan' and 'The Prestige' and offers a nuanced, arguable thesis about performance in both. Each evidence card focuses on a distinct aspect—the mirror motif, narrative structure, Portman's physical acting, and narrative ambiguity—drawing on concrete, visible film details without simply repeating plot points. The language is precise, avoiding vague phrases, and the claims closely align with the retrieved chunks, demonstrating strong grounding. The response stays",
+      "weakest_dimension": "none"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "compare_taxi_fight_violence",
+    "mode": "compare_films",
+    "film_a": "taxi-driver",
+    "film_b": "fight-club",
+    "lens": "Violence",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [
+      "not_every_card_has_visible_or_audible_detail"
+    ],
+    "deterministic_metrics": {
+      "comparison_film_counts": {
+        "taxi-driver": 5,
+        "fight-club": 7
+      },
+      "concrete_card_count": 3,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 4.9,
+    "passed": false,
+    "judge_error": "",
+    "response": {
+      "thesis": "Taxi Driver and Fight Club both depict violence as a means of asserting identity and confronting societal disillusionment, yet they approach this theme through differing character arcs and narrative structures that highlight the complexities of their protagonists' struggles",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "Taxi Driver",
+          "body": "In a pivotal scene, Travis Bickle follows Iris, deeply fixating on her as she interacts with others. The camera captures Travis's perspective, framing him as an outsider observing a world he feels disconnected from. This moment underscores his growing obsession and the violent thoughts brewing within him, as he prepares to intervene violently in her life. The tension is palpable, amplified by the gritty urban setting that reflects his internal turmoil. This motif of voyeurism illustrates how Travis's isolation drives him towards his violent resolution. (chunk_ids: [1, 4])",
+          "chunk_ids": "[\"dd6847a6b9a82d2fb581acd9021074b5\", \"450033ebbfd06c33effe12c74f9cafa5\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Fight Club",
+          "body": "The opening scene of Fight Club introduces a chaotic and frenetic energy, captured through rapid cuts and disorienting camera angles. This technique immerses the viewer in the protagonist's fragmented psyche, reflecting his internal chaos. The use of voiceover narration further complicates the narrative, as Jack grapples with his identity and societal expectations. The film's visual style and editing create a visceral experience that mirrors the violent acts that unfold, suggesting that violence becomes a form of self-expression in a world that feels increasingly alienating. (chunk_ids: [2, 7])",
+          "chunk_ids": "[\"7f2bd76222452a88d8593276f0e40d4b\", \"21bebae6efbed8b7320cdc28e8e86c88\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Taxi Driver",
+          "body": "Robert De Niro's portrayal of Travis is marked by a simmering intensity that encapsulates the character's descent into violence. His performance during the climactic scenes, where he confronts Sport and the corrupt world around him, showcases a blend of desperation and determination. The physicality of his actions is matched by his emotive expressions, revealing the internal conflict that drives him to violence. This layered performance highlights how Travis's violent outbursts stem from a profound sense of alienation and a desire for agency in a world that has marginalized him. (chunk_ids: [5, 8])",
+          "chunk_ids": "[\"450033ebbfd06c33effe12c74f9cafa5\", \"5d1b2927cdc0a9c8e74267078a593744\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "Fight Club",
+          "body": "The character of Tyler Durden serves as a complex figure whose philosophy on violence and masculinity can be interpreted in multiple ways. While he advocates for a rejection of consumerist culture through violent acts, the film also critiques this viewpoint by showcasing the destructive consequences of such ideology. The ambiguity in Tyler's influence raises questions about the glorification of violence as a means of empowerment. This duality invites viewers to reconsider the implications of the violence portrayed, suggesting that it may not lead to liberation but rather deeper entrapment in societal cycles of aggression. (chunk_ids: [3, 10])",
+          "chunk_ids": "[\"055508154a6ffd2ab0ad002c03becc3b\", \"5befd1e8f5383cf60e14decb9036e3c9\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 4,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer offers a clear, specific comparative thesis naming 'Taxi Driver' and 'Fight Club' with an arguable interpretation related to violence and identity. Each evidence card addresses distinct facets: motif in Taxi Driver scenes, formal cinematic techniques in Fight Club, a focused character performance analysis in Taxi Driver, and ambiguity in Fight Club's philosophical messaging. The cards cite concrete film details like camera framing, specific scenes, acting nuances, and narrative style.",
+      "weakest_dimension": "concrete_film_detail"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "compare_truman_gone_girl_control",
+    "mode": "compare_films",
+    "film_a": "truman-show",
+    "film_b": "gone-girl",
+    "lens": "Control",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [
+      "comparison_retrieval_unbalanced"
+    ],
+    "deterministic_metrics": {
+      "comparison_film_counts": {
+        "truman-show": 9,
+        "gone-girl": 3
+      },
+      "concrete_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": 5.0,
+    "passed": false,
+    "judge_error": "",
+    "response": {
+      "thesis": "In The Truman Show and Gone Girl, both films explore the theme of control through their protagonists' struggles against manipulated realities. Truman's life is orchestrated by an omnipotent director, while Amy constructs a façade of perfection to dominate her relationship with Nick, revealing the dark side of control in l and public domains",
+      "evidence_cards": [
+        {
+          "label": "Scene or Motif",
+          "title": "The Truman Show",
+          "body": "In a significant scene, Truman stands in line at an Italian deli where the owner anticipates his order, showcasing Truman's mundane predictability. This moment emphasizes how his life is scripted and controlled, as even his choices are predetermined by the show’s producers. The deli's bustling environment contrasts with Truman’s internal struggle against the constraints of his existence, highlighting the theme of control in his life. The dialogue reveals his desire for autonomy, as he questions the predictability of his daily routine, feeling trapped in a meticulously crafted world. (chunk_ids: [5])",
+          "chunk_ids": "[\"5\"]"
+        },
+        {
+          "label": "Formal Technique",
+          "title": "Gone Girl",
+          "body": "Gone Girl employs a fragmented narrative structure, alternating between Nick and Amy's perspectives, which creates a sense of manipulation and control over the audience's understanding of truth. This technique mirrors the characters' attempts to control their identities and narratives. The use of voiceovers, particularly Amy’s diary entries, serves to present a curated version of events, blurring the lines between reality and deception. This manipulation of perspective invites viewers to navigate the complexities of truth and control within the film, reflecting the characters' struggles to maintain power in their relationship. (chunk_ids: [3])",
+          "chunk_ids": "[\"3\"]"
+        },
+        {
+          "label": "Character or Performance",
+          "title": "Gone Girl",
+          "body": "Amy's character is crafted around her ability to manipulate those around her, particularly Nick. Her chilling line, \"I can ruin you, Nick,\" encapsulates her control over him through emotional coercion. This performance detail reveals her vindictive nature and the psychological abuse she wields to maintain authority in the relationship. The tension in her voice and her calculated demeanor during confrontations underscore the theme of control, showcasing how she uses fear and manipulation to dominate Nick and reshape their dynamic. (chunk_ids: [4])",
+          "chunk_ids": "[\"4\"]"
+        },
+        {
+          "label": "Ambiguity or Counterreading",
+          "title": "The Truman Show",
+          "body": "The character of Christof embodies the ambiguous nature of control, as he sees himself as a benevolent figure while manipulating Truman's life for entertainment. His dialogue during the climactic confrontation with Truman reveals a paternalistic justification for his actions, suggesting that he believes he is providing Truman with a perfect life. This complexity invites viewers to question the morality of control, as Christof's intentions blur the lines between creator and captor, challenging the audience to consider the ethical implications of surveillance and manipulation in media. (chunk_ids: [7])",
+          "chunk_ids": "[\"7\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": {
+      "thesis_specificity": 5,
+      "evidence_distinctness": 5,
+      "concrete_film_detail": 5,
+      "non_dumping": 5,
+      "anti_plot_summary": 5,
+      "anti_generic_language": 5,
+      "groundedness_to_chunks": 5,
+      "film_lens_relevance": 5,
+      "unsupported_claim_risk": 5,
+      "overall_reading_depth": 5,
+      "reason": "The answer clearly identifies both films and centers on the theme of control with a nuanced thesis. Each evidence card addresses a distinct aspect: Truman's scripted life and Christof's ambiguous control in The Truman Show, and Amy's manipulative persona plus narrative control techniques in Gone Girl. The answer incorporates specific, visible film details such as dialogue, scenes, and narrative structure without merely copying the chunks, explaining their relevance effectively. It avoids retell,",
+      "weakest_dimension": "None - all dimensions are strong"
+    },
+    "theme_card_titles": "",
+    "theme_card_summaries": ""
+  },
+  {
+    "id": "theme_memory",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Memory",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "theme_card_count": 1
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "Memento",
+    "theme_card_summaries": "Memento: A man with short-term memory loss tries to find his wife's killer by relying on photographs, notes, and tattoos to piece together the truth.",
+    "response": {
+      "thesis": null,
+      "evidence_cards": [],
+      "theme_films": [
+        {
+          "rank": 1,
+          "slug": "memento",
+          "title": "Memento",
+          "year": 2000,
+          "director": "Christopher Nolan",
+          "summary": "A man with short-term memory loss tries to find his wife's killer by relying on photographs, notes, and tattoos to piece together the truth.",
+          "score": 216.194
+        }
+      ]
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "theme_performance",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Performance",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "theme_card_count": 5
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "The Prestige | Black Swan | Gone Girl | The Truman Show | Mulholland Drive",
+    "theme_card_summaries": "The Prestige: Two rival magicians become consumed by their competition, sacrificing everything in their pursuit of the ultimate illusion. | Black Swan: A perfectionist ballerina spirals into paranoia and obsession as she struggles to embody both sides of the lead role in Swan Lake. | Gone Girl: When a woman mysteriously disappears on her wedding anniversary, suspicion falls on her husband as the media turns their marriage into a spectacle. | The Truman Show: A man living an idyllic suburban life gradually discovers that his entire existence is a reality television show filmed without his knowledge. | Mulholland Drive: An aspiring actress and an amnesiac woman become entangled in a strange mystery that blurs the line between Hollywood dreams and reality.",
+    "response": {
+      "thesis": null,
+      "evidence_cards": [],
+      "theme_films": [
+        {
+          "rank": 1,
+          "slug": "the-prestige",
+          "title": "The Prestige",
+          "year": 2006,
+          "director": "Christopher Nolan",
+          "summary": "Two rival magicians become consumed by their competition, sacrificing everything in their pursuit of the ultimate illusion.",
+          "score": 212.179
+        },
+        {
+          "rank": 2,
+          "slug": "black-swan",
+          "title": "Black Swan",
+          "year": 2010,
+          "director": "Darren Aronofsky",
+          "summary": "A perfectionist ballerina spirals into paranoia and obsession as she struggles to embody both sides of the lead role in Swan Lake.",
+          "score": 212.049
+        },
+        {
+          "rank": 3,
+          "slug": "gone-girl",
+          "title": "Gone Girl",
+          "year": 2014,
+          "director": "David Fincher",
+          "summary": "When a woman mysteriously disappears on her wedding anniversary, suspicion falls on her husband as the media turns their marriage into a spectacle.",
+          "score": 209.54
+        },
+        {
+          "rank": 4,
+          "slug": "truman-show",
+          "title": "The Truman Show",
+          "year": 1998,
+          "director": "Peter Weir",
+          "summary": "A man living an idyllic suburban life gradually discovers that his entire existence is a reality television show filmed without his knowledge.",
+          "score": 206.811
+        },
+        {
+          "rank": 5,
+          "slug": "mulholland-drive",
+          "title": "Mulholland Drive",
+          "year": 2001,
+          "director": "David Lynch",
+          "summary": "An aspiring actress and an amnesiac woman become entangled in a strange mystery that blurs the line between Hollywood dreams and reality.",
+          "score": 197.831
+        }
+      ]
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "theme_justice",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Justice",
+    "coverage_level": "high",
+    "coverage_score": 0.83,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "theme_card_count": 3
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "Se7en | The Shawshank Redemption | Prisoners",
+    "theme_card_summaries": "Se7en: Two detectives hunt a serial killer who uses the seven deadly sins as inspiration for a series of gruesome murders. | The Shawshank Redemption: A banker sentenced to life in prison forms an unlikely friendship with a fellow inmate while holding onto hope for freedom. | Prisoners: When his young daughter and her friend disappear, a desperate father takes matters into his own hands while a detective investigates the case.",
+    "response": {
+      "thesis": null,
+      "evidence_cards": [],
+      "theme_films": [
+        {
+          "rank": 1,
+          "slug": "se7en",
+          "title": "Se7en",
+          "year": 1995,
+          "director": "David Fincher",
+          "summary": "Two detectives hunt a serial killer who uses the seven deadly sins as inspiration for a series of gruesome murders.",
+          "score": 213.052
+        },
+        {
+          "rank": 2,
+          "slug": "shawshank-redemption",
+          "title": "The Shawshank Redemption",
+          "year": 1994,
+          "director": "Frank Darabont",
+          "summary": "A banker sentenced to life in prison forms an unlikely friendship with a fellow inmate while holding onto hope for freedom.",
+          "score": 212.227
+        },
+        {
+          "rank": 3,
+          "slug": "prisoners",
+          "title": "Prisoners",
+          "year": 2013,
+          "director": "Denis Villeneuve",
+          "summary": "When his young daughter and her friend disappear, a desperate father takes matters into his own hands while a detective investigates the case.",
+          "score": 208.795
+        }
+      ]
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "theme_control",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Control",
+    "coverage_level": "high",
+    "coverage_score": 0.92,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "theme_card_count": 6
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "One Flew Over the Cuckoo's Nest | The Shawshank Redemption | Black Swan | The Silence of the Lambs | Gone Girl | Requiem for a Dream",
+    "theme_card_summaries": "One Flew Over the Cuckoo's Nest: A rebellious criminal fakes insanity to avoid prison but finds himself battling the oppressive authority of a psychiatric hospital. | The Shawshank Redemption: A banker sentenced to life in prison forms an unlikely friendship with a fellow inmate while holding onto hope for freedom. | Black Swan: A perfectionist ballerina spirals into paranoia and obsession as she struggles to embody both sides of the lead role in Swan Lake. | The Silence of the Lambs: A young FBI trainee seeks the help of an imprisoned cannibal to catch a serial killer who skins his victims. | Gone Girl: When a woman mysteriously disappears on her wedding anniversary, suspicion falls on her husband as the media turns their marriage into a spectacle. | Requiem for a Dream: Four people become consumed by their addictions as their dreams of a better life give way to increasingly devastating consequences.",
+    "response": {
+      "thesis": null,
+      "evidence_cards": [],
+      "theme_films": [
+        {
+          "rank": 1,
+          "slug": "one-flew-over-the-cuckoos-nest",
+          "title": "One Flew Over the Cuckoo's Nest",
+          "year": 1975,
+          "director": "Milos Forman",
+          "summary": "A rebellious criminal fakes insanity to avoid prison but finds himself battling the oppressive authority of a psychiatric hospital.",
+          "score": 211.399
+        },
+        {
+          "rank": 2,
+          "slug": "shawshank-redemption",
+          "title": "The Shawshank Redemption",
+          "year": 1994,
+          "director": "Frank Darabont",
+          "summary": "A banker sentenced to life in prison forms an unlikely friendship with a fellow inmate while holding onto hope for freedom.",
+          "score": 210.0
+        },
+        {
+          "rank": 3,
+          "slug": "black-swan",
+          "title": "Black Swan",
+          "year": 2010,
+          "director": "Darren Aronofsky",
+          "summary": "A perfectionist ballerina spirals into paranoia and obsession as she struggles to embody both sides of the lead role in Swan Lake.",
+          "score": 209.871
+        },
+        {
+          "rank": 4,
+          "slug": "silence-of-the-lambs",
+          "title": "The Silence of the Lambs",
+          "year": 1991,
+          "director": "Jonathan Demme",
+          "summary": "A young FBI trainee seeks the help of an imprisoned cannibal to catch a serial killer who skins his victims.",
+          "score": 209.749
+        },
+        {
+          "rank": 5,
+          "slug": "gone-girl",
+          "title": "Gone Girl",
+          "year": 2014,
+          "director": "David Fincher",
+          "summary": "When a woman mysteriously disappears on her wedding anniversary, suspicion falls on her husband as the media turns their marriage into a spectacle.",
+          "score": 207.531
+        },
+        {
+          "rank": 6,
+          "slug": "requiem-for-a-dream",
+          "title": "Requiem for a Dream",
+          "year": 2000,
+          "director": "Darren Aronofsky",
+          "summary": "Four people become consumed by their addictions as their dreams of a better life give way to increasingly devastating consequences.",
+          "score": 205.0
+        }
+      ]
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "theme_reality",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Reality vs Illusion",
+    "coverage_level": "high",
+    "coverage_score": 0.83,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "theme_card_count": 6
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "Shutter Island | Memento | Donnie Darko | The Sixth Sense | The Truman Show | Mulholland Drive",
+    "theme_card_summaries": "Shutter Island: A U.S. marshal investigates the disappearance of a patient from an isolated mental institution and begins to question his own reality. | Memento: A man with short-term memory loss tries to find his wife's killer by relying on photographs, notes, and tattoos to piece together the truth. | Donnie Darko: A troubled teenager begins experiencing visions of a mysterious figure in a rabbit costume who tells him the world will soon end. | The Sixth Sense: A troubled boy who claims to see dead people seeks help from a child psychologist who is struggling with his own personal failures. | The Truman Show: A man living an idyllic suburban life gradually discovers that his entire existence is a reality television show filmed without his knowledge. | Mulholland Drive: An aspiring actress and an amnesiac woman become entangled in a strange mystery that blurs the line between Hollywood dreams and reality.",
+    "response": {
+      "thesis": null,
+      "evidence_cards": [],
+      "theme_films": [
+        {
+          "rank": 1,
+          "slug": "shutter-island",
+          "title": "Shutter Island",
+          "year": 2010,
+          "director": "Martin Scorsese",
+          "summary": "A U.S. marshal investigates the disappearance of a patient from an isolated mental institution and begins to question his own reality.",
+          "score": 211.305
+        },
+        {
+          "rank": 2,
+          "slug": "memento",
+          "title": "Memento",
+          "year": 2000,
+          "director": "Christopher Nolan",
+          "summary": "A man with short-term memory loss tries to find his wife's killer by relying on photographs, notes, and tattoos to piece together the truth.",
+          "score": 210.0
+        },
+        {
+          "rank": 3,
+          "slug": "donnie-darko",
+          "title": "Donnie Darko",
+          "year": 2001,
+          "director": "Richard Kelly",
+          "summary": "A troubled teenager begins experiencing visions of a mysterious figure in a rabbit costume who tells him the world will soon end.",
+          "score": 208.28
+        },
+        {
+          "rank": 4,
+          "slug": "sixth-sense",
+          "title": "The Sixth Sense",
+          "year": 1999,
+          "director": "M. Night Shyamalan",
+          "summary": "A troubled boy who claims to see dead people seeks help from a child psychologist who is struggling with his own personal failures.",
+          "score": 208.0
+        },
+        {
+          "rank": 5,
+          "slug": "truman-show",
+          "title": "The Truman Show",
+          "year": 1998,
+          "director": "Peter Weir",
+          "summary": "A man living an idyllic suburban life gradually discovers that his entire existence is a reality television show filmed without his knowledge.",
+          "score": 207.193
+        },
+        {
+          "rank": 6,
+          "slug": "mulholland-drive",
+          "title": "Mulholland Drive",
+          "year": 2001,
+          "director": "David Lynch",
+          "summary": "An aspiring actress and an amnesiac woman become entangled in a strange mystery that blurs the line between Hollywood dreams and reality.",
+          "score": 206.796
+        }
+      ]
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "theme_trauma",
+    "mode": "explore_theme",
+    "film_a": "",
+    "film_b": "",
+    "lens": "Trauma",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": [],
+    "deterministic_metrics": {
+      "theme_card_count": 5
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "Shutter Island | The Sixth Sense | Requiem for a Dream | Donnie Darko | The Machinist",
+    "theme_card_summaries": "Shutter Island: A U.S. marshal investigates the disappearance of a patient from an isolated mental institution and begins to question his own reality. | The Sixth Sense: A troubled boy who claims to see dead people seeks help from a child psychologist who is struggling with his own personal failures. | Requiem for a Dream: Four people become consumed by their addictions as their dreams of a better life give way to increasingly devastating consequences. | Donnie Darko: A troubled teenager begins experiencing visions of a mysterious figure in a rabbit costume who tells him the world will soon end. | The Machinist: A machinist who has not slept in a year becomes increasingly paranoid as his deteriorating mental state draws him into a disturbing mystery.",
+    "response": {
+      "thesis": null,
+      "evidence_cards": [],
+      "theme_films": [
+        {
+          "rank": 1,
+          "slug": "shutter-island",
+          "title": "Shutter Island",
+          "year": 2010,
+          "director": "Martin Scorsese",
+          "summary": "A U.S. marshal investigates the disappearance of a patient from an isolated mental institution and begins to question his own reality.",
+          "score": 215.192
+        },
+        {
+          "rank": 2,
+          "slug": "sixth-sense",
+          "title": "The Sixth Sense",
+          "year": 1999,
+          "director": "M. Night Shyamalan",
+          "summary": "A troubled boy who claims to see dead people seeks help from a child psychologist who is struggling with his own personal failures.",
+          "score": 209.0
+        },
+        {
+          "rank": 3,
+          "slug": "requiem-for-a-dream",
+          "title": "Requiem for a Dream",
+          "year": 2000,
+          "director": "Darren Aronofsky",
+          "summary": "Four people become consumed by their addictions as their dreams of a better life give way to increasingly devastating consequences.",
+          "score": 208.0
+        },
+        {
+          "rank": 4,
+          "slug": "donnie-darko",
+          "title": "Donnie Darko",
+          "year": 2001,
+          "director": "Richard Kelly",
+          "summary": "A troubled teenager begins experiencing visions of a mysterious figure in a rabbit costume who tells him the world will soon end.",
+          "score": 207.0
+        },
+        {
+          "rank": 5,
+          "slug": "the-machinist",
+          "title": "The Machinist",
+          "year": 2004,
+          "director": "Brad Anderson",
+          "summary": "A machinist who has not slept in a year becomes increasingly paranoid as his deteriorating mental state draws him into a disturbing mystery.",
+          "score": 206.0
+        }
+      ]
+    },
+    "judge_scores": null
+  }
+]

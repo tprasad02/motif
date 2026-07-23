@@ -14,9 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-import tiktoken
 from dotenv import load_dotenv
-from openai import OpenAI
 from pydantic import BaseModel, Field, ValidationError
 
 
@@ -117,6 +115,23 @@ TERMINAL_PUNCTUATION = {
     "}",
 }
 
+BOILERPLATE_PATTERNS = [
+    r"\ball rights reserved\b",
+    r"\bcopyright\b",
+    r"\bdoi\b",
+    r"\bissn\b",
+    r"\breferences\b",
+    r"\bbibliography\b",
+    r"\bworks cited\b",
+    r"\bsubscribe\b",
+    r"\bsign in\b",
+    r"\bprivacy policy\b",
+    r"\bcookie policy\b",
+    r"\bsite menu\b",
+    r"\badvertisement\b",
+    r"\bdownloaded from\b",
+]
+
 EVALUATOR_INSTRUCTIONS = """
 You evaluate the overall quality of a document chunk.
 
@@ -182,12 +197,19 @@ def get_tokenizer(model: str) -> Any:
     """
 
     try:
-        return tiktoken.encoding_for_model(model)
-    except KeyError:
-        return tiktoken.get_encoding("o200k_base")
+        import tiktoken
+
+        try:
+            return tiktoken.encoding_for_model(model)
+        except KeyError:
+            return tiktoken.get_encoding("o200k_base")
+    except ModuleNotFoundError:
+        return None
 
 
 def count_tokens(text: str, tokenizer: Any) -> int:
+    if tokenizer is None:
+        return len(re.findall(r"\w+|[^\w\s]", text))
     return len(tokenizer.encode(text))
 
 
@@ -233,6 +255,28 @@ def contains_incomplete_trailing_clause(text: str) -> bool:
         return True
 
     return words[-1] in TRAILING_CLAUSE_WORDS
+
+
+def contains_boilerplate_or_reference_junk(text: str) -> bool:
+    lowered = text.lower()
+    return any(re.search(pattern, lowered) for pattern in BOILERPLATE_PATTERNS)
+
+
+def is_likely_plot_summary(chunk: InputChunk) -> bool:
+    if chunk.chunk_role == "plot_summary":
+        return True
+    lowered = chunk.text.lower()
+    summary_terms = [
+        "tells the story",
+        "the story follows",
+        "the film follows",
+        "plot",
+        "synopsis",
+        "after",
+        "then",
+        "eventually",
+    ]
+    return sum(term in lowered for term in summary_terms) >= 3
 
 
 def cosine_similarity(text_a: str, text_b: str) -> float:
@@ -420,6 +464,8 @@ def evaluate_deterministically(
             and token_count > maximum_tokens
         ),
         near_empty=token_count < 10,
+        boilerplate_or_reference_junk=contains_boilerplate_or_reference_junk(chunk.text),
+        likely_plot_summary=is_likely_plot_summary(chunk),
     )
 
 
@@ -428,7 +474,7 @@ def evaluate_deterministically(
 # ============================================================
 
 def evaluate_with_openai(
-    client: OpenAI,
+    client,
     model: str,
     chunk: InputChunk,
     previous_chunk: InputChunk | None,
@@ -615,6 +661,18 @@ def summarize_results(
         average_score=safe_mean(
             llm_scores
         ),
+        bad_chunk_rate=calculate_rate(
+            [result.score <= 2 for result in successful_llm_results]
+        ),
+        strong_chunk_rate=calculate_rate(
+            [result.score >= 4 for result in successful_llm_results]
+        ),
+        boilerplate_or_reference_junk_rate=calculate_rate(
+            [result.boilerplate_or_reference_junk for result in deterministic_results]
+        ),
+        likely_plot_summary_rate=calculate_rate(
+            [result.likely_plot_summary for result in deterministic_results]
+        ),
     )
 
 
@@ -715,11 +773,27 @@ def format_summary(summary: EvaluationSummary) -> str:
 
     lines.extend(
         [
+            (
+                f"{'Boilerplate/reference junk rate:':<34}"
+                f"{summary.boilerplate_or_reference_junk_rate:.1%}"
+            ),
+            (
+                f"{'Likely plot summary rate:':<34}"
+                f"{summary.likely_plot_summary_rate:.1%}"
+            ),
             "-" * 62,
             format_optional_score(
                 "Average chunk score:",
                 summary.average_score,
                 "/5",
+            ),
+            (
+                f"{'Bad chunk rate (1-2):':<34}"
+                f"{summary.bad_chunk_rate:.1%}"
+            ),
+            (
+                f"{'Strong chunk rate (4-5):':<34}"
+                f"{summary.strong_chunk_rate:.1%}"
             ),
         ]
     )
@@ -848,7 +922,7 @@ def main() -> None:
     validate_arguments(arguments)
 
     evals_directory = Path(__file__).resolve().parent
-    reports_directory = evals_directory / "reports"
+    reports_directory = evals_directory / "Reports"
 
     reports_directory.mkdir(
         parents=True,
@@ -902,6 +976,10 @@ def main() -> None:
     client: OpenAI | None = None
 
     if not arguments.skip_llm:
+        try:
+            from openai import OpenAI
+        except ModuleNotFoundError as error:
+            raise SystemExit("The `openai` package is missing. Install it or run with --skip-llm.") from error
         api_key = os.getenv("OPENAI_API_KEY")
 
         if not api_key:
