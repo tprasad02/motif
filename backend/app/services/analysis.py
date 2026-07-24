@@ -5,10 +5,10 @@ from pathlib import Path
 
 import httpx
 
-from app.core.config import settings
-from app.db.postgres import fetch_source_metadata
-from app.film_config import FILM_LENSES, FILM_TITLES
-from app.models import (
+from backend.app.core.config import settings
+from backend.app.db.postgres import fetch_source_metadata
+from backend.app.film_config import FILM_LENSES, FILM_TITLES
+from backend.app.models import (
     AnalysisResponse,
     AnswerRequest,
     FilmComparisonResponse,
@@ -19,7 +19,7 @@ from app.models import (
     SourceCitation,
     ThemeExplorerResponse,
 )
-from app.services.retrieval import RetrievedChunk, retrieve_chunks
+from backend.app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
 EVIDENCE_JOBS = ["Scene or Motif", "Formal Technique", "Character or Performance", "Ambiguity or Counterreading"]

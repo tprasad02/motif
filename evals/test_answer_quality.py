@@ -11,11 +11,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
-sys.path.append(str(Path(__file__).resolve().parents[1] / "backend"))
-
-from app.film_config import FILM_TITLES
-from app.models import GuidedAnswerRequest
-from app.services.analysis import THEME_LENS_FILMS, answer_guided
+from backend.app.film_config import FILM_TITLES
+from backend.app.models import GuidedAnswerRequest
+from backend.app.services.analysis import THEME_LENS_FILMS, answer_guided
 
 
 BANNED_GENERIC_PHRASES = [

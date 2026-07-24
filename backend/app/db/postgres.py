@@ -3,7 +3,7 @@ from pathlib import Path
 
 import psycopg
 
-from app.core.config import settings
+from backend.app.core.config import settings
 
 _schema_checked = False
 _file_sources_cache: dict[str, dict] | None = None
