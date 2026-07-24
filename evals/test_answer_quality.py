@@ -322,7 +322,10 @@ def run_case(case: dict, client: OpenAI | None, model: str | None) -> dict:
             judge_error = str(error)
 
     answer_quality_score = score_average(judge)
-    passed = not critical_failures and (answer_quality_score is None or answer_quality_score >= 4.0)
+    passed = (
+        not critical_failures["overall"] and
+        all(not critical_failures[labels] for labels in CARDS) and
+        (answer_quality_score is None or answer_quality_score >= 4.0))
     theme_titles, theme_summaries = format_theme_cards(response.theme_films)
     row = {
         "id": case["id"],
