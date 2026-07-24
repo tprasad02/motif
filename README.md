@@ -455,7 +455,7 @@ Explore a theme:
 Verify corpus coverage:
 
 ```bash
-python evals/verify_corpus.py --sources data/manual_sources.csv --min-per-film 4
+python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
 ```
 
 Test retrieval quality:
@@ -463,7 +463,7 @@ Test retrieval quality:
 ```bash
 DATABASE_URL=postgresql://motif:motif@localhost:5433/motif \
 WEAVIATE_URL=http://localhost:8080 \
-python evals/test_retrieval_quality.py
+python -m evals.test_retrieval_quality
 ```
 
 Compile backend, ingestion, and eval code:
@@ -531,7 +531,7 @@ Likely causes:
 Run:
 
 ```bash
-python evals/test_retrieval_quality.py
+python -m evals.test_retrieval_quality
 ```
 
 and inspect retrieved chunks through the debug path before changing prompts.
