@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from datetime import datetime
 import argparse
 import csv
 import json
@@ -59,6 +59,12 @@ CONCRETE_FILM_TERMS = [
     "lighting",
 ]
 
+CARDS = [
+    "Scene or Motif",
+    "Formal Technique",
+    "Character or Performance",
+    "Ambiguity or Counterreading",
+]
 
 class AnswerJudgeScores(BaseModel):
     thesis_specificity: int = Field(ge=1, le=5)
@@ -164,57 +170,69 @@ def max_source_overlap(answer_text: str, chunks: list[dict]) -> float:
     return round(max_overlap, 3)
 
 
-def deterministic_answer_checks(case: dict, response) -> tuple[list[str], dict]:
+def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
     text = public_answer_text(response)
     lowered = text.lower()
-    critical_failures = []
+    critical_failures = {"overall":[], **{card:[] for card in CARDS}}
     metrics = {}
+    mode = case["mode"]
 
-    if case["mode"] in {"analyze_film", "compare_films"}:
+    if mode in {"analyze_film", "compare_films"}:
+        # Overall Error              
         if len(response.evidence_cards) != 4:
-            critical_failures.append("fewer_than_four_evidence_cards")
+            critical_failures["overall"].append("fewer_than_four_evidence_cards")
         if contains_wrong_film(text, case):
-            critical_failures.append("wrong_film_mentioned")
+            critical_failures["overall"].append("wrong_film_mentioned")
         if not theme_mentioned(text, case["lens"]):
-            critical_failures.append("selected_theme_missing")
-        concrete_cards = sum(1 for card in response.evidence_cards if has_concrete_terms(str(card.get("body", ""))))
-        if concrete_cards < 4:
-            critical_failures.append("not_every_card_has_visible_or_audible_detail")
+            critical_failures["overall"].append("selected_theme_missing")
+
+        # Card Dependent Error
+        concrete_cards = 0
+        for card in response.evidence_cards:
+            if not has_concrete_terms(str(card.get("body", ""))):
+                critical_failures[card["label"]].append(
+                    "card_doesn't_have_visible_or_audible_detail"
+            else:
+                concrete_cards += 1
+        )
+        # concrete_cards = sum(1 for card in response.evidence_cards if has_concrete_terms(str(card.get("body", ""))))
+        # if concrete_cards < 4:
+        #     critical_failures["overall"].append("not_every_card_has_visible_or_audible_detail")
         source_chunks = [chunk.model_dump() for chunk in response.debug_chunks]
         overlap = max_source_overlap(text, source_chunks)
         if overlap > 0.35:
-            critical_failures.append("possible_raw_source_dump")
+            critical_failures["overall"].append("possible_raw_source_dump")
         if any(re.search(pattern, lowered) for pattern in SOURCE_FACING_PATTERNS):
-            critical_failures.append("source_facing_language")
+            critical_failures["overall"].append("source_facing_language")
         if any(phrase in lowered for phrase in BANNED_GENERIC_PHRASES):
-            critical_failures.append("generic_banned_phrase")
+            critical_failures["overall"].append("generic_banned_phrase")
         if case["mode"] == "compare_films":
             film_counts = {case["film_a"]: 0, case["film_b"]: 0}
             for chunk in response.debug_chunks:
                 if chunk.film_slug in film_counts:
                     film_counts[chunk.film_slug] += 1
             if min(film_counts.values()) < 4:
-                critical_failures.append("comparison_retrieval_unbalanced")
+                critical_failures["overall"].append("comparison_retrieval_unbalanced")
             metrics["comparison_film_counts"] = film_counts
         metrics["concrete_card_count"] = concrete_cards
         metrics["max_source_overlap"] = overlap
 
-    if case["mode"] == "explore_theme":
+    if mode == "explore_theme":
         allowed = set(THEME_LENS_FILMS.get(case["lens"], []))
         returned = [card.get("slug") for card in response.theme_films]
         if not returned:
-            critical_failures.append("no_theme_cards")
+            critical_failures["overall"].append("no_theme_cards")
         if any(slug not in FILM_TITLES for slug in returned):
-            critical_failures.append("non_corpus_film_returned")
+            critical_failures["overall"].append("non_corpus_film_returned")
         if allowed and any(slug not in allowed for slug in returned):
-            critical_failures.append("theme_card_outside_allowed_map")
+            critical_failures["overall"].append("theme_card_outside_allowed_map")
         summaries = [str(card.get("summary", "")) for card in response.theme_films]
         if len(set(summaries)) != len(summaries):
-            critical_failures.append("repeated_theme_card_summary")
+            critical_failures["overall"].append("repeated_theme_card_summary")
         if any(len(summary.split()) > 35 for summary in summaries):
-            critical_failures.append("theme_summary_too_long")
+            critical_failures["overall"].append("theme_summary_too_long")
         if any(re.search(pattern, "\n".join(summaries).lower()) for pattern in SOURCE_FACING_PATTERNS):
-            critical_failures.append("theme_source_facing_language")
+            critical_failures["overall"].append("theme_source_facing_language")
         metrics["theme_card_count"] = len(returned)
 
     return critical_failures, metrics
@@ -336,14 +354,15 @@ def run_case(case: dict, client: OpenAI | None, model: str | None) -> dict:
 
 def main() -> None:
     load_dotenv()
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     parser = argparse.ArgumentParser(description="Evaluate final Motif answer quality.")
     parser.add_argument("--cases", default="evals/benchmark_cases.json")
     parser.add_argument("--modes", nargs="*", choices=["analyze", "compare", "theme"], default=None)
     parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-4.1-mini"))
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--skip-llm", action="store_true", help="Run deterministic answer checks without LLM judging.")
-    parser.add_argument("--output", default="evals/Reports/answer_quality_results.json")
-    parser.add_argument("--csv-output", default="evals/Reports/answer_quality_results.csv")
+    parser.add_argument("--output", default=f"evals/Reports/answer_quality_results_{timestamp}.json")
+    parser.add_argument("--csv-output", default=f"evals/Reports/answer_quality_results_{timestamp}.csv")
     args = parser.parse_args()
 
     client = None
