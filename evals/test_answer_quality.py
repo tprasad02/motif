@@ -192,12 +192,9 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
             if not has_concrete_terms(str(card.get("body", ""))):
                 critical_failures[card["label"]].append(
                     "card_doesn't_have_visible_or_audible_detail"
+                )
             else:
                 concrete_cards += 1
-        )
-        # concrete_cards = sum(1 for card in response.evidence_cards if has_concrete_terms(str(card.get("body", ""))))
-        # if concrete_cards < 4:
-        #     critical_failures["overall"].append("not_every_card_has_visible_or_audible_detail")
         source_chunks = [chunk.model_dump() for chunk in response.debug_chunks]
         overlap = max_source_overlap(text, source_chunks)
         if overlap > 0.35:
