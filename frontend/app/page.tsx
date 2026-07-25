@@ -34,6 +34,15 @@ type AnswerResponse = {
   debug_chunks: DebugChunk[];
 };
 
+const fallbackAnswerPatterns = [
+  "the relevant film detail is:",
+  "pattern built through repeated scenes and formal choices",
+  "not as an idea stated in dialogue",
+  "theme context",
+  "awards and reception",
+  "cast and performance",
+];
+
 const workflows: Array<{ id: Mode; title: string; body: string; icon: typeof Film }> = [
   { id: "analyze_film", title: "Analyze a Film", body: "Choose one film and one lens for a close reading.", icon: ScanLine },
   { id: "compare_films", title: "Compare Films", body: "Choose two films and one shared lens.", icon: SplitSquareHorizontal },
@@ -41,6 +50,27 @@ const workflows: Array<{ id: Mode; title: string; body: string; icon: typeof Fil
 ];
 
 const titleFor = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
+
+function looksLikeFallbackReading(body: AnswerResponse) {
+  if (body.mode === "explore_theme") return false;
+  const cards = body.evidence_cards?.length ? body.evidence_cards : body.sections ?? [];
+  if (!body.thesis || cards.length < 4) return true;
+  const combined = [body.thesis, ...cards.flatMap((card) => [card.title ?? "", card.body ?? ""])]
+    .join(" ")
+    .toLowerCase();
+  const patternHits = fallbackAnswerPatterns.filter((pattern) => combined.includes(pattern)).length;
+  const weakCards = cards.filter((card) => {
+    const text = `${card.title ?? ""} ${card.body ?? ""}`.toLowerCase();
+    return (
+      !card.body ||
+      text.includes("the relevant film detail is:") ||
+      text.includes("american psychological") ||
+      text.includes("directed by") ||
+      text.includes("starring")
+    );
+  }).length;
+  return patternHits >= 2 || weakCards >= 2;
+}
 
 export default function Home() {
   const [mode, setMode] = useState<Mode | null>(null);
@@ -197,6 +227,9 @@ export default function Home() {
         throw new Error(message);
       }
       const body = (await response.json()) as AnswerResponse;
+      if (looksLikeFallbackReading(body)) {
+        throw new Error("The backend returned retrieved text instead of a generated reading. Check the Render OpenAI key and redeploy the backend.");
+      }
       setAnswer(body);
       setStep("answer");
     } catch (err) {

@@ -37,6 +37,17 @@ BANNED_PHRASES = [
     "underscores",
     "illustrating how",
 ]
+FALLBACK_FRAGMENT_PATTERNS = [
+    "the relevant film detail is:",
+    "pattern built through repeated scenes and formal choices",
+    "not as an idea stated in dialogue",
+    "theme context",
+    "awards and reception",
+    "cast and performance",
+    "american psychological",
+    "directed by",
+    "starring",
+]
 
 
 class LLMGenerationError(RuntimeError):
@@ -390,6 +401,31 @@ def _sanitize_thesis(thesis: str, request: GuidedAnswerRequest) -> str:
     return thesis[:360].strip()
 
 
+def _reject_fallback_reading(thesis: str, evidence_cards: list[dict[str, str]]) -> None:
+    if not thesis or len(evidence_cards) != 4:
+        raise LLMGenerationError("OpenAI returned an incomplete reading.")
+
+    combined = " ".join(
+        [thesis, *[card.get("title", "") for card in evidence_cards], *[card.get("body", "") for card in evidence_cards]]
+    ).lower()
+    pattern_hits = sum(1 for pattern in FALLBACK_FRAGMENT_PATTERNS if pattern in combined)
+    weak_cards = 0
+    for card in evidence_cards:
+        body = (card.get("body") or "").strip()
+        lowered = f"{card.get('title', '')} {body}".lower()
+        if not body:
+            weak_cards += 1
+            continue
+        if any(pattern in lowered for pattern in FALLBACK_FRAGMENT_PATTERNS):
+            weak_cards += 1
+            continue
+        if len(body.split()) < 45:
+            weak_cards += 1
+
+    if pattern_hits >= 2 or weak_cards >= 2:
+        raise LLMGenerationError("OpenAI returned retrieved text instead of a generated reading.")
+
+
 def _theme_card_body(slug: str, lens: str) -> str:
     if slug in FILM_SUMMARIES:
         return FILM_SUMMARIES[slug]
@@ -508,6 +544,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
             }
             for card in evidence_cards
         ]
+        _reject_fallback_reading(thesis, evidence_cards)
     answer = thesis
     sections = evidence_cards
     alternative_interpretations = [card["body"] for card in evidence_cards]
