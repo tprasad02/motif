@@ -3,7 +3,8 @@ services:
     name: motif-backend
     runtime: docker
     plan: starter
-    rootDir: backend
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
@@ -14,9 +15,9 @@ services:
         value: MotifChunk
       - key: EMBEDDING_PROVIDER
         value: local
-      - key: PUTER_AUTH_TOKEN
+      - key: OPENAI_API_KEY
         sync: false
-      - key: PUTER_MODEL
-        value: gpt-5.4-nano
+      - key: OPENAI_MODEL
+        sync: false
       - key: FRONTEND_ORIGIN
         sync: false
