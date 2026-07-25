@@ -279,14 +279,13 @@ cd motif
 docker compose up -d postgres weaviate
 ```
 
-Terminal 2: start the backend.
+Terminal 2: start the backend (From project root).
 
 ```bash
-cd motif/backend
 source ../.venv/bin/activate
 DATABASE_URL=postgresql://motif:motif@localhost:5433/motif \
 WEAVIATE_URL=http://localhost:8080 \
-uvicorn app.main:app --reload --port 8000
+uvicorn backend.app.main:app --reload --port 8000
 ```
 
 Backend health check:
@@ -306,6 +305,11 @@ Terminal 3: start the frontend.
 ```bash
 cd motif/frontend
 NEXT_PUBLIC_API_URL=http://localhost:8000 pnpm run dev
+```
+Or alternaitively if the port 3000 is occupied
+
+```bash
+pnpm run dev -- -p <available_port_number>
 ```
 
 Open:

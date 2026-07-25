@@ -396,6 +396,76 @@ def run_case(case: dict, client: OpenAI | None, model: str | None) -> dict:
     }
     return row
 
+def build_csv(csv_path: Path, rows) -> None:
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "id",
+        "mode",
+        "film_a",
+        "film_b",
+        "lens",
+        "coverage_level",
+        "coverage_score",
+        "answer_quality_score",
+        "passed",
+        "critical_failures",
+        "judge_error",
+        "theme_card_titles",
+        "theme_card_summaries",
+    ]
+
+    with csv_path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+
+        for row in rows:
+            csv_row = {}
+
+            for field in fieldnames:
+                value = row.get(field)
+
+                if field == "critical_failures" and isinstance(value, dict):
+                    flattened_failures = [
+                        f"{label}: {failure}"
+                        for label, label_failures in value.items()
+                        for failure in label_failures
+                    ]
+
+                    value = ", ".join(flattened_failures) or "none"
+
+                elif isinstance(value, (list, dict)):
+                    value = json.dumps(value, ensure_ascii=False)
+
+                csv_row[field] = value
+
+            writer.writerow(csv_row)
+
+def build_output(rows: dict = None) -> None:
+    
+    passed_count = 0
+
+    for row in rows:
+        passed = row["passed"]
+        passed_count += passed
+
+        score = row["answer_quality_score"]
+        score_text = "N/A" if score is None else f"{score:.2f}"
+
+        non_empty_failures = {
+            label: failures
+            for label, failures in row["critical_failures"].items()
+            if failures
+        }
+        status = "PASS" if passed else "FAIL"
+
+        print(
+            f"{status} {row['id']}: "
+            f"score={score_text} failures={non_empty_failures}"
+        )
+
+    print(f"passed={passed_count}/{len(rows)}")
+    
+    
 
 def main() -> None:
     load_dotenv()
@@ -429,38 +499,10 @@ def main() -> None:
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(rows, indent=2, ensure_ascii=False), encoding="utf-8")
-
     csv_path = Path(args.csv_output)
-    csv_path.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = [
-        "id",
-        "mode",
-        "film_a",
-        "film_b",
-        "lens",
-        "coverage_level",
-        "coverage_score",
-        "answer_quality_score",
-        "passed",
-        "critical_failures",
-        "first_attempt_failures",
-        "retry_used",
-        "judge_error",
-        "theme_card_titles",
-        "theme_card_summaries",
-    ]
-    with csv_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({field: json.dumps(row[field]) if isinstance(row[field], (dict, list)) else row[field] for field in fieldnames})
 
-    for row in rows:
-        score = "N/A" if row["answer_quality_score"] is None else f"{row['answer_quality_score']:.2f}"
-        failures = summarize_failures(row["critical_failures"])
-        retry = " retry=1" if row["retry_used"] else ""
-        print(f"{'PASS' if row['passed'] else 'FAIL'} {row['id']}: score={score}{retry} failures={failures}")
-    print(f"passed={sum(row['passed'] for row in rows)}/{len(rows)}")
+    build_output(rows)
+    build_csv(csv_path, rows)
     print(f"json={output_path}")
     print(f"csv={csv_path}")
 

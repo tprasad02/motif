@@ -5,10 +5,10 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY backend/requirements.txt /app/backend/requirements.txt
+RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
-COPY app ./app
+COPY backend /app/backend
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "10000"]
+CMD ["sh", "-c", "uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
 
