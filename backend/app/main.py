@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.core.config import settings
-from app.models import (
+from backend.app.core.config import settings
+from backend.app.models import (
     AnalysisResponse,
     AnswerRequest,
     FilmComparisonResponse,
@@ -13,7 +13,7 @@ from app.models import (
     ThemeExplorerResponse,
     WorkflowRequest,
 )
-from app.services.analysis import (
+from backend.app.services.analysis import (
     LLMGenerationError,
     answer_from_request,
     answer_query,
