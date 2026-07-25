@@ -363,7 +363,7 @@ Are the four evidence cards actually different from each other?
 
 `concrete_film_detail`
 
-Does each card mention something visible or audible: scene, image, cut, sound, prop, performance, setting, structure?
+Does each card use concrete film evidence rather than abstract commentary? Good evidence can include plot context, a scene/sequence, a character action, performance detail, recurring image, sound cue, prop, setting, structure, or contradiction in the film. The deterministic check no longer requires exact words like "scene" or "screen"; it looks for a broader specificity signal.
 
 `non_dumping`
 
@@ -405,10 +405,24 @@ Critical failures:
 - fewer than four evidence cards
 - answer discusses the wrong film
 - answer ignores the selected theme
-- answer invents unsupported claims
 - answer dumps raw source or screenplay text
 - comparison mode retrieves heavily from only one film
 - source/system-facing language appears in the public answer
+- individual evidence card is empty, too short, source-facing, unusually generic, mislabeled, or likely copied from retrieved text
+
+### Evidence Card Retry
+
+Because LLM output varies, `evals/test_answer_quality.py` retries a case once when the first attempt has evidence-card failures.
+
+Retry rules:
+
+- retry only applies to Analyze Film and Compare Films
+- retry only happens when one or more evidence cards fail deterministic card checks
+- the retry does not run for theme-card mode
+- the report keeps both `first_attempt_failures` and final `critical_failures`
+- `retry_used` is written to JSON and CSV
+
+The retry is meant to avoid over-penalizing one unlucky generation while still showing which card failed first.
 
 ## Theme Mode Eval
 

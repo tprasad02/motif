@@ -1,17 +1,17 @@
 :root {
-  color-scheme: light;
-  --ink: #19111a;
-  --muted: #695e67;
-  --line: rgba(25, 17, 26, 0.16);
-  --paper: #fff2dd;
-  --cream: #fff9ee;
-  --red: #f04f58;
-  --blue: #2f80ed;
-  --cyan: #27c1c9;
-  --gold: #f8be3f;
-  --violet: #7d54d6;
-  --green: #1c8c68;
-  --shadow: 0 20px 60px rgba(54, 31, 44, 0.18);
+  color-scheme: dark;
+  --ink: #fff8ea;
+  --muted: #b8aebc;
+  --line: rgba(255, 248, 234, 0.16);
+  --paper: #100b14;
+  --cream: #1b1320;
+  --red: #ff4f68;
+  --blue: #3c7df0;
+  --cyan: #26d3cb;
+  --gold: #ffca5f;
+  --violet: #9b65ff;
+  --green: #50d59a;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
 }
 
 * {
@@ -23,10 +23,13 @@ body {
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    radial-gradient(circle at 8% 10%, rgba(240, 79, 88, 0.26), transparent 24rem),
-    radial-gradient(circle at 88% 8%, rgba(39, 193, 201, 0.3), transparent 24rem),
-    linear-gradient(110deg, rgba(248, 190, 63, 0.18), rgba(125, 84, 214, 0.12)),
+    radial-gradient(circle at 13% 8%, rgba(255, 79, 104, 0.24), transparent 25rem),
+    radial-gradient(circle at 83% 4%, rgba(38, 211, 203, 0.18), transparent 24rem),
+    radial-gradient(circle at 70% 88%, rgba(155, 101, 255, 0.22), transparent 24rem),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 5px),
+    linear-gradient(135deg, #100b14 0%, #1c1021 42%, #0d1820 100%),
     var(--paper);
+  min-height: 100vh;
 }
 
 button,
@@ -48,15 +51,15 @@ button {
   display: grid;
   gap: 18px;
   margin-bottom: 14px;
-  border: 2px solid rgba(25, 17, 26, 0.12);
+  border: 1px solid rgba(255, 248, 234, 0.18);
   border-radius: 8px;
   padding: 28px;
   overflow: hidden;
   position: relative;
   color: #fffaf1;
   background:
-    linear-gradient(115deg, rgba(33, 16, 60, 0.94), rgba(27, 108, 132, 0.86) 48%, rgba(232, 67, 79, 0.9)),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 36px);
+    linear-gradient(115deg, rgba(18, 8, 26, 0.96), rgba(38, 22, 57, 0.9) 44%, rgba(91, 21, 44, 0.92)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px 34px);
   box-shadow: var(--shadow);
 }
 
@@ -134,7 +137,7 @@ button {
   border-radius: 8px;
   padding: 9px 12px;
   color: var(--ink);
-  background: rgba(255, 249, 238, 0.86);
+  background: rgba(28, 19, 32, 0.82);
 }
 
 .workflowIntro,
@@ -144,7 +147,9 @@ button {
 .errorState {
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 249, 238, 0.92);
+  background:
+    linear-gradient(180deg, rgba(35, 24, 43, 0.92), rgba(20, 14, 24, 0.94)),
+    rgba(16, 11, 20, 0.96);
   box-shadow: var(--shadow);
 }
 
@@ -183,7 +188,7 @@ button {
   color: var(--ink);
   text-align: left;
   background:
-    linear-gradient(135deg, rgba(248, 190, 63, 0.24), rgba(39, 193, 201, 0.12)),
+    linear-gradient(135deg, rgba(255, 202, 95, 0.2), rgba(38, 211, 203, 0.12)),
     var(--cream);
   transition:
     transform 160ms ease,
@@ -193,13 +198,13 @@ button {
 
 .workflowCard:nth-child(2) {
   background:
-    linear-gradient(135deg, rgba(240, 79, 88, 0.18), rgba(125, 84, 214, 0.14)),
+    linear-gradient(135deg, rgba(255, 79, 104, 0.16), rgba(155, 101, 255, 0.18)),
     var(--cream);
 }
 
 .workflowCard:nth-child(3) {
   background:
-    linear-gradient(135deg, rgba(39, 193, 201, 0.18), rgba(248, 190, 63, 0.18)),
+    linear-gradient(135deg, rgba(38, 211, 203, 0.16), rgba(255, 202, 95, 0.14)),
     var(--cream);
 }
 
@@ -262,11 +267,12 @@ button {
   display: grid;
   align-content: start;
   gap: 8px;
-  border: 2px solid rgba(25, 17, 26, 0.1);
+  border: 1px solid rgba(255, 248, 234, 0.14);
   border-radius: 8px;
   padding: 14px;
   color: var(--ink);
-  background: linear-gradient(180deg, #fffdf6, #fff3df);
+  background:
+    linear-gradient(180deg, rgba(36, 25, 43, 0.98), rgba(20, 15, 25, 0.98));
   text-align: left;
   position: relative;
 }
@@ -280,8 +286,9 @@ button {
 .filmCard.selected {
   border-color: var(--red);
   background:
-    linear-gradient(135deg, rgba(240, 79, 88, 0.18), rgba(248, 190, 63, 0.2)),
-    #fffaf0;
+    linear-gradient(135deg, rgba(255, 79, 104, 0.28), rgba(255, 202, 95, 0.16)),
+    #211522;
+  box-shadow: 0 0 0 3px rgba(255, 79, 104, 0.14);
 }
 
 .selectedBadge {
@@ -308,11 +315,11 @@ button {
 
 .selectedLenses span,
 .specificAngles span {
-  border: 1px solid rgba(25, 17, 26, 0.12);
+  border: 1px solid rgba(255, 248, 234, 0.14);
   border-radius: 999px;
   padding: 6px 8px;
-  color: #40353f;
-  background: rgba(255, 255, 255, 0.62);
+  color: #efe3eb;
+  background: rgba(255, 255, 255, 0.08);
   font-size: 12px;
   font-weight: 800;
 }
@@ -324,19 +331,19 @@ button {
 }
 
 .lensPill {
-  border: 2px solid rgba(25, 17, 26, 0.12);
+  border: 1px solid rgba(255, 248, 234, 0.16);
   border-radius: 999px;
   padding: 11px 15px;
   color: var(--ink);
-  background: #fffdf6;
+  background: rgba(255, 255, 255, 0.08);
   font-weight: 850;
 }
 
 .lensPill.active {
-  border-color: #151015;
-  color: #151015;
-  background: linear-gradient(135deg, var(--gold), #ffe2a0);
-  box-shadow: 0 8px 0 rgba(25, 17, 26, 0.12);
+  border-color: rgba(255, 202, 95, 0.9);
+  color: #160d18;
+  background: linear-gradient(135deg, var(--gold), var(--cyan));
+  box-shadow: 0 0 24px rgba(38, 211, 203, 0.22);
 }
 
 .specificAngles {
@@ -392,18 +399,18 @@ button {
 .errorState {
   margin-top: 14px;
   padding: 16px;
-  color: #8b2730;
+  color: #ffd7d9;
   border-color: rgba(240, 79, 88, 0.45);
-  background: #fff2f0;
+  background: rgba(80, 20, 30, 0.62);
 }
 
 .answerPanel {
   margin-top: 14px;
   padding: 24px;
   background:
-    radial-gradient(circle at 0 0, rgba(39, 193, 201, 0.18), transparent 22rem),
-    radial-gradient(circle at 100% 0, rgba(240, 79, 88, 0.14), transparent 22rem),
-    #fffaf1;
+    radial-gradient(circle at 0 0, rgba(38, 211, 203, 0.16), transparent 22rem),
+    radial-gradient(circle at 100% 0, rgba(255, 79, 104, 0.16), transparent 22rem),
+    linear-gradient(180deg, rgba(30, 20, 37, 0.98), rgba(15, 11, 18, 0.98));
 }
 
 .answerPanel.refused {
@@ -429,8 +436,9 @@ button {
 
 .answerPanel h1,
 .thesisBoard h1 {
-  max-width: 900px;
-  font-size: clamp(30px, 4.5vw, 54px);
+  max-width: 820px;
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.1;
 }
 
 .thesisBoard {
@@ -438,8 +446,8 @@ button {
   border-radius: 8px;
   padding: 18px 20px;
   background:
-    linear-gradient(135deg, rgba(248, 190, 63, 0.22), rgba(39, 193, 201, 0.12)),
-    rgba(255, 255, 255, 0.66);
+    linear-gradient(135deg, rgba(255, 202, 95, 0.16), rgba(38, 211, 203, 0.08)),
+    rgba(255, 255, 255, 0.06);
 }
 
 .thesisBoard span,
@@ -466,8 +474,8 @@ button {
   min-height: 220px;
   padding: 16px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 243, 223, 0.72)),
-    rgba(255, 255, 255, 0.58);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.045)),
+    rgba(10, 8, 14, 0.68);
 }
 
 .evidenceGrid strong {
@@ -497,8 +505,8 @@ button {
   border-radius: 8px;
   padding: 16px;
   background:
-    linear-gradient(135deg, rgba(248, 190, 63, 0.22), rgba(39, 193, 201, 0.12)),
-    rgba(255, 255, 255, 0.7);
+    linear-gradient(135deg, rgba(255, 202, 95, 0.16), rgba(38, 211, 203, 0.1)),
+    rgba(255, 255, 255, 0.07);
 }
 
 .themeFilmCard > span {

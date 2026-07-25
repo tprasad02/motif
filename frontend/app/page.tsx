@@ -35,7 +35,7 @@ type AnswerResponse = {
 };
 
 const workflows: Array<{ id: Mode; title: string; body: string; icon: typeof Film }> = [
-  { id: "analyze_film", title: "Analyze a Film", body: "Choose one film and a strong lens for a close reading.", icon: ScanLine },
+  { id: "analyze_film", title: "Analyze a Film", body: "Choose one film and one lens for a close reading.", icon: ScanLine },
   { id: "compare_films", title: "Compare Films", body: "Choose two films and one shared lens.", icon: SplitSquareHorizontal },
   { id: "explore_theme", title: "Explore a Theme", body: "Choose one theme and trace it across the collection.", icon: Eye },
 ];
@@ -186,7 +186,16 @@ export default function Home() {
           include_debug: debug,
         }),
       });
-      if (!response.ok) throw new Error(`The backend returned ${response.status}.`);
+      if (!response.ok) {
+        let message = `The backend returned ${response.status}.`;
+        try {
+          const problem = (await response.json()) as { detail?: string };
+          if (problem.detail) message = problem.detail;
+        } catch {
+          // Keep the status-based message if the backend did not return JSON.
+        }
+        throw new Error(message);
+      }
       const body = (await response.json()) as AnswerResponse;
       setAnswer(body);
       setStep("answer");
@@ -322,7 +331,7 @@ export default function Home() {
               Generate Reading
             </button>
             <span className={canGenerate ? "readyText" : "inlineError"}>
-              {loading && canGenerate ? loadingText : canGenerate ? `${mode === "explore_theme" ? "Selected theme" : "Selected lens"}: ${lens}` : disabledReason}
+              {loading && canGenerate ? loadingText : canGenerate ? `Selected: ${lens}` : disabledReason}
             </span>
           </div>
         </section>
@@ -367,11 +376,6 @@ export default function Home() {
               ))}
             </div>
           )}
-          <div className="answerActions">
-            {mode !== "explore_theme" && <button onClick={() => setStep("film")}>Change film</button>}
-            <button onClick={() => setStep("lens")}>{mode === "explore_theme" ? "Change theme" : "Change lens"}</button>
-            <button onClick={startOver}>Start over</button>
-          </div>
         </section>
       )}
 

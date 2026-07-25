@@ -4,10 +4,10 @@ from collections import defaultdict
 
 import httpx
 
-from backend.app.core.config import settings
-from backend.app.db.postgres import fetch_source_metadata
-from backend.app.film_config import FILM_LENSES, FILM_TITLES
-from backend.app.models import (
+from app.core.config import settings
+from app.db.postgres import fetch_source_metadata
+from app.film_config import FILM_LENSES, FILM_TITLES
+from app.models import (
     AnalysisResponse,
     AnswerRequest,
     FilmComparisonResponse,
@@ -18,10 +18,10 @@ from backend.app.models import (
     SourceCitation,
     ThemeExplorerResponse,
 )
-from backend.app.services.retrieval import RetrievedChunk, retrieve_chunks
+from app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
-EVIDENCE_JOBS = ["Scene or Motif", "Formal Technique", "Character or Performance", "Ambiguity or Counterreading"]
+EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
 BANNED_PHRASES = [
     "at its core",
     "profound exploration",
@@ -29,6 +29,13 @@ BANNED_PHRASES = [
     "the human condition",
     "serves as a metaphor",
     "invites the viewer",
+    "matters because",
+    "not only",
+    "but also",
+    "not just",
+    "serves as",
+    "underscores",
+    "illustrating how",
 ]
 
 
@@ -254,18 +261,23 @@ def _context(chunks: list[RetrievedChunk]) -> str:
 def _system_prompt(mode: str) -> str:
     return (
         "You are Motif, a film close-reading assistant. Produce an evidence board, not an essay. "
-        "Write plainly. Avoid grand philosophical language, plot summary, and claims about people or humanity in general. "
-        "Do not use these phrases: at its core, profound exploration, complex interplay, the human condition, serves as a metaphor, invites the viewer. "
+        "Write plainly and specifically. Avoid grand philosophical language, generic AI phrasing, and claims about people or humanity in general. "
+        "Use enough plot context to identify the moment, but do not retell the whole plot. "
+        "Do not use these phrases or structures: at its core, profound exploration, complex interplay, the human condition, serves as, invites the viewer, matters because, underscores, illustrating how, not only, but also, not just. "
         "Do not mention source titles, publishers, source types, citations, or phrases like 'according to'. "
-        "You may mention the selected theme naturally, but do not expose interface phrasing like 'lens', 'through the lens of', 'in this lens', or 'selected lens'. "
+        "You may mention the selected idea naturally, but do not expose interface phrasing like 'lens', 'theme', 'through the lens of', 'in this lens', 'selected lens', or 'selected theme'. "
         f"Only discuss these films: {', '.join(FILM_TITLES.values())}. "
-        "Explain what the film does, how it does it, and why that matters. "
+        "Explain what the film shows and how the detail supports or complicates the thesis. "
         "Use only retrieved context and attach chunk IDs to each evidence item. "
         "Return strict JSON with keys: thesis, evidence_1, evidence_2, evidence_3, evidence_4. "
-        "The thesis must be 30-60 words, one or two sentences, mention the selected film and selected theme directly, and make a film-bound arguable claim. "
+        "The thesis must be 25-50 words, one or two sentences, mention the selected film and selected idea directly, and make a film-bound arguable claim. "
         "Each evidence item must be an object with keys: label, title, body, chunk_ids. "
-        "The four labels must be exactly: Scene or Motif, Formal Technique, Character or Performance, Ambiguity or Counterreading. "
-        "Each body must be 80-140 words and must mention a visible or audible film element: a scene, image, line, camera movement, cut, sound cue, color, performance detail, prop, setting, structure, or repeated motif."
+        "The four labels must be exactly: Scene, Character, Pattern, Counterreading. "
+        "Scene: choose the single strongest scene or sequence that directly demonstrates the thesis. Name what happens in that moment and what the viewer sees or hears. "
+        "Character: explain how a character's behavior, performance, relationships, or psychological trajectory embodies the thesis. Use a specific action, reaction, or performance detail. "
+        "Pattern: identify a recurring symbol, visual motif, image, line of dialogue, sound cue, editing pattern, or filmmaking technique that quietly reinforces the thesis. "
+        "Counterreading: give the strongest evidence that challenges, complicates, or contradicts the thesis. Do not make this a fourth supporting point. "
+        "Each body must be 70-120 words, concrete, and distinct from the other cards."
     )
 
 
@@ -334,6 +346,13 @@ def _normalize_card(raw_card, label: str) -> dict[str, str]:
 def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
     cleaned = re.sub(r"\s+", " ", text or "").strip()
     cleaned = re.sub(r"^the relevant film detail is:\s*", "", cleaned, flags=re.I)
+    cleaned = re.sub(r"\bmatters because\b", "shows this by", cleaned, flags=re.I)
+    cleaned = re.sub(r"\bnot only\b", "", cleaned, flags=re.I)
+    cleaned = re.sub(r"\bbut also\b", "and", cleaned, flags=re.I)
+    cleaned = re.sub(r"\bnot just\b", "more than", cleaned, flags=re.I)
+    cleaned = re.sub(r"\bserves as\b", "works like", cleaned, flags=re.I)
+    cleaned = re.sub(r"\bunderscores\b", "sharpens", cleaned, flags=re.I)
+    cleaned = re.sub(r"\billustrating how\b", "showing how", cleaned, flags=re.I)
     for phrase in BANNED_PHRASES:
         cleaned = re.sub(re.escape(phrase), "", cleaned, flags=re.I)
     cleaned = re.sub(r"\baccording to\b[^.?!]*(?:[.?!]|$)", "", cleaned, flags=re.I)
@@ -349,8 +368,8 @@ def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
         cleaned = re.sub(rf"\bthrough\s+(?:the\s+)?lens\s+of\s+{escaped_lens}\b", f"through {request.lens}", cleaned, flags=re.I)
         cleaned = re.sub(rf"\bin\s+(?:this|the)\s+{escaped_lens}\s+lens\b", f"in its treatment of {request.lens}", cleaned, flags=re.I)
         cleaned = re.sub(rf"\b(?:this|the|selected)\s+{escaped_lens}\s+lens\b", request.lens, cleaned, flags=re.I)
-        cleaned = re.sub(r"\b(?:this|the|selected)\s+lens\b", "this theme", cleaned, flags=re.I)
-        cleaned = re.sub(r"\blens\b", "theme", cleaned, flags=re.I)
+        cleaned = re.sub(r"\b(?:this|the|selected)\s+(?:lens|theme)\b", "this idea", cleaned, flags=re.I)
+        cleaned = re.sub(r"\b(?:lens|theme)\b", "idea", cleaned, flags=re.I)
     for title in NON_CORPUS_FILM_TITLES:
         cleaned = re.sub(re.escape(title), "", cleaned, flags=re.I)
     return re.sub(r"\s{2,}", " ", cleaned).strip(" -:;,.") or text.strip()
