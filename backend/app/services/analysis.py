@@ -4,10 +4,10 @@ from collections import defaultdict
 
 import httpx
 
-from app.core.config import settings
-from app.db.postgres import fetch_source_metadata
-from app.film_config import FILM_LENSES, FILM_TITLES
-from app.models import (
+from backend.app.core.config import settings
+from backend.app.db.postgres import fetch_source_metadata
+from backend.app.film_config import FILM_LENSES, FILM_TITLES
+from backend.app.models import (
     AnalysisResponse,
     AnswerRequest,
     FilmComparisonResponse,
@@ -18,7 +18,7 @@ from app.models import (
     SourceCitation,
     ThemeExplorerResponse,
 )
-from app.services.retrieval import RetrievedChunk, retrieve_chunks
+from backend.app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
 EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
@@ -265,12 +265,12 @@ def _system_prompt(mode: str) -> str:
         "Use enough plot context to identify the moment, but do not retell the whole plot. "
         "Do not use these phrases or structures: at its core, profound exploration, complex interplay, the human condition, serves as, invites the viewer, matters because, underscores, illustrating how, not only, but also, not just. "
         "Do not mention source titles, publishers, source types, citations, or phrases like 'according to'. "
-        "You may mention the selected idea naturally, but do not expose interface phrasing like 'lens', 'theme', 'through the lens of', 'in this lens', 'selected lens', or 'selected theme'. "
+        "You may mention the selected lens naturally, but do not expose interface phrasing like 'lens', 'theme', 'through the lens of', 'in this lens', 'selected lens', or 'selected theme'. "
         f"Only discuss these films: {', '.join(FILM_TITLES.values())}. "
         "Explain what the film shows and how the detail supports or complicates the thesis. "
         "Use only retrieved context and attach chunk IDs to each evidence item. "
         "Return strict JSON with keys: thesis, evidence_1, evidence_2, evidence_3, evidence_4. "
-        "The thesis must be 25-50 words, one or two sentences, mention the selected film and selected idea directly, and make a film-bound arguable claim. "
+        "The thesis must be 30-60 words, one or two sentences, mention the selected film and selected lens directly, and make a film-bound arguable claim. "
         "Each evidence item must be an object with keys: label, title, body, chunk_ids. "
         "The four labels must be exactly: Scene, Character, Pattern, Counterreading. "
         "Scene: choose the single strongest scene or sequence that directly demonstrates the thesis. Name what happens in that moment and what the viewer sees or hears. "
@@ -368,8 +368,8 @@ def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
         cleaned = re.sub(rf"\bthrough\s+(?:the\s+)?lens\s+of\s+{escaped_lens}\b", f"through {request.lens}", cleaned, flags=re.I)
         cleaned = re.sub(rf"\bin\s+(?:this|the)\s+{escaped_lens}\s+lens\b", f"in its treatment of {request.lens}", cleaned, flags=re.I)
         cleaned = re.sub(rf"\b(?:this|the|selected)\s+{escaped_lens}\s+lens\b", request.lens, cleaned, flags=re.I)
-        cleaned = re.sub(r"\b(?:this|the|selected)\s+(?:lens|theme)\b", "this idea", cleaned, flags=re.I)
-        cleaned = re.sub(r"\b(?:lens|theme)\b", "idea", cleaned, flags=re.I)
+        cleaned = re.sub(r"\b(?:this|the|selected)\s+(?:lens|theme)\b", "this lens", cleaned, flags=re.I)
+        cleaned = re.sub(r"\b(?:lens|theme)\b", "lens", cleaned, flags=re.I)
     for title in NON_CORPUS_FILM_TITLES:
         cleaned = re.sub(re.escape(title), "", cleaned, flags=re.I)
     return re.sub(r"\s{2,}", " ", cleaned).strip(" -:;,.") or text.strip()

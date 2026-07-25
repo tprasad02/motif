@@ -7,9 +7,9 @@ from urllib.parse import urlparse
 import httpx
 import psycopg
 
-from backend.app.core.config import settings
-from backend.app.db.postgres import ensure_runtime_schema
-from backend.app.services.embeddings import local_embedding
+from app.core.config import settings
+from app.db.postgres import ensure_runtime_schema
+from app.services.embeddings import local_embedding
 
 _file_chunks_cache: list["RetrievedChunk"] | None = None
 
