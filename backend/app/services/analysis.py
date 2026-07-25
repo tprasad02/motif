@@ -1,7 +1,6 @@
 import json
 import re
 from collections import defaultdict
-from pathlib import Path
 
 import httpx
 
@@ -31,6 +30,11 @@ BANNED_PHRASES = [
     "serves as a metaphor",
     "invites the viewer",
 ]
+
+
+class LLMGenerationError(RuntimeError):
+    pass
+
 
 FILM_META = {
     "shawshank-redemption": {"year": 1994, "director": "Frank Darabont"},
@@ -278,53 +282,12 @@ Retrieved context:
 """.strip()
 
 
-def _fallback_answer(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> dict:
-    film = _display_title(request.film_a) if request.mode != "explore_theme" else "the selected films"
-    thesis = f"{film} treats {request.lens} as a pattern built through repeated scenes and formal choices, not as an idea stated in dialogue."
-    cards = []
-    for label, chunk in zip(EVIDENCE_JOBS, chunks[:4]):
-        cards.append(
-            {
-                "label": label,
-                "title": chunk.section_title or label,
-                "body": (
-                    f"The relevant film detail is: {chunk.text[:520].strip()}"
-                )[:760],
-                "chunk_ids": [chunk.chunk_id],
-            }
-        )
-    while len(cards) < 4:
-        label = EVIDENCE_JOBS[len(cards)]
-        cards.append({"label": label, "title": label, "body": "The current retrieval pass did not find enough concrete film evidence for this slot.", "chunk_ids": []})
-    return {"thesis": thesis, "evidence_1": cards[0], "evidence_2": cards[1], "evidence_3": cards[2], "evidence_4": cards[3]}
-
-
-def _puter_token_from_deployment_doc() -> str | None:
-    for candidate in [
-        Path("docs/deployment.md"),
-        Path(__file__).resolve().parents[3] / "docs" / "deployment.md",
-    ]:
-        if not candidate.exists():
-            continue
-        match = re.search(r"^PUTER_AUTH_TOKEN=(.+)$", candidate.read_text(encoding="utf-8"), re.MULTILINE)
-        if not match:
-            continue
-        token = match.group(1).strip()
-        if token and not token.startswith("<"):
-            return token
-    return None
-
-
 def _plan_evidence(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> dict:
-    puter_token = settings.puter_auth_token or _puter_token_from_deployment_doc()
-    api_key = settings.openai_api_key or puter_token
+    api_key = settings.openai_api_key
     if not api_key:
-        return _fallback_answer(request, chunks)
+        raise LLMGenerationError("OPENAI_API_KEY is not configured.")
     base_url = "https://api.openai.com/v1"
     model = settings.openai_model
-    if puter_token and not settings.openai_api_key:
-        base_url = "https://api.puter.com/puterai/openai/v1"
-        model = settings.puter_model
 
     payload = {
         "model": model,
@@ -344,12 +307,14 @@ def _plan_evidence(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -
         )
         response.raise_for_status()
         content = response.json()["choices"][0]["message"]["content"]
-    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError):
-        return _fallback_answer(request, chunks)
+    except httpx.HTTPStatusError as error:
+        raise LLMGenerationError(f"OpenAI request failed with status {error.response.status_code}.") from error
+    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError) as error:
+        raise LLMGenerationError("OpenAI request failed before Motif could generate a reading.") from error
     try:
         return json.loads(content)
-    except json.JSONDecodeError:
-        return _fallback_answer(request, chunks)
+    except json.JSONDecodeError as error:
+        raise LLMGenerationError("OpenAI returned a response Motif could not parse.") from error
 
 
 def _normalize_card(raw_card, label: str) -> dict[str, str]:
@@ -368,6 +333,7 @@ def _normalize_card(raw_card, label: str) -> dict[str, str]:
 
 def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
     cleaned = re.sub(r"\s+", " ", text or "").strip()
+    cleaned = re.sub(r"^the relevant film detail is:\s*", "", cleaned, flags=re.I)
     for phrase in BANNED_PHRASES:
         cleaned = re.sub(re.escape(phrase), "", cleaned, flags=re.I)
     cleaned = re.sub(r"\baccording to\b[^.?!]*(?:[.?!]|$)", "", cleaned, flags=re.I)
@@ -388,6 +354,13 @@ def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
     for title in NON_CORPUS_FILM_TITLES:
         cleaned = re.sub(re.escape(title), "", cleaned, flags=re.I)
     return re.sub(r"\s{2,}", " ", cleaned).strip(" -:;,.") or text.strip()
+
+
+def _clean_card_title(title: str, label: str, request: GuidedAnswerRequest) -> str:
+    cleaned = _clean_public_text(title, request)
+    if cleaned.lower() in {"main argument", "interview exchange", "untitled", "evidence"}:
+        return label
+    return cleaned
 
 
 def _sanitize_thesis(thesis: str, request: GuidedAnswerRequest) -> str:
@@ -511,7 +484,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         evidence_cards = [
             {
                 **card,
-                "title": _clean_public_text(card["title"], request),
+                "title": _clean_card_title(card["title"], card["label"], request),
                 "body": _clean_public_text(card["body"], request),
             }
             for card in evidence_cards
