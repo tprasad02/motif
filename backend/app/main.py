@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
@@ -14,6 +14,7 @@ from app.models import (
     WorkflowRequest,
 )
 from app.services.analysis import (
+    LLMGenerationError,
     answer_from_request,
     answer_query,
     film_comparison_query,
@@ -56,12 +57,18 @@ def retrieve(request: RetrieveRequest):
 
 @app.post("/answer", response_model=AnalysisResponse)
 def answer(request: GuidedAnswerRequest | AnswerRequest):
-    return answer_from_request(request)
+    try:
+        return answer_from_request(request)
+    except LLMGenerationError as error:
+        raise HTTPException(status_code=502, detail=str(error)) from error
 
 
 @app.post("/analyze", response_model=AnalysisResponse)
 def analyze(request: AnswerRequest):
-    return answer_from_request(request)
+    try:
+        return answer_from_request(request)
+    except LLMGenerationError as error:
+        raise HTTPException(status_code=502, detail=str(error)) from error
 
 
 @app.post("/workflows/interpretation-map", response_model=InterpretationMapResponse)

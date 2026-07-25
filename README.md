@@ -161,19 +161,13 @@ host: localhost
 port: 5433
 ```
 
-For LLM-backed answers, set one of:
+For LLM-backed answers, set:
 
 ```env
 OPENAI_API_KEY=your_openai_key
 ```
 
-or:
-
-```env
-PUTER_AUTH_TOKEN=your_puter_token
-```
-
-If no LLM key is available, the backend falls back to a basic local answer shape. That is useful for development, but the real app experience requires an LLM.
+If no OpenAI key is available, answer generation returns an error instead of a fake reading. The real app experience requires `OPENAI_API_KEY`.
 
 ## First-Time Setup
 
@@ -373,12 +367,6 @@ DATABASE_URL=...
 WEAVIATE_URL=...
 FRONTEND_ORIGIN=https://your-vercel-app.vercel.app
 OPENAI_API_KEY=...
-```
-
-or, if using Puter:
-
-```env
-PUTER_AUTH_TOKEN=...
 ```
 
 The deployed frontend must have:
