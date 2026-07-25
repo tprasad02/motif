@@ -1,0 +1,12 @@
+.git
+.gitignore
+frontend
+backend/.venv
+backend/__pycache__
+**/__pycache__
+**/*.pyc
+evals/
+.env
+.env.*
+.vercel
+node_modules
