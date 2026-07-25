@@ -6,11 +6,9 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parents[1] / "backend"))
-
-from app.film_config import FILM_TITLES
-from app.services.analysis import THEME_LENS_FILMS
-from app.services.retrieval import retrieve_chunks
+from backend.app.film_config import FILM_TITLES
+from backend.app.services.analysis import THEME_LENS_FILMS
+from backend.app.services.retrieval import retrieve_chunks
 
 
 CONCRETE_ROLES = {"scene_evidence", "formal_observation", "creator_commentary", "interpretive_claim"}

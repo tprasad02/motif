@@ -28,7 +28,7 @@ OPENAI_API_KEY=your_key
 Script:
 
 ```bash
-python evals/verify_corpus.py --sources data/manual_sources.csv --min-per-film 4
+python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
 ```
 
 Goal: decide whether each film has enough usable material to support real analysis.
@@ -108,7 +108,7 @@ This is not an intellectual quality score for a source. It is a practical covera
 Script:
 
 ```bash
-python evals/chunk_eval.py backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
+python -m evals.chunk_eval  backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
 ```
 
 Use this to decide whether chunking is good enough for retrieval.
@@ -118,7 +118,7 @@ Use this to decide whether chunking is good enough for retrieval.
 The first positional argument is the input JSONL file:
 
 ```bash
-python evals/chunk_eval.py backend/app/corpus/chunks.jsonl
+python -m evals.chunk_eval backend/app/corpus/chunks.jsonl
 ```
 
 Useful options:
@@ -166,9 +166,9 @@ Set retry count for each LLM judge call.
 Examples:
 
 ```bash
-python evals/chunk_eval.py backend/app/corpus/chunks.jsonl --skip-llm --limit 20
-python evals/chunk_eval.py backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
-python evals/chunk_eval.py backend/app/corpus/chunks.jsonl --min-tokens 700 --max-tokens 900 --skip-llm
+python -m evals.chunk_eval backend/app/corpus/chunks.jsonl --skip-llm --limit 20
+python -m evals.chunk_eval backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
+python -m evals.chunk_eval backend/app/corpus/chunks.jsonl --min-tokens 700 --max-tokens 900 --skip-llm
 ```
 
 ### How Chunks Are Rated
@@ -256,7 +256,7 @@ Rechunk if:
 Script:
 
 ```bash
-python evals/test_retrieval_quality.py
+python -m evals.test_retrieval_quality
 ```
 
 Goal: test whether retrieval pulls useful evidence before the LLM writes.
@@ -332,7 +332,7 @@ General:
 Script:
 
 ```bash
-python evals/test_answer_quality.py
+python -m evals.test_answer_quality
 ```
 
 This calls the real `/answer` pipeline internally and evaluates the final app output.
@@ -340,13 +340,13 @@ This calls the real `/answer` pipeline internally and evaluates the final app ou
 If no API key is available, run deterministic checks only:
 
 ```bash
-python evals/test_answer_quality.py --skip-llm
+python -m evals.test_answer_quality --skip-llm
 ```
 
 With LLM judging:
 
 ```bash
-OPENAI_API_KEY=your_key python evals/test_answer_quality.py --model gpt-4.1-mini
+OPENAI_API_KEY=your_key python -m evals.test_answer_quality --model gpt-4.1-mini
 ```
 
 ### Answer Dimensions
@@ -436,10 +436,13 @@ Theme mode passes if:
 Run the layers in this order:
 
 ```bash
-python evals/verify_corpus.py --sources data/manual_sources.csv --min-per-film 4
-python evals/chunk_eval.py backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
-python evals/test_retrieval_quality.py
-python evals/test_answer_quality.py --model gpt-4.1-mini
+python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
+
+python -m evals.chunk_eval backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
+
+python -m evals.test_retrieval_quality
+
+python -m evals.test_answer_quality --model gpt-4.1-mini
 ```
 
 If the final answer eval fails, inspect earlier layers before changing prompts:
