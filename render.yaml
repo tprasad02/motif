@@ -2,8 +2,9 @@ services:
   - type: web
     name: motif-backend
     runtime: docker
+    rootDir: backend
     plan: starter
-    dockerfilePath: ./backend/Dockerfile
+    dockerfilePath: ./Dockerfile
     dockerContext: .
     healthCheckPath: /health
     envVars:
