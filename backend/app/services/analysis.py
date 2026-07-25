@@ -4,10 +4,10 @@ from collections import defaultdict
 
 import httpx
 
-from backend.app.core.config import settings
-from backend.app.db.postgres import fetch_source_metadata
-from backend.app.film_config import FILM_LENSES, FILM_TITLES
-from backend.app.models import (
+from app.core.config import settings
+from app.db.postgres import fetch_source_metadata
+from app.film_config import FILM_LENSES, FILM_TITLES
+from app.models import (
     AnalysisResponse,
     AnswerRequest,
     FilmComparisonResponse,
@@ -18,7 +18,7 @@ from backend.app.models import (
     SourceCitation,
     ThemeExplorerResponse,
 )
-from backend.app.services.retrieval import RetrievedChunk, retrieve_chunks
+from app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
 EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
@@ -564,8 +564,24 @@ def answer_guided(request: GuidedAnswerRequest) -> AnalysisResponse:
 
 
 def answer_from_request(request: AnswerRequest | GuidedAnswerRequest) -> AnalysisResponse:
-    if isinstance(request, GuidedAnswerRequest):
-        return answer_guided(request)
+    if isinstance(request, GuidedAnswerRequest) or (
+        getattr(request, "mode", None) in {"analyze_film", "compare_films", "explore_theme"}
+        and hasattr(request, "film_a")
+        and hasattr(request, "lens")
+        and not hasattr(request, "film_slugs")
+    ):
+        return answer_guided(
+            GuidedAnswerRequest(
+                mode=request.mode,
+                film_a=getattr(request, "film_a", None),
+                film_b=getattr(request, "film_b", None),
+                lens=request.lens,
+                optional_question=getattr(request, "optional_question", None),
+                top_k=getattr(request, "top_k", 12),
+                include_debug=getattr(request, "include_debug", False),
+                include_low_quality=getattr(request, "include_low_quality", False),
+            )
+        )
     return answer_guided(_normalize_answer_request(request))
 
 
