@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowLeft, Check, Clapperboard, Eye, Film, Loader2, RotateCcw, ScanLine, SplitSquareHorizontal } from "lucide-react";
+import { ArrowLeft, Loader2, RotateCcw } from "lucide-react";
 import { films, globalLenses } from "./filmConfig";
 
 type Mode = "analyze_film" | "compare_films" | "explore_theme";
@@ -43,10 +43,10 @@ const fallbackAnswerPatterns = [
   "cast and performance",
 ];
 
-const workflows: Array<{ id: Mode; title: string; body: string; icon: typeof Film }> = [
-  { id: "analyze_film", title: "Analyze a Film", body: "Choose one film and one lens for a close reading.", icon: ScanLine },
-  { id: "compare_films", title: "Compare Films", body: "Choose two films and one shared lens.", icon: SplitSquareHorizontal },
-  { id: "explore_theme", title: "Explore a Theme", body: "Choose one theme and trace it across the collection.", icon: Eye },
+const workflows: Array<{ id: Mode; title: string; body: string; kicker: string }> = [
+  { id: "analyze_film", title: "Analyze a Film", body: "One film, one idea, four pieces of evidence.", kicker: "Close Reading" },
+  { id: "compare_films", title: "Compare Films", body: "Two films considered side by side through a shared concern.", kicker: "Pairing" },
+  { id: "explore_theme", title: "Explore a Theme", body: "A ranked path through the collection.", kicker: "Collection" },
 ];
 
 const titleFor = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
@@ -248,10 +248,9 @@ export default function Home() {
     <main className="appShell">
       <section className="hero">
         <div className="logoLockup">
-          <Clapperboard size={38} />
           <span>Motif</span>
         </div>
-        <p>Motif: Explore themes and ideas across psychological films.</p>
+        <p>Explore themes and ideas across psychological films.</p>
       </section>
 
       <nav className="topActions" aria-label="Navigation actions">
@@ -273,16 +272,13 @@ export default function Home() {
         <section className="workflowIntro">
           <h1>What do you want to explore?</h1>
           <div className="workflowGrid">
-            {workflows.map((workflow) => {
-              const Icon = workflow.icon;
-              return (
-                <button key={workflow.id} className="workflowCard" onClick={() => startWorkflow(workflow.id)}>
-                  <Icon size={28} />
-                  <strong>{workflow.title}</strong>
-                  <span>{workflow.body}</span>
-                </button>
-              );
-            })}
+            {workflows.map((workflow) => (
+              <button key={workflow.id} className="workflowCard" onClick={() => startWorkflow(workflow.id)}>
+                <strong>{workflow.title}</strong>
+                <small>{workflow.kicker}</small>
+                <span>{workflow.body}</span>
+              </button>
+            ))}
           </div>
         </section>
       )}
@@ -302,7 +298,6 @@ export default function Home() {
                 <button key={film.slug} className={isA || isB ? "filmCard selected" : "filmCard"} onClick={() => selectFilm(film.slug)}>
                   {(isA || isB) && (
                     <span className="selectedBadge">
-                      <Check size={14} />
                       {mode === "compare_films" ? (isA ? "Film A" : "Film B") : "Selected"}
                     </span>
                   )}
@@ -375,8 +370,7 @@ export default function Home() {
       {step === "answer" && answer && (
         <section className={answer.refused ? "answerPanel refused" : "answerPanel"}>
           <div className="answerMeta">
-            <span>{mode === "compare_films" ? "Film comparison" : mode === "explore_theme" ? "Theme exploration" : "Film analysis"}</span>
-            <span>{answer.coverage_level} confidence</span>
+            <span>{mode === "compare_films" ? "Film Comparison" : mode === "explore_theme" ? "Theme Exploration" : "Film Analysis"}</span>
           </div>
           {mode === "explore_theme" && themeFilms.length > 0 && (
             <div className="themeFilmGrid">
