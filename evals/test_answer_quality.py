@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from backend.app.film_config import FILM_TITLES
 from backend.app.models import GuidedAnswerRequest
 from backend.app.services.analysis import THEME_LENS_FILMS, answer_guided
-
+from.utilities import get_current_time_string 
 
 BANNED_GENERIC_PHRASES = [
     "at its core",
@@ -463,13 +463,13 @@ def build_output(rows: dict = None) -> None:
             f"score={score_text} failures={non_empty_failures}"
         )
 
-    print(f"passed={passed_count}/{len(rows)}")
+    print(f"passed={passed_count}/{len(rows)}, passing rate: {(100 * (passed_count/len(rows))):.2f} %")
     
     
 
 def main() -> None:
     load_dotenv()
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    timestamp = get_current_time_string()
     parser = argparse.ArgumentParser(description="Evaluate final Motif answer quality.")
     parser.add_argument("--cases", default="evals/benchmark_cases.json")
     parser.add_argument("--modes", nargs="*", choices=["analyze", "compare", "theme"], default=None)
