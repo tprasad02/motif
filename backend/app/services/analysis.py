@@ -1,8 +1,10 @@
 import json
 import re
 from collections import defaultdict
-
+import sys, os
 import httpx
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.core.config import settings
 from app.db.postgres import fetch_source_metadata
@@ -288,7 +290,7 @@ def _system_prompt(mode: str) -> str:
         "Character: explain how a character's behavior, performance, relationships, or psychological trajectory embodies the thesis. Use a specific action, reaction, or performance detail. "
         "Pattern: identify a recurring symbol, visual motif, image, line of dialogue, sound cue, editing pattern, or filmmaking technique that quietly reinforces the thesis. "
         "Counterreading: give the strongest evidence that challenges, complicates, or contradicts the thesis. Do not make this a fourth supporting point. "
-        "Each body must be 70-120 words, concrete, and distinct from the other cards."
+        "Each body must be 70-120 words, concrete, not containing any chunk id or citation reference, and distinct from the other cards."
     )
 
 
