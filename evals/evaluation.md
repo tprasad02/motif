@@ -450,6 +450,8 @@ Theme mode passes if:
 Run the layers in this order:
 
 ```bash
+$env:PYTHONPATH = "path/to/backend"
+
 python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
 
 python -m evals.chunk_eval backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
