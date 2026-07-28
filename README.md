@@ -285,7 +285,7 @@ Terminal 2: start the backend (From project root).
 source ../.venv/bin/activate
 DATABASE_URL=postgresql://motif:motif@localhost:5433/motif \
 WEAVIATE_URL=http://localhost:8080 \
-uvicorn backend.app.main:app --reload --port 8000
+uvicorn app.main:app --reload --port 8000
 ```
 
 Backend health check:
