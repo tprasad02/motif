@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 import httpx
 import psycopg
 
+from app.film_config import expand_lens_terms
 from app.core.config import settings
 from app.db.postgres import ensure_runtime_schema
 from app.services.embeddings import local_embedding
@@ -287,7 +288,11 @@ def _merge_dedupe(vector_chunks: list[RetrievedChunk], bm25_chunks: list[Retriev
 
 
 def _rerank(query: str, chunks: list[RetrievedChunk], lens_tags: list[str] | None = None) -> list[RetrievedChunk]:
-    lens_terms = {lens.lower() for lens in (lens_tags or [])}
+    lens_terms = {
+        term.lower()
+        for lens in (lens_tags or [])
+        for term in expand_lens_terms(lens)
+    }
     for chunk in chunks:
         overlap = _overlap_score(query, chunk.text)
         vector = chunk.vector_score or 0.0
@@ -304,8 +309,10 @@ def _rerank(query: str, chunks: list[RetrievedChunk], lens_tags: list[str] | Non
             chunk.source_role, 0.0
         )
         chunk_lenses = {lens.lower() for lens in (chunk.lens_tags or [])}
-        lens_boost = 0.12 if lens_terms and chunk_lenses.intersection(lens_terms) else 0.0
         lowered = chunk.text[:900].lower()
+        lens_boost = 0.12 if lens_terms and chunk_lenses.intersection(lens_terms) else 0.0
+        if lens_terms and any(term in lowered for term in lens_terms if len(term) >= 4):
+            lens_boost += 0.08
         front_matter_penalty = 0.0
         if any(
             marker in lowered
@@ -374,7 +381,87 @@ def _supplement_source_diversity(query: str, chunks: list[RetrievedChunk], film_
     return _merge_dedupe(chunks, supplements[: max(0, 6 - len(selected_sources))])
 
 
+def _supplement_comparison_films(query: str, chunks: list[RetrievedChunk], film_slugs: list[str], limit: int) -> list[RetrievedChunk]:
+    if len(film_slugs) < 2:
+        return chunks
+
+    quota = max(1, limit // len(film_slugs))
+    counts = {film: sum(1 for chunk in chunks if chunk.film_slug == film) for film in film_slugs}
+    missing_films = [film for film, count in counts.items() if count < quota]
+    if not missing_films:
+        return chunks
+
+    selected_ids = {chunk.chunk_id for chunk in chunks}
+    query_vector = local_embedding(query)
+    supplements: list[RetrievedChunk] = []
+    sql = """
+        SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags,
+               c.section_title, c.chunk_role
+        FROM chunks c
+        JOIN films f ON f.id = c.film_id
+        JOIN sources s ON s.id = c.source_id
+        WHERE f.slug = %s
+          AND s.quality_score <> 'low'
+    """
+    with psycopg.connect(settings.database_url) as conn:
+        with conn.cursor() as cur:
+            for film in missing_films:
+                cur.execute(sql, (film,))
+                film_supplements = []
+                for row in cur.fetchall():
+                    if str(row[0]) in selected_ids:
+                        continue
+                    score = max(0.0, _cosine_similarity(query_vector, local_embedding(row[1])))
+                    film_supplements.append(_row_to_chunk(row, score, vector_score=score))
+                film_supplements.sort(
+                    key=lambda chunk: (
+                        {"scene_evidence": 4, "formal_observation": 3, "creator_commentary": 2, "interpretive_claim": 1}.get(
+                            chunk.chunk_role,
+                            0,
+                        ),
+                        chunk.vector_score or 0.0,
+                    ),
+                    reverse=True,
+                )
+                supplements.extend(film_supplements[: max(0, quota - counts[film]) + 3])
+
+    return _merge_dedupe(chunks, supplements)
+
+
 def _balanced_top(chunks: list[RetrievedChunk], limit: int, required_films: list[str]) -> list[RetrievedChunk]:
+    if len(required_films) >= 2:
+        quota = max(1, limit // len(required_films))
+        selected: list[RetrievedChunk] = []
+        selected_ids: set[str] = set()
+
+        for film in required_films:
+            film_chunks = [chunk for chunk in chunks if chunk.film_slug == film]
+            film_source_counts: dict[str, int] = {}
+            for chunk in film_chunks:
+                if len([item for item in selected if item.film_slug == film]) >= quota:
+                    break
+                if chunk.chunk_id in selected_ids or film_source_counts.get(chunk.source_key, 0) >= 2:
+                    continue
+                selected.append(chunk)
+                selected_ids.add(chunk.chunk_id)
+                film_source_counts[chunk.source_key] = film_source_counts.get(chunk.source_key, 0) + 1
+
+            for chunk in film_chunks:
+                if len([item for item in selected if item.film_slug == film]) >= quota:
+                    break
+                if chunk.chunk_id not in selected_ids:
+                    selected.append(chunk)
+                    selected_ids.add(chunk.chunk_id)
+
+        for chunk in chunks:
+            if len(selected) >= limit:
+                break
+            if chunk.chunk_id not in selected_ids:
+                selected.append(chunk)
+                selected_ids.add(chunk.chunk_id)
+
+        return selected[:limit]
+
     selected: list[RetrievedChunk] = []
     source_counts: dict[str, int] = {}
 
@@ -478,10 +565,17 @@ def retrieve_chunks(
     try:
         ensure_runtime_schema()
         use_postgres_vector = bool(directors or year_start is not None or year_end is not None or critics or themes or include_low_quality)
-        vector_chunks = [] if use_postgres_vector else _vector_search_weaviate(query, film_slugs, source_types, 25)
+        expanded_lens_tags = [
+            term
+            for lens in (lens_tags or [])
+            for term in expand_lens_terms(lens)
+        ]
+        expanded_query = f"{query} {' '.join(expanded_lens_tags)}".strip() if expanded_lens_tags else query
+        lens_filter = expanded_lens_tags if expanded_lens_tags and not film_slugs else None
+        vector_chunks = [] if use_postgres_vector else _vector_search_weaviate(expanded_query, film_slugs, source_types, 25)
         if use_postgres_vector or len(vector_chunks) < 25:
             postgres_vector_chunks = _postgres_vector_search(
-                query,
+                expanded_query,
                 film_slugs,
                 source_types,
                 25,
@@ -490,12 +584,12 @@ def retrieve_chunks(
                 year_end,
                 critics,
                 themes,
-                None,
+                lens_filter,
                 include_low_quality,
             )
             vector_chunks = _merge_dedupe(vector_chunks, postgres_vector_chunks)
         bm25_chunks = _bm25_search(
-            query,
+            expanded_query,
             film_slugs,
             source_types,
             25,
@@ -504,14 +598,15 @@ def retrieve_chunks(
             year_end,
             critics,
             themes,
-            None,
+            lens_filter,
             include_low_quality,
         )
         merged = _merge_dedupe(vector_chunks, bm25_chunks)
         if not merged:
-            return _file_fallback_search(query, film_slugs, source_types, limit, lens_tags, include_low_quality)
-        merged = _supplement_source_diversity(query, merged, film_slugs)
-        reranked = _rerank(query, merged, lens_tags)
+            return _file_fallback_search(expanded_query, film_slugs, source_types, limit, lens_tags, include_low_quality)
+        merged = _supplement_source_diversity(expanded_query, merged, film_slugs)
+        merged = _supplement_comparison_films(expanded_query, merged, film_slugs, min(max(limit, 8), 12))
+        reranked = _rerank(expanded_query, merged, lens_tags)
         output_limit = min(max(limit, 8), 12)
         return _balanced_top(reranked, output_limit, film_slugs if len(film_slugs) >= 2 else [])
     except Exception:

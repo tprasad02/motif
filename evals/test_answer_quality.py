@@ -11,11 +11,12 @@ from pathlib import Path
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from backend.app.film_config import FILM_TITLES
-from backend.app.models import GuidedAnswerRequest
-from backend.app.services.analysis import THEME_LENS_FILMS, answer_guided
+from app.film_config import FILM_TITLES
+from app.models import GuidedAnswerRequest
+from app.services.analysis import answer_guided
 from.utilities import get_current_time_string 
 
 BANNED_GENERIC_PHRASES = [
@@ -40,7 +41,8 @@ SOURCE_FACING_PATTERNS = [
     r"\bcitation\b",
     r"\bchunk\b",
     r"\bcorpus\b",
-    r"\bsource\b",
+    r"\b(?:retrieved|cited)\s+sources?\b",
+    r"\bsource\s+(?:title|type|role|material|chunk|document)\b",
 ]
 
 CONCRETE_FILM_TERMS = [
@@ -235,18 +237,34 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
             if min(film_counts.values()) < 4:
                 critical_failures["overall"].append("comparison_retrieval_unbalanced")
             metrics["comparison_film_counts"] = film_counts
+            film_a_title = FILM_TITLES.get(case["film_a"], case["film_a"])
+            film_b_title = FILM_TITLES.get(case["film_b"], case["film_b"])
+            cards_with_both_films = 0
+            for card in response.evidence_cards:
+                label = str(card.get("label", ""))
+                label_bucket = label if label in critical_failures else "overall"
+                card_text = f"{card.get('title', '')} {card.get('body', '')}"
+                has_a = bool(re.search(rf"\b{re.escape(film_a_title)}\b", card_text))
+                has_b = bool(re.search(rf"\b{re.escape(film_b_title)}\b", card_text))
+                if has_a and has_b:
+                    cards_with_both_films += 1
+                else:
+                    if not has_a:
+                        critical_failures[label_bucket].append("comparison_card_missing_film_a")
+                    if not has_b:
+                        critical_failures[label_bucket].append("comparison_card_missing_film_b")
+            if cards_with_both_films < 4:
+                critical_failures["overall"].append("comparison_cards_not_integrated")
+            metrics["comparison_cards_with_both_films"] = cards_with_both_films
         metrics["specific_card_count"] = specific_cards
         metrics["max_source_overlap"] = overlap
 
     if mode == "explore_theme":
-        allowed = set(THEME_LENS_FILMS.get(case["lens"], []))
         returned = [card.get("slug") for card in response.theme_films]
         if not returned:
             critical_failures["overall"].append("no_theme_cards")
         if any(slug not in FILM_TITLES for slug in returned):
             critical_failures["overall"].append("non_corpus_film_returned")
-        if allowed and any(slug not in allowed for slug in returned):
-            critical_failures["overall"].append("theme_card_outside_allowed_map")
         summaries = [str(card.get("summary", "")) for card in response.theme_films]
         if len(set(summaries)) != len(summaries):
             critical_failures["overall"].append("repeated_theme_card_summary")

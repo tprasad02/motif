@@ -1,0 +1,574 @@
+[
+  {
+    "id": "compare_memento_shutter_guilt",
+    "mode": "compare_films",
+    "film_a": "memento",
+    "film_b": "shutter-island",
+    "lens": "Guilt",
+    "coverage_level": "high",
+    "coverage_score": 0.92,
+    "critical_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "memento": 6,
+        "shutter-island": 6
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "Memento and Shutter Island both explore guilt as a central lens, highlighting how the protagonists' fractured memories and psychological states lead them to confront their past actions and the resulting guilt, albeit through different narrative structures and character arcs",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "Confrontation with Guilt",
+          "body": "In Memento, Leonard confronts his guilt when he discovers the tattoo on his chest that reads, 'John G. raped and murdered my wife.' This moment visually encapsulates his internal struggle as he grapples with the reality of his wife's death and his role in it. In contrast, Shutter Island features Teddy's realization of his guilt when he admits, 'I killed them,' referring to his children. This moment works like a powerful emotional climax, revealing the depth of his trauma and the extent of his denial. Both films use these pivotal scenes to illustrate the characters' burdens of guilt, but Memento emphasizes fragmented memory while Shutter Island focuses on the acceptance of a painful truth",
+          "chunk_ids": "[\"e8632896da6acb6e73caed0fa15950f6\", \"9dd31bd92993ac55174240620c3363e6\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Psychological Trajectories",
+          "body": "Leonard in Memento embodies guilt through his obsessive quest for vengeance against his wife's murderer, which is complicated by his inability to form new memories. His tattoos serve as constant reminders of his guilt, showcasing how he externalizes his internal conflict. Conversely, Teddy in Shutter Island is driven by guilt over the deaths of his wife and children, leading him to create an alternate identity to escape his pain. His journey reveals a deeper psychological struggle as he confronts the truth of his actions. While both characters are haunted by guilt, Leonard's journey is marked by confusion and manipulation, whereas Teddy's path is a tragic confrontation with reality",
+          "chunk_ids": "[\"e82c83ece23857f350b5e2df88d8295c4063.pdf\", \"5898021dc13221e7a49dac1f736a778b\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "Symbolism of Memory",
+          "body": "Memento employs the motif of tattoos as symbols of guilt and memory, with each tattoo representing a piece of Leonard's fragmented past. This visual representation of his guilt is central to the narrative structure, as it drives his actions and decisions. In Shutter Island, the recurring imagery of water symbolizes Teddy's guilt and trauma, particularly related to the drowning of his children. The stormy weather throughout the film parallels Teddy's turbulent emotional state and his struggle with guilt. Both films use these motifs to reinforce this lens of guilt, but Memento focuses on the physical manifestations of memory, while Shutter Island uses environmental symbolism to reflect internal turmoil",
+          "chunk_ids": "[\"5054d70d457ebee5c6b4d47313bb56f9\", \"5898021dc13221e7a49dac1f736a778b\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "Denial and Acceptance",
+          "body": "In Memento, Leonard's guilt is complicated by his unreliable memory, leading him to question the truth of his actions and the motivations of those around him. His detachment from reality creates a barrier to fully confronting his guilt. In contrast, Shutter Island presents Teddy's journey as one of gradual acceptance, culminating in his acknowledgment of his actions. Despite the trauma, Teddy's eventual confrontation with the truth allows for a deeper exploration of guilt. This difference highlights how Memento's narrative structure obscures clarity, while Shutter Island ultimately leads to a resolution, suggesting that acceptance of guilt can be a path to healing",
+          "chunk_ids": "[\"5b6665ae72ca586d56c4e10da371e499\", \"ecee91b1063686330737bcfc3280e5a3\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "compare_memento_shutter_memory",
+    "mode": "compare_films",
+    "film_a": "memento",
+    "film_b": "shutter-island",
+    "lens": "Memory",
+    "coverage_level": "high",
+    "coverage_score": 0.92,
+    "critical_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "memento": 6,
+        "shutter-island": 6
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "In both Memento and Shutter Island, memory plays a crucial role in shaping the protagonists' realities, but while Memento focuses on the fragmentation of memory and its manipulation, Shutter Island explores the consequences of repressed memories and the struggle for acceptance of painful truths",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "Memory Revelation",
+          "body": "In Memento, Leonard discusses his condition, explaining that he remembers everything before his injury but cannot form new memories. This scene highlights his struggle to navigate a world where he cannot trust his own mind. In Shutter Island, Andrew confronts the truth about his past, realizing he murdered his wife and children. This moment emphasizes the emotional weight of memory and the pain of acceptance. Both scenes reveal how memory impacts identity, but Memento illustrates a more chaotic and disjointed experience, while Shutter Island presents a tragic revelation leading to acceptance",
+          "chunk_ids": "[\"e8632896da6acb6e73caed0fa15950f6\", \"7c803126d356e4c083cd242878d6a2c89\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Protagonist's Journey",
+          "body": "Leonard in Memento is characterized by his obsessive need to document and tattoo information on his body to cope with his memory loss, showcasing his fragmented identity. In contrast, Andrew in Shutter Island initially embodies denial, as he struggles to accept his traumatic past. Both characters are deeply affected by their memories, but Leonard's journey is marked by confusion and manipulation of his reality, whereas Andrew's path leads to a painful confrontation with the truth, reflecting different aspects of memory's influence on identity",
+          "chunk_ids": "[\"bbb748106e50c1a2f6f93443d39d154b\", \"ad375460f26065be79fcd4ba91f0267e\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "Visual Motifs",
+          "body": "Memento employs a non-linear narrative structure, using black-and-white sequences to depict Leonard's fragmented memory and confusion. This visual style reinforces this lens of unreliable memory. Shutter Island, on the other hand, uses dark, oppressive visuals and stormy weather to symbolize Andrew's internal turmoil and the weight of his repressed memories. While both films use visual elements to explore memory, Memento's structure emphasizes disorientation, whereas Shutter Island's atmosphere reflects a descent into despair and the search for truth",
+          "chunk_ids": "[\"6de896eaad5f4f574605314e530caaed\", \"c803126d356e4c083cd242878d6a2c89\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "Challenging Memory's Role",
+          "body": "In Memento, Leonard's tattoos and notes are intended to help him navigate his life, suggesting that memory can be reconstructed through external means. However, this reliance on external memory can be seen as a critique of the authenticity of self-identity. In Shutter Island, Andrew's eventual acceptance of his past suggests that confronting painful memories is essential for healing. This contrast reveals that while Memento questions the reliability of memory, Shutter Island posits that true understanding comes from facing one's memories, complicating the notion of memory's role in identity",
+          "chunk_ids": "[\"1304839fc0dc65385644ae1cc304c989\", \"9ad0f7e3ddfd9f9fad198447765fea3b\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "compare_black_swan_prestige_performance",
+    "mode": "compare_films",
+    "film_a": "black-swan",
+    "film_b": "the-prestige",
+    "lens": "Performance",
+    "coverage_level": "high",
+    "coverage_score": 0.92,
+    "critical_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "black-swan": 6,
+        "the-prestige": 6
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "In both Black Swan and The Prestige, performance is a central lens that reveals the psychological toll of striving for perfection, showcasing how characters sacrifice their identities for their art",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "Black Swan's Transformation",
+          "body": "In Black Swan, Nina's final performance as the Black Swan culminates in a visceral transformation where she fully embodies the character, leading to her ultimate demise. The viewer sees her physically and mentally break down, illustrating the extreme lengths she goes to achieve perfection. In contrast, The Prestige features Angier's performance of 'The Transported Man,' where he uses a double to create a flawless illusion. Both scenes highlight the obsession with perfection, but Black Swan emphasizes the l cost of this pursuit, while The Prestige focuses on the artifice of performance and the lengths one will go to maintain an illusion",
+          "chunk_ids": "[\"ed88856063aa2649ce017fdd2717a862\", \"2a2d649a2c56d0166bf97700da4a8e63\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Nina vs. Angier",
+          "body": "Nina in Black Swan is portrayed as a fragile dancer who becomes increasingly consumed by her role, leading to paranoia and self-destruction. Her interactions with her rival, Lily, reflect her internal struggle and desire for validation. Conversely, Angier in The Prestige is ambitious and manipulative, willing to sacrifice relationships and even lives for his magic. While both characters are deeply flawed and driven by their ambitions, Nina's journey is one of tragic self-destruction, while Angier's is marked by deceit and betrayal, showcasing different facets of how performance can warp one's identity",
+          "chunk_ids": "[\"ed88856063aa2649ce017fdd2717a862\", \"2a2d649a2c56d0166bf97700da4a8e63\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "Mirrors and Doubles",
+          "body": "Black Swan employs mirrors as a recurring motif, symbolizing Nina's duality and her struggle with identity as she transitions from the White Swan to the Black Swan. The mirrors reflect her fractured psyche and the pressure of perfection. In The Prestige, the use of doubles is central to the narrative, with Angier and Borden both relying on their counterparts to achieve their illusions. This pattern of duality in both films emphasizes this lens of performance, but Black Swan's mirrors reveal the internal conflict of the character, while The Prestige's doubles highlight the external deception in the pursuit of greatness",
+          "chunk_ids": "[\"e90e0d42a109dc42833157230b778ab6\", \"2a2d649a2c56d0166bf97700da4a8e63\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "Different Outcomes",
+          "body": "While both Black Swan and The Prestige explore the dark side of performance, Black Swan ultimately leads to Nina's tragic end, suggesting that the pursuit of perfection can destroy one's self. In contrast, The Prestige ends with Angier's success in his craft, albeit at a great moral cost. This difference complicates the interpretation of performance; Black Swan presents a cautionary tale about the dangers of obsession, while The Prestige offers a more ambiguous view, where the character's sacrifices lead to artistic triumph, raising questions about the value of such sacrifices",
+          "chunk_ids": "[\"e90e0d42a109dc42833157230b778ab6\", \"2a2d649a2c56d0166bf97700da4a8e63\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "compare_taxi_fight_violence",
+    "mode": "compare_films",
+    "film_a": "taxi-driver",
+    "film_b": "fight-club",
+    "lens": "Violence",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": {
+      "overall": [
+        "comparison_retrieval_unbalanced"
+      ],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [
+        "comparison_retrieval_unbalanced"
+      ],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "taxi-driver": 3,
+        "fight-club": 9
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": false,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "Both 'Taxi Driver' and 'Fight Club' depict violence as a means of confronting l and societal disillusionment, but 'Taxi Driver' focuses on isolation leading to violent outbursts, while 'Fight Club' presents violence as a communal act of rebellion against consumer culture",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "Taxi Driver's climactic confrontation",
+          "body": "In 'Taxi Driver', Travis Bickle's violent outburst occurs when he confronts a group of criminals in a brothel. The scene is intense, with Travis using his gun to assert control, showcasing his isolation and desperation. This violence stems from his alienation and mental instability, reflecting his inability to connect with society. In contrast, 'Fight Club' features a scene where members engage in brutal fights as a form of catharsis and rebellion. Here, violence is communal and almost ritualistic, emphasizing a collective rejection of societal norms. The difference lies in 'Taxi Driver's' focus on individual isolation versus 'Fight Club's' collective action",
+          "chunk_ids": "[\"2\", \"8\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Travis Bickle vs. Jack",
+          "body": "In 'Taxi Driver', Travis Bickle's character embodies the consequences of isolation and mental health decline, leading him to violent actions as a misguided attempt to reclaim agency in a chaotic world. His violent tendencies are a direct result of his disconnection from society. Conversely, in 'Fight Club', Jack's character, through his alter ego Tyler Durden, embraces violence as a means of empowerment and rebellion against consumerism. Jack's transformation into Tyler represents a shift from passive existence to active defiance. The contrast highlights how 'Taxi Driver' portrays violence as a tragic outcome of isolation, while 'Fight Club' presents it as a method of reclaiming identity and purpose",
+          "chunk_ids": "[\"3\", \"11\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "Symbolism of violence",
+          "body": "'Taxi Driver' frequently uses the motif of Travis's gun, symbolizing his internal turmoil and the violent resolution he seeks against a corrupt society. The gun is a constant reminder of his isolation and his desire for control. In 'Fight Club', the act of fighting itself becomes a symbol of resistance against consumer culture, with the physical violence serving as a release from societal constraints. Both films use violence as a central motif, but 'Taxi Driver' frames it as a tragic response to loneliness, while 'Fight Club' celebrates it as a form of liberation and identity formation",
+          "chunk_ids": "[\"1\", \"10\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "Violence as a critique",
+          "body": "'Taxi Driver' can be interpreted as a critique of the societal neglect that leads to violence, suggesting that Travis's actions are a response to a system that fails him. This perspective complicates the notion of violence as purely individualistic. In contrast, 'Fight Club' has been critiqued for glorifying violence as a solution to existential crises, potentially endorsing the very chaos it seeks to critique. This creates a tension in 'Fight Club's' narrative, where the celebration of violence may overshadow its critique of consumer culture. The differing interpretations highlight how both films engage with violence, but from fundamentally different angles regarding its implications",
+          "chunk_ids": "[\"4\", \"12\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "compare_truman_gone_girl_control",
+    "mode": "compare_films",
+    "film_a": "truman-show",
+    "film_b": "gone-girl",
+    "lens": "Control",
+    "coverage_level": "high",
+    "coverage_score": 0.93,
+    "critical_failures": {
+      "overall": [
+        "comparison_retrieval_unbalanced"
+      ],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [
+        "comparison_retrieval_unbalanced"
+      ],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "truman-show": 11,
+        "gone-girl": 1
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": false,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "In both The Truman Show and Gone Girl, control is a central lens, showing how external forces manipulate the protagonists' realities, ultimately leading them to confront their own identities and the truth of their situations",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "The Truman Show",
+          "body": "In The Truman Show, a pivotal moment occurs when Truman attempts to escape Seahaven by sailing away, only to be thwarted by Christof's manipulations. The viewer sees Truman's desperation as he fights against the orchestrated obstacles, showcasing his struggle for autonomy. In contrast, Gone Girl features Amy's calculated manipulation of her narrative to control public perception and her husband Nick. The moment she reveals her meticulous planning to frame Nick for her disappearance highlights her psychological dominance. Both scenes depict characters grappling with control, but while Truman seeks freedom from external forces, Amy wields control over her circumstances through deceit",
+          "chunk_ids": "[\"74c26ff35c5d4854f7223a0ad52988c7\", \"b1a4eae13253e23e78e02dd369444dbf\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Gone Girl",
+          "body": "In The Truman Show, Truman Burbank embodies a character who slowly awakens to the manipulative control exerted over his life by Christof and the show's producers. His growing paranoia and determination to uncover the truth about his existence reflect his struggle against this control. Conversely, Amy Dunne in Gone Girl showcases her control through emotional manipulation, as she uses fear and coercion to dominate Nick. Her chilling statement, 'I can ruin you, Nick,' reveals her vindictive nature and need for power. Both characters illustrate this lens of control, but Truman's journey is about liberation, while Amy's is about maintaining dominance",
+          "chunk_ids": "[\"74c26ff35c5d4854f7223a0ad52988c7\", \"b1a4eae13253e23e78e02dd369444dbf\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "The Truman Show",
+          "body": "The Truman Show employs the recurring motif of surveillance, with cameras capturing every moment of Truman's life. This constant observation reinforces this lens of control, as Truman is unaware of the extent to which his reality is manipulated. In Gone Girl, the media's portrayal of Amy and Nick serves a similar function, shaping public perception and controlling their narrative. The media's influence becomes a tool for Amy to regain control over her story. Both films use external observation as a means of control, but The Truman Show focuses on the individual's awakening to this surveillance, while Gone Girl highlights the media's role in shaping identity",
+          "chunk_ids": "[\"2590ddd34982677bd09b36e54d89749f\", \"b1a4eae13253e23e78e02dd369444dbf\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "Gone Girl",
+          "body": "In The Truman Show, Truman's eventual escape from Seahaven symbolizes a triumph over control, suggesting that individuals can reclaim their autonomy despite external forces. However, Gone Girl complicates this narrative by presenting Amy's success in manipulating her reality, ultimately trapping Nick in a cycle of fear and submission. While Truman's journey leads to liberation, Amy's story ends with her maintaining control over Nick, highlighting a darker perspective on manipulation. This contrast emphasizes that while The Truman Show advocates for l freedom, Gone Girl illustrates the potential for control to be wielded destructively",
+          "chunk_ids": "[\"74c26ff35c5d4854f7223a0ad52988c7\", \"b1a4eae13253e23e78e02dd369444dbf\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "compare_truman_gone_girl_performance",
+    "mode": "compare_films",
+    "film_a": "truman-show",
+    "film_b": "gone-girl",
+    "lens": "Performance",
+    "coverage_level": "high",
+    "coverage_score": 0.84,
+    "critical_failures": {
+      "overall": [
+        "comparison_retrieval_unbalanced"
+      ],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [
+        "comparison_retrieval_unbalanced"
+      ],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "truman-show": 11,
+        "gone-girl": 1
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": false,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "In both The Truman Show and Gone Girl, characters manipulate their identities and performances to navigate their environments, revealing the complexities of authenticity and deception in l relationships and societal expectations",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "Truman's Escape Attempt",
+          "body": "In The Truman Show, Truman's desperate attempt to sail away from Seahaven culminates in a dramatic confrontation with Christof, who controls his reality. The scene emphasizes Truman's struggle for authenticity as he battles against the scripted life imposed on him. In Gone Girl, Nick's public is meticulously crafted as he navigates the media frenzy surrounding Amy's disappearance, showcasing his internal conflict between genuine emotion and societal expectation. Both scenes highlight how the characters' performances are shaped by external pressures, yet Truman seeks freedom while Nick is trapped by his created image",
+          "chunk_ids": "[\"2a785dd4fe86fc9cc60a5fe3a0f152c\", \"2a86a574517eace3dbd7ac59460a3ad9\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Truman's Authenticity vs. Amy's Manipulation",
+          "body": "In The Truman Show, Truman's character embodies authenticity as he gradually uncovers the truth about his life, resisting the artificiality imposed by Christof. His emotional responses are genuine, reflecting a quest for real experience. Conversely, in Gone Girl, Amy meticulously orchestrates her disappearance and subsequent media narrative, showcasing a calculated performance that manipulates public perception. The contrast lies in Truman's evolution towards self-awareness and freedom, while Amy's performance is a strategic façade designed to control and deceive, complicating the notion of authenticity in both films",
+          "chunk_ids": "[\"c347f266e572fd8a36d7e50e62b5dbf9\", \"2a86a574517eace3dbd7ac59460a3ad9\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "Surveillance and Control",
+          "body": "The Truman Show features a recurring motif of surveillance, with cameras capturing Truman's every move, symbolizing the control exerted over his life. This constant observation creates a sense of performance, as Truman is unaware he is part of a show. In Gone Girl, the media's scrutiny of Nick's actions similarly creates a performance where he must navigate public perception while hiding his true feelings. Both films use surveillance as a means to explore how characters adapt their behaviors under watchful eyes, revealing the tension between l truth and public",
+          "chunk_ids": "[\"1dde53db79d63534d23e637c8e703f7\", \"2a86a574517eace3dbd7ac59460a3ad9\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "The Illusion of Control",
+          "body": "In The Truman Show, Christof believes he is providing Truman with a controlled environment that ensures his safety and happiness, suggesting that the performance is for Truman's benefit. However, this perspective is challenged as Truman seeks to escape, revealing the oppressive nature of his reality. In Gone Girl, while Amy's manipulation seems to grant her control over her narrative, it ultimately leads to her entrapment in a web of lies. This contrast highlights that both characters, despite their attempts to control their performances, find themselves ensnared by the very constructs they create, complicating the notion of agency",
+          "chunk_ids": "[\"c347f266e572fd8a36d7e50e62b5dbf9\", \"2a86a574517eace3dbd7ac59460a3ad9\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "compare_se7en_prisoners_justice",
+    "mode": "compare_films",
+    "film_a": "se7en",
+    "film_b": "prisoners",
+    "lens": "Justice",
+    "coverage_level": "high",
+    "coverage_score": 0.92,
+    "critical_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "se7en": 6,
+        "prisoners": 6
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "In both Se7en and Prisoners, the pursuit of justice reveals the moral ambiguities and l sacrifices involved in seeking retribution, ultimately questioning the effectiveness of the legal system",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "Se7en - Mills' Frustration",
+          "body": "In Se7en, a pivotal moment occurs when Detective Mills, overwhelmed by the gruesome realities of the case, lashes out at a press photographer. This scene highlights Mills' emotional turmoil and his desperation for justice, showcasing how the weight of the investigation drives him to impulsive actions. In contrast, Prisoners features Keller Dover torturing a suspect, Jones, in a bathroom, driven by the belief that extreme measures are necessary to find his missing daughter. Both scenes depict characters pushed to their limits, yet Mills' outburst stems from frustration with the system, while Keller's violence reflects a more l, visceral response to loss",
+          "chunk_ids": "[\"5b7203712da20ace94db552bc314dd9b\", \"854ad4eaac425f25a7405d6395e34f6a\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Se7en - Mills vs. Somerset",
+          "body": "In Se7en, Detective Mills embodies youthful idealism, believing in the possibility of achieving justice through action, while Somerset represents a more jaded, cynical view of the world. Mills' naivety leads him to break the law in pursuit of justice, as seen when he kicks down a door, believing his actions are justified. Conversely, in Prisoners, Keller Dover's character is driven by desperation and a sense of paternal duty, leading him to morally questionable decisions, including torture. The contrast lies in Mills' initial hopefulness versus Keller's deep-seated despair, both ultimately leading to tragic outcomes",
+          "chunk_ids": "[\"40658383.pdf\", \"10\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "Justice and Moral Ambiguity",
+          "body": "Se7en employs a recurring motif of darkness and decay to symbolize the moral decay of society, with Somerset often reflecting on the futility of their efforts. This visual language reinforces this lens that justice is elusive. In Prisoners, the use of claustrophobic spaces and dim lighting during Keller's violent confrontations with suspects creates a similar atmosphere of moral ambiguity. Both films suggest that the quest for justice is fraught with ethical dilemmas, yet Se7en leans more towards existential despair, while Prisoners grapples with the l cost of vengeance",
+          "chunk_ids": "[\"851d1990d448e2bdaac7e65d8bfe2efa\", \"9\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "Se7en's Cynicism vs. Prisoners' Hope",
+          "body": "While Se7en presents a bleak view of justice, suggesting that the system is inherently flawed and that true justice is unattainable, Prisoners offers a more complex perspective. Keller's actions, though morally questionable, stem from a place of hope and love for his daughter, suggesting that even in desperation, there is a desire for resolution. This contrast complicates the notion of justice; Se7en implies that the pursuit of justice leads only to despair, while Prisoners suggests that the quest, despite its darkness, is driven by a fundamental human instinct to protect loved ones",
+          "chunk_ids": "[\"4\", \"8\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  },
+  {
+    "id": "compare_shawshank_cuckoo_control",
+    "mode": "compare_films",
+    "film_a": "shawshank-redemption",
+    "film_b": "one-flew-over-the-cuckoos-nest",
+    "lens": "Control",
+    "coverage_level": "high",
+    "coverage_score": 1.0,
+    "critical_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "first_attempt_failures": {
+      "overall": [],
+      "Scene": [],
+      "Character": [],
+      "Pattern": [],
+      "Counterreading": []
+    },
+    "retry_used": false,
+    "deterministic_metrics": {
+      "banned_generic_phrase_count": 0,
+      "comparison_film_counts": {
+        "shawshank-redemption": 6,
+        "one-flew-over-the-cuckoos-nest": 6
+      },
+      "comparison_cards_with_both_films": 4,
+      "specific_card_count": 4,
+      "max_source_overlap": 0.0
+    },
+    "answer_quality_score": null,
+    "passed": true,
+    "judge_error": "",
+    "theme_card_titles": "",
+    "theme_card_summaries": "",
+    "response": {
+      "thesis": "In The Shawshank Redemption and One Flew Over the Cuckoo's Nest, the struggle for control manifests through characters navigating oppressive systems, revealing how l agency can be both suppressed and reclaimed in the face of institutional power",
+      "evidence_cards": [
+        {
+          "label": "Scene",
+          "title": "Control in Confrontation",
+          "body": "In The Shawshank Redemption, Andy Dufresne's confrontation with the Sisters in the laundry room showcases his struggle against physical domination. Despite being outnumbered and beaten, Andy's refusal to submit entirely highlights his inner resilience. In contrast, One Flew Over the Cuckoo's Nest features McMurphy's explosive defiance against Nurse Ratched, symbolizing a direct challenge to the institutional control over the patients. Both scenes illustrate the characters' attempts to assert their agency, yet Andy's struggle is more about enduring and strategizing for eventual escape, while McMurphy's rebellion is immediate and confrontational, ultimately leading to tragic consequences",
+          "chunk_ids": "[\"2\", \"9\"]"
+        },
+        {
+          "label": "Character",
+          "title": "Embodiment of Control",
+          "body": "In The Shawshank Redemption, Andy Dufresne embodies control through his quiet determination to maintain hope and purpose within prison walls. His actions, such as building the library and helping fellow inmates, reflect a subtle but powerful resistance to the oppressive environment. Conversely, in One Flew Over the Cuckoo's Nest, McMurphy's character represents a more overt challenge to authority. His antics and refusal to conform to the ward's rules directly confront Nurse Ratched's oppressive control. The difference lies in Andy's strategic patience versus McMurphy's impulsive rebellion; both seek freedom, but their methods and the resulting impacts on their lives diverge significantly",
+          "chunk_ids": "[\"1\", \"10\"]"
+        },
+        {
+          "label": "Pattern",
+          "title": "Symbols of Control",
+          "body": "In The Shawshank Redemption, the recurring motif of the rock hammer symbolizes Andy's gradual reclamation of control over his life and fate, representing his inner strength and resourcefulness. In One Flew Over the Cuckoo's Nest, the use of the electroshock machine works like a symbol of the oppressive control exerted by the institution over the patients. Both films utilize these symbols to illustrate the struggle against control; however, while Andy's rock hammer ultimately leads to his liberation, the electroshock machine represents the destructive power of institutional control that seeks to suppress individuality and autonomy",
+          "chunk_ids": "[\"4\", \"8\"]"
+        },
+        {
+          "label": "Counterreading",
+          "title": "The Limits of Control",
+          "body": "In The Shawshank Redemption, while Andy's eventual escape represents a triumph over institutional control, it also raises questions about the limits of individual agency within a corrupt system. His success is predicated on a long-term strategy and a degree of luck, suggesting that not all attempts at control lead to liberation. In One Flew Over the Cuckoo's Nest, McMurphy's fate works like a stark reminder of the consequences of resisting authority. His ultimate defeat and the loss of his autonomy illustrate the harsh reality that institutional power can be overwhelmingly oppressive. This highlights a shared complexity in both films: the struggle for control can lead to both empowerment and tragic outcomes",
+          "chunk_ids": "[\"5\", \"11\"]"
+        }
+      ],
+      "theme_films": []
+    },
+    "judge_scores": null
+  }
+]

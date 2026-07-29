@@ -267,6 +267,31 @@ Benchmark cases live in:
 evals/benchmark_cases.json
 ```
 
+This benchmark file is the main retrieval suite. It intentionally does not test every possible film/lens combination. It tests a curated set of high-value demo paths and failure-prone workflows. The current benchmark has 22 cases across Analyze, Compare, and Explore Theme, with extra comparison cases for pairings that previously exposed balance or divide-and-conquer failures.
+
+For broader, cheaper coverage across supported film-lens pairs, use:
+
+```bash
+python -m evals.test_supported_retrieval_sweep --scope primary
+```
+
+This sweep tests every user-facing film-lens pair configured in `backend/app/film_config.py`. It does not test impossible combinations such as every film against every global lens.
+
+Secondary, film-specific angles are tested separately:
+
+```bash
+python -m evals.test_supported_retrieval_sweep --scope secondary
+```
+
+Use `--scope primary` as the product-readiness metric because those are the lenses users can actually select. Use `--scope secondary` as a diagnostic suite for hidden retrieval expansion and film-specific angle mapping.
+
+Latest supported-sweep runs:
+
+```text
+primary: 54/54 passed
+secondary: 46/46 passed
+```
+
 ### Retrieval Metrics
 
 `film_match_rate`
@@ -319,7 +344,8 @@ Compare Films:
 
 Theme:
 
-- returned films should be allowed by the curated theme map
+- returned films should come from retrieval evidence and remain inside the active 18-film corpus
+- the curated theme map may be used as a fallback/support guard, but retrieval is the primary ranking signal
 
 General:
 
@@ -407,6 +433,7 @@ Critical failures:
 - answer ignores the selected theme
 - answer dumps raw source or screenplay text
 - comparison mode retrieves heavily from only one film
+- comparison mode produces evidence cards that do not mention and compare both selected films
 - source/system-facing language appears in the public answer
 - individual evidence card is empty, too short, source-facing, unusually generic, mislabeled, or likely copied from retrieved text
 
@@ -431,7 +458,6 @@ Theme mode is evaluated separately because it returns ranked film cards, not an 
 For each theme, the answer-quality script checks:
 
 - only active 18 corpus films appear
-- returned films are allowed by the curated theme map
 - each card has title/year/director
 - each card has one-line non-spoiler theme relevance
 - summaries are not repeated
@@ -441,7 +467,6 @@ For each theme, the answer-quality script checks:
 Theme mode passes if:
 
 - 100% returned films are in corpus
-- 100% returned films are allowed for that theme
 - 0 repeated summaries
 - 0 source/system phrases
 
@@ -457,6 +482,10 @@ python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
 python -m evals.chunk_eval backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
 
 python -m evals.test_retrieval_quality
+
+python -m evals.test_supported_retrieval_sweep --scope primary
+
+python -m evals.test_supported_retrieval_sweep --scope secondary
 
 python -m evals.test_answer_quality --model gpt-4.1-mini
 ```

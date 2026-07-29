@@ -53,6 +53,7 @@ const titleFor = (slug?: string | null) => films.find((film) => film.slug === sl
 
 function looksLikeFallbackReading(body: AnswerResponse) {
   if (body.mode === "explore_theme") return false;
+  if (body.refused) return false;
   const cards = body.evidence_cards?.length ? body.evidence_cards : body.sections ?? [];
   if (!body.thesis || cards.length < 4) return true;
   const combined = [body.thesis, ...cards.flatMap((card) => [card.title ?? "", card.body ?? ""])]
@@ -388,11 +389,22 @@ export default function Home() {
           )}
           {mode !== "explore_theme" && answer.thesis && (
             <div className="thesisBoard">
-              <span>Thesis</span>
+              <span>{answer.refused ? "Not enough material" : "Thesis"}</span>
               <h1>{answer.thesis}</h1>
             </div>
           )}
-          {mode !== "explore_theme" && evidenceCards.length > 0 && (
+          {mode !== "explore_theme" && answer.refused && evidenceCards.length > 0 && (
+            <div className="suggestionGrid">
+              {evidenceCards.map((section, index) => (
+                <article key={`${section.label ?? section.title ?? "suggestion"}-${index}`}>
+                  <span>{section.label || "Suggestion"}</span>
+                  <strong>{section.title || "Try another path"}</strong>
+                  <p>{section.body || ""}</p>
+                </article>
+              ))}
+            </div>
+          )}
+          {mode !== "explore_theme" && !answer.refused && evidenceCards.length > 0 && (
             <div className="evidenceGrid">
               {evidenceCards.slice(0, 4).map((section, index) => (
                 <article key={`${section.label ?? section.title ?? "evidence"}-${index}`}>

@@ -1,0 +1,9 @@
+id,mode,film_a,film_b,lens,coverage_level,coverage_score,answer_quality_score,passed,critical_failures,judge_error,theme_card_titles,theme_card_summaries
+compare_memento_shutter_guilt,compare_films,memento,shutter-island,Guilt,high,0.92,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,
+compare_memento_shutter_memory,compare_films,memento,shutter-island,Memory,high,0.92,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,
+compare_black_swan_prestige_performance,compare_films,black-swan,the-prestige,Performance,high,1.0,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,
+compare_taxi_fight_violence,compare_films,taxi-driver,fight-club,Violence,high,1.0,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,
+compare_truman_gone_girl_control,compare_films,truman-show,gone-girl,Control,high,1.0,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,
+compare_truman_gone_girl_performance,compare_films,truman-show,gone-girl,Performance,high,0.92,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,
+compare_se7en_prisoners_justice,compare_films,se7en,prisoners,Justice,high,1.0,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,
+compare_shawshank_cuckoo_control,compare_films,shawshank-redemption,one-flew-over-the-cuckoos-nest,Control,high,0.92,,False,"overall: fewer_than_four_evidence_cards, overall: selected_theme_missing, overall: comparison_cards_not_integrated",,,

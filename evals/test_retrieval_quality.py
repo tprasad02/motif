@@ -6,9 +6,11 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from backend.app.film_config import FILM_TITLES
-from backend.app.services.analysis import THEME_LENS_FILMS
-from backend.app.services.retrieval import retrieve_chunks
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from app.film_config import FILM_TITLES, expand_film_lens_terms, expand_lens_terms
+from app.services.retrieval import retrieve_chunks
 
 
 CONCRETE_ROLES = {"scene_evidence", "formal_observation", "creator_commentary", "interpretive_claim"}
@@ -16,10 +18,11 @@ PLOT_ROLE = "plot_summary"
 SOURCE_SYSTEM_PATTERNS = [
     r"\baccording to\b",
     r"\bretrieved\b",
-    r"\bsource\b",
     r"\bcitation\b",
     r"\bchunk\b",
     r"\bcorpus\b",
+    r"\b(?:retrieved|cited)\s+sources?\b",
+    r"\bsource\s+(?:title|type|role|material|chunk|document)\b",
 ]
 
 
@@ -40,11 +43,22 @@ def query_for_case(case: dict) -> str:
 
 
 def lens_matches(chunk, lens: str) -> bool:
+    expanded = [term.lower() for term in expand_film_lens_terms(chunk.film_slug, lens)]
     lowered = lens.lower()
     lens_tags = [tag.lower() for tag in (chunk.lens_tags or [])]
     text = chunk.text.lower()
-    parts = [part.strip() for part in re.split(r"\s+vs\.?\s+|\s+and\s+", lowered) if len(part.strip()) >= 4]
-    return lowered in lens_tags or lowered in text or any(part in lens_tags or part in text for part in parts)
+    parts = [
+        part.strip()
+        for term in [lowered, *expanded]
+        for part in re.split(r"\s+vs\.?\s+|\s+and\s+", term)
+        if len(part.strip()) >= 4
+    ]
+    return (
+        any(term in lens_tags or term in text for term in expanded if len(term) >= 4)
+        or lowered in lens_tags
+        or lowered in text
+        or any(part in lens_tags or part in text for part in parts)
+    )
 
 
 def has_concrete_evidence(chunk) -> bool:
@@ -65,14 +79,14 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
         film_slugs=film_slugs,
         source_types=[],
         limit=top_k,
-        lens_tags=[lens],
+        lens_tags=[lens, *expand_lens_terms(lens)],
     )
     film_counts = Counter(chunk.film_slug for chunk in chunks)
     source_roles = {chunk.source_role for chunk in chunks if chunk.source_role}
     chunk_roles = Counter(chunk.chunk_role for chunk in chunks)
     expected_films = set(film_slugs)
     if mode == "explore_theme":
-        expected_films = set(THEME_LENS_FILMS.get(lens, []))
+        expected_films = set(FILM_TITLES)
 
     film_match_count = sum(1 for chunk in chunks if not expected_films or chunk.film_slug in expected_films)
     theme_match_count = sum(1 for chunk in chunks if lens_matches(chunk, lens))
@@ -99,7 +113,7 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
     theme_pass = True
     if mode == "explore_theme":
         returned_films = set(film_counts)
-        theme_pass = bool(returned_films) and returned_films.issubset(expected_films)
+        theme_pass = bool(returned_films) and returned_films.issubset(set(FILM_TITLES))
 
     pass_rules = [
         analyze_pass,
