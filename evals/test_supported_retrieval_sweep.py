@@ -50,7 +50,7 @@ def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
         film_slugs=[film_slug],
         source_types=[],
         limit=top_k,
-        lens_tags=[lens, *expand_film_lens_terms(film_slug, lens)],
+        lens_tags=[lens],
     )
     chunk_count = len(chunks) or 1
     film_match_count = sum(1 for chunk in chunks if chunk.film_slug == film_slug)

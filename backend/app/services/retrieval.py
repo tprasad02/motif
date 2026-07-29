@@ -564,7 +564,6 @@ def retrieve_chunks(
 ) -> list[RetrievedChunk]:
     try:
         ensure_runtime_schema()
-        use_postgres_vector = bool(directors or year_start is not None or year_end is not None or critics or themes or include_low_quality)
         expanded_lens_tags = [
             term
             for lens in (lens_tags or [])
@@ -572,6 +571,15 @@ def retrieve_chunks(
         ]
         expanded_query = f"{query} {' '.join(expanded_lens_tags)}".strip() if expanded_lens_tags else query
         lens_filter = expanded_lens_tags if expanded_lens_tags and not film_slugs else None
+        use_postgres_vector = bool(
+            directors
+            or year_start is not None
+            or year_end is not None
+            or critics
+            or themes
+            or include_low_quality
+            or lens_filter
+        )
         vector_chunks = [] if use_postgres_vector else _vector_search_weaviate(expanded_query, film_slugs, source_types, 25)
         if use_postgres_vector or len(vector_chunks) < 25:
             postgres_vector_chunks = _postgres_vector_search(

@@ -7,7 +7,11 @@
     {"id": "analyze_donnie_darko_reality", "mode": "analyze_film", "film_a": "donnie-darko", "lens": "Reality vs Illusion"},
     {"id": "analyze_truman_control", "mode": "analyze_film", "film_a": "truman-show", "lens": "Control"},
     {"id": "analyze_gone_girl_performance", "mode": "analyze_film", "film_a": "gone-girl", "lens": "Performance"},
-    {"id": "analyze_prisoners_justice", "mode": "analyze_film", "film_a": "prisoners", "lens": "Justice"}
+    {"id": "analyze_prisoners_justice", "mode": "analyze_film", "film_a": "prisoners", "lens": "Justice"},
+    {"id": "analyze_fight_club_identity", "mode": "analyze_film", "film_a": "fight-club", "lens": "Identity"},
+    {"id": "analyze_se7en_justice", "mode": "analyze_film", "film_a": "se7en", "lens": "Justice"},
+    {"id": "analyze_shutter_island_trauma", "mode": "analyze_film", "film_a": "shutter-island", "lens": "Trauma"},
+    {"id": "analyze_mulholland_drive_identity", "mode": "analyze_film", "film_a": "mulholland-drive", "lens": "Identity"}
   ],
   "compare": [
     {"id": "compare_memento_shutter_guilt", "mode": "compare_films", "film_a": "memento", "film_b": "shutter-island", "lens": "Guilt"},
@@ -17,7 +21,29 @@
     {"id": "compare_truman_gone_girl_control", "mode": "compare_films", "film_a": "truman-show", "film_b": "gone-girl", "lens": "Control"},
     {"id": "compare_truman_gone_girl_performance", "mode": "compare_films", "film_a": "truman-show", "film_b": "gone-girl", "lens": "Performance"},
     {"id": "compare_se7en_prisoners_justice", "mode": "compare_films", "film_a": "se7en", "film_b": "prisoners", "lens": "Justice"},
-    {"id": "compare_shawshank_cuckoo_control", "mode": "compare_films", "film_a": "shawshank-redemption", "film_b": "one-flew-over-the-cuckoos-nest", "lens": "Control"}
+    {"id": "compare_shawshank_cuckoo_control", "mode": "compare_films", "film_a": "shawshank-redemption", "film_b": "one-flew-over-the-cuckoos-nest", "lens": "Control"},
+    {"id": "compare_shawshank_truman_freedom", "mode": "compare_films", "film_a": "shawshank-redemption", "film_b": "truman-show", "lens": "Freedom"},
+    {"id": "compare_shawshank_se7en_justice", "mode": "compare_films", "film_a": "shawshank-redemption", "film_b": "se7en", "lens": "Justice"},
+    {"id": "compare_fight_club_black_swan_identity", "mode": "compare_films", "film_a": "fight-club", "film_b": "black-swan", "lens": "Identity"},
+    {"id": "compare_fight_club_prestige_obsession", "mode": "compare_films", "film_a": "fight-club", "film_b": "the-prestige", "lens": "Obsession"},
+    {"id": "compare_fight_club_gone_girl_identity", "mode": "compare_films", "film_a": "fight-club", "film_b": "gone-girl", "lens": "Identity"},
+    {"id": "compare_cuckoo_lambs_control", "mode": "compare_films", "film_a": "one-flew-over-the-cuckoos-nest", "film_b": "silence-of-the-lambs", "lens": "Control"},
+    {"id": "compare_cuckoo_truman_freedom", "mode": "compare_films", "film_a": "one-flew-over-the-cuckoos-nest", "film_b": "truman-show", "lens": "Freedom"},
+    {"id": "compare_se7en_machinist_guilt", "mode": "compare_films", "film_a": "se7en", "film_b": "the-machinist", "lens": "Guilt"},
+    {"id": "compare_se7en_requiem_obsession", "mode": "compare_films", "film_a": "se7en", "film_b": "requiem-for-a-dream", "lens": "Obsession"},
+    {"id": "compare_lambs_black_swan_control", "mode": "compare_films", "film_a": "silence-of-the-lambs", "film_b": "black-swan", "lens": "Control"},
+    {"id": "compare_lambs_gone_girl_identity", "mode": "compare_films", "film_a": "silence-of-the-lambs", "film_b": "gone-girl", "lens": "Identity"},
+    {"id": "compare_prestige_truman_performance", "mode": "compare_films", "film_a": "the-prestige", "film_b": "truman-show", "lens": "Performance"},
+    {"id": "compare_prestige_requiem_obsession", "mode": "compare_films", "film_a": "the-prestige", "film_b": "requiem-for-a-dream", "lens": "Obsession"},
+    {"id": "compare_memento_donnie_reality", "mode": "compare_films", "film_a": "memento", "film_b": "donnie-darko", "lens": "Reality vs Illusion"},
+    {"id": "compare_memento_machinist_identity", "mode": "compare_films", "film_a": "memento", "film_b": "the-machinist", "lens": "Identity"},
+    {"id": "compare_taxi_donnie_isolation", "mode": "compare_films", "film_a": "taxi-driver", "film_b": "donnie-darko", "lens": "Isolation"},
+    {"id": "compare_shutter_donnie_trauma", "mode": "compare_films", "film_a": "shutter-island", "film_b": "donnie-darko", "lens": "Trauma"},
+    {"id": "compare_shutter_mulholland_reality", "mode": "compare_films", "film_a": "shutter-island", "film_b": "mulholland-drive", "lens": "Reality vs Illusion"},
+    {"id": "compare_black_swan_requiem_obsession", "mode": "compare_films", "film_a": "black-swan", "film_b": "requiem-for-a-dream", "lens": "Obsession"},
+    {"id": "compare_sixth_sense_machinist_trauma", "mode": "compare_films", "film_a": "sixth-sense", "film_b": "the-machinist", "lens": "Trauma"},
+    {"id": "compare_requiem_machinist_trauma", "mode": "compare_films", "film_a": "requiem-for-a-dream", "film_b": "the-machinist", "lens": "Trauma"},
+    {"id": "compare_mulholland_truman_reality", "mode": "compare_films", "film_a": "mulholland-drive", "film_b": "truman-show", "lens": "Reality vs Illusion"}
   ],
   "theme": [
     {"id": "theme_memory", "mode": "explore_theme", "lens": "Memory"},
@@ -25,6 +51,8 @@
     {"id": "theme_justice", "mode": "explore_theme", "lens": "Justice"},
     {"id": "theme_control", "mode": "explore_theme", "lens": "Control"},
     {"id": "theme_reality", "mode": "explore_theme", "lens": "Reality vs Illusion"},
-    {"id": "theme_trauma", "mode": "explore_theme", "lens": "Trauma"}
+    {"id": "theme_trauma", "mode": "explore_theme", "lens": "Trauma"},
+    {"id": "theme_identity", "mode": "explore_theme", "lens": "Identity"},
+    {"id": "theme_obsession", "mode": "explore_theme", "lens": "Obsession"}
   ]
 }

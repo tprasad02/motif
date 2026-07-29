@@ -816,14 +816,7 @@ def answer_guided(request: GuidedAnswerRequest) -> AnalysisResponse:
         film_slugs=films,
         source_types=[],
         limit=request.top_k,
-        lens_tags=[
-            request.lens,
-            *[
-                term
-                for film in films
-                for term in expand_film_lens_terms(film, request.lens)
-            ],
-        ],
+        lens_tags=[request.lens],
         include_low_quality=request.include_low_quality,
     )
     return _synthesize_guided(request, chunks)

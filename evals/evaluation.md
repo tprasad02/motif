@@ -267,7 +267,7 @@ Benchmark cases live in:
 evals/benchmark_cases.json
 ```
 
-This benchmark file is the main retrieval suite. It intentionally does not test every possible film/lens combination. It tests a curated set of high-value demo paths and failure-prone workflows. The current benchmark has 22 cases across Analyze, Compare, and Explore Theme, with extra comparison cases for pairings that previously exposed balance or divide-and-conquer failures.
+This benchmark file is the main retrieval suite. It intentionally does not test every possible film/lens combination. It tests a curated set of high-value demo paths and failure-prone workflows. The current benchmark has 50 cases: 12 Analyze a Film cases, 30 Compare Films cases, and 8 Explore a Theme cases, with extra comparison cases for pairings that previously exposed balance or divide-and-conquer failures.
 
 For broader, cheaper coverage across supported film-lens pairs, use:
 
