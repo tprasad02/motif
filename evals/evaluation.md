@@ -1,5 +1,13 @@
 # Motif Evaluation Plan
 
+For the portfolio-facing evaluation overview, current metrics snapshot, failure history, and interpretation of results, see:
+
+```text
+../EVALUATION.md
+```
+
+This file remains a command-level reference for the scripts in `evals/`.
+
 This folder evaluates Motif in four layers:
 
 1. Corpus coverage

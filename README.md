@@ -1,27 +1,45 @@
 # Motif
 
-Motif is a film close-reading app for psychological movies. It helps a user analyze one film, compare two films, or explore a theme across a curated film collection.
+Motif is a retrieval-augmented close-reading app for psychologically rich films. It is built to answer a narrower and harder problem than a generic movie chatbot: when someone wants to think seriously about a film, Motif should ground the reading in curated criticism, interviews, screenplays, production notes, essays, and academic analysis instead of producing a smooth but unsupported opinion.
 
-A user chooses a workflow, film, and theme. The backend retrieves relevant criticism, interviews, essays, screenplays, production materials, and other curated documents from the local corpus, then that evidence is used to generate a concise reading.
+A user chooses a guided path, a film or pair of films, and a theme. The backend retrieves relevant source chunks, filters and reranks them, asks an LLM to produce a structured evidence plan, and displays a thesis with concrete film evidence.
 
-## What The App Does
+## Project Docs
 
-Motif currently supports three guided workflows:
+- [ARCHITECTURE.md](./ARCHITECTURE.md): ingestion-to-answer system flow, retrieval, reranking, and debug mode.
+- [DATASET.md](./DATASET.md): corpus strategy, source quality, source roles, chunk roles, and lens assignment.
+- [EVALUATION.md](./EVALUATION.md): benchmark cases, metrics, failure modes, and improvements.
+- [LIMITATIONS.md](./LIMITATIONS.md): honest scope limits, corpus limits, retrieval limits, and future work.
+
+## Problem
+
+Generic movie chatbots fail at this task in predictable ways:
+
+- They summarize plot instead of reading form, performance, sound, structure, and recurring motifs.
+- They blur together unsupported claims, fan theories, reviews, and general film knowledge.
+- They rarely show whether the answer came from a screenplay, a director interview, criticism, or a weak source.
+- They are too open-ended: a vague prompt can send retrieval toward generic fragments instead of useful evidence.
+
+Motif solves this by narrowing the product contract. It does not try to answer every film question. It supports three workflows that can be evaluated and improved end to end.
+
+## Guided Workflows
 
 1. **Analyze a Film**
    - Select one film.
-   - Select a recommended theme.
+   - Select a supported theme.
    - Generate a close reading with a short thesis and four concrete pieces of film evidence.
 
 2. **Compare Films**
    - Select two different films.
-   - Select one shared theme.
-   - Generate a comparison grounded in both films.
+   - Select one dynamically suggested shared theme.
+   - Generate a comparison where every evidence card discusses both films.
 
 3. **Explore a Theme**
    - Select one theme.
    - Return ranked film cards from the film collection.
-   - Each card gives brief context for why that film is relevant.
+   - Each card gives short, non-spoiler context for why the theme is relevant.
+
+The interface is button-driven on purpose. The selected workflow determines the backend contract, so the system does not have to guess whether the user wants analysis, comparison, or collection browsing. This makes retrieval testable and reduces the chance that vague text input breaks the pipeline.
 
 The current answer format for film analysis is:
 - A thesis
@@ -32,6 +50,21 @@ The current answer format for film analysis is:
   - Counterreading
 
 Each evidence card should point to something visible or audible in the film: a scene, image, sound cue, camera movement, edit, prop, repeated motif, performance choice, setting, or structural device.
+
+## What Is Curated vs Dynamic
+
+Motif is transparent about what is designed in advance and what is discovered at runtime.
+
+| Area | Curated / configured | Dynamic |
+| --- | --- | --- |
+| Film collection | The active 18-film set is curated. | Theme mode ranks films dynamically from retrieved evidence. |
+| Source corpus | Sources are manually selected and quality-tagged. | Retrieval selects chunks per workflow request. |
+| Primary lens vocabulary | The public lens vocabulary is controlled: Memory, Identity, Control, etc. | Film-specific lens recommendations are scored from chunk tags, raw chunk text, source quality, source role, and chunk role. |
+| Secondary angles | Known mappings exist for interpretable concepts such as Marriage or Surveillance. | Additional angles are extracted from corpus text with TF-IDF/ngram concept discovery and filtered back to supported primary lenses. |
+| Pairings | No fixed list of “compare this with” buttons. | Suggested pairings are ranked from evidence strength under the same lens. |
+| Answer structure | Thesis + four evidence-card jobs are fixed. | The content is generated from retrieved chunks and must attach chunk IDs internally. |
+
+This balance is intentional. The app should feel guided and reliable, but the evidence selection should still be data-driven.
 
 ## Film Corpus
 
@@ -77,7 +110,9 @@ backend/app/corpus/chunks.jsonl
 backend/app/corpus/sources.jsonl
 ```
 
-## Architecture
+For more detail, see [DATASET.md](./DATASET.md).
+
+## System Design
 
 ```text
 frontend/        Next.js UI
@@ -111,6 +146,54 @@ button selections
 → frontend display
 ```
 
+For a deeper system walkthrough, see [ARCHITECTURE.md](./ARCHITECTURE.md).
+
+## Retrieval And Reranking
+
+Motif uses hybrid retrieval:
+
+- **Vector search** finds semantically similar chunks.
+- **BM25 search** finds exact keyword/theme matches through PostgreSQL full-text search.
+- **Merge + dedupe** combines vector and BM25 candidates.
+- **Reranking** re-scores candidates using query overlap, vector score, BM25 score, source quality, source role, chunk role, lens match, and junk/front-matter penalties.
+- **Balancing** prevents comparison mode from retrieving only one of the two selected films.
+
+The reranker prefers chunks that look useful for film analysis: scene evidence, formal observations, creator commentary, scholarship, and high-quality source material. It penalizes plot summary, front matter, references, and low-quality sources.
+
+## Side-by-Side Retrieval Comparison
+
+Example path: `Analyze a Film → Memento → Memory`.
+
+| Retrieval mode | What surfaced | What it showed |
+| --- | --- | --- |
+| Vector-only | Interview transcript, academic article, craft article | Semantically relevant, but some top chunks included intros/front matter or broad discussion. |
+| BM25-only | Explicit hits for `memory`, `Leonard`, `tattoo`, `photograph` | Strong for exact evidence words, especially screenplay details, but brittle when the query is too syntactically specific. |
+| Hybrid + reranked | Academic formal observation, screenplay tattoo/room scene, production note on reverse Polaroid | Better mix of interpretation, scene evidence, and production/formal context. |
+
+Representative hybrid top results:
+
+| Rank | Source role | Chunk role | Why useful |
+| ---: | --- | --- | --- |
+| 1 | scholarship | formal observation | Academic argument about Memento's memory structure. |
+| 2 | screenplay | scene evidence | Tattoo/phone scene evidence connected to Leonard's memory system. |
+| 3 | scholarship | interpretive claim | Critical framing for unreliable memory and narration. |
+| 4 | screenplay | scene evidence | Room/handwriting confusion as concrete memory evidence. |
+| 5 | production context | formal observation | Reverse Polaroid opening as formal memory device. |
+
+## LLM Generation
+
+The LLM is not asked to “write an essay” from scratch. The backend first retrieves 8-12 chunks, then asks the model for a private structured evidence plan:
+
+```text
+thesis
+evidence_1: Scene
+evidence_2: Character
+evidence_3: Pattern
+evidence_4: Counterreading
+```
+
+The public UI renders the thesis and four cards. Debug mode can show which retrieved chunk IDs the model attached to each card.
+
 ## Debug Mode
 
 The public UI hides retrieval internals so Motif feels like a clean close-reading tool, not a search dashboard.
@@ -134,6 +217,21 @@ Debug mode shows the retrieved chunks used by the answer pipeline, including:
 
 This makes the RAG path inspectable without exposing source mechanics to normal users.
 
+## One Case Study: Memento + Memory
+
+Initial problem: early versions of Motif sometimes produced generic “memory is unreliable” prose or pasted retrieved fragments into the answer. The output looked like a search summary, not film analysis.
+
+Fixes:
+
+- Changed the answer format from an essay to a thesis plus four fixed evidence cards.
+- Added chunk roles such as `scene_evidence`, `formal_observation`, `creator_commentary`, `interpretive_claim`, and `plot_summary`.
+- Added source roles such as `creator_voice`, `criticism`, `scholarship`, `screenplay`, and `production_context`.
+- Added source quality filtering so weak or noisy sources do not dominate retrieval.
+- Added hybrid retrieval and reranking so screenplay evidence, creator commentary, and criticism can work together.
+- Added answer-quality evals that check thesis specificity, distinct evidence cards, concrete film details, anti-plot-summary behavior, generic-language avoidance, and groundedness.
+
+Result: the Memento + Memory path now retrieves a stronger mix of scholarship, screenplay evidence, production context, creator commentary, and formal observations. The answer is forced to make one specific claim and support it with four concrete cards rather than drifting into a broad essay.
+
 ## Current Metrics Snapshot
 
 Latest generated files:
@@ -141,6 +239,7 @@ Latest generated files:
 ```text
 evals/Reports/metrics_summary.json
 evals/Reports/metrics_trials.csv
+evals/Reports/metrics_case_summary.csv
 ```
 
 | Metric | Current value | Notes |
@@ -154,7 +253,11 @@ evals/Reports/metrics_trials.csv
 | Lens retrieval accuracy | 0.965 | Average theme/lens match rate across retrieval trials |
 | Comparison balance | 100.0% | Comparison cases retrieved enough material from both films |
 | Retrieval pass rate | 100.0% | Pass rate across all retrieval trials |
-| Average response latency | 20.022s | OpenAI-backed generation on 5 benchmark cases x 3 trials |
+| Answer checked cases | 50 | Pulled from the latest answer-quality report |
+| Answer pass rate | 100.0% | Includes deterministic checks for theme cards |
+| LLM-judged answer cases | 41 | Numeric answer-quality scores for generated analyze/compare readings |
+| Average answer-quality score | 4.854 / 5 | Average across LLM-judged answer cases |
+| Average response latency | 12.486s | OpenAI-backed generation on 5 benchmark cases x 3 trials |
 
 To run the full benchmark latency suite, remove `--latency-case-limit`:
 
@@ -167,6 +270,10 @@ For the practical snapshot used above:
 ```bash
 python -m evals.build_metrics_summary --trials 3 --latency-case-limit 5
 ```
+
+The metrics files intentionally avoid answer text, retrieved text, and long source excerpts. Use `metrics_trials.csv` for per-trial retrieval/latency rows, `metrics_case_summary.csv` for one row per benchmark case, and `metrics_summary.json` for portfolio-level aggregate numbers.
+
+For the full evaluation methodology, see [EVALUATION.md](./EVALUATION.md).
 
 ## Requirements
 
@@ -363,7 +470,7 @@ Terminal 3: start the frontend.
 cd motif/frontend
 NEXT_PUBLIC_API_URL=http://localhost:8000 pnpm run dev
 ```
-Or alternaitively if the port 3000 is occupied
+Or alternatively, if port `3000` is occupied:
 
 ```bash
 pnpm run dev -- -p <available_port_number>
