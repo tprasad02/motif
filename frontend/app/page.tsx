@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, Loader2, RotateCcw } from "lucide-react";
 import { films, globalLenses } from "./filmConfig";
 
@@ -32,6 +32,23 @@ type AnswerResponse = {
   refused: boolean;
   retrieval_notes: string;
   debug_chunks: DebugChunk[];
+  suggested_pairings?: Array<{ film_slug: string; title: string; lens: string; score?: number }>;
+};
+
+type FilmRecommendation = {
+  lenses: Array<{ lens: string; score: number }>;
+  specific_angles: Array<{ angle: string; score: number; maps_to?: string[] }>;
+};
+
+type RecommendationsResponse = {
+  films: Record<string, FilmRecommendation>;
+};
+
+type CompareLensSuggestion = {
+  lens: string;
+  score: number;
+  film_a_score: number;
+  film_b_score: number;
 };
 
 const fallbackAnswerPatterns = [
@@ -50,6 +67,7 @@ const workflows: Array<{ id: Mode; title: string; body: string; kicker: string }
 ];
 
 const titleFor = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
+const apiBase = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 function looksLikeFallbackReading(body: AnswerResponse) {
   if (body.mode === "explore_theme") return false;
@@ -82,29 +100,80 @@ export default function Home() {
   const [answer, setAnswer] = useState<AnswerResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [recommendations, setRecommendations] = useState<RecommendationsResponse | null>(null);
+  const [compareLensSuggestions, setCompareLensSuggestions] = useState<CompareLensSuggestion[]>([]);
 
   const debug = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("debug") === "1";
-  const selectedFilmA = films.find((film) => film.slug === filmA);
-  const selectedFilmB = films.find((film) => film.slug === filmB);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`${apiBase}/recommendations`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body: RecommendationsResponse | null) => {
+        if (!cancelled && body?.films) setRecommendations(body);
+      })
+      .catch(() => {
+        // Static filmConfig remains the fallback when the backend is unavailable.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (mode !== "compare_films" || !filmA || !filmB || filmA === filmB) {
+      setCompareLensSuggestions([]);
+      return;
+    }
+    let cancelled = false;
+    fetch(`${apiBase}/recommendations/compare?film_a=${encodeURIComponent(filmA)}&film_b=${encodeURIComponent(filmB)}`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body: { lenses?: CompareLensSuggestion[] } | null) => {
+        if (!cancelled) setCompareLensSuggestions(body?.lenses ?? []);
+      })
+      .catch(() => {
+        if (!cancelled) setCompareLensSuggestions([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [mode, filmA, filmB]);
+
+  function filmLensesFor(slug?: string) {
+    if (!slug) return [];
+    const dynamic = recommendations?.films?.[slug]?.lenses
+      ?.map((item) => item.lens)
+      .filter((item) => globalLenses.includes(item as (typeof globalLenses)[number]));
+    if (dynamic?.length) return dynamic.slice(0, 5);
+    return [...(films.find((film) => film.slug === slug)?.lenses ?? [])];
+  }
+
+  function specificAnglesFor(slug?: string) {
+    if (!slug) return [];
+    const dynamic = recommendations?.films?.[slug]?.specific_angles?.map((item) => item.angle);
+    if (dynamic?.length) return dynamic.slice(0, 6);
+    return [...(films.find((film) => film.slug === slug)?.specificAngles ?? [])];
+  }
 
   const recommendedLenses = useMemo(() => {
     if (!mode || mode === "explore_theme") return [...globalLenses];
     if (mode === "compare_films") {
-      const first: string[] = selectedFilmA ? [...selectedFilmA.lenses] : [];
-      const second: string[] = selectedFilmB ? [...selectedFilmB.lenses] : [];
+      if (compareLensSuggestions.length) return compareLensSuggestions.map((item) => item.lens);
+      const first: string[] = filmLensesFor(filmA);
+      const second: string[] = filmLensesFor(filmB);
       const shared = first.filter((item) => second.includes(item));
       return shared.length ? shared : globalLenses.filter((item) => first.includes(item) || second.includes(item));
     }
-    return selectedFilmA ? [...selectedFilmA.lenses] : [];
-  }, [mode, selectedFilmA, selectedFilmB]);
+    return filmLensesFor(filmA);
+  }, [mode, filmA, filmB, recommendations, compareLensSuggestions]);
 
   const specificAngles = useMemo(() => {
-    if (mode === "analyze_film") return selectedFilmA ? [...selectedFilmA.specificAngles] : [];
+    if (mode === "analyze_film") return specificAnglesFor(filmA);
     if (mode === "compare_films") {
-      return Array.from(new Set([...(selectedFilmA?.specificAngles ?? []), ...(selectedFilmB?.specificAngles ?? [])]));
+      return Array.from(new Set([...specificAnglesFor(filmA), ...specificAnglesFor(filmB)]));
     }
     return [];
-  }, [mode, selectedFilmA, selectedFilmB]);
+  }, [mode, filmA, filmB, recommendations]);
 
   const hasRequiredFilms =
     mode === "explore_theme" ||
@@ -204,7 +273,7 @@ export default function Home() {
     setAnswer(null);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000"}/answer`, {
+      const response = await fetch(`${apiBase}/answer`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -244,6 +313,18 @@ export default function Home() {
     mode === "compare_films" ? "Comparing the films..." : mode === "explore_theme" ? "Exploring the theme..." : "Building the reading...";
   const evidenceCards = answer?.evidence_cards?.length ? answer.evidence_cards : answer?.sections ?? [];
   const themeFilms = answer?.theme_films ?? [];
+  const suggestedPairings = answer?.suggested_pairings ?? [];
+
+  function jumpToPairing(pairing: { film_slug: string; lens: string }) {
+    setMode("compare_films");
+    setFilmA(filmA);
+    setFilmB(pairing.film_slug);
+    setLens(pairing.lens);
+    setAnswer(null);
+    setError(null);
+    setLoading(false);
+    setStep("lens");
+  }
 
   return (
     <main className="appShell">
@@ -308,7 +389,7 @@ export default function Home() {
                   </small>
                   {(isA || isB) && (
                     <div className="selectedLenses">
-                      {film.lenses.map((item) => (
+                      {filmLensesFor(film.slug).map((item) => (
                         <span key={item}>{item}</span>
                       ))}
                     </div>
@@ -413,6 +494,19 @@ export default function Home() {
                   <p>{section.body || ""}</p>
                 </article>
               ))}
+            </div>
+          )}
+          {mode === "analyze_film" && !answer.refused && suggestedPairings.length > 0 && (
+            <div className="pairingRail">
+              <h2>Compare this with</h2>
+              <div>
+                {suggestedPairings.map((pairing) => (
+                  <button key={`${pairing.film_slug}-${pairing.lens}`} onClick={() => jumpToPairing(pairing)}>
+                    <span>{pairing.lens}</span>
+                    <strong>{pairing.title}</strong>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </section>

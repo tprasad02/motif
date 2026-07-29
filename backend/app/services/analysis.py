@@ -21,6 +21,7 @@ from app.models import (
     ThemeExplorerResponse,
 )
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
+from app.services.recommendations import pairing_suggestions
 
 
 EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
@@ -412,6 +413,7 @@ def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
         cleaned = re.sub(r"\b(?:lens|theme)\b", "lens", cleaned, flags=re.I)
     for title in NON_CORPUS_FILM_TITLES:
         cleaned = re.sub(re.escape(title), "", cleaned, flags=re.I)
+    cleaned = re.sub(r"\s+([,.!?;:])", r"\1", cleaned)
     return re.sub(r"\s{2,}", " ", cleaned).strip(" -:;,.") or text.strip()
 
 
@@ -702,6 +704,7 @@ def _synthesize_theme(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]
         refused=refused,
         retrieval_notes=f"{level.title()} coverage from {len({chunk.source_key for chunk in active_chunks})} sources.",
         debug_chunks=debug_chunks,
+        suggested_pairings=[],
     )
 
 
@@ -789,6 +792,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         refused=refused,
         retrieval_notes=f"{level.title()} coverage from {len({chunk.source_key for chunk in chunks})} sources.",
         debug_chunks=debug_chunks,
+        suggested_pairings=pairing_suggestions(request.film_a, request.lens) if request.mode == "analyze_film" and request.film_a else [],
     )
 
 

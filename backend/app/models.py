@@ -118,6 +118,7 @@ class AnalysisResponse(BaseModel):
     refused: bool
     retrieval_notes: str
     debug_chunks: list[RetrievedChunkResponse] = Field(default_factory=list)
+    suggested_pairings: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class WorkflowRequest(AnswerRequest):
