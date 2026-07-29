@@ -12,20 +12,27 @@ type DebugChunk = {
   text: string;
   film_slug: string;
   source_key: string;
+  source_title?: string;
   source_type: string;
   score: number;
+  vector_score?: number;
+  bm25_score?: number;
   rerank_score?: number;
   quality_score: string;
   source_role: string;
   lens_tags: string[];
+  section_title?: string;
+  chunk_role: string;
+  selection_reason?: string;
+  used_by_evidence_cards?: string[];
 };
 
 type AnswerResponse = {
   mode: Mode;
   answer: string;
   thesis?: string;
-  sections: Array<{ label?: string; title?: string; body?: string }>;
-  evidence_cards?: Array<{ label?: string; title?: string; body?: string }>;
+  sections: Array<{ label?: string; title?: string; body?: string; chunk_ids?: string }>;
+  evidence_cards?: Array<{ label?: string; title?: string; body?: string; chunk_ids?: string }>;
   theme_films?: Array<{ rank?: number; slug: string; title: string; year?: number; director?: string; summary?: string }>;
   coverage_score: number;
   coverage_level: "high" | "medium" | "low";
@@ -103,7 +110,9 @@ export default function Home() {
   const [recommendations, setRecommendations] = useState<RecommendationsResponse | null>(null);
   const [compareLensSuggestions, setCompareLensSuggestions] = useState<CompareLensSuggestion[]>([]);
 
-  const debug = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("debug") === "1";
+  const debug =
+    typeof window !== "undefined" &&
+    (new URLSearchParams(window.location.search).get("debug") === "1" || window.location.pathname.startsWith("/debug"));
 
   useEffect(() => {
     let cancelled = false;
@@ -515,12 +524,46 @@ export default function Home() {
       {debug && answer?.debug_chunks?.length ? (
         <section className="debugPanel">
           <h2>Debug Retrieval</h2>
+          <p>
+            Hidden developer view showing what retrieval sent into the reading pipeline. Normal users do not see this panel.
+          </p>
           {answer.debug_chunks.map((chunk, index) => (
             <details key={chunk.chunk_id}>
               <summary>
-                {index + 1}. {titleFor(chunk.film_slug)} / {chunk.source_key} / {chunk.quality_score} / {chunk.rerank_score?.toFixed(3)}
+                {index + 1}. {titleFor(chunk.film_slug)} / {chunk.source_title || chunk.source_key}
               </summary>
-              <p>{chunk.source_role} / {chunk.lens_tags.join(", ")}</p>
+              <dl>
+                <div>
+                  <dt>Source role</dt>
+                  <dd>{chunk.source_role}</dd>
+                </div>
+                <div>
+                  <dt>Chunk role</dt>
+                  <dd>{chunk.chunk_role}</dd>
+                </div>
+                <div>
+                  <dt>Rerank score</dt>
+                  <dd>{chunk.rerank_score?.toFixed(3) ?? chunk.score.toFixed(3)}</dd>
+                </div>
+                <div>
+                  <dt>Vector / BM25</dt>
+                  <dd>
+                    {chunk.vector_score?.toFixed(3) ?? "-"} / {chunk.bm25_score?.toFixed(3) ?? "-"}
+                  </dd>
+                </div>
+                <div>
+                  <dt>Selected because</dt>
+                  <dd>{chunk.selection_reason || "selected by retrieval score"}</dd>
+                </div>
+                <div>
+                  <dt>Evidence card</dt>
+                  <dd>{chunk.used_by_evidence_cards?.length ? chunk.used_by_evidence_cards.join(", ") : "Not directly cited by a card"}</dd>
+                </div>
+                <div>
+                  <dt>Lens tags</dt>
+                  <dd>{chunk.lens_tags.join(", ") || "-"}</dd>
+                </div>
+              </dl>
               <pre>{chunk.text}</pre>
             </details>
           ))}

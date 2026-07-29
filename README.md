@@ -26,10 +26,10 @@ Motif currently supports three guided workflows:
 The current answer format for film analysis is:
 - A thesis
 - Four evidence cards:
-  - Scene or Motif
-  - Formal Technique
-  - Character or Performance
-  - Ambiguity or Counterreading
+  - Scene
+  - Character
+  - Pattern
+  - Counterreading
 
 Each evidence card should point to something visible or audible in the film: a scene, image, sound cue, camera movement, edit, prop, repeated motif, performance choice, setting, or structural device.
 
@@ -109,6 +109,63 @@ button selections
 → prompt construction
 → LLM answer
 → frontend display
+```
+
+## Debug Mode
+
+The public UI hides retrieval internals so Motif feels like a clean close-reading tool, not a search dashboard.
+
+For development and portfolio review, open either:
+
+```text
+http://localhost:3000/debug
+http://localhost:3000/?debug=1
+```
+
+Debug mode shows the retrieved chunks used by the answer pipeline, including:
+
+- source title
+- source role
+- rerank score
+- vector and BM25 scores
+- chunk role
+- why the chunk was selected
+- which evidence card used the chunk, when the model attached chunk IDs
+
+This makes the RAG path inspectable without exposing source mechanics to normal users.
+
+## Current Metrics Snapshot
+
+Latest generated files:
+
+```text
+evals/Reports/metrics_summary.json
+evals/Reports/metrics_trials.csv
+```
+
+| Metric | Current value | Notes |
+| --- | ---: | --- |
+| Films | 18 | Active curated film collection |
+| Documents | 140 | Checked-in source records in `backend/app/corpus/sources.jsonl` |
+| Chunks | 2,427 | Checked-in retrieval units in `backend/app/corpus/chunks.jsonl` |
+| Eval cases | 50 | 12 analyze, 30 compare, 8 theme |
+| Trials per retrieval case | 3 | 150 retrieval trials total |
+| Film retrieval accuracy | 1.000 | Average film match rate for analyze and compare retrieval |
+| Lens retrieval accuracy | 0.965 | Average theme/lens match rate across retrieval trials |
+| Comparison balance | 100.0% | Comparison cases retrieved enough material from both films |
+| Retrieval pass rate | 100.0% | Pass rate across all retrieval trials |
+| Average response latency | 20.022s | OpenAI-backed generation on 5 benchmark cases x 3 trials |
+
+To run the full benchmark latency suite, remove `--latency-case-limit`:
+
+```bash
+python -m evals.build_metrics_summary --trials 3
+```
+
+For the practical snapshot used above:
+
+```bash
+python -m evals.build_metrics_summary --trials 3 --latency-case-limit 5
 ```
 
 ## Requirements

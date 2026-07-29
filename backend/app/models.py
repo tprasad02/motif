@@ -59,6 +59,7 @@ class RetrievedChunkResponse(BaseModel):
     text: str
     film_slug: str
     source_key: str
+    source_title: str | None = None
     source_type: str
     score: float
     vector_score: float | None = None
@@ -69,6 +70,8 @@ class RetrievedChunkResponse(BaseModel):
     lens_tags: list[str] = Field(default_factory=list)
     section_title: str | None = None
     chunk_role: str = "interpretive_claim"
+    selection_reason: str | None = None
+    used_by_evidence_cards: list[str] = Field(default_factory=list)
 
 
 class RetrieveResponse(BaseModel):

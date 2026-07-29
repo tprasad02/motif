@@ -257,10 +257,61 @@ def _citations(chunks: list[RetrievedChunk]) -> list[SourceCitation]:
     return citations
 
 
-def _debug_chunks(chunks: list[RetrievedChunk], include_debug: bool) -> list[RetrievedChunkResponse]:
+def _selection_reason(chunk: RetrievedChunk, request: GuidedAnswerRequest | None = None) -> str:
+    reasons = []
+    if chunk.rerank_score is not None:
+        reasons.append("ranked highly after reranking")
+    if chunk.vector_score is not None:
+        reasons.append("matched semantic search")
+    if chunk.bm25_score is not None:
+        reasons.append("matched keyword search")
+    if request and _chunk_lens_match(chunk, request.lens):
+        reasons.append("matched the selected theme")
+    if chunk.chunk_role in {"scene_evidence", "formal_observation", "creator_commentary"}:
+        reasons.append(f"contains {chunk.chunk_role.replace('_', ' ')}")
+    if chunk.quality_score == "high":
+        reasons.append("comes from a high-quality source")
+    if request and chunk.film_slug in _film_slugs_for_request(request):
+        reasons.append("matches the selected film")
+    return "; ".join(dict.fromkeys(reasons)) or "selected by retrieval score"
+
+
+def _evidence_usage(evidence_cards: list[dict[str, str]] | None) -> dict[str, list[str]]:
+    usage: dict[str, list[str]] = defaultdict(list)
+    for card in evidence_cards or []:
+        label = str(card.get("label") or "Evidence")
+        raw_ids = card.get("chunk_ids") or "[]"
+        try:
+            chunk_ids = json.loads(raw_ids) if isinstance(raw_ids, str) else raw_ids
+        except json.JSONDecodeError:
+            chunk_ids = [raw_ids]
+        for chunk_id in chunk_ids or []:
+            usage[str(chunk_id)].append(label)
+    return usage
+
+
+def _debug_chunks(
+    chunks: list[RetrievedChunk],
+    include_debug: bool,
+    request: GuidedAnswerRequest | None = None,
+    evidence_cards: list[dict[str, str]] | None = None,
+) -> list[RetrievedChunkResponse]:
     if not include_debug:
         return []
-    return [RetrievedChunkResponse(**{**chunk.__dict__, "lens_tags": chunk.lens_tags or []}) for chunk in chunks]
+    source_metadata = fetch_source_metadata(sorted({chunk.source_key for chunk in chunks}))
+    usage = _evidence_usage(evidence_cards)
+    return [
+        RetrievedChunkResponse(
+            **{
+                **chunk.__dict__,
+                "lens_tags": chunk.lens_tags or [],
+                "source_title": source_metadata.get(chunk.source_key, {}).get("title", chunk.source_key),
+                "selection_reason": _selection_reason(chunk, request),
+                "used_by_evidence_cards": usage.get(chunk.chunk_id, []),
+            }
+        )
+        for chunk in chunks
+    ]
 
 
 def _context(chunks: list[RetrievedChunk]) -> str:
@@ -296,6 +347,7 @@ def _system_prompt(mode: str) -> str:
         "You are Motif, a film close-reading assistant. Produce an evidence board, not an essay. "
         "Write plainly and specifically. Avoid grand philosophical language, generic AI phrasing, and claims about people or humanity in general. "
         "Use enough plot context to identify the moment, but do not retell the whole plot. "
+        "Do not output stray isolated letter artifacts such as ' l ' or half-formed words. "
         "Do not use these phrases or structures: at its core, profound exploration, complex interplay, the human condition, serves as, invites the viewer, matters because, underscores, illustrating how, not only, but also, not just. "
         "Do not mention source titles, publishers, source types, citations, or phrases like 'according to'. "
         "You may mention the selected lens naturally, but do not expose interface phrasing like 'lens', 'theme', 'through the lens of', 'in this lens', 'selected lens', or 'selected theme'. "
@@ -684,7 +736,7 @@ def _synthesize_theme(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]
     level = coverage_level(score)
     cards = _theme_films(request, active_chunks)
     refused = not cards
-    debug_chunks = _debug_chunks(active_chunks, request.include_debug)
+    debug_chunks = _debug_chunks(active_chunks, request.include_debug, request)
     answer = "Films ranked by relevance."
     return AnalysisResponse(
         mode=request.mode,
@@ -718,7 +770,6 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
     level = coverage_level(max(score, confidence))
     refused = not _selection_supported(request) or confidence < 0.52 or score < 0.38
     citations = _citations(chunks)
-    debug_chunks = _debug_chunks(chunks, request.include_debug)
 
     if refused:
         thesis = REFUSAL_TEXT
@@ -768,7 +819,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
                 coverage_level=level,
                 refused=True,
                 retrieval_notes="",
-                debug_chunks=debug_chunks,
+                debug_chunks=_debug_chunks(chunks, request.include_debug, request),
             )
     answer = thesis
     sections = evidence_cards
@@ -791,7 +842,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         coverage_level=level,
         refused=refused,
         retrieval_notes=f"{level.title()} coverage from {len({chunk.source_key for chunk in chunks})} sources.",
-        debug_chunks=debug_chunks,
+        debug_chunks=_debug_chunks(chunks, request.include_debug, request, evidence_cards),
         suggested_pairings=pairing_suggestions(request.film_a, request.lens) if request.mode == "analyze_film" and request.film_a else [],
     )
 

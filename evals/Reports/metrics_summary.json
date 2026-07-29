@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "films": 18,
+    "documents": 140,
+    "chunks": 2427,
+    "eval_cases": 50,
+    "trials_per_retrieval_case": 3,
+    "retrieval_trials": 150,
+    "generated_latency_trials": 15,
+    "film_retrieval_accuracy": 1.0,
+    "lens_retrieval_accuracy": 0.965,
+    "comparison_balance": 100.0,
+    "retrieval_pass_rate": 100.0,
+    "answer_checked_cases": 50,
+    "answer_llm_judged_cases": 41,
+    "answer_unscored_case_ids": [
+      "analyze_prisoners_justice",
+      "theme_memory",
+      "theme_performance",
+      "theme_justice",
+      "theme_control",
+      "theme_reality",
+      "theme_trauma",
+      "theme_identity",
+      "theme_obsession"
+    ],
+    "answer_pass_rate": 100.0,
+    "average_answer_quality_score": 4.854,
+    "average_response_latency_seconds": 12.486,
+    "answer_quality_source_report": "evals/Reports/answer_quality_results_2026-07-29_12-01-20.json"
+  },
+  "artifacts": {
+    "trial_rows": "evals/Reports/metrics_trials.csv",
+    "case_summary_rows": "evals/Reports/metrics_case_summary.csv"
+  }
+}
