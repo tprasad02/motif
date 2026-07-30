@@ -164,9 +164,9 @@ python -m evals.build_metrics_summary --trials 3 --latency-case-limit 5
 Outputs:
 
 ```text
-evals/Reports/metrics_summary.json
-evals/Reports/metrics_trials.csv
-evals/Reports/metrics_case_summary.csv
+evals/final_metrics/metrics_summary.json
+evals/final_metrics/metrics_trials.csv
+evals/final_metrics/metrics_case_summary.csv
 ```
 
 The metrics artifacts intentionally avoid answer text, retrieved text, and long source excerpts. They are meant to be clean measurement files, not another debug dump.

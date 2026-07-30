@@ -202,9 +202,9 @@ def main() -> None:
     parser.add_argument("--answer-quality-report", default="")
     parser.add_argument("--skip-response-latency", action="store_true")
     parser.add_argument("--latency-case-limit", type=int, default=5)
-    parser.add_argument("--summary-output", default="evals/Reports/metrics_summary.json")
-    parser.add_argument("--trial-output", default="evals/Reports/metrics_trials.csv")
-    parser.add_argument("--case-output", default="evals/Reports/metrics_case_summary.csv")
+    parser.add_argument("--summary-output", default="evals/final_metrics/metrics_summary.json")
+    parser.add_argument("--trial-output", default="evals/final_metrics/metrics_trials.csv")
+    parser.add_argument("--case-output", default="evals/final_metrics/metrics_case_summary.csv")
     args = parser.parse_args()
 
     load_dotenv(Path(".env"))

@@ -112,17 +112,55 @@ backend/app/corpus/sources.jsonl
 
 For more detail, see [DATASET.md](./DATASET.md).
 
-## System Design
+## Project Structure
 
 ```text
-frontend/        Next.js UI
-backend/         FastAPI API and RAG answer generation
-ingestion/       Corpus extraction, cleaning, chunking, embedding, and storage
-evals/           Corpus and retrieval checks
-infra/           PostgreSQL schema
-notebooks/       Manual retrieval experiments
-data/            Manual corpus metadata and source files
+motif/
+├── README.md                  Project overview, setup, metrics, and portfolio narrative
+├── ARCHITECTURE.md            System flow, retrieval, reranking, and debug mode
+├── DATASET.md                 Corpus strategy, source roles, quality, and lens assignment
+├── EVALUATION.md              Evaluation methodology, metrics, failures, and improvements
+├── LIMITATIONS.md             Scope boundaries and known limitations
+├── backend/                   FastAPI app and RAG services
+│   ├── app/
+│   │   ├── main.py            API routes
+│   │   ├── models.py          Pydantic request/response models
+│   │   ├── film_config.py     Film metadata, primary lenses, lens expansion helpers
+│   │   ├── core/              Runtime configuration
+│   │   ├── corpus/            Checked-in JSONL corpus used by the app
+│   │   ├── db/                PostgreSQL helpers
+│   │   └── services/          Retrieval, recommendations, embeddings, and answer generation
+│   ├── Dockerfile
+│   └── requirements.txt
+├── frontend/                  Next.js guided UI
+│   ├── app/
+│   │   ├── page.tsx           Main workflow interface
+│   │   ├── debug/             Hidden debug route
+│   │   ├── filmConfig.ts      Frontend film metadata fallback
+│   │   └── styles.css         Editorial UI styling
+│   ├── package.json
+│   └── vercel.json
+├── ingestion/                 Source extraction, cleaning, chunking, embeddings, and storage
+├── evals/                     Corpus, chunk, retrieval, answer, and aggregate metrics scripts
+│   ├── Reports/               Historical evaluation outputs over time
+│   ├── final_metrics/         Clean aggregate metrics used for the project snapshot
+│   └── benchmark_cases.json   Main benchmark suite
+├── data/                      Manual corpus metadata and extracted/manual source files
+│   ├── manual/                Manually supplied PDFs/texts/spreadsheet
+│   ├── manual_extracted/      Extracted text used for ingestion
+│   ├── manual_sources.csv     Source metadata
+│   └── seed_films.csv         Film metadata
+├── infra/
+│   └── postgres/              PostgreSQL schema
+├── notebooks/                 Manual retrieval exploration
+├── docker-compose.yml         Local PostgreSQL and Weaviate
+├── render.yaml                Render backend deployment config
+└── Makefile                   Convenience commands
 ```
+
+Ignored local/generated folders such as `.venv/`, `node_modules/`, `.next/`, `.vercel/`, `__pycache__/`, `data/raw/`, and `data/processed/` are not part of the committed project structure.
+
+## System Design
 
 Core services:
 
@@ -237,9 +275,9 @@ Result: the Memento + Memory path now retrieves a stronger mix of scholarship, s
 Latest generated files:
 
 ```text
-evals/Reports/metrics_summary.json
-evals/Reports/metrics_trials.csv
-evals/Reports/metrics_case_summary.csv
+evals/final_metrics/metrics_summary.json
+evals/final_metrics/metrics_trials.csv
+evals/final_metrics/metrics_case_summary.csv
 ```
 
 | Metric | Current value | Notes |
