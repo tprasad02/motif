@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, Loader2, RotateCcw } from "lucide-react";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
+import { ArrowLeft, RotateCcw } from "lucide-react";
 import { films, globalLenses } from "./filmConfig";
 
 type Mode = "analyze_film" | "compare_films" | "explore_theme";
@@ -58,6 +58,15 @@ type CompareLensSuggestion = {
   film_b_score: number;
 };
 
+type PosterRecord = {
+  slug: string;
+  title: string;
+  year: number;
+  director: string;
+  posterUrl: string | null;
+  tmdbId: number | null;
+};
+
 const fallbackAnswerPatterns = [
   "the relevant film detail is:",
   "pattern built through repeated scenes and formal choices",
@@ -75,6 +84,7 @@ const workflows: Array<{ id: Mode; title: string; body: string; kicker: string }
 
 const titleFor = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
 const apiBase = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const posterCacheKey = "motifPosterCache:v1";
 
 function looksLikeFallbackReading(body: AnswerResponse) {
   if (body.mode === "explore_theme") return false;
@@ -109,6 +119,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [recommendations, setRecommendations] = useState<RecommendationsResponse | null>(null);
   const [compareLensSuggestions, setCompareLensSuggestions] = useState<CompareLensSuggestion[]>([]);
+  const [posters, setPosters] = useState<Record<string, PosterRecord>>({});
 
   const debug =
     typeof window !== "undefined" &&
@@ -123,6 +134,39 @@ export default function Home() {
       })
       .catch(() => {
         // Static filmConfig remains the fallback when the backend is unavailable.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    try {
+      const cached = window.localStorage.getItem(posterCacheKey);
+      if (cached) {
+        const parsed = JSON.parse(cached) as { posters?: PosterRecord[] };
+        if (parsed.posters?.length) {
+          setPosters(Object.fromEntries(parsed.posters.map((poster) => [poster.slug, poster])));
+        }
+      }
+    } catch {
+      // Poster cache is optional.
+    }
+
+    fetch("/api/posters")
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body: { posters?: PosterRecord[] } | null) => {
+        if (cancelled || !body?.posters?.length) return;
+        setPosters(Object.fromEntries(body.posters.map((poster) => [poster.slug, poster])));
+        try {
+          window.localStorage.setItem(posterCacheKey, JSON.stringify({ posters: body.posters, cachedAt: Date.now() }));
+        } catch {
+          // Ignore storage quota or privacy-mode failures.
+        }
+      })
+      .catch(() => {
+        // Text-only film cards remain the fallback.
       });
     return () => {
       cancelled = true;
@@ -211,6 +255,17 @@ export default function Home() {
     setError(null);
     setLoading(false);
     setStep(nextMode === "explore_theme" ? "lens" : "film");
+  }
+
+  function exploreFeaturedFilm(slug: string) {
+    setMode("analyze_film");
+    setFilmA(slug);
+    setFilmB("");
+    setLens("");
+    setAnswer(null);
+    setError(null);
+    setLoading(false);
+    setStep("lens");
   }
 
   function startOver() {
@@ -320,9 +375,14 @@ export default function Home() {
 
   const loadingText =
     mode === "compare_films" ? "Comparing the films..." : mode === "explore_theme" ? "Exploring the theme..." : "Building the reading...";
+  const progressStages =
+    mode === "explore_theme"
+      ? ["Reading Collection", "Ranking Films", "Shaping Cards", "Finishing"]
+      : ["Retrieving Sources", "Analyzing Evidence", "Synthesizing Reading", "Writing Analysis"];
   const evidenceCards = answer?.evidence_cards?.length ? answer.evidence_cards : answer?.sections ?? [];
   const themeFilms = answer?.theme_films ?? [];
   const suggestedPairings = answer?.suggested_pairings ?? [];
+  const featuredFilms = [...films, ...films];
 
   function jumpToPairing(pairing: { film_slug: string; lens: string }) {
     setMode("compare_films");
@@ -360,38 +420,62 @@ export default function Home() {
       </nav>
 
       {step === "mode" && (
-        <section className="workflowIntro">
-          <h1>What do you want to explore?</h1>
-          <div className="workflowGrid">
-            {workflows.map((workflow) => (
-              <button key={workflow.id} className="workflowCard" onClick={() => startWorkflow(workflow.id)}>
-                <strong>{workflow.title}</strong>
-                <small>{workflow.kicker}</small>
-                <span>{workflow.body}</span>
-              </button>
-            ))}
-          </div>
-        </section>
+        <div className="pageTurn">
+          <section className="featuredShelf" aria-label="Featured film shelf">
+            <div className="shelfHeader">
+              <span>Featured Shelf</span>
+              <img src="/tmdb-logo.svg" alt="The Movie Database" />
+            </div>
+            <div className="posterMarquee">
+              <div className="posterTrack">
+                {featuredFilms.map((film, index) => {
+                  const poster = posters[film.slug]?.posterUrl;
+                  return (
+                    <button key={`${film.slug}-${index}`} className="featuredPoster" onClick={() => exploreFeaturedFilm(film.slug)}>
+                      {poster ? <img src={poster} alt={`${film.title} poster`} /> : <span>{film.title}</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+          <section className="workflowIntro">
+            <h1>What do you want to explore?</h1>
+            <div className="workflowGrid">
+              {workflows.map((workflow) => (
+                <button key={workflow.id} className="workflowCard" onClick={() => startWorkflow(workflow.id)}>
+                  <strong>{workflow.title}</strong>
+                  <small>{workflow.kicker}</small>
+                  <span>{workflow.body}</span>
+                </button>
+              ))}
+            </div>
+          </section>
+        </div>
       )}
 
       {step === "film" && mode && mode !== "explore_theme" && (
-        <section className="stepPanel">
+        <section className="stepPanel pageTurn">
           <div className="stepHeader">
             <span>Step 1</span>
             <h1>{mode === "compare_films" ? "Choose two films" : "Choose a film"}</h1>
             <p>{mode === "compare_films" ? "First click sets Film A. Second click sets Film B." : "Pick the film Motif should read closely."}</p>
           </div>
-          <div className="filmGrid">
+          <div className="filmShelf" aria-label="Choose a film">
             {films.map((film) => {
               const isA = film.slug === filmA;
               const isB = film.slug === filmB;
+              const poster = posters[film.slug]?.posterUrl;
               return (
-                <button key={film.slug} className={isA || isB ? "filmCard selected" : "filmCard"} onClick={() => selectFilm(film.slug)}>
+                <button key={film.slug} className={isA || isB ? "shelfFilmCard selected" : "shelfFilmCard"} onClick={() => selectFilm(film.slug)}>
                   {(isA || isB) && (
                     <span className="selectedBadge">
                       {mode === "compare_films" ? (isA ? "Film A" : "Film B") : "Selected"}
                     </span>
                   )}
+                  <div className="posterFrame">
+                    {poster ? <img src={poster} alt={`${film.title} poster`} /> : <span>{film.title}</span>}
+                  </div>
                   <strong>{film.title}</strong>
                   <small>
                     {film.year} / {film.director}
@@ -417,7 +501,7 @@ export default function Home() {
       )}
 
       {step === "lens" && mode && (
-        <section className="stepPanel">
+        <section className="stepPanel pageTurn">
           <div className="stepHeader">
             <span>{mode === "explore_theme" ? "Step 1" : "Step 2"}</span>
             <h1>{mode === "explore_theme" ? "Choose a theme" : "Choose a lens"}</h1>
@@ -428,8 +512,13 @@ export default function Home() {
             </p>
           </div>
           <div className="lensGrid">
-            {recommendedLenses.map((item) => (
-              <button key={item} className={lens === item ? "lensPill active" : "lensPill"} onClick={() => setLens(item)}>
+            {recommendedLenses.map((item, index) => (
+              <button
+                key={item}
+                className={lens === item ? "lensPill active" : "lensPill"}
+                style={{ "--i": index } as CSSProperties}
+                onClick={() => setLens(item)}
+              >
                 {item}
               </button>
             ))}
@@ -446,20 +535,20 @@ export default function Home() {
           )}
           <div className="footerAction">
             <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
-              {loading && canGenerate ? <Loader2 className="spin" size={18} /> : null}
               Generate Reading
             </button>
             <span className={canGenerate ? "readyText" : "inlineError"}>
               {loading && canGenerate ? loadingText : canGenerate ? `Selected: ${lens}` : disabledReason}
             </span>
           </div>
+          {loading && canGenerate && <ReadingProgress stages={progressStages} />}
         </section>
       )}
 
       {error && step !== "film" && <section className="errorState">{error}</section>}
 
       {step === "answer" && answer && (
-        <section className={answer.refused ? "answerPanel refused" : "answerPanel"}>
+        <section className={answer.refused ? "answerPanel refused pageTurn" : "answerPanel pageTurn"}>
           <div className="answerMeta">
             <span>{mode === "compare_films" ? "Film Comparison" : mode === "explore_theme" ? "Theme Exploration" : "Film Analysis"}</span>
           </div>
@@ -570,5 +659,22 @@ export default function Home() {
         </section>
       ) : null}
     </main>
+  );
+}
+
+function ReadingProgress({ stages }: { stages: string[] }) {
+  return (
+    <div className="readingProgress" aria-live="polite">
+      <div className="progressBar">
+        <span />
+      </div>
+      <ol>
+        {stages.map((stage, index) => (
+          <li key={stage} style={{ "--i": index } as CSSProperties}>
+            {stage}
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
