@@ -137,13 +137,12 @@ motif/
 │   │   ├── page.tsx           Main workflow interface
 │   │   ├── debug/             Hidden debug route
 │   │   ├── filmConfig.ts      Frontend film metadata fallback
-│   │   └── styles.css         Editorial UI styling
+│   │   └── styles.css         UI styling
 │   ├── package.json
 │   └── vercel.json
 ├── ingestion/                 Source extraction, cleaning, chunking, embeddings, and storage
 ├── evals/                     Corpus, chunk, retrieval, answer, and aggregate metrics scripts
-│   ├── Reports/               Historical evaluation outputs over time
-│   ├── final_metrics/         Clean aggregate metrics used for the project snapshot
+│   ├── Reports/               Current evaluation outputs only
 │   └── benchmark_cases.json   Main benchmark suite
 ├── data/                      Manual corpus metadata and extracted/manual source files
 │   ├── manual/                Manually supplied PDFs/texts/spreadsheet
@@ -157,8 +156,6 @@ motif/
 ├── render.yaml                Render backend deployment config
 └── Makefile                   Convenience commands
 ```
-
-Ignored local/generated folders such as `.venv/`, `node_modules/`, `.next/`, `.vercel/`, `__pycache__/`, `data/raw/`, and `data/processed/` are not part of the committed project structure.
 
 ## System Design
 
@@ -275,9 +272,9 @@ Result: the Memento + Memory path now retrieves a stronger mix of scholarship, s
 Latest generated files:
 
 ```text
-evals/final_metrics/metrics_summary.json
-evals/final_metrics/metrics_trials.csv
-evals/final_metrics/metrics_case_summary.csv
+evals/Reports/metrics_summary.json
+evals/Reports/metrics_trials.csv
+evals/Reports/metrics_case_summary.csv
 ```
 
 | Metric | Current value | Notes |
