@@ -340,6 +340,7 @@ OPENAI_API_KEY=
 MOTIF_COLLECTION=MotifChunk
 NEXT_PUBLIC_API_URL=http://localhost:8000
 FRONTEND_ORIGIN=http://localhost:3000
+TMDB_API_KEY=
 ```
 
 Important local Docker note: `docker-compose.yml` maps PostgreSQL to host port `5433`.
@@ -367,6 +368,14 @@ OPENAI_API_KEY=your_openai_key
 ```
 
 If no OpenAI key is available, answer generation returns an error instead of a fake reading. The real app experience requires `OPENAI_API_KEY`.
+
+For poster shelves, set a TMDb API key:
+
+```env
+TMDB_API_KEY=your_tmdb_key
+```
+
+The frontend reads poster data through its internal `/api/posters` route, which keeps the key server-side, caches poster URLs, and falls back to text cards if TMDb is unavailable. Motif displays a small TMDb logo in the featured shelf for attribution. In Vercel, add `TMDB_API_KEY` as a frontend project environment variable.
 
 ## First-Time Setup
 

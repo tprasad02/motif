@@ -629,10 +629,30 @@ button {
 
 .readingProgress {
   display: grid;
-  gap: 14px;
+  gap: 12px;
   margin-top: 24px;
   padding-top: 22px;
   border-top: 1px solid var(--rule);
+}
+
+.progressStageWindow {
+  position: relative;
+  min-height: 18px;
+  overflow: hidden;
+}
+
+.progressStageWindow span {
+  position: absolute;
+  inset: 0 auto auto 0;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: singleProgressStage 6.4s linear infinite;
+  animation-delay: calc(var(--i, 0) * 1.6s);
 }
 
 .progressBar {
@@ -649,26 +669,7 @@ button {
   border-radius: inherit;
   background: linear-gradient(90deg, var(--accent), var(--page-warm), var(--page-cool));
   transform-origin: left;
-  animation: readingBar 4.8s ease-in-out infinite;
-}
-
-.readingProgress ol {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.readingProgress li {
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  animation: progressStage 4.8s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 900ms);
+  animation: readingBar 6.4s ease-in-out infinite;
 }
 
 .primaryButton {
@@ -1003,10 +1004,6 @@ button {
   line-height: 1.45;
 }
 
-.spin {
-  animation: spin 800ms linear infinite;
-}
-
 @keyframes enter {
   from {
     opacity: 0;
@@ -1051,29 +1048,36 @@ button {
 
 @keyframes readingBar {
   0% {
-    transform: scaleX(0.08);
+    transform: scaleX(0.05);
   }
-  46% {
-    transform: scaleX(0.72);
+  25% {
+    transform: scaleX(0.28);
+  }
+  50% {
+    transform: scaleX(0.54);
+  }
+  75% {
+    transform: scaleX(0.78);
   }
   100% {
     transform: scaleX(1);
   }
 }
 
-@keyframes progressStage {
-  0%,
+@keyframes singleProgressStage {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  5%,
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25%,
   100% {
-    color: var(--muted);
-  }
-  26% {
-    color: var(--accent);
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+    opacity: 0;
+    transform: translateY(-8px);
   }
 }
 
@@ -1099,10 +1103,6 @@ button {
   .shelfFilmCard {
     width: 156px;
     flex-basis: 156px;
-  }
-
-  .readingProgress ol {
-    grid-template-columns: 1fr 1fr;
   }
 
   .workflowCard {

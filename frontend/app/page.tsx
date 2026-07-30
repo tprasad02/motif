@@ -373,8 +373,6 @@ export default function Home() {
     }
   }
 
-  const loadingText =
-    mode === "compare_films" ? "Comparing the films..." : mode === "explore_theme" ? "Exploring the theme..." : "Building the reading...";
   const progressStages =
     mode === "explore_theme"
       ? ["Reading Collection", "Ranking Films", "Shaping Cards", "Finishing"]
@@ -537,9 +535,7 @@ export default function Home() {
             <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
               Generate Reading
             </button>
-            <span className={canGenerate ? "readyText" : "inlineError"}>
-              {loading && canGenerate ? loadingText : canGenerate ? `Selected: ${lens}` : disabledReason}
-            </span>
+            {!loading && <span className={canGenerate ? "readyText" : "inlineError"}>{canGenerate ? `Selected: ${lens}` : disabledReason}</span>}
           </div>
           {loading && canGenerate && <ReadingProgress stages={progressStages} />}
         </section>
@@ -665,16 +661,16 @@ export default function Home() {
 function ReadingProgress({ stages }: { stages: string[] }) {
   return (
     <div className="readingProgress" aria-live="polite">
+      <div className="progressStageWindow">
+        {stages.map((stage, index) => (
+          <span key={stage} style={{ "--i": index } as CSSProperties}>
+            {stage}
+          </span>
+        ))}
+      </div>
       <div className="progressBar">
         <span />
       </div>
-      <ol>
-        {stages.map((stage, index) => (
-          <li key={stage} style={{ "--i": index } as CSSProperties}>
-            {stage}
-          </li>
-        ))}
-      </ol>
     </div>
   );
 }
