@@ -1,8 +1,10 @@
 :root {
   color-scheme: light;
-  --page: #f5f1e8;
-  --panel: #efe7da;
-  --panel-soft: #e8e2d6;
+  --page: #7b3f3a;
+  --page-warm: #ad7145;
+  --page-cool: #46543f;
+  --panel: #e8dccb;
+  --panel-soft: #ddd0bd;
   --paper: #2f2a26;
   --paper-soft: #3a312c;
   --ink: #2f2a26;
@@ -13,8 +15,8 @@
   --accent: #7b3f3a;
   --accent-dark: #5f302d;
   --danger: #9f463d;
-  --card: #fbf7ef;
-  --shadow: 0 18px 48px rgba(66, 48, 31, 0.12);
+  --card: #f1e6d5;
+  --shadow: 0 22px 56px rgba(35, 18, 16, 0.24);
   --serif: Georgia, "Times New Roman", Times, serif;
   --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -31,7 +33,11 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--ink);
-  background: var(--page);
+  background:
+    radial-gradient(circle at 14% 0%, rgba(173, 113, 69, 0.9), transparent 36%),
+    radial-gradient(circle at 88% 18%, rgba(70, 84, 63, 0.68), transparent 42%),
+    radial-gradient(circle at 54% 74%, rgba(49, 35, 50, 0.38), transparent 46%),
+    linear-gradient(145deg, var(--accent-dark) 0%, var(--page) 42%, #683234 100%);
   font-family: var(--sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -43,10 +49,11 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(rgba(47, 42, 38, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(47, 42, 38, 0.018) 1px, transparent 1px);
-  background-size: 100% 44px, 44px 100%;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent 58%);
+    linear-gradient(rgba(241, 230, 213, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241, 230, 213, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 50% 8%, rgba(241, 230, 213, 0.12), transparent 42%);
+  background-size: 100% 44px, 44px 100%, 100% 100%;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 72%);
 }
 
 button,
@@ -69,12 +76,12 @@ button {
   gap: 18px;
   margin-bottom: 28px;
   padding: 34px 0 26px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid rgba(241, 230, 213, 0.24);
 }
 
 .logoLockup span {
   display: block;
-  color: var(--ink);
+  color: var(--card);
   font-family: var(--serif);
   font-size: clamp(64px, 12vw, 142px);
   font-weight: 400;
@@ -85,7 +92,7 @@ button {
 .hero p {
   max-width: 620px;
   margin: 0;
-  color: var(--paper-soft);
+  color: rgba(241, 230, 213, 0.8);
   font-family: var(--serif);
   font-size: clamp(22px, 3vw, 34px);
   line-height: 1.16;
@@ -104,18 +111,32 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid var(--rule);
   border-radius: 999px;
   padding: 0 15px;
-  color: var(--paper-soft);
-  background: rgba(251, 247, 239, 0.54);
   transition:
     border-color 160ms ease,
     color 160ms ease,
     background-color 160ms ease;
 }
 
-.topActions button:hover,
+.topActions button {
+  border: 1px solid rgba(241, 230, 213, 0.24);
+  color: rgba(241, 230, 213, 0.88);
+  background: rgba(241, 230, 213, 0.1);
+}
+
+.topActions button:hover {
+  border-color: rgba(241, 230, 213, 0.42);
+  color: var(--card);
+  background: rgba(241, 230, 213, 0.16);
+}
+
+.answerActions button {
+  border: 1px solid var(--rule);
+  color: var(--paper-soft);
+  background: rgba(241, 230, 213, 0.54);
+}
+
 .answerActions button:hover {
   border-color: var(--rule-strong);
   color: var(--ink);
@@ -134,7 +155,9 @@ button {
 .stepPanel {
   padding: clamp(28px, 5vw, 58px);
   border: 1px solid var(--rule);
-  background: var(--panel);
+  background:
+    linear-gradient(145deg, rgba(241, 230, 213, 0.92), rgba(232, 220, 203, 0.97)),
+    var(--panel);
   border-radius: 18px;
   box-shadow: var(--shadow);
 }
@@ -184,7 +207,7 @@ button {
 .workflowCard:hover {
   transform: translateY(-3px);
   border-color: var(--accent);
-  background: #fffaf2;
+  background: #f6ead9;
 }
 
 .workflowCard small {
@@ -250,7 +273,7 @@ button {
   border-left: 1px solid var(--rule);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(251, 247, 239, 0.58);
+  background: rgba(241, 230, 213, 0.62);
   box-shadow: 0 10px 28px rgba(66, 48, 31, 0.07);
 }
 
@@ -265,7 +288,7 @@ button {
   border-radius: 0;
   padding: 20px;
   color: var(--ink);
-  background: rgba(251, 247, 239, 0.72);
+  background: rgba(241, 230, 213, 0.76);
   text-align: left;
   position: relative;
   transition:
@@ -275,7 +298,7 @@ button {
 }
 
 .filmCard:hover {
-  background: #fffaf2;
+  background: #f6ead9;
 }
 
 .filmCard strong {
@@ -318,7 +341,7 @@ button {
   border-radius: 999px;
   padding: 5px 9px;
   color: var(--accent-dark);
-  background: rgba(255, 250, 242, 0.72);
+  background: rgba(241, 230, 213, 0.74);
   font-size: 11px;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -338,7 +361,7 @@ button {
   border-radius: 999px;
   padding: 6px 9px;
   color: var(--paper-soft);
-  background: rgba(255, 250, 242, 0.64);
+  background: rgba(241, 230, 213, 0.66);
   font-size: 12px;
   font-weight: 650;
 }
@@ -346,7 +369,7 @@ button {
 .specificAngles span {
   color: var(--muted);
   border-color: var(--rule);
-  background: rgba(251, 247, 239, 0.5);
+  background: rgba(241, 230, 213, 0.52);
 }
 
 .lensGrid {
@@ -361,7 +384,7 @@ button {
   border-radius: 999px;
   padding: 0 22px;
   color: var(--paper);
-  background: rgba(251, 247, 239, 0.58);
+  background: rgba(241, 230, 213, 0.62);
   font-weight: 650;
   transition:
     transform 160ms ease,
@@ -373,7 +396,7 @@ button {
 .lensPill:hover {
   transform: translateY(-1px);
   border-color: var(--accent);
-  background: #fffaf2;
+  background: #f6ead9;
 }
 
 .lensPill.active {
@@ -466,7 +489,9 @@ button {
   margin-top: 18px;
   padding: clamp(30px, 6vw, 72px);
   border: 1px solid var(--rule);
-  background: var(--panel);
+  background:
+    linear-gradient(145deg, rgba(241, 230, 213, 0.92), rgba(232, 220, 203, 0.97)),
+    var(--panel);
   border-radius: 18px;
   box-shadow: var(--shadow);
 }
@@ -512,7 +537,7 @@ button {
   border-left: 1px solid var(--rule);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(251, 247, 239, 0.58);
+  background: rgba(241, 230, 213, 0.62);
   box-shadow: 0 10px 28px rgba(66, 48, 31, 0.07);
 }
 
@@ -526,7 +551,7 @@ button {
   min-height: 170px;
   padding: clamp(22px, 3vw, 34px);
   border: 1px solid var(--rule);
-  background: rgba(251, 247, 239, 0.76);
+  background: rgba(241, 230, 213, 0.78);
   border-radius: 16px;
   box-shadow: 0 10px 28px rgba(66, 48, 31, 0.07);
 }
@@ -557,7 +582,7 @@ button {
   padding: clamp(22px, 3vw, 34px);
   border-right: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  background: rgba(251, 247, 239, 0.74);
+  background: rgba(241, 230, 213, 0.76);
 }
 
 .evidenceGrid strong {
@@ -605,7 +630,7 @@ button {
   gap: 18px;
   padding: 18px;
   border: 1px solid var(--rule);
-  background: rgba(251, 247, 239, 0.74);
+  background: rgba(241, 230, 213, 0.76);
   border-radius: 14px;
   color: var(--ink);
   text-align: left;
@@ -639,7 +664,7 @@ button {
   border-left: 1px solid var(--rule);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(251, 247, 239, 0.58);
+  background: rgba(241, 230, 213, 0.62);
   box-shadow: 0 10px 28px rgba(66, 48, 31, 0.07);
 }
 
@@ -651,7 +676,7 @@ button {
   padding: 24px;
   border-right: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  background: rgba(251, 247, 239, 0.74);
+  background: rgba(241, 230, 213, 0.76);
 }
 
 .themeFilmCard > span {
