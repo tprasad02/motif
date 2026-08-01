@@ -214,6 +214,8 @@ def _load_chunks_from_file() -> list[dict[str, Any]]:
 
 
 def load_recommendation_chunks() -> list[dict[str, Any]]:
+    if not settings.use_runtime_databases:
+        return _load_chunks_from_file()
     try:
         return _load_chunks_from_postgres()
     except Exception:

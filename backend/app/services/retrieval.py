@@ -562,6 +562,14 @@ def retrieve_chunks(
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
+    if not settings.use_runtime_databases:
+        expanded_lens_tags = [
+            term
+            for lens in (lens_tags or [])
+            for term in expand_lens_terms(lens)
+        ]
+        expanded_query = f"{query} {' '.join(expanded_lens_tags)}".strip() if expanded_lens_tags else query
+        return _file_fallback_search(expanded_query, film_slugs, source_types, limit, lens_tags, include_low_quality)
     try:
         ensure_runtime_schema()
         expanded_lens_tags = [

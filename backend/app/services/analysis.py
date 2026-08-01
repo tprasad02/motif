@@ -1,6 +1,7 @@
 import json
 import re
 from collections import defaultdict
+from pathlib import Path
 import sys, os
 import httpx
 
@@ -52,10 +53,72 @@ FALLBACK_FRAGMENT_PATTERNS = [
     "directed by",
     "starring",
 ]
+ANSWER_CACHE_PATH = Path(__file__).resolve().parents[1] / "corpus" / "answer_cache.json"
 
 
 class LLMGenerationError(RuntimeError):
     pass
+
+
+def _answer_cache_key(request: GuidedAnswerRequest) -> str:
+    payload = {
+        "mode": request.mode,
+        "film_a": request.film_a or "",
+        "film_b": request.film_b or "",
+        "lens": request.lens,
+        "optional_question": request.optional_question or "",
+    }
+    return json.dumps(payload, sort_keys=True, separators=(",", ":"))
+
+
+def _load_answer_cache() -> dict[str, dict]:
+    if not ANSWER_CACHE_PATH.exists():
+        return {}
+    try:
+        with ANSWER_CACHE_PATH.open(encoding="utf-8") as handle:
+            payload = json.load(handle)
+        return payload if isinstance(payload, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _cached_answer(request: GuidedAnswerRequest) -> AnalysisResponse | None:
+    cached = _load_answer_cache().get(_answer_cache_key(request))
+    if not isinstance(cached, dict):
+        return None
+    try:
+        cached["debug_chunks"] = []
+        cached["retrieval_notes"] = f"{cached.get('retrieval_notes', '').strip()} Cached generated reading.".strip()
+        response = AnalysisResponse(**cached)
+        if _contains_stray_letter_artifact(
+            " ".join(
+                [
+                    response.thesis or "",
+                    *[str(card.get("title", "")) for card in response.evidence_cards],
+                    *[str(card.get("body", "")) for card in response.evidence_cards],
+                ]
+            )
+        ):
+            return None
+        return response
+    except Exception:
+        return None
+
+
+def _write_cached_answer(request: GuidedAnswerRequest, response: AnalysisResponse) -> None:
+    if response.refused or request.mode == "explore_theme":
+        return
+    cache = _load_answer_cache()
+    payload = response.model_dump(mode="json")
+    payload["debug_chunks"] = []
+    cache[_answer_cache_key(request)] = payload
+    try:
+        ANSWER_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with ANSWER_CACHE_PATH.open("w", encoding="utf-8") as handle:
+            json.dump(cache, handle, ensure_ascii=False, indent=2, sort_keys=True)
+            handle.write("\n")
+    except OSError:
+        pass
 
 
 FILM_META = {
@@ -439,6 +502,7 @@ def _normalize_card(raw_card, label: str) -> dict[str, str]:
 def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
     cleaned = re.sub(r"\s+", " ", text or "").strip()
     cleaned = re.sub(r"^the relevant film detail is:\s*", "", cleaned, flags=re.I)
+    cleaned = re.sub(r"(?<![A-Za-z])l(?![A-Za-z])", " ", cleaned)
     cleaned = re.sub(r"\bmatters because\b", "shows this by", cleaned, flags=re.I)
     cleaned = re.sub(r"\bnot only\b", "", cleaned, flags=re.I)
     cleaned = re.sub(r"\bbut also\b", "and", cleaned, flags=re.I)
@@ -469,6 +533,10 @@ def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
     return re.sub(r"\s{2,}", " ", cleaned).strip(" -:;,.") or text.strip()
 
 
+def _contains_stray_letter_artifact(text: str) -> bool:
+    return bool(re.search(r"(?<![A-Za-z])l(?![A-Za-z])", text or ""))
+
+
 def _clean_card_title(title: str, label: str, request: GuidedAnswerRequest) -> str:
     cleaned = _clean_public_text(title, request)
     if cleaned.lower() in {"main argument", "interview exchange", "untitled", "evidence"}:
@@ -492,6 +560,8 @@ def _reject_fallback_reading(thesis: str, evidence_cards: list[dict[str, str]]) 
         [thesis, *[card.get("title", "") for card in evidence_cards], *[card.get("body", "") for card in evidence_cards]]
     ).lower()
     pattern_hits = sum(1 for pattern in FALLBACK_FRAGMENT_PATTERNS if pattern in combined)
+    if _contains_stray_letter_artifact(combined):
+        raise LLMGenerationError("OpenAI returned stray letter artifacts.")
     weak_cards = 0
     for card in evidence_cards:
         body = (card.get("body") or "").strip()
@@ -800,6 +870,11 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
                 last_error = error
         else:
             error = last_error or LLMGenerationError("Motif could not generate that reading right now.")
+            cached = _cached_answer(request)
+            if cached:
+                if request.include_debug:
+                    cached.debug_chunks = _debug_chunks(chunks, request.include_debug, request)
+                return cached
             message = str(error)
             thesis = "OpenAI key not configured." if "OPENAI_API_KEY" in message else "Motif could not generate that reading right now."
             return AnalysisResponse(
@@ -825,7 +900,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
     sections = evidence_cards
     alternative_interpretations = [card["body"] for card in evidence_cards]
 
-    return AnalysisResponse(
+    response = AnalysisResponse(
         mode=request.mode,
         answer=answer,
         thesis=thesis,
@@ -845,6 +920,8 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         debug_chunks=_debug_chunks(chunks, request.include_debug, request, evidence_cards),
         suggested_pairings=pairing_suggestions(request.film_a, request.lens) if request.mode == "analyze_film" and request.film_a else [],
     )
+    _write_cached_answer(request, response)
+    return response
 
 
 def answer_guided(request: GuidedAnswerRequest) -> AnalysisResponse:

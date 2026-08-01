@@ -341,6 +341,7 @@ MOTIF_COLLECTION=MotifChunk
 NEXT_PUBLIC_API_URL=http://localhost:8000
 FRONTEND_ORIGIN=http://localhost:3000
 TMDB_API_KEY=
+USE_RUNTIME_DATABASES=true
 ```
 
 Important local Docker note: `docker-compose.yml` maps PostgreSQL to host port `5433`.
@@ -367,7 +368,15 @@ For LLM-backed answers, set:
 OPENAI_API_KEY=your_openai_key
 ```
 
-If no OpenAI key is available, answer generation returns an error instead of a fake reading. The real app experience requires `OPENAI_API_KEY`.
+If no OpenAI key is available, answer generation returns an error instead of a fake reading unless an exact generated reading already exists in the checked-in answer cache. The real app experience requires `OPENAI_API_KEY`; the cache is a demo safety net, not the primary generation path.
+
+Successful generated Analyze/Compare readings are cached by structured request in:
+
+```text
+backend/app/corpus/answer_cache.json
+```
+
+Before recording or demoing, run the strongest demo paths once with a valid OpenAI key, then commit the updated cache file if you want those exact readings to remain available when the OpenAI key is unavailable. Cached readings are keyed by workflow, selected film(s), lens, and optional angle.
 
 For poster shelves, set a TMDb API key:
 
@@ -575,11 +584,12 @@ Render should run the FastAPI backend from the `backend/` directory.
 Required Render environment variables:
 
 ```env
-DATABASE_URL=...
-WEAVIATE_URL=...
 FRONTEND_ORIGIN=https://your-vercel-app.vercel.app
 OPENAI_API_KEY=...
+USE_RUNTIME_DATABASES=false
 ```
+
+For the portfolio demo deployment, `USE_RUNTIME_DATABASES=false` is recommended. The backend then uses the checked-in JSONL corpus in `backend/app/corpus/` and does not depend on Render Postgres or Weaviate at runtime. Keep `DATABASE_URL` and `WEAVIATE_URL` for local ingestion/evaluation workflows, but they are not required for the deployed demo when this flag is false.
 
 The deployed frontend must have:
 

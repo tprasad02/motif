@@ -16,6 +16,8 @@ services:
         value: MotifChunk
       - key: EMBEDDING_PROVIDER
         value: local
+      - key: USE_RUNTIME_DATABASES
+        value: false
       - key: OPENAI_API_KEY
         sync: false
       - key: OPENAI_MODEL

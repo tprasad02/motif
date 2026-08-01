@@ -118,7 +118,7 @@ Counterreading
 
 The model must attach chunk IDs to each evidence card internally. Those chunk IDs are hidden in the public UI but visible in debug mode.
 
-If the OpenAI key is missing or generation fails, Motif refuses instead of pasting retrieved chunks into the answer.
+If the OpenAI key is missing or generation fails, Motif first checks for an exact generated reading in `backend/app/corpus/answer_cache.json`. If a cached reading exists, it is returned as a demo-safe fallback. If no cache entry exists, Motif refuses instead of pasting retrieved chunks into the answer.
 
 ## Dynamic Recommendation Services
 

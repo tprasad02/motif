@@ -38,6 +38,8 @@ def fetch_source_metadata(source_keys: list[str]) -> dict[str, dict]:
     if not source_keys:
         return {}
     file_sources = _load_file_sources()
+    if not settings.use_runtime_databases:
+        return {key: file_sources[key] for key in source_keys if key in file_sources}
     try:
         ensure_runtime_schema()
     except Exception:
