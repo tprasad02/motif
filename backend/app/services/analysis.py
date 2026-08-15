@@ -22,7 +22,6 @@ from app.models import (
     ThemeExplorerResponse,
 )
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
-from app.services.recommendations import pairing_suggestions
 
 
 EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
@@ -711,6 +710,28 @@ def _best_pairing_suggestions(request: GuidedAnswerRequest, limit: int = 2) -> l
     ]
 
 
+def _answer_pairing_suggestions(request: GuidedAnswerRequest, limit: int = 4) -> list[dict[str, object]]:
+    if request.mode != "analyze_film" or not request.film_a or not request.lens:
+        return []
+    suggestions = []
+    for candidate_slug, lenses in FILM_LENSES.items():
+        if candidate_slug == request.film_a or request.lens not in lenses:
+            continue
+        confidence = _candidate_confidence("compare_films", request.film_a, candidate_slug, request.lens)
+        if confidence < 0.55:
+            continue
+        suggestions.append(
+            {
+                "film_slug": candidate_slug,
+                "title": _display_title(candidate_slug),
+                "lens": request.lens,
+                "score": round(confidence, 3),
+            }
+        )
+    suggestions.sort(key=lambda row: float(row["score"]), reverse=True)
+    return suggestions[:limit]
+
+
 def _refusal_cards(request: GuidedAnswerRequest) -> list[dict[str, str]]:
     lens_suggestions = _best_lens_suggestions(request)
     pairing_suggestions = _best_pairing_suggestions(request)
@@ -918,7 +939,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         refused=refused,
         retrieval_notes=f"{level.title()} coverage from {len({chunk.source_key for chunk in chunks})} sources.",
         debug_chunks=_debug_chunks(chunks, request.include_debug, request, evidence_cards),
-        suggested_pairings=pairing_suggestions(request.film_a, request.lens) if request.mode == "analyze_film" and request.film_a else [],
+        suggested_pairings=_answer_pairing_suggestions(request),
     )
     _write_cached_answer(request, response)
     return response

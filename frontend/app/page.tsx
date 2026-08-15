@@ -83,8 +83,19 @@ const workflows: Array<{ id: Mode; title: string; body: string; kicker: string }
 ];
 
 const titleFor = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
-const apiBase = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const apiBase = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/+$/, "");
 const posterCacheKey = "motifPosterCache:v1";
+
+function apiUrl(path: string) {
+  return `${apiBase}/${path.replace(/^\/+/, "")}`;
+}
+
+function loadFailedMessage(error: unknown) {
+  const message = error instanceof Error ? error.message : "";
+  if (!message) return "Load failed.";
+  if (message.toLowerCase().startsWith("load failed")) return message;
+  return `Load failed. ${message}`;
+}
 
 function looksLikeFallbackReading(body: AnswerResponse) {
   if (body.mode === "explore_theme") return false;
@@ -127,7 +138,7 @@ export default function Home() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch(`${apiBase}/recommendations`)
+    fetch(apiUrl("/recommendations"))
       .then((response) => (response.ok ? response.json() : null))
       .then((body: RecommendationsResponse | null) => {
         if (!cancelled && body?.films) setRecommendations(body);
@@ -179,7 +190,7 @@ export default function Home() {
       return;
     }
     let cancelled = false;
-    fetch(`${apiBase}/recommendations/compare?film_a=${encodeURIComponent(filmA)}&film_b=${encodeURIComponent(filmB)}`)
+    fetch(apiUrl(`/recommendations/compare?film_a=${encodeURIComponent(filmA)}&film_b=${encodeURIComponent(filmB)}`))
       .then((response) => (response.ok ? response.json() : null))
       .then((body: { lenses?: CompareLensSuggestion[] } | null) => {
         if (!cancelled) setCompareLensSuggestions(body?.lenses ?? []);
@@ -337,7 +348,7 @@ export default function Home() {
     setAnswer(null);
 
     try {
-      const response = await fetch(`${apiBase}/answer`, {
+      const response = await fetch(apiUrl("/answer"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -367,7 +378,7 @@ export default function Home() {
       setAnswer(body);
       setStep("answer");
     } catch (err) {
-      setError(err instanceof Error ? `Load failed. ${err.message}` : "Load failed.");
+      setError(loadFailedMessage(err));
     } finally {
       setLoading(false);
     }

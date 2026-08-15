@@ -1,12 +1,12 @@
 import json
 import re
+from collections import Counter
 from collections import defaultdict
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 import psycopg
-from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS, TfidfVectorizer
 
 from app.core.config import settings
 from app.db.postgres import ensure_runtime_schema
@@ -36,6 +36,121 @@ FILM_WORDS = {
     if len(normalized := word.lower().removesuffix("'s")) > 2
 }
 DOMAIN_STOPWORDS = {
+    "a",
+    "about",
+    "above",
+    "after",
+    "again",
+    "against",
+    "all",
+    "also",
+    "am",
+    "an",
+    "and",
+    "any",
+    "are",
+    "as",
+    "at",
+    "be",
+    "because",
+    "been",
+    "before",
+    "being",
+    "between",
+    "both",
+    "but",
+    "by",
+    "can",
+    "did",
+    "do",
+    "does",
+    "doing",
+    "don",
+    "down",
+    "during",
+    "each",
+    "few",
+    "for",
+    "from",
+    "further",
+    "had",
+    "has",
+    "have",
+    "having",
+    "he",
+    "her",
+    "here",
+    "hers",
+    "herself",
+    "him",
+    "himself",
+    "his",
+    "how",
+    "i",
+    "if",
+    "in",
+    "into",
+    "is",
+    "it",
+    "its",
+    "itself",
+    "just",
+    "like",
+    "more",
+    "most",
+    "no",
+    "nor",
+    "not",
+    "now",
+    "of",
+    "off",
+    "on",
+    "once",
+    "only",
+    "or",
+    "other",
+    "our",
+    "out",
+    "over",
+    "own",
+    "same",
+    "she",
+    "should",
+    "so",
+    "some",
+    "such",
+    "than",
+    "that",
+    "the",
+    "their",
+    "them",
+    "then",
+    "there",
+    "these",
+    "they",
+    "this",
+    "those",
+    "through",
+    "to",
+    "too",
+    "under",
+    "until",
+    "up",
+    "very",
+    "was",
+    "we",
+    "were",
+    "what",
+    "when",
+    "where",
+    "which",
+    "while",
+    "who",
+    "why",
+    "will",
+    "with",
+    "you",
+    "your",
     "film",
     "films",
     "movie",
@@ -68,7 +183,7 @@ DOMAIN_STOPWORDS = {
     "york",
     *FILM_WORDS,
 }
-STOPWORDS = ENGLISH_STOP_WORDS.union(DOMAIN_STOPWORDS)
+STOPWORDS = DOMAIN_STOPWORDS
 
 
 def _chunk_weight(chunk: dict[str, Any]) -> float:
@@ -112,31 +227,45 @@ def _extract_text_concepts(chunks: list[dict[str, Any]]) -> dict[str, dict[str, 
     usable_chunks = [chunk for chunk in chunks if str(chunk.get("quality_score", "medium")) != "low"]
     if not usable_chunks:
         return {}
-    texts = [_clean_text(str(chunk.get("text", ""))) for chunk in usable_chunks]
-    try:
-        vectorizer = TfidfVectorizer(
-            stop_words=list(STOPWORDS),
-            ngram_range=(1, 3),
-            min_df=2 if len(texts) >= 12 else 1,
-            max_df=0.72,
-            max_features=1600,
-        )
-        matrix = vectorizer.fit_transform(texts)
-    except ValueError:
-        return {}
+    film_doc_frequency: dict[str, Counter[str]] = defaultdict(Counter)
+    chunk_terms: list[tuple[dict[str, Any], Counter[str]]] = []
+    min_frequency = 2 if len(usable_chunks) >= 12 else 1
 
-    terms = vectorizer.get_feature_names_out()
-    concepts: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
-    for row_index, chunk in enumerate(usable_chunks):
+    for chunk in usable_chunks:
         film_slug = str(chunk.get("film_slug", ""))
         if film_slug not in FILM_TITLES:
             continue
-        row = matrix.getrow(row_index)
+        tokens = [
+            token
+            for token in re.findall(r"[a-z][a-z']+", _clean_text(str(chunk.get("text", ""))))
+            if token not in STOPWORDS and len(token) >= 3
+        ][:240]
+        terms: Counter[str] = Counter()
+        for size in (1, 2, 3):
+            for index in range(0, max(len(tokens) - size + 1, 0)):
+                term = " ".join(tokens[index : index + size])
+                if _valid_concept(term):
+                    terms[term] += 1
+        if not terms:
+            continue
+        terms = Counter(dict(terms.most_common(60)))
+        chunk_terms.append((chunk, terms))
+        for term in terms:
+            film_doc_frequency[film_slug][term] += 1
+
+    concepts: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for chunk, terms in chunk_terms:
+        film_slug = str(chunk.get("film_slug", ""))
         weight = _chunk_weight(chunk)
-        for term_index, value in zip(row.indices, row.data):
-            term = str(terms[term_index])
-            if _valid_concept(term):
-                concepts[film_slug][_display_concept(term)] += float(value) * weight
+        for term, count in terms.items():
+            frequency = film_doc_frequency[film_slug][term]
+            if frequency < min_frequency:
+                continue
+            length_boost = 1.0 + (0.25 * (len(term.split()) - 1))
+            repetition_boost = min(count, 4) / 4
+            concepts[film_slug][_display_concept(term)] += weight * length_boost * (0.5 + repetition_boost)
+    for film_slug, scores in list(concepts.items()):
+        concepts[film_slug] = defaultdict(float, dict(sorted(scores.items(), key=lambda item: item[1], reverse=True)[:120]))
     return concepts
 
 
@@ -153,17 +282,18 @@ def _lens_text_score(text: str, lens: str) -> float:
     return min(score, 2.5)
 
 
-def _concept_primary_targets(concept: str) -> list[str]:
+@lru_cache(maxsize=4096)
+def _concept_primary_targets(concept: str) -> tuple[str, ...]:
     direct = _primary_targets(concept)
     if direct:
-        return direct
+        return tuple(direct)
     concept_text = _clean_text(concept)
     targets = []
     for lens in PRIMARY_LENSES:
         lens_terms = [_clean_text(term) for term in expand_lens_terms(lens)]
         if any(concept_text == term or concept_text in term or term in concept_text for term in lens_terms if len(term) >= 4):
             targets.append(lens)
-    return targets
+    return tuple(targets)
 
 
 def _primary_targets(tag: str) -> list[str]:
