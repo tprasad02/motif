@@ -71,24 +71,26 @@ CONCRETE_FILM_TERMS = [
 CARDS = ["Scene", "Character", "Pattern", "Counterreading"]
 
 class AnswerJudgeScores(BaseModel):
-    thesis_specificity: int = Field(ge=1, le=5)
-    evidence_distinctness: int = Field(ge=1, le=5)
-    concrete_film_detail: int = Field(ge=1, le=5)
-    non_dumping: int = Field(ge=1, le=5)
-    anti_plot_summary: int = Field(ge=1, le=5)
-    anti_generic_language: int = Field(ge=1, le=5)
-    groundedness_to_chunks: int = Field(ge=1, le=5)
-    film_lens_relevance: int = Field(ge=1, le=5)
-    unsupported_claim_risk: int = Field(ge=1, le=5)
-    overall_reading_depth: int = Field(ge=1, le=5)
+    faithfulness: int = Field(ge=1, le=5)
+    answer_relevance: int = Field(ge=1, le=5)
     reason: str = Field(max_length=500)
     weakest_dimension: str = Field(max_length=100)
 
 
-JUDGE_INSTRUCTIONS = """
+class FaithfulnessJudgeScore(BaseModel):
+    faithfulness: int = Field(ge=1, le=5)
+    reason: str = Field(max_length=300)
+
+
+class RelevanceJudgeScore(BaseModel):
+    answer_relevance: int = Field(ge=1, le=5)
+    reason: str = Field(max_length=300)
+
+
+FAITHFULNESS_JUDGE_INSTRUCTIONS = """
 You are evaluating Motif, a film close-reading RAG app.
 
-Score the final answer from 1 to 5 on each dimension:
+Score faithfulness from 1 to 5:
 
 5 = excellent
 4 = good
@@ -96,17 +98,26 @@ Score the final answer from 1 to 5 on each dimension:
 2 = poor
 1 = failure
 
-Dimensions:
-- thesis_specificity: names the film and makes a specific arguable claim.
-- evidence_distinctness: the four evidence cards make distinct points.
-- concrete_film_detail: cards mention visible/audible film details.
-- non_dumping: answer explains evidence instead of copying retrieved text or screenplay lines.
-- anti_plot_summary: answer avoids retelling the plot.
-- anti_generic_language: answer avoids vague broad language and banned phrases.
-- groundedness_to_chunks: claims are supported by retrieved chunks.
-- film_lens_relevance: answer stays on the selected film(s) and selected theme.
-- unsupported_claim_risk: high score means low risk of invented unsupported claims.
-- overall_reading_depth: feels like a thoughtful close reading, not a search summary.
+
+Assess the thesis and every evidence-card claim only against the supplied
+retrieved-chunk excerpts. Do not supply outside film knowledge. A score of 5
+means every substantive claim is entailed or directly supported; 4 allows one
+minor interpretive extension; 3 means a material claim lacks support; 1-2
+means unsupported claims substantially change the reading. The card `chunk_ids`
+identify intended support and should be prioritized.
+
+Return only the structured score object.
+"""
+
+
+RELEVANCE_JUDGE_INSTRUCTIONS = """
+You are evaluating whether a Motif film close-reading answer responds to its request.
+
+Score answer_relevance from 1 to 5. You receive only the benchmark request and
+public answer, never retrieval evidence. A score of 5 directly answers the
+selected film(s) and lens with specific, useful close reading; 4 has a minor
+focus or specificity issue; 3 is partially on-topic but generic or plot-led;
+1-2 substantially misses the requested film(s) or lens.
 
 Return only the structured score object.
 """
@@ -180,6 +191,36 @@ def max_source_overlap(answer_text: str, chunks: list[dict]) -> float:
     return round(max_overlap, 3)
 
 
+def max_verbatim_run(answer_text: str, chunks: list[dict]) -> int:
+    """Longest copied word run shared with any retrieved chunk.
+
+    Proportional n-gram overlap can miss a short pasted quotation inside a long
+    answer.  This companion check catches that failure mode directly.
+    """
+    answer_words = re.findall(r"\b\w+\b", answer_text.lower())
+    longest = 0
+    for chunk in chunks:
+        source_words = re.findall(r"\b\w+\b", chunk.get("text", "").lower())
+        runs: dict[tuple[int, int], int] = {}
+        positions: dict[str, list[int]] = {}
+        for index, word in enumerate(source_words):
+            positions.setdefault(word, []).append(index)
+        for answer_index, word in enumerate(answer_words):
+            for source_index in positions.get(word, []):
+                previous = runs.get((answer_index - 1, source_index - 1), 0)
+                current = previous + 1
+                runs[(answer_index, source_index)] = current
+                longest = max(longest, current)
+    return longest
+
+
+def card_similarity(left: str, right: str) -> float:
+    left_words = set(re.findall(r"\b[a-z]{4,}\b", left.lower()))
+    right_words = set(re.findall(r"\b[a-z]{4,}\b", right.lower()))
+    union = left_words | right_words
+    return len(left_words & right_words) / len(union) if union else 0.0
+
+
 def card_failure_reasons(card: dict) -> list[str]:
     reasons = []
     label = str(card.get("label", ""))
@@ -194,6 +235,16 @@ def card_failure_reasons(card: dict) -> list[str]:
     if not has_detail_signal(body):
         reasons.append("card_too_generic")
     return reasons
+
+
+def card_chunk_ids(card: dict) -> list[str]:
+    raw_ids = card.get("chunk_ids") or []
+    if isinstance(raw_ids, str):
+        try:
+            raw_ids = json.loads(raw_ids)
+        except json.JSONDecodeError:
+            raw_ids = [raw_ids]
+    return [str(chunk_id) for chunk_id in raw_ids if str(chunk_id).strip()]
 
 
 def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
@@ -223,9 +274,24 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
             if not reasons:
                 specific_cards += 1
         source_chunks = [chunk.model_dump() for chunk in response.debug_chunks]
+        retrieved_chunk_ids = {chunk["chunk_id"] for chunk in source_chunks}
+        cards_with_valid_chunk_ids = 0
+        for card in response.evidence_cards:
+            label = str(card.get("label", ""))
+            label_bucket = label if label in critical_failures else "overall"
+            chunk_ids = card_chunk_ids(card)
+            if not chunk_ids:
+                critical_failures[label_bucket].append("missing_supporting_chunk_ids")
+            elif retrieved_chunk_ids and not set(chunk_ids).issubset(retrieved_chunk_ids):
+                critical_failures[label_bucket].append("unknown_supporting_chunk_id")
+            else:
+                cards_with_valid_chunk_ids += 1
         overlap = max_source_overlap(text, source_chunks)
         if overlap > 0.35:
             critical_failures["overall"].append("possible_raw_source_dump")
+        verbatim_run = max_verbatim_run(text, source_chunks)
+        if verbatim_run >= 25:
+            critical_failures["overall"].append("long_verbatim_source_run")
         if any(re.search(pattern, lowered) for pattern in SOURCE_FACING_PATTERNS):
             critical_failures["overall"].append("source_facing_language")
         metrics["banned_generic_phrase_count"] = sum(1 for phrase in BANNED_GENERIC_PHRASES if phrase in lowered)
@@ -257,7 +323,17 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
                 critical_failures["overall"].append("comparison_cards_not_integrated")
             metrics["comparison_cards_with_both_films"] = cards_with_both_films
         metrics["specific_card_count"] = specific_cards
+        metrics["cards_with_valid_chunk_ids"] = cards_with_valid_chunk_ids
         metrics["max_source_overlap"] = overlap
+        metrics["max_verbatim_source_run_words"] = verbatim_run
+        card_bodies = [str(card.get("body", "")) for card in response.evidence_cards]
+        max_card_similarity = max(
+            (card_similarity(left, right) for index, left in enumerate(card_bodies) for right in card_bodies[index + 1 :]),
+            default=0.0,
+        )
+        if max_card_similarity > 0.75:
+            critical_failures["overall"].append("evidence_cards_are_lexically_redundant")
+        metrics["max_card_lexical_similarity"] = round(max_card_similarity, 3)
 
     if mode == "explore_theme":
         returned = [card.get("slug") for card in response.theme_films]
@@ -270,6 +346,14 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
             critical_failures["overall"].append("repeated_theme_card_summary")
         if any(len(summary.split()) > 35 for summary in summaries):
             critical_failures["overall"].append("theme_summary_too_long")
+        if len(returned) < 4:
+            critical_failures["overall"].append("too_few_theme_cards")
+        if len(set(returned)) != len(returned):
+            critical_failures["overall"].append("repeated_theme_film")
+        if len({slug for slug in returned if slug}) < 4:
+            critical_failures["overall"].append("theme_results_not_diverse")
+        if any(len(summary.split()) < 8 for summary in summaries):
+            critical_failures["overall"].append("theme_summary_too_thin")
         if any(re.search(pattern, "\n".join(summaries).lower()) for pattern in SOURCE_FACING_PATTERNS):
             critical_failures["overall"].append("theme_source_facing_language")
         metrics["theme_card_count"] = len(returned)
@@ -305,45 +389,67 @@ def judge_with_llm(client, model: str, case: dict, response) -> AnswerJudgeScore
         }
         for chunk in response.debug_chunks
     ]
-    payload = {
+    answer = {
+        "answer": response.answer,
+        "thesis": response.thesis,
+        "evidence_cards": response.evidence_cards,
+        "theme_films": response.theme_films,
+    }
+    public_answer = {
+        "answer": response.answer,
+        "thesis": response.thesis,
+        "evidence_cards": [
+            {key: card.get(key, "") for key in ("label", "title", "body")}
+            for card in response.evidence_cards
+        ],
+        "theme_films": response.theme_films,
+    }
+    faithfulness_payload = {
         "case": case,
-        "answer": {
-            "thesis": response.thesis,
-            "evidence_cards": response.evidence_cards,
-            "theme_films": response.theme_films,
-        },
+        "answer": answer,
         "retrieved_chunks": retrieved_chunks,
     }
-    parsed = client.responses.parse(
+    faithfulness = client.responses.parse(
         model=model,
         input=[
-            {"role": "system", "content": JUDGE_INSTRUCTIONS},
-            {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
+            {"role": "system", "content": FAITHFULNESS_JUDGE_INSTRUCTIONS},
+            {"role": "user", "content": json.dumps(faithfulness_payload, ensure_ascii=False)},
         ],
-        text_format=AnswerJudgeScores,
-        max_output_tokens=1200,
+        text_format=FaithfulnessJudgeScore,
+        max_output_tokens=500,
     ).output_parsed
-    if parsed is None:
+    relevance = client.responses.parse(
+        model=model,
+        input=[
+            {"role": "system", "content": RELEVANCE_JUDGE_INSTRUCTIONS},
+            {"role": "user", "content": json.dumps({"case": case, "answer": public_answer}, ensure_ascii=False)},
+        ],
+        text_format=RelevanceJudgeScore,
+        max_output_tokens=500,
+    ).output_parsed
+    if faithfulness is None or relevance is None:
         raise RuntimeError("OpenAI returned no parsed judge result.")
-    return parsed
+    weakest = "faithfulness" if faithfulness.faithfulness <= relevance.answer_relevance else "answer_relevance"
+    return AnswerJudgeScores(
+        faithfulness=faithfulness.faithfulness,
+        answer_relevance=relevance.answer_relevance,
+        weakest_dimension=weakest,
+        reason=f"Faithfulness: {faithfulness.reason} Relevance: {relevance.reason}"[:500],
+    )
 
 
 def score_average(scores: AnswerJudgeScores | None) -> float | None:
     if scores is None:
         return None
-    values = [
-        scores.thesis_specificity,
-        scores.evidence_distinctness,
-        scores.concrete_film_detail,
-        scores.non_dumping,
-        scores.anti_plot_summary,
-        scores.anti_generic_language,
-        scores.groundedness_to_chunks,
-        scores.film_lens_relevance,
-        scores.unsupported_claim_risk,
-        scores.overall_reading_depth,
-    ]
+    values = [scores.faithfulness, scores.answer_relevance]
     return round(sum(values) / len(values), 2)
+
+
+def judge_passes_gate(scores: AnswerJudgeScores | None) -> bool | None:
+    """Neither canonical RAG answer-quality dimension may be weak."""
+    if scores is None:
+        return None
+    return scores.faithfulness >= 4 and scores.answer_relevance >= 4
 
 
 def format_theme_cards(theme_films: list[dict]) -> tuple[str, str]:
@@ -359,7 +465,7 @@ def format_theme_cards(theme_films: list[dict]) -> tuple[str, str]:
     return " | ".join(titles), " | ".join(summaries)
 
 
-def run_case(case: dict, client: OpenAI | None, model: str | None) -> dict:
+def run_case(case: dict, client: OpenAI | None, model: str | None, retry_card_failures: bool = False) -> dict:
     print(f"Evaluating {case['id']}...", flush=True)
     request = GuidedAnswerRequest(
         mode=case["mode"],
@@ -373,7 +479,7 @@ def run_case(case: dict, client: OpenAI | None, model: str | None) -> dict:
     critical_failures, deterministic_metrics = deterministic_answer_checks(case, response)
     retry_used = False
     first_attempt_failures = critical_failures
-    if case["mode"] != "explore_theme" and has_card_failures(critical_failures):
+    if retry_card_failures and case["mode"] != "explore_theme" and has_card_failures(critical_failures):
         retry_used = True
         response = answer_guided(request)
         critical_failures, deterministic_metrics = deterministic_answer_checks(case, response)
@@ -386,7 +492,10 @@ def run_case(case: dict, client: OpenAI | None, model: str | None) -> dict:
             judge_error = str(error)
 
     answer_quality_score = score_average(judge)
-    passed = not has_any_failure(critical_failures) and (answer_quality_score is None or answer_quality_score >= 4.0)
+    judge_gate_passed = judge_passes_gate(judge)
+    # First-pass success is the production quality metric. Optional retry data
+    # is retained for diagnosis, never allowed to inflate the headline result.
+    passed = not has_any_failure(first_attempt_failures) and (judge_gate_passed is not False)
     theme_titles, theme_summaries = format_theme_cards(response.theme_films)
     row = {
         "id": case["id"],
@@ -401,6 +510,8 @@ def run_case(case: dict, client: OpenAI | None, model: str | None) -> dict:
         "retry_used": retry_used,
         "deterministic_metrics": deterministic_metrics,
         "answer_quality_score": answer_quality_score,
+        "judge_gate_passed": judge_gate_passed,
+        "first_passed": not has_any_failure(first_attempt_failures),
         "passed": passed,
         "judge_error": judge_error,
         "theme_card_titles": theme_titles,
@@ -425,6 +536,8 @@ def build_csv(csv_path: Path, rows) -> None:
         "coverage_level",
         "coverage_score",
         "answer_quality_score",
+        "judge_gate_passed",
+        "first_passed",
         "passed",
         "critical_failures",
         "judge_error",
@@ -494,6 +607,11 @@ def main() -> None:
     parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-4.1-mini"))
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--skip-llm", action="store_true", help="Run deterministic answer checks without LLM judging.")
+    parser.add_argument(
+        "--retry-card-failures",
+        action="store_true",
+        help="Run one diagnostic retry after a card failure; retries do not affect first-pass results.",
+    )
     parser.add_argument("--output", default=f"evals/Reports/answer_quality_results_{timestamp}.json")
     parser.add_argument("--csv-output", default=f"evals/Reports/answer_quality_results_{timestamp}.csv")
     args = parser.parse_args()
@@ -512,7 +630,7 @@ def main() -> None:
     cases = flatten_cases(load_cases(Path(args.cases)), args.modes)
     if args.limit is not None:
         cases = cases[: args.limit]
-    rows = [run_case(case, client, args.model) for case in cases]
+    rows = [run_case(case, client, args.model, args.retry_card_failures) for case in cases]
 
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)

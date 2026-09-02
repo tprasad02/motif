@@ -53,8 +53,21 @@ def _load_answer_quality(path: Path | None) -> dict[str, dict[str, Any]]:
             "answer_retry_used": bool(row.get("retry_used")),
             "answer_failure_count": failure_count,
             "answer_judge_available": row.get("answer_quality_score") is not None,
+            "answer_judge_gate_passed": row.get("judge_gate_passed"),
+            "answer_first_passed": row.get("first_passed"),
+            "answer_faithfulness": (row.get("judge_scores") or {}).get("faithfulness"),
+            "answer_relevance": (row.get("judge_scores") or {}).get("answer_relevance"),
         }
     return by_id
+
+
+def _load_rag_ranking_metrics(path: Path | None) -> dict[str, Any] | None:
+    """Load the judgment-backed retrieval report when a full suite produced it."""
+    if not path or not path.exists():
+        return None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    summary = payload.get("summary")
+    return summary if isinstance(summary, dict) else None
 
 
 def _response_latency(case: dict[str, Any]) -> tuple[float | None, bool, str]:
@@ -95,18 +108,8 @@ def _clean_retrieval_row(row: dict[str, Any]) -> dict[str, Any]:
         "film_b": row.get("film_b", ""),
         "lens": row["lens"],
         "chunk_count": row["chunk_count"],
-        "film_match_rate": row["film_match_rate"],
-        "lens_match_rate": row["theme_match_rate"],
-        "concrete_evidence_rate": row["concrete_evidence_rate"],
-        "plot_summary_rate": row["plot_summary_rate"],
-        "source_diversity": row["source_diversity"],
-        "source_role_diversity": row["source_role_diversity"],
-        "source_roles": row["source_roles"],
-        "chunk_roles": row["chunk_roles"],
-        "film_counts": row["film_counts"],
-        "source_system_phrase_count": row["source_system_phrase_count"],
-        "comparison_balance_pass": row["comparison_balance_pass"],
-        "retrieval_passed": row["overall"] == "pass",
+        "retrieval_failed_gates": "|".join(row.get("failed_gates", [])),
+        "retrieval_guardrails_passed": row["overall"] == "pass",
     }
 
 
@@ -131,16 +134,7 @@ def _case_summary(case: dict[str, Any], rows: list[dict[str, Any]], answer_metri
         "film_b": case.get("film_b", ""),
         "lens": case["lens"],
         "trials": len(rows),
-        "retrieval_pass_rate": _percent([bool(row["retrieval_passed"]) for row in rows]),
-        "avg_film_match_rate": _average([_number(row["film_match_rate"]) for row in rows]),
-        "avg_lens_match_rate": _average([_number(row["lens_match_rate"]) for row in rows]),
-        "avg_concrete_evidence_rate": _average([_number(row["concrete_evidence_rate"]) for row in rows]),
-        "avg_plot_summary_rate": _average([_number(row["plot_summary_rate"]) for row in rows]),
-        "avg_source_diversity": _average([_number(row["source_diversity"]) for row in rows]),
-        "avg_source_role_diversity": _average([_number(row["source_role_diversity"]) for row in rows]),
-        "comparison_balance_pass_rate": _percent([bool(row["comparison_balance_pass"]) for row in rows])
-        if case["mode"] == "compare_films"
-        else "",
+        "retrieval_guardrails_pass_rate": _percent([bool(row["retrieval_guardrails_passed"]) for row in rows]),
         "avg_response_latency_seconds": _average(latency_values) if latency_values else "",
         **answer_metrics,
     }
@@ -151,26 +145,24 @@ def _build_overall_summary(
     trial_rows: list[dict[str, Any]],
     case_rows: list[dict[str, Any]],
     answer_report: Path | None,
+    rag_ranking_report: Path | None,
     trials: int,
 ) -> dict[str, Any]:
     chunks = _load_jsonl(Path("backend/app/corpus/chunks.jsonl"))
     sources = _load_jsonl(Path("backend/app/corpus/sources.jsonl"))
     film_rows = {row.get("film_slug") for row in chunks if row.get("film_slug")}
-    film_retrieval_rows = [row for row in trial_rows if row["mode"] in {"analyze_film", "compare_films"}]
-    comparison_rows = [row for row in trial_rows if row["mode"] == "compare_films"]
     latency_values = [
         _number(row["response_latency_seconds"])
         for row in trial_rows
         if row.get("response_latency_seconds") not in (None, "") and row.get("latency_generated")
     ]
     answer_rows = [row for row in case_rows if row.get("answer_judge_available")]
-    answer_checked_rows = [row for row in case_rows if row.get("answer_passed") not in (None, "")]
+    answer_first_pass_rows = [row for row in case_rows if row.get("answer_first_passed") not in (None, "")]
+    answer_judge_gate_rows = [row for row in case_rows if row.get("answer_judge_gate_passed") is not None]
     unscored_answer_case_ids = [
-        row["id"]
-        for row in case_rows
-        if row.get("answer_passed") not in (None, "") and not row.get("answer_judge_available")
+        row["id"] for row in case_rows if row.get("answer_first_passed") not in (None, "") and not row.get("answer_judge_available")
     ]
-    return {
+    summary = {
         "films": len(film_rows or set(FILM_TITLES)),
         "documents": len(sources),
         "chunks": len(chunks),
@@ -178,20 +170,21 @@ def _build_overall_summary(
         "trials_per_retrieval_case": trials,
         "retrieval_trials": len(trial_rows),
         "generated_latency_trials": len(latency_values),
-        "film_retrieval_accuracy": _average([_number(row["film_match_rate"]) for row in film_retrieval_rows]),
-        "lens_retrieval_accuracy": _average([_number(row["lens_match_rate"]) for row in trial_rows]),
-        "comparison_balance": _percent([bool(row["comparison_balance_pass"]) for row in comparison_rows]),
-        "retrieval_pass_rate": _percent([bool(row["retrieval_passed"]) for row in trial_rows]),
-        "answer_checked_cases": len(answer_checked_rows),
+        "retrieval_guardrails_pass_rate": _percent([bool(row["retrieval_guardrails_passed"]) for row in trial_rows]),
+        "answer_checked_cases": len(answer_first_pass_rows),
         "answer_llm_judged_cases": len(answer_rows),
         "answer_unscored_case_ids": unscored_answer_case_ids,
-        "answer_pass_rate": _percent([bool(row.get("answer_passed")) for row in answer_checked_rows]),
-        "average_answer_quality_score": _average(
-            [_number(row["answer_quality_score"]) for row in answer_rows if row.get("answer_quality_score") not in (None, "")]
-        ),
+        "answer_validity_pass_rate": _percent([bool(row.get("answer_first_passed")) for row in answer_first_pass_rows]),
+        "answer_quality_pass_rate": _percent([bool(row.get("answer_judge_gate_passed")) for row in answer_judge_gate_rows]),
+        "average_faithfulness": _average([_number(row["answer_faithfulness"]) for row in answer_rows]),
+        "average_answer_relevance": _average([_number(row["answer_relevance"]) for row in answer_rows]),
         "average_response_latency_seconds": _average(latency_values),
         "answer_quality_source_report": str(answer_report) if answer_report else None,
     }
+    rag_metrics = _load_rag_ranking_metrics(rag_ranking_report)
+    summary["judgment_backed_retrieval"] = rag_metrics
+    summary["judgment_backed_retrieval_source_report"] = str(rag_ranking_report) if rag_metrics else None
+    return summary
 
 
 def main() -> None:
@@ -200,6 +193,11 @@ def main() -> None:
     parser.add_argument("--trials", type=int, default=3)
     parser.add_argument("--top-k", type=int, default=12)
     parser.add_argument("--answer-quality-report", default="")
+    parser.add_argument(
+        "--rag-ranking-report",
+        default="evals/Reports/rag_ranking_metrics.json",
+        help="Judgment-backed ranking report produced by evals.rag_metrics.",
+    )
     parser.add_argument("--skip-response-latency", action="store_true")
     parser.add_argument("--latency-case-limit", type=int, default=5)
     parser.add_argument("--summary-output", default="evals/final_metrics/metrics_summary.json")
@@ -211,6 +209,7 @@ def main() -> None:
     payload = load_cases(Path(args.cases))
     cases = flatten_cases(payload)
     answer_report = Path(args.answer_quality_report) if args.answer_quality_report else _latest_report("answer_quality_results_*.json")
+    rag_ranking_report = Path(args.rag_ranking_report) if args.rag_ranking_report else None
     answer_quality = _load_answer_quality(answer_report)
     latency_case_ids = {case["id"] for case in cases[: args.latency_case_limit]} if args.latency_case_limit else {case["id"] for case in cases}
 
@@ -241,7 +240,7 @@ def main() -> None:
 
     rows_by_case = {case["id"]: [row for row in trial_rows if row["id"] == case["id"]] for case in cases}
     case_rows = [_case_summary(case, rows_by_case[case["id"]], answer_quality.get(case["id"], {})) for case in cases]
-    summary = _build_overall_summary(cases, trial_rows, case_rows, answer_report, args.trials)
+    summary = _build_overall_summary(cases, trial_rows, case_rows, answer_report, rag_ranking_report, args.trials)
 
     trial_fields = [
         "trial",
@@ -251,25 +250,19 @@ def main() -> None:
         "film_b",
         "lens",
         "chunk_count",
-        "film_match_rate",
-        "lens_match_rate",
-        "concrete_evidence_rate",
-        "plot_summary_rate",
-        "source_diversity",
-        "source_role_diversity",
-        "source_roles",
-        "chunk_roles",
-        "film_counts",
-        "source_system_phrase_count",
-        "comparison_balance_pass",
-        "retrieval_passed",
+        "retrieval_failed_gates",
+        "retrieval_guardrails_passed",
         "answer_passed",
         "answer_quality_score",
+        "answer_faithfulness",
+        "answer_relevance",
         "answer_coverage_level",
         "answer_coverage_score",
         "answer_retry_used",
         "answer_failure_count",
         "answer_judge_available",
+        "answer_judge_gate_passed",
+        "answer_first_passed",
         "response_latency_seconds",
         "latency_generated",
         "latency_error",
@@ -281,21 +274,16 @@ def main() -> None:
         "film_b",
         "lens",
         "trials",
-        "retrieval_pass_rate",
-        "avg_film_match_rate",
-        "avg_lens_match_rate",
-        "avg_concrete_evidence_rate",
-        "avg_plot_summary_rate",
-        "avg_source_diversity",
-        "avg_source_role_diversity",
-        "comparison_balance_pass_rate",
-        "answer_passed",
-        "answer_quality_score",
+        "retrieval_guardrails_pass_rate",
+        "answer_faithfulness",
+        "answer_relevance",
         "answer_coverage_level",
         "answer_coverage_score",
         "answer_retry_used",
         "answer_failure_count",
         "answer_judge_available",
+        "answer_judge_gate_passed",
+        "answer_first_passed",
         "avg_response_latency_seconds",
     ]
 

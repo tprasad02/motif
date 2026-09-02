@@ -7,6 +7,7 @@ Motif is a retrieval-augmented close-reading app for psychologically rich films.
 - [ARCHITECTURE.md](./ARCHITECTURE.md): system flow, retrieval, reranking, and debug mode.
 - [DATASET.md](./DATASET.md): corpus strategy, source roles, quality, and lens assignment.
 - [EVALUATION.md](./EVALUATION.md): benchmark cases, metrics, failures, and improvements.
+- [evals/RAG_METRICS.md](./evals/RAG_METRICS.md): relevance-judgment rubric and ranking metrics.
 - [LIMITATIONS.md](./LIMITATIONS.md): scope boundaries and future work.
 
 ## Problem
@@ -134,42 +135,55 @@ Debug mode shows retrieved chunks, source title, source role, rerank score, vect
 
 ## Metrics Snapshot
 
-Latest generated files:
+One reproducible evaluation suite writes:
 
 ```text
-evals/Reports/metrics_summary.json
-evals/Reports/metrics_trials.csv
-evals/Reports/metrics_case_summary.csv
+evals/Reports/corpus_coverage.csv
+evals/Reports/retrieval_quality_results.json
+evals/Reports/rag_ranking_metrics.json
+evals/Reports/answer_quality_results.json
+evals/final_metrics/metrics_summary.json
+evals/final_metrics/metrics_trials.csv
+evals/final_metrics/metrics_case_summary.csv
+evals/final_metrics/evaluation_manifest.json
 ```
 
-| Metric | Current value |
+| Metric | Historical snapshot |
 | --- | ---: |
 | Films | 18 |
 | Documents | 140 |
 | Chunks | 2,427 |
-| Eval cases | 50 |
+| Eval cases | 50 (pre-expansion) |
 | Trials per retrieval case | 3 |
-| Film retrieval accuracy | 1.000 |
-| Lens retrieval accuracy | 0.965 |
-| Comparison balance | 100.0% |
-| Retrieval pass rate | 100.0% |
+| Retrieval guardrails | 100.0% (pre-expansion) |
+| Judgment-backed ranking metrics | Not yet assessed |
 | Answer checked cases | 50 |
-| Answer pass rate | 100.0% |
+| Answer validity / quality | Legacy — regenerate |
 | LLM-judged answer cases | 41 |
-| Average answer-quality score | 4.854 / 5 |
+| Faithfulness / answer relevance | Legacy — regenerate |
 | Average response latency | 12.486s |
 
-Run the practical metrics snapshot:
+Those checked-in values predate the complete judgment-backed suite and are not
+current claims. The aggregate report now contains both operational guardrails
+and standard ranked-retrieval metrics, without collapsing them into one score.
+The current benchmark contains 100 cases; do not call a guardrail pass rate
+“accuracy.”
+
+Run the complete evaluation suite:
 
 ```bash
-python -m evals.build_metrics_summary --trials 3 --latency-case-limit 5
+python -m evals.run_evaluation --trials 3 --latency-case-limit 5
 ```
 
-Run the full benchmark latency suite:
+First create and assess the relevance pool if `evals/relevance_judgments.csv`
+has not been completed:
 
 ```bash
-python -m evals.build_metrics_summary --trials 3
+python -m evals.rag_metrics --write-annotation-pool evals/Reports/relevance_pool.csv --pool-k 30
 ```
+
+See [EVALUATION.md](./EVALUATION.md) for each layer, what it measures, and how
+to interpret the combined report.
 
 ## Project Structure
 
@@ -196,7 +210,7 @@ motif/
 │   ├── package.json
 │   └── vercel.json
 ├── ingestion/               Extraction, cleaning, chunking, and corpus build scripts
-├── evals/                   Corpus, retrieval, answer, and aggregate metrics scripts
+├── evals/                   Unified corpus, retrieval, ranking, answer, and aggregate evaluation suite
 ├── data/                    Manual source metadata and extracted files
 ├── infra/postgres/          PostgreSQL schema
 ├── notebooks/               Manual retrieval checks
@@ -485,21 +499,15 @@ Explore a theme:
 
 ## Evaluation
 
-Corpus coverage:
+Run all corpus, retrieval, ranking, answer, and aggregate checks together:
 
 ```bash
-python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
+python -m evals.run_evaluation --trials 3 --latency-case-limit 5
 ```
 
-Retrieval quality:
-
-```bash
-DATABASE_URL=postgresql://motif:motif@localhost:5433/motif \
-WEAVIATE_URL=http://localhost:8080 \
-python -m evals.test_retrieval_quality
-```
-
-Full methodology is in [EVALUATION.md](./EVALUATION.md).
+The run publishes an artifact manifest and one aggregate summary. Full
+methodology, metric definitions, and annotation requirements are in
+[EVALUATION.md](./EVALUATION.md).
 
 ## Limitations
 
