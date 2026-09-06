@@ -86,7 +86,6 @@ Reranking gives each candidate a new score based on:
 - source quality
 - source role
 - chunk role
-- lens/theme match
 - penalties for front matter, references, navigation, or other junk
 
 The reranker intentionally favors chunks that can support a close reading:

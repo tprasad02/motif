@@ -140,7 +140,7 @@ def public_answer_text(response) -> str:
     parts = [response.answer or "", response.thesis or ""]
     for card in response.evidence_cards:
         parts.extend([str(card.get("label", "")), str(card.get("title", "")), str(card.get("body", ""))])
-    for card in response.theme_films:
+    for card in response.lens_films:
         parts.extend([str(card.get("title", "")), str(card.get("summary", ""))])
     return "\n".join(part for part in parts if part)
 
@@ -156,7 +156,7 @@ def contains_wrong_film(text: str, case: dict) -> bool:
     return False
 
 
-def theme_mentioned(text: str, lens: str) -> bool:
+def lens_mentioned(text: str, lens: str) -> bool:
     lowered = text.lower()
     lens_lower = lens.lower()
     parts = [part.strip() for part in re.split(r"\s+vs\.?\s+|\s+and\s+", lens_lower) if len(part.strip()) >= 4]
@@ -260,8 +260,8 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
             critical_failures["overall"].append("fewer_than_four_evidence_cards")
         if contains_wrong_film(text, case):
             critical_failures["overall"].append("wrong_film_mentioned")
-        if not theme_mentioned(text, case["lens"]):
-            critical_failures["overall"].append("selected_theme_missing")
+        if not lens_mentioned(text, case["lens"]):
+            critical_failures["overall"].append("selected_lens_missing")
 
         # Card-dependent checks. These are less strict than exact
         # keyword restrictions because good film evidence can be named many ways.
@@ -335,28 +335,28 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
             critical_failures["overall"].append("evidence_cards_are_lexically_redundant")
         metrics["max_card_lexical_similarity"] = round(max_card_similarity, 3)
 
-    if mode == "explore_theme":
-        returned = [card.get("slug") for card in response.theme_films]
+    if mode == "explore_lens":
+        returned = [card.get("slug") for card in response.lens_films]
         if not returned:
-            critical_failures["overall"].append("no_theme_cards")
+            critical_failures["overall"].append("no_lens_cards")
         if any(slug not in FILM_TITLES for slug in returned):
             critical_failures["overall"].append("non_corpus_film_returned")
-        summaries = [str(card.get("summary", "")) for card in response.theme_films]
+        summaries = [str(card.get("summary", "")) for card in response.lens_films]
         if len(set(summaries)) != len(summaries):
-            critical_failures["overall"].append("repeated_theme_card_summary")
+            critical_failures["overall"].append("repeated_lens_card_summary")
         if any(len(summary.split()) > 35 for summary in summaries):
-            critical_failures["overall"].append("theme_summary_too_long")
+            critical_failures["overall"].append("lens_summary_too_long")
         if len(returned) < 4:
-            critical_failures["overall"].append("too_few_theme_cards")
+            critical_failures["overall"].append("too_few_lens_cards")
         if len(set(returned)) != len(returned):
-            critical_failures["overall"].append("repeated_theme_film")
+            critical_failures["overall"].append("repeated_lens_film")
         if len({slug for slug in returned if slug}) < 4:
-            critical_failures["overall"].append("theme_results_not_diverse")
+            critical_failures["overall"].append("lens_results_not_diverse")
         if any(len(summary.split()) < 8 for summary in summaries):
-            critical_failures["overall"].append("theme_summary_too_thin")
+            critical_failures["overall"].append("lens_summary_too_thin")
         if any(re.search(pattern, "\n".join(summaries).lower()) for pattern in SOURCE_FACING_PATTERNS):
-            critical_failures["overall"].append("theme_source_facing_language")
-        metrics["theme_card_count"] = len(returned)
+            critical_failures["overall"].append("lens_source_facing_language")
+        metrics["lens_card_count"] = len(returned)
 
     return critical_failures, metrics
 
@@ -393,7 +393,7 @@ def judge_with_llm(client, model: str, case: dict, response) -> AnswerJudgeScore
         "answer": response.answer,
         "thesis": response.thesis,
         "evidence_cards": response.evidence_cards,
-        "theme_films": response.theme_films,
+        "lens_films": response.lens_films,
     }
     public_answer = {
         "answer": response.answer,
@@ -402,7 +402,7 @@ def judge_with_llm(client, model: str, case: dict, response) -> AnswerJudgeScore
             {key: card.get(key, "") for key in ("label", "title", "body")}
             for card in response.evidence_cards
         ],
-        "theme_films": response.theme_films,
+        "lens_films": response.lens_films,
     }
     faithfulness_payload = {
         "case": case,
@@ -452,10 +452,10 @@ def judge_passes_gate(scores: AnswerJudgeScores | None) -> bool | None:
     return scores.faithfulness >= 4 and scores.answer_relevance >= 4
 
 
-def format_theme_cards(theme_films: list[dict]) -> tuple[str, str]:
+def format_lens_cards(lens_films: list[dict]) -> tuple[str, str]:
     titles = []
     summaries = []
-    for card in theme_films:
+    for card in lens_films:
         title = str(card.get("title", ""))
         summary = str(card.get("summary", ""))
         if title:
@@ -479,13 +479,13 @@ def run_case(case: dict, client: OpenAI | None, model: str | None, retry_card_fa
     critical_failures, deterministic_metrics = deterministic_answer_checks(case, response)
     retry_used = False
     first_attempt_failures = critical_failures
-    if retry_card_failures and case["mode"] != "explore_theme" and has_card_failures(critical_failures):
+    if retry_card_failures and case["mode"] != "explore_lens" and has_card_failures(critical_failures):
         retry_used = True
         response = answer_guided(request)
         critical_failures, deterministic_metrics = deterministic_answer_checks(case, response)
     judge = None
     judge_error = ""
-    if client and model and case["mode"] != "explore_theme":
+    if client and model and case["mode"] != "explore_lens":
         try:
             judge = judge_with_llm(client, model, case, response)
         except Exception as error:
@@ -496,7 +496,7 @@ def run_case(case: dict, client: OpenAI | None, model: str | None, retry_card_fa
     # First-pass success is the production quality metric. Optional retry data
     # is retained for diagnosis, never allowed to inflate the headline result.
     passed = not has_any_failure(first_attempt_failures) and (judge_gate_passed is not False)
-    theme_titles, theme_summaries = format_theme_cards(response.theme_films)
+    lens_titles, lens_summaries = format_lens_cards(response.lens_films)
     row = {
         "id": case["id"],
         "mode": case["mode"],
@@ -514,12 +514,12 @@ def run_case(case: dict, client: OpenAI | None, model: str | None, retry_card_fa
         "first_passed": not has_any_failure(first_attempt_failures),
         "passed": passed,
         "judge_error": judge_error,
-        "theme_card_titles": theme_titles,
-        "theme_card_summaries": theme_summaries,
+        "lens_card_titles": lens_titles,
+        "lens_card_summaries": lens_summaries,
         "response": {
             "thesis": response.thesis,
             "evidence_cards": response.evidence_cards,
-            "theme_films": response.theme_films,
+            "lens_films": response.lens_films,
         },
         "judge_scores": judge.model_dump() if judge else None,
     }
@@ -541,8 +541,8 @@ def build_csv(csv_path: Path, rows) -> None:
         "passed",
         "critical_failures",
         "judge_error",
-        "theme_card_titles",
-        "theme_card_summaries",
+        "lens_card_titles",
+        "lens_card_summaries",
     ]
 
     with csv_path.open("w", newline="", encoding="utf-8") as handle:
@@ -603,7 +603,7 @@ def main() -> None:
     timestamp = get_current_time_string()
     parser = argparse.ArgumentParser(description="Evaluate final Motif answer quality.")
     parser.add_argument("--cases", default="evals/benchmark_cases.json")
-    parser.add_argument("--modes", nargs="*", choices=["analyze", "compare", "theme"], default=None)
+    parser.add_argument("--modes", nargs="*", choices=["analyze", "compare", "lens"], default=None)
     parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-4.1-mini"))
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--skip-llm", action="store_true", help="Run deterministic answer checks without LLM judging.")

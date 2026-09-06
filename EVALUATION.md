@@ -27,7 +27,7 @@ Current suite:
 | --- | ---: |
 | Analyze a Film | 24 |
 | Compare Films | 64 |
-| Explore a Theme | 12 |
+| Explore Lenses | 12 |
 | Total | 100 |
 
 
@@ -165,7 +165,7 @@ film knowledge from making an unsupported answer appear faithful.
 
 Both must score at least 4/5. Format, source dumping, generic phrasing, card
 specificity, and comparison integration are deterministic validity checks—not
-additional subjective judge metrics. Theme mode remains deterministically
+additional subjective judge metrics. Lens mode remains deterministically
 evaluated because it returns ranked film cards rather than an evidence-board
 reading.
 
@@ -179,7 +179,18 @@ Critical failures:
 - comparison only discusses one film
 - comparison cards do not mention both films
 
-Theme mode is evaluated separately because it returns ranked film cards rather than an evidence-board reading.
+Lens mode is evaluated separately because it returns ranked film cards rather than an evidence-board reading.
+
+## Lens-profile publication gate
+
+The selectable lens list is itself evaluated before it reaches the UI. The
+profile builder proposes a 2–5-word angle from film-specific corpus material,
+uses Sentence-BERT to map its definition to a canonical one-word lens, then
+requires at least three supporting chunks from at least two source roles. It
+also runs the actual retrieval and four-card answer pipeline; publication
+requires a complete card set, valid card-to-chunk links, faithfulness >= 4/5,
+and answer relevance >= 4/5. The canonical lens is the comparison key; the
+angle is explanatory text only.
 
 ## Aggregate Metrics
 
@@ -253,7 +264,7 @@ is diagnostic coverage for expansion logic.
 
 The answer evaluator measures first-pass output by default. Its optional
 `--retry-card-failures` flag performs one diagnostic retry after deterministic
-card failures, but never changes the first-pass result. Theme mode is checked
+card failures, but never changes the first-pass result. Lens mode is checked
 deterministically for active-corpus membership, enough unique film cards,
 non-repeated non-spoiler summaries, appropriate summary length, and no
 source-facing language.
@@ -283,7 +294,7 @@ Improvements:
 - Added hybrid retrieval with vector search and BM25.
 - Added reranking with quality, role, lens, and junk penalties.
 - Added comparison balancing and compare-prompt constraints.
-- Added theme-mode restrictions to the active film collection.
+- Added lens-exploration restrictions to the active film collection.
 - Added refusal behavior for weak paths.
 - Added hidden debug mode for accountability.
 - Added clean metrics artifacts for portfolio review.

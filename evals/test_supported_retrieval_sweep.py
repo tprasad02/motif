@@ -41,7 +41,7 @@ def query_for_pair(film_slug: str, lens: str) -> str:
     title = FILM_TITLES.get(film_slug, film_slug)
     related = " ".join(FILM_LENSES.get(film_slug, []))
     expanded = " ".join(expand_film_lens_terms(film_slug, lens))
-    return f"Analyze {title}. Theme focus: {lens}. Related search terms: {expanded}. Related themes: {related}."
+    return f"Analyze {title}. Lens focus: {lens}. Related search terms: {expanded}. Available lenses: {related}."
 
 
 def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
@@ -54,7 +54,7 @@ def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
     )
     chunk_count = len(chunks) or 1
     film_match_count = sum(1 for chunk in chunks if chunk.film_slug == film_slug)
-    theme_match_count = sum(1 for chunk in chunks if lens_matches(chunk, lens))
+    lens_match_count = sum(1 for chunk in chunks if lens_matches(chunk, lens))
     concrete_count = sum(1 for chunk in chunks if chunk.chunk_role in CONCRETE_ROLES and chunk.chunk_role != PLOT_ROLE)
     plot_summary_count = sum(1 for chunk in chunks if chunk.chunk_role == PLOT_ROLE)
     source_roles = {chunk.source_role for chunk in chunks if chunk.source_role}
@@ -62,12 +62,12 @@ def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
     chunk_roles = Counter(chunk.chunk_role for chunk in chunks)
 
     film_match_rate = film_match_count / chunk_count
-    theme_match_rate = theme_match_count / chunk_count
+    lens_match_rate = lens_match_count / chunk_count
     concrete_evidence_rate = concrete_count / chunk_count
     plot_summary_rate = plot_summary_count / chunk_count
     passed = (
         film_match_count >= min(8, len(chunks))
-        and theme_match_count >= min(6, len(chunks))
+        and lens_match_count >= min(6, len(chunks))
         and concrete_evidence_rate >= 0.60
         and plot_summary_rate <= 0.40
         and len(source_roles) >= min(2, len(source_keys))
@@ -81,7 +81,7 @@ def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
         "lens_scope": "primary" if lens in PRIMARY_LENSES else "secondary",
         "chunk_count": len(chunks),
         "film_match_rate": round(film_match_rate, 3),
-        "theme_match_rate": round(theme_match_rate, 3),
+        "lens_match_rate": round(lens_match_rate, 3),
         "concrete_evidence_rate": round(concrete_evidence_rate, 3),
         "plot_summary_rate": round(plot_summary_rate, 3),
         "source_diversity": len(source_keys),
@@ -134,7 +134,7 @@ def main() -> None:
         "lens_scope",
         "chunk_count",
         "film_match_rate",
-        "theme_match_rate",
+        "lens_match_rate",
         "concrete_evidence_rate",
         "plot_summary_rate",
         "source_diversity",
@@ -158,7 +158,7 @@ def main() -> None:
     for row in failures[:25]:
         print(
             f"FAIL {row['film_slug']} + {row['lens']}: "
-            f"theme={row['theme_match_rate']:.2f} concrete={row['concrete_evidence_rate']:.2f} "
+            f"lens={row['lens_match_rate']:.2f} concrete={row['concrete_evidence_rate']:.2f} "
             f"plot={row['plot_summary_rate']:.2f} roles={row['source_role_diversity']}"
         )
     if len(failures) > 25:

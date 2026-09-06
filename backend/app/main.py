@@ -10,7 +10,7 @@ from app.models import (
     InterpretationMapResponse,
     RetrieveRequest,
     RetrieveResponse,
-    ThemeExplorerResponse,
+    LensExplorerResponse,
     WorkflowRequest,
 )
 from app.services.analysis import (
@@ -20,7 +20,7 @@ from app.services.analysis import (
     film_comparison_query,
     interpretation_map_query,
     retrieve_query,
-    theme_explorer_query,
+    lens_explorer_query,
 )
 from app.services.recommendations import build_film_profiles, comparison_lens_suggestions, pairing_suggestions
 
@@ -71,7 +71,7 @@ def retrieve(request: RetrieveRequest):
         year_start=request.year_start,
         year_end=request.year_end,
         critics=request.critics,
-        themes=request.themes,
+        lenses=request.lenses,
     )
 
 
@@ -113,11 +113,11 @@ def film_comparison(request: WorkflowRequest):
     )
 
 
-@app.post("/workflows/theme-explorer", response_model=ThemeExplorerResponse)
-def theme_explorer(request: WorkflowRequest):
-    return theme_explorer_query(
+@app.post("/workflows/lens-explorer", response_model=LensExplorerResponse)
+def lens_explorer(request: WorkflowRequest):
+    return lens_explorer_query(
         query=request.query,
-        theme=request.theme or (request.themes[0] if request.themes else ""),
+        lens=request.lens or (request.lenses[0] if request.lenses else ""),
         film_slugs=request.film_slugs,
         source_types=request.source_types,
         top_k=request.top_k,

@@ -27,7 +27,7 @@ Source availability also varies by film. A film with strong screenplay access, d
 
 ## Lens Limits
 
-The primary lens vocabulary is controlled so the app can be tested and the UI stays coherent. This means Motif will not expose every possible theme a user might imagine.
+The primary lens vocabulary is controlled so the app can be tested and the UI stays coherent. This means Motif will not expose every possible lens a user might imagine.
 
 Secondary angles are discovered from corpus text and filtered back to supported primary lenses, but they are still limited by the terms and arguments present in the source material.
 
@@ -61,7 +61,7 @@ The benchmark suite is not every possible film/lens/pairing combination. It focu
 
 - representative Analyze Film paths
 - a larger set of comparison paths
-- the main theme exploration paths
+- the main lens exploration paths
 - cases that previously exposed retrieval or generation failures
 
 The supported-lens sweeps test more film/lens coverage, but they are still limited to supported combinations.

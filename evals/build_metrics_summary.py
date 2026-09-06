@@ -82,7 +82,7 @@ def _response_latency(case: dict[str, Any]) -> tuple[float | None, bool, str]:
     start = time.perf_counter()
     response = answer_guided(request)
     elapsed = time.perf_counter() - start
-    generated = not response.refused and (case["mode"] == "explore_theme" or len(response.evidence_cards) == 4)
+    generated = not response.refused and (case["mode"] == "explore_lens" or len(response.evidence_cards) == 4)
     return elapsed, generated, ""
 
 

@@ -501,8 +501,8 @@ button {
 }
 
 .filmCard small,
-.themeFilmCard small,
-.themeFilmCard p,
+.lensFilmCard small,
+.lensFilmCard p,
 .evidenceGrid p,
 .debugPanel p {
   color: var(--muted);
@@ -894,7 +894,7 @@ button {
   line-height: 1.05;
 }
 
-.themeFilmGrid {
+.lensFilmGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--rule);
@@ -905,7 +905,7 @@ button {
   box-shadow: 0 10px 28px rgba(66, 48, 31, 0.07);
 }
 
-.themeFilmCard {
+.lensFilmCard {
   min-height: 230px;
   display: grid;
   align-content: start;
@@ -916,7 +916,7 @@ button {
   background: rgba(241, 230, 213, 0.76);
 }
 
-.themeFilmCard > span {
+.lensFilmCard > span {
   width: fit-content;
   color: var(--accent);
   font-size: 11px;
@@ -925,7 +925,7 @@ button {
   text-transform: uppercase;
 }
 
-.themeFilmCard strong {
+.lensFilmCard strong {
   color: var(--paper);
   font-family: var(--serif);
   font-size: clamp(27px, 3vw, 38px);
@@ -933,8 +933,8 @@ button {
   line-height: 1.04;
 }
 
-.themeFilmCard small,
-.themeFilmCard p {
+.lensFilmCard small,
+.lensFilmCard p {
   margin: 0;
 }
 
@@ -1089,7 +1089,7 @@ button {
 
   .workflowGrid,
   .filmGrid,
-  .themeFilmGrid,
+  .lensFilmGrid,
   .evidenceGrid,
   .suggestionGrid,
   .pairingRail > div {

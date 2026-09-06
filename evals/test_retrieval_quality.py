@@ -37,7 +37,7 @@ def query_for_case(case: dict) -> str:
     film_b = case.get("film_b")
     if mode == "compare_films":
         return f"Compare {film_a} and {film_b}: {lens}"
-    if mode == "explore_theme":
+    if mode == "explore_lens":
         return f"Explore {lens} across the film collection"
     return f"Analyze {film_a}: {lens}"
 
@@ -118,12 +118,12 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
     source_roles = {chunk.source_role for chunk in chunks if chunk.source_role}
     chunk_roles = Counter(chunk.chunk_role for chunk in chunks)
     expected_films = set(film_slugs)
-    if mode == "explore_theme":
+    if mode == "explore_lens":
         expected_films = set(FILM_TITLES)
 
     film_match_count = sum(1 for chunk in chunks if not expected_films or chunk.film_slug in expected_films)
-    metadata_theme_match_count = sum(1 for chunk in chunks if lens_matches(chunk, lens))
-    text_theme_match_count = sum(1 for chunk in chunks if text_lens_matches(chunk, lens))
+    metadata_lens_match_count = sum(1 for chunk in chunks if lens_matches(chunk, lens))
+    text_lens_match_count = sum(1 for chunk in chunks if text_lens_matches(chunk, lens))
     concrete_count = sum(1 for chunk in chunks if has_concrete_evidence(chunk))
     plot_summary_count = sum(1 for chunk in chunks if chunk.chunk_role == PLOT_ROLE)
     source_system_count = sum(
@@ -132,7 +132,7 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
 
     chunk_count = len(chunks) or 1
     film_match_rate = film_match_count / chunk_count
-    theme_match_rate = text_theme_match_count / chunk_count
+    lens_match_rate = text_lens_match_count / chunk_count
     concrete_evidence_rate = concrete_count / chunk_count
     plot_summary_rate = plot_summary_count / chunk_count
 
@@ -149,18 +149,18 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
     if mode == "analyze_film":
         analyze_pass = film_counts[case["film_a"]] >= 8
 
-    theme_pass = True
-    if mode == "explore_theme":
+    lens_pass = True
+    if mode == "explore_lens":
         returned_films = set(film_counts)
-        theme_pass = len(returned_films) >= 4 and returned_films.issubset(set(FILM_TITLES))
+        lens_pass = len(returned_films) >= 4 and returned_films.issubset(set(FILM_TITLES))
 
     gates = {
         "complete_result_set": len(chunks) == top_k,
         "film_scope": analyze_pass,
         "comparison_balance": comparison_balance_pass,
         "comparison_concrete_balance": comparison_concrete_balance_pass,
-        "theme_breadth": theme_pass,
-        "text_lens_relevance": text_theme_match_count >= min(6, len(chunks)),
+        "lens_breadth": lens_pass,
+        "text_lens_relevance": text_lens_match_count >= min(6, len(chunks)),
         "concrete_evidence": concrete_evidence_rate >= 0.50,
         "plot_summary_cap": plot_summary_rate <= 0.40,
         "source_role_diversity": len(source_roles) >= min(2, len({chunk.source_key for chunk in chunks})),
@@ -178,8 +178,8 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
         "lens": lens,
         "chunk_count": len(chunks),
         "film_match_rate": round(film_match_rate, 3),
-        "theme_match_rate": round(theme_match_rate, 3),
-        "metadata_theme_match_rate": round(metadata_theme_match_count / chunk_count, 3),
+        "lens_match_rate": round(lens_match_rate, 3),
+        "metadata_lens_match_rate": round(metadata_lens_match_count / chunk_count, 3),
         "concrete_evidence_rate": round(concrete_evidence_rate, 3),
         "plot_summary_rate": round(plot_summary_rate, 3),
         "source_diversity": len({chunk.source_key for chunk in chunks}),
@@ -222,7 +222,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate Motif retrieval quality on benchmark cases.")
     parser.add_argument("--cases", default="evals/benchmark_cases.json")
     parser.add_argument("--top-k", type=int, default=12)
-    parser.add_argument("--modes", nargs="*", choices=["analyze", "compare", "theme"], default=None)
+    parser.add_argument("--modes", nargs="*", choices=["analyze", "compare", "lens"], default=None)
     parser.add_argument("--output", default="evals/Reports/retrieval_quality_results.csv")
     parser.add_argument("--json-output", default="evals/Reports/retrieval_quality_results.json")
     args = parser.parse_args()
@@ -240,8 +240,8 @@ def main() -> None:
         "lens",
         "chunk_count",
         "film_match_rate",
-        "theme_match_rate",
-        "metadata_theme_match_rate",
+        "lens_match_rate",
+        "metadata_lens_match_rate",
         "concrete_evidence_rate",
         "plot_summary_rate",
         "source_diversity",
@@ -270,7 +270,7 @@ def main() -> None:
         print(
             f"{row['overall'].upper()} {row['id']}: "
             f"film_match={row['film_match_rate']:.2f} "
-            f"theme_match={row['theme_match_rate']:.2f} "
+            f"lens_match={row['lens_match_rate']:.2f} "
             f"concrete={row['concrete_evidence_rate']:.2f} "
             f"plot={row['plot_summary_rate']:.2f} "
             f"roles={row['source_role_diversity']} "

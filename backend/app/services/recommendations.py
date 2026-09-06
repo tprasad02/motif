@@ -11,6 +11,7 @@ import psycopg
 from app.core.config import settings
 from app.db.postgres import ensure_runtime_schema
 from app.film_config import FILM_TITLES, PRIMARY_LENSES, SECONDARY_TO_PRIMARY, expand_lens_terms
+from app.services.lens_profiles import published_lenses, shared_lenses
 
 
 QUALITY_WEIGHT = {"high": 1.35, "medium": 1.0, "low": 0.35}
@@ -354,6 +355,14 @@ def load_recommendation_chunks() -> list[dict[str, Any]]:
 
 @lru_cache(maxsize=1)
 def build_film_profiles() -> dict[str, dict[str, Any]]:
+    """Expose only generated profiles that completed the publication gate."""
+    return {
+        slug: {"slug": slug, "title": title, "lenses": published_lenses(slug), "specific_angles": []}
+        for slug, title in FILM_TITLES.items()
+    }
+
+
+def _legacy_build_film_profiles() -> dict[str, dict[str, Any]]:
     chunks = load_recommendation_chunks()
     extracted_concepts = _extract_text_concepts(chunks)
     primary_scores: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
@@ -421,24 +430,19 @@ def build_film_profiles() -> dict[str, dict[str, Any]]:
 def score_film_lens(profiles: dict[str, dict[str, Any]], film_slug: str, lens: str) -> float:
     for row in profiles.get(film_slug, {}).get("lenses", []):
         if row["lens"] == lens:
-            return float(row["score"])
-    expanded = set(expand_lens_terms(lens))
-    score = 0.0
-    for angle in profiles.get(film_slug, {}).get("specific_angles", []):
-        if expanded.intersection({str(angle["angle"]), *angle.get("maps_to", [])}):
-            score += float(angle["score"]) * 0.45
-    return score
+            return float(row.get("semantic_score", 0.0))
+    return 0.0
 
 
 def comparison_lens_suggestions(film_a: str, film_b: str, limit: int = 3) -> list[dict[str, Any]]:
     profiles = build_film_profiles()
     suggestions = []
-    for lens in PRIMARY_LENSES:
+    for lens in shared_lenses(film_a, film_b):
         score_a = score_film_lens(profiles, film_a, lens)
         score_b = score_film_lens(profiles, film_b, lens)
         if not score_a or not score_b:
             continue
-        if min(score_a, score_b) < 25:
+        if min(score_a, score_b) < 0.35:
             continue
         balance = min(score_a, score_b)
         average = (score_a + score_b) / 2

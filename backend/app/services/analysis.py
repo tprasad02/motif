@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.core.config import settings
 from app.db.postgres import fetch_source_metadata
-from app.film_config import FILM_LENSES, FILM_TITLES, PRIMARY_LENSES, expand_film_lens_terms, expand_lens_terms, primary_lenses_for_film
+from app.film_config import FILM_TITLES, expand_film_lens_terms, expand_lens_terms
 from app.models import (
     AnalysisResponse,
     AnswerRequest,
@@ -19,9 +19,10 @@ from app.models import (
     RetrieveResponse,
     RetrievedChunkResponse,
     SourceCitation,
-    ThemeExplorerResponse,
+    LensExplorerResponse,
 )
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
+from app.services.lens_profiles import all_published_lenses, is_published_lens, lens_names, shared_lenses
 
 
 EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
@@ -45,7 +46,7 @@ FALLBACK_FRAGMENT_PATTERNS = [
     "the relevant film detail is:",
     "pattern built through repeated scenes and formal choices",
     "not as an idea stated in dialogue",
-    "theme context",
+    "lens context",
     "awards and reception",
     "cast and performance",
     "american psychological",
@@ -105,7 +106,7 @@ def _cached_answer(request: GuidedAnswerRequest) -> AnalysisResponse | None:
 
 
 def _write_cached_answer(request: GuidedAnswerRequest, response: AnalysisResponse) -> None:
-    if response.refused or request.mode == "explore_theme":
+    if response.refused or request.mode == "explore_lens":
         return
     cache = _load_answer_cache()
     payload = response.model_dump(mode="json")
@@ -152,31 +153,6 @@ NON_CORPUS_FILM_TITLES = [
     "The Lighthouse",
     "Vertigo",
 ]
-
-THEME_LENS_FILMS = {
-    "Memory": ["memento"],
-    "Identity": [
-        "fight-club",
-        "one-flew-over-the-cuckoos-nest",
-        "silence-of-the-lambs",
-        "memento",
-        "taxi-driver",
-        "black-swan",
-        "gone-girl",
-        "the-machinist",
-        "mulholland-drive",
-    ],
-    "Obsession": ["fight-club", "se7en", "the-prestige", "black-swan", "prisoners", "requiem-for-a-dream", "mulholland-drive"],
-    "Reality vs Illusion": ["memento", "shutter-island", "sixth-sense", "donnie-darko", "mulholland-drive", "truman-show"],
-    "Control": ["shawshank-redemption", "one-flew-over-the-cuckoos-nest", "silence-of-the-lambs", "black-swan", "gone-girl", "requiem-for-a-dream", "truman-show"],
-    "Freedom": ["shawshank-redemption", "one-flew-over-the-cuckoos-nest", "truman-show"],
-    "Isolation": ["taxi-driver", "sixth-sense", "donnie-darko"],
-    "Guilt": ["se7en", "memento", "shutter-island", "prisoners", "the-machinist"],
-    "Performance": ["the-prestige", "black-swan", "gone-girl", "mulholland-drive", "truman-show"],
-    "Violence": ["fight-club", "se7en", "silence-of-the-lambs", "taxi-driver", "prisoners"],
-    "Justice": ["shawshank-redemption", "se7en", "prisoners"],
-    "Trauma": ["shutter-island", "sixth-sense", "requiem-for-a-dream", "donnie-darko", "the-machinist"],
-}
 
 FILM_SUMMARIES = {
     "shawshank-redemption": "A banker sentenced to life in prison forms an unlikely friendship with a fellow inmate while holding onto hope for freedom.",
@@ -232,29 +208,25 @@ def _display_title(slug: str | None) -> str:
 def _film_slugs_for_request(request: GuidedAnswerRequest) -> list[str]:
     if request.mode == "compare_films":
         return [slug for slug in [request.film_a, request.film_b] if slug]
-    if request.mode == "explore_theme":
+    if request.mode == "explore_lens":
         return []
     return [request.film_a] if request.film_a else []
 
 
 def _query_for_request(request: GuidedAnswerRequest) -> str:
     angle = f" Angle: {request.optional_question.strip()}" if request.optional_question else ""
-    film_lenses = " ".join(
-        lens
-        for slug in _film_slugs_for_request(request)
-        for lens in FILM_LENSES.get(slug, [])
-    )
+    film_lenses = " ".join(lens for slug in _film_slugs_for_request(request) for lens in lens_names(slug))
     if request.mode == "compare_films":
         companion_terms = " ".join(
             term
             for slug in _film_slugs_for_request(request)
             for term in expand_film_lens_terms(slug, request.lens)
         )
-        return f"Compare {_display_title(request.film_a)} and {_display_title(request.film_b)}. Theme focus: {request.lens}. Related search terms: {companion_terms}. Related themes: {film_lenses}.{angle}"
-    if request.mode == "explore_theme":
-        return f"Explore theme: {request.lens}. Film collection only.{angle}"
+        return f"Compare {_display_title(request.film_a)} and {_display_title(request.film_b)}. Lens: {request.lens}. Related search terms: {companion_terms}. Available lenses: {film_lenses}.{angle}"
+    if request.mode == "explore_lens":
+        return f"Explore lens: {request.lens}. Film collection only.{angle}"
     companion_terms = " ".join(expand_film_lens_terms(request.film_a, request.lens))
-    return f"Analyze {_display_title(request.film_a)}. Theme focus: {request.lens}. Related search terms: {companion_terms}. Related themes: {film_lenses}.{angle}"
+    return f"Analyze {_display_title(request.film_a)}. Lens: {request.lens}. Related search terms: {companion_terms}. Available lenses: {film_lenses}.{angle}"
 
 
 def _request_from_values(mode: str, film_a: str | None, film_b: str | None, lens: str) -> GuidedAnswerRequest:
@@ -267,7 +239,7 @@ def _normalize_answer_request(request: AnswerRequest) -> GuidedAnswerRequest:
             mode=request.mode,
             film_a=request.film_a or (request.film_slugs[0] if request.film_slugs else None),
             film_b=request.film_b or (request.film_slugs[1] if len(request.film_slugs) > 1 else None),
-            lens=request.lens or (request.themes[0] if request.themes else "Identity"),
+            lens=request.lens or (request.lenses[0] if request.lenses else "Identity"),
             optional_question=request.optional_question or request.query,
             top_k=min(max(request.top_k, 8), 12),
             include_debug=request.include_debug,
@@ -281,7 +253,7 @@ def _normalize_answer_request(request: AnswerRequest) -> GuidedAnswerRequest:
         mode=mode,
         film_a=film_a,
         film_b=film_b,
-        lens=request.themes[0] if request.themes else "Identity",
+        lens=request.lenses[0] if request.lenses else "Identity",
         optional_question=request.query,
         top_k=min(max(request.top_k, 8), 12),
         include_debug=request.include_debug,
@@ -328,7 +300,7 @@ def _selection_reason(chunk: RetrievedChunk, request: GuidedAnswerRequest | None
     if chunk.bm25_score is not None:
         reasons.append("matched keyword search")
     if request and _chunk_lens_match(chunk, request.lens):
-        reasons.append("matched the selected theme")
+        reasons.append("matched the selected lens")
     if chunk.chunk_role in {"scene_evidence", "formal_observation", "creator_commentary"}:
         reasons.append(f"contains {chunk.chunk_role.replace('_', ' ')}")
     if chunk.quality_score == "high":
@@ -412,7 +384,7 @@ def _system_prompt(mode: str) -> str:
         "Do not output stray isolated letter artifacts such as ' l ' or half-formed words. "
         "Do not use these phrases or structures: at its core, profound exploration, complex interplay, the human condition, serves as, invites the viewer, matters because, underscores, illustrating how, not only, but also, not just. "
         "Do not mention source titles, publishers, source types, citations, or phrases like 'according to'. "
-        "You may mention the selected lens naturally, but do not expose interface phrasing like 'lens', 'theme', 'through the lens of', 'in this lens', 'selected lens', or 'selected theme'. "
+        "You may mention the selected topic naturally, but do not expose interface phrasing such as 'lens', 'through the lens of', 'in this lens', or 'selected lens'. "
         f"Only discuss these films: {', '.join(FILM_TITLES.values())}. "
         "Explain what the film shows and how the detail supports or complicates the thesis. "
         "Use only retrieved context and attach chunk IDs to each evidence item. "
@@ -440,7 +412,7 @@ def _user_prompt(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> 
     return f"""
 Workflow: {request.mode}
 Selected film(s): {films}
-Theme focus: {request.lens}
+Lens: {request.lens}
 Optional angle: {request.optional_question or "None"}
 {comparison_requirement}
 
@@ -498,6 +470,26 @@ def _normalize_card(raw_card, label: str) -> dict[str, str]:
     }
 
 
+def _resolve_card_chunk_ids(evidence_cards: list[dict[str, str]], chunks: list[RetrievedChunk]) -> list[dict[str, str]]:
+    """Resolve model-supplied context ordinals to stable retrieved chunk IDs."""
+    valid_ids = {chunk.chunk_id for chunk in chunks}
+    for card in evidence_cards:
+        raw_ids = card.get("chunk_ids") or "[]"
+        try:
+            values = json.loads(raw_ids) if isinstance(raw_ids, str) else raw_ids
+        except json.JSONDecodeError:
+            values = [raw_ids]
+        resolved = []
+        for value in values or []:
+            chunk_id = str(value).strip()
+            if chunk_id in valid_ids:
+                resolved.append(chunk_id)
+            elif chunk_id.isdigit() and 1 <= int(chunk_id) <= len(chunks):
+                resolved.append(chunks[int(chunk_id) - 1].chunk_id)
+        card["chunk_ids"] = json.dumps(list(dict.fromkeys(resolved)))
+    return evidence_cards
+
+
 def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
     cleaned = re.sub(r"\s+", " ", text or "").strip()
     cleaned = re.sub(r"^the relevant film detail is:\s*", "", cleaned, flags=re.I)
@@ -524,8 +516,8 @@ def _clean_public_text(text: str, request: GuidedAnswerRequest) -> str:
         cleaned = re.sub(rf"\bthrough\s+(?:the\s+)?lens\s+of\s+{escaped_lens}\b", f"through {request.lens}", cleaned, flags=re.I)
         cleaned = re.sub(rf"\bin\s+(?:this|the)\s+{escaped_lens}\s+lens\b", f"in its treatment of {request.lens}", cleaned, flags=re.I)
         cleaned = re.sub(rf"\b(?:this|the|selected)\s+{escaped_lens}\s+lens\b", request.lens, cleaned, flags=re.I)
-        cleaned = re.sub(r"\b(?:this|the|selected)\s+(?:lens|theme)\b", "this lens", cleaned, flags=re.I)
-        cleaned = re.sub(r"\b(?:lens|theme)\b", "lens", cleaned, flags=re.I)
+        cleaned = re.sub(r"\b(?:this|the|selected)\s+(?:lens)\b", "this lens", cleaned, flags=re.I)
+        cleaned = re.sub(r"\b(?:lens)\b", "lens", cleaned, flags=re.I)
     for title in NON_CORPUS_FILM_TITLES:
         cleaned = re.sub(re.escape(title), "", cleaned, flags=re.I)
     cleaned = re.sub(r"\s+([,.!?;:])", r"\1", cleaned)
@@ -545,8 +537,8 @@ def _clean_card_title(title: str, label: str, request: GuidedAnswerRequest) -> s
 
 def _sanitize_thesis(thesis: str, request: GuidedAnswerRequest) -> str:
     thesis = _clean_public_text(thesis, request)
-    film = _display_title(request.film_a) if request.mode != "explore_theme" else "Motif"
-    if film and film not in thesis and request.mode != "explore_theme":
+    film = _display_title(request.film_a) if request.mode != "explore_lens" else "Motif"
+    if film and film not in thesis and request.mode != "explore_lens":
         thesis = f"{film} frames {request.lens} through performance, structure, and repeated images: {thesis[:180]}"
     return thesis[:360].strip()
 
@@ -594,7 +586,7 @@ def _reject_weak_comparison(request: GuidedAnswerRequest, evidence_cards: list[d
         raise LLMGenerationError("OpenAI returned comparison cards that did not compare both films.")
 
 
-def _theme_card_body(slug: str, lens: str) -> str:
+def _lens_card_body(slug: str, lens: str) -> str:
     if slug in FILM_SUMMARIES:
         return FILM_SUMMARIES[slug]
     return f"A collection film where {lens.lower()} can be followed through character choices, setting, and repeated visual details."
@@ -647,14 +639,14 @@ def _retrieval_confidence(request: GuidedAnswerRequest, chunks: list[RetrievedCh
     return round(max(0.0, min(score, 1.0)), 3)
 
 
-def _selection_supported(request: GuidedAnswerRequest) -> bool:
-    if request.mode == "explore_theme":
-        return True
+def _selection_supported(request: GuidedAnswerRequest, allow_unpublished_lens: bool = False) -> bool:
+    if request.mode == "explore_lens":
+        return request.lens in all_published_lenses()
     if request.mode == "analyze_film":
-        return bool(request.film_a and request.lens in FILM_LENSES.get(request.film_a, []))
+        return bool(request.film_a and (allow_unpublished_lens or is_published_lens(request.film_a, request.lens)))
     if request.mode == "compare_films":
         films = [slug for slug in [request.film_a, request.film_b] if slug]
-        return len(films) == 2 and any(request.lens in FILM_LENSES.get(slug, []) for slug in films)
+        return len(films) == 2 and (allow_unpublished_lens or request.lens in shared_lenses(films[0], films[1]))
     return False
 
 
@@ -673,15 +665,10 @@ def _candidate_confidence(mode: str, film_a: str | None, film_b: str | None, len
 def _best_lens_suggestions(request: GuidedAnswerRequest, limit: int = 3) -> list[str]:
     if request.mode == "compare_films":
         candidates = sorted(
-            {
-                lens
-                for slug in [request.film_a, request.film_b]
-                if slug
-                for lens in primary_lenses_for_film(slug)
-            }
+            set(shared_lenses(request.film_a or "", request.film_b or ""))
         )
     else:
-        candidates = primary_lenses_for_film(request.film_a or "")
+        candidates = lens_names(request.film_a or "")
     scored = []
     for lens in candidates:
         if lens == request.lens:
@@ -697,8 +684,8 @@ def _best_pairing_suggestions(request: GuidedAnswerRequest, limit: int = 2) -> l
     suggestions = []
     selected = {request.film_a, request.film_b}
     for anchor in [request.film_a, request.film_b]:
-        for candidate_slug, lenses in FILM_LENSES.items():
-            if candidate_slug in selected or request.lens not in lenses:
+        for candidate_slug in ACTIVE_FILM_SLUGS:
+            if candidate_slug in selected or not is_published_lens(candidate_slug, request.lens):
                 continue
             confidence = _candidate_confidence("compare_films", anchor, candidate_slug, request.lens)
             suggestions.append((confidence, anchor, candidate_slug))
@@ -714,8 +701,8 @@ def _answer_pairing_suggestions(request: GuidedAnswerRequest, limit: int = 4) ->
     if request.mode != "analyze_film" or not request.film_a or not request.lens:
         return []
     suggestions = []
-    for candidate_slug, lenses in FILM_LENSES.items():
-        if candidate_slug == request.film_a or request.lens not in lenses:
+    for candidate_slug in ACTIVE_FILM_SLUGS:
+        if candidate_slug == request.film_a or not is_published_lens(candidate_slug, request.lens):
             continue
         confidence = _candidate_confidence("compare_films", request.film_a, candidate_slug, request.lens)
         if confidence < 0.55:
@@ -763,14 +750,12 @@ def _refusal_cards(request: GuidedAnswerRequest) -> list[dict[str, str]]:
     return cards
 
 
-def _theme_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> list[dict[str, object]]:
+def _lens_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> list[dict[str, object]]:
     grouped: dict[str, list[RetrievedChunk]] = defaultdict(list)
     for chunk in chunks:
         if chunk.film_slug in ACTIVE_FILM_SLUGS:
             grouped[chunk.film_slug].append(chunk)
 
-    primary_slugs = THEME_LENS_FILMS.get(request.lens, [])
-    primary_rank = {slug: index for index, slug in enumerate(primary_slugs)}
     scored = []
     eligible_slugs = sorted(grouped)
     for slug in eligible_slugs:
@@ -780,28 +765,12 @@ def _theme_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> 
         chunk_lens_match = any(_lens_matches(request.lens, lens) for chunk in film_chunks for lens in (chunk.lens_tags or []))
         source_count = len({chunk.source_key for chunk in film_chunks})
         role_count = len({chunk.chunk_role for chunk in film_chunks})
-        lens_match = any(_lens_matches(request.lens, lens) for lens in FILM_LENSES.get(slug, []))
-        if primary_slugs and slug not in primary_rank and not (lens_match or chunk_lens_match):
+        lens_match = is_published_lens(slug, request.lens)
+        if not lens_match:
             continue
         retrieval_score = min(sum(max(chunk.score, 0) for chunk in film_chunks), 20.0)
-        curated_boost = 0.75 if slug in primary_rank else 0.0
-        score = retrieval_score + (0.22 * source_count) + (0.16 * role_count) + (1.0 if lens_match else 0) + (0.8 if chunk_lens_match else 0) + curated_boost
+        score = retrieval_score + (0.22 * source_count) + (0.16 * role_count) + (1.0 if lens_match else 0) + (0.8 if chunk_lens_match else 0)
         scored.append((score, slug, film_chunks))
-
-    if len(scored) < 5 and primary_slugs:
-        existing = {slug for _, slug, _ in scored}
-        for slug in primary_slugs:
-            if slug in existing or slug not in ACTIVE_FILM_SLUGS:
-                continue
-            scored.append((0.5 + (0.05 * (len(primary_slugs) - primary_rank[slug])), slug, []))
-
-    if len(scored) < 5 and not primary_slugs:
-        existing = {slug for _, slug, _ in scored}
-        for slug, lenses in FILM_LENSES.items():
-            if slug in existing:
-                continue
-            if any(_lens_matches(request.lens, lens) for lens in lenses):
-                scored.append((100.0, slug, []))
 
     ranked = sorted(scored, key=lambda item: item[0], reverse=True)[:6]
     cards = []
@@ -814,18 +783,18 @@ def _theme_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> 
                 "title": FILM_TITLES[slug],
                 "year": meta.get("year"),
                 "director": meta.get("director"),
-                "summary": _theme_card_body(slug, request.lens),
+                "summary": _lens_card_body(slug, request.lens),
                 "score": round(score, 3),
             }
         )
     return cards
 
 
-def _synthesize_theme(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> AnalysisResponse:
+def _synthesize_lens(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> AnalysisResponse:
     active_chunks = [chunk for chunk in chunks if chunk.film_slug in ACTIVE_FILM_SLUGS]
     score = coverage_score(active_chunks)
     level = coverage_level(score)
-    cards = _theme_films(request, active_chunks)
+    cards = _lens_films(request, active_chunks)
     refused = not cards
     debug_chunks = _debug_chunks(active_chunks, request.include_debug, request)
     answer = "Films ranked by relevance."
@@ -835,7 +804,7 @@ def _synthesize_theme(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]
         thesis=None,
         sections=[],
         evidence_cards=[],
-        theme_films=cards,
+        lens_films=cards,
         consensus_interpretation=answer,
         alternative_interpretations=[],
         director_creator_perspective="",
@@ -851,15 +820,15 @@ def _synthesize_theme(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]
     )
 
 
-def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> AnalysisResponse:
-    if request.mode == "explore_theme":
-        return _synthesize_theme(request, chunks)
+def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk], allow_unpublished_lens: bool = False) -> AnalysisResponse:
+    if request.mode == "explore_lens":
+        return _synthesize_lens(request, chunks)
 
     required_films = _film_slugs_for_request(request)
     score = coverage_score(chunks, required_films)
     confidence = _retrieval_confidence(request, chunks)
     level = coverage_level(max(score, confidence))
-    refused = not _selection_supported(request) or confidence < 0.52 or score < 0.38
+    refused = not _selection_supported(request, allow_unpublished_lens) or confidence < 0.52 or score < 0.38
     citations = _citations(chunks)
 
     if refused:
@@ -904,7 +873,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
                 thesis=thesis,
                 sections=[],
                 evidence_cards=[],
-                theme_films=[],
+                lens_films=[],
                 consensus_interpretation=thesis,
                 alternative_interpretations=[],
                 director_creator_perspective="",
@@ -917,6 +886,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
                 retrieval_notes="",
                 debug_chunks=_debug_chunks(chunks, request.include_debug, request),
             )
+    evidence_cards = _resolve_card_chunk_ids(evidence_cards, chunks)
     answer = thesis
     sections = evidence_cards
     alternative_interpretations = [card["body"] for card in evidence_cards]
@@ -927,7 +897,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         thesis=thesis,
         sections=sections,
         evidence_cards=evidence_cards,
-        theme_films=[],
+        lens_films=[],
         consensus_interpretation=answer,
         alternative_interpretations=alternative_interpretations,
         director_creator_perspective="",
@@ -945,7 +915,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
     return response
 
 
-def answer_guided(request: GuidedAnswerRequest) -> AnalysisResponse:
+def answer_guided(request: GuidedAnswerRequest, allow_unpublished_lens: bool = False) -> AnalysisResponse:
     query = _query_for_request(request)
     films = _film_slugs_for_request(request)
     if request.mode == "compare_films" and len(films) != 2:
@@ -972,12 +942,12 @@ def answer_guided(request: GuidedAnswerRequest) -> AnalysisResponse:
         lens_tags=[request.lens],
         include_low_quality=request.include_low_quality,
     )
-    return _synthesize_guided(request, chunks)
+    return _synthesize_guided(request, chunks, allow_unpublished_lens)
 
 
 def answer_from_request(request: AnswerRequest | GuidedAnswerRequest) -> AnalysisResponse:
     if isinstance(request, GuidedAnswerRequest) or (
-        getattr(request, "mode", None) in {"analyze_film", "compare_films", "explore_theme"}
+        getattr(request, "mode", None) in {"analyze_film", "compare_films", "explore_lens"}
         and hasattr(request, "film_a")
         and hasattr(request, "lens")
         and not hasattr(request, "film_slugs")
@@ -1018,7 +988,7 @@ def retrieve_query(
     year_start: int | None = None,
     year_end: int | None = None,
     critics: list[str] | None = None,
-    themes: list[str] | None = None,
+    lenses: list[str] | None = None,
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> RetrieveResponse:
@@ -1031,7 +1001,7 @@ def retrieve_query(
         year_start=year_start,
         year_end=year_end,
         critics=critics,
-        themes=themes,
+        themes=lenses,
         lens_tags=lens_tags,
         include_low_quality=include_low_quality,
     )
@@ -1047,14 +1017,14 @@ def answer_query(
     year_start: int | None = None,
     year_end: int | None = None,
     critics: list[str] | None = None,
-    themes: list[str] | None = None,
+    lenses: list[str] | None = None,
 ) -> AnalysisResponse:
     mode = "compare_films" if len(film_slugs) >= 2 else "analyze_film"
     request = GuidedAnswerRequest(
         mode=mode,
         film_a=film_slugs[0] if film_slugs else None,
         film_b=film_slugs[1] if len(film_slugs) > 1 else None,
-        lens=themes[0] if themes else "Identity",
+        lens=lenses[0] if lenses else "Identity",
         optional_question=query,
         top_k=min(max(top_k, 8), 12),
     )
@@ -1089,12 +1059,12 @@ def film_comparison_query(query: str, film_slugs: list[str], source_types: list[
     )
 
 
-def theme_explorer_query(query: str, theme: str, film_slugs: list[str], source_types: list[str], top_k: int) -> ThemeExplorerResponse:
-    request = GuidedAnswerRequest(mode="explore_theme", lens=theme or query, optional_question=query, top_k=min(max(top_k, 8), 12))
+def lens_explorer_query(query: str, lens: str, film_slugs: list[str], source_types: list[str], top_k: int) -> LensExplorerResponse:
+    request = GuidedAnswerRequest(mode="explore_lens", lens=lens or query, optional_question=query, top_k=min(max(top_k, 8), 12))
     analysis = answer_guided(request)
-    return ThemeExplorerResponse(
+    return LensExplorerResponse(
         query=query,
-        theme=theme or query,
+        lens=lens or query,
         overview=analysis.answer,
         motif_patterns=analysis.alternative_interpretations,
         films_to_follow=[],

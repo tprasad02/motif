@@ -42,25 +42,36 @@ Comparison workflow screenshots:
 Motif supports three workflows:
 
 1. **Analyze a Film**
-   Select one film and one supported theme. Motif returns a short thesis and four evidence cards: Scene, Character, Pattern, and Counterreading.
+   Select one film and one supported lens. Motif returns a short thesis and four evidence cards: Scene, Character, Pattern, and Counterreading.
 
 2. **Compare Films**
-   Select two films and one shared theme. Motif returns a comparison where each evidence card discusses both films.
+   Select two films and one shared lens. Motif returns a comparison where each evidence card discusses both films.
 
-3. **Explore a Theme**
-   Select one theme. Motif returns ranked film cards from the collection with short non-spoiler context.
+3. **Explore Lenses**
+   Select one lens. Motif returns ranked film cards from the collection with short non-spoiler context.
 
 The button-driven flow keeps each request structured:
 
 ```text
 workflow selection
-→ film/theme selection
+→ film/lens selection
 → metadata-filtered retrieval
 → vector + BM25 search
 → merge + rerank
 → LLM evidence plan
 → thesis and evidence cards
 ```
+
+### Lens publishing
+
+Lenses are not a static menu. The profile builder generates short, film-specific
+angles from corpus evidence, maps each to a canonical one-word lens with
+Sentence-BERT, and publishes it only after it has at least three supporting
+chunks from two source roles and passes the real four-card answer gate.
+
+The UI displays the canonical lens as the button (for example, `Memory`) and
+the 2–5-word angle as supporting text. Films can be compared only when both
+have a published profile for the same lens ID.
 
 ## Corpus
 
@@ -104,8 +115,8 @@ backend/app/corpus/sources.jsonl
 Motif uses hybrid retrieval:
 
 - **Vector search** finds semantically related chunks.
-- **BM25** finds exact keyword and theme matches using PostgreSQL full-text search.
-- **Reranking** combines retrieval scores with source quality, source role, chunk role, theme match, and penalties for low-value text.
+- **BM25** finds exact keyword and lens matches using PostgreSQL full-text search.
+- **Reranking** combines retrieval scores with source quality, source role, chunk role, lens match, and penalties for low-value text.
 - **Comparison balancing** requires both selected films to appear in the retrieved evidence.
 
 The reranker favors scene evidence, formal observations, creator commentary, criticism, scholarship, and production context. It downranks plot summary, references, front matter, and noisy chunks.
@@ -487,11 +498,11 @@ Compare two films:
 }
 ```
 
-Explore a theme:
+Explore a lens:
 
 ```json
 {
-  "mode": "explore_theme",
+  "mode": "explore_lens",
   "lens": "Reality vs Illusion",
   "top_k": 12
 }
@@ -511,7 +522,7 @@ methodology, metric definitions, and annotation requirements are in
 
 ## Limitations
 
-- Motif is strongest on supported film/theme combinations in the curated corpus.
+- Motif is strongest on supported film/lens combinations in the curated corpus.
 - Source quality affects answer depth.
 - The public UI hides citations; debug mode exposes retrieval details.
 - It is not designed for arbitrary open-ended film questions.

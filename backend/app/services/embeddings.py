@@ -1,15 +1,15 @@
-import hashlib
-import math
+from functools import lru_cache
+
+from app.core.config import settings
 
 
-def local_embedding(text: str, dimensions: int = 384) -> list[float]:
-    vector = [0.0] * dimensions
-    for token in text.lower().split():
-        digest = hashlib.sha256(token.encode("utf-8")).digest()
-        idx = int.from_bytes(digest[:4], "big") % dimensions
-        sign = 1.0 if digest[4] % 2 == 0 else -1.0
-        vector[idx] += sign
+@lru_cache(maxsize=1)
+def _model():
+    from sentence_transformers import SentenceTransformer
 
-    norm = math.sqrt(sum(value * value for value in vector)) or 1.0
-    return [value / norm for value in vector]
+    return SentenceTransformer(settings.sentence_bert_model)
 
+
+def local_embedding(text: str) -> list[float]:
+    """Return a normalized Sentence-BERT embedding for semantic retrieval."""
+    return _model().encode(text or "", normalize_embeddings=True).tolist()

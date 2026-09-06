@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-06T00:59:33.410675+00:00",
+  "lenses": [
+    {
+      "id": "memory",
+      "lens": "Memory",
+      "definition": "The fragility, reconstruction, externalization, and unreliability of personal memory.",
+      "status": "published"
+    },
+    {
+      "id": "redemption",
+      "lens": "Redemption",
+      "definition": "The process of atonement and personal transformation leading to salvation or freedom from past mistakes.",
+      "status": "published"
+    },
+    {
+      "id": "hope",
+      "lens": "Hope",
+      "definition": "The feeling of expectation and desire for a certain positive outcome despite uncertainty.",
+      "status": "published"
+    },
+    {
+      "id": "identity",
+      "lens": "Identity",
+      "definition": "The exploration of selfhood, personal and social identity, and the struggle to understand oneself.",
+      "status": "published"
+    },
+    {
+      "id": "power",
+      "lens": "Power",
+      "definition": "The dynamics of control, authority, influence, and resistance within social or personal contexts.",
+      "status": "published"
+    },
+    {
+      "id": "madness",
+      "lens": "Madness",
+      "definition": "The depiction of mental illness, psychological instability, or altered states of mind.",
+      "status": "published"
+    },
+    {
+      "id": "isolation",
+      "lens": "Isolation",
+      "definition": "The experience of being separated from others, physically or emotionally, leading to loneliness or alienation.",
+      "status": "published"
+    },
+    {
+      "id": "violence",
+      "lens": "Violence",
+      "definition": "The use or threat of physical force to harm or intimidate others, and its consequences.",
+      "status": "published"
+    },
+    {
+      "id": "obsession",
+      "lens": "Obsession",
+      "definition": "An intense and often unhealthy fixation on a person, idea, or goal.",
+      "status": "published"
+    },
+    {
+      "id": "deception",
+      "lens": "Deception",
+      "definition": "The act of misleading, lying, or concealing the truth to manipulate or protect.",
+      "status": "published"
+    },
+    {
+      "id": "duality",
+      "lens": "Duality",
+      "definition": "The presence of two contrasting or opposing aspects within a character, theme, or narrative.",
+      "status": "published"
+    },
+    {
+      "id": "freedom",
+      "lens": "Freedom",
+      "definition": "The state of being free from confinement, oppression, or restrictions.",
+      "status": "published"
+    },
+    {
+      "id": "trauma",
+      "lens": "Trauma",
+      "definition": "The psychological and emotional response to deeply distressing or disturbing experiences.",
+      "status": "published"
+    },
+    {
+      "id": "morality",
+      "lens": "Morality",
+      "definition": "The principles concerning the distinction between right and wrong or good and bad behavior.",
+      "status": "published"
+    },
+    {
+      "id": "surveillance",
+      "lens": "Surveillance",
+      "definition": "The monitoring or observation of individuals or groups, often raising issues of privacy and control.",
+      "status": "published"
+    },
+    {
+      "id": "illusion",
+      "lens": "Illusion",
+      "definition": "The distortion or misperception of reality, often leading to confusion or false beliefs.",
+      "status": "published"
+    }
+  ]
+}

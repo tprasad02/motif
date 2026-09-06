@@ -63,7 +63,7 @@ Important fields:
 | `source_type` | Review, interview, academic, screenplay, production notes, etc. |
 | `quality_score` | `high`, `medium`, or `low`; low-quality sources are excluded by default. |
 | `source_role` | Internal role used for balancing and reranking. |
-| `lens_tags` | Source-level theme hints. |
+| `lens_tags` | Source-level lens hints. |
 | `credibility_score` | Numeric source confidence used during corpus review. |
 
 ## Source Roles
@@ -96,7 +96,7 @@ Important fields:
 | `film_slug` | Film attached to the chunk. |
 | `source_key` | Source attached to the chunk. |
 | `text` | Cleaned chunk text. |
-| `lens_tags` | Theme hints for retrieval. |
+| `lens_tags` | Lens hints for retrieval. |
 | `section_title` | Section or structural label when available. |
 | `chunk_role` | How the chunk functions for analysis. |
 

@@ -1,0 +1,874 @@
+{
+  "version": 2,
+  "generated_at": "2026-09-06T01:28:23.975933+00:00",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "films": {
+    "memento": {
+      "title": "Memento",
+      "lenses": [
+        {
+          "lens_id": "memory",
+          "lens": "Memory",
+          "lens_definition": "The fragility, reconstruction, externalization, and unreliability of personal memory.",
+          "angle": "Memory's unreliability",
+          "definition": "The exploration of how memories can be distorted and manipulated, leading to false narratives.",
+          "mapping_similarity": 0.6305,
+          "mapping_margin": 0.1298,
+          "semantic_score": 0.5799,
+          "supporting_chunk_ids": [
+            "04e503cbe7bb3ec78cfdcff9a4df8d09",
+            "c614317c48036272d78623cb79f69cc3",
+            "878dca3fc3ca473a69212d4934d8d19d",
+            "a0395e7f0d2f476ce9b759af5d208c92",
+            "a1223180b14b34daa1c9d0431c6aeb74"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "criticism",
+            "production_context",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        },
+        {
+          "lens_id": "identity",
+          "lens": "Identity",
+          "lens_definition": "The exploration of selfhood, personal and social identity, and the struggle to understand oneself.",
+          "angle": "Fragmented identity",
+          "definition": "The disjointed nature of self-perception and identity as shaped by memory loss.",
+          "mapping_similarity": 0.6931,
+          "mapping_margin": 0.1089,
+          "semantic_score": 0.39,
+          "supporting_chunk_ids": [
+            "04e503cbe7bb3ec78cfdcff9a4df8d09",
+            "878dca3fc3ca473a69212d4934d8d19d",
+            "c614317c48036272d78623cb79f69cc3",
+            "a0395e7f0d2f476ce9b759af5d208c92",
+            "e8632896da6acb6e73caed0fa15950f6"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "criticism",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 5,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Visual cues",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.2319,
+          "answer_gate": {
+            "faithfulness": 2,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          }
+        },
+        {
+          "angle": "Narrative structure",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.247,
+          "mapping_margin": 0.0149
+        },
+        {
+          "angle": "Trust and betrayal",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.4432,
+          "mapping_margin": 0.0032
+        }
+      ]
+    },
+    "black-swan": {
+      "title": "Black Swan",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Duality of self",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.1887,
+          "support_count": 1
+        },
+        {
+          "angle": "Parental control",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.1964,
+          "support_count": 1
+        },
+        {
+          "angle": "Body as battleground",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.3304,
+          "mapping_margin": 0.011
+        }
+      ]
+    },
+    "donnie-darko": {
+      "title": "Donnie Darko",
+      "lenses": [
+        {
+          "lens_id": "isolation",
+          "lens": "Isolation",
+          "lens_definition": "The experience of being separated from others, physically or emotionally, leading to loneliness or alienation.",
+          "angle": "Suburban disconnection",
+          "definition": "The film explores the emotional and social isolation present within a seemingly idyllic suburban setting.",
+          "mapping_similarity": 0.5269,
+          "mapping_margin": 0.204,
+          "semantic_score": 0.3572,
+          "supporting_chunk_ids": [
+            "dd98c3d9e23b0939288854ddb1dd8901",
+            "0ff746f6dd3556178e9a326a8ba21e19",
+            "747dcd6fdf5a1a1fe9aec92a66f769da",
+            "611d2e0dc639a4f35f2231e0bd1e5e0c",
+            "365b029f926bd9af613dfdfbd9f9dcfb"
+          ],
+          "source_roles": [
+            "criticism",
+            "production_context",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Temporal dislocation",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.3456,
+          "mapping_margin": 0.0044
+        },
+        {
+          "angle": "Familial dysfunction",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.2003,
+          "support_count": 2
+        }
+      ]
+    },
+    "fight-club": {
+      "title": "Fight Club",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Performative vulnerability",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.4007,
+          "mapping_margin": 0.0365
+        },
+        {
+          "angle": "Crisis of identity",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.3298,
+          "answer_gate": {
+            "faithfulness": 1,
+            "answer_relevance": 1,
+            "failures": {
+              "overall": [
+                "four_card_contract_failed",
+                "evidence_link_contract_failed"
+              ]
+            }
+          }
+        },
+        {
+          "angle": "Subverted narratives",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.3016,
+          "answer_gate": {
+            "faithfulness": 3,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          }
+        }
+      ]
+    },
+    "gone-girl": {
+      "title": "Gone Girl",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Performed selves",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.287,
+          "answer_gate": {
+            "faithfulness": 1,
+            "answer_relevance": 1,
+            "failures": {
+              "overall": [
+                "four_card_contract_failed",
+                "evidence_link_contract_failed"
+              ]
+            }
+          }
+        },
+        {
+          "angle": "Manipulated narratives",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.5161,
+          "mapping_margin": 0.0486
+        },
+        {
+          "angle": "Domestic facades",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.3128,
+          "answer_gate": {
+            "faithfulness": 1,
+            "answer_relevance": 1,
+            "failures": {
+              "overall": [
+                "four_card_contract_failed",
+                "evidence_link_contract_failed"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "mulholland-drive": {
+      "title": "Mulholland Drive",
+      "lenses": [
+        {
+          "lens_id": "identity",
+          "lens": "Identity",
+          "lens_definition": "The exploration of selfhood, personal and social identity, and the struggle to understand oneself.",
+          "angle": "Fragmented Identities",
+          "definition": "The film presents characters with shifting identities, reflecting the complexities of self-perception and reality.",
+          "mapping_similarity": 0.6296,
+          "mapping_margin": 0.2591,
+          "semantic_score": 0.3955,
+          "supporting_chunk_ids": [
+            "23a604471fa38a2bdf2037a1e0639d30",
+            "35363680b3df2ee9645383320de6fc13",
+            "ce5dfa7b99cdfa7afc7e38129b865d98",
+            "562e0aa4139050e68608149a2b7ba82a",
+            "e82e2397e954b0bc0f37c644cbd17077"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "criticism",
+            "production_context",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        },
+        {
+          "lens_id": "illusion",
+          "lens": "Illusion",
+          "lens_definition": "The distortion or misperception of reality, often leading to confusion or false beliefs.",
+          "angle": "Dream Logic",
+          "definition": "The narrative structure mimics the illogical flow of dreams, blurring the lines between reality and fantasy.",
+          "mapping_similarity": 0.5167,
+          "mapping_margin": 0.0946,
+          "semantic_score": 0.3575,
+          "supporting_chunk_ids": [
+            "23a604471fa38a2bdf2037a1e0639d30",
+            "ce5dfa7b99cdfa7afc7e38129b865d98",
+            "fe1ae12058a3b517c1cd14622b0b48a5",
+            "e82e2397e954b0bc0f37c644cbd17077",
+            "6b4f5983d53e75a6393b35375fdbd403"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "production_context",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        },
+        {
+          "lens_id": "illusion",
+          "lens": "Illusion",
+          "lens_definition": "The distortion or misperception of reality, often leading to confusion or false beliefs.",
+          "angle": "Illusion of Control",
+          "definition": "The narrative explores the characters' attempts to exert control over their lives, often leading to chaos and disillusionment.",
+          "mapping_similarity": 0.5389,
+          "mapping_margin": 0.0529,
+          "semantic_score": 0.3448,
+          "supporting_chunk_ids": [
+            "23a604471fa38a2bdf2037a1e0639d30",
+            "ce5dfa7b99cdfa7afc7e38129b865d98",
+            "e82e2397e954b0bc0f37c644cbd17077",
+            "036bb7eb3795fc8963aa704b4e8f60c6",
+            "562e0aa4139050e68608149a2b7ba82a"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "criticism",
+            "production_context",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": []
+    },
+    "one-flew-over-the-cuckoos-nest": {
+      "title": "One Flew Over the Cuckoo's Nest",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Power Dynamics",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.1665,
+          "support_count": 0
+        },
+        {
+          "angle": "Isolation and Conformity",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.5541,
+          "mapping_margin": 0.0388
+        },
+        {
+          "angle": "Resistance and Rebellion",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.1576,
+          "support_count": 1
+        }
+      ]
+    },
+    "prisoners": {
+      "title": "Prisoners",
+      "lenses": [
+        {
+          "lens_id": "morality",
+          "lens": "Morality",
+          "lens_definition": "The principles concerning the distinction between right and wrong or good and bad behavior.",
+          "angle": "Moral ambiguity",
+          "definition": "Characters navigate a landscape of ethical dilemmas, where the lines between right and wrong blur under extreme circumstances.",
+          "mapping_similarity": 0.5689,
+          "mapping_margin": 0.1817,
+          "semantic_score": 0.2654,
+          "supporting_chunk_ids": [
+            "bbe261d7c03e4be64328bd1526242978",
+            "c74cf2783be8bbb5d35f0909afd88978",
+            "38ca6daf37df1b3928a6658caf37660c",
+            "865684e5a485f10b5ac7f03047da4291",
+            "b25348243369300c5d2d36333242a272"
+          ],
+          "source_roles": [
+            "criticism",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Survival instincts",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.3707,
+          "mapping_margin": 0.0017
+        },
+        {
+          "angle": "Familial bonds",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.3023,
+          "mapping_margin": 0.0062
+        }
+      ]
+    },
+    "requiem-for-a-dream": {
+      "title": "Requiem for a Dream",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Fragmented identities",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.293,
+          "answer_gate": {
+            "faithfulness": 3,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          }
+        },
+        {
+          "angle": "Desperate aspirations",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.4004,
+          "mapping_margin": 0.0092
+        },
+        {
+          "angle": "Cyclical despair",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.4285,
+          "mapping_margin": 0.0002
+        }
+      ]
+    },
+    "se7en": {
+      "title": "Se7en",
+      "lenses": [
+        {
+          "lens_id": "violence",
+          "lens": "Violence",
+          "lens_definition": "The use or threat of physical force to harm or intimidate others, and its consequences.",
+          "angle": "Symbolic violence",
+          "definition": "Violence in the film serves as a metaphor for deeper moral and ethical failures within society.",
+          "mapping_similarity": 0.635,
+          "mapping_margin": 0.2262,
+          "semantic_score": 0.3171,
+          "supporting_chunk_ids": [
+            "dbe3891b510d943f06feee2f79ebee0e",
+            "575400fa96e33f5e2b4f0aced2e261d5",
+            "d4a15e15072b5353df57bee60317c2d7",
+            "ba4a4c9c339024d2035e95ac29e88461",
+            "fd7e83599a9a9beea46a429aca7e70f9"
+          ],
+          "source_roles": [
+            "criticism",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        },
+        {
+          "lens_id": "isolation",
+          "lens": "Isolation",
+          "lens_definition": "The experience of being separated from others, physically or emotionally, leading to loneliness or alienation.",
+          "angle": "Isolation and connection",
+          "definition": "Characters navigate their loneliness while seeking meaningful connections in a fractured world.",
+          "mapping_similarity": 0.6464,
+          "mapping_margin": 0.2536,
+          "semantic_score": 0.231,
+          "supporting_chunk_ids": [
+            "ba4a4c9c339024d2035e95ac29e88461",
+            "dbe3891b510d943f06feee2f79ebee0e",
+            "575400fa96e33f5e2b4f0aced2e261d5",
+            "b4bdb05c9fced663a76ae36e53615e35",
+            "0aa6fb6ab6a8d5d97728636874cbe976"
+          ],
+          "source_roles": [
+            "criticism",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 5,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Cultural decay",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.2982,
+          "mapping_margin": 0.024
+        }
+      ]
+    },
+    "shawshank-redemption": {
+      "title": "The Shawshank Redemption",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Isolation",
+          "status": "rejected",
+          "reason": "invalid_angle"
+        },
+        {
+          "angle": "Hope",
+          "status": "rejected",
+          "reason": "invalid_angle"
+        },
+        {
+          "angle": "Identity",
+          "status": "rejected",
+          "reason": "invalid_angle"
+        }
+      ]
+    },
+    "shutter-island": {
+      "title": "Shutter Island",
+      "lenses": [
+        {
+          "lens_id": "identity",
+          "lens": "Identity",
+          "lens_definition": "The exploration of selfhood, personal and social identity, and the struggle to understand oneself.",
+          "angle": "Identity crisis",
+          "definition": "The struggle to maintain a coherent sense of self amidst conflicting realities.",
+          "mapping_similarity": 0.8205,
+          "mapping_margin": 0.3591,
+          "semantic_score": 0.2639,
+          "supporting_chunk_ids": [
+            "5898021dc13221e7a49dac1f736a778b",
+            "06fcc5c17634602c82fa4f94b591b629",
+            "9ad0f7e3ddfd9f9fad198447765fea3b",
+            "e0c5ae426548e0f94f8769fdda687455",
+            "569a06e7b7b4d6bd17ac010e631a73c0"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Psychological manipulation",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.4487,
+          "mapping_margin": 0.0034
+        },
+        {
+          "angle": "Isolation effects",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.1768,
+          "support_count": 1
+        }
+      ]
+    },
+    "silence-of-the-lambs": {
+      "title": "The Silence of the Lambs",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Gendered power dynamics",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.194,
+          "support_count": 2
+        },
+        {
+          "angle": "Surveillance and control",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.1954,
+          "support_count": 2
+        },
+        {
+          "angle": "Psychological manipulation",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.5148,
+          "mapping_margin": 0.0086
+        }
+      ]
+    },
+    "sixth-sense": {
+      "title": "The Sixth Sense",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Hidden truths",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.3719,
+          "mapping_margin": 0.0234
+        },
+        {
+          "angle": "Child's perspective",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.3911,
+          "mapping_margin": 0.0362
+        },
+        {
+          "angle": "Isolation",
+          "status": "rejected",
+          "reason": "invalid_angle"
+        }
+      ]
+    },
+    "taxi-driver": {
+      "title": "Taxi Driver",
+      "lenses": [],
+      "diagnostics": [
+        {
+          "angle": "Isolation",
+          "status": "rejected",
+          "reason": "invalid_angle"
+        },
+        {
+          "angle": "Distorted Reality",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.2575,
+          "answer_gate": {
+            "failures": {
+              "overall": []
+            },
+            "judge_error": "ValidationError: 1 validation error for FaithfulnessJudgeScore\n  Invalid JSON: EOF while parsing an object at line 325 column 0 [type=json_invalid, input_value='{\"faithfulness\":5,\"reaso... \\t\\n  \\t\\n  \\n  \\n  \\n', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/json_invalid"
+          }
+        },
+        {
+          "angle": "Performance",
+          "status": "rejected",
+          "reason": "invalid_angle"
+        }
+      ]
+    },
+    "the-machinist": {
+      "title": "The Machinist",
+      "lenses": [
+        {
+          "lens_id": "isolation",
+          "lens": "Isolation",
+          "lens_definition": "The experience of being separated from others, physically or emotionally, leading to loneliness or alienation.",
+          "angle": "Isolation and paranoia",
+          "definition": "The character's solitude amplifies his distrust and fear of reality.",
+          "mapping_similarity": 0.6075,
+          "mapping_margin": 0.2103,
+          "semantic_score": 0.3284,
+          "supporting_chunk_ids": [
+            "e158472ca3c7b2c6e17e6705fe4f17c6",
+            "62a72d35c8edd4a112b2830d77d3739c",
+            "91d06acd07a241d39380874d54807d1b",
+            "35b5aa38fdeed8045426eb1d20c70925",
+            "7131b0f8e7a3ee13f213d934516c77d5"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Fragmented identity",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.2296,
+          "support_count": 2
+        },
+        {
+          "angle": "Physical transformation",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.4239,
+          "mapping_margin": 0.003
+        }
+      ]
+    },
+    "the-prestige": {
+      "title": "The Prestige",
+      "lenses": [
+        {
+          "lens_id": "morality",
+          "lens": "Morality",
+          "lens_definition": "The principles concerning the distinction between right and wrong or good and bad behavior.",
+          "angle": "Performative morality",
+          "definition": "The characters navigate ethical dilemmas through the façade of their actions, revealing deeper truths about their identities.",
+          "mapping_similarity": 0.6054,
+          "mapping_margin": 0.2017,
+          "semantic_score": 0.3678,
+          "supporting_chunk_ids": [
+            "9d5e1f8f577fc9fcc40ed421085e2cbe",
+            "a874859740583ff8c1971c5db05a664a",
+            "96f70742b4e3ae3bec1c6bce78e18ce2",
+            "53e60281e3f053ec9af69db7ce7c1518",
+            "680d294fb88554cea34aaa46c74114af"
+          ],
+          "source_roles": [
+            "criticism",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Identity through illusion",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.3599,
+          "answer_gate": {
+            "faithfulness": 1,
+            "answer_relevance": 1,
+            "failures": {
+              "overall": [
+                "four_card_contract_failed",
+                "evidence_link_contract_failed"
+              ]
+            }
+          }
+        },
+        {
+          "angle": "Desire and envy",
+          "status": "rejected",
+          "reason": "ambiguous_lens_mapping",
+          "mapping_similarity": 0.4185,
+          "mapping_margin": 0.015
+        }
+      ]
+    },
+    "truman-show": {
+      "title": "The Truman Show",
+      "lenses": [
+        {
+          "lens_id": "illusion",
+          "lens": "Illusion",
+          "lens_definition": "The distortion or misperception of reality, often leading to confusion or false beliefs.",
+          "angle": "Reality vs. illusion",
+          "definition": "The tension between perceived reality and the constructed nature of existence.",
+          "mapping_similarity": 0.687,
+          "mapping_margin": 0.2858,
+          "semantic_score": 0.2252,
+          "supporting_chunk_ids": [
+            "2590ddd34982677bd09b36e54d89749f",
+            "80d00712257f3cbabf06be0db036bcb0",
+            "74c26ff35c5d4854f7223a0ad52988c7",
+            "fbc83daf42c73aeaa6178738a4230971",
+            "2a785dd4fe86fc9cc60a5fe3a0f1522c"
+          ],
+          "source_roles": [
+            "creator_voice",
+            "scholarship",
+            "screenplay"
+          ],
+          "answer_gate": {
+            "faithfulness": 4,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          },
+          "status": "published"
+        }
+      ],
+      "diagnostics": [
+        {
+          "angle": "Surveillance culture",
+          "status": "rejected",
+          "reason": "answer_gate_failed",
+          "semantic_score": 0.3224,
+          "answer_gate": {
+            "faithfulness": 3,
+            "answer_relevance": 5,
+            "failures": {
+              "overall": []
+            }
+          }
+        },
+        {
+          "angle": "Identity construction",
+          "status": "rejected",
+          "reason": "insufficient_semantic_evidence",
+          "semantic_score": 0.1576,
+          "support_count": 0
+        }
+      ]
+    }
+  }
+}

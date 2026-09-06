@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     weaviate_url: str = "http://localhost:8080"
     motif_collection: str = "MotifChunk"
     embedding_provider: str = "local"
+    sentence_bert_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     openai_api_key: str | None = None
     openai_model: str = "gpt-4o-mini"
     frontend_origin: str = "http://localhost:3000"
