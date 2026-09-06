@@ -1,0 +1,19 @@
+film,source_count,source_roles,source_role_count,source_type_diversity,local_file_exists_rate,chunk_count,avg_chunk_score,coverage_level,warnings
+shawshank-redemption,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,113,4.56,high,
+fight-club,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,231,4.33,high,
+one-flew-over-the-cuckoos-nest,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,142,,high,
+se7en,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,199,,high,
+silence-of-the-lambs,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,206,,high,
+the-prestige,7,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,153,,high,missing required types: interview
+memento,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,122,,high,
+taxi-driver,8,creator_voice|criticism|production_context|screenplay,4,8,1.00,125,,high,missing required types: academic
+shutter-island,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,64,,high,
+black-swan,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,110,,high,
+sixth-sense,7,creator_voice|criticism|production_context|screenplay,4,7,1.00,103,,high,missing required types: academic
+prisoners,8,creator_voice|criticism|production_context|screenplay,4,6,1.00,196,,high,missing required types: academic
+gone-girl,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,97,,high,missing required types: interview
+requiem-for-a-dream,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,56,,high,
+donnie-darko,8,criticism|production_context|scholarship|screenplay,4,6,1.00,148,,high,missing required types: interview
+the-machinist,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,49,,high,
+mulholland-drive,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,140,,high,
+truman-show,8,creator_voice|criticism|production_context|scholarship|screenplay,5,7,1.00,173,,high,
