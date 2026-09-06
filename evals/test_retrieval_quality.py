@@ -61,6 +61,39 @@ def lens_matches(chunk, lens: str) -> bool:
     )
 
 
+def text_lens_matches(chunk, lens: str) -> bool:
+    """Measure relevance from retrieved content, not its retrieval-time labels.
+
+    `lens_tags` are useful input to the ranker, but counting them as evaluation
+    evidence makes the metric self-fulfilling.  This deliberately ignores that
+    metadata and asks whether the chunk text itself contains a lens term.
+    """
+    expanded = [term.lower() for term in expand_film_lens_terms(chunk.film_slug, lens)]
+    terms = {lens.lower(), *expanded}
+    parts = {
+        part.strip()
+        for term in terms
+        for part in re.split(r"\s+vs\.?\s+|\s+and\s+", term)
+        if len(part.strip()) >= 4
+    }
+    text = chunk.text.lower()
+    return any(term in text for term in terms if len(term) >= 4) or any(part in text for part in parts)
+
+
+def lexical_duplicate_rate(chunks) -> float:
+    """Return the fraction of result pairs with near-identical vocabulary."""
+    pairs = 0
+    duplicates = 0
+    token_sets = [set(re.findall(r"\b[a-z]{4,}\b", chunk.text.lower())) for chunk in chunks]
+    for index, left in enumerate(token_sets):
+        for right in token_sets[index + 1 :]:
+            pairs += 1
+            union = left | right
+            if union and len(left & right) / len(union) >= 0.72:
+                duplicates += 1
+    return duplicates / pairs if pairs else 0.0
+
+
 def has_concrete_evidence(chunk) -> bool:
     return chunk.chunk_role in CONCRETE_ROLES and chunk.chunk_role != PLOT_ROLE
 
@@ -89,7 +122,8 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
         expected_films = set(FILM_TITLES)
 
     film_match_count = sum(1 for chunk in chunks if not expected_films or chunk.film_slug in expected_films)
-    theme_match_count = sum(1 for chunk in chunks if lens_matches(chunk, lens))
+    metadata_theme_match_count = sum(1 for chunk in chunks if lens_matches(chunk, lens))
+    text_theme_match_count = sum(1 for chunk in chunks if text_lens_matches(chunk, lens))
     concrete_count = sum(1 for chunk in chunks if has_concrete_evidence(chunk))
     plot_summary_count = sum(1 for chunk in chunks if chunk.chunk_role == PLOT_ROLE)
     source_system_count = sum(
@@ -98,13 +132,18 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
 
     chunk_count = len(chunks) or 1
     film_match_rate = film_match_count / chunk_count
-    theme_match_rate = theme_match_count / chunk_count
+    theme_match_rate = text_theme_match_count / chunk_count
     concrete_evidence_rate = concrete_count / chunk_count
     plot_summary_rate = plot_summary_count / chunk_count
 
     comparison_balance_pass = True
+    comparison_concrete_balance_pass = True
     if mode == "compare_films":
         comparison_balance_pass = film_counts[case["film_a"]] >= 4 and film_counts[case["film_b"]] >= 4
+        comparison_concrete_balance_pass = all(
+            sum(1 for chunk in chunks if chunk.film_slug == film and has_concrete_evidence(chunk)) >= 2
+            for film in (case["film_a"], case["film_b"])
+        )
 
     analyze_pass = True
     if mode == "analyze_film":
@@ -113,17 +152,23 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
     theme_pass = True
     if mode == "explore_theme":
         returned_films = set(film_counts)
-        theme_pass = bool(returned_films) and returned_films.issubset(set(FILM_TITLES))
+        theme_pass = len(returned_films) >= 4 and returned_films.issubset(set(FILM_TITLES))
 
-    pass_rules = [
-        analyze_pass,
-        comparison_balance_pass,
-        theme_pass,
-        theme_match_count >= min(6, len(chunks)),
-        plot_summary_rate <= 0.40,
-        len(source_roles) >= min(2, len({chunk.source_key for chunk in chunks})),
-    ]
-    overall = "pass" if all(pass_rules) else "fail"
+    gates = {
+        "complete_result_set": len(chunks) == top_k,
+        "film_scope": analyze_pass,
+        "comparison_balance": comparison_balance_pass,
+        "comparison_concrete_balance": comparison_concrete_balance_pass,
+        "theme_breadth": theme_pass,
+        "text_lens_relevance": text_theme_match_count >= min(6, len(chunks)),
+        "concrete_evidence": concrete_evidence_rate >= 0.50,
+        "plot_summary_cap": plot_summary_rate <= 0.40,
+        "source_role_diversity": len(source_roles) >= min(2, len({chunk.source_key for chunk in chunks})),
+        "source_diversity": len({chunk.source_key for chunk in chunks}) >= min(3, len(chunks)),
+        "duplicate_cap": lexical_duplicate_rate(chunks) <= 0.15,
+    }
+    failed_gates = [name for name, passed in gates.items() if not passed]
+    overall = "pass" if not failed_gates else "fail"
 
     return {
         "id": case["id"],
@@ -134,6 +179,7 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
         "chunk_count": len(chunks),
         "film_match_rate": round(film_match_rate, 3),
         "theme_match_rate": round(theme_match_rate, 3),
+        "metadata_theme_match_rate": round(metadata_theme_match_count / chunk_count, 3),
         "concrete_evidence_rate": round(concrete_evidence_rate, 3),
         "plot_summary_rate": round(plot_summary_rate, 3),
         "source_diversity": len({chunk.source_key for chunk in chunks}),
@@ -143,6 +189,9 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
         "film_counts": json.dumps(dict(film_counts), sort_keys=True),
         "source_system_phrase_count": source_system_count,
         "comparison_balance_pass": comparison_balance_pass,
+        "comparison_concrete_balance_pass": comparison_concrete_balance_pass,
+        "lexical_duplicate_rate": round(lexical_duplicate_rate(chunks), 3),
+        "failed_gates": failed_gates,
         "overall": overall,
         "top_chunks": [
             {
@@ -192,6 +241,7 @@ def main() -> None:
         "chunk_count",
         "film_match_rate",
         "theme_match_rate",
+        "metadata_theme_match_rate",
         "concrete_evidence_rate",
         "plot_summary_rate",
         "source_diversity",
@@ -201,6 +251,9 @@ def main() -> None:
         "film_counts",
         "source_system_phrase_count",
         "comparison_balance_pass",
+        "comparison_concrete_balance_pass",
+        "lexical_duplicate_rate",
+        "failed_gates",
         "overall",
     ]
     with output_path.open("w", newline="", encoding="utf-8") as handle:
@@ -220,7 +273,8 @@ def main() -> None:
             f"theme_match={row['theme_match_rate']:.2f} "
             f"concrete={row['concrete_evidence_rate']:.2f} "
             f"plot={row['plot_summary_rate']:.2f} "
-            f"roles={row['source_role_diversity']}"
+            f"roles={row['source_role_diversity']} "
+            f"failed={','.join(row['failed_gates']) or 'none'}"
         )
 
     pass_count = sum(row["overall"] == "pass" for row in rows)
