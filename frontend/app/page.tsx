@@ -1,72 +1,14 @@
 "use client";
 
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
-import { ArrowLeft, RotateCcw } from "lucide-react";
+import type { Mode, Step, AnswerResponse, FilmRecommendation} from "@/types/production_types";
+import type {RecommendationsResponse, CompareLensSuggestion, LensOption, PosterRecord} from "@/types/production_types";
+import type {DebugChunk} from "@/types/debug_types";
+import {reselectFilms} from "@/lib/utilities";
+import { ArrowLeft, RotateCcw, Undo } from "lucide-react";
 import { films } from "./filmConfig";
 
-type Mode = "analyze_film" | "compare_films" | "explore_lens";
-type Step = "mode" | "film" | "lens" | "answer";
 
-type DebugChunk = {
-  chunk_id: string;
-  text: string;
-  film_slug: string;
-  source_key: string;
-  source_title?: string;
-  source_type: string;
-  score: number;
-  vector_score?: number;
-  bm25_score?: number;
-  rerank_score?: number;
-  quality_score: string;
-  source_role: string;
-  lens_tags: string[];
-  section_title?: string;
-  chunk_role: string;
-  selection_reason?: string;
-  used_by_evidence_cards?: string[];
-};
-
-type AnswerResponse = {
-  mode: Mode;
-  answer: string;
-  thesis?: string;
-  sections: Array<{ label?: string; title?: string; body?: string; chunk_ids?: string }>;
-  evidence_cards?: Array<{ label?: string; title?: string; body?: string; chunk_ids?: string }>;
-  lens_films?: Array<{ rank?: number; slug: string; title: string; year?: number; director?: string; summary?: string }>;
-  coverage_score: number;
-  coverage_level: "high" | "medium" | "low";
-  refused: boolean;
-  retrieval_notes: string;
-  debug_chunks: DebugChunk[];
-  suggested_pairings?: Array<{ film_slug: string; title: string; lens: string; score?: number }>;
-};
-
-type FilmRecommendation = {
-  lenses: Array<{ lens?: string; angle?: string; semantic_score: number; definition?: string }>;
-  specific_angles: Array<{ angle: string; score: number; maps_to?: string[] }>;
-};
-
-type RecommendationsResponse = {
-  films: Record<string, FilmRecommendation>;
-};
-
-type CompareLensSuggestion = {
-  lens: string;
-  score: number;
-  film_a_score: number;
-  film_b_score: number;
-};
-type LensOption = { lens: string; angle?: string };
-
-type PosterRecord = {
-  slug: string;
-  title: string;
-  year: number;
-  director: string;
-  posterUrl: string | null;
-  tmdbId: number | null;
-};
 
 const fallbackAnswerPatterns = [
   "the relevant film detail is:",
@@ -246,19 +188,18 @@ export default function Home() {
     (mode === "compare_films" && Boolean(filmA) && Boolean(filmB) && filmA !== filmB);
   const canGenerate = step === "lens" && Boolean(mode && hasRequiredFilms && lens && recommendedLenses.some((item) => item.lens === lens));
 
-  const disabledReason = !mode
-    ? "Choose a workflow first."
-    : mode === "analyze_film" && !filmA
-        ? "Choose a film."
-        : mode === "compare_films" && (!filmA || !filmB || filmA === filmB)
-          ? "Choose two different films."
-          : recommendedLenses.length === 0
-            ? "Motif has not published an evidence-validated lens for this selection yet."
-          : !lens
-            ? mode === "explore_lens"
-              ? "Choose a lens."
-              : "Choose a lens."
-            : "";
+  function getDisabledReason(): string {
+    if (!mode) return "Choose a workflow first.";
+    switch (mode){
+      case "analyze_film": if (!filmA) return "Choose a film to analyze."; break; 
+      case "compare_films": if ((!filmA || !filmB || filmA === filmB)) return "Choose two different films."; break;
+      case "explore_lens": if (!lens) return "Choose a lens."; break;
+    }
+    if (recommendedLenses.length === 0) return "Motif has not published an evidence-validated lens for this selection yet.";
+    return "" // no disable reason found
+  }
+
+  const disabledReason = getDisabledReason();
 
   useEffect(() => {
     if (lens && !recommendedLenses.some((item) => item.lens === lens)) setLens("");
@@ -431,6 +372,12 @@ export default function Home() {
           <button onClick={startOver}>
             <RotateCcw size={17} />
             Start over
+          </button>
+        )}
+        {step !== "mode" && (
+          <button onClick={() => reselectFilms(setMode, setStep, setFilmA, setFilmB)}>
+            <Undo size={17} />
+            Reselect Films
           </button>
         )}
       </nav>
