@@ -1,7 +1,7 @@
 "use client";
 
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
-import type { Mode, Step, AnswerResponse, FilmRecommendation} from "@/types/production_types";
+import type { Mode, Step, AnalysisResponse, FilmRecommendation} from "@/types/production_types";
 import type {RecommendationsResponse, CompareLensSuggestion, LensOption, PosterRecord} from "@/types/production_types";
 import type {DebugChunk} from "@/types/debug_types";
 import {reselectFilms} from "@/lib/utilities";
@@ -40,7 +40,7 @@ function loadFailedMessage(error: unknown) {
   return `Load failed. ${message}`;
 }
 
-function looksLikeFallbackReading(body: AnswerResponse) {
+function looksLikeFallbackReading(body: AnalysisResponse) {
   if (body.mode === "explore_lens") return false;
   if (body.refused) return false;
   const cards = body.evidence_cards?.length ? body.evidence_cards : body.sections ?? [];
@@ -68,7 +68,7 @@ export default function Home() {
   const [filmA, setFilmA] = useState("");
   const [filmB, setFilmB] = useState("");
   const [lens, setLens] = useState("");
-  const [answer, setAnswer] = useState<AnswerResponse | null>(null);
+  const [answer, setAnswer] = useState<AnalysisResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [recommendations, setRecommendations] = useState<RecommendationsResponse | null>(null);
@@ -319,7 +319,7 @@ export default function Home() {
         }
         throw new Error(message);
       }
-      const body = (await response.json()) as AnswerResponse;
+      const body = (await response.json()) as AnalysisResponse;
       if (looksLikeFallbackReading(body)) {
         throw new Error("The backend returned retrieved text instead of a generated reading. Check the Render OpenAI key and redeploy the backend.");
       }
@@ -374,7 +374,7 @@ export default function Home() {
             Start over
           </button>
         )}
-        {step !== "mode" && (
+        {step !== "mode" && mode == "compare_films" && (
           <button onClick={() => reselectFilms(setMode, setStep, setFilmA, setFilmB)}>
             <Undo size={17} />
             Reselect Films
