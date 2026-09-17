@@ -1,6 +1,7 @@
 "use client";
 
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
+<<<<<<< Updated upstream
 import { ArrowLeft, RotateCcw } from "lucide-react";
 import { films, globalLenses } from "./filmConfig";
 
@@ -66,6 +67,37 @@ type PosterRecord = {
   posterUrl: string | null;
   tmdbId: number | null;
 };
+=======
+import { ArrowLeft, RotateCcw, Undo } from "lucide-react";
+import type {
+  AnswerResponse,
+  CompareLensSuggestion,
+  FilmRecommendation,
+  LensOption,
+  Mode,
+  PosterRecord,
+  RecommendationsResponse,
+  Step,
+} from "@/types/production_types";
+import { apiUrl } from "@/lib/api/client";
+import { reselectFilms } from "@/lib/utilities";
+import { films } from "./filmConfig";
+
+const normalizedLens = (value: string) => value.toLowerCase().match(/[a-z0-9]+/g)?.join(" ") ?? "";
+
+function dedupeLensOptions(values: string[]): LensOption[] {
+  const selected: string[] = [];
+  for (const lens of [...new Set(values.filter(Boolean))].sort((a, b) => normalizedLens(a).length - normalizedLens(b).length)) {
+    const name = normalizedLens(lens);
+    if (!name || selected.some((existing) => {
+      const other = normalizedLens(existing);
+      return name === other || ` ${name} `.includes(` ${other} `) || ` ${other} `.includes(` ${name} `);
+    })) continue;
+    selected.push(lens);
+  }
+  return selected.sort((a, b) => a.localeCompare(b)).map((lens) => ({ lens }));
+}
+>>>>>>> Stashed changes
 
 const fallbackAnswerPatterns = [
   "the relevant film detail is:",
@@ -83,12 +115,7 @@ const workflows: Array<{ id: Mode; title: string; body: string; kicker: string }
 ];
 
 const titleFor = (slug?: string | null) => films.find((film) => film.slug === slug)?.title ?? "";
-const apiBase = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/+$/, "");
 const posterCacheKey = "motifPosterCache:v1";
-
-function apiUrl(path: string) {
-  return `${apiBase}/${path.replace(/^\/+/, "")}`;
-}
 
 function loadFailedMessage(error: unknown) {
   const message = error instanceof Error ? error.message : "";
@@ -205,11 +232,15 @@ export default function Home() {
 
   function filmLensesFor(slug?: string) {
     if (!slug) return [];
+<<<<<<< Updated upstream
     const dynamic = recommendations?.films?.[slug]?.lenses
       ?.map((item) => item.lens)
       .filter((item) => globalLenses.includes(item as (typeof globalLenses)[number]));
     if (dynamic?.length) return dynamic.slice(0, 5);
     return [...(films.find((film) => film.slug === slug)?.lenses ?? [])];
+=======
+    return dedupeLensOptions(recommendations?.films?.[slug]?.lenses?.map((item) => item.lens ?? "") ?? []).slice(0, 5);
+>>>>>>> Stashed changes
   }
 
   function specificAnglesFor(slug?: string) {
@@ -219,6 +250,7 @@ export default function Home() {
     return [...(films.find((film) => film.slug === slug)?.specificAngles ?? [])];
   }
 
+<<<<<<< Updated upstream
   const recommendedLenses = useMemo(() => {
     if (!mode || mode === "explore_theme") return [...globalLenses];
     if (mode === "compare_films") {
@@ -227,6 +259,21 @@ export default function Home() {
       const second: string[] = filmLensesFor(filmB);
       const shared = first.filter((item) => second.includes(item));
       return shared.length ? shared : globalLenses.filter((item) => first.includes(item) || second.includes(item));
+=======
+  const collectionLenses: LensOption[] = useMemo(
+    () => recommendations?.collection_lenses?.map((lens) => ({ lens })) ?? dedupeLensOptions(Object.values(recommendations?.films ?? {}).flatMap((film) => film.lenses.map((item) => item.lens ?? ""))),
+    [recommendations],
+  );
+
+  const recommendedLenses = useMemo<LensOption[]>(() => {
+    if (!mode || mode === "explore_lens") return collectionLenses;
+    if (mode === "compare_films") {
+      if (compareLensSuggestions.length) return dedupeLensOptions(compareLensSuggestions.map((item) => item.lens));
+      // Comparison choices are supplied by the backend's semantic matcher.
+      // Do not fall back to raw label equality: two films can use different,
+      // equally valid lens names for the same interpretation.
+      return [];
+>>>>>>> Stashed changes
     }
     return filmLensesFor(filmA);
   }, [mode, filmA, filmB, recommendations, compareLensSuggestions]);
@@ -251,6 +298,13 @@ export default function Home() {
         ? "Choose a film."
         : mode === "compare_films" && (!filmA || !filmB || filmA === filmB)
           ? "Choose two different films."
+<<<<<<< Updated upstream
+=======
+          : recommendedLenses.length === 0
+            ? mode === "compare_films"
+              ? "These films do not have an evidence-backed semantic comparison lens. Choose a different pair."
+              : "Motif has not published an evidence-validated lens for this selection yet."
+>>>>>>> Stashed changes
           : !lens
             ? mode === "explore_theme"
               ? "Choose a theme."
@@ -318,7 +372,11 @@ export default function Home() {
     setLoading(false);
     setLens("");
     if (mode === "compare_films") {
-      if (!filmA || slug === filmA) {
+      if (slug === filmA) {
+        setFilmA("");
+        return;
+      }
+      if (!filmA) {
         setFilmA(slug);
         return;
       }
@@ -426,6 +484,12 @@ export default function Home() {
             Start over
           </button>
         )}
+        {step !== "mode" && mode === "compare_films" && (
+          <button onClick={() => reselectFilms(setStep, setFilmA, setFilmB)}>
+            <Undo size={17} />
+            Reselect films
+          </button>
+        )}
       </nav>
 
       {step === "mode" && (
@@ -468,7 +532,7 @@ export default function Home() {
           <div className="stepHeader">
             <span>Step 1</span>
             <h1>{mode === "compare_films" ? "Choose two films" : "Choose a film"}</h1>
-            <p>{mode === "compare_films" ? "First click sets Film A. Second click sets Film B." : "Pick the film Motif should read closely."}</p>
+            <p>{mode === "compare_films" ? "First click sets Film A. Second click sets Film B. Click Film A again to clear it." : "Pick the film Motif should read closely."}</p>
           </div>
           <div className="filmShelf" aria-label="Choose a film">
             {films.map((film) => {
@@ -532,6 +596,7 @@ export default function Home() {
               </button>
             ))}
           </div>
+<<<<<<< Updated upstream
           {specificAngles.length > 0 && (
             <div className="specificAngles">
               <h2>More specific angles</h2>
@@ -542,6 +607,9 @@ export default function Home() {
               </div>
             </div>
           )}
+=======
+          {recommendedLenses.length === 0 && <p className="inlineError">{mode === "compare_films" ? "These films are not comparable through a validated semantic lens. Choose a different pair." : "No evidence-validated lenses are available yet."}</p>}
+>>>>>>> Stashed changes
           <div className="footerAction">
             <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
               Generate Reading
@@ -657,7 +725,7 @@ export default function Home() {
                 </div>
                 <div>
                   <dt>Lens tags</dt>
-                  <dd>{chunk.lens_tags.join(", ") || "-"}</dd>
+                  <dd>{chunk.lens_tags?.join(", ") || "-"}</dd>
                 </div>
               </dl>
               <pre>{chunk.text}</pre>

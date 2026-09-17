@@ -41,7 +41,11 @@ Comparison workflow screenshots:
 Motif supports three workflows:
 
 1. **Analyze a Film**
+<<<<<<< Updated upstream
    Select one film and one supported theme. Motif returns a short thesis and four evidence cards: Scene, Character, Pattern, and Counterreading.
+=======
+   Select one film and one supported lens. Motif returns a short thesis and four evidence cards: Scene, Craft, Shift, and Complication.
+>>>>>>> Stashed changes
 
 2. **Compare Films**
    Select two films and one shared theme. Motif returns a comparison where each evidence card discusses both films.
@@ -114,10 +118,10 @@ The reranker favors scene evidence, formal observations, creator commentary, cri
 Analyze and compare workflows return:
 
 - **Thesis**: one short, film-bound claim.
-- **Scene**: one sequence that directly supports the thesis.
-- **Character**: behavior, performance, relationship, or psychological trajectory.
-- **Pattern**: recurring image, sound, line, motif, edit, structure, or formal device.
-- **Counterreading**: evidence that complicates the thesis.
+- **Scene**: one concrete moment, its stakes, and what the viewer sees or hears.
+- **Craft**: a specific filmmaking choice and how it shapes the reading.
+- **Shift**: a separate later development that sharpens or reframes the first scene.
+- **Complication**: evidence that limits, complicates, or contradicts the thesis.
 
 The app hides citations in the public UI. Debug mode shows retrieval details for development and review.
 

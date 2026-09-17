@@ -111,9 +111,9 @@ The LLM does not see the whole corpus. It receives only the selected chunks and 
 ```text
 thesis
 Scene
-Character
-Pattern
-Counterreading
+Craft
+Shift
+Complication
 ```
 
 The model must attach chunk IDs to each evidence card internally. Those chunk IDs are hidden in the public UI but visible in debug mode.

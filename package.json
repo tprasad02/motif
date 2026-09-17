@@ -1,0 +1,13 @@
+{
+  "name": "motif",
+  "private": true,
+  "packageManager": "pnpm@11.7.0",
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names Backend,Frontend --prefix-colors blue,green \"pnpm dev:backend\" \"pnpm dev:frontend\"",
+    "dev:backend": "PYTHONPATH=backend .venv/bin/python -m uvicorn app.main:app --reload --port 8000",
+    "dev:frontend": "pnpm --dir frontend dev -- --hostname 127.0.0.1 --port 3000"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

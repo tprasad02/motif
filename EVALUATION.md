@@ -151,7 +151,45 @@ Critical failures:
 - comparison only discusses one film
 - comparison cards do not mention both films
 
+<<<<<<< Updated upstream
 Theme mode is evaluated separately because it returns ranked film cards rather than an evidence-board reading.
+=======
+Lens mode is evaluated separately because it returns ranked film cards rather than an evidence-board reading.
+
+## Lens-profile publication gate
+
+The selectable lens list is itself evaluated before it reaches the UI. The
+profile builder retrieves diverse film-specific evidence, generates direct
+1–3-word lenses from it, and requires at least three supporting chunks from at
+least two source roles. It also runs the actual retrieval and four-card answer
+pipeline; publication requires a complete card set, valid card-to-chunk links,
+faithfulness >= 4/5, answer relevance >= 4/5, and satisfaction >= 4/5.
+The card set is structured as Scene, Craft, Shift, and Complication so each
+reading grounds its claim in a concrete moment, the cinematography of the film, and a later turn of events, and accounts for limiting evidence or counterarguments.
+Sentence-BERT clusters validated lens definitions after generation. Those
+clusters are the primary comparison key, with calibrated semantic similarity
+>= 0.56 as a fallback for related profiles that land in separate clusters. The
+MiniLM threshold is set below 0.70 because valid concept pairs with
+substantially different wording otherwise fall just below that cutoff.
+
+The profile validator requires 3–5 passing lenses for each film's **Analyze
+Film** pathway and at least two BERT-backed comparison partners per film.
+Comparison choices are still discovered dynamically only when a user selects
+two films; raw label overlap never qualifies a match.
+
+Run the publication gate with:
+
+```bash
+PYTHONPATH=backend:. python -m evals.build_lens_profiles
+PYTHONPATH=backend:. python -m evals.validate_lens_profiles
+```
+
+`build_lens_profiles` checkpoints after every film. Use `--resume` after an
+interruption; malformed or truncated judge output is recorded as a rejected
+candidate and does not abort the corpus build. Every rejected candidate is
+retained under `rejected_candidates` in the profile artifact with its failure
+stage and gate diagnostics.
+>>>>>>> Stashed changes
 
 ## Aggregate Metrics
 

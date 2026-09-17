@@ -1,8 +1,11 @@
 import json
+<<<<<<< Updated upstream
 import re
 from collections import Counter
 from collections import defaultdict
 from functools import lru_cache
+=======
+>>>>>>> Stashed changes
 from pathlib import Path
 from typing import Any
 
@@ -352,7 +355,6 @@ def load_recommendation_chunks() -> list[dict[str, Any]]:
         return _load_chunks_from_file()
 
 
-@lru_cache(maxsize=1)
 def build_film_profiles() -> dict[str, dict[str, Any]]:
     chunks = load_recommendation_chunks()
     extracted_concepts = _extract_text_concepts(chunks)

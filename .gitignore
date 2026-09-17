@@ -7,8 +7,12 @@ __pycache__/
 *.py[cod]
 .venv/
 node_modules/
+.postman/
+postman/
+postman/*
 .pnpm-store/
 .next/
+*.tsbuildinfo
 dist/
 build/
 data/raw/*

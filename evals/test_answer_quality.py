@@ -68,7 +68,7 @@ CONCRETE_FILM_TERMS = [
     "lighting",
 ]
 
-CARDS = ["Scene", "Character", "Pattern", "Counterreading"]
+CARDS = ["Scene", "Craft", "Shift", "Complication"]
 
 class AnswerJudgeScores(BaseModel):
     thesis_specificity: int = Field(ge=1, le=5)
@@ -187,7 +187,7 @@ def card_failure_reasons(card: dict) -> list[str]:
     lowered = body.lower()
     if label not in CARDS:
         reasons.append("unexpected_card_label")
-    if len(body.split()) < 45:
+    if len(body.split()) < 50:
         reasons.append("card_too_short")
     if any(re.search(pattern, lowered) for pattern in SOURCE_FACING_PATTERNS):
         reasons.append("source_facing_language")
@@ -223,6 +223,25 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
             if not reasons:
                 specific_cards += 1
         source_chunks = [chunk.model_dump() for chunk in response.debug_chunks]
+<<<<<<< Updated upstream
+=======
+        retrieved_chunk_ids = {chunk["chunk_id"] for chunk in source_chunks}
+        cards_with_valid_chunk_ids = 0
+        primary_chunk_ids: list[str] = []
+        for card in response.evidence_cards:
+            label = str(card.get("label", ""))
+            label_bucket = label if label in critical_failures else "overall"
+            chunk_ids = card_chunk_ids(card)
+            if not chunk_ids:
+                critical_failures[label_bucket].append("missing_supporting_chunk_ids")
+            elif retrieved_chunk_ids and not set(chunk_ids).issubset(retrieved_chunk_ids):
+                critical_failures[label_bucket].append("unknown_supporting_chunk_id")
+            else:
+                cards_with_valid_chunk_ids += 1
+                primary_chunk_ids.append(chunk_ids[0])
+        if len(primary_chunk_ids) == 4 and len(set(primary_chunk_ids)) != 4:
+            critical_failures["overall"].append("evidence_cards_reuse_primary_chunk")
+>>>>>>> Stashed changes
         overlap = max_source_overlap(text, source_chunks)
         if overlap > 0.35:
             critical_failures["overall"].append("possible_raw_source_dump")
@@ -257,6 +276,11 @@ def deterministic_answer_checks(case: dict, response) -> tuple[dict, dict]:
                 critical_failures["overall"].append("comparison_cards_not_integrated")
             metrics["comparison_cards_with_both_films"] = cards_with_both_films
         metrics["specific_card_count"] = specific_cards
+<<<<<<< Updated upstream
+=======
+        metrics["cards_with_valid_chunk_ids"] = cards_with_valid_chunk_ids
+        metrics["distinct_primary_chunk_count"] = len(set(primary_chunk_ids))
+>>>>>>> Stashed changes
         metrics["max_source_overlap"] = overlap
 
     if mode == "explore_theme":

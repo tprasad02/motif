@@ -4,7 +4,10 @@
     "node": ">=20"
   },
   "scripts": {
+    "generate:api": "node scripts/generate-api-types.mjs",
+    "predev": "pnpm generate:api",
     "dev": "next dev",
+    "prebuild": "pnpm generate:api",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,9 +20,12 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@next/swc-darwin-arm64": "14.2.13",
     "@types/node": "22.5.4",
     "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",
+    "dotenv": "^17.4.2",
+    "openapi-typescript": "^7.13.0",
     "typescript": "5.6.2"
   }
 }

@@ -22,6 +22,7 @@ from app.services.analysis import (
     retrieve_query,
     theme_explorer_query,
 )
+from app.services.lens_profiles import all_published_lenses
 from app.services.recommendations import build_film_profiles, comparison_lens_suggestions, pairing_suggestions
 
 app = FastAPI(title="Motif API", version="0.1.0")
@@ -43,14 +44,17 @@ def health():
 
 @app.get("/recommendations")
 def recommendations():
-    return {"films": build_film_profiles()}
+    return {"films": build_film_profiles(), "collection_lenses": all_published_lenses()}
 
 
 @app.get("/recommendations/compare")
 def compare_recommendations(film_a: str, film_b: str):
     if not film_a or not film_b or film_a == film_b:
         raise HTTPException(status_code=400, detail="Choose two different films.")
-    return {"lenses": comparison_lens_suggestions(film_a, film_b)}
+    lenses = comparison_lens_suggestions(film_a, film_b)
+    if not lenses:
+        raise HTTPException(status_code=422, detail="These films do not have an evidence-backed semantic comparison lens.")
+    return {"lenses": lenses}
 
 
 @app.get("/recommendations/pairings")

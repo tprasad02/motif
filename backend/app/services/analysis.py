@@ -24,7 +24,7 @@ from app.models import (
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
 
 
-EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
+EVIDENCE_JOBS = ["Scene", "Craft", "Shift", "Complication"]
 REFUSAL_TEXT = "Motif does not have enough strong material to make that reading yet."
 BANNED_PHRASES = [
     "at its core",
@@ -420,12 +420,13 @@ def _system_prompt(mode: str) -> str:
         "Return strict JSON with keys: thesis, evidence_1, evidence_2, evidence_3, evidence_4. "
         "The thesis must be 30-60 words, one or two sentences, mention the selected film title or both selected film titles, mention the selected topic naturally, and make a film-bound arguable claim. "
         "Each evidence item must be an object with keys: label, title, body, chunk_ids. "
-        "The four labels must be exactly: Scene, Character, Pattern, Counterreading. "
-        "Scene: choose the single strongest scene or sequence that directly demonstrates the thesis. Name what happens in that moment and what the viewer sees or hears. "
-        "Character: explain how a character's behavior, performance, relationships, or psychological trajectory embodies the thesis. Use a specific action, reaction, or performance detail. "
-        "Pattern: identify a recurring symbol, visual motif, image, line of dialogue, sound cue, editing pattern, or filmmaking technique that quietly reinforces the thesis. "
-        "Counterreading: give the strongest evidence that challenges, complicates, or contradicts the thesis. Do not make this a fourth supporting point. "
-        "Each body must be 70-120 words, concrete, not containing any chunk id or citation reference, and distinct from the other cards."
+        "The four labels must be exactly: Scene, Craft, Shift, Complication. "
+        "Scene: choose one concrete scene that directly demonstrates the thesis. Name what happens, the stakes, and what the viewer sees or hears. "
+        "Craft: explain one specific filmmaking choice—framing, camera distance, editing, sound, lighting, color, performance, production design, or narration—and show how it shapes the reading. Use formal evidence only when retrieved context supports it. "
+        "Shift: analyze a separate later event, decision, relationship change, revelation, or consequence that sharpens, changes, or reframes the first scene. "
+        "Complication: identify evidence that limits, complicates, or contradicts the thesis. Do not make this a fourth supporting point. "
+        "Each card must use different primary chunk IDs. Do not reuse the same scene, quotation, or formal observation across cards unless Complication directly reinterprets it. "
+        "Each card must add new reasoning rather than restating the thesis or another card. Use a specific title, not a generic theme label. Each body must be 50-90 words, concrete, distinct, and must not contain chunk IDs or citation references."
     )
 
 
