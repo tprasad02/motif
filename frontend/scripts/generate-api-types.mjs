@@ -15,6 +15,16 @@ dotenv.config({ path: resolve(frontendDirectory, ".env.local"), override: false 
 const apiUrl = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/+$/, "");
 const outputPath = resolve(frontendDirectory, "types/generated/api.d.ts");
 
+// Vercel installs only the frontend dependencies. The generated declaration is
+// committed, so deployments should consume it rather than importing FastAPI.
+if (process.env.VERCEL) {
+  if (!existsSync(outputPath)) {
+    throw new Error("types/generated/api.d.ts is missing. Run pnpm generate:api and commit the result before deploying.");
+  }
+  console.log("Using committed API types for the Vercel build.");
+  process.exit(0);
+}
+
 async function schemaInput() {
   try {
     const response = await fetch(`${apiUrl}/openapi.json`, { signal: AbortSignal.timeout(2000) });

@@ -11,6 +11,10 @@ the schema directly from the local FastAPI app. To regenerate it directly, run:
 pnpm generate:api
 ```
 
+The generated declaration is committed. Vercel uses that committed file during
+deployment because its frontend build environment does not install the backend
+Python dependencies.
+
 The generator reads `NEXT_PUBLIC_API_URL` from the root `.env` file or
 `frontend/.env.local`; it defaults to `http://127.0.0.1:8000`.
 
