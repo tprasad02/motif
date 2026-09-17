@@ -7,7 +7,9 @@ from app.core.config import settings
 def _model():
     from sentence_transformers import SentenceTransformer
 
-    return SentenceTransformer(settings.sentence_bert_model)
+    # The model is provisioned during setup. Avoid a remote revision check on
+    # every request so retrieval remains available offline and deterministic.
+    return SentenceTransformer(settings.sentence_bert_model, local_files_only=True)
 
 
 def local_embedding(text: str) -> list[float]:

@@ -43,8 +43,7 @@ type AnswerResponse = {
 };
 
 type FilmRecommendation = {
-  lenses: Array<{ lens?: string; angle?: string; semantic_score: number; definition?: string }>;
-  specific_angles: Array<{ angle: string; score: number; maps_to?: string[] }>;
+  lenses: Array<{ lens?: string; semantic_score?: number; definition?: string }>;
 };
 
 type RecommendationsResponse = {
@@ -57,7 +56,7 @@ type CompareLensSuggestion = {
   film_a_score: number;
   film_b_score: number;
 };
-type LensOption = { lens: string; angle?: string };
+type LensOption = { lens: string };
 
 type PosterRecord = {
   slug: string;
@@ -206,15 +205,9 @@ export default function Home() {
 
   function filmLensesFor(slug?: string) {
     if (!slug) return [];
-    return recommendations?.films?.[slug]?.lenses?.map((item) => ({ lens: item.lens ?? "", angle: item.angle })).filter((item) => item.lens).slice(0, 5) ?? [];
+    return recommendations?.films?.[slug]?.lenses?.map((item) => ({ lens: item.lens ?? "" })).filter((item) => item.lens).slice(0, 5) ?? [];
   }
 
-  function specificAnglesFor(slug?: string) {
-    if (!slug) return [];
-    const dynamic = recommendations?.films?.[slug]?.specific_angles?.map((item) => item.angle);
-    if (dynamic?.length) return dynamic.slice(0, 6);
-    return [];
-  }
 
   const collectionLenses: LensOption[] = useMemo(
     () => Array.from(new Set(Object.values(recommendations?.films ?? {}).flatMap((film) => film.lenses.map((item) => item.lens ?? "")).filter(Boolean))).sort().map((lens) => ({ lens })),
@@ -225,20 +218,13 @@ export default function Home() {
     if (!mode || mode === "explore_lens") return collectionLenses;
     if (mode === "compare_films") {
       if (compareLensSuggestions.length) return compareLensSuggestions.map((item) => ({ lens: item.lens }));
-      const first = filmLensesFor(filmA);
-      const second = filmLensesFor(filmB);
-      return first.filter((item) => second.some((other) => other.lens === item.lens));
+      // Comparison choices are supplied by the backend's semantic matcher.
+      // Do not fall back to raw label equality: two films can use different,
+      // equally valid lens names for the same interpretation.
+      return [];
     }
     return filmLensesFor(filmA);
   }, [mode, filmA, filmB, recommendations, compareLensSuggestions, collectionLenses]);
-
-  const specificAngles = useMemo(() => {
-    if (mode === "analyze_film") return specificAnglesFor(filmA);
-    if (mode === "compare_films") {
-      return Array.from(new Set([...specificAnglesFor(filmA), ...specificAnglesFor(filmB)]));
-    }
-    return [];
-  }, [mode, filmA, filmB, recommendations]);
 
   const hasRequiredFilms =
     mode === "explore_lens" ||
@@ -536,21 +522,10 @@ export default function Home() {
                 onClick={() => setLens(item.lens)}
               >
                 <span>{item.lens}</span>
-                {item.angle && <small>{item.angle}</small>}
               </button>
             ))}
           </div>
           {recommendedLenses.length === 0 && <p className="inlineError">No evidence-validated lenses are available yet.</p>}
-          {specificAngles.length > 0 && (
-            <div className="specificAngles">
-              <h2>More specific angles</h2>
-              <div>
-                {specificAngles.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-            </div>
-          )}
           <div className="footerAction">
             <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
               Generate Reading

@@ -6,17 +6,12 @@ from pathlib import Path
 from ingestion.chunking import chunk_text
 from ingestion.cleaning import clean_text
 from ingestion.extractors import extract_by_path
-from ingestion.storage import FILM_LENSES, _infer_quality, _infer_source_role, _lens_tags_for_text, content_hash
+from ingestion.storage import _infer_quality, _infer_source_role, content_hash
 
 
 def _source_record(row: dict[str, str]) -> dict[str, object]:
     quality_score = row.get("quality_score") or _infer_quality(row["source_type"], row.get("publisher", ""), row.get("title", ""))
     source_role = row.get("source_role") or _infer_source_role(row["source_type"])
-    lens_tags = row.get("lens_tags")
-    if lens_tags:
-        parsed_lenses = [lens.strip() for lens in lens_tags.split(";") if lens.strip()]
-    else:
-        parsed_lenses = FILM_LENSES.get(row["film_slug"], [])[:3]
     return {
         "film_slug": row["film_slug"],
         "source_key": row["source_key"],
@@ -30,7 +25,7 @@ def _source_record(row: dict[str, str]) -> dict[str, object]:
         "credibility_score": float(row.get("credibility_score") or 0),
         "quality_score": quality_score,
         "source_role": source_role,
-        "lens_tags": parsed_lenses,
+        "lens_tags": [],
         "notes": row.get("notes") or None,
     }
 
@@ -74,7 +69,7 @@ def build_backend_corpus(sources_path: str, output_dir: str) -> None:
                     "source_type": row["source_type"],
                     "quality_score": source["quality_score"],
                     "source_role": source["source_role"],
-                    "lens_tags": _lens_tags_for_text(row["film_slug"], chunk.text),
+                    "lens_tags": [],
                     "section_title": chunk.section_title,
                     "chunk_role": chunk.chunk_role,
                 }

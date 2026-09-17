@@ -50,8 +50,7 @@ def main() -> None:
     chunk_report = str(chunk_reports[0]) if chunk_reports else ""
     run_module("evals.verify_corpus", "--sources", "data/manual_sources.csv", "--min-per-film", "4", "--output", str(reports / "corpus_coverage.csv"))
     run_module("evals.test_retrieval_quality", "--top-k", str(args.top_k), "--output", str(retrieval_csv), "--json-output", str(retrieval_json))
-    run_module("evals.test_supported_retrieval_sweep", "--scope", "primary", "--top-k", str(args.top_k), "--output", str(reports / "supported_retrieval_sweep_primary.csv"), "--json-output", str(reports / "supported_retrieval_sweep_primary.json"))
-    run_module("evals.test_supported_retrieval_sweep", "--scope", "secondary", "--top-k", str(args.top_k), "--output", str(reports / "supported_retrieval_sweep_secondary.csv"), "--json-output", str(reports / "supported_retrieval_sweep_secondary.json"))
+    run_module("evals.test_supported_retrieval_sweep", "--top-k", str(args.top_k), "--output", str(reports / "supported_retrieval_sweep.csv"), "--json-output", str(reports / "supported_retrieval_sweep.json"))
     run_module("evals.rag_metrics", "--top-k", str(args.top_k), "--output", str(rag_json), "--csv-output", str(rag_csv))
 
     answer_args = ["--model", args.model, "--output", str(answer_json), "--csv-output", str(answer_csv)]
@@ -82,8 +81,7 @@ def main() -> None:
             "corpus_coverage": str(reports / "corpus_coverage.csv"),
             "chunk_quality": chunk_report,
             "retrieval_guardrails": str(retrieval_json),
-            "supported_primary_sweep": str(reports / "supported_retrieval_sweep_primary.json"),
-            "supported_secondary_sweep": str(reports / "supported_retrieval_sweep_secondary.json"),
+            "supported_profile_sweep": str(reports / "supported_retrieval_sweep.json"),
             "ranking_metrics": str(rag_json),
             "answer_quality": str(answer_json),
             "aggregate_summary": "evals/final_metrics/metrics_summary.json",

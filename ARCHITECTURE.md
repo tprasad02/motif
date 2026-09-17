@@ -1,6 +1,6 @@
 # Motif Architecture
 
-Motif is a guided RAG application for film close reading. The architecture is designed around one question: can the app turn a user-selected film/theme path into a grounded, specific interpretation without exposing retrieval mechanics in the public UI?
+Motif is a guided RAG application for film close reading. The architecture is designed around one question: can the app turn a user-selected film/lens path into a grounded, specific interpretation without exposing retrieval mechanics in the public UI?
 
 ## System Flow
 
@@ -130,11 +130,13 @@ Motif includes backend recommendation endpoints:
 These compute:
 
 - film-specific supported lenses
-- secondary angles extracted from corpus text
+- direct, evidence-backed film lenses
 - comparison lens suggestions for two films
 - suggested pairings after an Analyze Film reading
 
-The public primary lens vocabulary remains controlled for UX stability. The film-specific ranking of those lenses is dynamic.
+Each selectable film lens is generated from that film's retrieved evidence and
+must pass evidence and answer gates before it reaches the UI. Sentence-BERT
+clusters validated profile definitions after generation for comparisons.
 
 ## Debug Mode
 

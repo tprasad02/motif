@@ -22,7 +22,7 @@ from app.models import (
     LensExplorerResponse,
 )
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
-from app.services.lens_profiles import all_published_lenses, is_published_lens, lens_names, shared_lenses
+from app.services.lens_profiles import all_published_lenses, is_comparison_lens, is_published_lens, lens_names, shared_lenses
 
 
 EVIDENCE_JOBS = ["Scene", "Character", "Pattern", "Counterreading"]
@@ -214,7 +214,7 @@ def _film_slugs_for_request(request: GuidedAnswerRequest) -> list[str]:
 
 
 def _query_for_request(request: GuidedAnswerRequest) -> str:
-    angle = f" Angle: {request.optional_question.strip()}" if request.optional_question else ""
+    question = f" Optional question: {request.optional_question.strip()}" if request.optional_question else ""
     film_lenses = " ".join(lens for slug in _film_slugs_for_request(request) for lens in lens_names(slug))
     if request.mode == "compare_films":
         companion_terms = " ".join(
@@ -222,11 +222,11 @@ def _query_for_request(request: GuidedAnswerRequest) -> str:
             for slug in _film_slugs_for_request(request)
             for term in expand_film_lens_terms(slug, request.lens)
         )
-        return f"Compare {_display_title(request.film_a)} and {_display_title(request.film_b)}. Lens: {request.lens}. Related search terms: {companion_terms}. Available lenses: {film_lenses}.{angle}"
+        return f"Compare {_display_title(request.film_a)} and {_display_title(request.film_b)}. Lens: {request.lens}. Related search terms: {companion_terms}. Available lenses: {film_lenses}.{question}"
     if request.mode == "explore_lens":
-        return f"Explore lens: {request.lens}. Film collection only.{angle}"
+        return f"Explore lens: {request.lens}. Film collection only.{question}"
     companion_terms = " ".join(expand_film_lens_terms(request.film_a, request.lens))
-    return f"Analyze {_display_title(request.film_a)}. Lens: {request.lens}. Related search terms: {companion_terms}. Available lenses: {film_lenses}.{angle}"
+    return f"Analyze {_display_title(request.film_a)}. Lens: {request.lens}. Related search terms: {companion_terms}. Available lenses: {film_lenses}.{question}"
 
 
 def _request_from_values(mode: str, film_a: str | None, film_b: str | None, lens: str) -> GuidedAnswerRequest:
@@ -413,7 +413,7 @@ def _user_prompt(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> 
 Workflow: {request.mode}
 Selected film(s): {films}
 Lens: {request.lens}
-Optional angle: {request.optional_question or "None"}
+Optional viewer question: {request.optional_question or "None"}
 {comparison_requirement}
 
 Retrieved context:
@@ -646,7 +646,7 @@ def _selection_supported(request: GuidedAnswerRequest, allow_unpublished_lens: b
         return bool(request.film_a and (allow_unpublished_lens or is_published_lens(request.film_a, request.lens)))
     if request.mode == "compare_films":
         films = [slug for slug in [request.film_a, request.film_b] if slug]
-        return len(films) == 2 and (allow_unpublished_lens or request.lens in shared_lenses(films[0], films[1]))
+        return len(films) == 2 and (allow_unpublished_lens or is_comparison_lens(films[0], films[1], request.lens))
     return False
 
 
@@ -657,7 +657,6 @@ def _candidate_confidence(mode: str, film_a: str | None, film_b: str | None, len
         film_slugs=_film_slugs_for_request(candidate_request),
         source_types=[],
         limit=12,
-        lens_tags=[lens],
     )
     return _retrieval_confidence(candidate_request, chunks)
 
@@ -744,7 +743,7 @@ def _refusal_cards(request: GuidedAnswerRequest) -> list[dict[str, str]]:
             {
                 "label": "Try another path",
                 "title": "Choose one of the recommended lenses",
-                "body": "The current collection is stronger when Motif follows the primary lenses shown after a film is selected.",
+                "body": "The current collection is strongest when Motif follows the evidence-backed lenses shown after a film is selected.",
             }
         )
     return cards
@@ -939,7 +938,6 @@ def answer_guided(request: GuidedAnswerRequest, allow_unpublished_lens: bool = F
         film_slugs=films,
         source_types=[],
         limit=request.top_k,
-        lens_tags=[request.lens],
         include_low_quality=request.include_low_quality,
     )
     return _synthesize_guided(request, chunks, allow_unpublished_lens)
@@ -1001,7 +999,7 @@ def retrieve_query(
         year_start=year_start,
         year_end=year_end,
         critics=critics,
-        themes=lenses,
+        lenses=lenses,
         lens_tags=lens_tags,
         include_low_quality=include_low_quality,
     )

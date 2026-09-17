@@ -9,7 +9,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.film_config import FILM_LENSES, FILM_TITLES, PRIMARY_LENSES, expand_film_lens_terms
+from app.film_config import FILM_TITLES, expand_film_lens_terms
+from app.services.lens_profiles import published_lenses
 from app.services.retrieval import retrieve_chunks
 from evals.utilities import get_current_time_string
 
@@ -39,9 +40,8 @@ def lens_matches(chunk, lens: str) -> bool:
 
 def query_for_pair(film_slug: str, lens: str) -> str:
     title = FILM_TITLES.get(film_slug, film_slug)
-    related = " ".join(FILM_LENSES.get(film_slug, []))
     expanded = " ".join(expand_film_lens_terms(film_slug, lens))
-    return f"Analyze {title}. Lens focus: {lens}. Related search terms: {expanded}. Available lenses: {related}."
+    return f"Analyze {title} through {lens}. Supporting profile vocabulary: {expanded}."
 
 
 def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
@@ -50,7 +50,6 @@ def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
         film_slugs=[film_slug],
         source_types=[],
         limit=top_k,
-        lens_tags=[lens],
     )
     chunk_count = len(chunks) or 1
     film_match_count = sum(1 for chunk in chunks if chunk.film_slug == film_slug)
@@ -78,7 +77,6 @@ def evaluate_pair(film_slug: str, lens: str, top_k: int) -> dict:
         "film_slug": film_slug,
         "film_title": FILM_TITLES.get(film_slug, film_slug),
         "lens": lens,
-        "lens_scope": "primary" if lens in PRIMARY_LENSES else "secondary",
         "chunk_count": len(chunks),
         "film_match_rate": round(film_match_rate, 3),
         "lens_match_rate": round(lens_match_rate, 3),
@@ -109,29 +107,23 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Cheap retrieval sweep for all supported Motif film-lens pairs.")
     parser.add_argument("--top-k", type=int, default=12)
     parser.add_argument("--limit", type=int, default=None)
-    parser.add_argument("--scope", choices=["primary", "secondary", "all"], default="primary")
     parser.add_argument("--output", default=None)
     parser.add_argument("--json-output", default=None)
     args = parser.parse_args()
 
-    pairs = [(film_slug, lens) for film_slug, lenses in FILM_LENSES.items() for lens in lenses]
-    if args.scope == "primary":
-        pairs = [(film_slug, lens) for film_slug, lens in pairs if lens in PRIMARY_LENSES]
-    elif args.scope == "secondary":
-        pairs = [(film_slug, lens) for film_slug, lens in pairs if lens not in PRIMARY_LENSES]
+    pairs = [(film_slug, row["lens"]) for film_slug in FILM_TITLES for row in published_lenses(film_slug)]
     if args.limit is not None:
         pairs = pairs[: args.limit]
 
     rows = [evaluate_pair(film_slug, lens, args.top_k) for film_slug, lens in pairs]
 
-    csv_path = Path(args.output or f"evals/Reports/supported_retrieval_sweep_{args.scope}_{timestamp}.csv")
+    csv_path = Path(args.output or f"evals/Reports/supported_retrieval_sweep_{timestamp}.csv")
     csv_path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = [
         "id",
         "film_slug",
         "film_title",
         "lens",
-        "lens_scope",
         "chunk_count",
         "film_match_rate",
         "lens_match_rate",
@@ -149,11 +141,11 @@ def main() -> None:
         for row in rows:
             writer.writerow({field: row[field] for field in fieldnames})
 
-    json_path = Path(args.json_output or f"evals/Reports/supported_retrieval_sweep_{args.scope}_{timestamp}.json")
+    json_path = Path(args.json_output or f"evals/Reports/supported_retrieval_sweep_{timestamp}.json")
     json_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
     passed = sum(row["overall"] == "pass" for row in rows)
-    print(f"supported retrieval sweep scope={args.scope} passed={passed}/{len(rows)}")
+    print(f"supported retrieval sweep published_profiles passed={passed}/{len(rows)}")
     failures = [row for row in rows if row["overall"] == "fail"]
     for row in failures[:25]:
         print(
