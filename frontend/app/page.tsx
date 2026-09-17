@@ -1,7 +1,11 @@
 "use client";
 
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
-import { ArrowLeft, RotateCcw } from "lucide-react";
+import type { Mode, Step, AnalysisResponse, FilmRecommendation} from "@/types/production_types";
+import type {RecommendationsResponse, CompareLensSuggestion, LensOption, PosterRecord} from "@/types/production_types";
+import type {DebugChunk} from "@/types/debug_types";
+import {reselectFilms} from "@/lib/utilities";
+import { ArrowLeft, RotateCcw, Undo } from "lucide-react";
 import { films } from "./filmConfig";
 
 type Mode = "analyze_film" | "compare_films" | "explore_lens";
@@ -97,7 +101,7 @@ function loadFailedMessage(error: unknown) {
   return `Load failed. ${message}`;
 }
 
-function looksLikeFallbackReading(body: AnswerResponse) {
+function looksLikeFallbackReading(body: AnalysisResponse) {
   if (body.mode === "explore_lens") return false;
   if (body.refused) return false;
   const cards = body.evidence_cards?.length ? body.evidence_cards : body.sections ?? [];
@@ -125,7 +129,7 @@ export default function Home() {
   const [filmA, setFilmA] = useState("");
   const [filmB, setFilmB] = useState("");
   const [lens, setLens] = useState("");
-  const [answer, setAnswer] = useState<AnswerResponse | null>(null);
+  const [answer, setAnswer] = useState<AnalysisResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [recommendations, setRecommendations] = useState<RecommendationsResponse | null>(null);
@@ -232,19 +236,18 @@ export default function Home() {
     (mode === "compare_films" && Boolean(filmA) && Boolean(filmB) && filmA !== filmB);
   const canGenerate = step === "lens" && Boolean(mode && hasRequiredFilms && lens && recommendedLenses.some((item) => item.lens === lens));
 
-  const disabledReason = !mode
-    ? "Choose a workflow first."
-    : mode === "analyze_film" && !filmA
-        ? "Choose a film."
-        : mode === "compare_films" && (!filmA || !filmB || filmA === filmB)
-          ? "Choose two different films."
-          : recommendedLenses.length === 0
-            ? "Motif has not published an evidence-validated lens for this selection yet."
-          : !lens
-            ? mode === "explore_lens"
-              ? "Choose a lens."
-              : "Choose a lens."
-            : "";
+  function getDisabledReason(): string {
+    if (!mode) return "Choose a workflow first.";
+    switch (mode){
+      case "analyze_film": if (!filmA) return "Choose a film to analyze."; break; 
+      case "compare_films": if ((!filmA || !filmB || filmA === filmB)) return "Choose two different films."; break;
+      case "explore_lens": if (!lens) return "Choose a lens."; break;
+    }
+    if (recommendedLenses.length === 0) return "Motif has not published an evidence-validated lens for this selection yet.";
+    return "" // no disable reason found
+  }
+
+  const disabledReason = getDisabledReason();
 
   useEffect(() => {
     if (lens && !recommendedLenses.some((item) => item.lens === lens)) setLens("");
@@ -364,7 +367,7 @@ export default function Home() {
         }
         throw new Error(message);
       }
-      const body = (await response.json()) as AnswerResponse;
+      const body = (await response.json()) as AnalysisResponse;
       if (looksLikeFallbackReading(body)) {
         throw new Error("The backend returned retrieved text instead of a generated reading. Check the Render OpenAI key and redeploy the backend.");
       }
@@ -417,6 +420,12 @@ export default function Home() {
           <button onClick={startOver}>
             <RotateCcw size={17} />
             Start over
+          </button>
+        )}
+        {step !== "mode" && mode == "compare_films" && (
+          <button onClick={() => reselectFilms(setMode, setStep, setFilmA, setFilmB)}>
+            <Undo size={17} />
+            Reselect Films
           </button>
         )}
       </nav>

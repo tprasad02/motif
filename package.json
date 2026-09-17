@@ -1,0 +1,15 @@
+{
+    "name": "motif",
+    "privater": true,
+    "scripts":{
+        "dev":"concurrently --kill-others-on-fail --names Backend,Frontend --prefix-colors blue,green \"pnpm dev:backend\" \"pnpm dev:frontend\"",
+        "dev:backend":"cd ./backend && uvicorn app.main:app --reload --port 8000",
+        "dev:frontend": "pnpm --dir frontend dev -H 127.0.0.1 -p 3000",
+        "comment": "change the port if 3000 is blocked"
+    },
+
+    "devDependencies": {
+        "concurrently": "^9.0.0"
+    }
+
+}
