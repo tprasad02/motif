@@ -119,6 +119,7 @@ class AnalysisResponse(BaseModel):
     coverage_score: float
     coverage_level: str
     refused: bool
+    generation_failed: bool = False
     retrieval_notes: str
     debug_chunks: list[RetrievedChunkResponse] = Field(default_factory=list)
     suggested_pairings: list[dict[str, Any]] = Field(default_factory=list)

@@ -17,6 +17,7 @@ export type AnswerResponse = Omit<
 > & {
   mode: Mode;
   thesis?: string;
+  generation_failed?: boolean;
   sections: Array<{ label?: string; title?: string; body?: string; chunk_ids?: string }>;
   evidence_cards?: Array<{ label?: string; title?: string; body?: string; chunk_ids?: string }>;
   lens_films?: Array<{ rank?: number; slug: string; title: string; year?: number; director?: string; summary?: string }>;

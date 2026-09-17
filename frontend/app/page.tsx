@@ -530,7 +530,7 @@ export default function Home() {
           )}
           {mode !== "explore_lens" && answer.thesis && (
             <div className="thesisBoard">
-              <span>{answer.refused ? "Not enough material" : "Thesis"}</span>
+              <span>{answer.generation_failed ? "Reading unavailable" : answer.refused ? "Not enough material" : "Thesis"}</span>
               <h1>{answer.thesis}</h1>
             </div>
           )}

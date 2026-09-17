@@ -220,6 +220,11 @@ export interface components {
             coverage_level: string;
             /** Refused */
             refused: boolean;
+            /**
+             * Generation Failed
+             * @default false
+             */
+            generation_failed: boolean;
             /** Retrieval Notes */
             retrieval_notes: string;
             /** Debug Chunks */

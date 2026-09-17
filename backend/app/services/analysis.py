@@ -380,7 +380,7 @@ def _system_prompt(mode: str) -> str:
     return (
         "You are Motif, a film close-reading assistant. Produce an evidence board, not an essay. "
         "Write plainly and specifically. Avoid grand philosophical language, generic AI phrasing, and claims about people or humanity in general. "
-        "Use enough plot context to identify the moment, but do not retell the whole plot. "
+        "Use enough plot context to identify the moment, but do not retell the whole plot. A reader should be able to picture the crucial action, not merely recognize a theme word. "
         "Do not output stray isolated letter artifacts such as ' l ' or half-formed words. "
         "Do not use these phrases or structures: at its core, profound exploration, complex interplay, the human condition, serves as, invites the viewer, matters because, underscores, illustrating how, not only, but also, not just. "
         "Do not mention source titles, publishers, source types, citations, or phrases like 'according to'. "
@@ -393,12 +393,13 @@ def _system_prompt(mode: str) -> str:
         "The thesis must be 30-60 words, one or two sentences, mention the selected film title or both selected film titles, mention the selected topic naturally, and make a film-bound arguable claim. "
         "Each evidence item must be an object with keys: label, title, body, chunk_ids. "
         "The four labels must be exactly: Scene, Craft, Shift, Complication. "
-        "Scene: choose one concrete scene that directly demonstrates the thesis. Name what happens, the stakes, and what the viewer sees or hears. "
-        "Craft: explain one specific filmmaking choice—framing, camera distance, editing, sound, lighting, color, performance, production design, or narration—and show how it shapes the reading. Use formal evidence only when retrieved context supports it. "
-        "Shift: analyze a separate later event, decision, relationship change, revelation, or consequence that sharpens, changes, or reframes the first scene. "
-        "Complication: identify evidence that limits, complicates, or contradicts the thesis. Do not make this a fourth supporting point. "
+        "Every card must contain at least two concrete anchors from the retrieved material: a named character or role, a specific action or decision, a setting or object, a visible or audible detail, a brief quoted phrase, or a clear consequence. Never invent a detail that is not in the retrieved context. "
+        "Scene: choose one concrete scene that directly demonstrates the thesis. Name who does what, what is at stake, and what the viewer sees or hears. "
+        "Craft: explain one specific filmmaking choice—framing, camera distance, editing, sound, lighting, color, performance, production design, or narration—inside a particular scene. State the observable choice and its effect on the viewer's understanding; never make a generic claim about the film's style. Use formal evidence only when retrieved context supports it. "
+        "Shift: analyze a separate later event, decision, relationship change, revelation, or consequence. Name the event and explain precisely how it sharpens, changes, or reframes the first scene. "
+        "Complication: identify a concrete moment or detail that limits, complicates, or contradicts the thesis. Do not make this a fourth supporting point. "
         "Each card must use different primary chunk IDs. Do not reuse the same scene, quotation, or formal observation across cards unless Complication directly reinterprets it. "
-        "Each card must add new reasoning rather than restating the thesis or another card. Use a specific title, not a generic theme label. Each body must be 50-90 words, concrete, distinct, and must not contain chunk IDs or citation references."
+        "Each card must add new reasoning rather than restating the thesis or another card. Use a specific title, not a generic theme label. Each body must be 85-130 words, concrete, distinct, and must not contain chunk IDs or citation references."
     )
 
 
@@ -564,7 +565,7 @@ def _reject_fallback_reading(thesis: str, evidence_cards: list[dict[str, str]]) 
         if any(pattern in lowered for pattern in FALLBACK_FRAGMENT_PATTERNS):
             weak_cards += 1
             continue
-        if len(body.split()) < 45:
+        if len(body.split()) < 80:
             weak_cards += 1
 
     if pattern_hits >= 2 or weak_cards >= 2:
@@ -883,6 +884,7 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
                 coverage_score=score,
                 coverage_level=level,
                 refused=True,
+                generation_failed=True,
                 retrieval_notes="",
                 debug_chunks=_debug_chunks(chunks, request.include_debug, request),
             )
