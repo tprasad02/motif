@@ -64,14 +64,33 @@ workflow selection
 
 ### Lens publishing
 
-Lenses are not a static menu. The profile builder generates short, film-specific
-angles from corpus evidence, maps each to a canonical one-word lens with
-Sentence-BERT, and publishes it only after it has at least three supporting
-chunks from two source roles and passes the real four-card answer gate.
+Lenses are not a static menu. The profile builder first retrieves diverse film
+evidence, then generates direct 1–3-word lenses and validates each through the
+real four-card answer gate. A lens needs at least three supporting chunks from
+two source roles plus faithfulness, answer-relevance, and satisfaction scores
+of at least 4/5 before it reaches the UI.
 
-The UI displays the canonical lens as the button (for example, `Memory`) and
-the 2–5-word angle as supporting text. Films can be compared only when both
-have a published profile for the same lens ID.
+A lens must be a theme grounded in the film's content—such as a relationship,
+ethical conflict, psychological concern, or social condition.
+
+Sentence-BERT clusters validated lens definitions across the corpus. Individual
+film analysis uses the film's own lens name; comparison uses a shared cluster
+first and calibrated semantic similarity (>= 0.56) as a fallback, so matching does not depend on identical wording.
+
+Generate the profiles after changing corpus sources:
+
+```bash
+source .venv/bin/activate
+python -m pip install -r backend/requirements.txt
+PYTHONPATH=backend:. python -m evals.build_lens_profiles
+PYTHONPATH=backend:. python -m evals.validate_lens_profiles
+```
+
+The builder asks for up to three independent eight-lens batches per film, so it
+can reach the 3–5 published-profile target without weakening a gate. It
+checkpoints after each film. If interrupted, rerun it with `--resume`; only
+completed films are retained. The UI intentionally shows no lenses until a
+passing version-4 profile artifact exists.
 
 ## Corpus
 

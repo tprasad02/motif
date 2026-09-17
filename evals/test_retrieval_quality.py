@@ -112,7 +112,6 @@ def evaluate_retrieval_case(case: dict, top_k: int) -> dict:
         film_slugs=film_slugs,
         source_types=[],
         limit=top_k,
-        lens_tags=[lens],
     )
     film_counts = Counter(chunk.film_slug for chunk in chunks)
     source_roles = {chunk.source_role for chunk in chunks if chunk.source_role}

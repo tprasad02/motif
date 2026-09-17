@@ -1,5 +1,6 @@
 #query files
 *.sql
+!infra/postgres/*.sql
 
 .env
 .DS_Store

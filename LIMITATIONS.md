@@ -27,9 +27,11 @@ Source availability also varies by film. A film with strong screenplay access, d
 
 ## Lens Limits
 
-The primary lens vocabulary is controlled so the app can be tested and the UI stays coherent. This means Motif will not expose every possible lens a user might imagine.
+The generated lens set is limited by the evidence and quality gates. This means
+Motif will not expose every possible lens a user might imagine.
 
-Secondary angles are discovered from corpus text and filtered back to supported primary lenses, but they are still limited by the terms and arguments present in the source material.
+Direct lens names and their definitions remain limited by the terms and
+arguments present in the source material.
 
 ## Retrieval Limits
 

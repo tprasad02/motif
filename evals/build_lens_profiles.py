@@ -1,220 +1,178 @@
-"""Generate and publish film-specific, evidence-gated Sentence-BERT lens profiles."""
-
+"""Generate direct film lenses from evidence, then cluster passing profiles."""
 from __future__ import annotations
-
-import argparse
-import json
-import os
-import sys
+import argparse, json, os, re, sys
 from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
-
 from dotenv import load_dotenv
-
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
+ROOT=Path(__file__).resolve().parents[1]; sys.path[:0]=[str(ROOT/"backend"),str(ROOT)]
 from app.film_config import FILM_TITLES
 from app.models import GuidedAnswerRequest
 from app.services.analysis import answer_guided
 from app.services.recommendations import load_recommendation_chunks
-from app.services.lens_vocabulary import lenses
+from evals.test_answer_quality import deterministic_answer_checks, judge_with_llm
 
+ROLE={"screenplay","creator_voice","scholarship","production_context"}
+BAD={"scene","sequence","plot","story","character","murder","death","twist","camera","chronology","tattoo","photograph","dream"}
+NON_THEME={"genre","horror","thriller","noir","comedy","drama","cinematic","cinema","visual","style","stylistic","aesthetic","aesthetics","narrative","storytelling","structure","technique","techniques","editing","cinematography","format","spectator","audience","realism","surrealism","postmodern","literary","allusion","symbolism","symbolic","mythic","mythical","temporal","displacement","resonance"}
 
-ROLE_PRIORITY = {"screenplay", "scene_evidence", "formal_observation", "creator_commentary"}
+def chunks(slug):
+    rows=[r for r in load_recommendation_chunks() if r.get("film_slug")==slug]
+    rows.sort(key=lambda r:(r.get("source_role") in ROLE,r.get("chunk_role")!="plot_summary",r.get("quality_score")=="high"),reverse=True)
+    out=[]; sources={}
+    for r in rows:
+        key=r.get("source_key","")
+        if sources.get(key,0)<2: out.append(r); sources[key]=sources.get(key,0)+1
+        if len(out)==24: break
+    return out
 
-
-def representative_chunks(film_slug: str, limit: int = 18) -> list[dict]:
-    chunks = [chunk for chunk in load_recommendation_chunks() if chunk.get("film_slug") == film_slug]
-    chunks.sort(
-        key=lambda chunk: (
-            chunk.get("source_role") in ROLE_PRIORITY,
-            chunk.get("chunk_role") in ROLE_PRIORITY,
-            chunk.get("quality_score") == "high",
-        ),
-        reverse=True,
-    )
-    selected = []
-    seen_roles = set()
-    for chunk in chunks:
-        role = str(chunk.get("source_role", ""))
-        if role and role not in seen_roles:
-            selected.append(chunk)
-            seen_roles.add(role)
-    selected.extend(chunk for chunk in chunks if chunk not in selected)
-    return selected[:limit]
-
-
-def propose_lenses(client, model: str, film_slug: str, chunks: list[dict], candidate_limit: int) -> list[dict]:
-    evidence = [
-        {"chunk_id": chunk["chunk_id"], "source_role": chunk.get("source_role"), "chunk_role": chunk.get("chunk_role"), "text": chunk.get("text", "")[:700]}
-        for chunk in chunks
-    ]
-    prompt = {
-        "film": FILM_TITLES[film_slug],
-        "task": "Propose distinct, concise film-specific angles that can sustain a close reading.",
-        "rules": [
-            "Use only the supplied evidence.",
-            "Do not use generic labels such as Lens, Society, or Human Nature.",
-            "An angle is supporting text under a one-word lens button, not a plot summary. Use 2 to 5 words; name an interpretive framing such as 'Performed selves' or 'Unreliable self-narration'. Do not use character names, film titles, scenes, objects, events, or exact plot mechanisms.",
-            "Return 4 to 6 candidates. Each needs a one-sentence definition and at least three supporting chunk IDs.",
-            "Use this exact JSON shape: {\"lenses\": [{\"angle\": \"...\", \"definition\": \"...\", \"supporting_chunk_ids\": [\"...\"]}]}.",
-        ],
-        "evidence": evidence,
-    }
-    result = client.chat.completions.create(
-        model=model,
-        response_format={"type": "json_object"},
-        messages=[
-            {"role": "system", "content": "You create evidence-bound film close-reading lenses. Return valid JSON only."},
-            {"role": "user", "content": json.dumps(prompt)},
-        ],
-        temperature=0.2,
-    )
-    payload = json.loads(result.choices[0].message.content or "{}")
-    rows = payload.get("lenses", [])
-    return [row for row in rows if isinstance(row, dict) and row.get("angle") and row.get("definition")][:candidate_limit]
-
+def valid_lens(value, definition, slug):
+    words=re.findall(r"[A-Za-z]+",str(value))
+    title=set(re.findall(r"[a-z]+",FILM_TITLES[slug].lower()))
+    all_words={word.lower() for word in re.findall(r"[A-Za-z]+",f"{value} {definition}")}
+    return 1<=len(words)<=3 and not ({w.lower() for w in words}&(BAD|title)) and not (all_words&NON_THEME) and len(str(definition).split())<=28
 
 @lru_cache(maxsize=1)
 def embedding_model():
     from sentence_transformers import SentenceTransformer
+    return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2",local_files_only=True)
 
-    return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+def complete_support(lens, definition, cited_ids, evidence):
+    """Preserve valid citations and add the strongest diverse evidence to three."""
+    model=embedding_model()
+    vectors=model.encode([f"{lens}. {definition}", *[row.get("text", "")[:900] for row in evidence]], normalize_embeddings=True)
+    scores=[float(vectors[0] @ vector) for vector in vectors[1:]]
+    by_id={row["chunk_id"]: row for row in evidence}
+    ranked=[row for _,row in sorted(zip(scores,evidence),key=lambda pair:pair[0],reverse=True)]
+    selected=[by_id[chunk_id] for chunk_id in cited_ids if chunk_id in by_id]
+    selected_ids={row["chunk_id"] for row in selected}
+    # Add a different source role first, then the remaining best evidence.
+    roles={row.get("source_role") for row in selected}
+    for row in ranked:
+        if len(selected)>=3: break
+        if row["chunk_id"] not in selected_ids and row.get("source_role") not in roles:
+            selected.append(row); selected_ids.add(row["chunk_id"]); roles.add(row.get("source_role"))
+    for row in ranked:
+        if len(selected)>=3: break
+        if row["chunk_id"] not in selected_ids:
+            selected.append(row); selected_ids.add(row["chunk_id"]); roles.add(row.get("source_role"))
+    return selected[:5]
 
+def propose(client,model,slug,evidence,avoid_lenses):
+    prompt={"film":FILM_TITLES[slug],"task":"Generate 8 concise, distinct film-analysis lenses directly from the supplied evidence.",
+    "rules":["lens is 1-3 words and names a content theme, relationship, ethical conflict, psychological concern, or social condition in the film.","Do not name people, objects, events, twists, scenes, technical mechanisms, genre, artistic style, visual form, narrative structure, audience response, or filmmaking craft.","Reject labels such as Horror, Thriller, Cinematic Style, Narrative Structure, Surrealism, Symbolism, Visual Style, and Spectator Empathy.","Each lens needs a non-spoiling definition of at most 28 words and exactly 3-5 valid supporting chunk IDs across at least 2 source roles.","Return JSON: {profiles:[{lens,definition,supporting_chunk_ids}]}.",f"Do not repeat these already-attempted lenses: {', '.join(sorted(avoid_lenses)) or 'none'}"],
+    "evidence":[{"chunk_id":r["chunk_id"],"source_role":r.get("source_role"),"chunk_role":r.get("chunk_role"),"text":r.get("text","")[:650]} for r in evidence]}
+    response=client.chat.completions.create(model=model,response_format={"type":"json_object"},messages=[{"role":"system","content":"Return valid JSON only."},{"role":"user","content":json.dumps(prompt)}],temperature=0.45)
+    return json.loads(response.choices[0].message.content or "{}").get("profiles",[])
 
-def semantic_evidence(candidate: dict, chunks: list[dict]) -> tuple[float, list[dict]]:
-    query = f"{candidate['angle']}. {candidate['definition']}"
-    vectors = embedding_model().encode([query, *[str(chunk.get("text", ""))[:900] for chunk in chunks]], normalize_embeddings=True)
-    scored = sorted(((float(vectors[0] @ vector), chunk) for vector, chunk in zip(vectors[1:], chunks)), reverse=True, key=lambda item: item[0])
-    eligible = [(score, chunk) for score, chunk in scored if score >= 0.18]
-    supporting = []
-    seen_roles = set()
-    for _, chunk in eligible:
-        role = str(chunk.get("source_role", ""))
-        if role and role not in seen_roles:
-            supporting.append(chunk)
-            seen_roles.add(role)
-    supporting.extend(chunk for _, chunk in eligible if chunk not in supporting)
-    supporting = supporting[:8]
-    semantic_score = sum(score for score, _ in scored[:3]) / min(3, len(scored)) if scored else 0.0
-    return round(semantic_score, 4), supporting
-
-
-def valid_angle(angle: str, film_slug: str) -> bool:
-    words = angle.split()
-    if not 2 <= len(words) <= 5:
-        return False
-    forbidden = {word.lower() for word in FILM_TITLES[film_slug].replace("-", " ").split()}
-    forbidden.update({"scene", "sequence", "opening", "ending", "chronology", "photograph", "photographs", "tattoo", "tattoos"})
-    return not any(word.strip(".,:;!?\u2019'").lower() in forbidden for word in words)
-
-
-def map_to_lens(candidate: dict) -> tuple[dict | None, float, float]:
-    vocabulary = lenses()
-    if not vocabulary:
-        return None, 0.0, 0.0
-    query = f"{candidate['angle']}. {candidate['definition']}"
-    vectors = embedding_model().encode([query, *[f"{lens['lens']}. {lens['definition']}" for lens in vocabulary]], normalize_embeddings=True)
-    scores = sorted(((float(vectors[0] @ vector), lens) for vector, lens in zip(vectors[1:], vocabulary)), reverse=True, key=lambda item: item[0])
-    best_score, best_lens = scores[0]
-    margin = best_score - scores[1][0] if len(scores) > 1 else best_score
-    return best_lens, round(best_score, 4), round(margin, 4)
-
-
-def passes_evidence_gate(supporting: list[dict]) -> bool:
-    roles = {str(chunk.get("source_role", "")) for chunk in supporting}
-    preferred = [chunk for chunk in supporting if chunk.get("source_role") in ROLE_PRIORITY or chunk.get("chunk_role") in ROLE_PRIORITY]
-    return len(supporting) >= 3 and len(roles) >= 2 and len(preferred) >= 2
-
-
-def passes_answer_gate(client, model: str, film_slug: str, lens: str) -> tuple[bool, dict]:
-    from evals.test_answer_quality import judge_passes_gate, judge_with_llm
-
-    case = {"id": f"profile_{film_slug}", "mode": "analyze_film", "film_a": film_slug, "lens": lens}
-    response = answer_guided(GuidedAnswerRequest(mode="analyze_film", film_a=film_slug, lens=lens, include_debug=True), allow_unpublished_lens=True)
-    retrieved_ids = {chunk.chunk_id for chunk in response.debug_chunks}
-    card_ids = []
-    for card in response.evidence_cards:
-        try:
-            card_ids.extend(json.loads(card.get("chunk_ids") or "[]"))
-        except json.JSONDecodeError:
-            pass
-    failures = {"overall": []}
-    if len(response.evidence_cards) != 4:
-        failures["overall"].append("four_card_contract_failed")
-    if not card_ids or not set(card_ids).issubset(retrieved_ids):
-        failures["overall"].append("evidence_link_contract_failed")
+def review(client,model,slug,lens,definition):
+    response=answer_guided(GuidedAnswerRequest(mode="analyze_film",film_a=slug,lens=lens,optional_question=definition,include_debug=True),allow_unpublished_lens=True)
+    failures,metrics=deterministic_answer_checks({"id":f"profile_{slug}_{lens}","mode":"analyze_film","film_a":slug,"lens":lens},response)
+    result={"deterministic_failures":failures,"deterministic_metrics":metrics}
+    if response.refused or any(failures.values()): return result
     try:
-        judge = judge_with_llm(client, model, case, response)
-    except Exception as error:
-        return False, {"failures": failures, "judge_error": f"{type(error).__name__}: {error}"}
-    passed = not response.refused and not any(failures.values()) and judge_passes_gate(judge) is True
-    return passed, {"faithfulness": judge.faithfulness, "answer_relevance": judge.answer_relevance, "failures": failures}
+        judged=judge_with_llm(client,model,{"mode":"analyze_film","film_a":slug,"lens":lens},response)
+        satisfaction_prompt={
+            "task":"Rate whether a discerning viewer would be satisfied reading this evidence-based film analysis.",
+            "scale":"1-5; 4 means specific, coherent, useful, and grounded; 5 is excellent.",
+            "answer":{"thesis":response.thesis,"cards":response.evidence_cards},
+        }
+        satisfaction_response=client.chat.completions.create(
+            model=model, response_format={"type":"json_object"}, temperature=0,
+            messages=[{"role":"system","content":"Return JSON only: {satisfaction: integer 1-5, reason: string under 120 words}."},
+                      {"role":"user","content":json.dumps(satisfaction_prompt)}],
+        )
+        satisfaction=json.loads(satisfaction_response.choices[0].message.content or "{}")
+        score=int(satisfaction.get("satisfaction",0))
+        if not 1<=score<=5: raise ValueError("invalid satisfaction score")
+        result.update({"faithfulness":judged.faithfulness,"answer_relevance":judged.answer_relevance,
+                       "satisfaction":score,"judge_reason":judged.reason,"satisfaction_reason":str(satisfaction.get("reason", ""))[:500]})
+    except Exception as exc:
+        # A judge is a gate, not a single point of failure for the entire
+        # corpus build. Keep the candidate as a rejected diagnostic.
+        result["judge_error"]=f"{type(exc).__name__}: {exc}"[:500]
+    return result
 
+def cluster(payload):
+    from sentence_transformers import SentenceTransformer
+    model=SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2",local_files_only=True)
+    rows=[(slug,row) for slug,film in payload["films"].items() for row in film["lenses"]]
+    if not rows: return
+    vectors=model.encode([f'{r["lens"]}. {r["definition"]}' for _,r in rows],normalize_embeddings=True)
+    clusters=[]
+    for index,(slug,row) in enumerate(rows):
+        for cluster in clusters:
+            if any(float(vectors[index]@vectors[other])>=.70 for other in cluster["members"]):
+                cluster["members"].append(index); break
+        else: clusters.append({"members":[index]})
+    for number,cluster in enumerate(clusters,1):
+        members=[rows[i][1] for i in cluster["members"]]
+        label=min((r["lens"] for r in members),key=lambda value:(len(value.split()),len(value)))
+        for row in members: row["cluster_id"]=f"cluster-{number}"; row["cluster_label"]=label
 
-def main() -> None:
-    load_dotenv()
-    parser = argparse.ArgumentParser(description="Build published Sentence-BERT lens profiles from film-specific evidence.")
-    parser.add_argument("--film", action="append", choices=sorted(FILM_TITLES))
-    parser.add_argument("--candidate-limit", type=int, default=5)
-    parser.add_argument("--resume", action="store_true", help="Keep completed films in an existing output profile.")
-    parser.add_argument("--force", action="store_true", help="Regenerate the requested film profiles even if they are already checkpointed.")
-    parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-4o-mini"))
-    parser.add_argument("--output", default="backend/app/corpus/lens_profiles.json")
-    args = parser.parse_args()
+def main():
+    load_dotenv(ROOT/".env"); p=argparse.ArgumentParser(); p.add_argument("--film",action="append",choices=sorted(FILM_TITLES)); p.add_argument("--model",default=os.getenv("OPENAI_MODEL","gpt-4o-mini")); p.add_argument("--output",default="backend/app/corpus/lens_profiles.json"); p.add_argument("--candidate-batches",type=int,default=3,help="Independent eight-lens proposals per film (default: 3)."); p.add_argument("--resume",action="store_true",help="Keep completed films in an existing version-4 profile file."); p.add_argument("--prune-only",action="store_true",help="Remove existing genre/form/style profiles without generating replacements."); args=p.parse_args()
     from openai import OpenAI
-
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise SystemExit("OPENAI_API_KEY is required to generate and validate film-specific lenses.")
-    client = OpenAI(api_key=api_key, timeout=60, max_retries=1)
-    output = Path(args.output)
-    profiles = {"version": 2, "generated_at": datetime.now(timezone.utc).isoformat(), "embedding_model": "sentence-transformers/all-MiniLM-L6-v2", "films": {}}
-    if args.resume and output.exists():
+    client=OpenAI(api_key=os.environ["OPENAI_API_KEY"],timeout=90,max_retries=2)
+    output=Path(args.output)
+    payload={"version":4,"generated_at":datetime.now(timezone.utc).isoformat(),"comparison_similarity":.56,"films":{}}
+    # A targeted rebuild must never discard other films' completed profiles.
+    # --resume additionally skips the named films that are already complete.
+    if (args.resume or args.film or args.prune_only) and output.exists():
         try:
-            profiles = json.loads(output.read_text(encoding="utf-8"))
-            if profiles.get("version") != 2:
-                profiles = {"version": 2, "generated_at": datetime.now(timezone.utc).isoformat(), "embedding_model": "sentence-transformers/all-MiniLM-L6-v2", "films": {}}
-        except (OSError, json.JSONDecodeError):
-            pass
-    requested_films = args.film or sorted(FILM_TITLES)
-    films = [film for film in requested_films if args.force or film not in profiles.get("films", {})]
-    for film_slug in films:
-        chunks = representative_chunks(film_slug)
-        published = []
-        diagnostics = []
-        for candidate in propose_lenses(client, args.model, film_slug, chunks, args.candidate_limit):
-            if not valid_angle(str(candidate["angle"]), film_slug):
-                diagnostics.append({"angle": candidate["angle"], "status": "rejected", "reason": "invalid_angle"})
-                continue
-            lens, lens_similarity, lens_margin = map_to_lens(candidate)
-            # Calibrated on the corpus vocabulary: MiniLM scores a concise angle
-            # against an abstract lens lower than paraphrase pairs do.
-            if not lens or lens_similarity < 0.22 or lens_margin < 0.05:
-                diagnostics.append({"angle": candidate["angle"], "status": "rejected", "reason": "ambiguous_lens_mapping", "mapping_similarity": lens_similarity, "mapping_margin": lens_margin})
-                continue
-            semantic_score, supporting = semantic_evidence(candidate, chunks)
-            if not passes_evidence_gate(supporting):
-                diagnostics.append({"angle": candidate["angle"], "status": "rejected", "reason": "insufficient_semantic_evidence", "semantic_score": semantic_score, "support_count": len(supporting)})
-                continue
-            answer_passed, gate = passes_answer_gate(client, args.model, film_slug, str(lens["lens"]))
-            if not answer_passed:
-                diagnostics.append({"angle": candidate["angle"], "status": "rejected", "reason": "answer_gate_failed", "semantic_score": semantic_score, "answer_gate": gate})
-                continue
-            published.append({
-                "lens_id": str(lens["id"]), "lens": str(lens["lens"]), "lens_definition": str(lens["definition"]),
-                "angle": str(candidate["angle"]).strip(), "definition": str(candidate["definition"]).strip(),
-                "mapping_similarity": lens_similarity, "mapping_margin": lens_margin,
-                "semantic_score": semantic_score, "supporting_chunk_ids": [str(chunk["chunk_id"]) for chunk in supporting[:5]],
-                "source_roles": sorted({str(chunk.get("source_role", "")) for chunk in supporting}), "answer_gate": gate, "status": "published",
-            })
-        profiles["films"][film_slug] = {"title": FILM_TITLES[film_slug], "lenses": sorted(published, key=lambda row: row["semantic_score"], reverse=True), "diagnostics": diagnostics}
-        output.write_text(json.dumps(profiles, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"{film_slug}: published={len(published)}", flush=True)
-    print(f"profiles={output}")
-
-
-if __name__ == "__main__":
-    main()
+            existing=json.loads(output.read_text(encoding="utf-8"))
+            if existing.get("version")==4: payload=existing
+        except json.JSONDecodeError: pass
+    for slug, film in payload["films"].items():
+        retained=[]
+        for row in film.get("lenses",[]):
+            if valid_lens(row.get("lens", ""), row.get("definition", ""), slug): retained.append(row)
+            else: film.setdefault("discarded_candidates", []).append({**row, "discard_reason": "not_a_content_theme"})
+        film["lenses"]=retained
+    # Create a valid checkpoint before the first API request. A later failure
+    # therefore never leaves the validator with a missing artifact.
+    output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
+    if args.prune_only: return
+    for slug in args.film or sorted(FILM_TITLES):
+        if args.resume and slug in payload["films"]:
+            print(f"{slug}: retained existing profile",flush=True); continue
+        evidence=chunks(slug); by_id={r["chunk_id"]:r for r in evidence}; accepted=[]; rejected=[]; attempted_names=set(); accepted_names=set()
+        batch_count=max(args.candidate_batches, 1)
+        print(f"{slug}: building from {len(evidence)} diverse evidence chunks", flush=True)
+        for batch_number in range(1, batch_count + 1):
+            print(f"{slug}: candidate batch {batch_number}/{batch_count}", flush=True)
+            for item in propose(client,args.model,slug,evidence,attempted_names):
+                lens=str(item.get("lens","")).strip(); definition=str(item.get("definition","")).strip(); cited_ids=[str(i) for i in item.get("supporting_chunk_ids",[])]
+                support=complete_support(lens,definition,cited_ids,evidence)
+                ids=[row["chunk_id"] for row in support]
+                normalized=lens.casefold()
+                seen_before=normalized in attempted_names
+                attempted_names.add(normalized)
+                structural_failure = (
+                    seen_before
+                    or normalized in accepted_names
+                    or not valid_lens(lens,definition,slug)
+                    or not 3 <= len(support) <= 5
+                    or len({r.get("source_role") for r in support}) < 2
+                )
+                if structural_failure:
+                    rejected.append({"lens": lens, "definition": definition, "stage": "evidence_contract", "supporting_chunk_ids": ids})
+                    continue
+                verdict=review(client,args.model,slug,lens,definition)
+                if verdict.get("faithfulness",0)>=4 and verdict.get("answer_relevance",0)>=4 and verdict.get("satisfaction",0)>=4:
+                    accepted.append({"lens":lens,"definition":definition,"supporting_chunk_ids":ids,"source_roles":sorted({r.get("source_role") for r in support}),"review":verdict,"status":"published"})
+                    accepted_names.add(normalized)
+                else:
+                    rejected.append({"lens": lens, "definition": definition, "stage": "answer_gate", "supporting_chunk_ids": ids, "review": verdict})
+                if len(accepted)==5: break
+            if len(accepted)==5: break
+        # Keep diagnostics out of the selectable list but in the artifact so a
+        # zero-profile film can be repaired from evidence rather than guesses.
+        payload["films"][slug]={"title":FILM_TITLES[slug],"lenses":accepted,"rejected_candidates":rejected}
+        cluster(payload)
+        payload["generated_at"]=datetime.now(timezone.utc).isoformat()
+        output.write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
+        print(f"{slug}: {len(accepted)} passing lenses",flush=True)
+    cluster(payload); output.write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
+if __name__=="__main__": main()

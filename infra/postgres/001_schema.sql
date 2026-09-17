@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS films (
   director TEXT,
   country TEXT,
   synopsis TEXT,
-  themes TEXT[] NOT NULL DEFAULT '{}',
+  lenses TEXT[] NOT NULL DEFAULT '{}',
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -450,7 +450,7 @@ CREATE INDEX IF NOT EXISTS idx_chunks_source_id ON chunks(source_id);
 CREATE INDEX IF NOT EXISTS idx_chunks_text_fts ON chunks USING GIN (to_tsvector('english', text));
 CREATE INDEX IF NOT EXISTS idx_films_director ON films(director);
 CREATE INDEX IF NOT EXISTS idx_films_release_year ON films(release_year);
-CREATE INDEX IF NOT EXISTS idx_films_themes ON films USING GIN (themes);
+CREATE INDEX IF NOT EXISTS idx_films_lenses ON films USING GIN (lenses);
 CREATE INDEX IF NOT EXISTS idx_sources_author ON sources(author);
 CREATE INDEX IF NOT EXISTS idx_sources_quality ON sources(quality_score);
 CREATE INDEX IF NOT EXISTS idx_sources_role ON sources(source_role);

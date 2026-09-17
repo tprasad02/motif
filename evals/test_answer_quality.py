@@ -416,7 +416,9 @@ def judge_with_llm(client, model: str, case: dict, response) -> AnswerJudgeScore
             {"role": "user", "content": json.dumps(faithfulness_payload, ensure_ascii=False)},
         ],
         text_format=FaithfulnessJudgeScore,
-        max_output_tokens=500,
+        # A four-card answer plus rationale can exceed 800 tokens before the
+        # structured response is closed. Leave enough room for valid JSON.
+        max_output_tokens=1200,
     ).output_parsed
     relevance = client.responses.parse(
         model=model,
@@ -425,7 +427,7 @@ def judge_with_llm(client, model: str, case: dict, response) -> AnswerJudgeScore
             {"role": "user", "content": json.dumps({"case": case, "answer": public_answer}, ensure_ascii=False)},
         ],
         text_format=RelevanceJudgeScore,
-        max_output_tokens=500,
+        max_output_tokens=1200,
     ).output_parsed
     if faithfulness is None or relevance is None:
         raise RuntimeError("OpenAI returned no parsed judge result.")

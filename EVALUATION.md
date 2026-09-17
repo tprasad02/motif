@@ -184,13 +184,34 @@ Lens mode is evaluated separately because it returns ranked film cards rather th
 ## Lens-profile publication gate
 
 The selectable lens list is itself evaluated before it reaches the UI. The
-profile builder proposes a 2–5-word angle from film-specific corpus material,
-uses Sentence-BERT to map its definition to a canonical one-word lens, then
-requires at least three supporting chunks from at least two source roles. It
-also runs the actual retrieval and four-card answer pipeline; publication
-requires a complete card set, valid card-to-chunk links, faithfulness >= 4/5,
-and answer relevance >= 4/5. The canonical lens is the comparison key; the
-angle is explanatory text only.
+profile builder retrieves diverse film-specific evidence, generates direct
+1–3-word lenses from it, and requires at least three supporting chunks from at
+least two source roles. It also runs the actual retrieval and four-card answer
+pipeline; publication requires a complete card set, valid card-to-chunk links,
+faithfulness >= 4/5, answer relevance >= 4/5, and satisfaction >= 4/5.
+Sentence-BERT clusters validated lens definitions after generation. Those
+clusters are the primary comparison key, with calibrated semantic similarity
+>= 0.56 as a fallback for related profiles that land in separate clusters. The
+MiniLM threshold is set below 0.70 because valid concept pairs with
+substantially different wording otherwise fall just below that cutoff.
+
+The profile validator requires 3–5 passing lenses for each film's **Analyze
+Film** pathway and at least two BERT-backed comparison partners per film.
+Comparison choices are still discovered dynamically only when a user selects
+two films; raw label overlap never qualifies a match.
+
+Run the publication gate with:
+
+```bash
+PYTHONPATH=backend:. python -m evals.build_lens_profiles
+PYTHONPATH=backend:. python -m evals.validate_lens_profiles
+```
+
+`build_lens_profiles` checkpoints after every film. Use `--resume` after an
+interruption; malformed or truncated judge output is recorded as a rejected
+candidate and does not abort the corpus build. Every rejected candidate is
+retained under `rejected_candidates` in the profile artifact with its failure
+stage and gate diagnostics.
 
 ## Aggregate Metrics
 
@@ -215,21 +236,6 @@ evals/final_metrics/evaluation_manifest.json
 
 `run_evaluation.py` runs a representative chunk-quality sample, corpus coverage, the benchmark and supported-pair retrieval guardrails, judgment-backed ranking, answer evaluation, and aggregation in one run. It stops at a failed layer, so an attractive answer score cannot conceal missing corpus coverage or unassessed retrieval quality.
 
-| Metric | Value |
-| --- | ---: |
-| Films | 18 |
-| Documents | 140 |
-| Chunks | 2,427 |
-| Benchmark cases | 50 (pre-expansion) |
-| Retrieval trials | 150 (pre-expansion) |
-| Retrieval guardrails | 100.0% (pre-expansion) |
-| Judgment-backed ranking metrics | Not yet assessed |
-| Answer checked cases | 50 |
-| Answer validity / quality | Legacy — regenerate |
-| LLM-judged answer cases | 41 |
-| Faithfulness / answer relevance | Legacy — regenerate |
-| Average response latency | 12.486s |
-
 Latency is measured on a bounded sample of 5 benchmark cases x 3 OpenAI-backed trials. The full 100-case x 3 latency run is supported but intentionally not used for routine checks because it requires 300 paid generations.
 
 ## Running and Diagnosing the Suite
@@ -250,8 +256,7 @@ Run individual layers only when diagnosing a failure:
 python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
 python -m evals.chunk_eval backend/app/corpus/chunks.jsonl --limit 200 --model gpt-4.1-mini
 python -m evals.test_retrieval_quality
-python -m evals.test_supported_retrieval_sweep --scope primary
-python -m evals.test_supported_retrieval_sweep --scope secondary
+python -m evals.test_supported_retrieval_sweep
 python -m evals.rag_metrics
 python -m evals.test_answer_quality --model gpt-4.1-mini
 ```
