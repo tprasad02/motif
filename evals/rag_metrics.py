@@ -87,7 +87,7 @@ def retrieve_for_case(case: dict[str, Any], top_k: int) -> list[str]:
         film_slugs = [case["film_a"], case["film_b"]]
     return [
         chunk.chunk_id
-        for chunk in retrieve_chunks(query_for_case(case), film_slugs, [], top_k, lens_tags=[case["lens"]])
+        for chunk in retrieve_chunks(query_for_case(case), film_slugs, [], top_k)
     ]
 
 

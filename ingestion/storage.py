@@ -9,27 +9,6 @@ from ingestion.config import DATABASE_URL, MOTIF_COLLECTION, WEAVIATE_URL
 from ingestion.weaviate_rest import batch_objects, delete_schema, ensure_schema
 
 
-FILM_LENSES = {
-    "shawshank-redemption": ["Freedom", "Hope", "Institutional Control", "Friendship", "Justice"],
-    "fight-club": ["Identity", "Masculinity", "Consumerism", "Violence", "Doubles"],
-    "one-flew-over-the-cuckoos-nest": ["Control", "Institutional Power", "Freedom", "Rebellion", "Madness"],
-    "se7en": ["Justice", "Violence", "Moral Decay", "Obsession", "Guilt"],
-    "silence-of-the-lambs": ["Power", "Fear", "Identity", "Gender", "Control"],
-    "the-prestige": ["Obsession", "Performance", "Sacrifice", "Doubles", "Truth"],
-    "memento": ["Memory", "Truth", "Identity", "Guilt", "Self-Deception"],
-    "taxi-driver": ["Isolation", "Masculinity", "Violence", "Alienation", "Moral Delusion"],
-    "shutter-island": ["Reality vs Illusion", "Trauma", "Guilt", "Denial", "Madness"],
-    "black-swan": ["Performance", "Identity", "Obsession", "Control", "Doubles"],
-    "sixth-sense": ["Grief", "Perception", "Denial", "Childhood", "Revelation"],
-    "prisoners": ["Justice", "Faith", "Violence", "Obsession", "Moral Ambiguity"],
-    "gone-girl": ["Performance", "Marriage", "Media", "Control", "Identity"],
-    "requiem-for-a-dream": ["Addiction", "Obsession", "Desire", "Decay", "Control"],
-    "donnie-darko": ["Time", "Fate", "Reality vs Illusion", "Alienation", "Madness"],
-    "the-machinist": ["Guilt", "Insomnia", "Body", "Madness", "Self-Punishment"],
-    "mulholland-drive": ["Dream Logic", "Identity", "Desire", "Hollywood", "Reality vs Illusion"],
-    "truman-show": ["Surveillance", "Freedom", "Reality vs Illusion", "Control", "Performance"],
-}
-
 HIGH_QUALITY_PUBLISHERS = {
     "afi.com",
     "catalog.afi.com",
@@ -101,13 +80,6 @@ def _infer_quality(source_type: str, publisher: str, title: str) -> str:
     return "medium"
 
 
-def _lens_tags_for_text(film_slug: str, text: str) -> list[str]:
-    film_lenses = FILM_LENSES.get(film_slug, [])
-    lowered = text.lower()
-    tags = [lens for lens in film_lenses if lens.lower() in lowered]
-    return tags or film_lenses[:3]
-
-
 def load_films(seed_films_path: str = "data/seed_films.csv") -> None:
     if not Path(seed_films_path).exists():
         return
@@ -115,20 +87,20 @@ def load_films(seed_films_path: str = "data/seed_films.csv") -> None:
         with conn.cursor() as cur:
             with open(seed_films_path, newline="", encoding="utf-8") as handle:
                 for row in csv.DictReader(handle):
-                    themes = [theme.strip() for theme in row["themes"].split(";") if theme.strip()]
+                    lenses = [lens.strip() for lens in row["lenses"].split(";") if lens.strip()]
                     cur.execute(
                         """
-                        INSERT INTO films (slug, title, release_year, director, country, themes)
+                        INSERT INTO films (slug, title, release_year, director, country, lenses)
                         VALUES (%s, %s, %s, %s, %s, %s)
                         ON CONFLICT (slug) DO UPDATE SET
                             title = EXCLUDED.title,
                             release_year = EXCLUDED.release_year,
                             director = EXCLUDED.director,
                             country = EXCLUDED.country,
-                            themes = EXCLUDED.themes,
+                            lenses = EXCLUDED.lenses,
                             updated_at = now()
                         """,
-                        (row["slug"], row["title"], int(row["release_year"]), row["director"], row["country"], themes),
+                        (row["slug"], row["title"], int(row["release_year"]), row["director"], row["country"], lenses),
                     )
             conn.commit()
 
@@ -145,11 +117,8 @@ def load_sources(sources_path: str) -> None:
                         row["source_type"], row.get("publisher", ""), row.get("title", "")
                     )
                     source_role = row.get("source_role") or _infer_source_role(row["source_type"])
-                    lens_tags = row.get("lens_tags")
-                    if lens_tags:
-                        parsed_lenses = [lens.strip() for lens in lens_tags.split(";") if lens.strip()]
-                    else:
-                        parsed_lenses = FILM_LENSES.get(row["film_slug"], [])[:3]
+                    # Published lens profiles supply retrieval vocabulary at query time.
+                    parsed_lenses: list[str] = []
                     cur.execute(
                         """
                         INSERT INTO sources (
@@ -240,7 +209,7 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
             )
             document_id = cur.fetchone()[0]
             for chunk, (_, model) in zip(chunks, embeddings):
-                lens_tags = _lens_tags_for_text(film_slug, chunk.text)
+                lens_tags: list[str] = []
                 cur.execute(
                     """
                     INSERT INTO chunks (
@@ -282,7 +251,7 @@ def store_document_and_chunks(source_key: str, raw_text: str, cleaned_text: str,
                     "title": title,
                     "quality_score": quality_score,
                     "source_role": source_role,
-                    "lens_tags": _lens_tags_for_text(film_slug, chunk.text),
+                    "lens_tags": [],
                     "section_title": chunk.section_title,
                     "chunk_role": chunk.chunk_role,
                 },
