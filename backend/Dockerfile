@@ -16,4 +16,8 @@ RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTr
 
 COPY . /app/backend
 
+# Render runs without a vector database. Precompute the committed corpus once
+# in the image so the first reader request does not have to embed it.
+RUN PYTHONPATH=/app/backend python -c "from app.services.retrieval import precompute_file_chunk_vectors; precompute_file_chunk_vectors()"
+
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

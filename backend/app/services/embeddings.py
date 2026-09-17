@@ -25,4 +25,4 @@ def local_embeddings(texts: list[str]) -> list[list[float]]:
     """
     if not texts:
         return []
-    return _model().encode(texts, normalize_embeddings=True).tolist()
+    return _model().encode(texts, normalize_embeddings=True, batch_size=64).tolist()

@@ -10,9 +10,11 @@ import psycopg
 from app.film_config import expand_lens_terms
 from app.core.config import settings
 from app.db.postgres import ensure_runtime_schema
-from app.services.embeddings import local_embedding
+from app.services.embeddings import local_embedding, local_embeddings
 
 _file_chunks_cache: list["RetrievedChunk"] | None = None
+_file_chunk_vectors_cache: list[list[float]] | None = None
+FILE_EMBEDDINGS_PATH = Path(__file__).resolve().parents[1] / "corpus" / "chunk_embeddings.json"
 
 
 @dataclass
@@ -518,6 +520,27 @@ def _load_file_chunks() -> list[RetrievedChunk]:
     return chunks
 
 
+def _file_chunk_vectors() -> list[list[float]]:
+    """Load Docker-precomputed corpus vectors or batch a local fallback."""
+    global _file_chunk_vectors_cache
+    chunks = _load_file_chunks()
+    if _file_chunk_vectors_cache is None or len(_file_chunk_vectors_cache) != len(chunks):
+        try:
+            stored = json.loads(FILE_EMBEDDINGS_PATH.read_text(encoding="utf-8"))
+            if not isinstance(stored, list) or len(stored) != len(chunks):
+                raise ValueError("The stored embedding count does not match the corpus.")
+            _file_chunk_vectors_cache = [[float(value) for value in vector] for vector in stored]
+        except (OSError, ValueError, TypeError, json.JSONDecodeError):
+            _file_chunk_vectors_cache = local_embeddings([chunk.text for chunk in chunks])
+    return _file_chunk_vectors_cache
+
+
+def precompute_file_chunk_vectors(path: Path = FILE_EMBEDDINGS_PATH) -> None:
+    """Create the immutable fallback vector cache during the Docker build."""
+    vectors = local_embeddings([chunk.text for chunk in _load_file_chunks()])
+    path.write_text(json.dumps(vectors, separators=(",", ":")), encoding="utf-8")
+
+
 def _file_fallback_search(
     query: str,
     film_slugs: list[str],
@@ -528,14 +551,14 @@ def _file_fallback_search(
 ) -> list[RetrievedChunk]:
     query_vector = local_embedding(query)
     candidates = []
-    for chunk in _load_file_chunks():
+    for chunk, chunk_vector in zip(_load_file_chunks(), _file_chunk_vectors()):
         if film_slugs and chunk.film_slug not in film_slugs:
             continue
         if source_types and chunk.source_type not in source_types:
             continue
         if not include_low_quality and chunk.quality_score == "low":
             continue
-        score = max(0.0, _cosine_similarity(query_vector, local_embedding(chunk.text)))
+        score = max(0.0, _cosine_similarity(query_vector, chunk_vector))
         candidates.append(
             RetrievedChunk(
                 **{
