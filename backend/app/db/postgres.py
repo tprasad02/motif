@@ -19,6 +19,22 @@ def ensure_runtime_schema() -> None:
         return
     with get_connection() as conn:
         with conn.cursor() as cur:
+            cur.execute(
+                """
+                DO $$
+                BEGIN
+                  IF EXISTS (
+                    SELECT 1 FROM information_schema.columns
+                    WHERE table_schema = 'public' AND table_name = 'films' AND column_name = 'themes'
+                  ) AND NOT EXISTS (
+                    SELECT 1 FROM information_schema.columns
+                    WHERE table_schema = 'public' AND table_name = 'films' AND column_name = 'lenses'
+                  ) THEN
+                    ALTER TABLE films RENAME COLUMN themes TO lenses;
+                  END IF;
+                END $$;
+                """
+            )
             cur.execute("ALTER TABLE sources ADD COLUMN IF NOT EXISTS quality_score TEXT NOT NULL DEFAULT 'medium'")
             cur.execute("ALTER TABLE sources ADD COLUMN IF NOT EXISTS source_role TEXT NOT NULL DEFAULT 'criticism'")
             cur.execute("ALTER TABLE sources ADD COLUMN IF NOT EXISTS lens_tags TEXT[] NOT NULL DEFAULT '{}'")

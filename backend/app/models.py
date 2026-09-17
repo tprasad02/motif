@@ -50,7 +50,7 @@ class RetrieveRequest(BaseModel):
     year_start: int | None = None
     year_end: int | None = None
     critics: list[str] = Field(default_factory=list)
-    themes: list[str] = Field(default_factory=list)
+    lenses: list[str] = Field(default_factory=list)
     top_k: int = Field(default=12, ge=3, le=40)
 
 
@@ -83,7 +83,7 @@ class RetrieveResponse(BaseModel):
 
 
 class AnswerRequest(RetrieveRequest):
-    mode: Literal["analyze_film", "compare_films", "explore_theme"] | None = None
+    mode: Literal["analyze_film", "compare_films", "explore_lens"] | None = None
     film_a: str | None = None
     film_b: str | None = None
     lens: str | None = None
@@ -93,7 +93,7 @@ class AnswerRequest(RetrieveRequest):
 
 
 class GuidedAnswerRequest(BaseModel):
-    mode: Literal["analyze_film", "compare_films", "explore_theme"]
+    mode: Literal["analyze_film", "compare_films", "explore_lens"]
     film_a: str | None = None
     film_b: str | None = None
     lens: str
@@ -109,7 +109,7 @@ class AnalysisResponse(BaseModel):
     thesis: str | None = None
     sections: list[dict[str, str]] = Field(default_factory=list)
     evidence_cards: list[dict[str, str]] = Field(default_factory=list)
-    theme_films: list[dict[str, object]] = Field(default_factory=list)
+    lens_films: list[dict[str, object]] = Field(default_factory=list)
     consensus_interpretation: str
     alternative_interpretations: list[str]
     director_creator_perspective: str
@@ -127,7 +127,6 @@ class AnalysisResponse(BaseModel):
 class WorkflowRequest(AnswerRequest):
     primary_film: str | None = None
     comparison_films: list[str] = Field(default_factory=list)
-    theme: str | None = None
 
 
 class InterpretationMapResponse(BaseModel):
@@ -152,9 +151,9 @@ class FilmComparisonResponse(BaseModel):
     coverage_level: str
 
 
-class ThemeExplorerResponse(BaseModel):
+class LensExplorerResponse(BaseModel):
     query: str
-    theme: str
+    lens: str
     overview: str
     motif_patterns: list[str]
     films_to_follow: list[str]

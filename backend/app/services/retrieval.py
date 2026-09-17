@@ -69,7 +69,7 @@ def _metadata_filter_sql(
     year_start: int | None = None,
     year_end: int | None = None,
     critics: list[str] | None = None,
-    themes: list[str] | None = None,
+    lenses: list[str] | None = None,
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> tuple[str, list[object]]:
@@ -93,9 +93,9 @@ def _metadata_filter_sql(
     if critics:
         clauses.append("s.author = ANY(%s)")
         params.append(critics)
-    if themes:
-        clauses.append("f.themes && %s")
-        params.append(themes)
+    if lenses:
+        clauses.append("f.lenses && %s")
+        params.append(lenses)
     if lens_tags:
         clauses.append("(c.lens_tags && %s OR s.lens_tags && %s)")
         params.extend([lens_tags, lens_tags])
@@ -133,12 +133,12 @@ def _postgres_vector_search(
     year_start: int | None = None,
     year_end: int | None = None,
     critics: list[str] | None = None,
-    themes: list[str] | None = None,
+    lenses: list[str] | None = None,
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
     where, params = _metadata_filter_sql(
-        film_slugs, source_types, directors, year_start, year_end, critics, themes, lens_tags, include_low_quality
+        film_slugs, source_types, directors, year_start, year_end, critics, lenses, lens_tags, include_low_quality
     )
     sql = f"""
         SELECT c.id, c.text, f.slug, s.source_key, s.source_type::text, s.quality_score, s.source_role, c.lens_tags,
@@ -169,12 +169,12 @@ def _bm25_search(
     year_start: int | None = None,
     year_end: int | None = None,
     critics: list[str] | None = None,
-    themes: list[str] | None = None,
+    lenses: list[str] | None = None,
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
     where, params = _metadata_filter_sql(
-        film_slugs, source_types, directors, year_start, year_end, critics, themes, lens_tags, include_low_quality
+        film_slugs, source_types, directors, year_start, year_end, critics, lenses, lens_tags, include_low_quality
     )
     filter_sql = f"{where} AND" if where else "WHERE"
     sql = f"""
@@ -558,7 +558,7 @@ def retrieve_chunks(
     year_start: int | None = None,
     year_end: int | None = None,
     critics: list[str] | None = None,
-    themes: list[str] | None = None,
+    lenses: list[str] | None = None,
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
@@ -578,13 +578,15 @@ def retrieve_chunks(
             for term in expand_lens_terms(lens)
         ]
         expanded_query = f"{query} {' '.join(expanded_lens_tags)}".strip() if expanded_lens_tags else query
-        lens_filter = expanded_lens_tags if expanded_lens_tags and not film_slugs else None
+        # Published profile vocabulary enriches the query; evidence is never
+        # excluded by the retired static chunk-tag taxonomy.
+        lens_filter = None
         use_postgres_vector = bool(
             directors
             or year_start is not None
             or year_end is not None
             or critics
-            or themes
+            or lenses
             or include_low_quality
             or lens_filter
         )
@@ -599,7 +601,7 @@ def retrieve_chunks(
                 year_start,
                 year_end,
                 critics,
-                themes,
+                lenses,
                 lens_filter,
                 include_low_quality,
             )
@@ -613,7 +615,7 @@ def retrieve_chunks(
             year_start,
             year_end,
             critics,
-            themes,
+            lenses,
             lens_filter,
             include_low_quality,
         )

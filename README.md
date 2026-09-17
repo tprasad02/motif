@@ -7,6 +7,7 @@ Motif is a retrieval-augmented close-reading app for psychologically rich films.
 - [ARCHITECTURE.md](./ARCHITECTURE.md): system flow, retrieval, reranking, and debug mode.
 - [DATASET.md](./DATASET.md): corpus strategy, source roles, quality, and lens assignment.
 - [EVALUATION.md](./EVALUATION.md): benchmark cases, metrics, failures, and improvements.
+- [evals/RAG_METRICS.md](./evals/RAG_METRICS.md): relevance-judgment rubric and ranking metrics.
 - [LIMITATIONS.md](./LIMITATIONS.md): scope boundaries and future work.
 
 ## Problem
@@ -41,29 +42,55 @@ Comparison workflow screenshots:
 Motif supports three workflows:
 
 1. **Analyze a Film**
-<<<<<<< Updated upstream
-   Select one film and one supported theme. Motif returns a short thesis and four evidence cards: Scene, Character, Pattern, and Counterreading.
-=======
    Select one film and one supported lens. Motif returns a short thesis and four evidence cards: Scene, Craft, Shift, and Complication.
->>>>>>> Stashed changes
 
 2. **Compare Films**
-   Select two films and one shared theme. Motif returns a comparison where each evidence card discusses both films.
+   Select two films and one shared lens. Motif returns a comparison where each evidence card discusses both films.
 
-3. **Explore a Theme**
-   Select one theme. Motif returns ranked film cards from the collection with short non-spoiler context.
+3. **Explore Lenses**
+   Select one lens. Motif returns ranked film cards from the collection with short non-spoiler context.
 
 The button-driven flow keeps each request structured:
 
 ```text
 workflow selection
-→ film/theme selection
+→ film/lens selection
 → metadata-filtered retrieval
 → vector + BM25 search
 → merge + rerank
 → LLM evidence plan
 → thesis and evidence cards
 ```
+
+### Lens publishing
+
+Lenses are not a static menu. The profile builder first retrieves diverse film
+evidence, then generates direct 1–3-word lenses and validates each through the
+real four-card answer gate. A lens needs at least three supporting chunks from
+two source roles plus faithfulness, answer-relevance, and satisfaction scores
+of at least 4/5 before it reaches the UI.
+
+A lens must be a theme grounded in the film's content—such as a relationship,
+ethical conflict, psychological concern, or social condition.
+
+Sentence-BERT clusters validated lens definitions across the corpus. Individual
+film analysis uses the film's own lens name; comparison uses a shared cluster
+first and calibrated semantic similarity (>= 0.56) as a fallback, so matching does not depend on identical wording.
+
+Generate the profiles after changing corpus sources:
+
+```bash
+source .venv/bin/activate
+python -m pip install -r backend/requirements.txt
+PYTHONPATH=backend:. python -m evals.build_lens_profiles
+PYTHONPATH=backend:. python -m evals.validate_lens_profiles
+```
+
+The builder asks for up to three independent eight-lens batches per film, so it
+can reach the 3–5 published-profile target without weakening a gate. It
+checkpoints after each film. If interrupted, rerun it with `--resume`; only
+completed films are retained. The UI intentionally shows no lenses until a
+passing version-4 profile artifact exists.
 
 ## Corpus
 
@@ -107,8 +134,8 @@ backend/app/corpus/sources.jsonl
 Motif uses hybrid retrieval:
 
 - **Vector search** finds semantically related chunks.
-- **BM25** finds exact keyword and theme matches using PostgreSQL full-text search.
-- **Reranking** combines retrieval scores with source quality, source role, chunk role, theme match, and penalties for low-value text.
+- **BM25** finds exact keyword and lens matches using PostgreSQL full-text search.
+- **Reranking** combines retrieval scores with source quality, source role, chunk role, lens match, and penalties for low-value text.
 - **Comparison balancing** requires both selected films to appear in the retrieved evidence.
 
 The reranker favors scene evidence, formal observations, creator commentary, criticism, scholarship, and production context. It downranks plot summary, references, front matter, and noisy chunks.
@@ -138,42 +165,55 @@ Debug mode shows retrieved chunks, source title, source role, rerank score, vect
 
 ## Metrics Snapshot
 
-Latest generated files:
+One reproducible evaluation suite writes:
 
 ```text
-evals/Reports/metrics_summary.json
-evals/Reports/metrics_trials.csv
-evals/Reports/metrics_case_summary.csv
+evals/Reports/corpus_coverage.csv
+evals/Reports/retrieval_quality_results.json
+evals/Reports/rag_ranking_metrics.json
+evals/Reports/answer_quality_results.json
+evals/final_metrics/metrics_summary.json
+evals/final_metrics/metrics_trials.csv
+evals/final_metrics/metrics_case_summary.csv
+evals/final_metrics/evaluation_manifest.json
 ```
 
-| Metric | Current value |
+| Metric | Historical snapshot |
 | --- | ---: |
 | Films | 18 |
 | Documents | 140 |
 | Chunks | 2,427 |
-| Eval cases | 50 |
+| Eval cases | 50 (pre-expansion) |
 | Trials per retrieval case | 3 |
-| Film retrieval accuracy | 1.000 |
-| Lens retrieval accuracy | 0.965 |
-| Comparison balance | 100.0% |
-| Retrieval pass rate | 100.0% |
+| Retrieval guardrails | 100.0% (pre-expansion) |
+| Judgment-backed ranking metrics | Not yet assessed |
 | Answer checked cases | 50 |
-| Answer pass rate | 100.0% |
+| Answer validity / quality | Legacy — regenerate |
 | LLM-judged answer cases | 41 |
-| Average answer-quality score | 4.854 / 5 |
+| Faithfulness / answer relevance | Legacy — regenerate |
 | Average response latency | 12.486s |
 
-Run the practical metrics snapshot:
+Those checked-in values predate the complete judgment-backed suite and are not
+current claims. The aggregate report now contains both operational guardrails
+and standard ranked-retrieval metrics, without collapsing them into one score.
+The current benchmark contains 100 cases; do not call a guardrail pass rate
+“accuracy.”
+
+Run the complete evaluation suite:
 
 ```bash
-python -m evals.build_metrics_summary --trials 3 --latency-case-limit 5
+python -m evals.run_evaluation --trials 3 --latency-case-limit 5
 ```
 
-Run the full benchmark latency suite:
+First create and assess the relevance pool if `evals/relevance_judgments.csv`
+has not been completed:
 
 ```bash
-python -m evals.build_metrics_summary --trials 3
+python -m evals.rag_metrics --write-annotation-pool evals/Reports/relevance_pool.csv --pool-k 30
 ```
+
+See [EVALUATION.md](./EVALUATION.md) for each layer, what it measures, and how
+to interpret the combined report.
 
 ## Project Structure
 
@@ -200,7 +240,7 @@ motif/
 │   ├── package.json
 │   └── vercel.json
 ├── ingestion/               Extraction, cleaning, chunking, and corpus build scripts
-├── evals/                   Corpus, retrieval, answer, and aggregate metrics scripts
+├── evals/                   Unified corpus, retrieval, ranking, answer, and aggregate evaluation suite
 ├── data/                    Manual source metadata and extracted files
 ├── infra/postgres/          PostgreSQL schema
 ├── notebooks/               Manual retrieval checks
@@ -477,11 +517,11 @@ Compare two films:
 }
 ```
 
-Explore a theme:
+Explore a lens:
 
 ```json
 {
-  "mode": "explore_theme",
+  "mode": "explore_lens",
   "lens": "Reality vs Illusion",
   "top_k": 12
 }
@@ -489,25 +529,19 @@ Explore a theme:
 
 ## Evaluation
 
-Corpus coverage:
+Run all corpus, retrieval, ranking, answer, and aggregate checks together:
 
 ```bash
-python -m evals.verify_corpus --sources data/manual_sources.csv --min-per-film 4
+python -m evals.run_evaluation --trials 3 --latency-case-limit 5
 ```
 
-Retrieval quality:
-
-```bash
-DATABASE_URL=postgresql://motif:motif@localhost:5433/motif \
-WEAVIATE_URL=http://localhost:8080 \
-python -m evals.test_retrieval_quality
-```
-
-Full methodology is in [EVALUATION.md](./EVALUATION.md).
+The run publishes an artifact manifest and one aggregate summary. Full
+methodology, metric definitions, and annotation requirements are in
+[EVALUATION.md](./EVALUATION.md).
 
 ## Limitations
 
-- Motif is strongest on supported film/theme combinations in the curated corpus.
+- Motif is strongest on supported film/lens combinations in the curated corpus.
 - Source quality affects answer depth.
 - The public UI hides citations; debug mode exposes retrieval details.
 - It is not designed for arbitrary open-ended film questions.
