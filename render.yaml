@@ -15,7 +15,7 @@ services:
       - key: MOTIF_COLLECTION
         value: MotifChunk
       - key: EMBEDDING_PROVIDER
-        value: local
+        value: openai
       - key: USE_RUNTIME_DATABASES
         value: false
       - key: OPENAI_API_KEY

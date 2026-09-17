@@ -112,42 +112,12 @@ The reranker prefers chunks that can support a concrete evidence card and penali
 
 ## Lenses
 
-The primary public lens vocabulary is controlled:
-
-- Memory
-- Identity
-- Obsession
-- Reality vs Illusion
-- Control
-- Freedom
-- Isolation
-- Guilt
-- Performance
-- Violence
-- Justice
-- Trauma
-
-This part is intentionally curated. A stable lens vocabulary keeps the UI understandable and makes evaluation possible.
-
-Film-specific lens support is dynamic. Motif scores lenses per film from:
-
-- chunk lens tags
-- raw chunk text
-- source quality
-- source role
-- chunk role
-- source diversity
-
-Secondary angles are narrower concepts. Examples:
-
-- Marriage
-- Media
-- Surveillance
-- Doubles
-- Masculinity
-- Truth
-
-These are discovered from corpus text with TF-IDF/ngram extraction, then filtered and mapped back to primary lenses when strongly supported. Known mappings still exist as guardrails so the app does not surface random names or noisy terms as user-facing angles.
+Motif does not maintain a static lens menu or a separate angle layer. It
+generates concise, film-specific lenses from diverse corpus evidence, validates
+them through retrieval and answer-quality gates, and publishes only the
+evidence-backed results. Sentence-BERT clusters validated lens definitions
+offline so semantically related films can be compared without requiring exact
+label overlap.
 
 ## Quality Filtering
 

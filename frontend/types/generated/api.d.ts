@@ -38,6 +38,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/recommendations/collection": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Collection Recommendations
+         * @description Load the collection-wide semantic lens list only for Explore Lenses.
+         */
+        get: operations["collection_recommendations_recommendations_collection_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/recommendations/compare": {
         parameters: {
             query?: never;
@@ -47,6 +67,23 @@ export interface paths {
         };
         /** Compare Recommendations */
         get: operations["compare_recommendations_recommendations_compare_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/recommendations/comparable-films": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Comparable Films */
+        get: operations["comparable_films_recommendations_comparable_films_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -583,11 +620,62 @@ export interface operations {
             };
         };
     };
+    collection_recommendations_recommendations_collection_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
     compare_recommendations_recommendations_compare_get: {
         parameters: {
             query: {
                 film_a: string;
                 film_b: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    comparable_films_recommendations_comparable_films_get: {
+        parameters: {
+            query: {
+                film: string;
             };
             header?: never;
             path?: never;

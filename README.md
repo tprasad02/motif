@@ -73,18 +73,34 @@ of at least 4/5 before it reaches the UI.
 A lens must be a theme grounded in the film's content—such as a relationship,
 ethical conflict, psychological concern, or social condition.
 
-Sentence-BERT clusters validated lens definitions across the corpus. Individual
-film analysis uses the film's own lens name; comparison uses a shared cluster
-first and calibrated semantic similarity (>= 0.56) as a fallback, so matching does not depend on identical wording.
+Sentence-BERT clusters validated lens definitions across the corpus and builds
+a checked-in comparison-match index from sufficiently similar validated lens
+definitions. Individual film analysis uses the film's own lens name; comparison
+uses a shared cluster or an approved semantic match, so matching does not
+depend on identical wording. This is an offline evaluation/build step, not a
+production web-service dependency.
+
+The selectable lens menu and film-comparison options are generated and
+validated offline from corpus evidence, then saved as stable artifacts. Each
+reading is dynamic: Motif performs retrieval and generates a new analysis when
+the user selects a lens or supplies a question.
 
 Generate the profiles after changing corpus sources:
 
 ```bash
 source .venv/bin/activate
-python -m pip install -r backend/requirements.txt
+python -m pip install -r backend/requirements-eval.txt
 PYTHONPATH=backend:. python -m evals.build_lens_profiles
+PYTHONPATH=backend:. python -m evals.build_retrieval_plans
+PYTHONPATH=backend:. python -m evals.build_comparison_matches
+PYTHONPATH=backend:. python -m evals.build_openai_retrieval_index
 PYTHONPATH=backend:. python -m evals.validate_lens_profiles
 ```
+
+`build_openai_retrieval_index` is resumable and makes the one-time embedding
+calls for `chunks.jsonl`. Commit its generated SQLite index with the corpus so
+the production service can perform live semantic retrieval without indexing at
+startup.
 
 The builder asks for up to three independent eight-lens batches per film, so it
 can reach the 3–5 published-profile target without weakening a gate. It
@@ -137,6 +153,12 @@ Motif uses hybrid retrieval:
 - **BM25** finds exact keyword and lens matches using PostgreSQL full-text search.
 - **Reranking** combines retrieval scores with source quality, source role, chunk role, lens match, and penalties for low-value text.
 - **Comparison balancing** requires both selected films to appear in the retrieved evidence.
+
+In the constrained file-corpus deployment, Motif generates a live OpenAI query
+embedding and scores only the selected film's vectors from the checked-in
+disk-backed index, then supplements it with lightweight BM25. Sentence-BERT is
+used offline for lens clustering and retrieval-plan fallback, never loaded by
+the web process.
 
 The reranker favors scene evidence, formal observations, creator commentary, criticism, scholarship, and production context. It downranks plot summary, references, front matter, and noisy chunks.
 
@@ -271,8 +293,9 @@ Default values:
 ```env
 DATABASE_URL=postgresql://motif:motif@localhost:5432/motif
 WEAVIATE_URL=http://localhost:8080
-EMBEDDING_PROVIDER=local
+EMBEDDING_PROVIDER=openai
 OPENAI_API_KEY=
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
 MOTIF_COLLECTION=MotifChunk
 NEXT_PUBLIC_API_URL=http://localhost:8000
 FRONTEND_ORIGIN=http://localhost:3000
@@ -296,13 +319,8 @@ host: localhost
 port: 5433
 ```
 
-Set `OPENAI_API_KEY` for generated readings. If no key is available, the backend returns a clear configuration error unless an exact cached reading already exists.
-
-Generated Analyze/Compare readings are cached in:
-
-```text
-backend/app/corpus/answer_cache.json
-```
+Set `OPENAI_API_KEY` for generated readings. If no key is available, the
+backend returns a clear configuration error rather than serving a stale reading.
 
 Set `TMDB_API_KEY` for poster shelves. The frontend uses an internal `/api/posters` route so the key stays server-side. Motif includes TMDb attribution in the UI.
 

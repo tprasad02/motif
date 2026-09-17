@@ -47,7 +47,16 @@ PostgreSQL stores the relational metadata:
 
 PostgreSQL also supports BM25-style full-text search through `websearch_to_tsquery`, `to_tsvector`, and `ts_rank_cd`.
 
-Weaviate stores vectorized chunks for semantic retrieval. If Weaviate is unavailable, Motif can fall back to local JSONL corpus search for development and testing.
+Weaviate stores vectorized chunks for semantic retrieval. If it is unavailable,
+Motif generates one live OpenAI query embedding, reads only the selected film's
+vectors from the checked-in SQLite index, and supplements with BM25. Sentence-
+BERT remains an offline lens-clustering and retrieval-plan fallback tool; the
+web service never loads its transformer runtime.
+
+The offline build also writes `comparison_matches.json`: validated shared-
+cluster and sufficiently similar Sentence-BERT lens pairs. The API reads that
+small artifact for comparison options, so semantically related films can be
+compared without a runtime model load.
 
 ## Request Contract
 
@@ -117,7 +126,8 @@ Complication
 
 The model must attach chunk IDs to each evidence card internally. Those chunk IDs are hidden in the public UI but visible in debug mode.
 
-If the OpenAI key is missing or generation fails, Motif first checks for an exact generated reading in `backend/app/corpus/answer_cache.json`. If a cached reading exists, it is returned as a demo-safe fallback. If no cache entry exists, Motif refuses instead of pasting retrieved chunks into the answer.
+If the OpenAI key is missing or generation fails, Motif returns a clear refusal
+rather than serving a stale answer or pasting retrieved chunks into the answer.
 
 ## Dynamic Recommendation Services
 

@@ -73,6 +73,15 @@ def comparison_lens_suggestions(film_a: str, film_b: str, limit: int = 3) -> lis
     return sorted(suggestions, key=lambda row: row["score"], reverse=True)[:limit]
 
 
+def comparable_film_slugs(film_slug: str) -> list[str]:
+    """Return every film with at least one evidence-backed comparison path."""
+    return [
+        candidate_slug
+        for candidate_slug in FILM_TITLES
+        if candidate_slug != film_slug and comparison_lenses(film_slug, candidate_slug)
+    ]
+
+
 def pairing_suggestions(film_slug: str, lens: str, limit: int = 4) -> list[dict[str, Any]]:
     suggestions = []
     for candidate_slug, title in FILM_TITLES.items():

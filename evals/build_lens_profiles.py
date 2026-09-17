@@ -124,7 +124,7 @@ def main():
     from openai import OpenAI
     client=OpenAI(api_key=os.environ["OPENAI_API_KEY"],timeout=90,max_retries=2)
     output=Path(args.output)
-    payload={"version":4,"generated_at":datetime.now(timezone.utc).isoformat(),"comparison_similarity":.56,"films":{}}
+    payload={"version":4,"generated_at":datetime.now(timezone.utc).isoformat(),"comparison_similarity":.60,"films":{}}
     # A targeted rebuild must never discard other films' completed profiles.
     # --resume additionally skips the named films that are already complete.
     if (args.resume or args.film or args.prune_only) and output.exists():

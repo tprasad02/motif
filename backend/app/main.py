@@ -23,7 +23,7 @@ from app.services.analysis import (
     lens_explorer_query,
 )
 from app.services.lens_profiles import all_published_lenses
-from app.services.recommendations import build_film_profiles, comparison_lens_suggestions, pairing_suggestions
+from app.services.recommendations import build_film_profiles, comparable_film_slugs, comparison_lens_suggestions, pairing_suggestions
 
 app = FastAPI(title="Motif API", version="0.1.0")
 
@@ -44,7 +44,15 @@ def health():
 
 @app.get("/recommendations")
 def recommendations():
-    return {"films": build_film_profiles(), "collection_lenses": all_published_lenses()}
+    # Keep the first interactive request free of Sentence-BERT work. Film
+    # profiles are already evidence-validated and can be served immediately.
+    return {"films": build_film_profiles()}
+
+
+@app.get("/recommendations/collection")
+def collection_recommendations():
+    """Load the collection-wide semantic lens list only for Explore Lenses."""
+    return {"collection_lenses": all_published_lenses()}
 
 
 @app.get("/recommendations/compare")
@@ -55,6 +63,13 @@ def compare_recommendations(film_a: str, film_b: str):
     if not lenses:
         raise HTTPException(status_code=422, detail="These films do not have an evidence-backed semantic comparison lens.")
     return {"lenses": lenses}
+
+
+@app.get("/recommendations/comparable-films")
+def comparable_films(film: str):
+    if not film:
+        raise HTTPException(status_code=400, detail="Choose a film first.")
+    return {"film": film, "comparable_film_slugs": comparable_film_slugs(film)}
 
 
 @app.get("/recommendations/pairings")

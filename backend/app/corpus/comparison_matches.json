@@ -1,0 +1,1115 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-17T19:50:51.992816+00:00",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "similarity_threshold": 0.6,
+  "pairs": {
+    "black-swan::donnie-darko": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Isolation",
+        "film_b": "donnie-darko",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Identity Crisis / Mental Health",
+        "similarity": 0.607,
+        "film_a": "black-swan",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "donnie-darko",
+        "film_b_lens": "Mental Health",
+        "match_type": "semantic"
+      }
+    ],
+    "black-swan::fight-club": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Isolation",
+        "film_b": "fight-club",
+        "film_b_lens": "Isolation and Connection",
+        "match_type": "cluster"
+      }
+    ],
+    "black-swan::prisoners": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Isolation",
+        "film_b": "prisoners",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "black-swan::se7en": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Isolation",
+        "film_b": "se7en",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "black-swan::silence-of-the-lambs": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Isolation",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Feminine Identity / Gender Roles",
+        "similarity": 0.647,
+        "film_a": "black-swan",
+        "film_a_lens": "Feminine Identity",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Gender Roles",
+        "match_type": "semantic"
+      }
+    ],
+    "black-swan::sixth-sense": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Isolation",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "black-swan::the-machinist": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Isolation",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "the-machinist",
+        "film_b_lens": "Identity",
+        "match_type": "cluster"
+      }
+    ],
+    "black-swan::gone-girl": [
+      {
+        "lens": "Identity Crisis / Identity Construction",
+        "similarity": 0.698,
+        "film_a": "black-swan",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "gone-girl",
+        "film_b_lens": "Identity Construction",
+        "match_type": "semantic"
+      }
+    ],
+    "black-swan::memento": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "memento",
+        "film_b_lens": "Identity Crisis",
+        "match_type": "cluster"
+      }
+    ],
+    "black-swan::shutter-island": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "shutter-island",
+        "film_b_lens": "Identity Crisis",
+        "match_type": "cluster"
+      }
+    ],
+    "black-swan::taxi-driver": [
+      {
+        "lens": "Identity Crisis / Existential Crisis",
+        "similarity": 0.668,
+        "film_a": "black-swan",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Existential Crisis",
+        "match_type": "semantic"
+      }
+    ],
+    "black-swan::the-prestige": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "black-swan",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "the-prestige",
+        "film_b_lens": "Identity",
+        "match_type": "cluster"
+      }
+    ],
+    "donnie-darko::fight-club": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Isolation",
+        "film_b": "fight-club",
+        "film_b_lens": "Isolation and Connection",
+        "match_type": "cluster"
+      }
+    ],
+    "donnie-darko::prisoners": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Isolation",
+        "film_b": "prisoners",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "donnie-darko::se7en": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Isolation",
+        "film_b": "se7en",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "donnie-darko::silence-of-the-lambs": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Isolation",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "donnie-darko::sixth-sense": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Isolation",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Mental Health",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Mental Health",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Mental Health",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Reality vs Illusion / Perception of Reality",
+        "similarity": 0.703,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Perception of Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "donnie-darko::the-machinist": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Isolation",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Reality vs Illusion / Reality",
+        "similarity": 0.66,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "the-machinist",
+        "film_b_lens": "Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "donnie-darko::one-flew-over-the-cuckoos-nest": [
+      {
+        "lens": "Mental Health / Mental Illness",
+        "similarity": 0.695,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Mental Health",
+        "film_b": "one-flew-over-the-cuckoos-nest",
+        "film_b_lens": "Mental Illness",
+        "match_type": "semantic"
+      }
+    ],
+    "donnie-darko::shutter-island": [
+      {
+        "lens": "Mental Health / Identity Crisis",
+        "similarity": 0.674,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Mental Health",
+        "film_b": "shutter-island",
+        "film_b_lens": "Identity Crisis",
+        "match_type": "semantic"
+      },
+      {
+        "lens": "Reality vs Illusion / Reality vs Delusion",
+        "similarity": 0.653,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "shutter-island",
+        "film_b_lens": "Reality vs Delusion",
+        "match_type": "semantic"
+      }
+    ],
+    "donnie-darko::memento": [
+      {
+        "lens": "Reality vs. Illusion",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "memento",
+        "film_b_lens": "Reality vs Illusion",
+        "match_type": "cluster"
+      }
+    ],
+    "donnie-darko::mulholland-drive": [
+      {
+        "lens": "Reality vs Illusion / Reality Fragmentation",
+        "similarity": 0.654,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "mulholland-drive",
+        "film_b_lens": "Reality Fragmentation",
+        "match_type": "semantic"
+      }
+    ],
+    "donnie-darko::the-prestige": [
+      {
+        "lens": "Reality vs. Illusion",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "the-prestige",
+        "film_b_lens": "Illusion vs Reality",
+        "match_type": "cluster"
+      }
+    ],
+    "donnie-darko::truman-show": [
+      {
+        "lens": "Reality vs. Illusion",
+        "similarity": 1.0,
+        "film_a": "donnie-darko",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "truman-show",
+        "film_b_lens": "Reality vs Illusion",
+        "match_type": "cluster"
+      }
+    ],
+    "fight-club::taxi-driver": [
+      {
+        "lens": "Existential Nihilism / Existential Crisis",
+        "similarity": 0.67,
+        "film_a": "fight-club",
+        "film_a_lens": "Existential Nihilism",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Existential Crisis",
+        "match_type": "semantic"
+      }
+    ],
+    "fight-club::prisoners": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "fight-club",
+        "film_a_lens": "Isolation and Connection",
+        "film_b": "prisoners",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "fight-club::se7en": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "fight-club",
+        "film_a_lens": "Isolation and Connection",
+        "film_b": "se7en",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "fight-club::shawshank-redemption": [
+      {
+        "lens": "Isolation and Connection / Friendship",
+        "similarity": 0.61,
+        "film_a": "fight-club",
+        "film_a_lens": "Isolation and Connection",
+        "film_b": "shawshank-redemption",
+        "film_b_lens": "Friendship",
+        "match_type": "semantic"
+      }
+    ],
+    "fight-club::silence-of-the-lambs": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "fight-club",
+        "film_a_lens": "Isolation and Connection",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "fight-club::sixth-sense": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "fight-club",
+        "film_a_lens": "Isolation and Connection",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "fight-club::the-machinist": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "fight-club",
+        "film_a_lens": "Isolation and Connection",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "gone-girl::se7en": [
+      {
+        "lens": "Moral Ambiguity",
+        "similarity": 1.0,
+        "film_a": "gone-girl",
+        "film_a_lens": "Moral Ambiguity",
+        "film_b": "se7en",
+        "film_b_lens": "Moral Ambiguity",
+        "match_type": "cluster"
+      }
+    ],
+    "gone-girl::silence-of-the-lambs": [
+      {
+        "lens": "Moral Ambiguity",
+        "similarity": 1.0,
+        "film_a": "gone-girl",
+        "film_a_lens": "Moral Ambiguity",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Moral Ambiguity",
+        "match_type": "cluster"
+      }
+    ],
+    "gone-girl::memento": [
+      {
+        "lens": "Identity Construction / Identity Crisis",
+        "similarity": 0.65,
+        "film_a": "gone-girl",
+        "film_a_lens": "Identity Construction",
+        "film_b": "memento",
+        "film_b_lens": "Identity Crisis",
+        "match_type": "semantic"
+      }
+    ],
+    "gone-girl::shutter-island": [
+      {
+        "lens": "Manipulation",
+        "similarity": 1.0,
+        "film_a": "gone-girl",
+        "film_a_lens": "Psychological Manipulation",
+        "film_b": "shutter-island",
+        "film_b_lens": "Manipulation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Identity Construction / Identity Crisis",
+        "similarity": 0.675,
+        "film_a": "gone-girl",
+        "film_a_lens": "Identity Construction",
+        "film_b": "shutter-island",
+        "film_b_lens": "Identity Crisis",
+        "match_type": "semantic"
+      }
+    ],
+    "gone-girl::the-machinist": [
+      {
+        "lens": "Identity Construction / Identity",
+        "similarity": 0.613,
+        "film_a": "gone-girl",
+        "film_a_lens": "Identity Construction",
+        "film_b": "the-machinist",
+        "film_b_lens": "Identity",
+        "match_type": "semantic"
+      }
+    ],
+    "gone-girl::the-prestige": [
+      {
+        "lens": "Identity Construction / Identity",
+        "similarity": 0.651,
+        "film_a": "gone-girl",
+        "film_a_lens": "Identity Construction",
+        "film_b": "the-prestige",
+        "film_b_lens": "Identity",
+        "match_type": "semantic"
+      }
+    ],
+    "memento::shutter-island": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "memento",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "shutter-island",
+        "film_b_lens": "Identity Crisis",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Reality vs Illusion / Reality vs Delusion",
+        "similarity": 0.638,
+        "film_a": "memento",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "shutter-island",
+        "film_b_lens": "Reality vs Delusion",
+        "match_type": "semantic"
+      },
+      {
+        "lens": "Memory Distortion / Reality vs Delusion",
+        "similarity": 0.618,
+        "film_a": "memento",
+        "film_a_lens": "Memory Distortion",
+        "film_b": "shutter-island",
+        "film_b_lens": "Reality vs Delusion",
+        "match_type": "semantic"
+      }
+    ],
+    "memento::the-machinist": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "memento",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "the-machinist",
+        "film_b_lens": "Identity",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Reality vs Illusion / Reality",
+        "similarity": 0.643,
+        "film_a": "memento",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "the-machinist",
+        "film_b_lens": "Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "memento::the-prestige": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "memento",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "the-prestige",
+        "film_b_lens": "Identity",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Reality vs. Illusion",
+        "similarity": 1.0,
+        "film_a": "memento",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "the-prestige",
+        "film_b_lens": "Illusion vs Reality",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Identity Crisis / Legacy and Memory",
+        "similarity": 0.61,
+        "film_a": "memento",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "the-prestige",
+        "film_b_lens": "Legacy and Memory",
+        "match_type": "semantic"
+      }
+    ],
+    "memento::mulholland-drive": [
+      {
+        "lens": "Reality vs Illusion / Reality Fragmentation",
+        "similarity": 0.639,
+        "film_a": "memento",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "mulholland-drive",
+        "film_b_lens": "Reality Fragmentation",
+        "match_type": "semantic"
+      }
+    ],
+    "memento::sixth-sense": [
+      {
+        "lens": "Reality vs Illusion / Perception of Reality",
+        "similarity": 0.64,
+        "film_a": "memento",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Perception of Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "memento::truman-show": [
+      {
+        "lens": "Reality vs. Illusion",
+        "similarity": 1.0,
+        "film_a": "memento",
+        "film_a_lens": "Reality vs Illusion",
+        "film_b": "truman-show",
+        "film_b_lens": "Reality vs Illusion",
+        "match_type": "cluster"
+      }
+    ],
+    "mulholland-drive::se7en": [
+      {
+        "lens": "Moral Decay / Societal Decay",
+        "similarity": 0.634,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Moral Decay",
+        "film_b": "se7en",
+        "film_b_lens": "Societal Decay",
+        "match_type": "semantic"
+      }
+    ],
+    "mulholland-drive::taxi-driver": [
+      {
+        "lens": "moral decay",
+        "similarity": 1.0,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Moral Decay",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Moral Decay",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Existential Crisis",
+        "similarity": 1.0,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Existential Crisis",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Existential Crisis",
+        "match_type": "cluster"
+      }
+    ],
+    "mulholland-drive::requiem-for-a-dream": [
+      {
+        "lens": "Existential Crisis / Emotional Turmoil",
+        "similarity": 0.627,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Existential Crisis",
+        "film_b": "requiem-for-a-dream",
+        "film_b_lens": "Emotional Turmoil",
+        "match_type": "semantic"
+      },
+      {
+        "lens": "Existential Crisis / Desperation",
+        "similarity": 0.618,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Existential Crisis",
+        "film_b": "requiem-for-a-dream",
+        "film_b_lens": "Desperation",
+        "match_type": "semantic"
+      }
+    ],
+    "mulholland-drive::the-machinist": [
+      {
+        "lens": "Illusion of Control / Reality",
+        "similarity": 0.688,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Illusion of Control",
+        "film_b": "the-machinist",
+        "film_b_lens": "Reality",
+        "match_type": "semantic"
+      },
+      {
+        "lens": "Reality Fragmentation / Reality",
+        "similarity": 0.651,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Reality Fragmentation",
+        "film_b": "the-machinist",
+        "film_b_lens": "Reality",
+        "match_type": "semantic"
+      },
+      {
+        "lens": "Existential Crisis / Isolation",
+        "similarity": 0.622,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Existential Crisis",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "semantic"
+      },
+      {
+        "lens": "Existential Crisis / Reality",
+        "similarity": 0.611,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Existential Crisis",
+        "film_b": "the-machinist",
+        "film_b_lens": "Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "mulholland-drive::silence-of-the-lambs": [
+      {
+        "lens": "Illusion of Control / Psychological Depth",
+        "similarity": 0.614,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Illusion of Control",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Psychological Depth",
+        "match_type": "semantic"
+      }
+    ],
+    "mulholland-drive::sixth-sense": [
+      {
+        "lens": "Illusion of Control / Perception of Reality",
+        "similarity": 0.625,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Illusion of Control",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Perception of Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "mulholland-drive::the-prestige": [
+      {
+        "lens": "Reality Fragmentation / Illusion vs Reality",
+        "similarity": 0.628,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Reality Fragmentation",
+        "film_b": "the-prestige",
+        "film_b_lens": "Illusion vs Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "mulholland-drive::truman-show": [
+      {
+        "lens": "Reality Fragmentation / Reality vs Illusion",
+        "similarity": 0.604,
+        "film_a": "mulholland-drive",
+        "film_a_lens": "Reality Fragmentation",
+        "film_b": "truman-show",
+        "film_b_lens": "Reality vs Illusion",
+        "match_type": "semantic"
+      }
+    ],
+    "one-flew-over-the-cuckoos-nest::sixth-sense": [
+      {
+        "lens": "Mental Illness / Mental Health",
+        "similarity": 0.689,
+        "film_a": "one-flew-over-the-cuckoos-nest",
+        "film_a_lens": "Mental Illness",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Mental Health",
+        "match_type": "semantic"
+      }
+    ],
+    "one-flew-over-the-cuckoos-nest::silence-of-the-lambs": [
+      {
+        "lens": "Power Dynamics / Power Dynamics",
+        "similarity": 0.603,
+        "film_a": "one-flew-over-the-cuckoos-nest",
+        "film_a_lens": "Power Dynamics",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Power Dynamics",
+        "match_type": "semantic"
+      }
+    ],
+    "prisoners::se7en": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "prisoners",
+        "film_a_lens": "Isolation",
+        "film_b": "se7en",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "prisoners::silence-of-the-lambs": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "prisoners",
+        "film_a_lens": "Isolation",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "prisoners::sixth-sense": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "prisoners",
+        "film_a_lens": "Isolation",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "prisoners::the-machinist": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "prisoners",
+        "film_a_lens": "Isolation",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "prisoners::shutter-island": [
+      {
+        "lens": "Fear and Paranoia",
+        "similarity": 1.0,
+        "film_a": "prisoners",
+        "film_a_lens": "Fear and Paranoia",
+        "film_b": "shutter-island",
+        "film_b_lens": "Fear and Paranoia",
+        "match_type": "cluster"
+      }
+    ],
+    "requiem-for-a-dream::silence-of-the-lambs": [
+      {
+        "lens": "Emotional Turmoil / Psychological Depth",
+        "similarity": 0.628,
+        "film_a": "requiem-for-a-dream",
+        "film_a_lens": "Emotional Turmoil",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Psychological Depth",
+        "match_type": "semantic"
+      }
+    ],
+    "requiem-for-a-dream::sixth-sense": [
+      {
+        "lens": "Emotional Turmoil / Mental Health",
+        "similarity": 0.605,
+        "film_a": "requiem-for-a-dream",
+        "film_a_lens": "Emotional Turmoil",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Mental Health",
+        "match_type": "semantic"
+      }
+    ],
+    "requiem-for-a-dream::taxi-driver": [
+      {
+        "lens": "Emotional Turmoil / Psychological Turmoil",
+        "similarity": 0.669,
+        "film_a": "requiem-for-a-dream",
+        "film_a_lens": "Emotional Turmoil",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Psychological Turmoil",
+        "match_type": "semantic"
+      }
+    ],
+    "requiem-for-a-dream::the-machinist": [
+      {
+        "lens": "Emotional Turmoil / Isolation",
+        "similarity": 0.635,
+        "film_a": "requiem-for-a-dream",
+        "film_a_lens": "Emotional Turmoil",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "semantic"
+      }
+    ],
+    "se7en::shawshank-redemption": [
+      {
+        "lens": "Despair / Hope and Despair",
+        "similarity": 0.667,
+        "film_a": "se7en",
+        "film_a_lens": "Despair",
+        "film_b": "shawshank-redemption",
+        "film_b_lens": "Hope and Despair",
+        "match_type": "semantic"
+      }
+    ],
+    "se7en::silence-of-the-lambs": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "se7en",
+        "film_a_lens": "Isolation",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Moral Ambiguity",
+        "similarity": 1.0,
+        "film_a": "se7en",
+        "film_a_lens": "Moral Ambiguity",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Moral Ambiguity",
+        "match_type": "cluster"
+      }
+    ],
+    "se7en::sixth-sense": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "se7en",
+        "film_a_lens": "Isolation",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "se7en::the-machinist": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "se7en",
+        "film_a_lens": "Isolation",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "se7en::taxi-driver": [
+      {
+        "lens": "Societal Decay / Moral Decay",
+        "similarity": 0.668,
+        "film_a": "se7en",
+        "film_a_lens": "Societal Decay",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Moral Decay",
+        "match_type": "semantic"
+      }
+    ],
+    "shawshank-redemption::the-machinist": [
+      {
+        "lens": "Hope and Despair / Guilt",
+        "similarity": 0.606,
+        "film_a": "shawshank-redemption",
+        "film_a_lens": "Hope and Despair",
+        "film_b": "the-machinist",
+        "film_b_lens": "Guilt",
+        "match_type": "semantic"
+      }
+    ],
+    "shutter-island::silence-of-the-lambs": [
+      {
+        "lens": "Manipulation / Power Dynamics",
+        "similarity": 0.638,
+        "film_a": "shutter-island",
+        "film_a_lens": "Manipulation",
+        "film_b": "silence-of-the-lambs",
+        "film_b_lens": "Power Dynamics",
+        "match_type": "semantic"
+      }
+    ],
+    "shutter-island::taxi-driver": [
+      {
+        "lens": "Identity Crisis / Existential Crisis",
+        "similarity": 0.605,
+        "film_a": "shutter-island",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Existential Crisis",
+        "match_type": "semantic"
+      }
+    ],
+    "shutter-island::the-machinist": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "shutter-island",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "the-machinist",
+        "film_b_lens": "Identity",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Guilt",
+        "similarity": 1.0,
+        "film_a": "shutter-island",
+        "film_a_lens": "Guilt and Regret",
+        "film_b": "the-machinist",
+        "film_b_lens": "Guilt",
+        "match_type": "cluster"
+      }
+    ],
+    "shutter-island::the-prestige": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "shutter-island",
+        "film_a_lens": "Identity Crisis",
+        "film_b": "the-prestige",
+        "film_b_lens": "Identity",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Reality vs Delusion / Illusion vs Reality",
+        "similarity": 0.658,
+        "film_a": "shutter-island",
+        "film_a_lens": "Reality vs Delusion",
+        "film_b": "the-prestige",
+        "film_b_lens": "Illusion vs Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "shutter-island::truman-show": [
+      {
+        "lens": "Reality vs Delusion / Reality vs Illusion",
+        "similarity": 0.661,
+        "film_a": "shutter-island",
+        "film_a_lens": "Reality vs Delusion",
+        "film_b": "truman-show",
+        "film_b_lens": "Reality vs Illusion",
+        "match_type": "semantic"
+      }
+    ],
+    "silence-of-the-lambs::sixth-sense": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "silence-of-the-lambs",
+        "film_a_lens": "Isolation",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Psychological Depth / Mental Health",
+        "similarity": 0.62,
+        "film_a": "silence-of-the-lambs",
+        "film_a_lens": "Psychological Depth",
+        "film_b": "sixth-sense",
+        "film_b_lens": "Mental Health",
+        "match_type": "semantic"
+      }
+    ],
+    "silence-of-the-lambs::the-machinist": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "silence-of-the-lambs",
+        "film_a_lens": "Isolation",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      }
+    ],
+    "sixth-sense::taxi-driver": [
+      {
+        "lens": "Isolation / Psychological Turmoil",
+        "similarity": 0.606,
+        "film_a": "sixth-sense",
+        "film_a_lens": "Isolation",
+        "film_b": "taxi-driver",
+        "film_b_lens": "Psychological Turmoil",
+        "match_type": "semantic"
+      }
+    ],
+    "sixth-sense::the-machinist": [
+      {
+        "lens": "Isolation",
+        "similarity": 1.0,
+        "film_a": "sixth-sense",
+        "film_a_lens": "Isolation",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Perception of Reality / Reality",
+        "similarity": 0.69,
+        "film_a": "sixth-sense",
+        "film_a_lens": "Perception of Reality",
+        "film_b": "the-machinist",
+        "film_b_lens": "Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "taxi-driver::the-machinist": [
+      {
+        "lens": "Psychological Turmoil / Isolation",
+        "similarity": 0.659,
+        "film_a": "taxi-driver",
+        "film_a_lens": "Psychological Turmoil",
+        "film_b": "the-machinist",
+        "film_b_lens": "Isolation",
+        "match_type": "semantic"
+      }
+    ],
+    "the-machinist::the-prestige": [
+      {
+        "lens": "Identity",
+        "similarity": 1.0,
+        "film_a": "the-machinist",
+        "film_a_lens": "Identity",
+        "film_b": "the-prestige",
+        "film_b_lens": "Identity",
+        "match_type": "cluster"
+      },
+      {
+        "lens": "Reality / Illusion vs Reality",
+        "similarity": 0.631,
+        "film_a": "the-machinist",
+        "film_a_lens": "Reality",
+        "film_b": "the-prestige",
+        "film_b_lens": "Illusion vs Reality",
+        "match_type": "semantic"
+      }
+    ],
+    "the-machinist::truman-show": [
+      {
+        "lens": "Reality / Reality vs Illusion",
+        "similarity": 0.611,
+        "film_a": "the-machinist",
+        "film_a_lens": "Reality",
+        "film_b": "truman-show",
+        "film_b_lens": "Reality vs Illusion",
+        "match_type": "semantic"
+      }
+    ],
+    "the-prestige::truman-show": [
+      {
+        "lens": "Reality vs. Illusion",
+        "similarity": 1.0,
+        "film_a": "the-prestige",
+        "film_a_lens": "Illusion vs Reality",
+        "film_b": "truman-show",
+        "film_b_lens": "Reality vs Illusion",
+        "match_type": "cluster"
+      }
+    ]
+  }
+}

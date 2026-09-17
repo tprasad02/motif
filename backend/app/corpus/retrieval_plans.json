@@ -1,0 +1,1589 @@
+{
+  "version": 1,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "films": {
+    "black-swan": [
+      {
+        "aliases": [
+          "Madness"
+        ],
+        "chunk_ids": [
+          "be4122c0ad14f1521276560bb6886365",
+          "131bfad9e8607f642c8cc8b1b4838911",
+          "48136d57120a8b5364811c73d3b959bd",
+          "bfd391f8043c2639ae1b9800ae46160d",
+          "196b939a225e7fed1bfd2ebf13888eef",
+          "af10e877582202a49974dcbc0166a4dd",
+          "3b25fc2342051eef9ae14d41825b32bf",
+          "ac6ef07a0772eb82309a23a67fda3498",
+          "5a5c808db0c1b6951fbd91dce518f428",
+          "9710d0021fe540db14c263e8e608384f",
+          "eababf5f414816ccce7cff527b0b6908",
+          "e6952658d712aa4bb19863b1c0453e91"
+        ]
+      },
+      {
+        "aliases": [
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "33a352e35c880fc3a9bba954a6737119",
+          "8c194d6e8db4a08fc55887694ff906ea",
+          "55494c6763837be73f85e53671590c4f",
+          "1215b06b9e5d78b4118d6db93e9675d3",
+          "62ba3ace29a0cbe469aecb36e7da45d9",
+          "7638a6761a4437be95c8c172d46f2f6f",
+          "fd42ebd3396add84a404d98a5e56a998",
+          "e3c6b822ea4974e70798d0cd5522012c",
+          "3b25fc2342051eef9ae14d41825b32bf",
+          "5f695d5bd3bc5e1a16742866ee654f10",
+          "1ae0ee3609c2ffdbe6bfa45941aaf747",
+          "7bcca3b2b7f70c7022352567edc8175b"
+        ]
+      },
+      {
+        "aliases": [
+          "Perfectionism"
+        ],
+        "chunk_ids": [
+          "df110be2d144469d6cf42124bfe4435d",
+          "a95c9ac2f65e2ca879e646930e90b95e",
+          "55494c6763837be73f85e53671590c4f",
+          "ed88856063aa2649ce017fdd2717a862",
+          "196b939a225e7fed1bfd2ebf13888eef",
+          "1e9c55f733ea474ab0454e2d26ecef1f",
+          "50706431a59cc5ba7d7f93cac144636b",
+          "a8c55f4862cffdda4922ea741ea22644",
+          "57ea844729ce5efee17b494dd3b26fcf",
+          "e90e0d42a109dc42833157230b778ab6",
+          "0159f471cfc034993f84897c79aa9ca6",
+          "8d831842a3f3c72281fb2974dd9ce12f"
+        ]
+      },
+      {
+        "aliases": [
+          "Identity Crisis",
+          "Identity"
+        ],
+        "chunk_ids": [
+          "a8c55f4862cffdda4922ea741ea22644",
+          "48136d57120a8b5364811c73d3b959bd",
+          "55494c6763837be73f85e53671590c4f",
+          "9957133c9d20ccef529b3674cbbeebb5",
+          "8995dc6d6348b68a24a3f1432f033fc0",
+          "e202c4b95b6c0fd732ba73073f104a49",
+          "14cf085bc490e4f68683c6e0a352429a",
+          "463901d58d473fb28f537d160642271c",
+          "813313f2f211b1aa816584f8a82aaa15",
+          "131bfad9e8607f642c8cc8b1b4838911",
+          "d9ac3b08855427cc72eff759cd12bcf1",
+          "5f695d5bd3bc5e1a16742866ee654f10"
+        ]
+      },
+      {
+        "aliases": [
+          "Feminine Identity"
+        ],
+        "chunk_ids": [
+          "50706431a59cc5ba7d7f93cac144636b",
+          "f71006196583cd1a129242c7c4effe41",
+          "55494c6763837be73f85e53671590c4f",
+          "c5485af40587f44321e2b3ba332e5c40",
+          "ed88856063aa2649ce017fdd2717a862",
+          "a395a9ce52c43fb93659371ec52b2921",
+          "af10e877582202a49974dcbc0166a4dd",
+          "6f8eda1de9bb293651924b4b9e7a678b",
+          "9957133c9d20ccef529b3674cbbeebb5",
+          "1e9c55f733ea474ab0454e2d26ecef1f",
+          "131bfad9e8607f642c8cc8b1b4838911",
+          "196b939a225e7fed1bfd2ebf13888eef"
+        ]
+      }
+    ],
+    "donnie-darko": [
+      {
+        "aliases": [
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "d2d67d6a31f8763de050341e38de6454",
+          "bec7a5b02c85e33a64d1a812cb52608a",
+          "232a38fe02bb97b33ce4647bbd4a9c8e",
+          "611d2e0dc639a4f35f2231e0bd1e5e0c",
+          "0bdeece285919c14f0751fa353f88ed3",
+          "3a2f835e10d69b5238f0ad1a8df1883b",
+          "ba40d11f9a54ff76d7e719f931559403",
+          "b2a465485e36565f415cce8268bb317d",
+          "e020ff114acd432df83c99ac12da1b3c",
+          "b7c117ec03054e2eaab95d8663768797",
+          "09ca9669b9dc4246f19f06005bab2e18",
+          "d98cdadb293a88aeb55793fc72f66952"
+        ]
+      },
+      {
+        "aliases": [
+          "Mental Health"
+        ],
+        "chunk_ids": [
+          "604947acd9f83fc56ca6e09a3862df5d",
+          "ccc37325852ba398a9679147acf65b18",
+          "dd98c3d9e23b0939288854ddb1dd8901",
+          "611d2e0dc639a4f35f2231e0bd1e5e0c",
+          "6228abccd5e8c0ab699581f70a9ddd61",
+          "d03f2154a12a226f4ed2d36c320e3bfc",
+          "aa25e55270bd89cf0246b576d7281346",
+          "70c0d53419e2148ca398d35c7fb5cd88",
+          "d3f90efaf53a4224f0ce59f8714a6736",
+          "747dcd6fdf5a1a1fe9aec92a66f769da",
+          "2feddd384edf6695a568fe0f05373f3b",
+          "a8e10e3bcc755d8815b031312590db22"
+        ]
+      },
+      {
+        "aliases": [
+          "Time and Fate"
+        ],
+        "chunk_ids": [
+          "d6dad932c9f231c6a48b8aaa6162443e",
+          "7eb86044617c50bc4f2257fdef84cf16",
+          "3a2f835e10d69b5238f0ad1a8df1883b",
+          "611d2e0dc639a4f35f2231e0bd1e5e0c",
+          "2609d9ff8a12fcf7ac13fca6b5f7cfa9",
+          "23ba62d4ea1a0604128f8ac9ffd102f0",
+          "6784cf7c7db88b0e791aef8dd5054a3c",
+          "fef2a4cb55779aca1ec2cc00cd35e204",
+          "b7c117ec03054e2eaab95d8663768797",
+          "ee5f418996a54bb89ee604da751e7e26",
+          "aadf6afe7ddc0b068d4cc841b5884bcd",
+          "a8e10e3bcc755d8815b031312590db22"
+        ]
+      },
+      {
+        "aliases": [
+          "Social Conformity",
+          "social conformity"
+        ],
+        "chunk_ids": [
+          "051fef81ab67a4ea9b164d89d2d6f622",
+          "b2a3c91e1f0cfcba376b64aab859df13",
+          "2feddd384edf6695a568fe0f05373f3b",
+          "611d2e0dc639a4f35f2231e0bd1e5e0c",
+          "e1c5abe10e27553149fde158c1a7682b",
+          "09ca9669b9dc4246f19f06005bab2e18",
+          "232a38fe02bb97b33ce4647bbd4a9c8e",
+          "924edaf05bd840f70a48324f332a74d6",
+          "d98cdadb293a88aeb55793fc72f66952",
+          "75c4625fbd8946a8fc59463a9abd6d35",
+          "a8e10e3bcc755d8815b031312590db22",
+          "23ba62d4ea1a0604128f8ac9ffd102f0"
+        ]
+      },
+      {
+        "aliases": [
+          "Reality vs Illusion",
+          "Reality vs. Illusion"
+        ],
+        "chunk_ids": [
+          "ccc37325852ba398a9679147acf65b18",
+          "69d7758b1deffabc882da5dc43938433",
+          "75c4625fbd8946a8fc59463a9abd6d35",
+          "611d2e0dc639a4f35f2231e0bd1e5e0c",
+          "aa25e55270bd89cf0246b576d7281346",
+          "e020ff114acd432df83c99ac12da1b3c",
+          "09ca9669b9dc4246f19f06005bab2e18",
+          "d3f90efaf53a4224f0ce59f8714a6736",
+          "fc6052bacd9195885bbc26d7c37cb2f6",
+          "aadf6afe7ddc0b068d4cc841b5884bcd",
+          "2feddd384edf6695a568fe0f05373f3b",
+          "4bdd1377e15e5cabbcc306aa44c6bd8b"
+        ]
+      }
+    ],
+    "fight-club": [
+      {
+        "aliases": [
+          "Anarchy and Chaos"
+        ],
+        "chunk_ids": [
+          "08318aa2f284be56d972b9c399d6233e",
+          "2b20467be0a747bceffededc7e940199",
+          "0f37f22e1f180105fe877911c907f680",
+          "bb0be5f6b1b03b6220e57d446464c639",
+          "c9bd89ce059183f206159eab4cb1deb2",
+          "46a9158d498a4fee5a4a4faf5844c25c",
+          "4304ad2155ad55285fef81d4bc65f148",
+          "7bf88d4ec51d32b881abaef9d0f47596",
+          "ff291cca9dce528e076a2374c3f438f9",
+          "e5b3dbd77de4d3c7beeb39819da590ca",
+          "0a0747774a2d12e04422ff3c1177bb00",
+          "f3323fe700822b9f30d54ac999025089"
+        ]
+      },
+      {
+        "aliases": [
+          "Existential Nihilism"
+        ],
+        "chunk_ids": [
+          "0a0747774a2d12e04422ff3c1177bb00",
+          "c2597bce52dd8d009bf42501edb1f5dc",
+          "f621f2d03928a628413e5b5fec97a03f",
+          "fb62417d31bab7c193ed577cdaea9fc3",
+          "c9bd89ce059183f206159eab4cb1deb2",
+          "51d5fef19cdf0794f34b1b4a94d98894",
+          "1e53f7a229d6d53b3563357593b3b6c8",
+          "309e4ebb89c9fdc38b71e8159d26abbd",
+          "ff291cca9dce528e076a2374c3f438f9",
+          "b0fbf31856efc42651dbd759e81d790b",
+          "ecd3821fa68b9b6ae3f1664581ae2de4",
+          "d9e690cb594efc24404514dee7e75579"
+        ]
+      },
+      {
+        "aliases": [
+          "Violence as Catharsis"
+        ],
+        "chunk_ids": [
+          "51d5fef19cdf0794f34b1b4a94d98894",
+          "7ce515246d8f237b47506445d337f4bc",
+          "f3323fe700822b9f30d54ac999025089",
+          "9ccd29ee5be054a33b7d956d197df16b",
+          "c9bd89ce059183f206159eab4cb1deb2",
+          "9fce9452494799d50373881aa803616f",
+          "e8584596e9e83de855f7c8678fc7e516",
+          "19ef0e6605346bc7a36278b301bbe5eb",
+          "f500606c1fbc7532a0b359b5d3b002d0",
+          "495943f88495ea06efff93813245f328",
+          "ff291cca9dce528e076a2374c3f438f9",
+          "fb62417d31bab7c193ed577cdaea9fc3"
+        ]
+      },
+      {
+        "aliases": [
+          "Isolation and Connection",
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "6d55d19eb63e579cb56b91824b75e139",
+          "61d8ac13fe53350d3cc2c35d5bf78646",
+          "f6a58c51ba0d63e6fc1c7294fbf6d9ea",
+          "ec322f88298a95483f62679a634b2ae4",
+          "c9bd89ce059183f206159eab4cb1deb2",
+          "2332944cc19cf6946580a301cc65b04c",
+          "56387b103fa9183b07bee84c1580d967",
+          "c64f4f5a1ae3a2960994b6825b8555cf",
+          "36132294e21ad7d18b272dbdf591af11",
+          "0f37f22e1f180105fe877911c907f680",
+          "2b20467be0a747bceffededc7e940199",
+          "ff291cca9dce528e076a2374c3f438f9"
+        ]
+      }
+    ],
+    "gone-girl": [
+      {
+        "aliases": [
+          "Moral Ambiguity"
+        ],
+        "chunk_ids": [
+          "53259f302d91c3223be83598358130f1",
+          "e9a3ead675d46fe3f8c7be47506ebe12",
+          "2118f4ab80cfb243705f0d4722c092ae",
+          "a34bf21d0ac991bba5946f87bc9b44fd",
+          "531b40f3bce33fb386a3c5b3f6bb67d6",
+          "012a45393daadf722353f7fec4ec1daf",
+          "759ba615226b8af3176f5b4c252bcdd6",
+          "9c100c629e7b1960ec3ea1fd48b0cf1b",
+          "044b6ee18b6cbb55af825cd266557387",
+          "661e26ddeb42f2a9dda17861a05e94d1",
+          "857a4f21b76b5033a91d74b8820d5012",
+          "061212173684b6edc4fc8ace8d81d327"
+        ]
+      },
+      {
+        "aliases": [
+          "Marriage Dynamics"
+        ],
+        "chunk_ids": [
+          "44470664e8d74cddea7f896f9d82b8e0",
+          "464ca65de8c66cd126ca8f712fe362e6",
+          "2418976fa8a5a3c3f14ce88f7bdb372c",
+          "a34bf21d0ac991bba5946f87bc9b44fd",
+          "531b40f3bce33fb386a3c5b3f6bb67d6",
+          "899dd69bc1a17fad8469f955ffc7e111",
+          "9c100c629e7b1960ec3ea1fd48b0cf1b",
+          "4ba2012fca2a0508c3a8fd08978244c2",
+          "044b6ee18b6cbb55af825cd266557387",
+          "66f966802b27f730ec1a3e71553a176b",
+          "5c8170c1bd7c9215e43c6b2732376ccb",
+          "699ca2c9ad8c00cde1c901a0d904885a"
+        ]
+      },
+      {
+        "aliases": [
+          "Identity Construction"
+        ],
+        "chunk_ids": [
+          "52ce27f1e09cacb7593ca969ce276c9e",
+          "c52a8339d42274e4a062c52099ee7cb4",
+          "2118f4ab80cfb243705f0d4722c092ae",
+          "a34bf21d0ac991bba5946f87bc9b44fd",
+          "531b40f3bce33fb386a3c5b3f6bb67d6",
+          "1462c8f0308d538ee7549ac8069c54ee",
+          "759ba615226b8af3176f5b4c252bcdd6",
+          "044b6ee18b6cbb55af825cd266557387",
+          "4ba2012fca2a0508c3a8fd08978244c2",
+          "66f966802b27f730ec1a3e71553a176b",
+          "0faae57ac435525b7541cf3c69cb4c70",
+          "c3f7e6071acb6dfc3d9ba3730c604387"
+        ]
+      },
+      {
+        "aliases": [
+          "Psychological Manipulation",
+          "Manipulation"
+        ],
+        "chunk_ids": [
+          "52ce27f1e09cacb7593ca969ce276c9e",
+          "574c3460cde53a2c72ea3e6498e192b5",
+          "d75f2874c173a05caee28a6b756f1b21",
+          "15c8e52753dbf1347a980aa522af8fa3",
+          "531b40f3bce33fb386a3c5b3f6bb67d6",
+          "34c1edd3ff993b975883fc137f2312ee",
+          "4c10b049cca26576c481fe4f7b24d7ce",
+          "f590273e4314a4a3ac681ba493bd4399",
+          "c2cc268698f3c57e1a2fc29da433c6bb",
+          "58c2ed0d42e3758bc5d3d2f38902ae4d",
+          "9c100c629e7b1960ec3ea1fd48b0cf1b",
+          "4ba2012fca2a0508c3a8fd08978244c2"
+        ]
+      }
+    ],
+    "memento": [
+      {
+        "aliases": [
+          "Identity Crisis",
+          "Identity"
+        ],
+        "chunk_ids": [
+          "718d18ea350dd03a8a386ba6a63973e2",
+          "b531d0fa82dc1e9b5a9401c600aed140",
+          "d7bb5cd4c687c9247412d8d95ee0c457",
+          "1785e78a711e2255606917e88ed77ac9",
+          "7f30012a2ef03c7f25d76027ff26bad0",
+          "4ee39c74a955881a23e8622ae867c9d7",
+          "9b00d9a697b3ca9248e288f61e642228",
+          "5f79460f7b81203a2561f0f9a1d84f7c",
+          "ecf1d0998fff83b1cd9328c114c77449",
+          "08fa8c0f5632b1ade65bef27aa77839c",
+          "96522796203e4633ae2cd57994410a95",
+          "312a8d08ace2a861e62580ae2827ba50"
+        ]
+      },
+      {
+        "aliases": [
+          "Memory Distortion"
+        ],
+        "chunk_ids": [
+          "03ef3e3c55f75777944635d405908485",
+          "878dca3fc3ca473a69212d4934d8d19d",
+          "7f30012a2ef03c7f25d76027ff26bad0",
+          "1ff4bcf6e9dd2d5e841a540f2d49cf85",
+          "4ee39c74a955881a23e8622ae867c9d7",
+          "5b9cebb27e0a050802485a4f23517d36",
+          "f2c522a94823041914dd8fda8da63dc3",
+          "35ab29d0e6b3b6165ceb5271b4299d98",
+          "718d18ea350dd03a8a386ba6a63973e2",
+          "b27700bbfe1fa1fc926226f891291aad",
+          "d7bb5cd4c687c9247412d8d95ee0c457",
+          "59cfd67d77c7aa28740a598c4bb3a5e8"
+        ]
+      },
+      {
+        "aliases": [
+          "Reality vs Illusion",
+          "Reality vs. Illusion"
+        ],
+        "chunk_ids": [
+          "33f12b794141c72293a5cce7de9e5ee9",
+          "40ccea0bbfc3bd0976654eedd85668bd",
+          "08fa8c0f5632b1ade65bef27aa77839c",
+          "47de468be2527b4cc00a12979192c7cf",
+          "7f30012a2ef03c7f25d76027ff26bad0",
+          "101a7f59b4270dba5dcadd8eafad63f9",
+          "d72e68310b47cceddc5a7e0aa2d1c61f",
+          "1325b9397da369ed1f49bdb548040091",
+          "71e669dd8ce6af3019aabbf9148a889b",
+          "6e63f26837eec000ae0ac2ab658bc358",
+          "a1223180b14b34daa1c9d0431c6aeb74",
+          "930c24ef21a2b58099a1250f24dc134a"
+        ]
+      }
+    ],
+    "mulholland-drive": [
+      {
+        "aliases": [
+          "Moral Decay",
+          "moral decay"
+        ],
+        "chunk_ids": [
+          "7da1c89d2734ed1d0cee598fa1c98eb6",
+          "5ca379a9806b69ae60d93fd57fef0325",
+          "ce5dfa7b99cdfa7afc7e38129b865d98",
+          "10cc9d750e3a7708f46754359c0b7b84",
+          "d617971df938366514ae786bbc70f2c0",
+          "a0a65840ed7a1b9202ccc9779abf55fc",
+          "2b339669b54aaa28dd8ba3d723a450a1",
+          "b76235969d4c9f4e3eceb073d6f6a053",
+          "0b675883a7ad78a982915dd21c85a5ca",
+          "3115e3adc20596a6cc9d013f75c2188d",
+          "29e5f15cbb354734252130cedc8baf4a",
+          "1655a635ff78001c4f027f90f2c11124"
+        ]
+      },
+      {
+        "aliases": [
+          "Self Exploration",
+          "self-exploration"
+        ],
+        "chunk_ids": [
+          "c283065ded76dd54fbd8434ec37d7ff9",
+          "dd300706cd6391fa1497aad78b6df01b",
+          "80450a1058934387f7a932998b20f803",
+          "10cc9d750e3a7708f46754359c0b7b84",
+          "35bcffcad608eb8b1cfcd9d48027bebe",
+          "ad44871eff6f67dc8fd0fdca3dd5c8bb",
+          "f693454e890fdba0a29ef690c07209b6",
+          "6f5b0bcbcc47c73dc13365ef9228c5af",
+          "3115e3adc20596a6cc9d013f75c2188d",
+          "c8c08e547029d6c801a99218dd81c995",
+          "6a56b5addd386be41fbc8a8f301968ea",
+          "1a2c038df050eaf2daa297f2aee48647"
+        ]
+      },
+      {
+        "aliases": [
+          "Existential Crisis"
+        ],
+        "chunk_ids": [
+          "10cc9d750e3a7708f46754359c0b7b84",
+          "80450a1058934387f7a932998b20f803",
+          "0fff090d5f1eb35217952c8b2227722b",
+          "f268de8d7a312f6931ea0863077521d4",
+          "036bb7eb3795fc8963aa704b4e8f60c6",
+          "3b5df63ebd7e4755765a26cbc970a012",
+          "51cde580f5fab257ed4936a440ae6dc1",
+          "cdbe8dac32104ddd57958d1f51cf237c",
+          "b340d97cc9082517ca558b3e833b43eb",
+          "c8c08e547029d6c801a99218dd81c995",
+          "df402724bd8374089789da0dc357a067",
+          "d500e6f134550f13f7bd0f0ae6bf4eb9"
+        ]
+      },
+      {
+        "aliases": [
+          "Illusion of Control",
+          "illusion of control"
+        ],
+        "chunk_ids": [
+          "dd300706cd6391fa1497aad78b6df01b",
+          "10cc9d750e3a7708f46754359c0b7b84",
+          "80450a1058934387f7a932998b20f803",
+          "0fff090d5f1eb35217952c8b2227722b",
+          "0b50918aa34ac20a29fad93b4e891f34",
+          "df402724bd8374089789da0dc357a067",
+          "13a5034d993e7d1fc1e2b82d4329e149",
+          "2808864c00be1ec3d8254f3b34d5a566",
+          "d617971df938366514ae786bbc70f2c0",
+          "44e0f958541b487320aac061dcab52bb",
+          "17bd4ccbfdff5f9d03331cb53689af6a",
+          "632ce4c5317f9b9a3af8eb5f9f3ef8a6"
+        ]
+      },
+      {
+        "aliases": [
+          "Reality Fragmentation"
+        ],
+        "chunk_ids": [
+          "10cc9d750e3a7708f46754359c0b7b84",
+          "dd300706cd6391fa1497aad78b6df01b",
+          "0fff090d5f1eb35217952c8b2227722b",
+          "6f5b0bcbcc47c73dc13365ef9228c5af",
+          "d0c1a9eb5ed3c58fb619c0fd399f233b",
+          "6e58fbdc1f188e52eed0eb0037df23ef",
+          "f7b247e41a2c98c5e99de0d778376e0c",
+          "e0a8c4ddfd3847383a238b99b91222f8",
+          "3b4709dfcc2ea50a05bbca31d59b4cae",
+          "7da1c89d2734ed1d0cee598fa1c98eb6",
+          "3eceb261980a29cd253f28b9fd146682",
+          "2b339669b54aaa28dd8ba3d723a450a1"
+        ]
+      }
+    ],
+    "one-flew-over-the-cuckoos-nest": [
+      {
+        "aliases": [
+          "Irony"
+        ],
+        "chunk_ids": [
+          "63e1d32ba2153d09417fded13759a10c",
+          "6b1d4cafa4bee8c426df9af7c32759f1",
+          "ad442c5657bdafb2de479794e6011a15",
+          "67875a1db961075cfab9757670365bc3",
+          "56b302f9ef3ceefd00b0f51a56e3032a",
+          "c87f279ba70467057a17b7b98c74cb10",
+          "817affccac404d3563d6fce76498b999",
+          "8170b2cade55476aec037457ca41a249",
+          "c64150f2191cf4c6ad2fc523443a06d0",
+          "baf05eef4919c5f313916c4466932d56",
+          "5ec4b3cff1698e6f95685323223b2f0d",
+          "97907e1ff5851c5270575586e01acd00"
+        ]
+      },
+      {
+        "aliases": [
+          "Authority"
+        ],
+        "chunk_ids": [
+          "7b47f562635f23b9886bef493d13b499",
+          "03aafd7dbb4f22226b6162dfd20a3524",
+          "ad442c5657bdafb2de479794e6011a15",
+          "ee03eed461159037ef182a8c467c8a6c",
+          "9bc94e0089429a7139200bbd102badc6",
+          "064a5e976296b3c6880b68f77cbae2e1",
+          "8170b2cade55476aec037457ca41a249",
+          "93950254577ddd20ca816a77af93c26e",
+          "a001a4004dcc67ac790dfcda5d25e6d9",
+          "78b9979b73e76188d1cb5f6128378097",
+          "45b16bacdce0bd6778e3dfa9c420ef64",
+          "56b302f9ef3ceefd00b0f51a56e3032a"
+        ]
+      },
+      {
+        "aliases": [
+          "Human Spirit"
+        ],
+        "chunk_ids": [
+          "b4cc381686354b6d015d37bed5db7f16",
+          "e617576c694ca340218c20b93543c001",
+          "67875a1db961075cfab9757670365bc3",
+          "ad442c5657bdafb2de479794e6011a15",
+          "56b302f9ef3ceefd00b0f51a56e3032a",
+          "c87f279ba70467057a17b7b98c74cb10",
+          "5c1f8ab3543d77d0d7605bead56fee56",
+          "00e6774587a5a91222bbaf441ee1f58a",
+          "e77a5ad6732365a8b5281be6f40683cd",
+          "a56f43dc155cf3ce31fe8539235985e0",
+          "0b367d83a20e7d3aa26c9c94547d96ad",
+          "ba1d3e400a1e214649ebe2e8b32a70ec"
+        ]
+      },
+      {
+        "aliases": [
+          "Mental Illness"
+        ],
+        "chunk_ids": [
+          "9188f5446b2ee5e4a18fb5073188850c",
+          "891333280ece19f6ec1a921db56b3caf",
+          "56b302f9ef3ceefd00b0f51a56e3032a",
+          "91f0893c9a29797df57cf1ab8e7d4cb4",
+          "f47e547a4391362765f813e9e6893c5c",
+          "593fd139f80864334fa2b1796cd4303d",
+          "fdbb6ba46e5e1ad19ca390ff2f38b152",
+          "be0f8c434a498ef9f2852002c6eb12b1",
+          "616bf02ce5f35454e3369bb43372dffa",
+          "6998d59bc1b230c7d4b20bdc862f12ec",
+          "75a8cf88b244eef9b938aeb715828088",
+          "b7b6c7540c3607fa9fba3eb26edc6c20"
+        ]
+      },
+      {
+        "aliases": [
+          "Power Dynamics",
+          "Authority"
+        ],
+        "chunk_ids": [
+          "7b47f562635f23b9886bef493d13b499",
+          "03aafd7dbb4f22226b6162dfd20a3524",
+          "ee03eed461159037ef182a8c467c8a6c",
+          "ad442c5657bdafb2de479794e6011a15",
+          "9bc94e0089429a7139200bbd102badc6",
+          "52e8e86838a09d67d567ca9b02fbc3eb",
+          "d689c945268683b468575740fcbb2066",
+          "a1736873f630c801efaf9ddcfeee88c9",
+          "165d92d2d4d33736e29ab97ebabd1b61",
+          "0b367d83a20e7d3aa26c9c94547d96ad",
+          "23e8d731c36158d807010b6c42c65222",
+          "5c1f8ab3543d77d0d7605bead56fee56"
+        ]
+      }
+    ],
+    "prisoners": [
+      {
+        "aliases": [
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "7e44ed47dab67c078746ebdb91f4f814",
+          "5d46a7ad2b62059b78d65855a50ef361",
+          "504b970a44deb486456b119fabaca832",
+          "7a4bc23914e91295a7113a93e6a74e1e",
+          "fcb8fa28f9f79ed1f3081aed83579124",
+          "ac4c8599688683888488a79c458afc94",
+          "0eb899590a2c05e69d520b52483557be",
+          "8d7317f0935c51f3ffcff5a7f0881548",
+          "8648079e75ccc5d508055fc021a37373",
+          "41769c52ad1b44ded0475b1445a50f13",
+          "15c2ec4cab2a884462dd64b276082780",
+          "bb5f0672627395bf089a1e372999199e"
+        ]
+      },
+      {
+        "aliases": [
+          "Parental Control"
+        ],
+        "chunk_ids": [
+          "7e44ed47dab67c078746ebdb91f4f814",
+          "7f0812cb2c107aa9280edf5a56b67ee0",
+          "c74cf2783be8bbb5d35f0909afd88978",
+          "7a4bc23914e91295a7113a93e6a74e1e",
+          "3f1623d51322eb55a642d14006d13cc0",
+          "80d5e6f3ad1f6f67ee7d41e662eecdb9",
+          "619c6fd840c03709d7436077ae84c57e",
+          "8d7317f0935c51f3ffcff5a7f0881548",
+          "865485a8f0536e003ba4de93c3f631aa",
+          "5d46a7ad2b62059b78d65855a50ef361",
+          "bb5f0672627395bf089a1e372999199e",
+          "4418c45ebea8318e1b89be8013650b4d"
+        ]
+      },
+      {
+        "aliases": [
+          "Fear and Paranoia"
+        ],
+        "chunk_ids": [
+          "7c3c9636089f5d7bf447741136905060",
+          "504b970a44deb486456b119fabaca832",
+          "bb5f0672627395bf089a1e372999199e",
+          "7a4bc23914e91295a7113a93e6a74e1e",
+          "4f73d4dc990c6b14bfa91f9008733058",
+          "865684e5a485f10b5ac7f03047da4291",
+          "8648079e75ccc5d508055fc021a37373",
+          "9aa499eff114e13401f7d421df8533e4",
+          "d1177eada2594752890a362a5b32bcc4",
+          "5d46a7ad2b62059b78d65855a50ef361",
+          "619c6fd840c03709d7436077ae84c57e",
+          "15c2ec4cab2a884462dd64b276082780"
+        ]
+      },
+      {
+        "aliases": [
+          "Survival Instinct"
+        ],
+        "chunk_ids": [
+          "41769c52ad1b44ded0475b1445a50f13",
+          "0e3352c37cf8764feb4f67caf7ce3472",
+          "bb5f0672627395bf089a1e372999199e",
+          "7a4bc23914e91295a7113a93e6a74e1e",
+          "e725dff581c0e6adc5f064a31a334b89",
+          "8648079e75ccc5d508055fc021a37373",
+          "d1177eada2594752890a362a5b32bcc4",
+          "9aa499eff114e13401f7d421df8533e4",
+          "7e44ed47dab67c078746ebdb91f4f814",
+          "5d46a7ad2b62059b78d65855a50ef361",
+          "865485a8f0536e003ba4de93c3f631aa",
+          "619c6fd840c03709d7436077ae84c57e"
+        ]
+      },
+      {
+        "aliases": [
+          "Community Dynamics"
+        ],
+        "chunk_ids": [
+          "41769c52ad1b44ded0475b1445a50f13",
+          "15c2ec4cab2a884462dd64b276082780",
+          "657b3856e518d9da818a7cfdf4ce21c6",
+          "7a4bc23914e91295a7113a93e6a74e1e",
+          "d1a4f2fe57125cbbeef520e56dc1018b",
+          "aee46f4e276f33afb33131c9aa2a3f55",
+          "e7cd9dedd02006ec71320b02d67f8fbe",
+          "5d46a7ad2b62059b78d65855a50ef361",
+          "28e771d38ca636325999f4acb1575fca",
+          "4418c45ebea8318e1b89be8013650b4d",
+          "865485a8f0536e003ba4de93c3f631aa",
+          "bb5f0672627395bf089a1e372999199e"
+        ]
+      }
+    ],
+    "requiem-for-a-dream": [
+      {
+        "aliases": [
+          "Addiction"
+        ],
+        "chunk_ids": [
+          "698d4e00d0065faecf600f2cafcdb158",
+          "c24438b02d08632e9839334eb1b07d92",
+          "82b9627485391fd6aae1d74949387cd1",
+          "13d6274b21d2ffe868faf1c26c6441d0",
+          "20714bdfc34a2881b5f21647487cd66c",
+          "c4b11c070e6caf126207f688a9b5a7bc",
+          "34979101f4e14832c1e41a9a1b5cc0dc",
+          "9f9baac3dfdd68198447f1ff0997f1d6",
+          "102bca27e1219dca2a5ee5aeba524af4",
+          "6592c72e6ce3f9a318c7f7e6229af0a6",
+          "a18509f3b91a597a2c05b6879f371041",
+          "19ed50bb2f7dd901fdc07321c0915ece"
+        ]
+      },
+      {
+        "aliases": [
+          "Desperation"
+        ],
+        "chunk_ids": [
+          "3939d18af4a81414bb69307197340ee9",
+          "c24438b02d08632e9839334eb1b07d92",
+          "102bca27e1219dca2a5ee5aeba524af4",
+          "62bd5e45cb820ca46ea84c2ddd1b23b1",
+          "733483e37addc25a14a7afb968cd2fb3",
+          "b447e7c28ac6f295dfa0202e521b60c7",
+          "b964aefb33dccd41346b6adb45a40088",
+          "82b9627485391fd6aae1d74949387cd1",
+          "38298cf748c6b09d69df1e41a9a1558e",
+          "d673f5103cbd43822c44c59af1761a8a",
+          "8adbe193ab8d1449e22913326e502845",
+          "64c3c076ab14a36e8522052e832377f4"
+        ]
+      },
+      {
+        "aliases": [
+          "Emotional Turmoil"
+        ],
+        "chunk_ids": [
+          "698d4e00d0065faecf600f2cafcdb158",
+          "c24438b02d08632e9839334eb1b07d92",
+          "6592c72e6ce3f9a318c7f7e6229af0a6",
+          "20e207d6e273984e43ef5a0d68c02db4",
+          "d62edfff2fbbb793b9a70d962a469050",
+          "b447e7c28ac6f295dfa0202e521b60c7",
+          "da29a42503177d585ead94acd12f0179",
+          "13d6274b21d2ffe868faf1c26c6441d0",
+          "102bca27e1219dca2a5ee5aeba524af4",
+          "743cd61cf623baf2fc691673e9765b93",
+          "66ef8b8cfafc19921eceaa8183d1678c",
+          "19ed50bb2f7dd901fdc07321c0915ece"
+        ]
+      }
+    ],
+    "se7en": [
+      {
+        "aliases": [
+          "Despair"
+        ],
+        "chunk_ids": [
+          "19433bdf57cf8e05c8833f9005a28c2b",
+          "dbe3891b510d943f06feee2f79ebee0e",
+          "44cc2870d1a251d4d078b395bbf1c295",
+          "fa8865c66a2b5a663014bfcd59bcdbb4",
+          "d5471ded5b3fba5fa8c76f1e45774aa8",
+          "531e4ede6369326561e3ff1f67543f6e",
+          "85faa4de5aa1773c08c9d2280c1c899d",
+          "0e95c8b59d0dafbe5de2802ae79fd198",
+          "dae9fb501f6d37c5048afcca86db52f4",
+          "1a53e323037b63415dc97e6ef6a38cd3",
+          "67c0d73817b3b09d2127dbbee717a2d8",
+          "3d4d9a3248203b7c4e057cd138e9e3dc"
+        ]
+      },
+      {
+        "aliases": [
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "6773e1c1ab9f5a3548731e9c4410ae56",
+          "07c08736eeb8cd11e63e5a0175725c75",
+          "862fd92a6f2a43322c8ff61056c8d24c",
+          "44cc2870d1a251d4d078b395bbf1c295",
+          "d5471ded5b3fba5fa8c76f1e45774aa8",
+          "735f90c814d95521df7f8eb9324d3fcb",
+          "8c764dafbab75e98e33b4cdd88910754",
+          "dae9fb501f6d37c5048afcca86db52f4",
+          "f59a3e9a6805170448753d567a6acd0c",
+          "d9057e931b96a045adfe5c2124a6ab47",
+          "a37f0070eadfb0dc8a41ee0cf7b4393f",
+          "cdddd87ceae85d47b975d59245a6353a"
+        ]
+      },
+      {
+        "aliases": [
+          "Societal Decay"
+        ],
+        "chunk_ids": [
+          "cd11ebafe7dff0301b08221315933481",
+          "ed3a245f275aae43736f1f4f10199cec",
+          "8f01f0e4950bb53f0201cc864af0a2f7",
+          "735a299bf52b19ef35c81caa60122a24",
+          "d5471ded5b3fba5fa8c76f1e45774aa8",
+          "a65bcce8b10982e32cb90a9b4f48b61d",
+          "b77ed33440096921648099cb23ae3a40",
+          "96df06012a55793d234e7b51e8bdbd17",
+          "a37f0070eadfb0dc8a41ee0cf7b4393f",
+          "a16582225a0e30ec568202d5e492a22b",
+          "75cc569d16523fdcdad016a9f1c7fc48",
+          "e3d3bd24ee15bcb433f55b448109900c"
+        ]
+      },
+      {
+        "aliases": [
+          "Human Suffering"
+        ],
+        "chunk_ids": [
+          "1a53e323037b63415dc97e6ef6a38cd3",
+          "67c0d73817b3b09d2127dbbee717a2d8",
+          "a0804dfcb0050010154a2ba918c24136",
+          "735a299bf52b19ef35c81caa60122a24",
+          "d5471ded5b3fba5fa8c76f1e45774aa8",
+          "85faa4de5aa1773c08c9d2280c1c899d",
+          "557e58f4020f4e74d558dcf1945496ff",
+          "1a934987bf2bd0a17c94ec91450f65dc",
+          "3d4d9a3248203b7c4e057cd138e9e3dc",
+          "19433bdf57cf8e05c8833f9005a28c2b",
+          "dbe3891b510d943f06feee2f79ebee0e",
+          "73962730e43c1f9c08dbe930eff43479"
+        ]
+      },
+      {
+        "aliases": [
+          "Moral Ambiguity"
+        ],
+        "chunk_ids": [
+          "67c0d73817b3b09d2127dbbee717a2d8",
+          "19433bdf57cf8e05c8833f9005a28c2b",
+          "c9c06f317348b3e1a8e731b497e69280",
+          "037008719d601f180e84d5c500109837",
+          "d5471ded5b3fba5fa8c76f1e45774aa8",
+          "6683787673401e4ffe45601755023a38",
+          "75cc569d16523fdcdad016a9f1c7fc48",
+          "96df06012a55793d234e7b51e8bdbd17",
+          "af9a4a849bb4f30a0bcce05b34315598",
+          "52760b4621d56949ae597641e9dcaf11",
+          "a37f0070eadfb0dc8a41ee0cf7b4393f",
+          "5b4e0fd6748bd2d9fe965a4a17cdfa8c"
+        ]
+      }
+    ],
+    "shawshank-redemption": [
+      {
+        "aliases": [
+          "Friendship"
+        ],
+        "chunk_ids": [
+          "d6f7fc67266682346768e121db59415d",
+          "9596621a21a0d6d4081b4b541e0c4dae",
+          "a40ec8079ccc7b4859c6add0a5128616",
+          "919dcb728969a038a5c7bda140e48054",
+          "697f1f6a24f00d8a7768c1d4aadf0863",
+          "e6d37c8069aee2da9162f26766ed845a",
+          "711317e3af2df771769d43522d6fca87",
+          "4f580132f4b73af1870cc28ebc10ed3f",
+          "dd5ff40931fbc2cd29d7fafe687f4479",
+          "93e4d6c8ae4b11c49742403731562fad",
+          "6eea1367f3a3c01d686951c8cbd758e1",
+          "02bf39fa15ec3fe5cfd500b27d1a02a8"
+        ]
+      },
+      {
+        "aliases": [
+          "Hope and Despair"
+        ],
+        "chunk_ids": [
+          "53a7382cf5e8c72c9a7b0ff43f8d814a",
+          "eb481ecab20e56b49d0a879dcd6dfc11",
+          "919dcb728969a038a5c7bda140e48054",
+          "9596621a21a0d6d4081b4b541e0c4dae",
+          "53855b873f989ff70e0b2ecada51cdad",
+          "efbf64c03ae9c29138585e067d88a8a0",
+          "b7613a3d8bd7cd635a4db1c9639d7a1e",
+          "114e85ec1a454e501052f09edc86aa0b",
+          "697f1f6a24f00d8a7768c1d4aadf0863",
+          "7a8ceefc7bc0ec71121350944eef70cb",
+          "6eea1367f3a3c01d686951c8cbd758e1",
+          "a0db18067564acca13d5497883f9a9b8"
+        ]
+      },
+      {
+        "aliases": [
+          "Hope as Resistance",
+          "Hope and Despair"
+        ],
+        "chunk_ids": [
+          "a3ae0f1016ae6d510ebaffe071fb14ec",
+          "919dcb728969a038a5c7bda140e48054",
+          "eb481ecab20e56b49d0a879dcd6dfc11",
+          "9596621a21a0d6d4081b4b541e0c4dae",
+          "53855b873f989ff70e0b2ecada51cdad",
+          "4f580132f4b73af1870cc28ebc10ed3f",
+          "6f0c49efe8ae30d301e464b5b2282126",
+          "8d6e053843af1021f36a3c1bd7706031",
+          "697f1f6a24f00d8a7768c1d4aadf0863",
+          "a3237f18f1a036e24a555934f15f29c0",
+          "73d1f31250b516e192557355f3ab8f31",
+          "6eea1367f3a3c01d686951c8cbd758e1"
+        ]
+      },
+      {
+        "aliases": [
+          "Freedom and Confinement"
+        ],
+        "chunk_ids": [
+          "f47360dfce2ac33abd5a8b3e7f24bcb4",
+          "76df6c0cc05753cd082c7620c47b7153",
+          "a3237f18f1a036e24a555934f15f29c0",
+          "3d66d5444fae170001c86196a55feb72",
+          "93e4d6c8ae4b11c49742403731562fad",
+          "0f230b2fbe2c8c5a041f73bfad415fc5",
+          "6f0c49efe8ae30d301e464b5b2282126",
+          "6f245536d87298c41f652317a07e2a79",
+          "d84d1e667adcb7e722a80da4d37a6742",
+          "e2e0d32060e092778c3a85735a987275",
+          "e80ef559c461c9fff49480a6a0008211",
+          "6eea1367f3a3c01d686951c8cbd758e1"
+        ]
+      }
+    ],
+    "shutter-island": [
+      {
+        "aliases": [
+          "Manipulation"
+        ],
+        "chunk_ids": [
+          "52bedf0a329851c8669186416612d393",
+          "fee4ff594b6396a141844f99c60ef8a4",
+          "40c8edc7c374d057a1b7ac066631a132",
+          "84218c4135bc5600b432c9f7fd2ab3d7",
+          "446278d22113fe05cfccac1466f312a3",
+          "553b8d8d0b3e4333866cb24d72b6a2bc",
+          "73d1cbde0ce474bed739839faa471652",
+          "9dd31bd92993ac55174240620c3363e6",
+          "6955428bc740ebe5053dabba4adb26f4",
+          "c824347b0a141df37e63d9d4387647e0",
+          "71b5513b861d18aba2e07a17f61d99ab",
+          "1965e041af53baf447ac8f5262f777e3"
+        ]
+      },
+      {
+        "aliases": [
+          "Identity Crisis",
+          "Identity"
+        ],
+        "chunk_ids": [
+          "553b8d8d0b3e4333866cb24d72b6a2bc",
+          "dcda7507c5aaa46c2ee6dd62e6179fd8",
+          "48219526c14a6ff0a11cf4c455b01636",
+          "4e53effb51bbe1a680072b94c8f91528",
+          "446278d22113fe05cfccac1466f312a3",
+          "52bedf0a329851c8669186416612d393",
+          "9dd31bd92993ac55174240620c3363e6",
+          "73d1cbde0ce474bed739839faa471652",
+          "9a796b5993ba68b9e748b949d5ad6f38",
+          "787a03b24f5c1f5a2cf84046f0e4628b",
+          "1965e041af53baf447ac8f5262f777e3",
+          "2a0e0df74e7cab02f348707f498247aa"
+        ]
+      },
+      {
+        "aliases": [
+          "Guilt and Regret",
+          "Guilt"
+        ],
+        "chunk_ids": [
+          "52bedf0a329851c8669186416612d393",
+          "9dd31bd92993ac55174240620c3363e6",
+          "9a19840047bebde34bb48e878dece068",
+          "9ad0f7e3ddfd9f9fad198447765fea3b",
+          "446278d22113fe05cfccac1466f312a3",
+          "553b8d8d0b3e4333866cb24d72b6a2bc",
+          "6955428bc740ebe5053dabba4adb26f4",
+          "90e65dd69f009f592ac33a2fe3cc68aa",
+          "73d1cbde0ce474bed739839faa471652",
+          "787a03b24f5c1f5a2cf84046f0e4628b",
+          "71b5513b861d18aba2e07a17f61d99ab",
+          "8dfe3d00c73389da5f4d3b9a67b61625"
+        ]
+      },
+      {
+        "aliases": [
+          "Fear and Paranoia"
+        ],
+        "chunk_ids": [
+          "52bedf0a329851c8669186416612d393",
+          "96adb2800d1d0553180072e441bdb500",
+          "787a03b24f5c1f5a2cf84046f0e4628b",
+          "9ad0f7e3ddfd9f9fad198447765fea3b",
+          "446278d22113fe05cfccac1466f312a3",
+          "aa33dea772ce72736cceab66db92539b",
+          "553b8d8d0b3e4333866cb24d72b6a2bc",
+          "ecee91b1063686330737bcfc3280e5a3",
+          "73d1cbde0ce474bed739839faa471652",
+          "098382e357462fc878955d434d76a916",
+          "b5094b98675d2b88a95c631218ad3ea3",
+          "76556da694ed2d0bc4f4d387f50bd764"
+        ]
+      },
+      {
+        "aliases": [
+          "Reality vs Delusion",
+          "Reality vs. Delusion"
+        ],
+        "chunk_ids": [
+          "3eae7e63fcc5361a824ceb07cc38fc40",
+          "553b8d8d0b3e4333866cb24d72b6a2bc",
+          "07147c5838f5cd5487b4476f27c52e72",
+          "4e53effb51bbe1a680072b94c8f91528",
+          "446278d22113fe05cfccac1466f312a3",
+          "ac58a1fea4c9519b891b903911bdcf1f",
+          "ecee91b1063686330737bcfc3280e5a3",
+          "6955428bc740ebe5053dabba4adb26f4",
+          "af9140efb0be238f43c2ea1b0788f243",
+          "beb26315b852db89e8993f4794997af1",
+          "6a1a9986053fe31f52e1f8a6f20ba791",
+          "55b3233eecf68d0ce37d27a4ef06c6fd"
+        ]
+      }
+    ],
+    "silence-of-the-lambs": [
+      {
+        "aliases": [
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "c238fcbb372d7f88d0b452f4a587c08f",
+          "292b8e44979d1151684ca569969e1a65",
+          "28ec0599535d1c020c80ec175591c2ab",
+          "52531855e611b50d24cf3b8efb7463fa",
+          "8646f0f4bcff924ddb3c3a750112ee70",
+          "9381a4d90470f16f9b46532c491418d6",
+          "c008dc0023a7ceb7666fc01e4aaa4072",
+          "e6d96240ddb34a4411cad888be2c4d72",
+          "175adbf3c5d7cec99724e227f5519229",
+          "0e6bea89f41af034e192bd48baae6b07",
+          "397ba143db7d7ec78035ae5649a7645d",
+          "134224f51ba2455d3e108e88f6f2fb21"
+        ]
+      },
+      {
+        "aliases": [
+          "Gender Roles"
+        ],
+        "chunk_ids": [
+          "02b599ee212402467da3c16c132908aa",
+          "292b8e44979d1151684ca569969e1a65",
+          "8cdb7be3e57740e2a2676d07492fa2a3",
+          "8646f0f4bcff924ddb3c3a750112ee70",
+          "28ec0599535d1c020c80ec175591c2ab",
+          "1e18b4f2303ae1d760d1e50afc1cddaf",
+          "6a1014e89f5615705acca58d595f757f",
+          "01dccb96aa3773f98aae33b4c2f9b648",
+          "2601017aeb9d1cfea0fd462f55d32d40",
+          "baba277438fb602eff3cd8c660bf0c17",
+          "134224f51ba2455d3e108e88f6f2fb21",
+          "397ba143db7d7ec78035ae5649a7645d"
+        ]
+      },
+      {
+        "aliases": [
+          "Power Dynamics"
+        ],
+        "chunk_ids": [
+          "9b91843191ad7d0f2bdb89f8a9990c61",
+          "f95ef53c5e082d8b29524cc37ea66ac5",
+          "4b600fd5be8e4e5df26be3e04d64e2c9",
+          "74db72df746bc8ac18e6fcb4c6feff15",
+          "175adbf3c5d7cec99724e227f5519229",
+          "c1604326c3757852cbb1c91caff04d3f",
+          "8646f0f4bcff924ddb3c3a750112ee70",
+          "a47a03cf22a4ba8572d4cb02ccaecd40",
+          "92671b71f22ec596c95bc37f20dfb7c0",
+          "c6cebb4f358c92923830b3d7fc64e1ff",
+          "ea9fa89df45bfb2c120fa9bcc9937c01",
+          "09a951dbff7381c34433f1434349e007"
+        ]
+      },
+      {
+        "aliases": [
+          "Moral Ambiguity"
+        ],
+        "chunk_ids": [
+          "449f7c415dab62d46ac92bac6a0fef31",
+          "baba277438fb602eff3cd8c660bf0c17",
+          "f95ef53c5e082d8b29524cc37ea66ac5",
+          "6b7561d51c4574af68e45cf881a7e2c9",
+          "29e1deca97788b834b344843033ace20",
+          "553e6d7895999aa79377168f126fb1ba",
+          "f63dfac7d83d3507da8d693a0f20d7c5",
+          "11da9d73ebb909a171c0f2da6ff1ef07",
+          "e165ac8d6492a483d94dd16adda91c6f",
+          "ea9fa89df45bfb2c120fa9bcc9937c01",
+          "0e6bea89f41af034e192bd48baae6b07",
+          "4828f05c7a474077e1f3ebf42ff9ece5"
+        ]
+      },
+      {
+        "aliases": [
+          "Psychological Depth"
+        ],
+        "chunk_ids": [
+          "618a7a4c32bebe152dc6277b8a9856f7",
+          "292b8e44979d1151684ca569969e1a65",
+          "baba277438fb602eff3cd8c660bf0c17",
+          "85190f2024c66ef619e5612bc685f332",
+          "8646f0f4bcff924ddb3c3a750112ee70",
+          "175adbf3c5d7cec99724e227f5519229",
+          "64a929ea1db02b985408c400bf3a4efc",
+          "74db72df746bc8ac18e6fcb4c6feff15",
+          "0e6bea89f41af034e192bd48baae6b07",
+          "09a951dbff7381c34433f1434349e007",
+          "4b600fd5be8e4e5df26be3e04d64e2c9",
+          "c6cebb4f358c92923830b3d7fc64e1ff"
+        ]
+      }
+    ],
+    "sixth-sense": [
+      {
+        "aliases": [
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "e3eecaf0f867c8f55937565dd4150043",
+          "fd7c22848a2e49a070eb4603384f8beb",
+          "c4efbfd86c3774beeff9b38e5378ce3e",
+          "a58365c63c15216c9d4842ed2ab4d608",
+          "9cf7711618f4e4a5f5c72655bed2ca91",
+          "e3becafb9cd83e67414b02fbf72061e3",
+          "35caa60594c2e57bbfb44e4c50fad19c",
+          "6ac670a92634193f40622bd692c8460c",
+          "644237b6f61585bfe9b7c486cc73be7b",
+          "8839b7d66dcc2731e33b1fc0e5eb9c0e",
+          "df4381a9b2155668cacbab5778caee3a",
+          "f4f3c428e648972c90d074e188c35eef"
+        ]
+      },
+      {
+        "aliases": [
+          "Mental Health"
+        ],
+        "chunk_ids": [
+          "fd7c22848a2e49a070eb4603384f8beb",
+          "c24a6df16862f2f45d21774cd9530233",
+          "41683c18a467542655439b02b3d55157",
+          "a58365c63c15216c9d4842ed2ab4d608",
+          "9cf7711618f4e4a5f5c72655bed2ca91",
+          "c4efbfd86c3774beeff9b38e5378ce3e",
+          "400d39ee3e8765d4186405dd37ca220b",
+          "2769ccd0f6a8ef802af927a41f76ae38",
+          "560fda5356a472b8ee410cac53f697a6",
+          "6ac670a92634193f40622bd692c8460c",
+          "e3becafb9cd83e67414b02fbf72061e3",
+          "df4381a9b2155668cacbab5778caee3a"
+        ]
+      },
+      {
+        "aliases": [
+          "Childhood Innocence"
+        ],
+        "chunk_ids": [
+          "a58365c63c15216c9d4842ed2ab4d608",
+          "fd7c22848a2e49a070eb4603384f8beb",
+          "2a692925148f68872b83df7aec559289",
+          "c2a0f96d0bbfd5e416f7ba4b1b16cf4e",
+          "0225c1969f474c20aeb2437744529e79",
+          "827aab829c7145af128363604927fd7f",
+          "e3becafb9cd83e67414b02fbf72061e3",
+          "df4381a9b2155668cacbab5778caee3a",
+          "14fd988dd89b2e121e1b22102c32ca9d",
+          "644237b6f61585bfe9b7c486cc73be7b",
+          "373f4f010243240fa47d299cbdbdc4e9",
+          "6ac670a92634193f40622bd692c8460c"
+        ]
+      },
+      {
+        "aliases": [
+          "Perception of Reality"
+        ],
+        "chunk_ids": [
+          "50ae43a0890a67a73be243d981ee1a00",
+          "560fda5356a472b8ee410cac53f697a6",
+          "a58365c63c15216c9d4842ed2ab4d608",
+          "845f0310172401c286680e3a3b9225c7",
+          "662841e948f9a0c145897b8f559e2b7f",
+          "c2732abffe1f77071a86464b4c91d2eb",
+          "f3264e409217512abc4b3bb127d5aade",
+          "ae6534e9a7751d66d65b3e6af531736c",
+          "5a74f00e4220f0792fea91ca05a7475e",
+          "b011bf15966620c9deb994b68898590b",
+          "5e9ebbe1f486cd632a207155ead6892a",
+          "2769ccd0f6a8ef802af927a41f76ae38"
+        ]
+      },
+      {
+        "aliases": [
+          "Communication Barriers"
+        ],
+        "chunk_ids": [
+          "425e8e3f3dfc51ebeb551b5817a539e2",
+          "560fda5356a472b8ee410cac53f697a6",
+          "c24a6df16862f2f45d21774cd9530233",
+          "a58365c63c15216c9d4842ed2ab4d608",
+          "9cf7711618f4e4a5f5c72655bed2ca91",
+          "827aab829c7145af128363604927fd7f",
+          "ae6534e9a7751d66d65b3e6af531736c",
+          "9d126102d34a1341fd8899f3355d23a9",
+          "8c98678b4831bafd75aea9825df022f9",
+          "b011bf15966620c9deb994b68898590b",
+          "df4381a9b2155668cacbab5778caee3a",
+          "f5008c910f10996b79cb4dc47c8ef6a8"
+        ]
+      }
+    ],
+    "taxi-driver": [
+      {
+        "aliases": [
+          "Moral Decay",
+          "moral decay"
+        ],
+        "chunk_ids": [
+          "b72399c368e2756d60f10c2a144e88f8",
+          "9a7a2bd7665c08c2d63b1d3abe12c4ad",
+          "bbe395a5de68be0077c622a3589151c0",
+          "5d1b2927cdc0a9c8e74267078a593744",
+          "1ae0c65af40d3490c13382e4dcc0ef49",
+          "45e3f212c92f4fca173a7fb07f32b6bb",
+          "ae82f031e12c3b29a75fb1940e859d79",
+          "b3e92d989ab4aed89bfebf551a8db491",
+          "97e62808d37e6e0d6003f15735e3c205",
+          "9b36e6faa6991f90b084384cdefe7577",
+          "af2cc7c8a4be5f26fd68eba62f8af0d2",
+          "953c79d62238320cd84f34cf8ee680b3"
+        ]
+      },
+      {
+        "aliases": [
+          "Urban Landscape"
+        ],
+        "chunk_ids": [
+          "0c849d42b252ff30d557f981c15dc506",
+          "a4583d0c9c6bc0506d6ef34dde5f9cda",
+          "082e60ae80890939b1642677f4993cd6",
+          "58118e121454dbcfde1a8e9b77f55931",
+          "f6f19e99d61b601133552cb8df6fa6db",
+          "2a1fc23d817534a5bbc5907d8621e78c",
+          "75f03e996aee9d3293aed8262ec570ff",
+          "df176e50fbb10176bfb86b942d1eedf0",
+          "450033ebbfd06c33effe12c74f9cafa5",
+          "417db822f13727e8a27e0b6228c923c1",
+          "cf38e44f2d9a870dc3534f1d3cf5e769",
+          "49999c159ac5f3a788a8946f3722c5c0"
+        ]
+      },
+      {
+        "aliases": [
+          "Existential Crisis"
+        ],
+        "chunk_ids": [
+          "4fad1bc68b889bb16e4df684af0e55b3",
+          "0c849d42b252ff30d557f981c15dc506",
+          "fd1a40ba53c786f2363c1f75299b64b9",
+          "5d1b2927cdc0a9c8e74267078a593744",
+          "1ae0c65af40d3490c13382e4dcc0ef49",
+          "dd6847a6b9a82d2fb581acd9021074b5",
+          "10b3a629f402b049466093e800794ba8",
+          "92e08e8abae834b5528115f25dc5a067",
+          "3ad248964b3c0ef0e7d5411cff58c43f",
+          "5731a949925280c0e77d7ff45c5128bf",
+          "ae82f031e12c3b29a75fb1940e859d79",
+          "71fb6686755e2c9631afdfebfe760b95"
+        ]
+      },
+      {
+        "aliases": [
+          "Psychological Turmoil"
+        ],
+        "chunk_ids": [
+          "59c10fcd4538179dcfa372d8a198f2e4",
+          "0c849d42b252ff30d557f981c15dc506",
+          "fd1a40ba53c786f2363c1f75299b64b9",
+          "49999c159ac5f3a788a8946f3722c5c0",
+          "b72399c368e2756d60f10c2a144e88f8",
+          "d0751f8c6c6595ae2ab065ae80b34002",
+          "953c79d62238320cd84f34cf8ee680b3",
+          "7982115833116a6e3bad5ba37bdd52c5",
+          "1b04d4f1a4db255fd9acdb4d89a742a0",
+          "5d1b2927cdc0a9c8e74267078a593744",
+          "71fb6686755e2c9631afdfebfe760b95",
+          "af2cc7c8a4be5f26fd68eba62f8af0d2"
+        ]
+      }
+    ],
+    "the-machinist": [
+      {
+        "aliases": [
+          "Guilt"
+        ],
+        "chunk_ids": [
+          "0cd17ef5ce8210555b02b35a0af1f780",
+          "967fcb082197c7db16f9297e111c432b",
+          "ecd26d9385bb643f40a1e3e9572cab5f",
+          "7d8d32123758d72b0de2caf83e690a12",
+          "c8ce929a182dbfd7139c23765c147383",
+          "f922d1e7bc57aa545a1eca1fc671fe72",
+          "30db7c5f77662cbfc7efedd53494a46a",
+          "541f259362e4c086b919c868e81c6b39",
+          "12358f8a45677c0d1637b01ce2604476",
+          "e158472ca3c7b2c6e17e6705fe4f17c6",
+          "52e0db11f9ccd992751277496dd1f245",
+          "eb852131774807b8cee75a52c5bcf380"
+        ]
+      },
+      {
+        "aliases": [
+          "Memory"
+        ],
+        "chunk_ids": [
+          "0cd17ef5ce8210555b02b35a0af1f780",
+          "967fcb082197c7db16f9297e111c432b",
+          "ecd26d9385bb643f40a1e3e9572cab5f",
+          "1d69d14f74d870e82492b1185fade2d1",
+          "c8ce929a182dbfd7139c23765c147383",
+          "0858d298744be5414fe5610b5f239468",
+          "3684b0776cd9155e518b766046c252dc",
+          "4395150adc9a90b1a201482bd78d7c77",
+          "30db7c5f77662cbfc7efedd53494a46a",
+          "dc4019bfa4754f70178b306cdadc385f",
+          "8fca2fc8a68e9f776f36f549b265ae97",
+          "12358f8a45677c0d1637b01ce2604476"
+        ]
+      },
+      {
+        "aliases": [
+          "Reality"
+        ],
+        "chunk_ids": [
+          "967fcb082197c7db16f9297e111c432b",
+          "e158472ca3c7b2c6e17e6705fe4f17c6",
+          "ecd26d9385bb643f40a1e3e9572cab5f",
+          "f0822635ed391cebdd3336b7f7280c1f",
+          "c8ce929a182dbfd7139c23765c147383",
+          "9d90c81a4feb7d7935a23b8db7ba6781",
+          "30db7c5f77662cbfc7efedd53494a46a",
+          "8fca2fc8a68e9f776f36f549b265ae97",
+          "541f259362e4c086b919c868e81c6b39",
+          "12358f8a45677c0d1637b01ce2604476",
+          "eb852131774807b8cee75a52c5bcf380",
+          "c259984e59e34881d5fa15f35928d236"
+        ]
+      },
+      {
+        "aliases": [
+          "Identity"
+        ],
+        "chunk_ids": [
+          "0cd17ef5ce8210555b02b35a0af1f780",
+          "967fcb082197c7db16f9297e111c432b",
+          "ecd26d9385bb643f40a1e3e9572cab5f",
+          "7d8d32123758d72b0de2caf83e690a12",
+          "c8ce929a182dbfd7139c23765c147383",
+          "f922d1e7bc57aa545a1eca1fc671fe72",
+          "a3fedbee9f25dfb187f11d97dc461cff",
+          "30db7c5f77662cbfc7efedd53494a46a",
+          "e158472ca3c7b2c6e17e6705fe4f17c6",
+          "8fca2fc8a68e9f776f36f549b265ae97",
+          "eb852131774807b8cee75a52c5bcf380",
+          "b0e3be5d96c462f36035ce7c1594859a"
+        ]
+      },
+      {
+        "aliases": [
+          "Isolation"
+        ],
+        "chunk_ids": [
+          "9d90c81a4feb7d7935a23b8db7ba6781",
+          "0cd17ef5ce8210555b02b35a0af1f780",
+          "8fca2fc8a68e9f776f36f549b265ae97",
+          "3f48ab87512129f777279995a1120929",
+          "c8ce929a182dbfd7139c23765c147383",
+          "130387f36b49b5d1eed74dcae838f65f",
+          "c259984e59e34881d5fa15f35928d236",
+          "30db7c5f77662cbfc7efedd53494a46a",
+          "541f259362e4c086b919c868e81c6b39",
+          "e158472ca3c7b2c6e17e6705fe4f17c6",
+          "ecd26d9385bb643f40a1e3e9572cab5f",
+          "eb852131774807b8cee75a52c5bcf380"
+        ]
+      }
+    ],
+    "the-prestige": [
+      {
+        "aliases": [
+          "Identity"
+        ],
+        "chunk_ids": [
+          "3e792674af80b5b324618ccd3bf23ab7",
+          "5d944a7c0bb82bac87a06a32925358c1",
+          "29e1464e68ffe71659750a3431863802",
+          "63879d347328c9fdac0fcf309439a3d7",
+          "44b5361c723ccf09f2dbfe5a32326fa7",
+          "432e54d9cc66167e48758894b7df4d5b",
+          "30b00801ac8ec828e985ca93c689bc7b",
+          "9b44e0f3d7626038c490f7b4d93be59a",
+          "72188d556e8e93663256d40e0f88d31f"
+        ]
+      },
+      {
+        "aliases": [
+          "Legacy and Memory"
+        ],
+        "chunk_ids": [
+          "b166666d09ccf75c12254af396091cef",
+          "1b17921f38f229f62779a300247836d9",
+          "3e792674af80b5b324618ccd3bf23ab7",
+          "63879d347328c9fdac0fcf309439a3d7",
+          "02d9b0a0dcdbb65db6fe85030f4dba0a",
+          "0dd513ce675bcc67f525f334bf43376b",
+          "ed3f3053dff7f18404525f4379a6f0af",
+          "d58ddfdc86163b60eca586d300c1a17e",
+          "9b44e0f3d7626038c490f7b4d93be59a"
+        ]
+      },
+      {
+        "aliases": [
+          "Illusion vs Reality",
+          "Reality vs. Illusion"
+        ],
+        "chunk_ids": [
+          "3e792674af80b5b324618ccd3bf23ab7",
+          "1b17921f38f229f62779a300247836d9",
+          "9b44e0f3d7626038c490f7b4d93be59a",
+          "63879d347328c9fdac0fcf309439a3d7",
+          "195e2ae2a8ee73f6022e90a365a1d682",
+          "ed3f3053dff7f18404525f4379a6f0af",
+          "432e54d9cc66167e48758894b7df4d5b",
+          "72188d556e8e93663256d40e0f88d31f",
+          "a874859740583ff8c1971c5db05a664a"
+        ]
+      },
+      {
+        "aliases": [
+          "Desire and Obsession"
+        ],
+        "chunk_ids": [
+          "def329836a578f36fee794fe75d73cf3",
+          "5d944a7c0bb82bac87a06a32925358c1",
+          "ac191c863fcb2383e48d27eb0d59f3fc",
+          "63879d347328c9fdac0fcf309439a3d7",
+          "dca32bcf3ba2063afe6d433a5e7a1191",
+          "d58ddfdc86163b60eca586d300c1a17e",
+          "9d5e1f8f577fc9fcc40ed421085e2cbe",
+          "9b44e0f3d7626038c490f7b4d93be59a",
+          "5cacee81ac15889a92cc6ea6fbd6f12c"
+        ]
+      }
+    ],
+    "truman-show": [
+      {
+        "aliases": [
+          "Media Ethics",
+          "media ethics"
+        ],
+        "chunk_ids": [
+          "4198ed39cc457a495c6527099c10fa62",
+          "88bbf123d57417273aa989dd4e7ed346",
+          "0c231f26d8f299572bee76102caf59fc",
+          "ecefafab5bb8d21348e193a46144ce43",
+          "652959764d1c4be4fb3fdda615c66837",
+          "e6f0787a2b939c094f82ab9a8c1de606",
+          "c0f7cd93e7e465b431b96f0eb82bbcac",
+          "f9e67ca5b734ee9ba61ed46ea7e84694",
+          "31701eaa935d53db9b6fe3de9cc795ac",
+          "b8ac3c6478566fdf8f3ed37f9808ae79",
+          "67bc100740588c55da0911e553c6ed5a",
+          "2f6b8bef139d777ad694600abfb18579"
+        ]
+      },
+      {
+        "aliases": [
+          "Human Connection"
+        ],
+        "chunk_ids": [
+          "4b918effc480687af2260e554c440044",
+          "7e37ca5372adc47f776753c507f765dd",
+          "4281ed23062f132e819003f4c5a88113",
+          "b2bca18a2afc9bf870242a70118f0be4",
+          "652959764d1c4be4fb3fdda615c66837",
+          "6918051af1ec04e01ec18a8ef149de0a",
+          "b167910bd176127d8bba12efb4a5bb1c",
+          "e8019cf215cc63f161bf0a1e84e12f7c",
+          "ef9a48fc55e009267f58789cc5d22e05",
+          "e8749c49fde0d84cd5c6c985f30864b9",
+          "b8ac3c6478566fdf8f3ed37f9808ae79",
+          "146bacc5c7fe10342b84f6387a4717dd"
+        ]
+      },
+      {
+        "aliases": [
+          "Media Manipulation"
+        ],
+        "chunk_ids": [
+          "88bbf123d57417273aa989dd4e7ed346",
+          "2f6b8bef139d777ad694600abfb18579",
+          "0c231f26d8f299572bee76102caf59fc",
+          "19b6ed38a4b236cb95424527b4cf5f25",
+          "652959764d1c4be4fb3fdda615c66837",
+          "82361d2b75365410a1e4c2397387ec55",
+          "67bc100740588c55da0911e553c6ed5a",
+          "07e6cc9ba1876f424d1444571ff43176",
+          "4b918effc480687af2260e554c440044",
+          "ef9a48fc55e009267f58789cc5d22e05",
+          "e8019cf215cc63f161bf0a1e84e12f7c",
+          "7e37ca5372adc47f776753c507f765dd"
+        ]
+      },
+      {
+        "aliases": [
+          "Reality vs Illusion",
+          "Reality vs. Illusion"
+        ],
+        "chunk_ids": [
+          "ef9a48fc55e009267f58789cc5d22e05",
+          "7e37ca5372adc47f776753c507f765dd",
+          "cad06c40898f059e8c849de89e19cbac",
+          "a5552247ae742d1d8d38c89788f47f7d",
+          "652959764d1c4be4fb3fdda615c66837",
+          "2f6b8bef139d777ad694600abfb18579",
+          "4b918effc480687af2260e554c440044",
+          "b2690fc42531c45e3308d1c762308791",
+          "66d07d6fb48488d091cc7c1add047907",
+          "7dfdb2f01e03500f54673751a4535cb1",
+          "b2b197d35cb17924bf560354a6fe1d19",
+          "e8019cf215cc63f161bf0a1e84e12f7c"
+        ]
+      },
+      {
+        "aliases": [
+          "Cognitive Dissonance",
+          "cognitive dissonance"
+        ],
+        "chunk_ids": [
+          "2f6b8bef139d777ad694600abfb18579",
+          "cad06c40898f059e8c849de89e19cbac",
+          "7e37ca5372adc47f776753c507f765dd",
+          "48acb8e6a8d709a24eb1b3e36c8b57b0",
+          "652959764d1c4be4fb3fdda615c66837",
+          "3019822704c9230b28deeb598b3009bf",
+          "4198ed39cc457a495c6527099c10fa62",
+          "ef9a48fc55e009267f58789cc5d22e05",
+          "b03af86f324752f8da365b4c4c0074d7",
+          "9317912d1e041961d5046e895867643b",
+          "66d07d6fb48488d091cc7c1add047907",
+          "88bbf123d57417273aa989dd4e7ed346"
+        ]
+      }
+    ]
+  }
+}

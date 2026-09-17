@@ -1,7 +1,6 @@
 import json
 import re
 from collections import defaultdict
-from pathlib import Path
 import sys, os
 import httpx
 
@@ -22,7 +21,7 @@ from app.models import (
     LensExplorerResponse,
 )
 from app.services.retrieval import RetrievedChunk, retrieve_chunks
-from app.services.lens_profiles import all_published_lenses, is_comparison_lens, is_published_lens, lens_names, shared_lenses
+from app.services.lens_profiles import all_published_lenses, collection_lens_profiles, is_comparison_lens, is_published_lens, lens_names, shared_lenses
 
 
 EVIDENCE_JOBS = ["Scene", "Craft", "Shift", "Complication"]
@@ -53,72 +52,8 @@ FALLBACK_FRAGMENT_PATTERNS = [
     "directed by",
     "starring",
 ]
-ANSWER_CACHE_PATH = Path(__file__).resolve().parents[1] / "corpus" / "answer_cache.json"
-
-
 class LLMGenerationError(RuntimeError):
     pass
-
-
-def _answer_cache_key(request: GuidedAnswerRequest) -> str:
-    payload = {
-        "mode": request.mode,
-        "film_a": request.film_a or "",
-        "film_b": request.film_b or "",
-        "lens": request.lens,
-        "optional_question": request.optional_question or "",
-    }
-    return json.dumps(payload, sort_keys=True, separators=(",", ":"))
-
-
-def _load_answer_cache() -> dict[str, dict]:
-    if not ANSWER_CACHE_PATH.exists():
-        return {}
-    try:
-        with ANSWER_CACHE_PATH.open(encoding="utf-8") as handle:
-            payload = json.load(handle)
-        return payload if isinstance(payload, dict) else {}
-    except (OSError, json.JSONDecodeError):
-        return {}
-
-
-def _cached_answer(request: GuidedAnswerRequest) -> AnalysisResponse | None:
-    cached = _load_answer_cache().get(_answer_cache_key(request))
-    if not isinstance(cached, dict):
-        return None
-    try:
-        cached["debug_chunks"] = []
-        cached["retrieval_notes"] = f"{cached.get('retrieval_notes', '').strip()} Cached generated reading.".strip()
-        response = AnalysisResponse(**cached)
-        if _contains_stray_letter_artifact(
-            " ".join(
-                [
-                    response.thesis or "",
-                    *[str(card.get("title", "")) for card in response.evidence_cards],
-                    *[str(card.get("body", "")) for card in response.evidence_cards],
-                ]
-            )
-        ):
-            return None
-        return response
-    except Exception:
-        return None
-
-
-def _write_cached_answer(request: GuidedAnswerRequest, response: AnalysisResponse) -> None:
-    if response.refused or request.mode == "explore_lens":
-        return
-    cache = _load_answer_cache()
-    payload = response.model_dump(mode="json")
-    payload["debug_chunks"] = []
-    cache[_answer_cache_key(request)] = payload
-    try:
-        ANSWER_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        with ANSWER_CACHE_PATH.open("w", encoding="utf-8") as handle:
-            json.dump(cache, handle, ensure_ascii=False, indent=2, sort_keys=True)
-            handle.write("\n")
-    except OSError:
-        pass
 
 
 FILM_META = {
@@ -752,30 +687,14 @@ def _refusal_cards(request: GuidedAnswerRequest) -> list[dict[str, str]]:
 
 
 def _lens_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> list[dict[str, object]]:
-    grouped: dict[str, list[RetrievedChunk]] = defaultdict(list)
-    for chunk in chunks:
-        if chunk.film_slug in ACTIVE_FILM_SLUGS:
-            grouped[chunk.film_slug].append(chunk)
-
-    scored = []
-    eligible_slugs = sorted(grouped)
-    for slug in eligible_slugs:
-        film_chunks = grouped.get(slug, [])
-        if slug not in ACTIVE_FILM_SLUGS:
-            continue
-        chunk_lens_match = any(_lens_matches(request.lens, lens) for chunk in film_chunks for lens in (chunk.lens_tags or []))
-        source_count = len({chunk.source_key for chunk in film_chunks})
-        role_count = len({chunk.chunk_role for chunk in film_chunks})
-        lens_match = is_published_lens(slug, request.lens)
-        if not lens_match:
-            continue
-        retrieval_score = min(sum(max(chunk.score, 0) for chunk in film_chunks), 20.0)
-        score = retrieval_score + (0.22 * source_count) + (0.16 * role_count) + (1.0 if lens_match else 0) + (0.8 if chunk_lens_match else 0)
-        scored.append((score, slug, film_chunks))
-
-    ranked = sorted(scored, key=lambda item: item[0], reverse=True)[:6]
+    ranked = []
+    for slug, profile in collection_lens_profiles(request.lens):
+        review = profile.get("review") or {}
+        score = sum(float(review.get(metric, 0)) for metric in ("faithfulness", "answer_relevance", "satisfaction"))
+        ranked.append((score, slug, profile))
+    ranked.sort(key=lambda item: (-item[0], FILM_TITLES[item[1]]))
     cards = []
-    for rank, (score, slug, film_chunks) in enumerate(ranked, start=1):
+    for rank, (score, slug, profile) in enumerate(ranked, start=1):
         meta = FILM_META.get(slug, {})
         cards.append(
             {
@@ -784,7 +703,7 @@ def _lens_films(request: GuidedAnswerRequest, chunks: list[RetrievedChunk]) -> l
                 "title": FILM_TITLES[slug],
                 "year": meta.get("year"),
                 "director": meta.get("director"),
-                "summary": _lens_card_body(slug, request.lens),
+                "summary": str(profile.get("definition") or _lens_card_body(slug, request.lens)),
                 "score": round(score, 3),
             }
         )
@@ -861,11 +780,6 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
                 last_error = error
         else:
             error = last_error or LLMGenerationError("Motif could not generate that reading right now.")
-            cached = _cached_answer(request)
-            if cached:
-                if request.include_debug:
-                    cached.debug_chunks = _debug_chunks(chunks, request.include_debug, request)
-                return cached
             message = str(error)
             thesis = "OpenAI key not configured." if "OPENAI_API_KEY" in message else "Motif could not generate that reading right now."
             return AnalysisResponse(
@@ -913,7 +827,6 @@ def _synthesize_guided(request: GuidedAnswerRequest, chunks: list[RetrievedChunk
         debug_chunks=_debug_chunks(chunks, request.include_debug, request, evidence_cards),
         suggested_pairings=_answer_pairing_suggestions(request),
     )
-    _write_cached_answer(request, response)
     return response
 
 
@@ -941,6 +854,7 @@ def answer_guided(request: GuidedAnswerRequest, allow_unpublished_lens: bool = F
         film_slugs=films,
         source_types=[],
         limit=request.top_k,
+        lens_tags=[request.lens],
         include_low_quality=request.include_low_quality,
     )
     return _synthesize_guided(request, chunks, allow_unpublished_lens)

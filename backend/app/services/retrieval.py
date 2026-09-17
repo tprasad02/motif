@@ -1,7 +1,11 @@
 from dataclasses import dataclass
+from collections import Counter
+from array import array
 import json
 import math
 from pathlib import Path
+import re
+import sqlite3
 from urllib.parse import urlparse
 
 import httpx
@@ -10,10 +14,13 @@ import psycopg
 from app.film_config import expand_lens_terms
 from app.core.config import settings
 from app.db.postgres import ensure_runtime_schema
-from app.services.embeddings import local_embedding, local_embeddings
+from app.services.embeddings import local_embedding, openai_embedding
 
 _file_chunks_cache: list["RetrievedChunk"] | None = None
-_file_chunk_vectors_cache: dict[tuple[str, ...], list[list[float]]] = {}
+_LEXICAL_STOPWORDS = {"a", "an", "and", "as", "at", "by", "for", "from", "in", "into", "is", "it", "of", "on", "or", "that", "the", "to", "with"}
+RETRIEVAL_PLAN_PATH = Path(__file__).resolve().parents[1] / "corpus" / "retrieval_plans.json"
+OPENAI_RETRIEVAL_INDEX_PATH = Path(__file__).resolve().parents[1] / "corpus" / "openai_retrieval_index.sqlite3"
+_retrieval_plans_cache: dict | None = None
 
 
 @dataclass
@@ -519,12 +526,106 @@ def _load_file_chunks() -> list[RetrievedChunk]:
     return chunks
 
 
-def _file_chunk_vectors(chunks: list[RetrievedChunk]) -> list[list[float]]:
-    """Batch and retain vectors only for the subset relevant to a reading."""
-    key = tuple(chunk.chunk_id for chunk in chunks)
-    if key not in _file_chunk_vectors_cache:
-        _file_chunk_vectors_cache[key] = local_embeddings([chunk.text for chunk in chunks])
-    return _file_chunk_vectors_cache[key]
+def _load_retrieval_plans() -> dict:
+    global _retrieval_plans_cache
+    if _retrieval_plans_cache is None:
+        try:
+            _retrieval_plans_cache = json.loads(RETRIEVAL_PLAN_PATH.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            _retrieval_plans_cache = {"films": {}}
+    return _retrieval_plans_cache
+
+
+def _planned_chunks(film_slugs: list[str], lens_tags: list[str] | None, limit: int) -> list[RetrievedChunk]:
+    """Return offline Sentence-BERT retrieval plans for selectable lenses."""
+    targets = {term for tag in (lens_tags or []) for term in _lexical_terms(tag)}
+    if not targets:
+        return []
+    by_id = {chunk.chunk_id: chunk for chunk in _load_file_chunks()}
+    selected: list[RetrievedChunk] = []
+    per_film = max(1, limit // max(1, len(film_slugs)))
+    for film_slug in film_slugs:
+        plan_rows = _load_retrieval_plans().get("films", {}).get(film_slug, [])
+        matching = next(
+            (
+                row
+                for row in plan_rows
+                if targets.intersection(set(_lexical_terms(" ".join(row.get("aliases", [])))))
+            ),
+            None,
+        )
+        if not matching:
+            continue
+        for rank, chunk_id in enumerate(matching.get("chunk_ids", [])[: max(per_film + 3, 8)]):
+            chunk = by_id.get(str(chunk_id))
+            if chunk is None or chunk.quality_score == "low":
+                continue
+            # Plans are offline Sentence-BERT results. Keep them ahead of
+            # lexical supplements during runtime reranking.
+            selected.append(RetrievedChunk(**{**chunk.__dict__, "score": 3.0 - rank / 20, "vector_score": 3.0 - rank / 20}))
+    return selected
+
+
+def _lexical_terms(text: str) -> list[str]:
+    return [term for term in re.findall(r"[a-z0-9]+", text.lower()) if len(term) > 2 and term not in _LEXICAL_STOPWORDS]
+
+
+def _file_bm25_scores(query: str, chunks: list[RetrievedChunk]) -> list[float]:
+    """Small in-process BM25 scorer for Render's file-corpus fallback.
+
+    It avoids loading Sentence-BERT/PyTorch on the constrained
+    web service. Sentence-BERT remains an offline profile-generation tool.
+    """
+    query_terms = list(dict.fromkeys(_lexical_terms(query)))
+    if not chunks or not query_terms:
+        return [0.0 for _ in chunks]
+    documents = [Counter(_lexical_terms(chunk.text)) for chunk in chunks]
+    document_lengths = [sum(document.values()) for document in documents]
+    average_length = sum(document_lengths) / len(document_lengths) or 1.0
+    document_frequency = {term: sum(1 for document in documents if term in document) for term in query_terms}
+    scores: list[float] = []
+    for document, length in zip(documents, document_lengths):
+        score = 0.0
+        for term in query_terms:
+            frequency = document.get(term, 0)
+            if not frequency:
+                continue
+            idf = math.log(1 + (len(documents) - document_frequency[term] + 0.5) / (document_frequency[term] + 0.5))
+            score += idf * (frequency * 2.2) / (frequency + 1.2 * (1 - 0.75 + 0.75 * length / average_length))
+        scores.append(score)
+    maximum = max(scores, default=0.0) or 1.0
+    return [score / maximum for score in scores]
+
+
+def _openai_semantic_chunks(query: str, eligible: list[RetrievedChunk], limit: int) -> list[RetrievedChunk]:
+    """Score only eligible corpus chunks using the disk-backed embedding index."""
+    if settings.embedding_provider != "openai" or not settings.openai_api_key or not OPENAI_RETRIEVAL_INDEX_PATH.exists():
+        return []
+    try:
+        query_vector = openai_embedding(query)
+        ids = [chunk.chunk_id for chunk in eligible]
+        vectors: dict[str, list[float]] = {}
+        with sqlite3.connect(f"file:{OPENAI_RETRIEVAL_INDEX_PATH}?mode=ro", uri=True) as connection:
+            for start in range(0, len(ids), 900):
+                batch_ids = ids[start : start + 900]
+                placeholders = ",".join("?" for _ in batch_ids)
+                rows = connection.execute(
+                    f"SELECT chunk_id, vector FROM embeddings WHERE chunk_id IN ({placeholders})", batch_ids
+                )
+                for chunk_id, blob in rows:
+                    vector = array("f")
+                    vector.frombytes(blob)
+                    vectors[str(chunk_id)] = vector.tolist()
+        candidates = []
+        for chunk in eligible:
+            vector = vectors.get(chunk.chunk_id)
+            if vector is None or len(vector) != len(query_vector):
+                continue
+            score = max(0.0, sum(left * right for left, right in zip(query_vector, vector)))
+            candidates.append(RetrievedChunk(**{**chunk.__dict__, "score": score, "vector_score": score}))
+        return sorted(candidates, key=lambda chunk: chunk.vector_score or 0.0, reverse=True)[: max(limit * 3, 24)]
+    except Exception:
+        return []
 
 
 def _file_fallback_search(
@@ -535,7 +636,6 @@ def _file_fallback_search(
     lens_tags: list[str] | None = None,
     include_low_quality: bool = False,
 ) -> list[RetrievedChunk]:
-    query_vector = local_embedding(query)
     eligible = [
         chunk
         for chunk in _load_file_chunks()
@@ -543,18 +643,26 @@ def _file_fallback_search(
         and (not source_types or chunk.source_type in source_types)
         and (include_low_quality or chunk.quality_score != "low")
     ]
-    candidates = []
-    for chunk, chunk_vector in zip(eligible, _file_chunk_vectors(eligible)):
-        score = max(0.0, _cosine_similarity(query_vector, chunk_vector))
-        candidates.append(
+    # Live OpenAI semantic retrieval is primary; the offline Sentence-BERT
+    # plan remains a no-cost fallback for transient embedding failures.
+    candidates = _openai_semantic_chunks(query, eligible, limit)
+    if not candidates:
+        candidates = _planned_chunks(film_slugs, lens_tags, limit)
+    for chunk, score in zip(eligible, _file_bm25_scores(query, eligible)):
+        candidate = (
             RetrievedChunk(
                 **{
                     **chunk.__dict__,
                     "score": score,
-                    "vector_score": score,
+                    "bm25_score": score,
                 }
             )
         )
+        existing = next((item for item in candidates if item.chunk_id == candidate.chunk_id), None)
+        if existing:
+            existing.bm25_score = score
+        else:
+            candidates.append(candidate)
     reranked = _rerank(query, candidates, lens_tags)
     return _balanced_top(reranked, min(max(limit, 8), 12), film_slugs if len(film_slugs) >= 2 else [])
 

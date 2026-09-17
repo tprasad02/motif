@@ -8,6 +8,19 @@ import { reselectFilms } from "@/lib/utilities";
 import { films } from "./filmConfig";
 
 const normalizedLens = (value: string) => value.toLowerCase().match(/[a-z0-9]+/g)?.join(" ") ?? "";
+const lensSmallWords = new Set(["and", "as", "at", "by", "for", "in", "of", "on", "or", "the", "to", "vs", "vs."]);
+
+function displayLens(value: string) {
+  return value
+    .trim()
+    .split(/\s+/)
+    .map((word, index) => {
+      const normalized = word.toLowerCase();
+      if (index > 0 && lensSmallWords.has(normalized)) return normalized;
+      return normalized.replace(/^./, (letter) => letter.toUpperCase());
+    })
+    .join(" ");
+}
 
 function dedupeLensOptions(values: string[]): LensOption[] {
   const selected: string[] = [];
@@ -79,8 +92,14 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [recommendations, setRecommendations] = useState<RecommendationsResponse | null>(null);
+  const [recommendationsLoading, setRecommendationsLoading] = useState(true);
+  const [recommendationRetries, setRecommendationRetries] = useState(0);
+  const [collectionLensesFromApi, setCollectionLensesFromApi] = useState<string[] | null>(null);
+  const [collectionLensesLoading, setCollectionLensesLoading] = useState(false);
   const [compareLensSuggestions, setCompareLensSuggestions] = useState<CompareLensSuggestion[]>([]);
   const [compareLensesLoading, setCompareLensesLoading] = useState(false);
+  const [comparableFilmSlugs, setComparableFilmSlugs] = useState<string[]>([]);
+  const [comparableFilmsLoading, setComparableFilmsLoading] = useState(false);
   const [posters, setPosters] = useState<Record<string, PosterRecord>>({});
 
   const debug =
@@ -89,18 +108,52 @@ export default function Home() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch(apiUrl("/recommendations"))
+    let retryTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const loadRecommendations = async () => {
+      try {
+        const response = await fetch(apiUrl("/recommendations"), { cache: "no-store" });
+        if (!response.ok) throw new Error(`Lens service returned ${response.status}.`);
+        const body = (await response.json()) as RecommendationsResponse;
+        if (!body?.films) throw new Error("Lens service returned no film profiles.");
+        if (!cancelled) {
+          setRecommendations(body);
+          setRecommendationsLoading(false);
+        }
+      } catch {
+        if (!cancelled) {
+          setRecommendationRetries((count) => count + 1);
+          retryTimer = setTimeout(loadRecommendations, 4000);
+        }
+      }
+    };
+
+    void loadRecommendations();
+    return () => {
+      cancelled = true;
+      if (retryTimer) clearTimeout(retryTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (mode !== "explore_lens" || collectionLensesFromApi) return;
+    let cancelled = false;
+    setCollectionLensesLoading(true);
+    fetch(apiUrl("/recommendations/collection"), { cache: "no-store" })
       .then((response) => (response.ok ? response.json() : null))
-      .then((body: RecommendationsResponse | null) => {
-        if (!cancelled && body?.films) setRecommendations(body);
+      .then((body: { collection_lenses?: string[] } | null) => {
+        if (!cancelled && body?.collection_lenses) setCollectionLensesFromApi(body.collection_lenses);
       })
       .catch(() => {
-        // Static filmConfig remains the fallback when the backend is unavailable.
+        // The initial request remains usable; retry when the user re-enters Explore.
+      })
+      .finally(() => {
+        if (!cancelled) setCollectionLensesLoading(false);
       });
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [mode, collectionLensesFromApi]);
 
   useEffect(() => {
     let cancelled = false;
@@ -162,6 +215,33 @@ export default function Home() {
     };
   }, [mode, filmA, filmB]);
 
+  const comparisonAnchor = mode === "compare_films" && Boolean(filmA) !== Boolean(filmB) ? (filmA || filmB) : "";
+
+  useEffect(() => {
+    if (!comparisonAnchor) {
+      setComparableFilmSlugs([]);
+      setComparableFilmsLoading(false);
+      return;
+    }
+    let cancelled = false;
+    setComparableFilmsLoading(true);
+    setComparableFilmSlugs([]);
+    fetch(apiUrl(`/recommendations/comparable-films?film=${encodeURIComponent(comparisonAnchor)}`), { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body: { comparable_film_slugs?: string[] } | null) => {
+        if (!cancelled) setComparableFilmSlugs(body?.comparable_film_slugs ?? []);
+      })
+      .catch(() => {
+        if (!cancelled) setComparableFilmSlugs([]);
+      })
+      .finally(() => {
+        if (!cancelled) setComparableFilmsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [comparisonAnchor]);
+
   function filmLensesFor(slug?: string) {
     if (!slug) return [];
     return dedupeLensOptions(recommendations?.films?.[slug]?.lenses?.map((item) => item.lens ?? "") ?? []).slice(0, 5);
@@ -169,8 +249,8 @@ export default function Home() {
 
 
   const collectionLenses: LensOption[] = useMemo(
-    () => recommendations?.collection_lenses?.map((lens) => ({ lens })) ?? dedupeLensOptions(Object.values(recommendations?.films ?? {}).flatMap((film) => film.lenses.map((item) => item.lens ?? ""))),
-    [recommendations],
+    () => (collectionLensesFromApi ?? recommendations?.collection_lenses ?? []).map((lens) => ({ lens })),
+    [recommendations, collectionLensesFromApi],
   );
 
   const recommendedLenses = useMemo<LensOption[]>(() => {
@@ -198,6 +278,10 @@ export default function Home() {
       case "compare_films": if ((!filmA || !filmB || filmA === filmB)) return "Choose two different films."; break;
       case "explore_lens": if (!lens) return "Choose a lens."; break;
     }
+    if (recommendationsLoading) return recommendationRetries
+      ? "Starting Motif’s lens service…"
+      : "Loading evidence-validated lenses…";
+    if (mode === "explore_lens" && collectionLensesLoading) return "Loading collection lenses…";
     if (mode === "compare_films" && compareLensesLoading) return "Finding a validated shared lens…";
     if (recommendedLenses.length === 0) return mode === "compare_films"
       ? "These films do not have an evidence-backed semantic comparison lens. Choose a different pair."
@@ -274,6 +358,10 @@ export default function Home() {
     if (mode === "compare_films") {
       if (slug === filmA) {
         setFilmA("");
+        return;
+      }
+      if (slug === filmB) {
+        setFilmB("");
         return;
       }
       if (!filmA) {
@@ -432,18 +520,28 @@ export default function Home() {
           <div className="stepHeader">
             <span>Step 1</span>
             <h1>{mode === "compare_films" ? "Choose two films" : "Choose a film"}</h1>
-            <p>{mode === "compare_films" ? "First click sets Film A. Second click sets Film B. Click Film A again to clear it." : "Pick the film Motif should read closely."}</p>
+            <p>{mode === "compare_films" ? "Click either selected film again to clear it. With one film selected, outlined cards have a validated comparison path." : "Pick the film Motif should read closely."}</p>
           </div>
           <div className="filmShelf" aria-label="Choose a film">
             {films.map((film) => {
               const isA = film.slug === filmA;
               const isB = film.slug === filmB;
+              const isComparable = Boolean(comparisonAnchor) && comparableFilmSlugs.includes(film.slug);
+              const comparisonPending = Boolean(comparisonAnchor) && comparableFilmsLoading;
+              const comparisonClass = mode === "compare_films" && comparisonAnchor && !isA && !isB && !comparisonPending
+                ? (isComparable ? " comparisonMatch" : " comparisonUnavailable")
+                : "";
               const poster = posters[film.slug]?.posterUrl;
               return (
-                <button key={film.slug} className={isA || isB ? "shelfFilmCard selected" : "shelfFilmCard"} onClick={() => selectFilm(film.slug)}>
+                <button key={film.slug} className={`${isA || isB ? "shelfFilmCard selected" : "shelfFilmCard"}${comparisonClass}`} onClick={() => selectFilm(film.slug)}>
                   {(isA || isB) && (
                     <span className="selectedBadge">
                       {mode === "compare_films" ? (isA ? "Film A" : "Film B") : "Selected"}
+                    </span>
+                  )}
+                  {mode === "compare_films" && comparisonAnchor && !isA && !isB && !comparisonPending && (
+                    <span className={isComparable ? "comparisonBadge" : "comparisonBadge unavailable"}>
+                      {isComparable ? "Comparable" : "No validated match"}
                     </span>
                   )}
                   <div className="posterFrame">
@@ -456,7 +554,7 @@ export default function Home() {
                   {(isA || isB) && (
                     <div className="selectedLenses">
                       {filmLensesFor(film.slug).map((item) => (
-                        <span key={item.lens}>{item.lens}</span>
+                        <span key={item.lens}>{displayLens(item.lens)}</span>
                       ))}
                     </div>
                   )}
@@ -492,7 +590,7 @@ export default function Home() {
                 style={{ "--i": index } as CSSProperties}
                 onClick={() => setLens(item.lens)}
               >
-                <span>{item.lens}</span>
+                <span>{displayLens(item.lens)}</span>
               </button>
             ))}
           </div>
@@ -501,7 +599,7 @@ export default function Home() {
             <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
               Generate Reading
             </button>
-            {!loading && <span className={canGenerate ? "readyText" : "inlineError"}>{canGenerate ? `Selected: ${lens}` : disabledReason}</span>}
+            {!loading && <span className={canGenerate ? "readyText" : "inlineError"}>{canGenerate ? `Selected: ${displayLens(lens)}` : disabledReason}</span>}
           </div>
           {loading && canGenerate && <ReadingProgress stages={progressStages} />}
         </section>
@@ -514,6 +612,12 @@ export default function Home() {
           <div className="answerMeta">
             <span>{mode === "compare_films" ? "Film Comparison" : mode === "explore_lens" ? "Lens Exploration" : "Film Analysis"}</span>
           </div>
+          {mode === "explore_lens" && lens && (
+            <header className="exploreLensHeader">
+              <span>Exploring lens</span>
+              <h1>{displayLens(lens)}</h1>
+            </header>
+          )}
           {mode === "explore_lens" && lensFilms.length > 0 && (
             <div className="lensFilmGrid">
               {lensFilms.map((film) => (
@@ -562,7 +666,7 @@ export default function Home() {
               <div>
                 {suggestedPairings.map((pairing) => (
                   <button key={`${pairing.film_slug}-${pairing.lens}`} onClick={() => jumpToPairing(pairing)}>
-                    <span>{pairing.lens}</span>
+                    <span>{displayLens(pairing.lens)}</span>
                     <strong>{pairing.title}</strong>
                   </button>
                 ))}
