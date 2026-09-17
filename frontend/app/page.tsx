@@ -80,6 +80,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [recommendations, setRecommendations] = useState<RecommendationsResponse | null>(null);
   const [compareLensSuggestions, setCompareLensSuggestions] = useState<CompareLensSuggestion[]>([]);
+  const [compareLensesLoading, setCompareLensesLoading] = useState(false);
   const [posters, setPosters] = useState<Record<string, PosterRecord>>({});
 
   const debug =
@@ -137,16 +138,24 @@ export default function Home() {
   useEffect(() => {
     if (mode !== "compare_films" || !filmA || !filmB || filmA === filmB) {
       setCompareLensSuggestions([]);
+      setCompareLensesLoading(false);
       return;
     }
     let cancelled = false;
+    setCompareLensesLoading(true);
     fetch(apiUrl(`/recommendations/compare?film_a=${encodeURIComponent(filmA)}&film_b=${encodeURIComponent(filmB)}`))
       .then((response) => (response.ok ? response.json() : null))
       .then((body: { lenses?: CompareLensSuggestion[] } | null) => {
-        if (!cancelled) setCompareLensSuggestions(body?.lenses ?? []);
+        if (!cancelled) {
+          setCompareLensSuggestions(body?.lenses ?? []);
+          setCompareLensesLoading(false);
+        }
       })
       .catch(() => {
-        if (!cancelled) setCompareLensSuggestions([]);
+        if (!cancelled) {
+          setCompareLensSuggestions([]);
+          setCompareLensesLoading(false);
+        }
       });
     return () => {
       cancelled = true;
@@ -189,6 +198,7 @@ export default function Home() {
       case "compare_films": if ((!filmA || !filmB || filmA === filmB)) return "Choose two different films."; break;
       case "explore_lens": if (!lens) return "Choose a lens."; break;
     }
+    if (mode === "compare_films" && compareLensesLoading) return "Finding a validated shared lens…";
     if (recommendedLenses.length === 0) return mode === "compare_films"
       ? "These films do not have an evidence-backed semantic comparison lens. Choose a different pair."
       : "Motif has not published an evidence-validated lens for this selection yet.";
@@ -486,7 +496,7 @@ export default function Home() {
               </button>
             ))}
           </div>
-          {recommendedLenses.length === 0 && <p className="inlineError">{mode === "compare_films" ? "These films are not comparable through a validated semantic lens. Choose a different pair." : "No evidence-validated lenses are available yet."}</p>}
+          {mode === "compare_films" && compareLensesLoading && <p className="readyText">Finding a validated shared lens…</p>}
           <div className="footerAction">
             <button className="primaryButton" onClick={generateReading} disabled={!canGenerate || loading}>
               Generate Reading

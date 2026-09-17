@@ -15,3 +15,14 @@ def _model():
 def local_embedding(text: str) -> list[float]:
     """Return a normalized Sentence-BERT embedding for semantic retrieval."""
     return _model().encode(text or "", normalize_embeddings=True).tolist()
+
+
+def local_embeddings(texts: list[str]) -> list[list[float]]:
+    """Embed a small group in one model invocation.
+
+    Sentence-BERT has meaningful per-call overhead on the production CPU.
+    Batching avoids turning one comparison into dozens of inferences.
+    """
+    if not texts:
+        return []
+    return _model().encode(texts, normalize_embeddings=True).tolist()

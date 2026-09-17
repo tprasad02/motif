@@ -5,7 +5,7 @@ import re
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
-from app.services.embeddings import local_embedding
+from app.services.embeddings import local_embedding, local_embeddings
 
 PROFILE_PATH = Path(__file__).resolve().parents[1] / "corpus" / "lens_profiles.json"
 PROFILE_SCHEMA_VERSION = 4
@@ -55,13 +55,15 @@ def lens_names(film_slug: str) -> list[str]: return [str(row["lens"]) for row in
 def is_published_lens(film_slug: str, lens: str) -> bool: return lens in lens_names(film_slug)
 def all_published_lenses() -> list[str]:
     rows = [{"lens": lens} for slug in load_profiles().get("films", {}) for lens in lens_names(slug)]
+    candidates = [str(row["lens"]) for row in _dedupe_rows(rows)]
+    vectors = local_embeddings(candidates)
     selected: list[str] = []
-    for row in _dedupe_rows(rows):
-        lens = str(row["lens"])
-        vector = _label_embedding(lens)
-        if any(sum(a * b for a, b in zip(vector, _label_embedding(existing))) >= 0.85 for existing in selected):
+    selected_vectors: list[list[float]] = []
+    for lens, vector in zip(candidates, vectors):
+        if any(sum(a * b for a, b in zip(vector, existing)) >= 0.85 for existing in selected_vectors):
             continue
         selected.append(lens)
+        selected_vectors.append(vector)
     return sorted(selected, key=str.casefold)
 
 @lru_cache(maxsize=512)
@@ -83,16 +85,29 @@ def selected_profile_terms(film_slug: str, selection: str) -> list[str]:
     return [term for term in terms if term]
 
 def comparison_lenses(film_a: str, film_b: str, threshold: float = COMPARISON_SIMILARITY) -> list[dict[str, Any]]:
+    left_rows = published_lenses(film_a)
+    right_rows = published_lenses(film_b)
     rows = []
-    for left in published_lenses(film_a):
-        left_vector = _profile_embedding(str(left.get("lens", "")), str(left.get("definition", "")))
-        for right in published_lenses(film_b):
-            same_cluster = bool(left.get("cluster_id") and left.get("cluster_id") == right.get("cluster_id"))
-            right_vector = _profile_embedding(str(right.get("lens", "")), str(right.get("definition", "")))
-            score = 1.0 if same_cluster else sum(a * b for a, b in zip(left_vector, right_vector))
-            if score >= threshold:
-                label = (left.get("cluster_label") if same_cluster else None) or (right.get("cluster_label") if same_cluster else None) or f"{left['lens']} / {right['lens']}"
-                rows.append({"lens": label, "similarity": round(score, 3), "film_a_lens": left["lens"], "film_b_lens": right["lens"]})
+    # Cluster membership is already validated semantic evidence. Prefer it and
+    # do not load the model just to rediscover the same relation.
+    for left in left_rows:
+        for right in right_rows:
+            if not (left.get("cluster_id") and left.get("cluster_id") == right.get("cluster_id")):
+                continue
+            label = left.get("cluster_label") or right.get("cluster_label") or f"{left['lens']} / {right['lens']}"
+            rows.append({"lens": label, "similarity": 1.0, "film_a_lens": left["lens"], "film_b_lens": right["lens"]})
+
+    if not rows:
+        # Only pairs without a shared cluster need the Sentence-BERT fallback.
+        profiles = left_rows + right_rows
+        vectors = local_embeddings([f"{row.get('lens', '')}. {row.get('definition', '')}" for row in profiles])
+        left_vectors = vectors[:len(left_rows)]
+        right_vectors = vectors[len(left_rows):]
+        for left, left_vector in zip(left_rows, left_vectors):
+            for right, right_vector in zip(right_rows, right_vectors):
+                score = sum(a * b for a, b in zip(left_vector, right_vector))
+                if score >= threshold:
+                    rows.append({"lens": f"{left['lens']} / {right['lens']}", "similarity": round(score, 3), "film_a_lens": left["lens"], "film_b_lens": right["lens"]})
     selected: list[dict[str, Any]] = []
     for row in sorted(rows, key=lambda item: item["similarity"], reverse=True):
         duplicate = any(
